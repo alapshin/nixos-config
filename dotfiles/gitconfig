@@ -1,0 +1,52 @@
+[alias]
+	ci = commit
+	st = status
+	br = branch
+	co = checkout
+	df = diff
+        lol = log --graph --decorate --oneline
+        lola = log --graph --decorate --oneline --all
+	# https://blog.filippo.io/git-fixup-amending-an-older-commit/
+	fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
+	stash-all = stash save --include-untracked
+[color]
+	ui = auto
+[core]
+	pager = cat
+	editor = nvim
+	whitespace = cr-at-eol
+[credential]
+	helper = cache --timeout=3600
+[diff]
+	tool = androidstudio
+	indentHeuristic = true
+	compactionHeuristic = true
+[fetch]
+	prune = true
+[merge]
+	tool = androidstudio
+	conflictstyle = diff3
+[pull]
+	ff = only
+[push]
+	default = simple
+	followTag = true
+[rerere]
+	enabled = true
+[stash]
+	showPatch = true
+[transfer]
+	fsckobjects = true
+[user]
+	name = Andrei Lapshin
+	email = alapshin@fastmail.com
+[github]
+	user = alapshin
+
+[difftool "androidstudio"]
+	cmd = /usr/local/bin/idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
+	trustExitCode = true
+
+[mergetool "androidstudio"]
+	cmd = studio merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+	trustExitCode = true

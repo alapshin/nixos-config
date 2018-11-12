@@ -1,0 +1,7 @@
+set refresh-mode = periodic
+set refresh-interval = 5
+# Keybindings
+# Use A button to launch git --amend
+bind status A !?git commit --amend
+# Use I button to interactivly stage changes
+bind generic I !git add -i %(file)
