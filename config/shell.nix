@@ -26,6 +26,9 @@
         nix-zsh-completions
       ];
     };
+    shellInit = ''
+      source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+    '';
     promptInit = ''
       POWERLEVEL9K_MODE='nerdfont-complete'
       POWERLEVEL9K_PROMPT_ON_NEWLINE=true
