@@ -7,7 +7,6 @@
     chromium
     firefox
     gimp
-    git
     htop
     inkscape
     libreoffice-fresh
@@ -17,7 +16,7 @@
     neovim
     smplayer
     steam
-    tig
+    unzip
     wget 
     wineStaging
     youtube-dl

@@ -7,7 +7,7 @@
 {
   imports =
     [ 
-      ./androiddev.nix
+      ./development.nix
       ./fonts.nix
       ./networking.nix
       ./python.nix
