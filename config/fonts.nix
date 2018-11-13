@@ -5,10 +5,12 @@
     fonts = with pkgs; [
       dejavu_fonts
     ];
-    fontconfig.defaultFonts = {
-      serif = [ "DejaVu Serif" ];
-      sansSerif = [ "DejaVu Sans" ];
-      monospace = [ "DejaVu Sans Mono" ];
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "DejaVu Serif" ];
+        sansSerif = [ "DejaVu Sans" ];
+        monospace = [ "DejaVu Sans Mono" ];
+      };
     };
   };
 }

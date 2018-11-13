@@ -5,11 +5,17 @@
     enable = true;
     layout = "us,ru";
     xkbOptions = "grp:caps_toggle,compose:ralt";
+
     displayManager.sddm.enable = true;
+    displayManager.sddm.enableHidpi = false;
     desktopManager.plasma5.enable = true;
+
     videoDrivers = [
       "nvidia"
     ];
+    monitorSection = ''
+      Option "UseEdidDpi" "True"
+    '';
     screenSection = ''
       Option "TripleBuffer" "on"
       Option "AllowIndirectGLXProtocol" "off"
