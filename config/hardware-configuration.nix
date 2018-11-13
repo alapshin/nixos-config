@@ -60,6 +60,8 @@
     }
   ];
 
+  hardware.cpu.intel.updateMicrocode = true;
+
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
 
