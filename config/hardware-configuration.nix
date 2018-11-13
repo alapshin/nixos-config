@@ -63,6 +63,9 @@
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
 
+  hardware.opengl.driSupport32Bit = true;
+  hardware.nvidia.modesetting.enable = true;
+
   hardware.enableRedistributableFirmware = true;
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

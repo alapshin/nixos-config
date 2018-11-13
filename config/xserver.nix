@@ -10,8 +10,12 @@
     videoDrivers = [
       "nvidia"
     ];
+    screenSection = ''
+      Option "TripleBuffer" "on"
+      Option "AllowIndirectGLXProtocol" "off"
+      Option "metamodes" "nvidia-auto-select +0+0 { ForceCompositionPipeline = On, ForceFullCompositionPipeline = On }"
+    '';
   };
-  hardware.opengl.driSupport32Bit = true;
 
   environment.systemPackages = with pkgs; [
     amarok
