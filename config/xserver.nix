@@ -35,7 +35,7 @@
     kdeconnect
     ktorrent
     partition-manager
-    plasma-browser-integration
+    plasma-browser-integration 
     redshift-plasma-applet
     skrooge
   ];
