@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
-let dotfiles = "/home/alapshin/nixos-config/dotfiles";
+let 
+  fonts = builtins.toString ../fonts;
+  dotfiles = builtins.toString ../dotfiles;
 in
 {
   imports = [
@@ -24,7 +26,7 @@ in
     };
 
     xdg.dataFile = {
-      "fonts/FiraCode".source = ../fonts/FiraCode;
+      "fonts/FiraCode".source = "${fonts}/FiraCode";
     };
 
     xdg.configFile = {
