@@ -33,7 +33,7 @@ in
       "nvim".source = "${dotfiles}/nvim";
 
       "tigrc".source = "${dotfiles}/tigrc";
-      "gitconfig".source = "${dotfiles}/gitconfig";
+      "git/config".source = "${dotfiles}/gitconfig";
 
       "fontconfig".source = ../dotfiles/fontconfig;
       "nixpkgs/config.nix".source = ./nixpkgs-config.nix;
