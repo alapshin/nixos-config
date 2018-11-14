@@ -40,7 +40,22 @@ in
     };
 
     home.sessionVariables = {
+
+      AWS_CONFIG_FILE = "$XDG_CONFIG_HOME/aws/config";
+      AWS_SHARED_CREDENTIALS_FILE = "$XDG_CONFIG_HOME/aws/credentials";
+      CARGO_HOME = "$XDG_DATA_HOME/cargo";
+      CCACHE_DIR = "$XDG_CACHE_HOME/ccache";
+      CCACHE_CONFIGPATH = "$XDG_CONFIG_HOME/ccache.config";
+      CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
+      DOCKER_CONFIG = "$XDG_CONFIG_HOME/docker";
+      GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
+      GRADLE_USER_HOME = "$XDG_DATA_HOME/gradle";
+      HTTPIE_CONFIG_DIR = "$XDG_CONFIG_HOME/httpie";
+      IPYTHONDIR = "$XDG_CONFIG_HOME/jupyter";
+      JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
+      MACHINE_STORAGE_PATH = "$XDG_DATA_HOME/docker-machine";
       TIGRC_USER = "$XDG_CONFIG_HOME/tigrc";
+      _JAVA_OPTIONS = ''-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java'';
     };
   };
 
