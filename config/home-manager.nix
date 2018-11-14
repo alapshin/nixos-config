@@ -20,6 +20,7 @@ in
     home.file = {
       ".zshrc".source = "${dotfiles}/zshrc";
       ".curlrc".source = "${dotfiles}/curlrc";
+      ".ssh/config".source = "${dotfiles}/ssh/config";
     };
 
     xdg.configFile = {
