@@ -14,6 +14,7 @@
     manpages
     mpv
     neovim
+    nix-index
     smplayer
     steam
     unzip
