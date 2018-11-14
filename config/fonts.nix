@@ -3,14 +3,10 @@
 {
   fonts = {
     fonts = with pkgs; [
-      dejavu_fonts
+      noto-fonts
     ];
     fontconfig = {
-      defaultFonts = {
-        serif = [ "DejaVu Serif" ];
-        sansSerif = [ "DejaVu Sans" ];
-        monospace = [ "DejaVu Sans Mono" ];
-      };
+      ultimate.enable = true;
     };
   };
 }

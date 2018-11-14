@@ -23,6 +23,10 @@ in
       ".ssh/config".source = "${dotfiles}/ssh/config";
     };
 
+    xdg.dataFile = {
+      "fonts/FiraCode".source = ../fonts/FiraCode;
+    };
+
     xdg.configFile = {
       "nvim".source = "${dotfiles}/nvim";
 
