@@ -7,8 +7,11 @@
 {
   imports =
     [ 
+      ./datetime.nix
       ./development.nix
       ./fonts.nix
+      ./i18n.nix
+      ./misc.nix
       ./networking.nix
       ./python.nix
       ./packages.nix
@@ -22,36 +25,6 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-
-  # Select internationalisation properties.
-  i18n = {
-    consoleFont = "LatArCyrHeb-16";
-    defaultLocale = "en_US.UTF-8";
-    consoleUseXkbConfig = true;
-  };
-
-  # Set your time zone.
-  time.timeZone = "Europe/Moscow";
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  services = {
-    # Enable CUPS to print documents.
-    printing.enable = true;
-    syncthing = {
-      enable = true;
-      group = "syncthing";
-    };
-  };
 
   nixpkgs.config = import ./nixpkgs-config.nix;
   # This value determines the NixOS release with which your system is to be
