@@ -35,7 +35,7 @@ in
       "tigrc".source = "${dotfiles}/tigrc";
       "git/config".source = "${dotfiles}/gitconfig";
 
-      "fontconfig".source = ../dotfiles/fontconfig;
+      "fontconfig".source = "${dotfiles}/fontconfig";
       "nixpkgs/config.nix".source = ./nixpkgs-config.nix;
     };
 
