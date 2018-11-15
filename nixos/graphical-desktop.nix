@@ -43,6 +43,7 @@
 
   environment.systemPackages = with pkgs; [
     amarok
+    kate
     kdeApplications.ark
     kdeApplications.dolphin
     kdeApplications.filelight
