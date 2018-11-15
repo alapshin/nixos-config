@@ -1,13 +1,24 @@
 { config, pkgs, ... }:
 
 {
+  hardware = {
+    pulseaudio = {
+      enable = true;
+      support32Bit = true;
+    };
+    opengl = {
+      s3tcSupport = true;
+      driSupport32Bit = true;
+    };
+    nvidia.modesetting.enable = true;
+  };
+
   services.xserver = {
     enable = true;
     layout = "us,ru";
     xkbOptions = "grp:caps_toggle,compose:ralt";
 
     displayManager.sddm.enable = true;
-    displayManager.sddm.enableHidpi = false;
     desktopManager.plasma5.enable = true;
 
     videoDrivers = [

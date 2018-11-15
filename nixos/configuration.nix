@@ -19,9 +19,9 @@
       ./sysctl.nix
       ./users-and-groups.nix
       ./virtualization.nix
-      ./xserver.nix
 
       ./home-manager.nix
+      ./graphical-desktop.nix
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];

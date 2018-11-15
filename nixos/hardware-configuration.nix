@@ -61,14 +61,6 @@
   ];
 
   hardware.cpu.intel.updateMicrocode = true;
-
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
-
-  hardware.opengl.s3tcSupport = true;
-  hardware.opengl.driSupport32Bit = true;
-  hardware.nvidia.modesetting.enable = true;
-
   hardware.enableRedistributableFirmware = true;
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
