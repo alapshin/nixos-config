@@ -58,7 +58,7 @@ in
       MACHINE_STORAGE_PATH = "$XDG_DATA_HOME/docker-machine";
       TIGRC_USER = "$XDG_CONFIG_HOME/tigrc";
 
-      _JAVA_OPTIONS = ''-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java'';
+      _JAVA_OPTIONS = ''-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'';
     };
   };
 
