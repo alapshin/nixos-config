@@ -23,6 +23,13 @@
     '';
   };
 
+  services.flatpak = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-kde
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     amarok
     kdeApplications.ark
