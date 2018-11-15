@@ -1,7 +1,9 @@
 #!/usr/bin/env sh
 
-# Setup script for NixOS and https://github.com/rycee/home-manager
+# Backup existing configuration
+if [ -d /etc/nixos ]; then
+    mv /etc/nixos /etc/nixos.orig
+fi
 
-for file in ${PWD}/config/*.nix; do
-  sudo ln -sf ${file} /etc/nixos/
-done
+# Symlink configuration to /etc/nixos
+ln -sf "$PWD/nixos" /etc/
