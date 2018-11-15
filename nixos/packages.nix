@@ -5,6 +5,7 @@
     atool
     borgbackup
     chromium
+    file
     firefox
     gimp
     htop
