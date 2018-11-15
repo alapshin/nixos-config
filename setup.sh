@@ -1,9 +1,16 @@
 #!/usr/bin/env sh
 
+set -e
+
 # Backup existing configuration
 if [ -d /etc/nixos ]; then
-    mv /etc/nixos /etc/nixos.orig
+    cp -r /etc/nixos /etc/nixos.orig
 fi
 
-# Symlink configuration to /etc/nixos
-ln -sf "$PWD/nixos" /etc/
+# Cleanup existing configuration
+rm /etc/nixos/*
+
+# Create symlinks to new configuration
+for file in "${PWD}"/nixos/*.nix; do
+  ln -sf "${file}" /etc/nixos/
+done
