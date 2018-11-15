@@ -8,6 +8,7 @@
     package = pkgs.jdk11;
   };
   environment.systemPackages = with pkgs; [
+    shellcheck
     android-udev-rules
     gitAndTools.gitFull
     gitAndTools.git-hub
