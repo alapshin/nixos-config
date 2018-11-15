@@ -14,6 +14,7 @@ in
 
     home.packages = with pkgs; [
       android-studio
+      jetbrains.jdk
       jetbrains.clion
       jetbrains.idea-ultimate
       jetbrains.pycharm-professional
@@ -40,6 +41,7 @@ in
     };
 
     home.sessionVariables = {
+      IDEA_JDK = "${pkgs.jetbrains.jdk}";
 
       AWS_CONFIG_FILE = "$XDG_CONFIG_HOME/aws/config";
       AWS_SHARED_CREDENTIALS_FILE = "$XDG_CONFIG_HOME/aws/credentials";
@@ -55,6 +57,7 @@ in
       JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
       MACHINE_STORAGE_PATH = "$XDG_DATA_HOME/docker-machine";
       TIGRC_USER = "$XDG_CONFIG_HOME/tigrc";
+
       _JAVA_OPTIONS = ''-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java'';
     };
   };
