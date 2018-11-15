@@ -2,6 +2,7 @@
 
 {
   programs.adb.enable = true;
+  programs.ccache.enable = true;
   programs.java = {
     enable = true;
     package = pkgs.jdk11;
