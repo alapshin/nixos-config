@@ -15,6 +15,7 @@
 
   services.xserver = {
     enable = true;
+    dpi = 96;
     layout = "us,ru";
     xkbOptions = "grp:caps_toggle,compose:ralt";
 
@@ -24,9 +25,6 @@
     videoDrivers = [
       "nvidia"
     ];
-    monitorSection = ''
-      Option "UseEdidDpi" "True"
-    '';
     screenSection = ''
       Option "TripleBuffer" "on"
       Option "AllowIndirectGLXProtocol" "off"
