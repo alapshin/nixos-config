@@ -2,9 +2,11 @@
 
 {
   programs.adb.enable = true;
-  programs.java.enable = true;
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk11;
+  };
   environment.systemPackages = with pkgs; [
-    openjdk
     android-udev-rules
     gitAndTools.gitFull
     gitAndTools.git-hub
