@@ -65,6 +65,7 @@
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
 
+  hardware.opengl.s3tcSupport = true;
   hardware.opengl.driSupport32Bit = true;
   hardware.nvidia.modesetting.enable = true;
 
