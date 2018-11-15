@@ -5,6 +5,8 @@
     locate = {
       enable = true;
       locate = pkgs.mlocate;
+      # To silence "warning: mlocate does not support searching as user other than root"
+      localuser = null;
     };
     # Enable CUPS
     printing = {
