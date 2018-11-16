@@ -5,26 +5,25 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ 
-      ./datetime.nix
-      ./development.nix
-      ./fonts.nix
-      ./i18n.nix
-      ./misc.nix
-      ./networking.nix
-      ./python.nix
-      ./packages.nix
-      ./shell.nix
-      ./sysctl.nix
-      ./users-and-groups.nix
-      ./virtualization.nix
+  imports = [ 
+    ./datetime.nix
+    ./development.nix
+    ./fonts.nix
+    ./i18n.nix
+    ./misc.nix
+    ./networking.nix
+    ./python.nix
+    ./packages.nix
+    ./shell.nix
+    ./sysctl.nix
+    ./users-and-groups.nix
+    ./virtualization.nix
 
-      ./home-manager.nix
-      ./graphical-desktop.nix
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+    ./home-manager.nix
+    ./graphical-desktop.nix
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   nixpkgs.config = import ./nixpkgs-config.nix;
   # This value determines the NixOS release with which your system is to be
