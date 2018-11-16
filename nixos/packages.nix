@@ -16,6 +16,7 @@
     mpv
     neovim
     nix-index
+    ntfs3g
     smplayer
     steam
     unzip
