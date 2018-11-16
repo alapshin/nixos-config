@@ -36,13 +36,18 @@ in
       "tigrc".source = "${dotfiles}/tigrc";
       "git/config".source = "${dotfiles}/gitconfig";
 
-      "fontconfig".source = "${dotfiles}/fontconfig";
+      "fontconfig".source = ../dotfiles/fontconfig;
       "nixpkgs/config.nix".source = ./nixpkgs-config.nix;
     };
 
     home.sessionVariables = {
       IDEA_JDK = "${pkgs.jetbrains.jdk}";
 
+      ANDROID_SDK = "$HOME/opt/android-sdk";
+      ANDROID_HOME = "$HOME/opt/android-sdk";
+      PATH = "$PATH:$ANDROID_SDK:$ANDROID_SDK/tools:$ANDROID_SDK/tools/bin";
+
+      # Enforcment of XDG directory structure
       AWS_CONFIG_FILE = "$XDG_CONFIG_HOME/aws/config";
       AWS_SHARED_CREDENTIALS_FILE = "$XDG_CONFIG_HOME/aws/credentials";
       CARGO_HOME = "$XDG_DATA_HOME/cargo";
