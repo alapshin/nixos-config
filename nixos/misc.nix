@@ -2,6 +2,9 @@
 
 {
   services = {
+    geoclue2 = {
+      enable = true;
+    };
     locate = {
       enable = true;
       locate = pkgs.mlocate;
@@ -14,6 +17,11 @@
       drivers = [
         pkgs.hplip
       ];
+    };
+    redshift = {
+      enable = true;
+      provider = "geoclue2";
+      extraOptions = [ "-P" "-m randr" ];
     };
     # Enable Syncthing daemon
     syncthing = {

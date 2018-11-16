@@ -53,7 +53,6 @@
     ktorrent
     partition-manager
     plasma-browser-integration 
-    redshift-plasma-applet
     skrooge
   ];
 }
