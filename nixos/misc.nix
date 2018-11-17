@@ -2,9 +2,6 @@
 
 {
   services = {
-    geoclue2 = {
-      enable = true;
-    };
     locate = {
       enable = true;
       locate = pkgs.mlocate;
@@ -20,7 +17,9 @@
     };
     redshift = {
       enable = true;
-      provider = "geoclue2";
+      provider = "manual";
+      latitude = "58.5969";
+      longitude = "49.6583";
       extraOptions = [ "-P" "-m randr" ];
     };
     # Enable Syncthing daemon

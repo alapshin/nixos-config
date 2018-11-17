@@ -8,9 +8,9 @@ if [ -d /etc/nixos ]; then
 fi
 
 # Cleanup existing configuration
-rm /etc/nixos/*
+rm -f /etc/nixos/*
 
 # Create symlinks to new configuration
-for file in "${PWD}"/nixos/*.nix; do
-  ln -sf "${file}" /etc/nixos/
+for file in "${PWD}"/nixos/*; do
+    ln -sf "${file}" /etc/nixos/
 done

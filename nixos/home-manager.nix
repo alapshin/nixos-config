@@ -12,12 +12,14 @@ in
   home-manager.users.alapshin = {
     programs.home-manager.enable = true;
 
+    nixpkgs.config = import ./nixpkgs-config.nix;
+
     home.packages = with pkgs; [
-      android-studio
       jetbrains.jdk
       jetbrains.clion
       jetbrains.idea-ultimate
       jetbrains.pycharm-professional
+      androidStudioPackages.beta
     ];
 
     home.file = {

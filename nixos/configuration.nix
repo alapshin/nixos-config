@@ -1,8 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
+{ config, options, pkgs, ... }:
 
 {
   imports = [ 
@@ -25,7 +21,11 @@
     ./hardware-configuration.nix
   ];
 
+  # Make overlays available to commmand-line tools. 
+  nix.nixPath = options.nix.nixPath.default 
+    ++ [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
   nixpkgs.config = import ./nixpkgs-config.nix;
+  nixpkgs.overlays = [ (import ./overlays/unstable.nix) ];
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
