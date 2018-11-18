@@ -21,6 +21,11 @@
     ./hardware-configuration.nix
   ];
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
   # Make overlays available to commmand-line tools. 
   nix.nixPath = options.nix.nixPath.default 
     ++ [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
