@@ -6,7 +6,10 @@ let
 in
 {
   imports = [
-    "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
+    "${builtins.fetchGit { 
+      ref = "master"; 
+      url = "https://github.com/rycee/home-manager"; 
+    }}/nixos"
   ];
 
   home-manager.users.alapshin = {
