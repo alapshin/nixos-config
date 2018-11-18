@@ -9,6 +9,8 @@ let
 in
 {
   skrooge = unstablePkgs.skrooge;
+  home-manager = unstablePkgs.home-manager;
+
   jetbrains.jdk = unstablePkgs.jetbrains.jdk;
   jetbrains.clion = unstablePkgs.jetbrains.clion;
   jetbrains.idea-ultimate = unstablePkgs.jetbrains.idea-ultimate;

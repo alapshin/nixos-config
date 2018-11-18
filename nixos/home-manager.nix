@@ -1,10 +1,17 @@
 { config, pkgs, ... }:
 
 let 
+  # Define fonts and dotfiles paths as strings.
+  # Using strings forces home-manager to create symlinks to original files
+  # instead of copying them to nix store. This allows to edit doftiles in-place. 
+  # See https://github.com/rycee/home-manager/issues/257 for details.
   fonts = builtins.toString ../fonts;
   dotfiles = builtins.toString ../dotfiles;
 in
 {
+  # Setup home-manager as NixOS module.
+  # See https://github.com/rycee/home-manager/issues/417 for details why 
+  # fetchGit is used.
   imports = [
     "${builtins.fetchGit { 
       ref = "master"; 
@@ -13,11 +20,11 @@ in
   ];
 
   home-manager.users.alapshin = {
-    programs.home-manager.enable = true;
-
     nixpkgs.config = import ./nixpkgs-config.nix;
 
     home.packages = with pkgs; [
+      home-manager
+
       jetbrains.jdk
       jetbrains.clion
       jetbrains.idea-ultimate
@@ -71,8 +78,4 @@ in
       _JAVA_OPTIONS = ''-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'';
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    home-manager
-  ];
 }
