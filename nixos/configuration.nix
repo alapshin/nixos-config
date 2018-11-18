@@ -10,6 +10,7 @@
     ./networking.nix
     ./python.nix
     ./packages.nix
+    ./security.nix
     ./shell.nix
     ./sysctl.nix
     ./users-and-groups.nix
