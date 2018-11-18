@@ -47,7 +47,6 @@
     kdeApplications.filelight
     kdeApplications.gwenview
     kdeApplications.kmail
-    kdeApplications.kmix
     kdeApplications.okular
     kdeconnect
     ktorrent
