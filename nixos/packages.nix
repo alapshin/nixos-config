@@ -8,6 +8,7 @@
     file
     firefox
     gimp
+    gnupg
     htop
     inkscape
     libreoffice-fresh
