@@ -9,6 +9,7 @@
     ./i18n.nix
     ./misc.nix
     ./networking.nix
+    ./nixpkgs-utils.nix
     ./python.nix
     ./packages.nix
     ./security.nix
