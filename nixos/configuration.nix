@@ -31,7 +31,10 @@
   nix.nixPath = options.nix.nixPath.default 
     ++ [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
   nixpkgs.config = import ./nixpkgs-config.nix;
-  nixpkgs.overlays = [ (import ./overlays/unstable.nix) ];
+  nixpkgs.overlays = [ 
+    (import ./overlays/custom.nix)
+    (import ./overlays/unstable.nix)
+  ];
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
