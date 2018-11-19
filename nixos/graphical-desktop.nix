@@ -40,18 +40,20 @@
   };
 
   environment.systemPackages = with pkgs; [
+    gnome3.gtk3
+
     amarok
     kate
     kdeApplications.ark
     kdeApplications.dolphin
     kdeApplications.filelight
     kdeApplications.gwenview
-    kdeApplications.kmail
     kdeApplications.okular
     kdeconnect
     ktorrent
     partition-manager
     plasma-browser-integration 
     skrooge
+    thunderbird
   ];
 }
