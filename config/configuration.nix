@@ -11,7 +11,6 @@
     ./networking.nix
     ./nixpkgs-utils.nix
     ./python.nix
-    ./packages.nix
     ./security.nix
     ./shell.nix
     ./sysctl.nix

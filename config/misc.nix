@@ -1,3 +1,5 @@
+# Settings that don't fit into particular category
+
 { config, pkgs, ... }:
 
 {
@@ -5,7 +7,8 @@
     locate = {
       enable = true;
       locate = pkgs.mlocate;
-      # To silence "warning: mlocate does not support searching as user other than root"
+      # To silence warning message
+      # See https://github.com/NixOS/nixpkgs/issues/30864
       localuser = null;
     };
     # Enable CUPS
@@ -28,4 +31,26 @@
       group = "syncthing";
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    atool
+    borgbackup
+    chromium
+    file
+    firefox
+    gimp
+    gnupg
+    htop
+    inkscape
+    libreoffice-fresh
+    keepassxc
+    manpages
+    mpv
+    neovim
+    ntfs3g
+    smplayer
+    unzip
+    wget 
+    youtube-dl
+  ];
 }
