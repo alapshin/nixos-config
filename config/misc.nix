@@ -34,21 +34,32 @@
 
   environment.systemPackages = with pkgs; [
     atool
+    bat
     borgbackup
     chromium
+    exa
+    fd
     file
     firefox
     gimp
+    python36Packages.glances
     gnupg
     htop
+    httpie
+    imagemagick
     inkscape
     libreoffice-fresh
     keepassxc
     manpages
     mpv
+    ncdu
     neovim
+    nnn
     ntfs3g
+    pandoc
+    ripgrep
     smplayer
+    tmux
     unzip
     wget 
     youtube-dl
