@@ -11,6 +11,6 @@ fi
 rm -f /etc/nixos/*
 
 # Create symlinks to new configuration
-for file in "${PWD}"/nixos/*; do
+for file in "${PWD}"/config/*; do
     ln -sf "${file}" /etc/nixos/
 done
