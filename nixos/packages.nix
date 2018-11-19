@@ -19,10 +19,8 @@
     nix-index
     ntfs3g
     smplayer
-    steam
     unzip
     wget 
-    wineStaging
     youtube-dl
   ];
 }

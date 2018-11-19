@@ -5,6 +5,7 @@
     ./datetime.nix
     ./development.nix
     ./fonts.nix
+    ./gaming.nix
     ./i18n.nix
     ./misc.nix
     ./networking.nix
