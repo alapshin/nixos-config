@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  environment.variables = {
+    EDITOR = "nvim";
+    NIX_PAGER = "cat";
+  };
+
   programs.ssh.startAgent = true;
   programs.gnupg.agent.enable = true;
 
