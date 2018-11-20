@@ -10,7 +10,7 @@
   environment.systemPackages = with pkgs; [
     shellcheck
     android-udev-rules
-    gitAndTools.gitFull
+    gitAndTools.git
     gitAndTools.git-hub
     gitAndTools.git-crypt
     gitAndTools.tig
