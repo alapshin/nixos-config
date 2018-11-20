@@ -6,6 +6,12 @@
 
   programs.zsh = {
     enable = true;
+    autosuggestions = {
+      enable = true;
+    };
+    syntaxHighlighting = {
+      enable = true;
+    };
     ohMyZsh = {
       enable = true;
       plugins = [ 
@@ -23,6 +29,7 @@
 	"systemd"
       ];
       customPkgs = with pkgs; [
+        zsh-completions
         nix-zsh-completions
       ];
     };
@@ -41,8 +48,4 @@
       fi
     '';
   };
-
-  environment.systemPackages = with pkgs; [
-    zsh-completions
-  ];
 }
