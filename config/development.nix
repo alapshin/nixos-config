@@ -5,7 +5,7 @@
   programs.ccache.enable = true;
   programs.java = {
     enable = true;
-    package = pkgs.jdk11;
+    package = pkgs.jdk;
   };
   environment.systemPackages = with pkgs; [
     shellcheck
