@@ -58,6 +58,7 @@
     ntfs3g
     pandoc
     ripgrep
+    smartmontools
     smplayer
     tmux
     unzip
