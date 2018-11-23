@@ -43,7 +43,6 @@
     file
     firefox
     gimp
-    python36Packages.glances
     gnupg
     htop
     httpie
