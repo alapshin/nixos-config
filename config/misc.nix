@@ -35,6 +35,7 @@
   environment.systemPackages = with pkgs; [
     atool
     bat
+    bcache-tools
     borgbackup
     chromium
     exa
