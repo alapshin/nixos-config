@@ -18,18 +18,6 @@
         pkgs.hplip
       ];
     };
-    redshift = {
-      enable = true;
-      provider = "manual";
-      latitude = "58.5969";
-      longitude = "49.6583";
-      extraOptions = [ "-P" "-m randr" ];
-    };
-    # Enable Syncthing daemon
-    syncthing = {
-      enable = true;
-      group = "syncthing";
-    };
   };
 
   environment.systemPackages = with pkgs; [

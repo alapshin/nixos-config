@@ -22,6 +22,19 @@ in
   home-manager.users.alapshin = {
     nixpkgs.config = import ./nixpkgs-config.nix;
 
+    services = {
+      kbfs.enable = true;
+      keybase.enable = true;
+      syncthing.enable = true;
+      redshift = {
+        enable = true;
+        provider = "manual";
+        latitude = "58.5969";
+        longitude = "49.6583";
+        extraOptions = [ "-P" "-m randr" ];
+      };
+    };
+
     home.packages = with pkgs; [
       home-manager
 
