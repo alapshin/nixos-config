@@ -3,6 +3,14 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, ... }:
 
+let 
+  # Mount options for external storage drives that could be missing during boot
+  externalMountOptions = [
+    "noatime"
+    "nofail"
+    "x-systemd.device-timeout=5"
+  ];
+in
 {
   nix.maxJobs = lib.mkDefault 4;
 
@@ -43,13 +51,20 @@
       device = "/dev/disk/by-uuid/5C3B-A244";
       fsType = "vfat";
     };
-    "/mnt/data" = { 
-      device = "/dev/disk/by-uuid/add3c566-fa6d-4d0c-95a6-609679d108d6";
-      fsType = "ext4";
+    "/mnt/bcache" = {
+      device = "/dev/disk/by-uuid/a4fe29a4-d987-4007-bc7c-f52b2b650ae0";
+      fsType = "btrfs";
+      options = externalMountOptions;
     };
-    "/mnt/data2" = { 
+    "/mnt/broken" = {
+      device = "/dev/disk/by-uuid/c4ee3208-f668-41ab-92d3-a4158a41fe18";
+      fsType = "ext4";
+      options = externalMountOptions;
+    };
+    "/mnt/hitachi" = { 
       device = "/dev/disk/by-uuid/0c21a12f-488e-41f2-bd92-3a8ef4db020e";
       fsType = "ext4";
+      options = externalMountOptions;
     };
   };
 
