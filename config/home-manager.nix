@@ -46,6 +46,12 @@
       androidStudioPackages.beta
     ];
 
+    home.file = {
+      ".zshrc".source = "${dotfiles}/zshrc";
+      ".curlrc".source = "${dotfiles}/curlrc";
+      ".ssh/config".source = "${dotfiles}/ssh/config";
+    };
+
     xdg = {
       enable = true;
       dataFile = {
@@ -62,10 +68,11 @@
       };
     };
 
-    home.file = {
-      ".zshrc".source = "${dotfiles}/zshrc";
-      ".curlrc".source = "${dotfiles}/curlrc";
-      ".ssh/config".source = "${dotfiles}/ssh/config";
+    home.language = {
+      base = "en_IE.UTF-8";
+      monetary = "ru_RU.UTF-8";
+      paper = "ru_RU.UTF-8";
+      time = "ru_RU.UTF-8";
     };
 
     home.sessionVariables = let 
@@ -77,7 +84,7 @@
       ANDROID_HOME = "$HOME/opt/android-sdk";
       PATH = "$PATH:$ANDROID_SDK:$ANDROID_SDK/tools:$ANDROID_SDK/tools/bin";
 
-      # Enforcment of XDG directory structure
+      # Force some apps to use XDG directories
       AWS_CONFIG_FILE = "${configHome}/aws/config";
       AWS_SHARED_CREDENTIALS_FILE = "${configHome}/aws/credentials";
       CARGO_HOME = "${dataHome}/cargo";
