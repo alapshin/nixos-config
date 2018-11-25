@@ -16,14 +16,4 @@
       "wheel" 
     ];
   };
-
-  # Define environment variables for XDG directories.
-  # We can't user environment.sessionVariable because we need to check for
-  # $HOME existence.
-  environment.loginShellInit = ''
-    if [ -d $HOME ]; then
-      export XDG_DATA_HOME="$HOME/.local/share"
-      export XDG_CACHE_HOME="$HOME/.cache"
-    fi
-  '';
 }
