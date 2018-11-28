@@ -39,12 +39,14 @@
     libreoffice-fresh
     keepassxc
     manpages
+    mkvtoolnix
     mpv
     ncdu
     neovim
     nnn
     ntfs3g
     pandoc
+    picard
     ripgrep
     rsync
     smartmontools
