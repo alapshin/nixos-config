@@ -15,7 +15,7 @@
     printing = {
       enable = true;
       drivers = [
-        pkgs.hplip
+        pkgs.hplipWithPlugin
       ];
     };
   };
@@ -52,6 +52,7 @@
     tmux
     unzip
     wget 
+    usbutils
     youtube-dl
   ];
 }
