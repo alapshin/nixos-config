@@ -3,7 +3,6 @@ self: super:
 let 
   unstableRepo = fetchGit {
     ref = "master";
-    rev = "f6169667efaa4e5d55d3b2060475d791d753f174";
     url = https://github.com/NixOS/nixpkgs.git;
   };
   unstablePkgs = import unstableRepo { config = super.config; overlays = []; };
