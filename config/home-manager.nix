@@ -68,13 +68,6 @@
       };
     };
 
-    home.language = {
-      base = "en_IE.UTF-8";
-      monetary = "ru_RU.UTF-8";
-      paper = "ru_RU.UTF-8";
-      time = "ru_RU.UTF-8";
-    };
-
     home.sessionVariables = let 
       dataHome = userConfig.xdg.dataHome;
       cacheHome = userConfig.xdg.cacheHome;
