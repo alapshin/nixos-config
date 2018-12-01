@@ -1,10 +1,12 @@
 { config, pkgs, ... }:
 
 {
-  networking.hostName = "desktop";
-  networking.firewall.enable = false;
-  networking.networkmanager.enable = true;
-  environment.systemPackages = with pkgs; [
-    networkmanager-openvpn
-  ];
+  networking = {
+    hostName = "desktop";
+    firewall.enable = false;
+    networkmanager.enable = true;
+    networkmanager.packages = with pkgs; [
+      networkmanager-openvpn
+    ];
+  };
 }
