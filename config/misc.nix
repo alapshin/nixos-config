@@ -30,6 +30,7 @@
     fd
     file
     firefox
+    gdrive
     gimp
     gnupg
     htop
