@@ -13,4 +13,8 @@ in
 
   jetbrains = unstablePkgs.jetbrains;
   androidStudioPackages = unstablePkgs.androidStudioPackages;
+
+  python36Packages = super.python36Packages // {
+    tensorflowWithCuda = unstablePkgs.python36Packages.tensorflowWithCuda;
+  };
 }

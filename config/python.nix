@@ -2,6 +2,11 @@
 
 {
   environment.systemPackages = with pkgs; [
-    python37
+    (python36.withPackages(ps: with ps; [ 
+      ipython 
+      notebook 
+      numpy 
+      tensorflowWithCuda
+    ]))
   ];
 }
