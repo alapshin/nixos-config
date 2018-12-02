@@ -39,7 +39,6 @@
     home.packages = with pkgs; [
       home-manager
 
-      jetbrains.jdk
       jetbrains.clion
       jetbrains.idea-ultimate
       jetbrains.pycharm-professional
