@@ -3,8 +3,11 @@
 {
   fonts = {
     fonts = with pkgs; [
-      noto-fonts
       liberation_ttf
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      noto-fonts-extra
     ];
     enableDefaultFonts = false;
   };
