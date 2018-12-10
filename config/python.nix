@@ -4,8 +4,9 @@
   environment.systemPackages = with pkgs; [
     (python36.withPackages(ps: with ps; [ 
       ipython 
-      notebook 
-      numpy 
+      notebook
+      numpy
+      pandas
       tensorflowWithCuda
     ]))
   ];
