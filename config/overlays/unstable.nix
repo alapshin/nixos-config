@@ -23,7 +23,7 @@ in
     };
   });
 
-  python36Packages = super.python36Packages // {
-    tensorflowWithCuda = unstablePkgs.python36Packages.tensorflowWithCuda;
+  python37Packages = super.python37Packages // {
+    tensorflowWithCuda = unstablePkgs.python37Packages.tensorflowWithCuda;
   };
 }
