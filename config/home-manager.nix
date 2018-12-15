@@ -85,7 +85,6 @@
       CUDA_CACHE_PATH = "${cacheHome}/nv";
       DOCKER_CONFIG = "${configHome}/docker";
       GNUPGHOME = "${configHome}/gnupg";
-      GRADLE_USER_HOME = "${dataHome}/gradle";
       HTTPIE_CONFIG_DIR = "${configHome}/httpie";
       IPYTHONDIR = "${configHome}/jupyter";
       JUPYTER_CONFIG_DIR = "${configHome}/jupyter";
