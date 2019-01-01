@@ -52,6 +52,7 @@
     rsync
     smartmontools
     smplayer
+    tdesktop
     tmux
     unzip
     wget 
