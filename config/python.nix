@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    (python37.withPackages(ps: with ps; [ 
+    (python3.withPackages(ps: with ps; [ 
       ipython 
       notebook
       numpy

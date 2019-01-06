@@ -22,8 +22,4 @@ in
       sha256 = "11sbrl9868igckbmy6b29rkljga45pqv0ds9y0c28azsdgvmh2jq";
     };
   });
-
-  python37Packages = super.python37Packages // {
-    tensorflowWithCuda = unstablePkgs.python37Packages.tensorflowWithCuda;
-  };
 }
