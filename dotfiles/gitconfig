@@ -35,6 +35,8 @@
 	enabled = true
 [stash]
 	showPatch = true
+[tag]
+	sort = v:refname
 [transfer]
 	fsckobjects = true
 [user]
