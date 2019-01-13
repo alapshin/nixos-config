@@ -40,8 +40,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    gnome3.gtk3
-
     amarok
     kate
     kdeApplications.ark
