@@ -55,6 +55,7 @@
     smplayer
     tdesktop
     tmux
+    tree
     unzip
     wget 
     usbutils
