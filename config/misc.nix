@@ -51,6 +51,7 @@
     picard
     ripgrep
     rsync
+    slack
     smartmontools
     smplayer
     tdesktop
