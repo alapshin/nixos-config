@@ -47,6 +47,7 @@
     neovim
     nnn
     ntfs3g
+    p7zip
     pandoc
     picard
     ripgrep
