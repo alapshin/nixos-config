@@ -4,7 +4,7 @@
 {
   environment.systemPackages = with pkgs; [
     steam
-    winetricks
-    wineStaging
+    wineWowPackages.staging
+    (winetricks.override { wine = wineWowPackages.staging; })
   ];
 }
