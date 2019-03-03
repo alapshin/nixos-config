@@ -29,7 +29,6 @@
     dates = "daily";
     options = "--delete-older-than 7d";
   };
-  nix.autoOptimiseStore = true;
   # Make overlays available to commmand-line tools. 
   nix.nixPath = options.nix.nixPath.default 
     ++ [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
