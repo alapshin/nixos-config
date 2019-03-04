@@ -7,6 +7,7 @@
       notebook
       numpy
       pandas
+      tensorflowWithCuda
     ]))
   ];
 }

@@ -12,4 +12,11 @@ in
 
   jetbrains = unstablePkgs.jetbrains;
   androidStudioPackages = unstablePkgs.androidStudioPackages;
+
+  python3 = super.python3.override {
+    packageOverrides = python-self: python-super: {
+      tensorflow = unstablePkgs.python37Packages.tensorflow;
+      tensorflowWithCuda = unstablePkgs.python37Packages.tensorflowWithCuda;
+    };
+  };
 }
