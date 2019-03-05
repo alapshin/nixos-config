@@ -2,10 +2,11 @@
 
 {
   imports = [ 
+    ./android.nix
     ./datetime.nix
-    ./development.nix
     ./fonts.nix
     ./gaming.nix
+    ./git.nix
     ./i18n.nix
     ./misc.nix
     ./networking.nix

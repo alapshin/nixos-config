@@ -8,11 +8,6 @@
     package = pkgs.jdk;
   };
   environment.systemPackages = with pkgs; [
-    shellcheck
     android-udev-rules
-    gitAndTools.git
-    gitAndTools.git-hub
-    gitAndTools.git-crypt
-    gitAndTools.tig
   ];
 }

@@ -43,7 +43,7 @@
       jetbrains.idea-ultimate
       jetbrains.pycharm-professional
       android-fhs-run
-      androidStudioPackages.beta
+      androidStudioPackages.stable
     ];
 
     home.file = {
