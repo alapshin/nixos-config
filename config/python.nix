@@ -9,6 +9,7 @@
       notebook
       numpy
       pandas
+      pelican
       tensorflowWithCuda
     ]))
   ];
