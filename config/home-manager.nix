@@ -38,12 +38,6 @@
 
     home.packages = with pkgs; [
       home-manager
-
-      jetbrains.clion
-      jetbrains.idea-ultimate
-      jetbrains.pycharm-professional
-      android-fhs-run
-      androidStudioPackages.stable
     ];
 
     home.file = {

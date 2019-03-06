@@ -9,5 +9,8 @@
   };
   environment.systemPackages = with pkgs; [
     android-udev-rules
+    android-fhs-run
+    jetbrains.idea-ultimate
+    androidStudioPackages.stable
   ];
 }
