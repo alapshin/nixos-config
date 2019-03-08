@@ -22,6 +22,7 @@
 
   environment.systemPackages = with pkgs; [
     atool
+    awscli
     bat
     bcache-tools
     birdtray
