@@ -17,6 +17,7 @@
     ./shell.nix
     ./sysctl.nix
     ./users-and-groups.nix
+    ./webdev.nix
     ./virtualization.nix
 
     ./home-manager.nix
