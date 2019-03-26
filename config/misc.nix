@@ -15,7 +15,7 @@
     printing = {
       enable = true;
       drivers = [
-        pkgs.hplipWithPlugin
+        pkgs.hplipWithPlugin_3_16_11
       ];
     };
   };
@@ -35,6 +35,7 @@
     gdrive
     gimp
     gnupg
+    hplipWithPlugin
     htop
     httpie
     imagemagick
