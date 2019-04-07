@@ -10,6 +10,7 @@
       numpy
       pandas
       pelican
+      scikitlearn
       tensorflowWithCuda
     ]))
   ];
