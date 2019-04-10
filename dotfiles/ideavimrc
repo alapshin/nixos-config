@@ -1,0 +1,3 @@
+" selecting text {{{
+set clipboard=unnamedplus " use X11 clipboard
+" }}}

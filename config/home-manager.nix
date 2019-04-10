@@ -44,6 +44,7 @@
       ".zshrc".source = "${dotfiles}/zshrc";
       ".curlrc".source = "${dotfiles}/curlrc";
       ".ssh/config".source = "${dotfiles}/ssh/config";
+      ".ideavimrc".source = "${dotfiles}/ideavimrc";
     };
 
     xdg = {
