@@ -38,6 +38,7 @@
 
     home.packages = with pkgs; [
       home-manager
+      keybase-gui
     ];
 
     home.file = {
