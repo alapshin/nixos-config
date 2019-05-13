@@ -47,6 +47,7 @@
     kdeApplications.filelight
     kdeApplications.gwenview
     kdeApplications.okular
+    kdeApplications.spectacle
     kdeconnect
     ktorrent
     partition-manager
