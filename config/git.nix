@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    gitRepo
     gitAndTools.git
     gitAndTools.tig
     gitAndTools.git-hub
