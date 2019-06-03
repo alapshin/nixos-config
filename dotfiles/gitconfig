@@ -1,11 +1,4 @@
 [alias]
-	ci = commit
-	st = status
-	br = branch
-	co = checkout
-	df = diff
-        lol = log --graph --decorate --oneline
-        lola = log --graph --decorate --oneline --all
 	# https://blog.filippo.io/git-fixup-amending-an-older-commit/
 	fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
 	stash-all = stash save --include-untracked
