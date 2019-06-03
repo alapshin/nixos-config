@@ -16,6 +16,8 @@
 	compactionHeuristic = true
 [fetch]
 	prune = true
+[http]
+	version = "HTTP/1.1"
 [merge]
 	tool = androidstudio
 	conflictstyle = diff3
