@@ -52,7 +52,7 @@ in
       fsType = "vfat";
     };
     "/mnt/bcache" = {
-      device = "/dev/disk/by-uuid/a4fe29a4-d987-4007-bc7c-f52b2b650ae0";
+      device = "/dev/disk/by-uuid/5e5a0250-4ba7-4a1e-a36e-91bff06cafc0";
       fsType = "btrfs";
       options = externalMountOptions;
     };
