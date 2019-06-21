@@ -52,15 +52,15 @@ in
       fsType = "vfat";
     };
     "/mnt/bcache" = {
-      device = "/dev/disk/by-uuid/5e5a0250-4ba7-4a1e-a36e-91bff06cafc0";
-      fsType = "btrfs";
-      options = externalMountOptions;
-    };
-    "/mnt/broken" = {
-      device = "/dev/disk/by-uuid/c4ee3208-f668-41ab-92d3-a4158a41fe18";
+      device = "/dev/disk/by-uuid/fe06889b-37fe-4252-ba03-84ca1ae57264";
       fsType = "ext4";
       options = externalMountOptions;
     };
+    # "/mnt/broken" = {
+    #   device = "/dev/disk/by-uuid/c4ee3208-f668-41ab-92d3-a4158a41fe18";
+    #   fsType = "ext4";
+    #   options = externalMountOptions;
+    # };
     "/mnt/hitachi" = { 
       device = "/dev/disk/by-uuid/0c21a12f-488e-41f2-bd92-3a8ef4db020e";
       fsType = "ext4";
