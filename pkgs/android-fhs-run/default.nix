@@ -9,7 +9,7 @@ buildFHSUserEnv {
     file
     findutils
     git
-    jdk11
+    jetbrains.jdk
     which
     unzip
   ] ++ extraPkgs pkgs;
