@@ -11,6 +11,7 @@
       "adbusers"
       "audio"
       "docker"
+      "input"
       "networkmanager"
       "syncthing"
       "wheel" 
