@@ -25,7 +25,6 @@
     awscli
     bat
     bcache-tools
-    birdtray
     borgbackup
     chromium
     exa
