@@ -12,5 +12,6 @@
     android-fhs-run
     jetbrains.idea-ultimate
     androidStudioPackages.beta
+    androidStudioPackages.stable
   ];
 }
