@@ -19,6 +19,16 @@
     fonts = builtins.toString ../fonts;
     dotfiles = builtins.toString ../dotfiles;
     userConfig = config.home-manager.users.alapshin;
+
+    keepassxc-autostart = (pkgs.makeAutostartItem { 
+      name = "KeePassXC"; 
+      package = pkgs.keepassxc; 
+      srcPrefix = "org.keepassxc."; 
+    });
+    thunderbird-autostart = (pkgs.makeAutostartItem { 
+      name = "thunderbird"; 
+      package = pkgs.thunderbird; 
+    });
   in
   {
     nixpkgs.config = import ./nixpkgs-config.nix;
@@ -39,6 +49,8 @@
     home.packages = with pkgs; [
       home-manager
       keybase-gui
+      keepassxc-autostart
+      thunderbird-autostart
     ];
 
     home.file = {
