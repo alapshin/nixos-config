@@ -34,12 +34,12 @@ in
 
   fileSystems = {
     "/" = { 
-      device = "/dev/disk/by-uuid/c2e5ea6d-0d59-4d88-871a-2cdf0b1c5ddd";
+      device = "/dev/disk/by-uuid/4a5edb30-f86b-4ec3-a493-8de48c8ee703";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
     "/home" = { 
-      device = "/dev/disk/by-uuid/c2e5ea6d-0d59-4d88-871a-2cdf0b1c5ddd";
+      device = "/dev/disk/by-uuid/4a5edb30-f86b-4ec3-a493-8de48c8ee703";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
