@@ -82,7 +82,6 @@
       configHome = userConfig.xdg.configHome;
     in {
       ANDROID_SDK_ROOT = "$HOME/opt/android-sdk";
-      ANDROID_NDK_HOME = "$HOME/opt/android-sdk/ndk-bundle";
 
       # Force some apps to use XDG directories
       AWS_CONFIG_FILE = "${configHome}/aws/config";
