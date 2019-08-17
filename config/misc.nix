@@ -59,9 +59,10 @@
     tdesktop
     tmux
     tree
+    unrar
     unzip
-    wget 
     usbutils
+    wget 
     youtube-dl
   ];
 }
