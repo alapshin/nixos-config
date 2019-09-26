@@ -42,6 +42,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    gtk2
+
     amarok
     kate
     kdeApplications.ark
