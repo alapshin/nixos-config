@@ -13,7 +13,6 @@
       pelican
       scikitlearn
       seaborn
-      tensorflowWithCuda
     ]))
   ];
 }
