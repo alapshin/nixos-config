@@ -5,7 +5,6 @@
     rustc
     cargo
 
-    binutils 
     gcc 
     gnumake
     openssl
