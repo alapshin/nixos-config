@@ -39,6 +39,7 @@
     httpie
     imagemagick
     inkscape
+    jq
     libreoffice-fresh
     keepassxc
     manpages
