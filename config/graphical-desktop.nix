@@ -50,6 +50,7 @@
     kdeApplications.dolphin
     kdeApplications.filelight
     kdeApplications.gwenview
+    kdeApplications.kwalletmanager
     kdeApplications.okular
     kdeApplications.spectacle
     kdeconnect
