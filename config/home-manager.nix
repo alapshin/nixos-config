@@ -60,6 +60,14 @@
       ".ideavimrc".source = "${dotfiles}/ideavimrc";
     };
 
+    home.language = {
+      address = "ru_RU.UTF-8";
+      base = "en_US.UTF-8";
+      monetary = "ru_RU.UTF-8";
+      paper = "ru_RU.UTF-8";
+      time = "en_DK.UTF-8";
+    };
+
     xdg = {
       enable = true;
       dataFile = {
