@@ -9,6 +9,7 @@
     ./git.nix
     ./i18n.nix
     ./misc.nix
+    ./multimedia.nix
     ./networking.nix
     ./nixpkgs-utils.nix
     ./python.nix

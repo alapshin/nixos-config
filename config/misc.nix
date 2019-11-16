@@ -46,8 +46,6 @@
     libreoffice-fresh
     keepassxc
     manpages
-    mkvtoolnix
-    mpv
     ncdu
     neovim
     nnn
@@ -59,7 +57,6 @@
     rsync
     slack
     smartmontools
-    smplayer
     tdesktop
     tmux
     tree
