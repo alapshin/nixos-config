@@ -26,6 +26,7 @@
     bat
     bcache-tools
     borgbackup
+    calibre
     chromium
     exa
     fd
