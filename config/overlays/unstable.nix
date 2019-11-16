@@ -10,6 +10,7 @@ in
 {
   home-manager = unstablePkgs.home-manager;
 
+  skype = unstablePkgs.skype;
   jetbrains = unstablePkgs.jetbrains;
   androidStudioPackages = unstablePkgs.androidStudioPackages;
 }

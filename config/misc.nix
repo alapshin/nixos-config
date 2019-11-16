@@ -56,6 +56,7 @@
     ripgrep
     rsync
     slack
+    skype
     smartmontools
     tdesktop
     tmux
