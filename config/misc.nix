@@ -47,6 +47,7 @@
     libreoffice-fresh
     keepassxc
     manpages
+    moreutils
     ncdu
     neovim
     nnn
