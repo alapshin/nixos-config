@@ -9,7 +9,7 @@ buildFHSUserEnv {
     file
     findutils
     git
-    jetbrains.jdk
+    pkgs.adoptopenjdk-openj9-bin-8
     which
     unzip
   ] ++ extraPkgs pkgs;

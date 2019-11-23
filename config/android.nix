@@ -5,7 +5,7 @@
   programs.ccache.enable = true;
   programs.java = {
     enable = true;
-    package = pkgs.jetbrains.jdk;
+    package = pkgs.adoptopenjdk-openj9-bin-11;
   };
   environment.systemPackages = with pkgs; [
     android-udev-rules
