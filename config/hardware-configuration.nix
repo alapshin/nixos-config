@@ -18,8 +18,9 @@ in
     tmpOnTmpfs = true;
     loader = {
       timeout = 15;
-      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+      systemd-boot.memtest86.enable = true;
     };
     kernelModules = [ "kvm-intel" ];
     kernelPackages = pkgs.linuxPackages_latest;
