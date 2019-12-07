@@ -13,28 +13,29 @@
     nvidia.modesetting.enable = true;
   };
 
-  services.xserver = {
-    enable = true;
-    dpi = 96;
-    layout = "us,ru";
-    xkbOptions = "grp:caps_toggle,compose:ralt";
+  services = {
+    colord.enable = true;
+    flatpak.enable = true;
 
-    displayManager.sddm.enable = true;
-    desktopManager.plasma5.enable = true;
+    xserver = {
+      enable = true;
+      layout = "us,ru";
+      xkbOptions = "grp:caps_toggle,compose:ralt";
 
-    videoDrivers = [
-      "nvidiaBeta"
-    ];
-    screenSection = ''
-      Option "TripleBuffer" "on"
-      Option "AllowIndirectGLXProtocol" "off"
-      Option "metamodes" "nvidia-auto-select +0+0 { ForceCompositionPipeline = On, ForceFullCompositionPipeline = On }"
-    '';
+      displayManager.sddm.enable = true;
+      desktopManager.plasma5.enable = true;
+
+      videoDrivers = [
+        "nvidiaBeta"
+      ];
+      screenSection = ''
+        Option "TripleBuffer" "on"
+        Option "AllowIndirectGLXProtocol" "off"
+        Option "metamodes" "nvidia-auto-select +0+0 { ForceCompositionPipeline = On, ForceFullCompositionPipeline = On }"
+      '';
+    };
   };
 
-  services.flatpak = {
-    enable = true;
-  };
   xdg.portal = {
     extraPortals = with pkgs; [
       xdg-desktop-portal-kde
@@ -45,6 +46,7 @@
     gtk2
 
     amarok
+    colord-kde
     kate
     kdeApplications.ark
     kdeApplications.dolphin
