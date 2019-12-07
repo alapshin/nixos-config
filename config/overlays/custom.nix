@@ -5,12 +5,10 @@ self: super:
     pname = "skrooge";
     version = "2.21.0";
 
-    src = super.fetchgit {
-      url = "https://anongit.kde.org/skrooge.git";
-      rev = "08f400c7c5db0f262c320ee1ccad6960d755910e";
-      sha256 = "1n6akxwk3jbjbp7nayvpk4lzkzjpq4f7lk6463gycbyndy93hyi4";
+    src = super.fetchurl {
+      url = "http://download.kde.org/stable/skrooge/${pname}-${version}.tar.xz";
+      sha256 = "1aqn0367q7mdg728r5085aqzc4mgfz1bgqqlhgdjjp7r192yq7r2";
     };
-
     patches = [];
   });
 
