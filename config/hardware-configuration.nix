@@ -16,11 +16,15 @@ in
 
   boot = {
     tmpOnTmpfs = true;
+    earlyVconsoleSetup = true;
     loader = {
       timeout = 15;
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
-      systemd-boot.memtest86.enable = true;
+      systemd-boot = {
+        enable = true;
+        consoleMode = "max";
+        memtest86.enable = true;
+      };
     };
     kernelModules = [ "kvm-intel" ];
     kernelPackages = pkgs.linuxPackages_latest;

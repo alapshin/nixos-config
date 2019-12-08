@@ -2,7 +2,7 @@
 
 {
   i18n = {
-    consoleFont = "LatArCyrHeb-16";
+    consoleFont = "latarcyrheb-sun32";
     defaultLocale = "en_US.UTF-8";
     consoleUseXkbConfig = true;
   };
