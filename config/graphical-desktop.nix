@@ -31,7 +31,7 @@
       screenSection = ''
         Option "TripleBuffer" "on"
         Option "AllowIndirectGLXProtocol" "off"
-        Option "metamodes" "nvidia-auto-select +0+0 { ForceCompositionPipeline = On, ForceFullCompositionPipeline = On }"
+        Option "metamodes" "3840x2160_120 +0+0 { ForceCompositionPipeline = On, ForceFullCompositionPipeline = On }"
       '';
     };
   };
