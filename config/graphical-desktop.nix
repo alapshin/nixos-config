@@ -26,6 +26,8 @@
       displayManager = {
         sddm.enable = true;
         sessionCommands = ''
+          # Force KDE file dialogs in GTK apps using xdg-desktp-portal
+          export GTK_USE_PORTAL=1
           export PLASMA_USE_QT_SCALING=1
           export QT_SCREEN_SCALE_FACTORS=1.5
         '';
@@ -44,6 +46,7 @@
   };
 
   xdg.portal = {
+    enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-kde
     ];
