@@ -79,7 +79,7 @@ set splitbelow
 " }}}
 
 " GUI {{{
-set guifont=Monospace\ 11
+set guifont=Monospace:h10
 set guioptions=aei
 " }}}
 
