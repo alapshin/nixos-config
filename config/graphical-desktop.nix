@@ -18,11 +18,18 @@
     flatpak.enable = true;
 
     xserver = {
+      dpi = 162;
       enable = true;
       layout = "us,ru";
       xkbOptions = "grp:caps_toggle,compose:ralt";
 
-      displayManager.sddm.enable = true;
+      displayManager = {
+        sddm.enable = true;
+        sessionCommands = ''
+          export PLASMA_USE_QT_SCALING=1
+          export QT_SCREEN_SCALE_FACTORS=1.5
+        '';
+      };
       desktopManager.plasma5.enable = true;
 
       videoDrivers = [
