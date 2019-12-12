@@ -53,11 +53,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    gtk2
-
     amarok
     colord-kde
-    kate
     kdeApplications.ark
     kdeApplications.dolphin
     kdeApplications.filelight
