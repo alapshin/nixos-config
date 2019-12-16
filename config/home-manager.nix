@@ -20,6 +20,14 @@
     dotfiles = builtins.toString ../dotfiles;
     userConfig = config.home-manager.users.alapshin;
 
+    neovim-konsole = (pkgs.makeDesktopItem {
+      icon = "nvim";
+      name = "neovimwrapper";
+      desktopName = "NeovimKonsole";
+      categories = "Utility;TextEditor;";
+      exec = "konsole --nofork --dograb --hide-tabbar --hide-menubar --notransparency -e nvim %F";
+      mimeType = "MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;";
+    });
     keepassxc-autostart = (pkgs.makeAutostartItem { 
       name = "KeePassXC"; 
       package = pkgs.keepassxc; 
@@ -37,18 +45,19 @@
       kbfs.enable = true;
       keybase.enable = true;
       syncthing.enable = true;
-      redshift = {
-        enable = true;
-        provider = "manual";
-        latitude = "58.5969";
-        longitude = "49.6583";
-        extraOptions = [ "-P" "-m randr" ];
-      };
+      # redshift = {
+      #   enable = true;
+      #   provider = "manual";
+      #   latitude = "58.5969";
+      #   longitude = "49.6583";
+      #   extraOptions = [ "-P" "-m randr" ];
+      # };
     };
 
     home.packages = with pkgs; [
       home-manager
       keybase-gui
+      neovim-konsole
       keepassxc-autostart
       thunderbird-autostart
     ];

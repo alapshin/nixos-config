@@ -51,22 +51,4 @@
       xdg-desktop-portal-kde
     ];
   };
-
-  environment.systemPackages = with pkgs; [
-    amarok
-    colord-kde
-    kdeApplications.ark
-    kdeApplications.dolphin
-    kdeApplications.filelight
-    kdeApplications.gwenview
-    kdeApplications.kwalletmanager
-    kdeApplications.okular
-    kdeApplications.spectacle
-    kdeconnect
-    ktorrent
-    partition-manager
-    plasma-browser-integration 
-    skrooge
-    thunderbird
-  ];
 }

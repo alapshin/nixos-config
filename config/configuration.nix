@@ -2,23 +2,14 @@
 
 {
   imports = [ 
-    ./android.nix
-    ./datetime.nix
-    ./fonts.nix
+    ./applications.nix
+    ./common.nix
+    ./development.nix
     ./gaming.nix
-    ./git.nix
-    ./i18n.nix
-    ./misc.nix
-    ./multimedia.nix
     ./networking.nix
     ./nixpkgs-utils.nix
-    ./python.nix
-    ./rust.nix
-    ./security.nix
     ./shell.nix
-    ./sysctl.nix
     ./users-and-groups.nix
-    ./webdev.nix
     ./virtualization.nix
 
     ./home-manager.nix

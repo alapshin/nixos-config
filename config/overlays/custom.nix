@@ -12,6 +12,12 @@ self: super:
     patches = [];
   });
 
+  neovim = super.neovim.overrideAttrs (oldAttrs: {
+    preFixup = ''
+      rm -rf $out/share/applications/*.desktop
+    '';
+  });
+
   linuxPackages_latest = super.linuxPackages_latest.extend (linuxSelf: linuxSuper:
   let
     generic = args: linuxSelf.callPackage (import <nixos/pkgs/os-specific/linux/nvidia-x11/generic.nix> args) { };

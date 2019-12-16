@@ -26,8 +26,11 @@ in
         memtest86.enable = true;
       };
     };
+
+    kernel.sysctl."sysrq" = 1;
     kernelModules = [ "kvm-intel" ];
     kernelPackages = pkgs.linuxPackages_latest;
+
     initrd = {
       availableKernelModules = [ "ahci" "nvme" "usbhid" ];
       luks.devices."luks-9ebe5c59-eac5-47eb-b517-c82f2ede2ca3" = {

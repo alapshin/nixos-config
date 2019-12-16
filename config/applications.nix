@@ -3,31 +3,16 @@
 { config, pkgs, ... }:
 
 {
-  services = {
-    locate = {
-      enable = true;
-      locate = pkgs.mlocate;
-      # To silence warning message
-      # See https://github.com/NixOS/nixpkgs/issues/30864
-      localuser = null;
-    };
-    # Enable CUPS
-    printing = {
-      enable = true;
-      drivers = [
-        pkgs.hplipWithPlugin
-      ];
-    };
-  };
-
   environment.systemPackages = with pkgs; [
     atool
+    audacity
     awscli
     bat
     bcache-tools
     borgbackup
     calibre
     chromium
+    colord-kde
     exa
     fd
     file
@@ -39,14 +24,25 @@
     htop
     httpie
     hunspell
-    hunspellDicts.ru_RU
+    #hunspellDicts.ru_RU
     hunspellDicts.en_US-large
     imagemagick
     inkscape
     jq
     libreoffice-fresh
+    kdeconnect
+    kdeApplications.ark
+    kdeApplications.dolphin
+    kdeApplications.filelight
+    kdeApplications.gwenview
+    kdeApplications.kwalletmanager
+    kdeApplications.okular
+    kdeApplications.spectacle
     keepassxc
+    ktorrent
     manpages
+    mkvtoolnix
+    mpv
     moreutils
     ncdu
     neovim
@@ -54,12 +50,18 @@
     ntfs3g
     p7zip
     pandoc
+    partition-manager
+    picard
+    plasma-browser-integration 
     ripgrep
     rsync
+    skrooge
     slack
+    smplayer
     skype
     smartmontools
     tdesktop
+    thunderbird
     tmux
     tree
     unrar
