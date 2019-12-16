@@ -19,6 +19,7 @@
     firefox
     gdrive
     gimp
+    git
     gnupg
     hplipWithPlugin
     htop
