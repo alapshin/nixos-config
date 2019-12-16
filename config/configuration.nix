@@ -8,6 +8,7 @@
     ./gaming.nix
     ./networking.nix
     ./nixpkgs-utils.nix
+    ./services.nix
     ./shell.nix
     ./users-and-groups.nix
     ./virtualization.nix
