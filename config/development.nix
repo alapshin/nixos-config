@@ -10,6 +10,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    fhs-run
+
     git-lfs
     gitRepo
     gitAndTools.git
@@ -29,7 +31,6 @@
     nodePackages.node2nix
 
     android-udev-rules
-    android-fhs-run
     jetbrains.idea-ultimate
     jetbrains.pycharm-professional
     androidStudioPackages.beta
