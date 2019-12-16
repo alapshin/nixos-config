@@ -12,8 +12,6 @@ let
   ];
 in
 {
-  nix.maxJobs = lib.mkDefault 4;
-
   boot = {
     tmpOnTmpfs = true;
     earlyVconsoleSetup = true;

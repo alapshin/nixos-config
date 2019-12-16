@@ -1,4 +1,4 @@
-{ config, options, pkgs, ... }:
+{ config, lib, options, pkgs, ... }:
 
 {
   imports = [ 
@@ -24,6 +24,7 @@
     dates = "daily";
     options = "--delete-older-than 7d";
   };
+  nix.maxJobs = lib.mkDefault 4;
   # Make overlays available to commmand-line tools. 
   nix.nixPath = options.nix.nixPath.default 
     ++ [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
