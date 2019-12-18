@@ -1,4 +1,4 @@
-{ stdenv, buildFHSUserEnv, writeScript,  extraPkgs ? pkgs: [ ] }:
+{ stdenv, buildFHSUserEnv, runtimeShell, writeScript,  extraPkgs ? pkgs: [ ] }:
 
 buildFHSUserEnv {
   name = "fhs-run";
@@ -19,7 +19,7 @@ buildFHSUserEnv {
   ];
 
   runScript = writeScript "fhs-exec" ''
-    #!${stdenv.shell}
+    #!${runtimeShell}
     run="$1"
     if [ ! -z "$run" ]; then
       shift
