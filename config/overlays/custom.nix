@@ -1,6 +1,26 @@
 # Overlay containing customisations for packages from nixpkgs
 self: super:
+
+let 
+  unstableRepo = fetchGit {
+    ref = "master";
+    url = https://github.com/NixOS/nixpkgs.git;
+  };
+  unstablePkgs = import unstableRepo { config = self.config; overlays = []; };
+
+  mkStudio = args: super.callPackage (import <nixos/pkgs/applications/editors/android-studio/common.nix> args) {
+    fontsConf = super.makeFontsConf {
+      fontDirectories = [];
+    };
+    inherit (super.gnome2) GConf gnome_vfs;
+  };
+in
 {
+  home-manager = unstablePkgs.home-manager;
+
+  skype = unstablePkgs.skype;
+  jetbrains = unstablePkgs.jetbrains;
+
   skrooge = super.skrooge.overrideAttrs (oldAttrs: rec {
     pname = "skrooge";
     version = "2.21.0";
@@ -14,9 +34,20 @@ self: super:
 
   neovim = super.neovim.overrideAttrs (oldAttrs: {
     preFixup = ''
-      rm -rf $out/share/applications/*.desktop
+        rm -rf $out/share/applications/*.desktop
     '';
   });
+
+  # androidStudioPackages = unstablePkgs.androidStudioPackages;
+  androidStudioPackages = super.androidStudioPackages // {
+    beta = mkStudio {
+      channel = "beta";
+      pname = "android-studio-beta";
+      version = "3.6.0.18"; # "Android Studio 3.6 RC 1"
+      build = "192.6071332";
+      sha256Hash = "0xpcihr5xxr9l1kv6aflywshs8fww3s7di0g98mz475whhxwzf3q";
+    };
+  };
 
   # linuxPackages_latest = super.linuxPackages_latest.extend (linuxSelf: linuxSuper:
   # let
