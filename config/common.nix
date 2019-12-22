@@ -12,10 +12,14 @@
     enableDefaultFonts = false;
   };
 
+  console = {
+    font = "latarcyrheb-sun32";
+    earlySetup = true;
+    useXkbConfig = true;
+  };
+
   i18n = {
-    consoleFont = "latarcyrheb-sun32";
     defaultLocale = "en_US.UTF-8";
-    consoleUseXkbConfig = true;
   };
 
   time = {

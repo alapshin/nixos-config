@@ -14,7 +14,6 @@ in
 {
   boot = {
     tmpOnTmpfs = true;
-    earlyVconsoleSetup = true;
     loader = {
       timeout = 15;
       efi.canTouchEfiVariables = true;
