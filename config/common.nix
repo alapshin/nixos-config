@@ -3,6 +3,7 @@
 {
   fonts = {
     fonts = with pkgs; [
+      opensans-ttf
       liberation_ttf
       noto-fonts
       noto-fonts-cjk
