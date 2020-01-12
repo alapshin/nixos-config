@@ -18,6 +18,7 @@
     gitAndTools.tig
     gitAndTools.git-hub
     gitAndTools.git-crypt
+    gitAndTools.transcrypt
     gitAndTools.git-extras
 
     rustc
