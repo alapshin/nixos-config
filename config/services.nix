@@ -10,11 +10,11 @@
       localuser = null;
     };
     # Enable CUPS
-    printing = {
-      enable = true;
-      drivers = [
-        pkgs.hplipWithPlugin
-      ];
-    };
+    # printing = {
+      # enable = true;
+      # drivers = [
+      #   pkgs.hplipWithPlugin
+      # ];
+    # };
   };
 }
