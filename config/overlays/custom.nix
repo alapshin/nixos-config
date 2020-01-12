@@ -21,16 +21,16 @@ in
   skype = unstablePkgs.skype;
   jetbrains = unstablePkgs.jetbrains;
 
-  skrooge = super.skrooge.overrideAttrs (oldAttrs: rec {
-    pname = "skrooge";
-    version = "2.21.0";
-
-    src = super.fetchurl {
-      url = "http://download.kde.org/stable/skrooge/${pname}-${version}.tar.xz";
-      sha256 = "1aqn0367q7mdg728r5085aqzc4mgfz1bgqqlhgdjjp7r192yq7r2";
-    };
-    patches = [];
-  });
+  # skrooge = super.skrooge.overrideAttrs (oldAttrs: rec {
+  #   pname = "skrooge";
+  #   version = "2.21.0";
+  #
+  #   src = super.fetchurl {
+  #     url = "http://download.kde.org/stable/skrooge/${pname}-${version}.tar.xz";
+  #     sha256 = "1aqn0367q7mdg728r5085aqzc4mgfz1bgqqlhgdjjp7r192yq7r2";
+  #   };
+  #   patches = [];
+  # });
 
   neovim = super.neovim.overrideAttrs (oldAttrs: {
     preFixup = ''
