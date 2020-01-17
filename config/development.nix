@@ -34,8 +34,9 @@
     android-udev-rules
     jetbrains.idea-ultimate
     jetbrains.pycharm-professional
-    androidStudioPackages.beta
     androidStudioPackages.stable
+    androidStudioPackages.beta
+    androidStudioPackages.canary
 
 
     (python3.withPackages(ps: with ps; [ 
