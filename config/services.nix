@@ -11,10 +11,10 @@
     };
     # Enable CUPS
     # printing = {
-      # enable = true;
-      # drivers = [
-      #   pkgs.hplipWithPlugin
-      # ];
+    #   enable = true;
+    #   drivers = [
+    #     pkgs.hplipWithPlugin
+    #   ];
     # };
   };
 }

@@ -21,7 +21,6 @@
     gimp
     git
     gnupg
-    hplipWithPlugin
     htop
     httpie
     hunspell
