@@ -38,29 +38,29 @@ in
     '';
   });
 
-  # androidStudioPackages = unstablePkgs.androidStudioPackages;
-  androidStudioPackages = super.androidStudioPackages // {
-    beta = mkStudio {
-      channel = "beta";
-      pname = "android-studio-beta";
-      version = "3.6.0.18"; # "Android Studio 3.6 RC 1"
-      build = "192.6071332";
-      sha256Hash = "0xpcihr5xxr9l1kv6aflywshs8fww3s7di0g98mz475whhxwzf3q";
-    };
-  };
-
-  # linuxPackages_latest = super.linuxPackages_latest.extend (linuxSelf: linuxSuper:
-  # let
-  #   generic = args: linuxSelf.callPackage (import <nixos/pkgs/os-specific/linux/nvidia-x11/generic.nix> args) { };
-  # in
-  # {
-  #   nvidiaPackages = linuxSuper.nvidiaPackages // {
-  #     beta = generic {
-  #       version = "440.36";
-  #       sha256_64bit = "0nbdldwizb802w4x0rqnyb1p7iqz5nqiahqr534n5ihz21a6422h";
-  #       settingsSha256 = "07hnl3bq76vsl655ipfx9v4zxjq0nc5hp43dk49nny4pi6ly06p1";
-  #       persistencedSha256 = "08zm1i5sax16xfhkivkmady0yy5argmxv846x21q98ry1ic6cp6w";
-  #     };
+  androidStudioPackages = unstablePkgs.androidStudioPackages;
+  # androidStudioPackages = super.androidStudioPackages // {
+  #   beta = mkStudio {
+  #     channel = "beta";
+  #     pname = "android-studio-beta";
+  #     version = "3.6.0.18"; # "Android Studio 3.6 RC 1"
+  #     build = "192.6071332";
+  #     sha256Hash = "0xpcihr5xxr9l1kv6aflywshs8fww3s7di0g98mz475whhxwzf3q";
   #   };
-  # });
+  # };
+
+  linuxPackages_latest = super.linuxPackages_latest.extend (linuxSelf: linuxSuper:
+  let
+    generic = args: linuxSelf.callPackage (import <nixos/pkgs/os-specific/linux/nvidia-x11/generic.nix> args) { };
+  in
+  {
+    nvidiaPackages = linuxSuper.nvidiaPackages // {
+      beta = generic {
+        version = "440.59";
+        sha256_64bit = "162gq6w44l8sgnn4qnl2rdlx8c008p04zv4c3i1ps20p21n1mjv1";
+        settingsSha256 = "0vxhmirqzyav5ljf0f04yk0az48ir5v0817dq9z9kyqfdvnby93g";
+        persistencedSha256 = "0npjh7nashasydp8q6bbcp21w8fc1dycgjy50ics775hjnvm61qn";
+      };
+    };
+  });
 }
