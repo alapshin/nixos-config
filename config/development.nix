@@ -31,6 +31,7 @@
     nodePackages.npm
     nodePackages.node2nix
 
+    groovy
     android-udev-rules
     jetbrains.idea-ultimate
     jetbrains.pycharm-professional
