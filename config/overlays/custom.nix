@@ -18,7 +18,6 @@ in
 {
   home-manager = unstablePkgs.home-manager;
 
-  skype = unstablePkgs.skype;
   jetbrains = unstablePkgs.jetbrains;
 
   # skrooge = super.skrooge.overrideAttrs (oldAttrs: rec {
