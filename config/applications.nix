@@ -19,7 +19,6 @@
     firefox
     gdrive
     gimp
-    git
     gnupg
     htop
     httpie
