@@ -28,14 +28,9 @@
     openssl
     pkgconfig
 
-    nodePackages.npm
-    nodePackages.node2nix
-
     groovy
     android-udev-rules
     jetbrains.idea-ultimate
-    jetbrains.pycharm-professional
-    androidStudioPackages.stable
     androidStudioPackages.beta
     androidStudioPackages.canary
 
@@ -46,7 +41,7 @@
       matplotlib
       numpy
       pandas
-      pelican
+      # pelican
       scikitlearn
       seaborn
     ]))
