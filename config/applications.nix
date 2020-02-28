@@ -36,6 +36,7 @@
     kdeApplications.gwenview
     kdeApplications.kcolorchooser
     kdeApplications.kwalletmanager
+    kdeApplications.okteta
     kdeApplications.okular
     kdeApplications.spectacle
     keepassxc
