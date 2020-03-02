@@ -53,6 +53,7 @@
     p7zip
     pandoc
     partition-manager
+    pciutils
     picard
     plasma-browser-integration 
     ripgrep
