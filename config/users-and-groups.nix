@@ -12,6 +12,7 @@
       "audio"
       "docker"
       "input"
+      "libvirtd"
       "networkmanager"
       "syncthing"
       "wheel" 
