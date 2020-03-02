@@ -23,7 +23,7 @@
     htop
     httpie
     hunspell
-    #hunspellDicts.ru_RU
+    hunspellDicts.ru_RU
     hunspellDicts.en_US-large
     imagemagick
     inkscape
