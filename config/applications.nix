@@ -34,6 +34,7 @@
     kdeApplications.dolphin
     kdeApplications.filelight
     kdeApplications.gwenview
+    kdeApplications.kate
     kdeApplications.kcolorchooser
     kdeApplications.kwalletmanager
     kdeApplications.okteta
