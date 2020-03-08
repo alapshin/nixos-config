@@ -61,6 +61,7 @@
     skrooge
     slack
     smplayer
+    smtube
     skype
     smartmontools
     tdesktop
