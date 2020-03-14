@@ -10,22 +10,8 @@ let
 in
 {
   home-manager = unstablePackages.home-manager;
-
-  # jetbrains = unstablePackages.jetbrains;
-
-  # skrooge = super.skrooge.overrideAttrs (oldAttrs: rec {
-  #   pname = "skrooge";
-  #   version = "2.21.0";
-  #
-  #   src = super.fetchurl {
-  #     url = "http://download.kde.org/stable/skrooge/${pname}-${version}.tar.xz";
-  #     sha256 = "1aqn0367q7mdg728r5085aqzc4mgfz1bgqqlhgdjjp7r192yq7r2";
-  #   };
-  #   patches = [];
-  # });
-
-  # neovim = unstablePackages.neovim;
-  # androidStudioPackages = unstablePackages.androidStudioPackages;
+  jetbrains = unstablePackages.jetbrains;
+  androidStudioPackages = unstablePackages.androidStudioPackages;
 
   # linuxPackages_latest = super.linuxPackages_latest.extend (linuxSelf: linuxSuper:
   # let

@@ -32,8 +32,6 @@
     android-udev-rules
     jetbrains.idea-ultimate
     androidStudioPackages.beta
-    androidStudioPackages.canary
-
 
     (python3.withPackages(ps: with ps; [ 
       ipython 
