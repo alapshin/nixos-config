@@ -46,14 +46,9 @@
       source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
     '';
     promptInit = ''
-      POWERLEVEL9K_MODE='nerdfont-complete'
-      POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-      POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir docker_machine virtualenv vcs)
-      POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
-      POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="┌─"
-      POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="└─ "
       if [[ "$TERM" != "linux" ]]; then
-        source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme
+        source ~/.p10k.zsh
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       fi
     '';
   };

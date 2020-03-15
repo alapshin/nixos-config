@@ -64,6 +64,7 @@
 
     home.file = {
       ".zshrc".source = "${dotfiles}/zshrc";
+      ".p10k.zsh".source = "${dotfiles}/p10k.zsh";
       ".curlrc".source = "${dotfiles}/curlrc";
       ".ssh/config".source = "${dotfiles}/ssh/config";
       ".ideavimrc".source = "${dotfiles}/ideavimrc";
