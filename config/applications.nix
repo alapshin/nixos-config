@@ -41,7 +41,6 @@
     kdeApplications.okular
     kdeApplications.spectacle
     keepassxc
-    ktorrent
     manpages
     mkvtoolnix
     mpv
@@ -56,6 +55,7 @@
     pciutils
     picard
     plasma-browser-integration 
+    qbittorrent
     ripgrep
     rsync
     skrooge
