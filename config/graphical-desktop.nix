@@ -7,7 +7,6 @@
       support32Bit = true;
     };
     opengl = {
-      s3tcSupport = true;
       driSupport32Bit = true;
     };
     nvidia.modesetting.enable = true;
