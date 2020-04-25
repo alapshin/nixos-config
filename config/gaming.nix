@@ -8,6 +8,8 @@
   '';
   environment.systemPackages = with pkgs; [
     steam
+    steam-run
+    sc-controller
     protontricks
     wineWowPackages.staging
     (winetricks.override { wine = wineWowPackages.staging; })
