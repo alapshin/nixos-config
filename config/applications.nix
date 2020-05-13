@@ -5,7 +5,6 @@
 {
   environment.systemPackages = with pkgs; [
     atool
-    audacity
     awscli
     bat
     bcache-tools

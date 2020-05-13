@@ -28,9 +28,12 @@
     hardwareClockInLocalTime = true;
   };
 
-  security.sudo = {
-    extraConfig = ''
-      Defaults !tty_tickets
-    '';
+  security = {
+    rtkit.enable = true;
+    sudo = {
+      extraConfig = ''
+        Defaults !tty_tickets
+      '';
+    };
   };
 }

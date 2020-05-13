@@ -12,6 +12,7 @@
       "audio"
       "docker"
       "input"
+      "jackaudio"
       "libvirtd"
       "networkmanager"
       "syncthing"

@@ -2,10 +2,6 @@
 
 {
   hardware = {
-    pulseaudio = {
-      enable = true;
-      support32Bit = true;
-    };
     opengl = {
       driSupport32Bit = true;
     };
@@ -30,13 +26,13 @@
           # export GDK_SCALE=2
           # export GDK_DPI_SCALE=0.5
           export PLASMA_USE_QT_SCALING=1
-          # export QT_SCREEN_SCALE_FACTORS=1.5
+          export QT_SCREEN_SCALE_FACTORS=1.5
         '';
       };
       desktopManager.plasma5.enable = true;
 
       videoDrivers = [
-        "nvidiaBeta"
+        "nvidia"
       ];
       screenSection = ''
         Option "TripleBuffer" "on"
