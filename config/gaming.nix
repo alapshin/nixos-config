@@ -7,6 +7,7 @@
     KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput", GROUP="input", MODE="0660"
   '';
   environment.systemPackages = with pkgs; [
+    lutris
     steam
     steam-run
     sc-controller
