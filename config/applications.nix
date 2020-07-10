@@ -21,6 +21,7 @@
     gnupg
     htop
     httpie
+    http-prompt
     hunspell
     hunspellDicts.ru_RU
     hunspellDicts.en_US-large
