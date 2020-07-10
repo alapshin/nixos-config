@@ -59,7 +59,6 @@
     ripgrep
     rsync
     skrooge
-    slack
     smplayer
     smtube
     skype
