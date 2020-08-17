@@ -1,0 +1,5 @@
+[user]
+	name = Andrei Lapshin
+	email = alapshin@alarstudios.com
+[core]
+	sshCommand = ssh -i ~/.ssh/id_rsa_alarstudios

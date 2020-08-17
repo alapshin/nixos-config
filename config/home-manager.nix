@@ -88,6 +88,7 @@
 
         "tigrc".source = "${dotfiles}/tigrc";
         "git/config".source = "${dotfiles}/gitconfig";
+        "git/config-alar".source = "${dotfiles}/gitconfig-alar";
 
         "fontconfig".source = ../dotfiles/fontconfig;
         "nixpkgs/config.nix".source = ./nixpkgs-config.nix;

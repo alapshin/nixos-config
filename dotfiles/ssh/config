@@ -3,11 +3,3 @@ AddKeysToAgent yes
 Host *.amazonaws.com 
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
-Host github.com
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_ed25519
-Host alar.github.com
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_rsa_alarstudios
