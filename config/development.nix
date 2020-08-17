@@ -12,6 +12,7 @@
   environment.systemPackages = with pkgs; [
     fhs-run
 
+    # Git
     git-lfs
     gitRepo
     gitAndTools.git
@@ -20,7 +21,9 @@
     gitAndTools.git-crypt
     gitAndTools.transcrypt
     gitAndTools.git-extras
+    gitAndTools.git-subrepo
 
+    # Rust
     rustc
     cargo
     gcc 
@@ -28,11 +31,13 @@
     openssl
     pkgconfig
 
+    # Java / Android
     groovy
     android-udev-rules
     jetbrains.idea-ultimate
-    androidStudioPackages.beta
+    androidStudioPackages.stable
 
+    # Python
     (python3.withPackages(ps: with ps; [ 
       ipython 
       notebook
