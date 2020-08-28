@@ -24,7 +24,9 @@ in
       };
     };
 
-    kernel.sysctl."sysrq" = 1;
+    kernel.sysctl = {
+      "kernel.sysrq" = 438;
+    };
     kernelModules = [ "kvm-intel" ];
     kernelPackages = pkgs.linuxPackages_latest;
 
