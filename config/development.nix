@@ -22,6 +22,7 @@
     gitAndTools.transcrypt
     gitAndTools.git-extras
     gitAndTools.git-subrepo
+    gitAndTools.git-filter-repo
 
     # Rust
     rustc
