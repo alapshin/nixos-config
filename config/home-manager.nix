@@ -42,8 +42,6 @@
     nixpkgs.config = import ./nixpkgs-config.nix;
 
     services = {
-      kbfs.enable = true;
-      keybase.enable = true;
       syncthing.enable = true;
       # redshift = {
       #   enable = true;
