@@ -54,7 +54,6 @@
     partition-manager
     pciutils
     picard
-    plasma-browser-integration 
     qbittorrent
     ripgrep
     rsync
