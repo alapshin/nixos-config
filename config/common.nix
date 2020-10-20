@@ -29,7 +29,6 @@
   };
 
   security = {
-    rtkit.enable = true;
     sudo = {
       extraConfig = ''
         Defaults !tty_tickets
