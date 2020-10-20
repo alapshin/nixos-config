@@ -3,7 +3,7 @@
 {
   virtualisation = {
     docker.enable = true;
-    libvirtd.enable = true;
+    libvirtd.enable = false;
   };
 
   environment.systemPackages = with pkgs; [
