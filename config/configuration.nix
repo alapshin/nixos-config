@@ -26,6 +26,10 @@
     options = "--delete-older-than 7d";
   };
   nix.maxJobs = lib.mkDefault 4;
+  nix.package = pkgs.nixUnstable;
+  nix.extraOptions = ''
+    experimental-features = nix-command
+  '';
   # Make overlays available to commmand-line tools. 
   nix.nixPath = options.nix.nixPath.default 
     ++ [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
