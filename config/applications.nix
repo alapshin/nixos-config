@@ -60,9 +60,7 @@
     skrooge
     smplayer
     smtube
-    skype
     smartmontools
-    tdesktop
     thunderbird
     tmux
     tree
