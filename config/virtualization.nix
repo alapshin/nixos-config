@@ -3,12 +3,13 @@
 {
   virtualisation = {
     docker.enable = true;
-    libvirtd.enable = false;
+    podman.enable = true;
+    libvirtd.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
     virtmanager
-    docker_compose
+    docker-compose
     docker-machine
   ];
 }
