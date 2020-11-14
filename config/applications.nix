@@ -37,7 +37,6 @@
     kdeApplications.kate
     kdeApplications.kcolorchooser
     kdeApplications.kwalletmanager
-    kdeApplications.okteta
     kdeApplications.okular
     kdeApplications.spectacle
     keepassxc
@@ -49,6 +48,7 @@
     neovim
     nnn
     ntfs3g
+    okteta
     p7zip
     pandoc
     partition-manager
