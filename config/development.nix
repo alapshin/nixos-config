@@ -6,7 +6,7 @@
 
   programs.java = {
     enable = true;
-    package = pkgs.adoptopenjdk-openj9-bin-11;
+    package = pkgs.jdk14;
   };
 
   environment.systemPackages = with pkgs; [
