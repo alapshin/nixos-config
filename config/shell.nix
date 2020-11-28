@@ -32,7 +32,6 @@
 	"gradle"
 	"httpie"
 	"man" 
-	"mercurial"
 	"python" 
 	"pip"
 	"systemd"
