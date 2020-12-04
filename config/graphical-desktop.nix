@@ -1,8 +1,21 @@
 { config, pkgs, ... }:
 
 {
-  hardware = {
-    nvidia.modesetting.enable = true;
+  hardware.opengl.driSupport = true;
+  hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.extraPackages = with pkgs; [
+    amdvlk
+  ];
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
+
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-kde
+    ];
   };
 
   services = {
@@ -14,6 +27,14 @@
       enable = true;
       layout = "us,ru";
       xkbOptions = "grp:caps_toggle,compose:ralt";
+
+      videoDrivers = [
+        "amdgpu" "modesetting" "vesa"
+      ];
+      deviceSection = ''
+        Option "TearFree" "true"
+        Option "VariableRefresh" "true"
+      '';
 
       displayManager = {
         sddm.enable = true;
@@ -27,22 +48,6 @@
         '';
       };
       desktopManager.plasma5.enable = true;
-
-      videoDrivers = [
-        "nvidia"
-      ];
-      screenSection = ''
-        Option "TripleBuffer" "on"
-        Option "AllowIndirectGLXProtocol" "off"
-        Option "metamodes" "3840x2160_120 +0+0 { ForceCompositionPipeline = On, ForceFullCompositionPipeline = On }"
-      '';
     };
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-kde
-    ];
   };
 }
