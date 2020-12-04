@@ -54,7 +54,6 @@
 
     home.packages = with pkgs; [
       home-manager
-      keybase-gui
       neovim-konsole
       keepassxc-autostart
       thunderbird-autostart
