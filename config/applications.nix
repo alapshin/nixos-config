@@ -39,6 +39,7 @@
     kdeApplications.okular
     kdeApplications.spectacle
     keepassxc
+    lm_sensors
     manpages
     mkvtoolnix
     mpv
