@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     patchelf
     nix-index
+    nix-prefetch-git
     nix-prefetch-github
-    nix-prefetch-scripts
   ];
 }
