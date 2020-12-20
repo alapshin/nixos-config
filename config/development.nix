@@ -2,7 +2,6 @@
 
 {
   programs.adb.enable = true;
-  programs.ccache.enable = true;
 
   programs.java = {
     enable = true;

@@ -103,8 +103,6 @@
       AWS_CONFIG_FILE = "${configHome}/aws/config";
       AWS_SHARED_CREDENTIALS_FILE = "${configHome}/aws/credentials";
       CARGO_HOME = "${dataHome}/cargo";
-      CCACHE_DIR = "${cacheHome}/ccache";
-      CCACHE_CONFIGPATH = "${configHome}/ccache.config";
       CUDA_CACHE_PATH = "${cacheHome}/nv";
       DOCKER_CONFIG = "${configHome}/docker";
       GNUPGHOME = "${configHome}/gnupg";
