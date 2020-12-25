@@ -26,7 +26,7 @@ in
       "kernel.sysrq" = 438;
     };
     kernelModules = [ "kvm-amd" "kvm-intel" ];
-    kernelPackages = pkgs.linuxPackages_testing;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelPatches = lib.singleton {
       name = "enable-dcn3";
       patch = null;
