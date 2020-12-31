@@ -41,9 +41,6 @@
         nix-zsh-completions
       ];
     };
-    shellInit = ''
-      source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-    '';
     promptInit = ''
       if [[ "$TERM" != "linux" ]]; then
         source ~/.p10k.zsh

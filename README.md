@@ -1,18 +1,27 @@
-NixOS configuration for my workstation
+NixOS configuration done using flakes
 
 ### Installation
-```
-git clone https://github.com/alapshin/nixos-config
-cd nixos-config
-sudo ./setup.sh # This will replace configuration files in /etc/nixos
-```
+
+1. Boot into [NixOS][nixos].
+2. Partion your disks.
+3. Mount root partition into `/mnt`.
+4. Clone this repository and `cd` into it.
+5. Install using command `nixos-install --root /mnt --flake '.#XYZ'`, where `XYZ`
+is hostname of machine with appropriate config.
+6. Reboot.
 
 ### Structure
-* `config` - NixOS configuration files
-    * `overlays` - Overlays definition
-        * `local.nix` - Overlay with local packages
-        * `unstable.nix` - Unstable overlay with packages from `nixpkgs-unstable`
+* `flake.nix` - flake file
+* `configuration.nix` - common configuration
+* `hosts` - host specific configuration
+* `users` - user specific configuration + [home-manager][hm] configuration
 
-* `pkgs` - Local packages definitions
-* `fonts` - Custom fonts not available from nixpkgs
 * `dotfiles` - Dotfiles symlinked by Home Manager
+* `packages` - Local packages or packages not yet in nixpkgs
+
+* `overlays` - Overlays definition
+    * `custom.nix` - Overlay with customized packages
+    * `packages.nix` - Overlay with local packages
+
+[hm]: https://github.com/nix-community/home-manager
+[nixos]: https://channels.nixos.org/nixos-20.09/latest-nixos-minimal-x86_64-linux.iso

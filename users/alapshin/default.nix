@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./home.nix
+  ];
+
   users.users.alapshin = {
     uid = 1000;
     shell = pkgs.zsh;

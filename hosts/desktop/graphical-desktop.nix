@@ -10,9 +10,9 @@
     driversi686Linux.amdvlk
   ];
 
-
   xdg.portal = {
     enable = true;
+    gtkUsePortal = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-kde
     ];
@@ -39,8 +39,6 @@
       displayManager = {
         sddm.enable = true;
         sessionCommands = ''
-          # Force KDE file dialogs in GTK apps using xdg-desktp-portal
-          export GTK_USE_PORTAL=1
           # export GDK_SCALE=2
           # export GDK_DPI_SCALE=0.5
           export PLASMA_USE_QT_SCALING=1

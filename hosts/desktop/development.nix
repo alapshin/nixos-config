@@ -24,12 +24,12 @@
     gitAndTools.git-filter-repo
 
     # Rust
-    rustc
-    cargo
-    gcc 
-    gnumake
-    openssl
-    pkgconfig
+    # rustc
+    # cargo
+    # gcc 
+    # gnumake
+    # openssl
+    # pkgconfig
 
     # Java / Android
     groovy
