@@ -34,19 +34,7 @@
   };
 
   home-manager.users.alapshin =
-    let
-      keepassxc-autostart = (pkgs.makeAutostartItem {
-        name = "KeePassXC";
-        package = pkgs.keepassxc;
-        srcPrefix = "org.keepassxc.";
-      });
-      thunderbird-autostart = (pkgs.makeAutostartItem {
-        name = "thunderbird";
-        package = pkgs.thunderbird;
-      });
-    in
     {
-
       services = {
         syncthing.enable = true;
         # redshift = {
