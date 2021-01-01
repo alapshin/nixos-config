@@ -2,7 +2,9 @@
 
 {
   imports = [
+    ./apps.nix
     ./home.nix
+    ./shell.nix
   ];
 
   users.users.alapshin = {
@@ -11,7 +13,7 @@
     isNormalUser = true;
     description = "Andrei Lapshin";
     initialPassword = "12345678";
-    extraGroups = [ 
+    extraGroups = [
       "adbusers"
       "audio"
       "docker"
@@ -20,7 +22,7 @@
       "libvirtd"
       "networkmanager"
       "syncthing"
-      "wheel" 
+      "wheel"
     ];
   };
 }

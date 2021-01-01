@@ -38,8 +38,8 @@
     androidStudioPackages.stable
 
     # Python
-    (python3.withPackages(ps: with ps; [ 
-      ipython 
+    (python3.withPackages (ps: with ps; [
+      ipython
       notebook
       matplotlib
       numpy

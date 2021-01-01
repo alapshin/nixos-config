@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
-
-let 
+let
   # Mount options for external storage drives that could be missing during boot
   externalMountOptions = [
     "noatime"
@@ -35,17 +34,17 @@ in
   };
 
   fileSystems = {
-    "/" = { 
+    "/" = {
       device = "/dev/disk/by-uuid/20b4e7b3-3a81-468e-9ca9-2fdc1b6c2238";
       fsType = "btrfs";
       options = [ "subvol=root" "discard=async" ];
     };
-    "/home" = { 
+    "/home" = {
       device = "/dev/disk/by-uuid/20b4e7b3-3a81-468e-9ca9-2fdc1b6c2238";
       fsType = "btrfs";
       options = [ "subvol=home" "discard=async" ];
     };
-    "/boot" = { 
+    "/boot" = {
       device = "/dev/disk/by-uuid/A0D1-44CF";
       fsType = "vfat";
     };
@@ -59,7 +58,7 @@ in
       fsType = "ext4";
       options = externalMountOptions;
     };
-    "/mnt/hitachi" = { 
+    "/mnt/hitachi" = {
       device = "/dev/disk/by-uuid/0c21a12f-488e-41f2-bd92-3a8ef4db020e";
       fsType = "ext4";
       options = externalMountOptions;

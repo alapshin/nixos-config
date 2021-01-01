@@ -29,7 +29,9 @@
       xkbOptions = "grp:caps_toggle,compose:ralt";
 
       videoDrivers = [
-        "amdgpu" "modesetting" "vesa"
+        "amdgpu"
+        "modesetting"
+        "vesa"
       ];
       deviceSection = ''
         Option "TearFree" "true"

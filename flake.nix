@@ -1,7 +1,7 @@
 {
   description = "A flake-based nixos config.";
 
-  inputs = 
+  inputs =
     {
       nixos.url = "nixpkgs/nixos-unstable-small";
       nixpkgs.url = "nixpkgs/master";
@@ -27,9 +27,10 @@
         };
         overlays = extraOverlays ++ (lib.attrValues self.overlays);
       };
-      pkgs  = mkPkgs nixos [ self.overlay ];
-      uPkgs = mkPkgs nixpkgs [];
-    in {
+      pkgs = mkPkgs nixos [ self.overlay ];
+      uPkgs = mkPkgs nixpkgs [ ];
+    in
+    {
       overlay = final: prev: {
         # This doesn't work
         # unstable = uPkgs;

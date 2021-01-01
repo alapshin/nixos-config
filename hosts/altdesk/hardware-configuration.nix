@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
-
-let 
+let
   # Mount options for external storage drives that could be missing during boot
   externalMountOptions = [
     "noatime"
@@ -16,22 +15,22 @@ in
         device = "/dev/disk/by-uuid/9ebe5c59-eac5-47eb-b517-c82f2ede2ca3";
         keyFile = "/dev/sda";
         keyFileSize = 2048;
-	allowDiscards = true;
+        allowDiscards = true;
       };
     };
   };
 
   fileSystems = {
-    "/boot" = { 
+    "/boot" = {
       device = "/dev/disk/by-uuid/5C3B-A244";
       fsType = "vfat";
     };
-    "/" = { 
+    "/" = {
       device = "/dev/disk/by-uuid/4a5edb30-f86b-4ec3-a493-8de48c8ee703";
       fsType = "btrfs";
       options = [ "subvol=root" "discard=async" ];
     };
-    "/home" = { 
+    "/home" = {
       device = "/dev/disk/by-uuid/4a5edb30-f86b-4ec3-a493-8de48c8ee703";
       fsType = "btrfs";
       options = [ "subvol=home" "discard=async" ];

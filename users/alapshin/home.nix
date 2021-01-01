@@ -27,68 +27,66 @@
       TIGRC_USER = "$XDG_CONFIG_HOME/tigrc";
 
       _JAVA_OPTIONS = ''-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'';
-      };
-    };
-
-  home-manager.users.alapshin = let
-    keepassxc-autostart = (pkgs.makeAutostartItem { 
-      name = "KeePassXC"; 
-      package = pkgs.keepassxc; 
-      srcPrefix = "org.keepassxc."; 
-    });
-    thunderbird-autostart = (pkgs.makeAutostartItem { 
-      name = "thunderbird"; 
-      package = pkgs.thunderbird; 
-    });
-  in
-  {
-    services = {
-      syncthing.enable = true;
-      # redshift = {
-      #   enable = true;
-      #   provider = "manual";
-      #   latitude = "58.5969";
-      #   longitude = "49.6583";
-      #   extraOptions = [ "-P" "-m randr" ];
-      # };
-    };
-
-    # Necessary for home-manager to work with flakes, otherwise it will
-    # look for a nixpkgs channel.
-    # home.stateVersion = config.system.stateVersion;
-
-    home.packages = with pkgs; [
-      home-manager
-      keepassxc-autostart
-      thunderbird-autostart
-    ];
-
-    home.file = {
-      ".zshrc".source = "${dotfiles}/zshrc";
-      ".p10k.zsh".source = "${dotfiles}/p10k.zsh";
-      ".curlrc".source = "${dotfiles}/curlrc";
-      ".ssh/config".source = "${dotfiles}/ssh/config";
-      ".ideavimrc".source = "${dotfiles}/ideavimrc";
-    };
-
-    home.language = {
-      address = "ru_RU.UTF-8";
-      base = "en_US.UTF-8";
-      monetary = "ru_RU.UTF-8";
-      paper = "ru_RU.UTF-8";
-      time = "en_DK.UTF-8";
-    };
-
-    xdg = {
-      enable = true;
-      configFile = {
-        "nvim".source = "${dotfiles}/nvim";
-
-        "tigrc".source = "${dotfiles}/tigrc";
-        "git/config".source = "${dotfiles}/gitconfig";
-        "git/config-alar".source = "${dotfiles}/gitconfig-alar";
-        "fontconfig" = { source = "${dotfiles}/fontconfig"; recursive = true; };
-      };
     };
   };
+
+  home-manager.users.alapshin =
+    let
+      keepassxc-autostart = (pkgs.makeAutostartItem {
+        name = "KeePassXC";
+        package = pkgs.keepassxc;
+        srcPrefix = "org.keepassxc.";
+      });
+      thunderbird-autostart = (pkgs.makeAutostartItem {
+        name = "thunderbird";
+        package = pkgs.thunderbird;
+      });
+    in
+    {
+
+      services = {
+        syncthing.enable = true;
+        # redshift = {
+        #   enable = true;
+        #   provider = "manual";
+        #   latitude = "58.5969";
+        #   longitude = "49.6583";
+        #   extraOptions = [ "-P" "-m randr" ];
+        # };
+      };
+
+      home.packages = with pkgs; [
+        home-manager
+        keepassxc-autostart
+        thunderbird-autostart
+      ];
+
+      home.file = {
+        ".zshrc".source = "${dotfiles}/zshrc";
+        ".p10k.zsh".source = "${dotfiles}/p10k.zsh";
+        ".curlrc".source = "${dotfiles}/curlrc";
+        ".ssh/config".source = "${dotfiles}/ssh/config";
+        ".ideavimrc".source = "${dotfiles}/ideavimrc";
+      };
+
+      home.language = {
+        address = "ru_RU.UTF-8";
+        base = "en_US.UTF-8";
+        monetary = "ru_RU.UTF-8";
+        paper = "ru_RU.UTF-8";
+        time = "en_DK.UTF-8";
+      };
+
+      xdg = {
+        enable = true;
+        configFile = {
+          "nvim".source = "${dotfiles}/nvim";
+
+          "tigrc".source = "${dotfiles}/tigrc";
+          "git/config".source = "${dotfiles}/gitconfig";
+          "git/config-alar".source = "${dotfiles}/gitconfig-alar";
+          "fontconfig" = { source = "${dotfiles}/fontconfig"; recursive = true; };
+        };
+      };
+    };
 }

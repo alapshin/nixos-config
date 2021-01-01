@@ -67,7 +67,7 @@
     unrar
     unzip
     usbutils
-    wget 
+    wget
     youtube-dl
   ];
 }

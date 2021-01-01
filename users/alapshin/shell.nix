@@ -18,23 +18,25 @@
     autosuggestions = {
       enable = true;
     };
+    enableCompletion = true;
+    enableBashCompletion = true;
     syntaxHighlighting = {
       enable = true;
     };
     ohMyZsh = {
       enable = true;
-      plugins = [ 
-	"adb"
-	"docker"
-	"docker-compose"
-	"docker-machine"
-        "git" 
-	"gradle"
-	"httpie"
-	"man" 
-	"python" 
-	"pip"
-	"systemd"
+      plugins = [
+        "adb"
+        "docker"
+        "docker-compose"
+        "docker-machine"
+        "git"
+        "gradle"
+        "httpie"
+        "man"
+        "python"
+        "pip"
+        "systemd"
       ];
       customPkgs = with pkgs; [
         zsh-completions

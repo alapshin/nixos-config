@@ -1,8 +1,8 @@
 final: prev:
 {
-  mesa = (prev.mesa.override { 
-    llvmPackages = prev.llvmPackages_latest; 
-  }).overrideAttrs (oldAttrs : rec {
+  mesa = (prev.mesa.override {
+    llvmPackages = prev.llvmPackages_latest;
+  }).overrideAttrs (oldAttrs: rec {
     version = "20.3.1";
     src = prev.fetchurl {
       urls = [

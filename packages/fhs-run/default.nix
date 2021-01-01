@@ -1,4 +1,4 @@
-{ stdenv, buildFHSUserEnv, runtimeShell, writeScript,  extraPkgs ? pkgs: [ ] }:
+{ stdenv, buildFHSUserEnv, runtimeShell, writeScript, extraPkgs ? pkgs: [ ] }:
 
 buildFHSUserEnv {
   name = "fhs-run";
