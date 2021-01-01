@@ -86,7 +86,7 @@
       ];
     };
   };
-  environment.systemPackages = [ pkgs.wireguard pkgs.wireguard-tools ];
+  # environment.systemPackages = [ pkgs.wireguard pkgs.wireguard-tools ];
 
   time = {
     timeZone = "Europe/Moscow";
@@ -100,4 +100,12 @@
       '';
     };
   };
+
+  # Various nix utils
+  environment.systemPackages = with pkgs; [
+    nix-index
+    nix-prefetch-git
+    nix-prefetch-github
+    nixpkgs-fmt
+  ];
 }

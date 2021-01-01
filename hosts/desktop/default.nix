@@ -6,7 +6,6 @@
     ./development.nix
     ./gaming.nix
     ./networking.nix
-    ./nixpkgs-utils.nix
     ./services.nix
     ./virtualization.nix
 
