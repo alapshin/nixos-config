@@ -3,6 +3,7 @@
 {
   imports = [
     ./apps.nix
+    ./cli.nix
     ./home.nix
     ./shell.nix
   ];
