@@ -62,7 +62,6 @@
       ];
 
       home.file = {
-        ".zshrc".source = "${dotfiles}/zshrc";
         ".p10k.zsh".source = "${dotfiles}/p10k.zsh";
         ".curlrc".source = "${dotfiles}/curlrc";
         ".ssh/config".source = "${dotfiles}/ssh/config";
@@ -86,6 +85,7 @@
           "git/config".source = "${dotfiles}/gitconfig";
           "git/config-alar".source = "${dotfiles}/gitconfig-alar";
           "fontconfig" = { source = "${dotfiles}/fontconfig"; recursive = true; };
+          "zsh/.zshrc".source = "${dotfiles}/zshrc";
         };
       };
     };

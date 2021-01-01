@@ -20,6 +20,8 @@
     };
     enableCompletion = true;
     enableBashCompletion = true;
+    histSize = 10000;
+    histFile = "$ZDOTDIR/.zsh_history";
     syntaxHighlighting = {
       enable = true;
     };
