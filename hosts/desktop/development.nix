@@ -13,14 +13,13 @@
 
     # Git
     git-lfs
-    gitRepo
+    gitAndTools.gh
     gitAndTools.git
     gitAndTools.tig
-    gitAndTools.git-hub
+    gitAndTools.gitui
     gitAndTools.git-crypt
     gitAndTools.transcrypt
     gitAndTools.git-extras
-    gitAndTools.git-subrepo
     gitAndTools.git-filter-repo
 
     # Rust
