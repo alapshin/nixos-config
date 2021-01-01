@@ -14,17 +14,20 @@
     variables = {
       ANDROID_SDK_ROOT = "$HOME/opt/android-sdk";
       # Force some apps to use XDG directories
+      ANDROID_PREFS_ROOT = "$XDG_CONFIG_HOME/android";
+      ANDROID_EMULATOR_HOME = "$XDG_DATA_HOME/android/emulator";
+
       AWS_CONFIG_FILE = "$XDG_CONFIG_HOME/aws/config";
       AWS_SHARED_CREDENTIALS_FILE = "$XDG_CONFIG_HOME/aws/credentials";
       CARGO_HOME = "$XDG_DATA_HOME/cargo";
       CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
       DOCKER_CONFIG = "$XDG_CONFIG_HOME/docker";
       GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
-      HTTPIE_CONFIG_DIR = "$XDG_CONFIG_HOME/httpie";
+      GRADLE_USER_HOME = "$XDG_DATA_HOME/gradle";
       IPYTHONDIR = "$XDG_CONFIG_HOME/jupyter";
       JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
       MACHINE_STORAGE_PATH = "$XDG_DATA_HOME/docker-machine";
-      TIGRC_USER = "$XDG_CONFIG_HOME/tigrc";
+      ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
 
       _JAVA_OPTIONS = ''-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'';
     };
@@ -81,7 +84,7 @@
         configFile = {
           "nvim".source = "${dotfiles}/nvim";
 
-          "tigrc".source = "${dotfiles}/tigrc";
+          "tig/config".source = "${dotfiles}/tigrc";
           "git/config".source = "${dotfiles}/gitconfig";
           "git/config-alar".source = "${dotfiles}/gitconfig-alar";
           "fontconfig" = { source = "${dotfiles}/fontconfig"; recursive = true; };
