@@ -6,6 +6,10 @@
     ./cli.nix
     ./home.nix
     ./shell.nix
+
+    ./dev/git.nix
+    ./dev/python.nix
+    ./dev/android.nix
   ];
 
   users.users.alapshin = {
