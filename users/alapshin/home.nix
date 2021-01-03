@@ -64,6 +64,8 @@ in
         xdgConfigHome = hmcfg.xdg.configHome;
       in
       {
+        EDITOR = "nvim";
+
         ANDROID_SDK_ROOT = "${homeDir}/opt/android-sdk";
         ANDROID_PREFS_ROOT = "${xdgConfigHome}/android";
         ANDROID_EMULATOR_HOME = "${xdgDataHome}/android/emulator";

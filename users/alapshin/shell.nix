@@ -1,11 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  environment.variables = {
-    EDITOR = "nvim";
-    NIX_PAGER = "cat";
-  };
-
   environment.systemPackages = with pkgs; [
     fzf
   ];
