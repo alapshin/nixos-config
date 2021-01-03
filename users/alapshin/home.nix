@@ -1,5 +1,4 @@
 { config, dirs, myutils, pkgs, ... }:
-
 let
   username = myutils.extractUsername (builtins.toString ./.);
 in
@@ -51,7 +50,7 @@ in
       ".curlrc".source = "${dirs.dotfiles}/curlrc";
       ".ssh/config".source = "${dirs.dotfiles}/ssh/config";
       ".ideavimrc".source = "${dirs.dotfiles}/ideavimrc";
-      };
+    };
 
     home.language = {
       address = "ru_RU.UTF-8";
