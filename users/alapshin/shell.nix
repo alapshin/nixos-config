@@ -6,6 +6,10 @@
     NIX_PAGER = "cat";
   };
 
+  environment.systemPackages = with pkgs; [
+    fzf
+  ];
+
   programs.ssh.startAgent = true;
   programs.gnupg.agent.enable = true;
 
@@ -28,12 +32,15 @@
         "docker"
         "docker-compose"
         "docker-machine"
+        "fzf"
         "git"
+        "git-extras"
         "gradle"
         "httpie"
         "man"
         "python"
         "pip"
+        "ripgrep"
         "systemd"
       ];
       customPkgs = with pkgs; [
@@ -41,6 +48,9 @@
         nix-zsh-completions
       ];
     };
+    interactiveShellInit = ''
+      export FZF_BASE="${pkgs.fzf}/share/fzf"
+    '';
     promptInit = ''
       if [[ "$TERM" != "linux" ]]; then
         source $ZDOTDIR/p10k.zsh
