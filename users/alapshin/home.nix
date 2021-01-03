@@ -1,5 +1,8 @@
-{ config, dotfiles, pkgs, ... }:
+{ config, dirs, myutils, pkgs, ... }:
 
+let
+  username = myutils.extractUsername (builtins.toString ./.);
+in
 {
   environment = {
     sessionVariables = {
@@ -33,51 +36,43 @@
     };
   };
 
-  home-manager.users.alapshin =
-    {
-      services = {
-        syncthing.enable = true;
-        # redshift = {
-        #   enable = true;
-        #   provider = "manual";
-        #   latitude = "58.5969";
-        #   longitude = "49.6583";
-        #   extraOptions = [ "-P" "-m randr" ];
-        # };
+  home-manager.users."${username}" = {
+    services = {
+      syncthing.enable = true;
+    };
+
+    home.packages = with pkgs; [
+      home-manager
+      keepassxc-autostart
+      thunderbird-autostart
+    ];
+
+    home.file = {
+      ".p10k.zsh".source = "${dirs.dotfiles}/p10k.zsh";
+      ".curlrc".source = "${dirs.dotfiles}/curlrc";
+      ".ssh/config".source = "${dirs.dotfiles}/ssh/config";
+      ".ideavimrc".source = "${dirs.dotfiles}/ideavimrc";
       };
 
-      home.packages = with pkgs; [
-        home-manager
-        keepassxc-autostart
-        thunderbird-autostart
-      ];
+    home.language = {
+      address = "ru_RU.UTF-8";
+      base = "en_US.UTF-8";
+      monetary = "ru_RU.UTF-8";
+      paper = "ru_RU.UTF-8";
+      time = "en_DK.UTF-8";
+    };
 
-      home.file = {
-        ".p10k.zsh".source = "${dotfiles}/p10k.zsh";
-        ".curlrc".source = "${dotfiles}/curlrc";
-        ".ssh/config".source = "${dotfiles}/ssh/config";
-        ".ideavimrc".source = "${dotfiles}/ideavimrc";
-      };
+    xdg = {
+      enable = true;
+      configFile = {
+        "nvim".source = "${dirs.dotfiles}/nvim";
 
-      home.language = {
-        address = "ru_RU.UTF-8";
-        base = "en_US.UTF-8";
-        monetary = "ru_RU.UTF-8";
-        paper = "ru_RU.UTF-8";
-        time = "en_DK.UTF-8";
-      };
-
-      xdg = {
-        enable = true;
-        configFile = {
-          "nvim".source = "${dotfiles}/nvim";
-
-          "tig/config".source = "${dotfiles}/tigrc";
-          "git/config".source = "${dotfiles}/gitconfig";
-          "git/config-alar".source = "${dotfiles}/gitconfig-alar";
-          "fontconfig" = { source = "${dotfiles}/fontconfig"; recursive = true; };
-          "zsh/.zshrc".source = "${dotfiles}/zshrc";
-        };
+        "tig/config".source = "${dirs.dotfiles}/tigrc";
+        "git/config".source = "${dirs.dotfiles}/gitconfig";
+        "git/config-alar".source = "${dirs.dotfiles}/gitconfig-alar";
+        "fontconfig" = { source = "${dirs.dotfiles}/fontconfig"; recursive = true; };
+        "zsh/.zshrc".source = "${dirs.dotfiles}/zshrc";
       };
     };
+  };
 }

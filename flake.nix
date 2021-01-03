@@ -17,7 +17,12 @@
       inherit (nixos) lib;
 
       system = "x86_64-linux";
-      dotfiles = builtins.toString ./dotfiles;
+      dirs = rec {
+        config = builtins.toString ./.;
+        users = "${config}/users";
+        dotfiles = "${config}/dotfiles";
+      };
+      myutils = import ./lib/utils.nix { inherit lib dirs; };
 
       mkPkgs = pkgs: extraOverlays: import pkgs {
         inherit system;
@@ -59,7 +64,7 @@
               home-manager.useUserPackages = true;
             }
           ];
-          specialArgs = { inherit dotfiles inputs pkgs self; };
+          specialArgs = { inherit inputs pkgs self dirs myutils; };
         };
 
         altdesk = nixos.lib.nixosSystem {
@@ -77,7 +82,7 @@
               home-manager.useUserPackages = true;
             }
           ];
-          specialArgs = { inherit dotfiles inputs pkgs self; };
+          specialArgs = { inherit inputs pkgs self dirs myutils; };
         };
       };
     };

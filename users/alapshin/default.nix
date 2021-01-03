@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
+{ config, lib, myutils, pkgs, ... }:
 
+let
+  username = myutils.extractUsername (builtins.toString ./.);
+in
 {
   imports = [
     ./apps.nix
@@ -12,7 +15,7 @@
     ./dev/android.nix
   ];
 
-  users.users.alapshin = {
+  users.users."${username}" = {
     uid = 1000;
     shell = pkgs.zsh;
     isNormalUser = true;

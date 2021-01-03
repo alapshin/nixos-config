@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
+{ config, myutils, pkgs, ... }:
 
+let
+  username = myutils.extractUsername (builtins.toString ./.);
+in
 {
   programs.adb.enable = true;
 
@@ -8,7 +11,7 @@
     package = pkgs.jdk14;
   };
 
-  environment.systemPackages = with pkgs; [
+  users.users."${username}".packages = with pkgs; [
     fhs-run
     groovy
     android-udev-rules

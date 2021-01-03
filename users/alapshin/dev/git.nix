@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
+{ config, myutils, pkgs, ... }:
 
+let
+  username = myutils.extractUsername (builtins.toString ./.);
+in
 {
-  environment.systemPackages = with pkgs; [
+  users.users."${username}".packages = with pkgs; [
     git-lfs
     gitAndTools.gh
     gitAndTools.git
