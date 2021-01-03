@@ -6,10 +6,6 @@
     NIX_PAGER = "cat";
   };
 
-  environment.systemPackages = with pkgs; [
-    shellcheck
-  ];
-
   programs.ssh.startAgent = true;
   programs.gnupg.agent.enable = true;
 

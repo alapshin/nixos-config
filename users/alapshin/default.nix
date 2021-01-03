@@ -11,6 +11,7 @@ in
     ./shell.nix
 
     ./dev/git.nix
+    ./dev/shell.nix
     ./dev/python.nix
     ./dev/android.nix
   ];
