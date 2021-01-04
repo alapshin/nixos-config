@@ -36,9 +36,11 @@
       systemd-boot = {
         enable = true;
         consoleMode = "max";
+        configurationLimit = 10;
       };
     };
 
+    # Enable the magic SysRq key
     kernel.sysctl = {
       "kernel.sysrq" = 438;
     };
