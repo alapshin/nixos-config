@@ -2,8 +2,7 @@
 " File structure
 " 1. Plugins configuration
 " 2. Core vim options grouped according to :options
-" 3. Plugin-specif options
-" 4. Keybinding configuration
+" 3. Keybinding configuration
 
 " plugins {{{
 if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
@@ -14,16 +13,21 @@ endif
 
 call plug#begin("~/.local/share/nvim/plugged")
 Plug 'fneu/breezy'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+" {{{
+nnoremap <c-p> :GFiles<CR>
+nnoremap <c-o> :Buffers<CR>
+" }}}
 Plug 'itchyny/lightline.vim'
-Plug 'jamessan/vim-gnupg'
+" {{{
+let g:lightline = { 'colorscheme': 'breezy', }
+" }}}
 Plug 'justinmk/vim-sneak'
-Plug 'kien/ctrlp.vim'
-Plug 'kien/rainbow_parentheses.vim'
 Plug 'lervag/vimtex'
-Plug 'Lokaltog/vim-easymotion'
 Plug 'sheerun/vim-polyglot'
 Plug 'takac/vim-hardtime'
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -136,31 +140,7 @@ autocmd BufNewFile,BufRead *.j2 set filetype=jinja
 autocmd BufNewFile,BufRead *.j2 set commentstring={#%s#}
 " }}}
 
-" plugins {{{
-
-" CtrlP
-let g:ctrlp_open_new_file = 'r'
-let g:ctrlp_open_multiple_files = 'i'
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-let g:ctrlp_root_markers = ['framework']
-let g:ctrlp_custom_ignore = '\vbuild.*'
-
-" Gist
-let g:gist_post_private = 1
-let g:gist_show_privates = 1
-
-" Lightline
-let g:lightline = {
-  \ 'colorscheme': 'breezy',
-  \ }
-
-" Polyglot
-" Disable LaTeX-Box
-let g:polyglot_disabled = ['latex']
-
-" maps
+" keybindings {{{
 " map semicolon to colon
 map ; :
 " Save readonly file with sudo :w!!
@@ -193,8 +173,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <silent> <Leader>h :let @/=""<cr><esc>
 " find TODO and FIXME entries
 nnoremap <silent> <Leader>t :noautocmd vimgrep /\CTODO\\|FIXME/j **/*.py<CR>:cw<CR>
-" show CtrlP buffer list
-nmap <C-O> :<C-U>CtrlPBuffer<CR>
+" }}}
 
 " abbrevs {{{
 " open help in vertical window
