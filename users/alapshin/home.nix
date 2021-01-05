@@ -44,12 +44,18 @@ in
     xdg = {
       enable = true;
       configFile = {
-        "nvim".source = "${dirs.dotfiles}/nvim";
+        "nvim" = {
+          source = "${dirs.dotfiles}/nvim";
+          recursive = true;
+        };
+        "fontconfig" = { 
+          source = "${dirs.dotfiles}/fontconfig"; 
+          recursive = true; 
+        };
 
         "tig/config".source = "${dirs.dotfiles}/tigrc";
         "git/config".source = "${dirs.dotfiles}/gitconfig";
         "git/config-alar".source = "${dirs.dotfiles}/gitconfig-alar";
-        "fontconfig" = { source = "${dirs.dotfiles}/fontconfig"; recursive = true; };
         "zsh/.zshrc".source = "${dirs.dotfiles}/zshrc";
         "zsh/p10k.zsh".source = "${dirs.dotfiles}/p10k.zsh";
       };

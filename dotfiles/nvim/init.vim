@@ -87,6 +87,7 @@ set clipboard=unnamedplus " use X11 clipboard
 " }}}
 
 " editing text {{{
+set undofile
 set pumheight=12
 set completeopt=longest,menuone
 " }}}
