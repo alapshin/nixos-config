@@ -4,9 +4,10 @@ let
 in
 {
   imports = [
+    ./home
+
     ./apps.nix
     ./cli.nix
-    ./home.nix
     ./shell.nix
 
     ./dev/git.nix

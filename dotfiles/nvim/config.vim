@@ -1,42 +1,8 @@
 " Neovim configuration file
 " File structure
-" 1. Plugins configuration
-" 2. Core vim options grouped according to :options
-" 3. Keybinding configuration
-
-" plugins {{{
-if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin("~/.local/share/nvim/plugged")
-Plug 'fneu/breezy'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-" {{{
-nnoremap <c-p> :GFiles<CR>
-nnoremap <c-o> :Buffers<CR>
-" }}}
-Plug 'itchyny/lightline.vim'
-" {{{
-let g:lightline = { 'colorscheme': 'breezy', }
-" }}}
-Plug 'justinmk/vim-sneak'
-Plug 'lervag/vimtex'
-Plug 'sheerun/vim-polyglot'
-Plug 'takac/vim-hardtime'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-unimpaired'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-call plug#end()
-" }}}
+" 1. Core vim options grouped according to :options
+" 2. Keybindings
+" 3. Plugins configuration
 
 " moving around, searching and patterns {{{
 set wrapscan
@@ -179,3 +145,14 @@ nnoremap <silent> <Leader>t :noautocmd vimgrep /\CTODO\\|FIXME/j **/*.py<CR>:cw<
 " open help in vertical window
 cabbrev h vertical topleft h
 " }}}
+"
+" plugins {{{
+" {{{ fzf
+nnoremap <c-p> :GFiles<CR>
+nnoremap <c-o> :Buffers<CR>
+" }}}
+" {{{ lightline
+let g:lightline = { 'colorscheme': 'breezy', }
+" }}}
+" }}}
+

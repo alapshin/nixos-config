@@ -4,6 +4,10 @@ let
   username = myutils.extractUsername (builtins.toString ./.);
 in
 {
+  imports = [
+    ./neovim.nix
+  ];
+
   environment = {
     # Load home-manager settings
     # Shells are configured using system module insted of home-manage one and
