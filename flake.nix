@@ -6,13 +6,14 @@
       nixos.url = "nixpkgs/nixos-unstable-small";
       nixpkgs.url = "nixpkgs/master";
 
+      nur.url = "github:nix-community/nur";
       home-manager = {
         url = "github:nix-community/home-manager/master";
         inputs.nixpkgs.follows = "nixpkgs";
       };
     };
 
-  outputs = inputs @ { self, nixos, nixpkgs, home-manager, ... }:
+  outputs = inputs @ { self, nixos, nixpkgs, nur, home-manager, ... }:
     let
       inherit (nixos) lib;
 
@@ -32,7 +33,7 @@
         };
         overlays = extraOverlays ++ (lib.attrValues self.overlays);
       };
-      pkgs = mkPkgs nixos [ self.overlay ];
+      pkgs = mkPkgs nixos [ self.overlay nur.overlay ];
       uPkgs = mkPkgs nixpkgs [ ];
     in
     {
