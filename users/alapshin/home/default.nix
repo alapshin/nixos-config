@@ -6,6 +6,7 @@ in
 {
   imports = [
     ./neovim.nix
+    ./firefox.nix
   ];
 
   environment = {
