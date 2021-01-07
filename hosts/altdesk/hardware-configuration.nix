@@ -9,6 +9,13 @@ let
 in
 {
   boot = {
+    # Workaround for frequent wifi connection loss
+    # https://bugzilla.kernel.org/show_bug.cgi?id=203709
+    extraModprobeConfig = ''
+      options iwlmvm power_scheme=1
+      options iwlwifi power_save=0
+    '';
+
     initrd = {
       availableKernelModules = [ "ahci" "nvme" "usbhid" "usb_storage" "xhci_pci" ];
       luks.devices."luks-9ebe5c59-eac5-47eb-b517-c82f2ede2ca3" = {
