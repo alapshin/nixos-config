@@ -4,11 +4,7 @@ let
 in
 {
   programs.adb.enable = true;
-
-  programs.java = {
-    enable = true;
-    package = pkgs.jdk14;
-  };
+  programs.java.enable = true;
 
   users.users."${username}".packages = with pkgs; [
     fhs-run
