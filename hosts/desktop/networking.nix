@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  networking.hostName = "desktop";
+  networking = {
+    hostName = "desktop";
+    networkmanager.wifi.backend = "iwd";
+  };
 }
