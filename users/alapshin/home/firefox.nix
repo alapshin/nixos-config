@@ -18,6 +18,7 @@ in
 
             "browser.startup.homepage" = "about:blank";
             "browser.newtabpage.enabled" = false;
+            "browser.tabs.closeWindowWithLastTab" = false;
             # Enable preinstalled addons
             "extensions.autoDisableScopes" = 0;
             # Enable userChrome.css support
