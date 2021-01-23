@@ -14,16 +14,16 @@ in
     hunspellDicts.en_US-large
     inkscape
     libreoffice-fresh
-    kdeApplications.ark
-    kdeApplications.dolphin
-    kdeApplications.filelight
-    kdeApplications.gwenview
-    kdeApplications.kate
-    kdeApplications.kcolorchooser
-    kdeApplications.kdeconnect-kde
-    kdeApplications.kwalletmanager
-    kdeApplications.okular
-    kdeApplications.spectacle
+    ark
+    dolphin
+    filelight
+    gwenview
+    kate
+    kcolorchooser
+    kdeconnect
+    kwalletmanager
+    okular
+    spectacle
     keepassxc
     mpv
     ntfs3g
