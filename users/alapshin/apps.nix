@@ -30,6 +30,7 @@ in
     partition-manager
     qbittorrent
     skrooge
+    skypeforlinux
     smplayer
     thunderbird
   ];
