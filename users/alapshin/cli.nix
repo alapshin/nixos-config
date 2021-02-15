@@ -23,6 +23,7 @@ in
     ncdu
     neovim
     nnn
+    openssl
     p7zip
     pandoc
     pciutils
