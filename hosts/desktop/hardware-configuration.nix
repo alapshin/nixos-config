@@ -9,14 +9,6 @@ let
 in
 {
   boot = {
-    kernelPatches = lib.singleton {
-      name = "enable-dcn3";
-      patch = null;
-      extraConfig = ''
-        DRM_AMD_DC_DCN3_0 y
-      '';
-    };
-
     initrd = {
       kernelModules = [ "amdgpu" ];
       availableKernelModules = [ "ahci" "nvme" "usbhid" "usb_storage" "xhci_pci" ];
