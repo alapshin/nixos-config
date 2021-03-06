@@ -1,9 +1,15 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    fzf
-  ];
+
+  environment = {
+    variables = {
+      ZDOTDIR = "$HOME/.config/zsh";
+    };
+    systemPackages = with pkgs; [
+      fzf
+    ];
+  };
 
   programs.ssh.startAgent = true;
   programs.gnupg.agent.enable = true;
@@ -43,14 +49,14 @@
         nix-zsh-completions
       ];
     };
-    interactiveShellInit = ''
-      export FZF_BASE="${pkgs.fzf}/share/fzf"
-    '';
     promptInit = ''
       if [[ "$TERM" != "linux" ]]; then
         source $ZDOTDIR/p10k.zsh
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       fi
+    '';
+    interactiveShellInit = ''
+      export FZF_BASE="${pkgs.fzf}/share/fzf"
     '';
   };
 }

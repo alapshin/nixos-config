@@ -78,8 +78,8 @@ in
         EDITOR = "nvim";
 
         ANDROID_SDK_ROOT = "${homeDir}/opt/android-sdk";
-        ANDROID_PREFS_ROOT = "${xdgConfigHome}/android";
-        ANDROID_EMULATOR_HOME = "${xdgDataHome}/android/emulator";
+        # ANDROID_PREFS_ROOT = "${xdgConfigHome}/android";
+        # ANDROID_EMULATOR_HOME = "${xdgDataHome}/android/emulator";
 
         AWS_CONFIG_FILE = "${xdgConfigHome}/aws/config";
         AWS_SHARED_CREDENTIALS_FILE = "${xdgConfigHome}/aws/credentials";
@@ -91,7 +91,6 @@ in
         IPYTHONDIR = "${xdgConfigHome}/jupyter";
         JUPYTER_CONFIG_DIR = "${xdgConfigHome}/jupyter";
         MACHINE_STORAGE_PATH = "${xdgDataHome}/docker-machine";
-        ZDOTDIR = "${xdgConfigHome}/zsh";
 
         _JAVA_OPTIONS = ''-Djava.util.prefs.userRoot=${xdgConfigHome}/java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'';
       };
