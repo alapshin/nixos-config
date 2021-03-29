@@ -21,6 +21,9 @@
       layout = "us,ru";
       xkbOptions = "grp:caps_toggle,compose:ralt";
 
+      videoDrivers = [
+        "nvidia"
+      ];
       displayManager = {
         sddm.enable = true;
       };
