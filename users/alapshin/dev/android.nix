@@ -9,6 +9,7 @@ in
   users.users."${username}".packages = with pkgs; [
     fhs-run
     groovy
+    scrcpy
     android-udev-rules
     jetbrains.idea-ultimate
     androidStudioPackages.stable
