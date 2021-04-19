@@ -32,6 +32,8 @@ in
     skrooge
     skypeforlinux
     smplayer
+    tdesktop
+    torbrowser
     thunderbird
   ];
 }
