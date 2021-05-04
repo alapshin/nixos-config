@@ -13,6 +13,7 @@ in
     android-udev-rules
     jetbrains.idea-ultimate
     androidStudioPackages.stable
+    androidStudioPackages.beta
     androidStudioPackages.canary
   ];
 }
