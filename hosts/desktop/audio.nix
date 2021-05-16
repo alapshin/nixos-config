@@ -27,9 +27,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    kwave
     jack2
-    ardour
-    audacity
     qjackctl
     obs-studio
     pavucontrol
