@@ -11,13 +11,13 @@
 [credential]
 	helper = cache --timeout=3600
 [diff]
-	tool = androidstudio
+	tool = nvimdiff
 	indentHeuristic = true
 	compactionHeuristic = true
 [fetch]
 	prune = true
 [merge]
-	tool = androidstudio
+	tool = nvimdiff
 	conflictstyle = diff3
 [pull]
 	ff = only
