@@ -7,6 +7,8 @@ in
   programs.java.enable = true;
 
   users.users."${username}".packages = with pkgs; [
+    async-profiler
+
     fhs-run
     groovy
     scrcpy
