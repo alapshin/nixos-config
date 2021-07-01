@@ -32,6 +32,7 @@ in
     skrooge
     skypeforlinux
     smplayer
+    spotify
     tdesktop
     torbrowser
     thunderbird
