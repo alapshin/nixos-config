@@ -9,6 +9,7 @@ in
     colord-kde
     firefox
     gimp
+    handbrake
     hunspell
     hunspellDicts.ru_RU
     hunspellDicts.en_US-large
