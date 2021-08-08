@@ -64,6 +64,12 @@ in
         "zsh/.zshrc".source = "${dirs.dotfiles}/zshrc";
         "zsh/p10k.zsh".source = "${dirs.dotfiles}/p10k.zsh";
       };
+      mimeApps = {
+        enable = true;
+        defaultApplications = {
+          "text/plain" = "org.kde.kwrite.desktop";
+        };
+      };
     };
 
     # Enforce XDG directories usage for some apps
