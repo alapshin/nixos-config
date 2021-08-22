@@ -68,6 +68,10 @@ in
         enable = true;
         defaultApplications = {
           "text/plain" = "org.kde.kwrite.desktop";
+          "text/html" = "firefox.desktop";
+          "x-scheme-handler/http" = "firefox.desktop";
+          "x-scheme-handler/https" = "firefox.desktop";
+          "x-scheme-handler/mailto" = "thunderbird.desktop";
         };
       };
     };
