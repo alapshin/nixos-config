@@ -5,7 +5,6 @@ in
 {
   users.users."${username}".packages = with pkgs; [
     calibre
-    chromium
     colord-kde
     firefox
     gimp
@@ -37,5 +36,6 @@ in
     tdesktop
     torbrowser
     thunderbird
+    ungoogled-chromium
   ];
 }
