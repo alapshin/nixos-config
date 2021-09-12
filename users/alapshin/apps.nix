@@ -26,6 +26,7 @@ in
     spectacle
     keepassxc
     mpv
+    mkvtoolnix
     ntfs3g
     partition-manager
     qbittorrent
