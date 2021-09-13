@@ -3,6 +3,8 @@ let
   username = myutils.extractUsername (builtins.toString ./.);
 in
 {
+  programs.partition-manager.enable = true;
+
   users.users."${username}".packages = with pkgs; [
     calibre
     colord-kde
@@ -28,7 +30,6 @@ in
     mpv
     mkvtoolnix
     ntfs3g
-    partition-manager
     qbittorrent
     skrooge
     skypeforlinux
