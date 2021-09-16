@@ -3,7 +3,8 @@ let
   hmcfg = config.home-manager.users."${username}";
   username = myutils.extractUsername (builtins.toString ./.);
   breezy = pkgs.vimUtils.buildVimPlugin {
-    name = "breezy";
+    pname = "breezy";
+    version = "2020-05-24";
     src = pkgs.fetchFromGitHub {
       owner = "fneu";
       repo = "breezy";
