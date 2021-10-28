@@ -48,6 +48,7 @@
           export PLASMA_USE_QT_SCALING=1
           export QT_SCREEN_SCALE_FACTORS=1.5
         '';
+        defaultSession = "plasma";
       };
       desktopManager.plasma5.enable = true;
     };
