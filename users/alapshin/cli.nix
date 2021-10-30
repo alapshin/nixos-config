@@ -36,6 +36,7 @@ in
     unzip
     usbutils
     wget
+    yt-dlp
     youtube-dl
   ];
 }
