@@ -18,7 +18,10 @@ in
 
             "browser.startup.homepage" = "about:blank";
             "browser.newtabpage.enabled" = false;
+            # Don't close window with last tab
             "browser.tabs.closeWindowWithLastTab" = false;
+            # Disable URL encoding on copying
+            "browser.urlbar.decodeURLsOnCopy" = true;
             # Enable preinstalled addons
             "extensions.autoDisableScopes" = 0;
             # Enable userChrome.css support
