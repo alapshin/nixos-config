@@ -87,7 +87,6 @@
       ];
     };
   };
-  # environment.systemPackages = [ pkgs.wireguard pkgs.wireguard-tools ];
 
   time = {
     timeZone = "Europe/Moscow";
