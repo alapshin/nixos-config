@@ -6,6 +6,9 @@ in
   programs.partition-manager.enable = true;
 
   users.users."${username}".packages = with pkgs; [
+    aspell
+    aspellDicts.ru
+    aspellDicts.en
     calibre
     colord-kde
     firefox
@@ -13,7 +16,7 @@ in
     handbrake
     hunspell
     hunspellDicts.ru_RU
-    hunspellDicts.en_US-large
+    hunspellDicts.en_US
     inkscape
     libreoffice-fresh
     ark
