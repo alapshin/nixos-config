@@ -11,6 +11,7 @@ in
     aspellDicts.en
     calibre
     colord-kde
+    digikam
     firefox
     gimp
     handbrake
