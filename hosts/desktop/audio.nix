@@ -12,7 +12,6 @@
 
   environment.systemPackages = with pkgs; [
     kwave
-    obs-studio
     pavucontrol
   ];
 }
