@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ./apps.nix
     ./neovim.nix
     ./firefox.nix
   ];

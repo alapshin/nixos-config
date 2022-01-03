@@ -30,7 +30,6 @@ in
     ripgrep
     rsync
     smartmontools
-    tmux
     tree
     unrar
     unzip
