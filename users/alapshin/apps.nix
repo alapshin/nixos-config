@@ -3,6 +3,7 @@ let
   username = myutils.extractUsername (builtins.toString ./.);
 in
 {
+  programs.kdeconnect.enable = true;
   programs.partition-manager.enable = true;
 
   users.users."${username}".packages = with pkgs; [
@@ -26,7 +27,6 @@ in
     gwenview
     kate
     kcolorchooser
-    kdeconnect
     kwalletmanager
     okular
     spectacle
