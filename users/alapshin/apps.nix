@@ -33,7 +33,6 @@ in
     keepassxc
     mpv
     mkvtoolnix
-    ntfs3g
     qbittorrent
     skrooge
     skypeforlinux
