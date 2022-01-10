@@ -20,7 +20,7 @@ in
     hunspellDicts.ru_RU
     hunspellDicts.en_US
     inkscape
-    libreoffice-fresh
+    libreoffice-qt
     ark
     dolphin
     filelight
