@@ -6,7 +6,7 @@ in
   programs.kdeconnect.enable = true;
   programs.partition-manager.enable = true;
 
-  users.users."${username}".packages = with pkgs; [
+  users.users."${username}".packages = (with pkgs; [
     aspell
     aspellDicts.ru
     aspellDicts.en
@@ -21,7 +21,20 @@ in
     hunspellDicts.en_US
     inkscape
     libreoffice-qt
+    keepassxc
+    mpv
+    mkvtoolnix
+    qbittorrent
+    skrooge
+    smplayer
+    spotify
+    tdesktop
+    torbrowser
+    thunderbird
+    ungoogled-chromium
+  ]) ++ (with pkgs.plasma5Packages; [
     ark
+    bismuth
     dolphin
     filelight
     gwenview
@@ -30,17 +43,5 @@ in
     kwalletmanager
     okular
     spectacle
-    keepassxc
-    mpv
-    mkvtoolnix
-    qbittorrent
-    skrooge
-    skypeforlinux
-    smplayer
-    spotify
-    tdesktop
-    torbrowser
-    thunderbird
-    ungoogled-chromium
-  ];
+  ]);
 }
