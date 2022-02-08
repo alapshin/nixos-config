@@ -13,7 +13,6 @@ in
     calibre
     colord-kde
     digikam
-    firefox
     gimp
     handbrake
     hunspell

@@ -37,9 +37,9 @@ in
       };
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         cookie-autodelete
-        decentraleyes
         https-everywhere
         keepassxc-browser
+        localcdn
         temporary-containers
         tree-style-tab
         ublock-origin
