@@ -12,7 +12,6 @@ in
     aspellDicts.en
     calibre
     colord-kde
-    digikam
     gimp
     handbrake
     hunspell
@@ -28,7 +27,7 @@ in
     smplayer
     spotify
     tdesktop
-    torbrowser
+    tor-browser-bundle-bin
     thunderbird
     ungoogled-chromium
   ]) ++ (with pkgs.plasma5Packages; [

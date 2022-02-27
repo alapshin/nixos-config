@@ -18,7 +18,7 @@ in
     imagemagick
     jq
     lm_sensors
-    manpages
+    man-pages
     moreutils
     ncdu
     neovim

@@ -56,7 +56,7 @@
 
   fonts = {
     fonts = with pkgs; [
-      opensans-ttf
+      open-sans
       liberation_ttf
       noto-fonts
       noto-fonts-cjk
