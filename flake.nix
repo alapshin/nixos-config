@@ -85,6 +85,24 @@
           ];
           specialArgs = { inherit inputs pkgs self dirs myutils; };
         };
+
+        laptop = nixos.lib.nixosSystem {
+          inherit system;
+          modules = [
+            (import ./configuration.nix)
+            (import ./hosts/laptop)
+            (import ./users/alapshin)
+            home-manager.nixosModules.home-manager
+            {
+              # Use global pkgs configured via nixpkgs.* options
+              home-manager.useGlobalPkgs = true;
+              # Install user packages to /etc/profiles instead. 
+              # Necessary for nixos-rebuild build-vm to work.
+              home-manager.useUserPackages = true;
+            }
+          ];
+          specialArgs = { inherit inputs pkgs self dirs myutils; };
+        };
       };
     };
 }

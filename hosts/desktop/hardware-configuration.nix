@@ -9,6 +9,15 @@ let
 in
 {
   boot = {
+    loader = {
+      timeout = 15;
+      efi.canTouchEfiVariables = true;
+      systemd-boot = {
+        enable = true;
+        consoleMode = "max";
+        configurationLimit = 10;
+      };
+    };
     initrd = {
       kernelModules = [ "amdgpu" ];
       availableKernelModules = [ "ahci" "nvme" "usbhid" "usb_storage" "xhci_pci" ];

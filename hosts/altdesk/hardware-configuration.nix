@@ -9,6 +9,15 @@ let
 in
 {
   boot = {
+    loader = {
+      timeout = 15;
+      efi.canTouchEfiVariables = true;
+      systemd-boot = {
+        enable = true;
+        consoleMode = "max";
+        configurationLimit = 10;
+      };
+    };
     # Workaround for frequent wifi connection loss
     # https://bugzilla.kernel.org/show_bug.cgi?id=203709
     extraModprobeConfig = ''
