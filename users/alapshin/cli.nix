@@ -29,6 +29,8 @@ in
     pciutils
     ripgrep
     rsync
+    s-tui
+    stress-ng
     smartmontools
     tree
     unrar
