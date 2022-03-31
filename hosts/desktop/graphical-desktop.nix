@@ -1,17 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.extraPackages = with pkgs; [
-    amdvlk
-    rocm-opencl-icd
-    rocm-opencl-runtime
-  ];
-  hardware.opengl.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
-  ];
-
   xdg.portal = {
     enable = true;
     gtkUsePortal = true;
@@ -53,4 +42,48 @@
       desktopManager.plasma5.enable = true;
     };
   };
+
+  hardware.opengl =
+    let 
+      version = "22.0.0";
+      attrs = oldAttrs: rec {
+        inherit version;
+        src = pkgs.fetchurl {
+          urls = [
+            "https://mesa.freedesktop.org/archive/mesa-${version}.tar.xz"
+          ];
+          sha256 = "0l0jc23rk5s7lq8wgx4b6mxasb762lnw5kk7pn2p94drnll1ki76";
+        };
+
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dvulkan-layers=device-select,overlay" ];
+        nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ pkgs.glslang ];
+        postInstall = oldAttrs.postInstall + ''
+          mv $out/lib/libVkLayer* $drivers/lib
+          layer=VkLayer_MESA_device_select
+          substituteInPlace $drivers/share/vulkan/implicit_layer.d/''${layer}.json \
+          --replace "lib''${layer}" "$drivers/lib/lib''${layer}"
+          layer=VkLayer_MESA_overlay
+          substituteInPlace $drivers/share/vulkan/explicit_layer.d/''${layer}.json \
+          --replace "lib''${layer}" "$drivers/lib/lib''${layer}"
+        '';
+      }; 
+      ovrd = _: {
+        driDrivers = [];
+      };
+    in with pkgs; {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+      package = ((mesa.override ovrd).overrideAttrs attrs).drivers;
+      package32 = ((pkgsi686Linux.mesa.override ovrd).overrideAttrs attrs).drivers;
+      extraPackages = with pkgs; [
+        amdvlk
+      ];
+      extraPackages32 = with pkgs; [
+        driversi686Linux.amdvlk
+      ];
+    };
+
+  # Force RADV drivers
+  environment.variables.AMD_VULKAN_ICD = "RADV";
 }
