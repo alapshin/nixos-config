@@ -9,6 +9,7 @@ in
     ./apps.nix
     ./cli.nix
     ./shell.nix
+    ./services.nix
 
     ./dev/git.nix
     ./dev/shell.nix

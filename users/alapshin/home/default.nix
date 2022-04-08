@@ -23,10 +23,6 @@ in
   };
 
   home-manager.users."${username}" = {
-    services = {
-      syncthing.enable = true;
-    };
-
     home.packages = with pkgs; [
       home-manager
       keepassxc-autostart
