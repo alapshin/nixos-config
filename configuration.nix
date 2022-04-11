@@ -72,7 +72,7 @@
     firewall.enable = false;
     networkmanager = {
       enable = true;
-      packages = with pkgs; [
+      plugins = with pkgs; [
         networkmanager-openvpn
       ];
     };
