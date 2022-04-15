@@ -3,21 +3,23 @@
 
   inputs =
     {
-      nixos.url = "nixpkgs/nixos-unstable-small";
+      nixos.url = "nixpkgs/nixos-unstable";
+      stable.url = "nixpkgs/nixos-21.11-small";
       nixpkgs.url = "nixpkgs/master";
 
       nur.url = "github:nix-community/nur";
       home-manager = {
         url = "github:nix-community/home-manager/master";
-        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.nixpkgs.follows = "nixos";
       };
     };
 
-  outputs = inputs @ { self, nixos, nixpkgs, nur, home-manager, ... }:
+  outputs = inputs @ { self, nixos, nixpkgs, stable, nur, home-manager, ... }:
     let
       inherit (nixos) lib;
 
       system = "x86_64-linux";
+
       dirs = rec {
         config = builtins.toString ./.;
         users = "${config}/users";
@@ -33,15 +35,15 @@
         };
         overlays = extraOverlays ++ (lib.attrValues self.overlays);
       };
+
       pkgs = mkPkgs nixos [ self.overlay nur.overlay ];
-      uPkgs = mkPkgs nixpkgs [ ];
+      stablePkgs = mkPkgs stable [ ];
+      unstablePkgs = mkPkgs nixpkgs [ ];
     in
     {
       overlay = final: prev: {
-        # This doesn't work
-        # unstable = uPkgs;
-        # But this one does
-        unstable = inputs.nixpkgs.legacyPackages."${system}";
+        stable = stablePkgs;
+        unstable = unstablePkgs;
       };
 
       overlays = {
