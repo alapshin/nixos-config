@@ -42,9 +42,9 @@
         path = ~/.config/git/config-alar
 
 [difftool "androidstudio"]
-	cmd = android-studio diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
+	cmd = android-studio nosplash diff $LOCAL $REMOTE 2>/dev/null
 	trustExitCode = true
 
 [mergetool "androidstudio"]
-	cmd = android-studio merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+	cmd = android-studio nosplash merge $LOCAL $REMOTE $BASE $MERGED 2>/dev/null
 	trustExitCode = true
