@@ -30,8 +30,6 @@
       videoDrivers = [ "modesetting" "intel" ];
 
       displayManager = {
-        autoLogin.user = "alapshin";
-        autoLogin.enable = true;
         # startx.enable = true;
         sddm.enable = true;
         # lightdm.enable = true;
