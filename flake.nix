@@ -37,13 +37,11 @@
       };
 
       pkgs = mkPkgs nixos [ self.overlay nur.overlay ];
-      stablePkgs = mkPkgs stable [ ];
-      unstablePkgs = mkPkgs nixpkgs [ ];
     in
     {
       overlay = final: prev: {
-        stable = stablePkgs;
-        unstable = unstablePkgs;
+        stable = inputs.stable.legacyPackages."${system}";
+        unstable = inputs.nixpkgs.legacyPackages."${system}";
       };
 
       overlays = {
