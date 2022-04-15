@@ -19,8 +19,29 @@ in
       };
     };
     initrd = {
+      network = {
+        enable = true;
+        ssh = {
+          enable = true;
+          port = 2200;
+          hostKeys = [
+            "/etc/secrets/initrd/host_ed25519"
+          ];
+          authorizedKeys = [
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGlJo3xdypmwSS2lsHCzf6GsqyEGvr+HzvbU+TGuPjmA"
+          ];
+        };
+
+      };
       kernelModules = [ "amdgpu" ];
-      availableKernelModules = [ "ahci" "nvme" "usbhid" "usb_storage" "xhci_pci" ];
+      availableKernelModules = [ 
+        "ahci"
+        "nvme"
+        "r8169"
+        "usbhid"
+        "usb_storage"
+        "xhci_pci" 
+      ];
       luks.devices = {
         "luksroot" = {
           allowDiscards = true;
