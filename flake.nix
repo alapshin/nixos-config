@@ -54,6 +54,7 @@
           inherit system;
           modules = [
             (import ./configuration.nix)
+            (import ./hosts/common)
             (import ./hosts/carbon)
             (import ./users/alapshin)
             home-manager.nixosModules.home-manager
@@ -72,6 +73,7 @@
           inherit system;
           modules = [
             (import ./configuration.nix)
+            (import ./hosts/common)
             (import ./hosts/desktop)
             (import ./users/alapshin)
             home-manager.nixosModules.home-manager
@@ -90,6 +92,7 @@
           inherit system;
           modules = [
             (import ./configuration.nix)
+            (import ./hosts/common)
             (import ./hosts/altdesk)
             (import ./users/alapshin)
             home-manager.nixosModules.home-manager
@@ -109,6 +112,7 @@
           inherit system;
           modules = [
             (import ./configuration.nix)
+            (import ./hosts/common)
             (import ./hosts/laptop)
             (import ./users/alapshin)
             home-manager.nixosModules.home-manager

@@ -86,8 +86,4 @@ in
       options = externalMountOptions;
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    ntfs3g
-  ];
 }

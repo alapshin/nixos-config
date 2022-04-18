@@ -59,8 +59,4 @@ in
       randomEncryption.enable = true;
     }
   ];
-
-  environment.systemPackages = with pkgs; [
-    ntfs3g
-  ];
 }
