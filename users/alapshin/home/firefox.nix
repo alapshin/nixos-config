@@ -40,6 +40,7 @@ in
         https-everywhere
         keepassxc-browser
         localcdn
+        plasma-integration
         temporary-containers
         tree-style-tab
         ublock-origin
