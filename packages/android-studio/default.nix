@@ -9,8 +9,8 @@ let
     inherit buildFHSUserEnv;
   };
   stableVersion = {
-    version = "2021.1.1.21"; # "Android Studio Bumblebee (2021.1.1 Patch 1)"
-    sha256Hash = "PeMJIILfaunTlpR4EV76qQlTlZDcWoKes61qe9W9oqQ=";
+    version = "2021.1.1.23"; # "Android Studio Bumblebee (2021.1.1 Patch 1)"
+    sha256Hash = "s3UGzYrHqA/jDNFyTjvlwtlwp6pqo/ycp0Wv43AKq88=";
   };
   betaVersion = {
     version = "2021.2.1.8"; # "Android Studio Chipmunk (2021.2.1) Beta 1"
