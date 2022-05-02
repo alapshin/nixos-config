@@ -12,6 +12,7 @@ in
     aspellDicts.en
     calibre
     colord-kde
+    digikam
     electrum
     gimp
     handbrake
