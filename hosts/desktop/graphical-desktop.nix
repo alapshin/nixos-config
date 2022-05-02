@@ -43,39 +43,41 @@
     };
   };
 
+  # Enable Vulkan layers
+  # https://nixos.wiki/wiki/Mesa
   hardware.opengl =
     let 
-      version = "22.0.0";
-      attrs = oldAttrs: rec {
-        inherit version;
-        src = pkgs.fetchurl {
-          urls = [
-            "https://mesa.freedesktop.org/archive/mesa-${version}.tar.xz"
-          ];
-          sha256 = "0l0jc23rk5s7lq8wgx4b6mxasb762lnw5kk7pn2p94drnll1ki76";
-        };
-
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dvulkan-layers=device-select,overlay" ];
+      # version = "22.0.2";
+      fn = oldAttrs: rec {
+        # inherit version;
+        # src = pkgs.fetchurl {
+        #   urls = [
+        #     "https://mesa.freedesktop.org/archive/mesa-${version}.tar.xz"
+        #   ];
+        #   sha256 = "0l0jc23rk5s7lq8wgx4b6mxasb762lnw5kk7pn2p94drnll1ki76";
+        # };
         nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ pkgs.glslang ];
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dvulkan-layers=device-select,overlay" ];
         postInstall = oldAttrs.postInstall + ''
           mv $out/lib/libVkLayer* $drivers/lib
+
+          #Device Select layer
           layer=VkLayer_MESA_device_select
           substituteInPlace $drivers/share/vulkan/implicit_layer.d/''${layer}.json \
           --replace "lib''${layer}" "$drivers/lib/lib''${layer}"
+
+           #Overlay layer
           layer=VkLayer_MESA_overlay
           substituteInPlace $drivers/share/vulkan/explicit_layer.d/''${layer}.json \
           --replace "lib''${layer}" "$drivers/lib/lib''${layer}"
         '';
       }; 
-      ovrd = _: {
-        driDrivers = [];
-      };
     in with pkgs; {
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      package = ((mesa.override ovrd).overrideAttrs attrs).drivers;
-      package32 = ((pkgsi686Linux.mesa.override ovrd).overrideAttrs attrs).drivers;
+      # package = (mesa.overrideAttrs fn).drivers;
+      # package32 = (pkgsi686Linux.mesa.overrideAttrs fn).drivers;
       extraPackages = with pkgs; [
         amdvlk
       ];
