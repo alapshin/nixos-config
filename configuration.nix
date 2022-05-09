@@ -93,9 +93,9 @@
 
   # Various nix utils
   environment.systemPackages = with pkgs; [
+    alejandra
     nix-index
     nix-prefetch-git
     nix-prefetch-github
-    nixpkgs-fmt
   ];
 }
