@@ -1,8 +1,11 @@
-{ config, myutils, pkgs, ... }:
-let
-  username = myutils.extractUsername (builtins.toString ./.);
-in
 {
+  config,
+  myutils,
+  pkgs,
+  ...
+}: let
+  username = myutils.extractUsername (builtins.toString ./.);
+in {
   programs.adb.enable = true;
   programs.java.enable = true;
 

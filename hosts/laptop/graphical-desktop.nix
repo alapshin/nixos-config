@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   environment.variables = {
     MESA_LOADER_DRIVER_OVERRIDE = "iris";
   };
@@ -33,7 +35,7 @@
       layout = "us,ru";
       xkbOptions = "grp:caps_toggle,compose:ralt";
 
-      videoDrivers = [ "modesetting" "intel" ];
+      videoDrivers = ["modesetting" "intel"];
 
       displayManager = {
         sddm.enable = true;
@@ -43,5 +45,4 @@
       desktopManager.plasma5.enable = true;
     };
   };
-
 }

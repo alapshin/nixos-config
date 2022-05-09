@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   hardware = {
     opengl = {
       enable = true;
@@ -27,7 +29,7 @@
       layout = "us,ru";
       xkbOptions = "grp:caps_toggle,compose:ralt";
 
-      videoDrivers = [ "modesetting" "intel" ];
+      videoDrivers = ["modesetting" "intel"];
 
       displayManager = {
         # startx.enable = true;
@@ -38,5 +40,4 @@
       desktopManager.plasma5.enable = true;
     };
   };
-
 }

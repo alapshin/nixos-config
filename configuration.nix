@@ -1,6 +1,11 @@
-{ config, lib, inputs, pkgs, self, ... }:
-
 {
+  config,
+  lib,
+  inputs,
+  pkgs,
+  self,
+  ...
+}: {
   nix = {
     gc = {
       automatic = true;
@@ -34,7 +39,7 @@
     kernel.sysctl = {
       "kernel.sysrq" = 438;
     };
-    kernelModules = [ "kvm-amd" "kvm-intel" ];
+    kernelModules = ["kvm-amd" "kvm-intel"];
     kernelPackages = pkgs.linuxPackages_latest;
   };
 

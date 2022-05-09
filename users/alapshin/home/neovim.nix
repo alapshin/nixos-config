@@ -1,5 +1,10 @@
-{ config, dirs, myutils, pkgs, ... }:
-let
+{
+  config,
+  dirs,
+  myutils,
+  pkgs,
+  ...
+}: let
   hmcfg = config.home-manager.users."${username}";
   username = myutils.extractUsername (builtins.toString ./.);
   breezy = pkgs.vimUtils.buildVimPlugin {
@@ -12,8 +17,7 @@ let
       sha256 = "6xlrXcJq91OvPkjcnbqrZmxad8H3oZTEJ1wf4Rx9hCc=";
     };
   };
-in
-{
+in {
   home-manager.users."${username}" = {
     programs.neovim = {
       enable = true;

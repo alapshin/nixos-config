@@ -1,9 +1,13 @@
-{ config, dirs, myutils, pkgs, ... }:
-let
+{
+  config,
+  dirs,
+  myutils,
+  pkgs,
+  ...
+}: let
   hmcfg = config.home-manager.users."${username}";
   username = myutils.extractUsername (builtins.toString ./.);
-in
-{
+in {
   imports = [
     ./apps.nix
     ./neovim.nix
@@ -50,9 +54,9 @@ in
           source = "${dirs.dotfiles}/nvim";
           recursive = true;
         };
-        "fontconfig" = { 
-          source = "${dirs.dotfiles}/fontconfig"; 
-          recursive = true; 
+        "fontconfig" = {
+          source = "${dirs.dotfiles}/fontconfig";
+          recursive = true;
         };
 
         "tig/config".source = "${dirs.dotfiles}/tigrc";
@@ -74,32 +78,30 @@ in
     };
 
     # Enforce XDG directories usage for some apps
-    home.sessionVariables =
-      let
-        homeDir = hmcfg.home.homeDirectory;
-        xdgDataHome = hmcfg.xdg.dataHome;
-        xdgCacheHome = hmcfg.xdg.cacheHome;
-        xdgConfigHome = hmcfg.xdg.configHome;
-      in
-      {
-        EDITOR = "nvim";
+    home.sessionVariables = let
+      homeDir = hmcfg.home.homeDirectory;
+      xdgDataHome = hmcfg.xdg.dataHome;
+      xdgCacheHome = hmcfg.xdg.cacheHome;
+      xdgConfigHome = hmcfg.xdg.configHome;
+    in {
+      EDITOR = "nvim";
 
-        ANDROID_SDK_ROOT = "${homeDir}/opt/android-sdk";
-        # ANDROID_PREFS_ROOT = "${xdgConfigHome}/android";
-        # ANDROID_EMULATOR_HOME = "${xdgDataHome}/android/emulator";
+      ANDROID_SDK_ROOT = "${homeDir}/opt/android-sdk";
+      # ANDROID_PREFS_ROOT = "${xdgConfigHome}/android";
+      # ANDROID_EMULATOR_HOME = "${xdgDataHome}/android/emulator";
 
-        AWS_CONFIG_FILE = "${xdgConfigHome}/aws/config";
-        AWS_SHARED_CREDENTIALS_FILE = "${xdgConfigHome}/aws/credentials";
-        CARGO_HOME = "${xdgDataHome}/cargo";
-        CUDA_CACHE_PATH = "${xdgCacheHome}/nv";
-        DOCKER_CONFIG = "${xdgConfigHome}/docker";
-        GNUPGHOME = "${xdgConfigHome}/gnupg";
-        GRADLE_USER_HOME = "${xdgDataHome}/gradle";
-        IPYTHONDIR = "${xdgConfigHome}/jupyter";
-        JUPYTER_CONFIG_DIR = "${xdgConfigHome}/jupyter";
-        MACHINE_STORAGE_PATH = "${xdgDataHome}/docker-machine";
+      AWS_CONFIG_FILE = "${xdgConfigHome}/aws/config";
+      AWS_SHARED_CREDENTIALS_FILE = "${xdgConfigHome}/aws/credentials";
+      CARGO_HOME = "${xdgDataHome}/cargo";
+      CUDA_CACHE_PATH = "${xdgCacheHome}/nv";
+      DOCKER_CONFIG = "${xdgConfigHome}/docker";
+      GNUPGHOME = "${xdgConfigHome}/gnupg";
+      GRADLE_USER_HOME = "${xdgDataHome}/gradle";
+      IPYTHONDIR = "${xdgConfigHome}/jupyter";
+      JUPYTER_CONFIG_DIR = "${xdgConfigHome}/jupyter";
+      MACHINE_STORAGE_PATH = "${xdgDataHome}/docker-machine";
 
-        _JAVA_OPTIONS = ''-Djava.util.prefs.userRoot=${xdgConfigHome}/java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'';
-      };
+      _JAVA_OPTIONS = ''-Djava.util.prefs.userRoot=${xdgConfigHome}/java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'';
+    };
   };
 }

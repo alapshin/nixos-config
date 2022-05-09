@@ -1,8 +1,12 @@
-{ config, lib, myutils, pkgs, ... }:
-let
-  username = myutils.extractUsername (builtins.toString ./.);
-in
 {
+  config,
+  lib,
+  myutils,
+  pkgs,
+  ...
+}: let
+  username = myutils.extractUsername (builtins.toString ./.);
+in {
   imports = [
     ./home
 

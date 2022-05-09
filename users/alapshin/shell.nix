@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
-
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   environment = {
     variables = {
       ZDOTDIR = "$HOME/.config/zsh";

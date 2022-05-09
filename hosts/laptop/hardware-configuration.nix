@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   boot = {
     # Use the GRUB 2 boot loader.
     loader.grub = {
@@ -11,19 +14,19 @@
     };
   };
 
-  fileSystems."/" = { 
+  fileSystems."/" = {
     device = "/dev/disk/by-uuid/dbbc5826-8290-4c77-9ce9-31193f9f0579";
     fsType = "btrfs";
-    options = [ "subvol=root" ];
+    options = ["subvol=root"];
   };
 
-  fileSystems."/home" = { 
+  fileSystems."/home" = {
     device = "/dev/disk/by-uuid/dbbc5826-8290-4c77-9ce9-31193f9f0579";
     fsType = "btrfs";
-    options = [ "subvol=home" ];
+    options = ["subvol=home"];
   };
 
-  swapDevices = [ 
-    { device = "/dev/disk/by-uuid/f4295eea-039e-48f8-9bd9-88fb927990d0"; }
+  swapDevices = [
+    {device = "/dev/disk/by-uuid/f4295eea-039e-48f8-9bd9-88fb927990d0";}
   ];
 }

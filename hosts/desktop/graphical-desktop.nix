@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   xdg.portal = {
     enable = true;
     gtkUsePortal = true;
@@ -45,20 +47,21 @@
 
   # Enable Vulkan layers
   # https://nixos.wiki/wiki/Mesa
-  hardware.opengl =
-    let 
-      # version = "22.0.2";
-      fn = oldAttrs: rec {
-        # inherit version;
-        # src = pkgs.fetchurl {
-        #   urls = [
-        #     "https://mesa.freedesktop.org/archive/mesa-${version}.tar.xz"
-        #   ];
-        #   sha256 = "0l0jc23rk5s7lq8wgx4b6mxasb762lnw5kk7pn2p94drnll1ki76";
-        # };
-        nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ pkgs.glslang ];
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dvulkan-layers=device-select,overlay" ];
-        postInstall = oldAttrs.postInstall + ''
+  hardware.opengl = let
+    # version = "22.0.2";
+    fn = oldAttrs: rec {
+      # inherit version;
+      # src = pkgs.fetchurl {
+      #   urls = [
+      #     "https://mesa.freedesktop.org/archive/mesa-${version}.tar.xz"
+      #   ];
+      #   sha256 = "0l0jc23rk5s7lq8wgx4b6mxasb762lnw5kk7pn2p94drnll1ki76";
+      # };
+      nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.glslang];
+      mesonFlags = oldAttrs.mesonFlags ++ ["-Dvulkan-layers=device-select,overlay"];
+      postInstall =
+        oldAttrs.postInstall
+        + ''
           mv $out/lib/libVkLayer* $drivers/lib
 
           #Device Select layer
@@ -71,8 +74,9 @@
           substituteInPlace $drivers/share/vulkan/explicit_layer.d/''${layer}.json \
           --replace "lib''${layer}" "$drivers/lib/lib''${layer}"
         '';
-      }; 
-    in with pkgs; {
+    };
+  in
+    with pkgs; {
       enable = true;
       driSupport = true;
       driSupport32Bit = true;

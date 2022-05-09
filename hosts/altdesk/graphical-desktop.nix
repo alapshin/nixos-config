@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   hardware.nvidia.modesetting.enable = true;
 
   xdg.portal = {
