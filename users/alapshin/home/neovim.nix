@@ -1,6 +1,5 @@
 {
   config,
-  dirs,
   myutils,
   pkgs,
   ...

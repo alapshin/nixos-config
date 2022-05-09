@@ -10,21 +10,10 @@
 in {
   imports = [
     ./apps.nix
+    ./shell.nix
     ./neovim.nix
     ./firefox.nix
   ];
-
-  environment = {
-    # Load home-manager settings
-    # Shells are configured using system module insted of home-manage one and
-    # as a result we need to load home-manager settings by hand
-    loginShellInit = ''
-      hmconfig="/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
-      if [[ -e "$hmconfig" ]]; then
-        source $hmconfig
-      fi
-    '';
-  };
 
   home-manager.users."${username}" = {
     home.packages = with pkgs; [
@@ -62,7 +51,6 @@ in {
         "tig/config".source = "${dirs.dotfiles}/tigrc";
         "git/config".source = "${dirs.dotfiles}/gitconfig";
         "git/config-alar".source = "${dirs.dotfiles}/gitconfig-alar";
-        "zsh/.zshrc".source = "${dirs.dotfiles}/zshrc";
         "zsh/p10k.zsh".source = "${dirs.dotfiles}/p10k.zsh";
       };
       mimeApps = {
