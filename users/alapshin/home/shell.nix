@@ -13,6 +13,12 @@ in {
       enable = true;
       enableZshIntegration = true;
     };
+
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
     programs.zsh = {
       enable = true;
       dotDir = ".config/zsh";
