@@ -12,7 +12,6 @@ in {
   users.users."${username}".packages = with pkgs; [
     async-profiler
 
-    fhs-run
     groovy
     scrcpy
     android-udev-rules

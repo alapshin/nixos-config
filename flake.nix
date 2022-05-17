@@ -49,6 +49,12 @@
         packages = (import ./overlays/packages.nix);
       };
 
+      devShells = {
+          "${system}" = {
+              android = pkgs.android-fhs-env.env;
+          };
+      };
+
       nixosConfigurations = {
         carbon = nixos.lib.nixosSystem {
           inherit system;

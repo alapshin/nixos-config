@@ -1,9 +1,12 @@
 { stdenv, buildFHSUserEnv, runtimeShell, writeScript, extraPkgs ? pkgs: [ ] }:
 
 buildFHSUserEnv {
-  name = "fhs-run";
+  name = "android-fhs-env";
+
+  runScript = "zsh";
 
   targetPkgs = pkgs: with pkgs; [
+    zsh
     bash
     coreutils
     file
@@ -17,15 +20,4 @@ buildFHSUserEnv {
   multiPkgs = pkgs: with pkgs; [
     zlib
   ];
-
-  runScript = writeScript "fhs-exec" ''
-    #!${runtimeShell}
-    run="$1"
-    if [ ! -z "$run" ]; then
-      shift
-      exec -- "$run" "$@"
-    else
-      echo "Usage: fhs-run command-to-run args..." >&2
-    fi
-  '';
 }

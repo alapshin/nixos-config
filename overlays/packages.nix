@@ -10,7 +10,7 @@ final: prev: {
     package = prev.thunderbird;
   };
 
-  fhs-run = prev.callPackage ../packages/fhs-run {};
+  android-fhs-env = prev.callPackage ../packages/android-fhs-env {};
   firacode-nerdfonts = prev.nerdfonts.override {fonts = ["FiraCode"];};
 
   androidStudioPackages =
