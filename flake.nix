@@ -33,20 +33,22 @@
           allowUnfree = true;
           firefox.enablePlasmaBrowserIntegration = true;
         };
-        overlays = extraOverlays ++ (lib.attrValues self.overlays);
+        overlays = (lib.attrValues self.overlays) ++ extraOverlays;
       };
 
-      pkgs = mkPkgs nixos [ self.overlay nur.overlay ];
+      pkgs = mkPkgs nixos [ nur.overlay ];
     in
     {
-      overlay = final: prev: {
-        stable = inputs.stable.legacyPackages."${system}";
-        unstable = inputs.nixpkgs.legacyPackages."${system}";
-      };
-
       overlays = {
-        custom = (import ./overlays/custom.nix);
+        # If local overlay references attributes from default one 
+        # then its name should follow default overlay name in alphabeticall 
+        # order because overlays are sorted by name using `lib.attrValues`
         packages = (import ./overlays/packages.nix);
+        overrides = (import ./overlays/overrides.nix);
+        default = final: prev: {
+            stable = inputs.stable.legacyPackages."${system}";
+            unstable = inputs.nixpkgs.legacyPackages."${system}";
+        };
       };
 
       devShells = {
