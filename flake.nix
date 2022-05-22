@@ -27,16 +27,41 @@
       };
       myutils = import ./lib/utils.nix { inherit lib dirs; };
 
-      mkPkgs = pkgs: extraOverlays: import pkgs {
-        inherit system;
-        config = {
+      nixpkgsConfig = {
           allowUnfree = true;
           firefox.enablePlasmaBrowserIntegration = true;
-        };
-        overlays = (lib.attrValues self.overlays) ++ extraOverlays;
       };
 
-      pkgs = mkPkgs nixos [ nur.overlay ];
+      mkPkgs = { 
+          pkgs,  
+          extraOverlays ? [ nur.overlay ]
+      }: import pkgs {
+        inherit system;
+        config = nixpkgsConfig;
+        overlays = (lib.attrValues self.overlays) ++ extraOverlays;
+      };
+      pkgs = mkPkgs { pkgs = nixos; };
+
+      homeManagerConfig = {
+          # Use global pkgs configured via nixpkgs.* options
+          home-manager.useGlobalPkgs = true;
+          # Install user packages to /etc/profiles instead. 
+          # Necessary for nixos-rebuild build-vm to work.
+          home-manager.useUserPackages = true;
+      };
+      mkNixosConfiguration = {
+          system ? "x86_64-linux",
+          baseModules ? [
+            ./configuration.nix
+            home-manager.nixosModules.home-manager homeManagerConfig
+          ],
+          hostModules ? [ ],
+          userModules ? [ ],
+      }: nixos.lib.nixosSystem {
+          inherit system;
+          modules = baseModules ++ hostModules ++ userModules;
+          specialArgs = { inherit inputs pkgs self dirs myutils; };
+      };
     in
     {
       overlays = {
@@ -58,81 +83,44 @@
       };
 
       nixosConfigurations = {
-        carbon = nixos.lib.nixosSystem {
-          inherit system;
-          modules = [
-            (import ./configuration.nix)
-            (import ./hosts/common)
-            (import ./hosts/carbon)
-            (import ./users/alapshin)
-            home-manager.nixosModules.home-manager
-            {
-              # Use global pkgs configured via nixpkgs.* options
-              home-manager.useGlobalPkgs = true;
-              # Install user packages to /etc/profiles instead. 
-              # Necessary for nixos-rebuild build-vm to work.
-              home-manager.useUserPackages = true;
-            }
+        carbon = mkNixosConfiguration {
+          hostModules = [
+            ./hosts/common
+            ./hosts/carbon
           ];
-          specialArgs = { inherit inputs pkgs self dirs myutils; };
+          userModules = [
+            ./users/alapshin
+          ];
         };
 
-        desktop = nixos.lib.nixosSystem {
-          inherit system;
-          modules = [
-            (import ./configuration.nix)
-            (import ./hosts/common)
-            (import ./hosts/desktop)
-            (import ./users/alapshin)
-            home-manager.nixosModules.home-manager
-            {
-              # Use global pkgs configured via nixpkgs.* options
-              home-manager.useGlobalPkgs = true;
-              # Install user packages to /etc/profiles instead. 
-              # Necessary for nixos-rebuild build-vm to work.
-              home-manager.useUserPackages = true;
-            }
+        desktop = mkNixosConfiguration {
+          hostModules = [
+            ./hosts/common
+            ./hosts/desktop
           ];
-          specialArgs = { inherit inputs pkgs self dirs myutils; };
+          userModules = [
+            ./users/alapshin
+          ];
         };
 
-        altdesk = nixos.lib.nixosSystem {
-          inherit system;
-          modules = [
-            (import ./configuration.nix)
-            (import ./hosts/common)
-            (import ./hosts/altdesk)
-            (import ./users/alapshin)
-            home-manager.nixosModules.home-manager
-            {
-              # Use global pkgs configured via nixpkgs.* options
-              home-manager.useGlobalPkgs = true;
-              # Install user packages to /etc/profiles instead. 
-              # Necessary for nixos-rebuild build-vm to work.
-              home-manager.useUserPackages = true;
-            }
+        altdesk = mkNixosConfiguration {
+          hostModules = [
+            ./hosts/common
+            ./hosts/altdesk
           ];
-          specialArgs = { inherit inputs pkgs self dirs myutils; };
+          userModules = [
+            ./users/alapshin
+          ];
         };
 
-
-        laptop = nixos.lib.nixosSystem {
-          inherit system;
-          modules = [
-            (import ./configuration.nix)
-            (import ./hosts/common)
-            (import ./hosts/laptop)
-            (import ./users/alapshin)
-            home-manager.nixosModules.home-manager
-            {
-              # Use global pkgs configured via nixpkgs.* options
-              home-manager.useGlobalPkgs = true;
-              # Install user packages to /etc/profiles instead. 
-              # Necessary for nixos-rebuild build-vm to work.
-              home-manager.useUserPackages = true;
-            }
+        laptop = mkNixosConfiguration {
+          hostModules = [
+            ./hosts/common
+            ./hosts/laptop
           ];
-          specialArgs = { inherit inputs pkgs self dirs myutils; };
+          userModules = [
+            ./users/alapshin
+          ];
         };
       };
     };
