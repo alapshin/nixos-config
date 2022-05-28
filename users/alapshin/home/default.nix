@@ -16,6 +16,7 @@ in {
   ];
 
   home-manager.users."${username}" = {
+    home.stateVersion = "22.05";
     home.packages = with pkgs; [
       home-manager
       keepassxc-autostart
