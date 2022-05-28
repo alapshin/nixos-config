@@ -1,11 +1,8 @@
 {
   config,
-  myutils,
   pkgs,
   ...
 }: let
-  hmcfg = config.home-manager.users."${username}";
-  username = myutils.extractUsername (builtins.toString ./.);
   breezy = pkgs.vimUtils.buildVimPlugin {
     pname = "breezy";
     version = "2020-05-24";
@@ -17,26 +14,24 @@
     };
   };
 in {
-  home-manager.users."${username}" = {
-    programs.neovim = {
-      enable = true;
-      plugins = with pkgs.vimPlugins; [
-        breezy
-        fzf-vim
-        vimtex
-        vim-sneak
-        vim-eunuch
-        vim-hardtime
-        vim-polyglot
-        vim-commentary
-        vim-fugitive
-        vim-surround
-        vim-unimpaired
-        lightline-vim
-      ];
-      extraConfig = ''
-        source ${hmcfg.xdg.configHome}/nvim/config.vim
-      '';
-    };
+  programs.neovim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      breezy
+      fzf-vim
+      vimtex
+      vim-sneak
+      vim-eunuch
+      vim-hardtime
+      vim-polyglot
+      vim-commentary
+      vim-fugitive
+      vim-surround
+      vim-unimpaired
+      lightline-vim
+    ];
+    extraConfig = ''
+      source $XDG_CONFIG_HOME/nvim/config.vim
+    '';
   };
 }

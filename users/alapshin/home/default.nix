@@ -8,14 +8,14 @@
   hmcfg = config.home-manager.users."${username}";
   username = myutils.extractUsername (builtins.toString ./.);
 in {
-  imports = [
-    ./apps.nix
-    ./shell.nix
-    ./neovim.nix
-    ./firefox.nix
-  ];
-
   home-manager.users."${username}" = {
+    imports = [
+      ./apps.nix
+      ./shell.nix
+      ./neovim.nix
+      ./firefox.nix
+    ];
+
     home.stateVersion = "22.05";
     home.packages = with pkgs; [
       home-manager

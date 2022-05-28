@@ -48,6 +48,7 @@
           # Install user packages to /etc/profiles instead. 
           # Necessary for nixos-rebuild build-vm to work.
           home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit dirs; };
       };
       mkNixosConfiguration = {
           system ? "x86_64-linux",
