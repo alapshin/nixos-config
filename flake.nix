@@ -32,7 +32,6 @@
 
     nixpkgsConfig = {
       allowUnfree = true;
-      firefox.enablePlasmaBrowserIntegration = true;
     };
 
     mkPkgs = {
