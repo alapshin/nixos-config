@@ -39,15 +39,12 @@
       };
     };
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      cookie-autodelete
-      https-everywhere
+      ublock-origin
+      tree-style-tab
+      leechblock-ng
       keepassxc-browser
-      localcdn
       plasma-integration
       temporary-containers
-      tree-style-tab
-      ublock-origin
-      umatrix
     ];
   };
 }
