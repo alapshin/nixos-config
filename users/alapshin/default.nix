@@ -133,14 +133,12 @@ in {
         aspellDicts.en
         aspellDicts.ru
         atool
-        bat
         bcache-tools
         borgbackup
         calibre
         colord-kde
         digikam
         electrum
-        exa
         fd
         file
         gimp
@@ -163,10 +161,8 @@ in {
         moreutils
         mpv
         ncdu
-        nnn
         openssl
         p7zip
-        pandoc
         pciutils
         qbittorrent
         ripgrep

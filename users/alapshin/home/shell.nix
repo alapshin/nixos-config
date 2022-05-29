@@ -3,6 +3,12 @@
   dotfileDir,
   ...
 }: {
+  programs.bat.enable = true;
+  programs.broot = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
@@ -11,6 +17,20 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
+  };
+
+  programs.pandoc = {
+    enable = true;
+  };
+
+  programs.tmux = {
+    enable = true;
   };
 
   programs.zsh = {

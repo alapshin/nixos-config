@@ -7,7 +7,6 @@
 in {
   home-manager.users."${username}" = {
     imports = [
-      ./apps.nix
       ./shell.nix
       ./neovim.nix
       ./firefox.nix
@@ -27,8 +26,8 @@ in {
     };
 
     home.language = {
-      address = "ru_RU.UTF-8";
       base = "en_US.UTF-8";
+      address = "ru_RU.UTF-8";
       monetary = "ru_RU.UTF-8";
       paper = "ru_RU.UTF-8";
       time = "en_DK.UTF-8";
