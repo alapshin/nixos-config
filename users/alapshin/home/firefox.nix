@@ -1,6 +1,6 @@
 {
-  dirs,
   pkgs,
+  dotfileDir,
   ...
 }: {
   programs.firefox = {
@@ -29,7 +29,7 @@
           # Enable userChrome.css support
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
-        userChrome = builtins.readFile "${dirs.dotfiles}/mozilla/firefox/chrome/userChrome.css";
+        userChrome = builtins.readFile "${dotfileDir}/mozilla/firefox/chrome/userChrome.css";
       };
     };
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [

@@ -1,6 +1,6 @@
 {
-  dirs,
   pkgs,
+  dotfileDir,
   ...
 }: {
   programs.fzf = {
@@ -31,7 +31,7 @@
     plugins = [
       {
         name = "p10k";
-        src = "${dirs.dotfiles}";
+        src = "${dotfileDir}";
         file = "p10k.zsh";
       }
       {

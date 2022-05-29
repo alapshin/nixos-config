@@ -12,7 +12,6 @@ in {
 
     ./apps.nix
     ./cli.nix
-    ./shell.nix
     ./services.nix
 
     ./dev/git.nix
@@ -20,6 +19,11 @@ in {
     ./dev/python.nix
     ./dev/android.nix
   ];
+
+  programs.ssh.startAgent = true;
+  programs.gnupg.agent.enable = true;
+  programs.kdeconnect.enable = true;
+  programs.partition-manager.enable = true;
 
   users.users."${username}" = {
     uid = 1000;

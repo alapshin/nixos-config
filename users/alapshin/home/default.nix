@@ -1,8 +1,8 @@
 {
   config,
-  dirs,
   myutils,
   pkgs,
+  dotfileDir,
   ...
 }: let
   hmcfg = config.home-manager.users."${username}";
@@ -24,9 +24,9 @@ in {
     ];
 
     home.file = {
-      ".curlrc".source = "${dirs.dotfiles}/curlrc";
-      ".ssh/config".source = "${dirs.dotfiles}/ssh/config";
-      ".ideavimrc".source = "${dirs.dotfiles}/ideavimrc";
+      ".curlrc".source = "${dotfileDir}/curlrc";
+      ".ssh/config".source = "${dotfileDir}/ssh/config";
+      ".ideavimrc".source = "${dotfileDir}/ideavimrc";
     };
 
     home.language = {
@@ -41,18 +41,18 @@ in {
       enable = true;
       configFile = {
         "nvim" = {
-          source = "${dirs.dotfiles}/nvim";
+          source = "${dotfileDir}/nvim";
           recursive = true;
         };
         "fontconfig" = {
-          source = "${dirs.dotfiles}/fontconfig";
+          source = "${dotfileDir}/fontconfig";
           recursive = true;
         };
 
-        "tig/config".source = "${dirs.dotfiles}/tigrc";
-        "git/config".source = "${dirs.dotfiles}/gitconfig";
-        "git/config-alar".source = "${dirs.dotfiles}/gitconfig-alar";
-        "zsh/p10k.zsh".source = "${dirs.dotfiles}/p10k.zsh";
+        "tig/config".source = "${dotfileDir}/tigrc";
+        "git/config".source = "${dotfileDir}/gitconfig";
+        "git/config-alar".source = "${dotfileDir}/gitconfig-alar";
+        "zsh/p10k.zsh".source = "${dotfileDir}/p10k.zsh";
       };
       mimeApps = {
         enable = true;
