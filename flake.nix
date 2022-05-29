@@ -3,7 +3,6 @@
 
   inputs = {
     nixos.url = "nixpkgs/nixos-unstable";
-    stable.url = "nixpkgs/nixos-21.11-small";
     nixpkgs.url = "nixpkgs/master";
 
     nur.url = "github:nix-community/nur";
@@ -17,7 +16,6 @@
     self,
     nixos,
     nixpkgs,
-    stable,
     nur,
     home-manager,
     ...
@@ -82,7 +80,6 @@
       packages = import ./overlays/packages.nix;
       overrides = import ./overlays/overrides.nix;
       default = final: prev: {
-        stable = inputs.stable.legacyPackages."${system}";
         unstable = inputs.nixpkgs.legacyPackages."${system}";
       };
     };
