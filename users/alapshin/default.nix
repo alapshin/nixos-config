@@ -44,17 +44,18 @@
     spectacle
   ];
 
-  pythonPackages = pkgs.python3.withPackages (pythonPackages:
-    with pythonPackages; [
-      ipython
-      notebook
-      matplotlib
-      numpy
-      pandas
+  pythonPackages = pkgs.python3.withPackages (
+    pythonPackages:
+      with pythonPackages; [
+        ipython
+        notebook
+        matplotlib
+        numpy
+        pandas
         # pelican
-      scikitlearn
-      seaborn
-    ]
+        scikitlearn
+        seaborn
+      ]
   );
 in {
   imports = [
@@ -83,24 +84,24 @@ in {
       group = "users";
       dataDir = "/home/${username}";
       devices = {
-          altdesk = {
-              id = "K77LUC6-BZYZKY3-CHVAHJW-RXHUAPB-T6ZNZ6Q-KF77MQY-RCGE56Y-OV5XRAF";
-          };
-          carbon = {
-              id = "BB37FLW-KTKMN6T-2PQERS2-4T4P4U7-6ZWJCDU-BVRFF5F-P7BFCU3-CJH5FQP";
-          };
-          desktop = {
-              id = "SDAJAKH-WCN4BW6-H4H6QWF-43QC7DB-NWGL2RY-HOWYMNP-7TUWZZN-NC7MQAY";
-          };
-          oneplus = {
-              id = "BUNDEAI-JNT4FBK-KL444PA-XY3YVQA-YSMS7BB-N2NAWRE-6DAXRRQ-WWRAUQK";
-          };
+        altdesk = {
+          id = "K77LUC6-BZYZKY3-CHVAHJW-RXHUAPB-T6ZNZ6Q-KF77MQY-RCGE56Y-OV5XRAF";
+        };
+        carbon = {
+          id = "BB37FLW-KTKMN6T-2PQERS2-4T4P4U7-6ZWJCDU-BVRFF5F-P7BFCU3-CJH5FQP";
+        };
+        desktop = {
+          id = "SDAJAKH-WCN4BW6-H4H6QWF-43QC7DB-NWGL2RY-HOWYMNP-7TUWZZN-NC7MQAY";
+        };
+        oneplus = {
+          id = "BUNDEAI-JNT4FBK-KL444PA-XY3YVQA-YSMS7BB-N2NAWRE-6DAXRRQ-WWRAUQK";
+        };
       };
       folders = {
         "/home/${username}/Syncthing" = {
           id = "syncthing";
           label = "Syncthing";
-          devices = [ "altdesk" "carbon" "desktop" "oneplus" ];
+          devices = ["altdesk" "carbon" "desktop" "oneplus"];
         };
       };
       overrideFolders = true;
@@ -126,67 +127,71 @@ in {
       "wheel"
     ];
 
-    packages = with pkgs; [
-      aspell
-      aspellDicts.en
-      aspellDicts.ru
-      atool
-      bat
-      bcache-tools
-      borgbackup
-      calibre
-      colord-kde
-      digikam
-      electrum
-      exa
-      fd
-      file
-      gimp
-      gnupg
-      handbrake
-      htop
-      http-prompt
-      httpie
-      hunspell
-      hunspellDicts.en_US
-      hunspellDicts.ru_RU
-      imagemagick
-      inkscape
-      jq
-      keepassxc
-      libreoffice-qt
-      lm_sensors
-      man-pages
-      mkvtoolnix
-      moreutils
-      mpv
-      ncdu
-      nnn
-      openssl
-      p7zip
-      pandoc
-      pciutils
-      qbittorrent
-      ripgrep
-      rsync
-      shellcheck
-      s-tui
-      skrooge
-      smartmontools
-      smplayer
-      spotify
-      stress-ng
-      tdesktop
-      thunderbird
-      tor-browser-bundle-bin
-      tree
-      ungoogled-chromium
-      unrar
-      unzip
-      usbutils
-      wget
-      youtube-dl
-      yt-dlp
-    ] ++ gitPackages ++ javaPackages ++ plasmaPackages;
+    packages = with pkgs;
+      [
+        aspell
+        aspellDicts.en
+        aspellDicts.ru
+        atool
+        bat
+        bcache-tools
+        borgbackup
+        calibre
+        colord-kde
+        digikam
+        electrum
+        exa
+        fd
+        file
+        gimp
+        gnupg
+        handbrake
+        htop
+        http-prompt
+        httpie
+        hunspell
+        hunspellDicts.en_US
+        hunspellDicts.ru_RU
+        imagemagick
+        inkscape
+        jq
+        keepassxc
+        libreoffice-qt
+        lm_sensors
+        man-pages
+        mkvtoolnix
+        moreutils
+        mpv
+        ncdu
+        nnn
+        openssl
+        p7zip
+        pandoc
+        pciutils
+        qbittorrent
+        ripgrep
+        rsync
+        shellcheck
+        s-tui
+        skrooge
+        smartmontools
+        smplayer
+        spotify
+        stress-ng
+        tdesktop
+        thunderbird
+        tor-browser-bundle-bin
+        tree
+        ungoogled-chromium
+        unrar
+        unzip
+        usbutils
+        wget
+        youtube-dl
+        yt-dlp
+      ]
+      ++ gitPackages
+      ++ javaPackages
+      ++ plasmaPackages;
   };
 }

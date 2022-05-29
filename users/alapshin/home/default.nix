@@ -3,7 +3,7 @@
   dotfileDir,
   ...
 }: let
-    username = "alapshin";
+  username = "alapshin";
 in {
   home-manager.users."${username}" = {
     imports = [
