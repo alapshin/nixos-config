@@ -1,12 +1,9 @@
 {
-  config,
-  myutils,
   pkgs,
   dotfileDir,
   ...
 }: let
-  hmcfg = config.home-manager.users."${username}";
-  username = myutils.extractUsername (builtins.toString ./.);
+    username = "alapshin";
 in {
   home-manager.users."${username}" = {
     imports = [
@@ -67,30 +64,25 @@ in {
     };
 
     # Enforce XDG directories usage for some apps
-    home.sessionVariables = let
-      homeDir = hmcfg.home.homeDirectory;
-      xdgDataHome = hmcfg.xdg.dataHome;
-      xdgCacheHome = hmcfg.xdg.cacheHome;
-      xdgConfigHome = hmcfg.xdg.configHome;
-    in {
+    home.sessionVariables = {
       EDITOR = "nvim";
 
-      ANDROID_SDK_ROOT = "${homeDir}/opt/android-sdk";
-      # ANDROID_PREFS_ROOT = "${xdgConfigHome}/android";
-      # ANDROID_EMULATOR_HOME = "${xdgDataHome}/android/emulator";
+      ANDROID_SDK_ROOT = "$HOME/opt/android-sdk";
+      # ANDROID_PREFS_ROOT = "$XDG_CONFIG_HOME/android";
+      # ANDROID_EMULATOR_HOME = "$XDG_DATA_HOME/android/emulator";
 
-      AWS_CONFIG_FILE = "${xdgConfigHome}/aws/config";
-      AWS_SHARED_CREDENTIALS_FILE = "${xdgConfigHome}/aws/credentials";
-      CARGO_HOME = "${xdgDataHome}/cargo";
-      CUDA_CACHE_PATH = "${xdgCacheHome}/nv";
-      DOCKER_CONFIG = "${xdgConfigHome}/docker";
-      GNUPGHOME = "${xdgConfigHome}/gnupg";
-      GRADLE_USER_HOME = "${xdgDataHome}/gradle";
-      IPYTHONDIR = "${xdgConfigHome}/jupyter";
-      JUPYTER_CONFIG_DIR = "${xdgConfigHome}/jupyter";
-      MACHINE_STORAGE_PATH = "${xdgDataHome}/docker-machine";
+      AWS_CONFIG_FILE = "$XDG_CONFIG_HOME/aws/config";
+      AWS_SHARED_CREDENTIALS_FILE = "$XDG_CONFIG_HOME/aws/credentials";
+      CARGO_HOME = "$XDG_DATA_HOME/cargo";
+      CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
+      DOCKER_CONFIG = "$XDG_CONFIG_HOME/docker";
+      GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
+      GRADLE_USER_HOME = "$XDG_DATA_HOME/gradle";
+      IPYTHONDIR = "$XDG_CONFIG_HOME/jupyter";
+      JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
+      MACHINE_STORAGE_PATH = "$XDG_DATA_HOME/docker-machine";
 
-      _JAVA_OPTIONS = ''-Djava.util.prefs.userRoot=${xdgConfigHome}/java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'';
+      _JAVA_OPTIONS = ''-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'';
     };
   };
 }

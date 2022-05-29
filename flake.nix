@@ -22,10 +22,9 @@
 
       dirs = rec {
         config = builtins.toString ./.;
-        users = "${config}/users";
         dotfiles = "${config}/dotfiles";
       };
-      myutils = import ./lib/utils.nix { inherit lib dirs; };
+      helpers = import ./lib/helpers.nix { inherit lib; };
 
       nixpkgsConfig = {
           allowUnfree = true;
@@ -61,7 +60,7 @@
       }: nixos.lib.nixosSystem {
           inherit system;
           modules = baseModules ++ hostModules ++ userModules;
-          specialArgs = { inherit inputs pkgs self myutils; dotfileDir = dirs.dotfiles; };
+          specialArgs = { inherit inputs pkgs self; dotfileDir = dirs.dotfiles; };
       };
     in
     {

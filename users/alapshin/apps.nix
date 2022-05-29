@@ -1,11 +1,9 @@
 {
-  config,
-  myutils,
   pkgs,
+  username,
   ...
-}: let
-  username = myutils.extractUsername (builtins.toString ./.);
-in {
+}:
+{
   users.users."${username}".packages =
     (with pkgs; [
       aspell
