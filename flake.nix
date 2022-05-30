@@ -79,14 +79,17 @@
       packages = import ./overlays/packages.nix;
       overrides = import ./overlays/overrides.nix;
       default = final: prev: {
-        unstable = inputs.nixpkgs.legacyPackages."${system}";
+        unstable = inputs.nixpkgs.legacyPackages.${system};
       };
     };
 
     devShells = {
-      "${system}" = {
+      ${system} = {
         android = pkgs.android-fhs-env.env;
       };
+    };
+    formatter = {
+      ${system} = pkgs.alejandra;
     };
 
     nixosConfigurations = {
