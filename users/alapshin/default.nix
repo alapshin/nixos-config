@@ -37,6 +37,7 @@
     filelight
     gwenview
     kate
+    kamoso
     kcolorchooser
     kwalletmanager
     okular
