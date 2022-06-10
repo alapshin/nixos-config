@@ -88,6 +88,7 @@ in {
 
     packages = with pkgs;
       [
+        anki
         aspell
         aspellDicts.en
         aspellDicts.ru
