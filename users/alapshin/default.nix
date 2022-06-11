@@ -6,6 +6,12 @@
 }: let
   username = "alapshin";
 
+  devTools = with pkgs; [
+      hadolint
+      httpie
+      shellcheck
+  ];
+
   gitPackages = with pkgs; [
     gh
     git
@@ -106,7 +112,6 @@ in {
         handbrake
         htop
         http-prompt
-        httpie
         hunspell
         hunspellDicts.en_US
         hunspellDicts.ru_RU
@@ -127,7 +132,6 @@ in {
         qbittorrent
         ripgrep
         rsync
-        shellcheck
         s-tui
         skrooge
         smartmontools
@@ -146,6 +150,7 @@ in {
         youtube-dl
         yt-dlp
       ]
+      ++ devTools
       ++ gitPackages
       ++ javaPackages
       ++ plasmaPackages
