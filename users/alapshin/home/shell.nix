@@ -67,7 +67,6 @@
         "adb"
         "docker"
         "docker-compose"
-        "docker-machine"
         "fzf"
         "git"
         "git-extras"

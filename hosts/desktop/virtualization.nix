@@ -12,6 +12,5 @@
   environment.systemPackages = with pkgs; [
     virtmanager
     docker-compose
-    docker-machine
   ];
 }
