@@ -29,6 +29,8 @@
 
     groovy
     scrcpy
+    # Install android-fhs-env package used as devShell for android
+    android-fhs-env
     android-udev-rules
     jetbrains.idea-ultimate
     androidStudioPackages.stable
