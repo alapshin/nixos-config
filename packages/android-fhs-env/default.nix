@@ -3,7 +3,7 @@
 buildFHSUserEnv {
   name = "android-fhs-env";
 
-  runScript = "zsh";
+  runScript = "env -u JAVA_HOME zsh";
 
   targetPkgs = pkgs: with pkgs; [
     zsh
