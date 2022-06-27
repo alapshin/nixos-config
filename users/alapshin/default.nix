@@ -7,9 +7,9 @@
   username = "alapshin";
 
   devTools = with pkgs; [
-      hadolint
-      httpie
-      shellcheck
+    hadolint
+    httpie
+    shellcheck
   ];
 
   gitPackages = with pkgs; [
