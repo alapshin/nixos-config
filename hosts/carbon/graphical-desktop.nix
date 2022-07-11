@@ -34,7 +34,6 @@
       displayManager = {
         # startx.enable = true;
         sddm.enable = true;
-        # lightdm.enable = true;
         defaultSession = "plasma";
       };
       desktopManager.plasma5.enable = true;
