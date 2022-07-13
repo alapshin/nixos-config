@@ -12,6 +12,10 @@ in {
       ./firefox.nix
     ];
 
+    services = {
+      etesync-dav.enable = true;
+    };
+
     home.stateVersion = "22.05";
     home.packages = with pkgs; [
       home-manager

@@ -10,6 +10,8 @@ final: prev: {
     package = prev.thunderbird;
   };
 
+  etesync-dav = prev.callPackage ../packages/etesync-dav {};
+
   android-fhs-env = prev.callPackage ../packages/android-fhs-env {};
   firacode-nerdfonts = prev.nerdfonts.override {fonts = ["FiraCode"];};
 
