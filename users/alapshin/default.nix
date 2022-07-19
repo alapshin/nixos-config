@@ -107,6 +107,7 @@ in {
         colord-kde
         digikam
         electrum
+        element-desktop
         fd
         file
         gimp
