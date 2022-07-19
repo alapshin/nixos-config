@@ -46,6 +46,7 @@
     gwenview
     kate
     kamoso
+    kasts
     kcolorchooser
     kwalletmanager
     okular
