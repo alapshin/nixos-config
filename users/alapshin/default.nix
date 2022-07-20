@@ -130,6 +130,7 @@ in {
         moreutils
         mpv
         ncdu
+        obs-studio
         openssl
         p7zip
         pciutils
