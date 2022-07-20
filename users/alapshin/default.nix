@@ -6,6 +6,12 @@
 }: let
   username = "alapshin";
 
+  borgPackages = with pkgs; [
+      vorta
+      borgbackup
+      borgmatic
+  ];
+
   devTools = with pkgs; [
     hadolint
     httpie
@@ -103,7 +109,6 @@ in {
         aspellDicts.ru
         atool
         bcache-tools
-        borgbackup
         calibre
         colord-kde
         digikam
@@ -157,6 +162,7 @@ in {
       ]
       ++ devTools
       ++ gitPackages
+      ++ borgPackages
       ++ javaPackages
       ++ plasmaPackages
       ++ pythonPackages;

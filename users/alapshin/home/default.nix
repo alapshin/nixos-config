@@ -49,6 +49,7 @@ in {
           recursive = true;
         };
 
+        "borgmatic/config.yaml".source = "${dotfileDir}/borgmatic.yaml";
         "tig/config".source = "${dotfileDir}/tigrc";
         "git/config".source = "${dotfileDir}/gitconfig";
         "git/config-alar".source = "${dotfileDir}/gitconfig-alar";
