@@ -14,6 +14,5 @@
 
   environment.systemPackages = with pkgs; [
     kwave
-    pavucontrol
   ];
 }
