@@ -80,7 +80,7 @@ in {
       CARGO_HOME = "$XDG_DATA_HOME/cargo";
       CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
       DOCKER_CONFIG = "$XDG_CONFIG_HOME/docker";
-      GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
+      GNUPGHOME = "$XDG_DATA_HOME/gnupg";
       GRADLE_USER_HOME = "$XDG_DATA_HOME/gradle";
       IPYTHONDIR = "$XDG_CONFIG_HOME/jupyter";
       JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
