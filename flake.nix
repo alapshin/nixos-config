@@ -6,10 +6,11 @@
     nixpkgs.url = "nixpkgs/master";
 
     nur.url = "github:nix-community/nur";
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixos";
-    };
+    sops-nix.url = github:Mic92/sops-nix;
+    sops-nix.inputs.nixpkgs.follows = "nixos";
+
+    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.inputs.nixpkgs.follows = "nixos";
   };
 
   outputs = inputs @ {
@@ -17,6 +18,7 @@
     nixos,
     nixpkgs,
     nur,
+    sops-nix,
     home-manager,
     ...
   }: let
@@ -51,14 +53,14 @@
       # Install user packages to /etc/profiles instead.
       # Necessary for nixos-rebuild build-vm to work.
       home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = {dotfileDir = dirs.dotfiles;};
+      home-manager.extraSpecialArgs = { dotfileDir = dirs.dotfiles; };
     };
     mkNixosConfiguration = {
       system ? "x86_64-linux",
       baseModules ? [
         ./configuration.nix
-        home-manager.nixosModules.home-manager
-        homeManagerConfig
+        sops-nix.nixosModules.sops
+        home-manager.nixosModules.home-manager homeManagerConfig
       ],
       hostModules ? [],
       userModules ? [],

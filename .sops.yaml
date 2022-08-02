@@ -1,0 +1,10 @@
+keys:
+  - &desktop age18y57gdahad7zhrrgj2m4dd7fcgwfn4gpmxe9mhcrue8suq8e8c3stzd0ge
+  - &alapshin age1k2t56rsp2xvdsvjxraytyfufedxcl7z548tc9dzdhzqpq9yyfc9sz2h70e
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+        - *desktop
+        - *alapshin

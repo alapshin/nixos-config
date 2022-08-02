@@ -13,9 +13,12 @@
   ];
 
   devTools = with pkgs; [
+    age
     hadolint
     httpie
     shellcheck
+    sops
+    ssh-to-age
   ];
 
   gitPackages = with pkgs; [
