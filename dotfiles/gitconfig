@@ -41,6 +41,9 @@
 [includeIf "gitdir:~/alar/"]
         path = ~/.config/git/config-alar
 
+[diff "sopsdiff"]
+	textconv = "sops -d"
+
 [difftool "androidstudio"]
 	cmd = android-studio nosplash diff $LOCAL $REMOTE 2>/dev/null
 	trustExitCode = true

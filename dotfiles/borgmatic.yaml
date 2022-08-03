@@ -37,14 +37,19 @@ retention:
 # https://borgbackup.readthedocs.io/en/stable/usage/general.html for
 # details.
 storage:
+    # Command to use instead of "ssh". This can be used to specify
+    # ssh options.  Defaults to not set.
+    ssh_command: ssh -i /run/secrets/borg/borgbase_ed25519
+
+    # Path for Borg encryption key files. Defaults to
+    # $borg_base_directory/.config/borg/keys
+    borg_keys_directory: /run/secrets/borg/keys
+
     # The standard output of this command is used to unlock the
     # encryption key. Only use on repositories that were
     # initialized with passcommand/repokey/keyfile encryption.
     # Note that if both encryption_passcommand and
     # encryption_passphrase are set, then encryption_passphrase
     # takes precedence. Defaults to not set.
-    encryption_passcommand: cat /run/secrets/borg_key
+    encryption_passcommand: cat /run/secrets/borg/encryption_passphrase
     
-    # Command to use instead of "ssh". This can be used to specify
-    # ssh options.  Defaults to not set.
-    ssh_command: ssh -i ~/.ssh/borgbase_ed25519

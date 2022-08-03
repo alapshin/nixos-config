@@ -4,6 +4,9 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./secrets.nix
+  ];
   boot = {
     # Enable the magic SysRq key
     kernel.sysctl = {
@@ -61,18 +64,6 @@
   time = {
     timeZone = "Europe/Moscow";
     hardwareClockInLocalTime = true;
-  };
-
-  sops = {
-      age = {
-        sshKeyPaths = [ 
-          "/etc/ssh/ssh_host_ed25519_key" 
-        ];
-      };
-      defaultSopsFile = ../../secrets/default.yaml;
-      secrets = {
-        borg_key = {};
-      };
   };
 
   security = {
