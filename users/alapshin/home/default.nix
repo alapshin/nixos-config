@@ -19,8 +19,8 @@ in {
     home.stateVersion = "22.05";
     home.packages = with pkgs; [
       home-manager
+      birdtray-autostart
       keepassxc-autostart
-      thunderbird-autostart
     ];
 
     home.file = {

@@ -1,13 +1,14 @@
 # Overlay containing local packages definitions
 final: prev: {
+  birdtray-autostart = prev.makeAutostartItem {
+    name = "Birdtray";
+    package = prev.birdtray;
+    srcPrefix = "com.ulduzsoft.";
+  };
   keepassxc-autostart = prev.makeAutostartItem {
     name = "KeePassXC";
     package = prev.keepassxc;
     srcPrefix = "org.keepassxc.";
-  };
-  thunderbird-autostart = prev.makeAutostartItem {
-    name = "thunderbird";
-    package = prev.thunderbird;
   };
 
   etesync-dav = prev.callPackage ../packages/etesync-dav {};
