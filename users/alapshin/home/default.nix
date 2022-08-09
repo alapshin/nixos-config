@@ -8,6 +8,7 @@ in {
   home-manager.users."${username}" = {
     imports = [
       ./shell.nix
+      ./plasma.nix
       ./neovim.nix
       ./firefox.nix
     ];
