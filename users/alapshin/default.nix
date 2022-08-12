@@ -118,6 +118,7 @@ in {
         digikam
         electrum
         element-desktop
+        exiftool
         fd
         file
         gimp
