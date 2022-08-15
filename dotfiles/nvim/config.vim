@@ -97,11 +97,6 @@ set fileencodings=ucs-bom,utf-8,cp1251
 
 " autocmds {{{
 autocmd FileType nix setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType tex setlocal shiftwidth=4 tabstop=4 expandtab
-autocmd FileType snippet setlocal shiftwidth=8 tabstop=8 softtabstop=0 noexpandtab
-autocmd FileType gitconfig setlocal shiftwidth=8 tabstop=8 softtabstop=0 noexpandtab
-" remove trailing spaces
-autocmd FileType c,cpp,cfg,cmake,lua,tex,css,html,xml,js,pandoc,python autocmd BufWritePre <buffer> :%s/\s\+$//e
 " }}}
 
 " keybindings {{{
