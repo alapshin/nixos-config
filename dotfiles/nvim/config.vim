@@ -101,9 +101,6 @@ autocmd FileType snippet setlocal shiftwidth=8 tabstop=8 softtabstop=0 noexpandt
 autocmd FileType gitconfig setlocal shiftwidth=8 tabstop=8 softtabstop=0 noexpandtab
 " remove trailing spaces
 autocmd FileType c,cpp,cfg,cmake,lua,tex,css,html,xml,js,pandoc,python autocmd BufWritePre <buffer> :%s/\s\+$//e
-" jinja
-autocmd BufNewFile,BufRead *.j2 set filetype=jinja
-autocmd BufNewFile,BufRead *.j2 set commentstring={#%s#}
 " }}}
 
 " keybindings {{{
@@ -150,6 +147,9 @@ cabbrev h vertical topleft h
 " {{{ fzf
 nnoremap <c-p> :GFiles<CR>
 nnoremap <c-o> :Buffers<CR>
+" }}}
+" {{{ vim-nix
+let nix_recommended_style = 1
 " }}}
 " {{{ lightline
 let g:lightline = { 'colorscheme': 'breezy', }
