@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-    programs.plasma = {
-        enable = true;
-    };
+  programs.plasma = {
+    enable = true;
+  };
 }

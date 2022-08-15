@@ -7,9 +7,9 @@
   username = "alapshin";
 
   borgPackages = with pkgs; [
-      vorta
-      borgbackup
-      borgmatic
+    vorta
+    borgbackup
+    borgmatic
   ];
 
   devTools = with pkgs; [
