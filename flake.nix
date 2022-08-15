@@ -38,6 +38,9 @@
 
     nixpkgsConfig = {
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "python3.10-mistune-0.8.4"
+      ];
     };
 
     mkPkgs = {
