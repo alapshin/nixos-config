@@ -5,6 +5,7 @@
 }: {
   programs.plasma = {
     enable = true;
+    workspace.clickItemTo = "select";
     files = {
       "plasma-localerc"."Formats" = {
         "LANG" = config.home.language.base;
