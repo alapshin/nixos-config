@@ -32,10 +32,11 @@ in {
 
     home.language = {
       base = "en_US.UTF-8";
-      address = "ru_RU.UTF-8";
-      monetary = "ru_RU.UTF-8";
-      paper = "ru_RU.UTF-8";
       time = "en_DK.UTF-8";
+      paper = "en_DK.UTF-8";
+      numeric = "en_DK.UTF-8";
+      monetary = "en_IE.UTF-8";
+      measurement = "en_DK.UTF-8";
     };
 
     xdg = {
