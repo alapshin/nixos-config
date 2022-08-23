@@ -4,7 +4,7 @@ keys:
   - &alapshin age1k2t56rsp2xvdsvjxraytyfufedxcl7z548tc9dzdhzqpq9yyfc9sz2h70e
 
 creation_rules:
-  - path_regex: secrets/.*$
+  - path_regex: secrets/.*
     key_groups:
       - age:
         - *altdesk
