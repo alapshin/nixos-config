@@ -13,6 +13,15 @@ buildFHSUserEnv {
     findutils
     git
     jdk11
+    openssl_1_0
+    portaudio
+    SDL2
+    SDL2_gfx
+    SDL2_net
+    SDL2_ttf
+    SDL2_image
+    SDL2_mixer
+    SDL2_sound
     which
     unzip
   ] ++ extraPkgs pkgs;
