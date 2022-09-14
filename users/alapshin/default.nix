@@ -197,6 +197,9 @@ in {
         desktop = {
           id = "SDAJAKH-WCN4BW6-H4H6QWF-43QC7DB-NWGL2RY-HOWYMNP-7TUWZZN-NC7MQAY";
         };
+        pixel = {
+          id = "QZYNABL-EZ5KIGC-NPZ76I7-7HBM3UR-RV2CEYL-7PUZ6CX-NFPH5V2-TIZU2A7";
+        };
         oneplus = {
           id = "BUNDEAI-JNT4FBK-KL444PA-XY3YVQA-YSMS7BB-N2NAWRE-6DAXRRQ-WWRAUQK";
         };
