@@ -7,6 +7,7 @@
   imports = [
     ./backup.nix
     ./secrets.nix
+    ./networking.nix
   ];
   boot = {
     # Enable the magic SysRq key

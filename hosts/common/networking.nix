@@ -4,6 +4,6 @@
   ...
 }: {
   networking = {
-    hostName = "laptop";
+    networkmanager.wifi.backend = "iwd";
   };
 }
