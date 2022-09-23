@@ -131,16 +131,6 @@
           ./users/alapshin
         ];
       };
-
-      laptop = mkNixosConfiguration {
-        hostModules = [
-          ./hosts/common
-          ./hosts/laptop
-        ];
-        userModules = [
-          ./users/alapshin
-        ];
-      };
     };
   };
 }
