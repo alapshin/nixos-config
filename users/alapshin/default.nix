@@ -200,15 +200,12 @@ in {
         pixel = {
           id = "QZYNABL-EZ5KIGC-NPZ76I7-7HBM3UR-RV2CEYL-7PUZ6CX-NFPH5V2-TIZU2A7";
         };
-        oneplus = {
-          id = "BUNDEAI-JNT4FBK-KL444PA-XY3YVQA-YSMS7BB-N2NAWRE-6DAXRRQ-WWRAUQK";
-        };
       };
       folders = {
         "/home/${username}/Syncthing" = {
           id = "syncthing";
           label = "Syncthing";
-          devices = ["altdesk" "carbon" "desktop" "oneplus"];
+          devices = ["altdesk" "carbon" "desktop" "pixel"];
         };
       };
       overrideFolders = true;
