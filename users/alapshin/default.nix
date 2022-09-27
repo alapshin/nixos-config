@@ -70,7 +70,7 @@
         matplotlib
         numpy
         pandas
-        scikitlearn
+        scikit-learn
         seaborn
       ]))
   ];
