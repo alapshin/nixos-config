@@ -11,15 +11,15 @@ let
   };
   stableVersion = {
     version = "2021.3.1.16"; # "Android Studio Dolphin (2021.3.1)"
-    sha256Hash = "16hxz47fa8gigw2k9qp6npsf6ih46q1zgjin8fa3px46axc5nwhs";
+    sha256Hash = "GnJbWFeG9DuUQzbK9wM2BEbj9LXm4jQFf/Eh5Q75HZo=";
   };
   betaVersion = {
-    version = "2021.3.1.14"; # "Android Studio Dolphin (2021.3.1) Beta 5"
-    sha256Hash = "k1Qt54u45rwHsQNz9TVqnFB65kBKtfFZ3OknpfutKPI=";
+    version = "2022.1.1.11"; # "Android Studio Electic Eel (2022.1.1) Beta 1"
+    sha256Hash = "YQ20VQME9bQ2vOI7RWfA00npewOL3D6y1dGgNnJXnHc=";
   };
   latestVersion = { # canary & dev
-    version = "2022.1.1.10"; # "Android Studio Electric Eel (2022.1.1) Canary 10"
-    sha256Hash = "0jp0ag23v0dwnkbk0pyfs0rsdzqr802sz0x586zm6nxz23j9h5p8";
+    version = "2022.2.1.2"; # "Android Studio Flamingo (2022.2.1) Canary 2"
+    sha256Hash = "hlHlgyl9If2LH4aExpElx0rqmWeoFX+qx4w6RRb5e8U=";
   };
 in {
   # Attributes are named by their corresponding release channels
