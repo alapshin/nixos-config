@@ -14,7 +14,7 @@ in {
     ];
 
     services = {
-      etesync-dav.enable = true;
+      # etesync-dav.enable = true;
     };
 
     home.stateVersion = "22.05";
