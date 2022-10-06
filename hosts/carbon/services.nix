@@ -4,5 +4,8 @@
   ...
 }: {
   services = {
+    openssh = {
+      enable = true;
+    };
   };
 }
