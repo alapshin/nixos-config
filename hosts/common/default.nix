@@ -59,6 +59,7 @@
     networkmanager = {
       enable = true;
       plugins = with pkgs; [
+        networkmanager-sstp
         networkmanager-openvpn
       ];
     };
@@ -82,6 +83,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    sstp
     ntfs3g
   ];
 }
