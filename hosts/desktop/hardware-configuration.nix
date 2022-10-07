@@ -27,7 +27,6 @@ in
         enable = true;
         ssh = {
           enable = true;
-          port = 2200;
           hostKeys = [
             "/etc/secrets/initrd/host_ed25519"
           ];
