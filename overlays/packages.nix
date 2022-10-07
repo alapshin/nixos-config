@@ -11,16 +11,6 @@ final: prev: {
     srcPrefix = "org.keepassxc.";
   };
 
-  electrum = prev.electrum.overrideAttrs(oldAttrs: rec {
-    postPatch = ''
-      # make compatible with protobuf4 by easing dependencies ...
-      substituteInPlace ./contrib/requirements/requirements.txt \
-        --replace "protobuf>=3.12,<4" "protobuf>=3.12"
-      # ... and regenerating the paymentrequest_pb2.py file
-      protoc --python_out=. electrum/paymentrequest.proto
-    '';
-  });
-
   etesync-dav = prev.callPackage ../packages/etesync-dav {};
 
   openssl_1_0 = prev.openssl.overrideAttrs(oldAttrs: rec {
