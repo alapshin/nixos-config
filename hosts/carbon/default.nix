@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./audio.nix
     ./bluetooth.nix
     ./networking.nix
     ./services.nix
