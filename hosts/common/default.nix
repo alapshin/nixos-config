@@ -17,7 +17,7 @@
       "kernel.sysrq" = 438;
     };
     kernelModules = ["kvm-amd" "kvm-intel"];
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
   };
 
   console = {
@@ -69,7 +69,6 @@
 
   time = {
     timeZone = "Europe/Moscow";
-    hardwareClockInLocalTime = true;
   };
 
   security = {

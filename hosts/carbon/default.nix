@@ -13,4 +13,8 @@
     ./graphical-desktop.nix
     ./hardware-configuration.nix
   ];
+
+  time = {
+    timeZone = pkgs.lib.mkForce "Europe/Podgorica";
+  };
 }
