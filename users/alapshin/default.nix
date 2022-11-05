@@ -151,6 +151,7 @@ in {
         skrooge
         smartmontools
         smplayer
+        sparrow
         spotify
         stress-ng
         tdesktop
@@ -162,7 +163,6 @@ in {
         unzip
         usbutils
         wget
-        youtube-dl
         yt-dlp
       ]
       ++ devTools
