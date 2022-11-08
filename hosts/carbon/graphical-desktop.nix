@@ -30,6 +30,10 @@
       layout = "us,ru";
       xkbOptions = "grp:caps_toggle,compose:ralt";
 
+      libinput = {
+        enable = true;
+      };
+
       videoDrivers = ["modesetting" "intel"];
 
       displayManager = {
