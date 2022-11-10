@@ -163,6 +163,7 @@ in {
         unzip
         usbutils
         wget
+        wireguard-tools
         yt-dlp
       ]
       ++ devTools
