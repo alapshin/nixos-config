@@ -10,6 +10,7 @@
     ./secrets.nix
     ./services.nix
     ./networking.nix
+    ./graphical-desktop.nix
   ];
   boot = {
     # Enable the magic SysRq key

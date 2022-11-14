@@ -1,0 +1,39 @@
+--- a/symbols/us	2021-06-08 20:53:03.000000000 +0200
++++ b/symbols/us	2022-11-14 18:57:16.349797570 +0100
+@@ -1248,24 +1248,20 @@
+ partial alphanumeric_keys
+ xkb_symbols "hbs" {
+ 
+-  include "us"
+-  name[Group1]= "Serbo-Croatian (US)";
++    include "us"
++    name[Group1]= "Serbo-Croatian (US)";
+ 
+-  key <TLDE> { [ grave, asciitilde ] };
+-  key <AE06> { [ 6, dead_caron, asciicircum, asciicircum ] };
+-  key <AE08> { [ 8, asterisk, multiply, division ] };
+-  key <AE11> { [ minus, underscore, endash, emdash ] };
+-  key <AC09> { [ l, L, U1C9, U1C8 ] };
+-  key <AB06> { [ n, N, U1CC, U1CB ] };
+-  key <AB01> { [ z, Z, U1C6, U1C5 ] };
+-  key <AD03> { [ e, E, EuroSign, cent ] };
+-  key <AC03> { [ d, D, dstroke, Dstroke ] };
+-  key <AC11> { [ dead_acute, quotedbl, apostrophe, apostrophe ] };
+-  key <SPCE> { [ space, space, nobreakspace, nobreakspace ] };
+-  key <AB08> { [ comma, less, U3003, guillemotright ] };
+-  key <AB09> { [ period, greater, ellipsis, guillemotleft ] };
++    key <AD03> { [ any, any, EuroSign, cent ] };
++    key <AC02> { [  any, any, scaron, Scaron ] };
++    key <AC03> { [ any, any, dstroke, Dstroke ] };
++    key <AC09> { [ any, any, U1C9, U1C8 ] };
++    key <AC10> { [ any, any, U1C6, U1C5 ] };
++    key <AC11> { [  any,  any, cacute, Cacute  ] };
++    key <AB01> { [ any, any, zcaron, Zcaron ] };
++    key <AB03> { [  any,  any, ccaron, Ccaron  ] };
++    key <AB06> { [ any, any, U1CC, U1CB ] };
+ 
+-  include "level3(ralt_switch)"
++    include "level3(ralt_switch)"
+ };
+ 
+ // Workman Keyboard Layout symbols for xkb on X.Org Server 7.x
