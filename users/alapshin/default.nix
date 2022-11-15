@@ -165,6 +165,7 @@ in {
         wget
         wireguard-tools
         yt-dlp
+        xclip
       ]
       ++ devTools
       ++ gitPackages
