@@ -32,12 +32,16 @@
 
     dirs = rec {
       config = builtins.toString ./.;
+      packages = "${config}/packages";
       dotfiles = "${config}/dotfiles";
     };
     helpers = import ./lib/helpers.nix {inherit lib;};
 
     nixpkgsConfig = {
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "openjdk-18+36"
+      ];
     };
 
     mkPkgs = {
@@ -77,6 +81,7 @@
         modules = baseModules ++ hostModules ++ userModules;
         specialArgs = {
           inherit inputs pkgs self;
+          packageDir = dirs.packages;
           dotfileDir = dirs.dotfiles;
         };
       };
