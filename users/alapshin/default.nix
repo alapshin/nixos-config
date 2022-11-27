@@ -155,7 +155,6 @@ in {
         spotify
         stress-ng
         tdesktop
-        thunderbird
         tor-browser-bundle-bin
         tree
         ungoogled-chromium

@@ -11,6 +11,7 @@ in {
       ./plasma.nix
       ./neovim.nix
       ./firefox.nix
+      ./thunderbird.nix
     ];
 
     services = {
