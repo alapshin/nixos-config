@@ -22,9 +22,7 @@
   ];
 
   gitPackages = with pkgs; [
-    gh
     git
-    gitui
     git-crypt
     git-extras
     git-filter-repo
@@ -163,7 +161,6 @@ in {
         usbutils
         wget
         wireguard-tools
-        yt-dlp
         xclip
       ]
       ++ devTools

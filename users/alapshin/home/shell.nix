@@ -3,35 +3,61 @@
   dotfileDir,
   ...
 }: {
-  programs.bat.enable = true;
-  programs.broot = {
-    enable = true;
-    enableZshIntegration = true;
+  programs = {
+    bat.enable = true;
+
+    broot = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      enableZshIntegration = true;
+    };
+
+    gh = {
+      enable = true;
+    };
+
+    gitui = {
+      enable = true;
+    };
+
+
+    exa = {
+      enable = true;
+      enableAliases = true;
+    };
+
+    lsd = {
+      enable = true;
+    };
+
+    navi = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    pandoc = {
+      enable = true;
+    };
+
+    tealdeer.enable = true;
+
+    tmux = {
+      enable = true;
+    };
+
+    yt-dlp.enable = true;
+
   };
 
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.exa = {
-    enable = true;
-    enableAliases = true;
-  };
-
-  programs.pandoc = {
-    enable = true;
-  };
-
-  programs.tmux = {
-    enable = true;
-  };
 
   programs.zsh = {
     enable = true;
