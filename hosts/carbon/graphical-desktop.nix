@@ -26,6 +26,7 @@
     flatpak.enable = true;
 
     xserver = {
+      dpi = 120;
       videoDrivers = ["modesetting" "intel"];
 
       displayManager = {
