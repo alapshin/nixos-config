@@ -1,3 +1,9 @@
+set surround
+set commentary
+set highlightedyank
+
 " selecting text {{{
-set clipboard=unnamedplus " use X11 clipboard
+set clipboard=unnamedplus,unnamed,ideaput
 " }}}
+
+" IdeaVim options

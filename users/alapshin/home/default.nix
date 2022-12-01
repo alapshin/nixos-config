@@ -28,7 +28,6 @@ in {
     home.file = {
       ".curlrc".source = "${dotfileDir}/curlrc";
       ".ssh/config".source = "${dotfileDir}/ssh/config";
-      ".ideavimrc".source = "${dotfileDir}/ideavimrc";
     };
 
     home.language = {
@@ -52,6 +51,7 @@ in {
           recursive = true;
         };
 
+        "ideavim/ideavimrc".source = "${dotfileDir}/ideavimrc";
         "borgmatic/config.yaml".source = "${dotfileDir}/borgmatic.yaml";
         "tig/config".source = "${dotfileDir}/tigrc";
         "git/config".source = "${dotfileDir}/gitconfig";
