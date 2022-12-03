@@ -46,12 +46,18 @@ in
       ];
       luks.devices = {
         "luksroot" = {
-          allowDiscards = true;
           device = "/dev/disk/by-uuid/56cd0776-0e1a-46b2-8e61-56a1aab91c4a";
+          keyFileSize = 4096;
+          keyFile = "/dev/disk/by-uuid/2022-08-09-12-03-48-00";
+          allowDiscards = true;
+          fallbackToPassword = true;
         };
         "luksdata" = {
-          allowDiscards = true;
           device = "/dev/disk/by-uuid/f8c9d40f-d397-46d2-a058-55a225d2670e";
+          keyFileSize = 4096;
+          keyFile = "/dev/disk/by-uuid/2022-08-09-12-03-48-00";
+          allowDiscards = true;
+          fallbackToPassword = true;
         };
       };
     };
