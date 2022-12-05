@@ -149,7 +149,6 @@ in {
         skrooge
         smartmontools
         smplayer
-        sparrow
         spotify
         stress-ng
         tdesktop
