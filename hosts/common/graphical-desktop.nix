@@ -4,6 +4,7 @@
   packageDir,
   ...
 }: {
+  qt5.platformTheme = "kde";
   programs.xwayland.enable = true;
 
   services = {
