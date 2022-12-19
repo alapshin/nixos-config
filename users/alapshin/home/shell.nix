@@ -97,7 +97,6 @@
         "git"
         "git-extras"
         "gradle"
-        "httpie"
         "man"
         "python"
         "pip"

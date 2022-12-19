@@ -15,10 +15,13 @@
   devTools = with pkgs; [
     age
     hadolint
-    httpie
     shellcheck
     sops
     ssh-to-age
+  ];
+
+  guiDevTools = with pkgs; [
+    insomnia
   ];
 
   gitPackages = with pkgs; [
@@ -123,7 +126,6 @@ in {
         gnupg
         handbrake
         htop
-        http-prompt
         hunspell
         hunspellDicts.en_US
         hunspellDicts.ru_RU
@@ -164,6 +166,7 @@ in {
       ]
       ++ devTools
       ++ gitPackages
+      ++ guiDevTools
       ++ borgPackages
       ++ javaPackages
       ++ plasmaPackages
