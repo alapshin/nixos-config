@@ -1,0 +1,14 @@
+name: "Build"
+on:
+  pull_request:
+  push:
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v22
+    - name: "Run nix flake checks"
+      run: ci/shell.sh
+      env:
+        SOPS_AGE_KEY: ${{ secrets.AGE_SECRET_KEY }}
