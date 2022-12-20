@@ -163,6 +163,7 @@ in {
         wget
         wireguard-tools
         xclip
+        zoom-us
       ]
       ++ devTools
       ++ gitPackages
