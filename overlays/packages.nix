@@ -14,7 +14,7 @@ final: prev: {
   etesync-dav = prev.callPackage ../packages/etesync-dav {};
 
   # OpenSSL 1.0 for Aundroid Auto emilator
-  openssl_1_0 = prev.openssl.overrideAttrs(oldAttrs: rec {
+  openssl_1_0 = prev.openssl.overrideAttrs (oldAttrs: rec {
     pname = "openssl";
     version = "1.0.2u";
     sha256 = "sha256-7NDG/7ST3QZwfTixS7TYwiiLtwM3NWBladj5D4lmnRY=";
@@ -24,7 +24,7 @@ final: prev: {
       url = "https://www.openssl.org/source/${pname}-${version}.tar.gz";
       inherit sha256;
     };
-    outputs = [ "bin" "dev" "out" "man" ];
+    outputs = ["bin" "dev" "out" "man"];
   });
 
   android-fhs-env = prev.callPackage ../packages/android-fhs-env {};
@@ -38,10 +38,9 @@ final: prev: {
 
   # See nixos/modules/services/x11/extra-layouts.nix
   # xkeyboard-config with customized Serbo-Croatian variant of US layout
-  xkbconfig_custom = prev.xorg.xkeyboardconfig.overrideAttrs(oldAttrs: rec {
+  xkbconfig_custom = prev.xorg.xkeyboardconfig.overrideAttrs (oldAttrs: rec {
     patches = [
       ../packages/xkb/custom-us-hbs.patch
     ];
   });
-
 }

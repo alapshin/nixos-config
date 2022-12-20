@@ -37,7 +37,6 @@
           "identity.fxaccounts.account.device.name" = osConfig.networking.hostName;
           # Enable userChrome.css support
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-
         };
         userChrome = builtins.readFile "${dotfileDir}/mozilla/firefox/chrome/userChrome.css";
       };

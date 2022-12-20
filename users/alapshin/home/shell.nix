@@ -29,7 +29,6 @@
       enable = true;
     };
 
-
     exa = {
       enable = true;
       enableAliases = true;
@@ -55,9 +54,7 @@
     };
 
     yt-dlp.enable = true;
-
   };
-
 
   programs.zsh = {
     enable = true;

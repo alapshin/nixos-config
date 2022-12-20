@@ -25,8 +25,8 @@
   };
 
   environment.sessionVariables = {
-      # https://xkbcommon.org/doc/current/group__include-path.html
-      # runtime override supported by multiple libraries e. g. libxkbcommon
-      XKB_CONFIG_ROOT = "${pkgs.xkbconfig_custom}/etc/X11/xkb";
+    # https://xkbcommon.org/doc/current/group__include-path.html
+    # runtime override supported by multiple libraries e. g. libxkbcommon
+    XKB_CONFIG_ROOT = "${pkgs.xkbconfig_custom}/etc/X11/xkb";
   };
 }
