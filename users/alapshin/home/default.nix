@@ -18,7 +18,7 @@ in {
       # etesync-dav.enable = true;
     };
 
-    home.stateVersion = "22.05";
+    home.stateVersion = "22.11";
     home.packages = with pkgs; [
       home-manager
       birdtray-autostart
