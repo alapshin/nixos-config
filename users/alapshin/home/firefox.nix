@@ -48,6 +48,7 @@
       keepassxc-browser
       plasma-integration
       temporary-containers
+      bypass-paywalls-clean
     ];
   };
 }
