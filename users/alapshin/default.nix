@@ -21,6 +21,8 @@
   ];
 
   guiDevTools = with pkgs; [
+    drawio
+    pencil
     insomnia
   ];
 
