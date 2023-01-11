@@ -39,6 +39,7 @@
   javaPackages = with pkgs; [
     async-profiler
 
+    gradle
     groovy
     scrcpy
     # Install android-fhs-env package used as devShell for android
