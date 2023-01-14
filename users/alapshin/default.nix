@@ -124,6 +124,7 @@ in {
         element-desktop
         exiftool
         fd
+        ffmpeg
         file
         gimp
         gnupg
