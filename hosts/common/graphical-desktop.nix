@@ -4,7 +4,7 @@
   packageDir,
   ...
 }: {
-  qt5 = {
+  qt = {
     enable = true;
     platformTheme = "kde";
   };
