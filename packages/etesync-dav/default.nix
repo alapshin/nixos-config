@@ -2,6 +2,8 @@
 , stdenv
 , python3
 , radicale3
+, rustPlatform
+, fetchFromGitHub
 }:
 
 let
@@ -13,16 +15,25 @@ let
           inherit version;
           sha256 = "ff177185f891302dc253437fe63081e7a46a4e99aca61dfe086fb23e54fff2dc";
         };
-        checkPhase = ":";
-        disabledTests = [
-          "test_outside_request"
-        ];
+        patches = [];
+        doCheck = false;
       });
-      werkzeug = super.werkzeug.overridePythonAttrs (old: rec {
-        version = "2.0.3";
-        src = old.src.override {
-          inherit version;
-          sha256 = "b863f8ff057c522164b6067c9e28b041161b4be5ba4d0daceeaa50a163822d3c";
+
+
+      etebase = super.etebase.overridePythonAttrs (old: rec {
+        pname = "etebase";
+        version = "0.31.6";
+
+        src = fetchFromGitHub {
+          owner = "etesync";
+          repo = "etebase-py";
+          rev = "v${version}";
+          hash = "sha256-T61nPW3wjBRjmJ81w59T1b/Kxrwwqvyj3gILE9OF/5Q=";
+        };
+        cargoDeps = rustPlatform.fetchCargoTarball {
+          inherit src;
+          name = "${pname}-${version}";
+          hash = "sha256-wrMNtcaLAsWBVeJbYbYo+Xmobl01lnUbR9NUqqUzUgU=";
         };
       });
     };
