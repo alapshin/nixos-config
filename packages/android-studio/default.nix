@@ -14,12 +14,12 @@ let
     sha256Hash = "luxE6a2C86JB28ezuIZV49TyE314S1RcNXQnCQamjUA=";
   };
   betaVersion = {
-    version = "2022.1.1.18"; # "Android Studio Electric Eel (2022.1.1) RC 3"
-    sha256Hash = "0Fihl/WW37F6ICeNuAvFkYuY4s2xjsa5gNmTbzklkr0=";
+    version = "2022.2.1.12"; # "Android Studio Flamingo (2022.2.1) Beta 1"
+    sha256Hash = "tIgmX9KiRInIupgIXWgg4dMf8bTwkVopOxAO5O1PUAc=";
   };
   latestVersion = { # canary & dev
-    version = "2022.2.1.11"; # "Android Studio Flamingo (2022.2.1) Canary 11"
-    sha256Hash = "i4lKtKvqyglqthgfsF1bzdf+NupsPcpS/bzjqtQZe6I=";
+    version = "2022.3.1.1"; # "Android Studio Girrafe (2022.3.1) Canary 1"
+    sha256Hash = "I7Zc4DDByUB6XOnk7v+91ccpNI7eX/T4d3vH60ih8ec=";
   };
 in {
   # Attributes are named by their corresponding release channels
