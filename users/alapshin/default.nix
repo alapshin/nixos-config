@@ -12,6 +12,12 @@
     borgmatic
   ];
 
+  cryptoPackages = with pkgs; [
+    electrum
+    monero-gui
+  ];
+
+
   devTools = with pkgs; [
     age
     hadolint
@@ -49,6 +55,10 @@
     androidStudioPackages.stable
     androidStudioPackages.beta
     androidStudioPackages.canary
+  ];
+
+  unityPackages = with pkgs; [
+    unityhub
   ];
 
   plasmaPackages = with pkgs.plasma5Packages; [
@@ -120,7 +130,6 @@ in {
         calibre
         colord-kde
         digikam
-        electrum
         element-desktop
         exiftool
         fd
@@ -169,11 +178,13 @@ in {
         xclip
         zoom-us
       ]
+      ++ cryptoPackages
       ++ devTools
       ++ gitPackages
       ++ guiDevTools
       ++ borgPackages
       ++ javaPackages
+      ++ unityPackages
       ++ plasmaPackages
       ++ pythonPackages;
   };
