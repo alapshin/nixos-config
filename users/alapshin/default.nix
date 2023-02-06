@@ -14,6 +14,7 @@
 
   cryptoPackages = with pkgs; [
     electrum
+    bisq-desktop
     monero-gui
   ];
 
