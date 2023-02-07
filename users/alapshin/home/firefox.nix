@@ -15,6 +15,16 @@
     profiles = {
       default = {
         id = 0;
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          metamask
+          ublock-origin
+          tree-style-tab
+          leechblock-ng
+          keepassxc-browser
+          plasma-integration
+          temporary-containers
+          bypass-paywalls-clean
+        ];
         settings = {
           # Set minimum font size
           "font.minimum-size.x-cyrillic" = 14;
@@ -41,14 +51,5 @@
         userChrome = builtins.readFile "${dotfileDir}/mozilla/firefox/chrome/userChrome.css";
       };
     };
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      ublock-origin
-      tree-style-tab
-      leechblock-ng
-      keepassxc-browser
-      plasma-integration
-      temporary-containers
-      bypass-paywalls-clean
-    ];
   };
 }

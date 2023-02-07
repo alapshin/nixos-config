@@ -12,9 +12,10 @@
     borgmatic
   ];
 
-  cryptoPackages = with pkgs; [
+  blockchainPackages = with pkgs; [
     electrum
     bisq-desktop
+    monero-cli
     monero-gui
   ];
 
@@ -179,7 +180,7 @@ in {
         xclip
         zoom-us
       ]
-      ++ cryptoPackages
+      ++ blockchainPackages
       ++ devTools
       ++ gitPackages
       ++ guiDevTools
