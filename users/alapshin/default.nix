@@ -90,6 +90,8 @@
         seaborn
       ]))
   ];
+  texlivePackages = lib.toList pkgs.texlive.combined.scheme-full;
+
 in {
   imports = [
     ./home
@@ -188,7 +190,8 @@ in {
       ++ javaPackages
       ++ unityPackages
       ++ plasmaPackages
-      ++ pythonPackages;
+      ++ pythonPackages
+      ++ texlivePackages;
   };
 
   services = {

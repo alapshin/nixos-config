@@ -51,12 +51,13 @@ in {
           recursive = true;
         };
 
-        "ideavim/ideavimrc".source = "${dotfileDir}/ideavimrc";
-        "borgmatic/config.yaml".source = "${dotfileDir}/borgmatic.yaml";
-        "tig/config".source = "${dotfileDir}/tigrc";
         "git/config".source = "${dotfileDir}/gitconfig";
         "git/config-alar".source = "${dotfileDir}/gitconfig-alar";
+        "ideavim/ideavimrc".source = "${dotfileDir}/ideavimrc";
+        "latexmk/latexmkrc".source = "${dotfileDir}/latexmkrc";
+        "tig/config".source = "${dotfileDir}/tigrc";
         "zsh/p10k.zsh".source = "${dotfileDir}/p10k.zsh";
+        "borgmatic/config.yaml".source = "${dotfileDir}/borgmatic.yaml";
       };
       mimeApps = {
         enable = true;
