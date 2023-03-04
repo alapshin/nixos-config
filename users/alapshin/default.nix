@@ -168,6 +168,7 @@ in {
         skrooge
         smartmontools
         smplayer
+        spicetify-cli
         spotify
         stress-ng
         tdesktop
