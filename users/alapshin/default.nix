@@ -98,6 +98,7 @@ in {
   ];
 
   programs.adb.enable = true;
+  programs.zsh.enable = true;
   programs.java.enable = true;
   programs.ssh.startAgent = true;
   programs.gnupg.agent.enable = true;
