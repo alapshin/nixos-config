@@ -8,8 +8,6 @@
       paths = [
         "/home/alapshin/calibre"
         "/home/alapshin/Documents"
-        "/home/alapshin/Pictures"
-        "/home/alapshin/Videos"
         "/home/alapshin/Syncthing"
       ];
       repo = "rm4i22x5@rm4i22x5.repo.borgbase.com:repo";
