@@ -14,10 +14,6 @@ in {
       ./thunderbird.nix
     ];
 
-    services = {
-      etesync-dav.enable = true;
-    };
-
     home.stateVersion = "22.11";
     home.packages = with pkgs; [
       home-manager
