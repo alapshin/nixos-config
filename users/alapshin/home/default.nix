@@ -35,6 +35,8 @@ in {
       measurement = "en_DK.UTF-8";
     };
 
+    fonts.fontconfig.enable = false;
+
     xdg = {
       enable = true;
       configFile = {

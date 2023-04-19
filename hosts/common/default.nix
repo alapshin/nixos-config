@@ -29,14 +29,31 @@
 
   fonts = {
     fonts = with pkgs; [
-      open-sans
+      inter
+      ibm-plex
       liberation_ttf
+      nerdfonts
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
       noto-fonts-extra
-      firacode-nerdfonts
     ];
+    fontconfig = {
+      defaultFonts = {
+        emoji = [
+          "Noto Color Emoji"
+        ];
+        serif = [
+          "IBM Plex Serif"
+        ];
+        sansSerif = [
+          "IBM Plex Sans"
+        ];
+        monospace = [
+          "JetBrainsMono Nerd Font Mono"
+        ];
+      };
+    };
     enableDefaultFonts = false;
   };
 

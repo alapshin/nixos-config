@@ -27,8 +27,10 @@ final: prev: {
     outputs = ["bin" "dev" "out" "man"];
   });
 
+  nerdfonts = prev.nerdfonts.override { fonts = [
+    "JetBrainsMono"
+  ]; };
   android-fhs-env = prev.callPackage ../packages/android-fhs-env {};
-  firacode-nerdfonts = prev.nerdfonts.override {fonts = ["FiraCode"];};
 
   androidStudioPackages =
     prev.recurseIntoAttrs
