@@ -16,6 +16,7 @@
       default = {
         id = 0;
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          languagetool
           ublock-origin
           tree-style-tab
           leechblock-ng
