@@ -11,6 +11,31 @@ final: prev: {
     srcPrefix = "org.keepassxc.";
   };
 
+  inter = prev.inter.overrideAttrs (oldAttrs: rec {
+    version = "4.0-beta8";
+
+    src = prev.fetchzip {
+      url = "https://github.com/rsms/inter/releases/download/v${version}/Inter-${version}.zip";
+      stripRoot = false;
+      hash = "sha256-6HZi51/04VRy2s7VYaKM9y3+NODJN7W4saisEesIwNw=";
+    };
+
+    installPhase = ''
+      runHook preInstall
+
+      mkdir -p $out/share/fonts/opentype
+      ls -la
+      cp Variable/*.ttf $out/share/fonts/opentype
+
+      runHook postInstall
+    '';
+  });
+
+  nerdfonts = prev.nerdfonts.override { fonts = [
+    "JetBrainsMono"
+  ]; };
+
+
   etesync-dav = prev.callPackage ../packages/etesync-dav {};
 
   # OpenSSL 1.0 for Aundroid Auto emilator
@@ -27,9 +52,6 @@ final: prev: {
     outputs = ["bin" "dev" "out" "man"];
   });
 
-  nerdfonts = prev.nerdfonts.override { fonts = [
-    "JetBrainsMono"
-  ]; };
   android-fhs-env = prev.callPackage ../packages/android-fhs-env {};
 
   androidStudioPackages =
