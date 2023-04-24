@@ -54,11 +54,8 @@ final: prev: {
 
   android-fhs-env = prev.callPackage ../packages/android-fhs-env {};
 
-  androidStudioPackages =
-    prev.recurseIntoAttrs
-    (prev.callPackage ../packages/android-studio {
-      buildFHSUserEnv = prev.buildFHSUserEnvBubblewrap;
-    });
+  androidStudioPackages = prev.recurseIntoAttrs
+    (prev.callPackage ../packages/android-studio { });
 
   # See nixos/modules/services/x11/extra-layouts.nix
   # xkeyboard-config with customized Serbo-Croatian variant of US layout
