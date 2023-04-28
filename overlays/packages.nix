@@ -31,10 +31,11 @@ final: prev: {
     '';
   });
 
-  nerdfonts = prev.nerdfonts.override { fonts = [
-    "JetBrainsMono"
-  ]; };
-
+  nerdfonts = prev.nerdfonts.override {
+    fonts = [
+      "JetBrainsMono"
+    ];
+  };
 
   etesync-dav = prev.callPackage ../packages/etesync-dav {};
 
@@ -54,8 +55,9 @@ final: prev: {
 
   android-fhs-env = prev.callPackage ../packages/android-fhs-env {};
 
-  androidStudioPackages = prev.recurseIntoAttrs
-    (prev.callPackage ../packages/android-studio { });
+  androidStudioPackages =
+    prev.recurseIntoAttrs
+    (prev.callPackage ../packages/android-studio {});
 
   # See nixos/modules/services/x11/extra-layouts.nix
   # xkeyboard-config with customized Serbo-Croatian variant of US layout

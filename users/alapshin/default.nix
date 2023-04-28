@@ -19,7 +19,6 @@
     monero-gui
   ];
 
-
   devTools = with pkgs; [
     age
     hadolint
@@ -91,7 +90,6 @@
       ]))
   ];
   texlivePackages = lib.toList pkgs.texlive.combined.scheme-full;
-
 in {
   imports = [
     ./home
