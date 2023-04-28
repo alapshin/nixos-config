@@ -30,8 +30,8 @@
 
   guiDevTools = with pkgs; [
     drawio
-    pencil
     insomnia
+    jetbrains-toolbox
   ];
 
   gitPackages = with pkgs; [
