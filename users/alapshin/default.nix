@@ -172,7 +172,7 @@ in {
         spicetify-cli
         spotify
         stress-ng
-        tdesktop
+        telegram-desktop
         tor-browser-bundle-bin
         tree
         ungoogled-chromium
