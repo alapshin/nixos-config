@@ -58,10 +58,6 @@
     androidStudioPackages.canary
   ];
 
-  unityPackages = with pkgs; [
-    unityhub
-  ];
-
   plasmaPackages = with pkgs.plasma5Packages; [
     ark
     bismuth
@@ -188,7 +184,6 @@ in {
       ++ guiDevTools
       ++ borgPackages
       ++ javaPackages
-      ++ unityPackages
       ++ plasmaPackages
       ++ pythonPackages
       ++ texlivePackages;
