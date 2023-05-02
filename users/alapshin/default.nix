@@ -136,7 +136,6 @@ in {
         file
         gimp
         gnupg
-        handbrake
         htop
         hunspell
         hunspellDicts.en_US
