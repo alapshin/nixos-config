@@ -15,4 +15,7 @@
       };
     };
   };
+  home.file = {
+    ".thunderbird/default/user.js".source = "${dotfileDir}/thunderbird/user.js";
+  };
 }
