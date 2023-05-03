@@ -35,7 +35,6 @@
       packages = "${config}/packages";
       dotfiles = "${config}/dotfiles";
     };
-    helpers = import ./lib/helpers.nix {inherit lib;};
 
     nixpkgsConfig = {
       allowUnfree = true;
