@@ -20,7 +20,6 @@ buildFHSUserEnv {
         findutils
         git
         jdk
-        openssl_1_0
         portaudio
         SDL2
         SDL2_gfx

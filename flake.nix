@@ -85,16 +85,11 @@
         };
       };
   in {
-    overlays = {
-      # If local overlay references attributes from default one
-      # then its name should follow default overlay name in alphabeticall
-      # order because overlays are sorted by name using `lib.attrValues`
-      packages = import ./overlays/packages.nix;
-      overrides = import ./overlays/overrides.nix;
-      default = final: prev: {
-        unstable = inputs.nixpkgs.legacyPackages.${system};
-      };
-    };
+    # Custom packages and modifications, exported as overlays
+    overlays = import ./overlays { inherit inputs; };
+
+    # Custom packages acessible through 'nix build', 'nix shell', etc
+    packages = import ./packages { inherit pkgs; };
 
     devShells = {
       ${system} = {
