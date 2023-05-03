@@ -144,6 +144,7 @@ in {
         inkscape
         jq
         keepassxc
+        kleopatra
         libreoffice-qt
         lm_sensors
         man-pages
