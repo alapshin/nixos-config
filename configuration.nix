@@ -36,6 +36,7 @@
 
   # Various nix utils
   environment.systemPackages = with pkgs; [
+    manix
     alejandra
     nix-index
     nix-prefetch-git
