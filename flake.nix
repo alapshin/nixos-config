@@ -32,7 +32,6 @@
 
     dirs = rec {
       config = builtins.toString ./.;
-      packages = "${config}/packages";
       dotfiles = "${config}/dotfiles";
     };
 
@@ -77,7 +76,6 @@
         modules = baseModules ++ hostModules ++ userModules;
         specialArgs = {
           inherit inputs pkgs self;
-          packageDir = dirs.packages;
           dotfileDir = dirs.dotfiles;
         };
       };
