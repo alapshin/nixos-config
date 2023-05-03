@@ -95,7 +95,6 @@ in {
   programs.zsh.enable = true;
   programs.java.enable = true;
   programs.ssh.startAgent = true;
-  programs.gnupg.agent.enable = true;
   programs.kdeconnect.enable = true;
   programs.partition-manager.enable = true;
 
