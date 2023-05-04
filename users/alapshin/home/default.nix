@@ -36,7 +36,7 @@ in {
       measurement = "en_DK.UTF-8";
     };
 
-    fonts.fontconfig.enable = false;
+    xsession.enable = true;
 
     xdg = {
       enable = true;
