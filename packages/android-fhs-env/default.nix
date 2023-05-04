@@ -1,14 +1,18 @@
 {
   stdenv,
-  buildFHSUserEnv,
+  buildFHSEnv,
   runtimeShell,
   writeScript,
   extraPkgs ? pkgs: [],
 }:
-buildFHSUserEnv {
+buildFHSEnv {
   name = "android-fhs-env";
 
-  runScript = "env -u JAVA_HOME zsh";
+  runScript = "zsh";
+
+  profile = ''
+    export JAVA_HOME="/usr/lib64/openjdk/"
+  '';
 
   targetPkgs = pkgs:
     with pkgs;
