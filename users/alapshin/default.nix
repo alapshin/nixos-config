@@ -146,6 +146,7 @@ in {
         kleopatra
         libreoffice-qt
         lm_sensors
+        logseq
         man-pages
         mkvtoolnix
         moreutils
