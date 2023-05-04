@@ -118,7 +118,7 @@ in {
 
     packages = with pkgs;
       [
-        anki-bin
+        anki
         aspell
         aspellDicts.en
         aspellDicts.ru
