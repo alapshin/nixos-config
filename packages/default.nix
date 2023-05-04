@@ -12,4 +12,6 @@
       ./xkb/custom-us-hbs.patch
     ];
   });
+
+  firefox-addons = pkgs.recurseIntoAttrs (pkgs.callPackage ./firefox-addons {});
 }
