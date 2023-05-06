@@ -5,7 +5,7 @@
 }: let
   username = "alapshin";
 in {
-  home-manager.users."${username}" = {
+  home-manager.users."${username}" = { config, ... }: {
     imports = [
       ./gnupg.nix
       ./shell.nix
@@ -83,7 +83,7 @@ in {
       CARGO_HOME = "$XDG_DATA_HOME/cargo";
       CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
       DOCKER_CONFIG = "$XDG_CONFIG_HOME/docker";
-      GRADLE_USER_HOME = "$XDG_DATA_HOME/gradle";
+      GRADLE_USER_HOME = "${config.xdg.dataHome}/gradle";
       IPYTHONDIR = "$XDG_CONFIG_HOME/jupyter";
       JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
 
