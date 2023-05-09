@@ -6,6 +6,12 @@
 }: let
   username = "alapshin";
 
+  accountingTools = with pkgs; [
+    fava
+    beancount
+    ledger2beancount
+  ];
+
   borgPackages = with pkgs; [
     vorta
     borgbackup
@@ -52,7 +58,7 @@
     # Install android-fhs-env package used as devShell for android
     android-fhs-env
     android-udev-rules
-    jetbrains.idea-ultimate
+    # jetbrains.idea-ultimate
     androidStudioPackages.stable
     androidStudioPackages.beta
     androidStudioPackages.canary
@@ -153,6 +159,7 @@ in {
         moreutils
         mpv
         ncdu
+        obsidian
         obs-studio
         openssl
         p7zip
@@ -179,6 +186,7 @@ in {
         xclip
         zoom-us
       ]
+      ++ accountingTools
       ++ blockchainPackages
       ++ devTools
       ++ gitPackages
@@ -197,6 +205,10 @@ in {
       # To silence warning message
       # See https://github.com/NixOS/nixpkgs/issues/30864
       localuser = null;
+    };
+
+    peroxide = {
+      enable = true;
     };
 
     syncthing = {

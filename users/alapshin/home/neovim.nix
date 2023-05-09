@@ -33,6 +33,7 @@ in {
       vim-surround
       vim-unimpaired
       lightline-vim
+      vim-beancount
     ];
     extraConfig = ''
       source $XDG_CONFIG_HOME/nvim/config.vim
