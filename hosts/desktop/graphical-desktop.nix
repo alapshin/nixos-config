@@ -3,13 +3,6 @@
   pkgs,
   ...
 }: {
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-kde
-    ];
-  };
-
   services = {
     colord.enable = true;
     flatpak.enable = true;
