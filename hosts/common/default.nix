@@ -74,17 +74,6 @@
     ];
   };
 
-  networking = {
-    firewall.enable = false;
-    networkmanager = {
-      enable = true;
-      plugins = with pkgs; [
-        networkmanager-sstp
-        networkmanager-openvpn
-      ];
-    };
-  };
-
   time = {
     timeZone = "Europe/Moscow";
   };
