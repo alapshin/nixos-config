@@ -85,7 +85,7 @@
     overlays = import ./overlays {inherit inputs;};
 
     # Custom packages acessible through 'nix build', 'nix shell', etc
-    packages = import ./packages {inherit pkgs;};
+    # packages = import ./packages {inherit pkgs;};
 
     devShells = {
       ${system} = {

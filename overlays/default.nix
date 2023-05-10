@@ -1,6 +1,6 @@
 {inputs, ...}: {
   # This one brings our custom packages from the 'packages' directory
-  additions = final: _prev: import ../packages {pkgs = final;};
+  additions = final: prev: import ../packages { inherit final prev; };
 
   # https://nixos.wiki/wiki/Overlays
   # This one contains whatever you want to overlay

@@ -8,8 +8,8 @@
 
   accountingTools = with pkgs; [
     fava
-    beancount
     ledger2beancount
+    beancount-black
   ];
 
   borgPackages = with pkgs; [
@@ -82,6 +82,8 @@
   pythonPackages = with pkgs; [
     (python3.withPackages (ps:
       with ps; [
+        beancount
+        beanprice
         ipython
         notebook
         matplotlib
@@ -89,7 +91,8 @@
         pandas
         scikit-learn
         seaborn
-      ]))
+      ])
+    )
   ];
   texlivePackages = lib.toList pkgs.texlive.combined.scheme-full;
 in {
