@@ -15,9 +15,12 @@
     profiles = {
       default = {
         id = 0;
-        extensions = with pkgs.nur.repos.rycee.firefox-addons;
-          [
+        extensions =
+          (with pkgs.firefox-addons; [
             bypass-paywalls-clean
+            linguist-translator
+          ])
+          ++ (with pkgs.nur.repos.rycee.firefox-addons; [
             keepassxc-browser
             languagetool
             leechblock-ng
@@ -27,7 +30,7 @@
             temporary-containers
             tree-style-tab
             ublock-origin
-          ] ++ [ pkgs.firefox-addons.linguist-translator ];
+          ]);
         settings = {
           # Set minimum font size
           "font.minimum-size.x-cyrillic" = 14;
