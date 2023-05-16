@@ -40,6 +40,12 @@ in {
 
     xdg = {
       enable = true;
+      dataFile = {
+        "konsole" = {
+          source = "${dotfileDir}/konsole";
+          recursive = true;
+        };
+      };
       configFile = {
         "nvim" = {
           source = "${dotfileDir}/nvim";
