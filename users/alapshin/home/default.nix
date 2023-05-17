@@ -78,8 +78,6 @@ in {
 
     # Enforce XDG directories usage for some apps
     home.sessionVariables = {
-      EDITOR = "nvim";
-
       ANDROID_SDK_ROOT = "$HOME/opt/android-sdk";
       # ANDROID_PREFS_ROOT = "$XDG_CONFIG_HOME/android";
       # ANDROID_EMULATOR_HOME = "$XDG_DATA_HOME/android/emulator";

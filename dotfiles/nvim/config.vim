@@ -27,7 +27,6 @@ set colorcolumn=80
 set background=light
 set spelllang=ru,en
 set termguicolors
-colorscheme breezy
 let loaded_matchparen = 1
 " }}}
 
@@ -132,13 +131,12 @@ nnoremap <C-l> <C-w>l
 nnoremap <silent> <Leader>h :let @/=""<cr><esc>
 " find TODO and FIXME entries
 nnoremap <silent> <Leader>t :noautocmd vimgrep /\CTODO\\|FIXME/j **/*.py<CR>:cw<CR>
+" easy pop-up menu navigation
+inoremap <expr><C-J> pumvisible() ? "\<C-n>" : "\<C-J>"
+inoremap <expr><C-K> pumvisible() ? "\<C-p>" : "\<C-K>"
+inoremap <expr><Cr>  pumvisible() ? "\<C-y>" : "\<Cr>"
 " }}}
 
-" abbrevs {{{
-" open help in vertical window
-cabbrev h vertical topleft h
-" }}}
-"
 " plugins {{{
 " {{{ fzf
 nnoremap <c-p> :GFiles<CR>
@@ -146,9 +144,6 @@ nnoremap <c-o> :Buffers<CR>
 " }}}
 " {{{ vim-nix
 let nix_recommended_style = 1
-" }}}
-" {{{ lightline
-let g:lightline = { 'colorscheme': 'breezy', }
 " }}}
 " }}}
 

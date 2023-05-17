@@ -3,13 +3,13 @@
   pkgs,
   ...
 }: let
-  breezy = pkgs.vimUtils.buildVimPlugin {
-    pname = "breezy";
+  nvim-beancount = pkgs.vimUtils.buildVimPlugin {
+    pname = "nvim-beancount";
     version = "2020-05-24";
     src = pkgs.fetchFromGitHub {
-      owner = "fneu";
-      repo = "breezy";
-      rev = "453167dc346f39e51141df4fe7b17272f4833c2b";
+      owner = "polarmutex";
+      repo = "beancount.nvim";
+      rev = "067e6a26a828437ecd72a250a656bf63d5a33d32";
       sha256 = "6xlrXcJq91OvPkjcnbqrZmxad8H3oZTEJ1wf4Rx9hCc=";
     };
   };
@@ -19,24 +19,35 @@ in {
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    defaultEditor = true;
 
     plugins = with pkgs.vimPlugins; [
-      breezy
-      fzf-vim
-      vimtex
-      vim-sneak
-      vim-eunuch
-      vim-hardtime
+      onedark-nvim
+
       vim-polyglot
-      vim-commentary
-      vim-fugitive
-      vim-surround
-      vim-unimpaired
-      lightline-vim
-      vim-beancount
+
+      plenary-nvim
+
+      comment-nvim
+      which-key-nvim
+
+      luasnip
+      nvim-cmp
+      cmp-nvim-lsp
+      nvim-lspconfig
+      nvim-treesitter.withAllGrammars
+
+      noice-nvim
+      nvim-notify
+      trouble-nvim
+      lualine-nvim
+      gitsigns-nvim
+      telescope-nvim
+      telescope-fzf-native-nvim
+      indent-blankline-nvim
     ];
-    extraConfig = ''
-      source $XDG_CONFIG_HOME/nvim/config.vim
-    '';
+    extraPackages = with pkgs; [
+      beancount-language-server
+    ];
   };
 }
