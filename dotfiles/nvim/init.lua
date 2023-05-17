@@ -90,8 +90,8 @@ local ru = [[ёйцукенгшщзхъфывапролджэячсмить]]
 local en_shift = [[~QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>]]
 local ru_shift = [[ËЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ]]
 vim.opt.langmap = vim.fn.join({
-    escape(ru) .. ';' .. escape(en),
     -- | `to` should be first     | `from` should be second
+    escape(ru) .. ';' .. escape(en),
     escape(ru_shift) .. ';' .. escape(en_shift),
 }, ',')
 
@@ -111,8 +111,8 @@ local function popup_remap(lhs, rhs)
         { expr = true }
     )
 end
-popup_remap('<C-j>', '<C-n>')
-popup_remap('<C-k>', '<C-p>')
+-- popup_remap('<C-j>', '<C-n>')
+-- popup_remap('<C-k>', '<C-p>')
 
 --  PLUGIN STETUP
 require('onedark').setup {
@@ -185,7 +185,10 @@ require('telescope').load_extension('fzf')
 
 require('cmp').setup {
     sources = {
-        { name = 'nvim_lsp' }
+        { name = 'buffer' },
+        { name = 'path' },
+        { name = 'nvim_lsp' },
+        { name = 'nvim_lsp_signature_help' },
     }
 }
 -- Advertise nvim-cmp LSP's capabilities to LSP server
@@ -203,7 +206,9 @@ require('nvim-treesitter.configs').setup {
     },
 }
 
-require('lspconfig').beancount.setup { }
+require('lspconfig').beancount.setup { 
+    capabilities = capabilities
+}
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {

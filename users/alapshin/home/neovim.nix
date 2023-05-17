@@ -34,7 +34,10 @@ in {
 
       luasnip
       nvim-cmp
+      cmp-buffer
+      cmp-path
       cmp-nvim-lsp
+      cmp-nvim-lsp-signature-help
       nvim-lspconfig
       nvim-treesitter.withAllGrammars
 
