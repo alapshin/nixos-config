@@ -24,6 +24,7 @@ in {
     plugins = with pkgs.vimPlugins; [
       onedark-nvim
 
+      vim-sleuth
       vim-polyglot
       beancount-nvim
 
@@ -35,6 +36,7 @@ in {
       luasnip
       nvim-cmp
       cmp-buffer
+      cmp-cmdline
       cmp-path
       cmp-nvim-lsp
       cmp-nvim-lsp-signature-help
@@ -48,9 +50,14 @@ in {
       gitsigns-nvim
       telescope-nvim
       telescope-fzf-native-nvim
+      nvim-cursorline
+      bufferline-nvim
+      nvim-web-devicons
       indent-blankline-nvim
     ];
     extraPackages = with pkgs; [
+      rnix-lsp
+      lua-language-server
       beancount-language-server
     ];
   };

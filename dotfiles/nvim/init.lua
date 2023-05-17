@@ -15,8 +15,8 @@ vim.opt.wrap = false
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 5
 vim.opt.display = 'lastline'
-vim.opt.list = true
-vim.opt.listchars:append('tab:>-')
+vim.opt.list = false
+vim.opt.listchars = { eol='↴', space = '·',  tab = '>-' }
 
 -- 5 syntax, highlighting and spelling
 vim.cmd([[
@@ -51,7 +51,7 @@ vim.opt.clipboard = 'unnamedplus' -- use X11 clipboard
 -- 12 editing text
 vim.opt.undofile = true
 vim.opt.pumheight = 12
-vim.opt.completeopt = { 'menuone', 'noselect' }
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 -- 13 tabs and indenting
 vim.opt.expandtab = true
@@ -60,11 +60,6 @@ vim.opt.softtabstop = 4
 
 -- 14 folding
 vim.opt.foldenable = false
-
--- 16 mapping
-vim.opt.timeout = true
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
 
 -- 17 reading and writing files
 vim.opt.backup = false
@@ -76,7 +71,7 @@ vim.opt.directory = '/var/tmp'
 -- 19 command line editing
 vim.opt.history = 100
 vim.opt.wildmenu = true
-vim.opt.wildmode = { 'list', 'longest', 'full' }
+vim.opt.wildmode = { 'longest:list', 'full' }
 
 -- 22 language specific
 local function escape(str)
@@ -100,7 +95,7 @@ vim.opt.signcolumn = 'yes'
 
 -- KEY MAPPINGS
 local function popup_remap(lhs, rhs)
-    vim.keymap.set({ 'c', 'i' }, lhs, 
+    vim.keymap.set({ 'c', 'i' }, lhs,
         function()
             if vim.fn.pumvisible() then
                 return rhs
@@ -122,6 +117,9 @@ require('onedark').load()
 
 require('Comment').setup()
 
+require('nvim-web-devicons').setup {
+}
+
 require('gitsigns').setup()
 
 require('indent_blankline').setup()
@@ -131,6 +129,23 @@ require('lualine').setup {
     transparent = false
 }
 
+require('bufferline').setup {
+}
+
+require('nvim-cursorline').setup {
+    cursorline = {
+        enable = true,
+        number = false,
+        timeout = 1000,
+    },
+    cursorword = {
+        enable = false,
+        min_length = 3,
+        hl = { underline = true },
+  }
+}
+
+--[[
 require("noice").setup({
   lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -152,7 +167,8 @@ require("noice").setup({
 
 require('trouble').setup {
 }
-
+--]]
+--
 require('telescope')
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
@@ -173,7 +189,7 @@ require("telescope").setup {
             -- false will only do exact matching
             fuzzy = true,
             -- override the file sorter
-            override_file_sorter = true, 
+            override_file_sorter = true,
             -- override the generic sorter
             override_generic_sorter = true,
         }
@@ -182,31 +198,102 @@ require("telescope").setup {
 }
 require('telescope').load_extension('fzf')
 
-
-require('cmp').setup {
+local cmp = require('cmp')
+cmp.setup({
+   -- window = {
+   --    completion = cmp.config.window.bordered(),
+   --    documentation = cmp.config.window.bordered(),
+   --  },
+    mapping = cmp.mapping.preset.insert({
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if not cmp.visible() then
+                fallback()
+            else
+                cmp.select_next_item()
+            end
+        end, {"i","s","c",}),
+    }),
     sources = {
         { name = 'buffer' },
+        {
+          name = 'cmdline',
+          option = {
+            ignore_cmds = { 'Man', '!' }
+          }
+        },
         { name = 'path' },
         { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },
     }
-}
+})
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = 'buffer' }
+    }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources(
+        {
+            { name = 'path' }
+        },
+        {
+            { name = 'cmdline' }
+        }
+    )
+})
+
 -- Advertise nvim-cmp LSP's capabilities to LSP server
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require('nvim-treesitter.configs').setup { 
+require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true
     },
     incremental_selection = {
-        enable = true 
+        enable = true
     },
     textobjects = {
-        enable = true 
+        enable = true
     },
 }
 
-require('lspconfig').beancount.setup { 
+local lspconfig = require('lspconfig')
+lspconfig.lua_ls.setup {
+    settings = {
+        Lua = {
+            runtime = {
+                version = 'LuaJIT'
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { 'vim' },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
+        }
+    },
+    capabilities = capabilities
+}
+
+lspconfig.rnix.setup {
+    capabilities = capabilities
+}
+
+lspconfig.beancount.setup {
     capabilities = capabilities
 }
 -- Use LspAttach autocommand to only map the following keys
