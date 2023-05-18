@@ -24,9 +24,10 @@ vim.cmd([[
     filetype plugin indent on
 ]])
 vim.opt.colorcolumn = "80"
-vim.opt.background = "dark"
+vim.opt.cursorline = true
 vim.opt.spelllang = "ru,en"
 vim.opt.termguicolors = true
+vim.cmd('colorscheme github_light')
 
 -- 6 multiple windows
 vim.opt.laststatus = 2
@@ -110,10 +111,8 @@ end
 -- popup_remap('<C-k>', '<C-p>')
 
 --  PLUGIN STETUP
-require('onedark').setup {
-    style = 'darker'
+require('github-theme').setup {
 }
-require('onedark').load()
 
 require('Comment').setup()
 
@@ -122,11 +121,11 @@ require('nvim-web-devicons').setup {
 
 require('gitsigns').setup()
 
-require('indent_blankline').setup()
+require('indent_blankline').setup {
+}
 
 require('lualine').setup {
-    theme = 'onedark',
-    transparent = false
+    theme = 'github_light',
 }
 
 require('bufferline').setup {

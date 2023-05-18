@@ -3,10 +3,7 @@ Name=custom
 Parent=FALLBACK/
 
 [Appearance]
-ColorScheme=One-Dark
-
-[Cursor Options]
-UseCustomCursorColor=true
+ColorScheme=github_light
 
 [Scrolling]
 ScrollBarPosition=2
