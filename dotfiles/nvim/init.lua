@@ -124,7 +124,12 @@ require('lualine').setup({
   theme = 'github_light',
 })
 
-require('bufferline').setup({})
+require('bufferline').setup({
+  options = {
+    separator_style = 'slant',
+    always_show_bufferline = false,
+  }
+})
 
 --[[
 require("noice").setup({
