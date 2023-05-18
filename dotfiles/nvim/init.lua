@@ -187,6 +187,11 @@ require('telescope').load_extension('fzf')
 local cmp = require('cmp')
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
   window = {
     documentation = cmp.config.window.bordered(),
   },
