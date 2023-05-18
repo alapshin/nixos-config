@@ -132,19 +132,6 @@ require('lualine').setup {
 require('bufferline').setup {
 }
 
-require('nvim-cursorline').setup {
-    cursorline = {
-        enable = true,
-        number = false,
-        timeout = 1000,
-    },
-    cursorword = {
-        enable = false,
-        min_length = 3,
-        hl = { underline = true },
-  }
-}
-
 --[[
 require("noice").setup({
   lsp = {

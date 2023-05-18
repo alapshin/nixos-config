@@ -50,7 +50,6 @@ in {
       gitsigns-nvim
       telescope-nvim
       telescope-fzf-native-nvim
-      nvim-cursorline
       bufferline-nvim
       nvim-web-devicons
       indent-blankline-nvim
