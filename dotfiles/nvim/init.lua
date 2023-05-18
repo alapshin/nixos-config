@@ -185,21 +185,53 @@ require("telescope").setup {
 require('telescope').load_extension('fzf')
 
 local cmp = require('cmp')
+local select_opts = {behavior = cmp.SelectBehavior.Select}
 cmp.setup({
-   -- window = {
-   --    completion = cmp.config.window.bordered(),
-   --    documentation = cmp.config.window.bordered(),
-   --  },
+   window = {
+      documentation = cmp.config.window.bordered(),
+    },
     mapping = cmp.mapping.preset.insert({
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<CR>'] = cmp.mapping.confirm({select = false}),
+        ['<C-y>'] = cmp.mapping.confirm({select = true}),
+        ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
+        ['<Down>'] = cmp.mapping.select_next_item(select_opts),
+
+        ['<C-p>'] = cmp.mapping(function()
+            if not cmp.visible() then
+                cmp.complete()
+            else
+                cmp.select_prev_item(select_opts)
+            end
+        end),
+        ['<C-n>'] = cmp.mapping(function()
+            if not cmp.visible() then
+                cmp.complete()
+            else
+                cmp.select_next_item(select_opts)
+            end
+        end),
+
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            local col = vim.fn.col('.') - 1
+
+            if cmp.visible() then
+                cmp.select_next_item(select_opts)
+            elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+                fallback()
+            else
+                cmp.complete()
+            end
+        end, {'i', 's'}),
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
             if not cmp.visible() then
                 fallback()
             else
-                cmp.select_next_item()
+                cmp.select_prev_item(select_opts)
             end
-        end, {"i","s","c",}),
+        end, {'i', 's'}),
     }),
     sources = {
         { name = 'buffer' },
@@ -235,9 +267,6 @@ cmp.setup.cmdline(':', {
     )
 })
 
--- Advertise nvim-cmp LSP's capabilities to LSP server
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true
@@ -251,6 +280,14 @@ require('nvim-treesitter.configs').setup {
 }
 
 local lspconfig = require('lspconfig')
+local lsp_defaults = lspconfig.util.default_config
+-- Advertise nvim-cmp LSP's capabilities to LSP server
+lsp_defaults.capabilities = vim.tbl_deep_extend(
+    'force',
+    lsp_defaults.capabilities,
+    require('cmp_nvim_lsp').default_capabilities()
+)
+
 lspconfig.lua_ls.setup {
     settings = {
         Lua = {
@@ -272,20 +309,18 @@ lspconfig.lua_ls.setup {
             },
         }
     },
-    capabilities = capabilities
 }
 
 lspconfig.rnix.setup {
-    capabilities = capabilities
 }
 
 lspconfig.beancount.setup {
-    capabilities = capabilities
 }
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+        desc = 'LSP Actions',
         callback = function(ev)
             -- Enable completion triggered by <c-x><c-o>
             vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
