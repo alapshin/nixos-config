@@ -5,7 +5,7 @@
 
 -- 2 moving around, searching and patterns
 vim.opt.wrapscan = true
-vim.opt.incsearch  = true
+vim.opt.incsearch = true
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
@@ -16,16 +16,16 @@ vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 5
 vim.opt.display = 'lastline'
 vim.opt.list = false
-vim.opt.listchars = { eol='↴', space = '·',  tab = '>-' }
+vim.opt.listchars = { eol = '↴', space = '·', tab = '>-' }
 
 -- 5 syntax, highlighting and spelling
 vim.cmd([[
     syntax on
     filetype plugin indent on
 ]])
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = '80'
 vim.opt.cursorline = true
-vim.opt.spelllang = "ru,en"
+vim.opt.spelllang = 'ru,en'
 vim.opt.termguicolors = true
 vim.cmd('colorscheme github_light')
 
@@ -86,9 +86,11 @@ local ru = [[ёйцукенгшщзхъфывапролджэячсмить]]
 local en_shift = [[~QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>]]
 local ru_shift = [[ËЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ]]
 vim.opt.langmap = vim.fn.join({
-    -- | `to` should be first     | `from` should be second
-    escape(ru) .. ';' .. escape(en),
-    escape(ru_shift) .. ';' .. escape(en_shift),
+  -- | `to` should be first     | `from` should be second
+  escape(ru)
+    .. ';'
+    .. escape(en),
+  escape(ru_shift) .. ';' .. escape(en_shift),
 }, ',')
 
 -- 24 various
@@ -96,40 +98,33 @@ vim.opt.signcolumn = 'yes'
 
 -- KEY MAPPINGS
 local function popup_remap(lhs, rhs)
-    vim.keymap.set({ 'c', 'i' }, lhs,
-        function()
-            if vim.fn.pumvisible() then
-                return rhs
-            else
-                return lhs
-            end
-        end,
-        { expr = true }
-    )
+  vim.keymap.set({ 'c', 'i' }, lhs, function()
+    if vim.fn.pumvisible() then
+      return rhs
+    else
+      return lhs
+    end
+  end, { expr = true })
 end
 -- popup_remap('<C-j>', '<C-n>')
 -- popup_remap('<C-k>', '<C-p>')
 
 --  PLUGIN STETUP
-require('github-theme').setup {
-}
+require('github-theme').setup({})
 
 require('Comment').setup()
 
-require('nvim-web-devicons').setup {
-}
+require('nvim-web-devicons').setup({})
 
 require('gitsigns').setup()
 
-require('indent_blankline').setup {
-}
+require('indent_blankline').setup({})
 
-require('lualine').setup {
-    theme = 'github_light',
-}
+require('lualine').setup({
+  theme = 'github_light',
+})
 
-require('bufferline').setup {
-}
+require('bufferline').setup({})
 
 --[[
 require("noice").setup({
@@ -162,184 +157,180 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
-local actions = require("telescope.actions")
-require("telescope").setup {
+local actions = require('telescope.actions')
+require('telescope').setup({
   defaults = {
     mappings = {
       i = {
-        ["<esc>"] = actions.close
+        ['<esc>'] = actions.close,
       },
     },
     extensioons = {
-        fzf = {
-            -- false will only do exact matching
-            fuzzy = true,
-            -- override the file sorter
-            override_file_sorter = true,
-            -- override the generic sorter
-            override_generic_sorter = true,
-        }
+      fzf = {
+        -- false will only do exact matching
+        fuzzy = true,
+        -- override the file sorter
+        override_file_sorter = true,
+        -- override the generic sorter
+        override_generic_sorter = true,
+      },
     },
-  }
-}
+  },
+})
 require('telescope').load_extension('fzf')
 
 local cmp = require('cmp')
-local select_opts = {behavior = cmp.SelectBehavior.Select}
+local select_opts = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
-   window = {
-      documentation = cmp.config.window.bordered(),
+  window = {
+    documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
+    ['<Down>'] = cmp.mapping.select_next_item(select_opts),
+
+    ['<C-p>'] = cmp.mapping(function()
+      if not cmp.visible() then
+        cmp.complete()
+      else
+        cmp.select_prev_item(select_opts)
+      end
+    end),
+    ['<C-n>'] = cmp.mapping(function()
+      if not cmp.visible() then
+        cmp.complete()
+      else
+        cmp.select_next_item(select_opts)
+      end
+    end),
+
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      local col = vim.fn.col('.') - 1
+
+      if cmp.visible() then
+        cmp.select_next_item(select_opts)
+      elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+        fallback()
+      else
+        cmp.complete()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if not cmp.visible() then
+        fallback()
+      else
+        cmp.select_prev_item(select_opts)
+      end
+    end, { 'i', 's' }),
+  }),
+  sources = {
+    { name = 'buffer' },
+    {
+      name = 'cmdline',
+      option = {
+        ignore_cmds = { 'Man', '!' },
+      },
     },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<C-d>'] = cmp.mapping.scroll_docs(4),
-        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-        ['<CR>'] = cmp.mapping.confirm({select = false}),
-        ['<C-y>'] = cmp.mapping.confirm({select = true}),
-        ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
-        ['<Down>'] = cmp.mapping.select_next_item(select_opts),
-
-        ['<C-p>'] = cmp.mapping(function()
-            if not cmp.visible() then
-                cmp.complete()
-            else
-                cmp.select_prev_item(select_opts)
-            end
-        end),
-        ['<C-n>'] = cmp.mapping(function()
-            if not cmp.visible() then
-                cmp.complete()
-            else
-                cmp.select_next_item(select_opts)
-            end
-        end),
-
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            local col = vim.fn.col('.') - 1
-
-            if cmp.visible() then
-                cmp.select_next_item(select_opts)
-            elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-                fallback()
-            else
-                cmp.complete()
-            end
-        end, {'i', 's'}),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if not cmp.visible() then
-                fallback()
-            else
-                cmp.select_prev_item(select_opts)
-            end
-        end, {'i', 's'}),
-    }),
-    sources = {
-        { name = 'buffer' },
-        {
-          name = 'cmdline',
-          option = {
-            ignore_cmds = { 'Man', '!' }
-          }
-        },
-        { name = 'path' },
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lsp_signature_help' },
-    }
+    { name = 'path' },
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
+  },
 })
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = 'buffer' }
-    }
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' },
+  },
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources(
-        {
-            { name = 'path' }
-        },
-        {
-            { name = 'cmdline' }
-        }
-    )
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' },
+  }, {
+    { name = 'cmdline' },
+  }),
 })
 
-require('nvim-treesitter.configs').setup {
-    highlight = {
-        enable = true
-    },
-    incremental_selection = {
-        enable = true
-    },
-    textobjects = {
-        enable = true
-    },
-}
+require('nvim-treesitter.configs').setup({
+  highlight = {
+    enable = true,
+  },
+  incremental_selection = {
+    enable = true,
+  },
+  textobjects = {
+    enable = true,
+  },
+})
 
 local lspconfig = require('lspconfig')
 local lsp_defaults = lspconfig.util.default_config
 -- Advertise nvim-cmp LSP's capabilities to LSP server
-lsp_defaults.capabilities = vim.tbl_deep_extend(
-    'force',
-    lsp_defaults.capabilities,
-    require('cmp_nvim_lsp').default_capabilities()
-)
+lsp_defaults.capabilities =
+  vim.tbl_deep_extend('force', lsp_defaults.capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-lspconfig.lua_ls.setup {
-    settings = {
-        Lua = {
-            runtime = {
-                version = 'LuaJIT'
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { 'vim' },
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
-                checkThirdParty = false,
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-                enable = false,
-            },
-        }
+lspconfig.lua_ls.setup({
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { 'vim' },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file('', true),
+        checkThirdParty = false,
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
     },
-}
+  },
+})
 
-lspconfig.rnix.setup {
-}
+lspconfig.rnix.setup({})
 
-lspconfig.beancount.setup {
-}
+lspconfig.beancount.setup({})
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-        desc = 'LSP Actions',
-        callback = function(ev)
-            -- Enable completion triggered by <c-x><c-o>
-            vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  desc = 'LSP Actions',
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-            -- Buffer local mappings.
-            -- See `:help vim.lsp.*` for documentation on any of the below functions
-            local opts = { buffer = ev.buf }
-            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-            vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-            vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-            vim.keymap.set('n', '<space>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
-            vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-            vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-            vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-            vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-            vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts)
-        end,
-    })
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>f', function()
+      vim.lsp.buf.format({ async = true })
+    end, opts)
+  end,
+})
