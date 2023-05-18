@@ -50,6 +50,10 @@
     transcrypt
   ];
 
+  luaPackages = with pkgs; [
+    stylua
+  ];
+
   javaPackages = with pkgs; [
     async-profiler
 
@@ -196,6 +200,7 @@ in {
       ++ gitPackages
       ++ guiDevTools
       ++ borgPackages
+      ++ luaPackages
       ++ javaPackages
       ++ plasmaPackages
       ++ pythonPackages
