@@ -19,16 +19,13 @@
 
   github-theme = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "github-nvim-theme";
-    version = "2023-05-17";
+    version = "2023-05-19";
     src = pkgs.fetchFromGitHub {
       owner = "projekt0n";
       repo = "github-nvim-theme";
-      rev = "99bf053d4fd6fcdb855ef29824fe18c7429ebdd4";
-      hash = "sha256-m8dLckKWodrInO4WLqOxRqdpeN0TW1N6Kb9i/hxpSIE=";
+      rev = "e6b14d5e80c1a4bb006055851662133ba8cb8f8a";
+      hash = "sha256-IK9cRF8sGuLV9BmFJDxn2aHyTaEjq/+vVO0rOwVUKpk=";
     };
-    preInstall = ''
-      rm -rf doc
-    '';
   };
 in {
   programs.neovim = {
@@ -40,7 +37,6 @@ in {
 
     plugins = with pkgs.vimPlugins; [
       github-theme
-      onedark-nvim
 
       vim-sleuth
       vim-polyglot
