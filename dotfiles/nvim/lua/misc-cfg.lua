@@ -3,7 +3,6 @@ require('gitsigns').setup()
 
 require('shade').setup({})
 require('trouble').setup({})
-require('github-theme').setup({})
 require('nvim-web-devicons').setup({})
 
 require('lualine').setup({

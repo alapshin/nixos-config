@@ -1,5 +1,6 @@
 require('options')
 require('mappings')
+require('colorscheme')
 
 require('cmp-cfg')
 require('lsp-cfg')
