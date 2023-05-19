@@ -58,6 +58,7 @@ in {
       cmp-path
       cmp-nvim-lsp
       cmp-nvim-lsp-signature-help
+      null-ls-nvim
       nvim-lspconfig
       nvim-treesitter.withAllGrammars
 
@@ -74,7 +75,13 @@ in {
       indent-blankline-nvim
     ];
     extraPackages = with pkgs; [
+      alejandra
+      gitlint
+      hadolint
+      selene
+      statix
       rnix-lsp
+
       lua-language-server
       beancount-language-server
     ];

@@ -283,6 +283,20 @@ require('nvim-treesitter.configs').setup({
   },
 })
 
+local nls = require('null-ls')
+nls.setup({
+  sources = {
+    nls.builtins.code_actions.shellcheck,
+    nls.builtins.code_actions.statix,
+    nls.builtins.diagnostics.gitlint,
+    nls.builtins.diagnostics.hadolint,
+    nls.builtins.diagnostics.selene,
+    nls.builtins.diagnostics.shellcheck,
+    nls.builtins.diagnostics.statix,
+    nls.builtins.formatting.alejandra,
+  },
+})
+
 local lspconfig = require('lspconfig')
 local lsp_defaults = lspconfig.util.default_config
 -- Advertise nvim-cmp LSP's capabilities to LSP server
@@ -311,9 +325,7 @@ lspconfig.lua_ls.setup({
     },
   },
 })
-
 lspconfig.rnix.setup({})
-
 lspconfig.beancount.setup({})
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
