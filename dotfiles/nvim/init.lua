@@ -128,35 +128,32 @@ require('bufferline').setup({
   options = {
     separator_style = 'slant',
     always_show_bufferline = false,
-  }
+  },
 })
 
 require('shade').setup({})
 
---[[
-require("noice").setup({
+require('noice').setup({
   lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
     override = {
-      ["cmp.entry.get_documentation"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+      ['cmp.entry.get_documentation'] = true,
+      ['vim.lsp.util.stylize_markdown'] = true,
+      ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
     },
   },
   -- you can enable a preset for easier configuration
   presets = {
     bottom_search = true, -- use a classic bottom cmdline for search
-    command_palette = true, -- position the cmdline and popupmenu together
+    command_palette = false, -- position the cmdline and popupmenu together
     inc_rename = false, -- enables an input dialog for inc-rename.nvim
     lsp_doc_border = false, -- add a border to hover docs and signature help
     long_message_to_split = true, -- long messages will be sent to a split
   },
 })
 
-require('trouble').setup {
-}
---]]
---
+require('trouble').setup({})
+
 require('telescope')
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
@@ -194,10 +191,14 @@ cmp.setup({
       require('luasnip').lsp_expand(args.body)
     end,
   },
+  view = {
+    entries = 'custom',
+  },
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
+  experimental = { ghost_text = true },
   mapping = cmp.mapping.preset.insert({
     ['<C-e>'] = cmp.mapping.abort(),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
