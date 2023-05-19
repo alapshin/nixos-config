@@ -97,17 +97,6 @@ vim.opt.langmap = vim.fn.join({
 vim.opt.signcolumn = 'yes'
 
 -- KEY MAPPINGS
-local function popup_remap(lhs, rhs)
-  vim.keymap.set({ 'c', 'i' }, lhs, function()
-    if vim.fn.pumvisible() then
-      return rhs
-    else
-      return lhs
-    end
-  end, { expr = true })
-end
--- popup_remap('<C-j>', '<C-n>')
--- popup_remap('<C-k>', '<C-p>')
 
 --  PLUGIN STETUP
 require('github-theme').setup({})
