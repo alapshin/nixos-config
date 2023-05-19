@@ -65,8 +65,8 @@ cmp.setup({
     { name = 'nvim_lsp_signature_help', priority = 100 },
   },
   formatting = {
-    format = lspkind.cmp_format({})
-  }
+    format = lspkind.cmp_format({}),
+  },
 })
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
@@ -85,4 +85,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' },
   }),
 })
-

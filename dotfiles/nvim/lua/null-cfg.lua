@@ -11,4 +11,3 @@ nls.setup({
     nls.builtins.formatting.alejandra,
   },
 })
-

@@ -1,11 +1,9 @@
 local lspconfig = require('lspconfig')
+-- Advertise nvim-cmp LSP's capabilities to all LSP servers
 local lsp_defaults = lspconfig.util.default_config
--- Advertise nvim-cmp LSP's capabilities to LSP server
-lsp_defaults.capabilities = vim.tbl_deep_extend(
-  'force',
-  lsp_defaults.capabilities,
-  require('cmp_nvim_lsp').default_capabilities()
-)
+local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+lsp_defaults.capabilities =
+  vim.tbl_deep_extend('force', lsp_defaults.capabilities, cmp_capabilities)
 
 lspconfig.lua_ls.setup({
   settings = {

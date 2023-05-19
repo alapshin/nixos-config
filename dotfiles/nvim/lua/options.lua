@@ -92,4 +92,3 @@ vim.opt.langmap = vim.fn.join({
 
 -- 24 various
 vim.opt.signcolumn = 'yes'
-
