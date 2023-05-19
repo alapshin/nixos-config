@@ -59,6 +59,7 @@ in {
       cmp-nvim-lsp
       cmp-nvim-lsp-signature-help
       null-ls-nvim
+      lspkind-nvim
       nvim-lspconfig
       nvim-treesitter.withAllGrammars
 

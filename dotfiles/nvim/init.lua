@@ -184,6 +184,7 @@ require('telescope').setup({
 require('telescope').load_extension('fzf')
 
 local cmp = require('cmp')
+local lspkind = require('lspkind')
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
   snippet = {
@@ -248,6 +249,9 @@ cmp.setup({
     { name = 'nvim_lsp', priority = 100 },
     { name = 'nvim_lsp_signature_help', priority = 100 },
   },
+  formatting = {
+    format = lspkind.cmp_format({})
+  }
 })
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
