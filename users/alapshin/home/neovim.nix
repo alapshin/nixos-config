@@ -3,6 +3,9 @@
   pkgs,
   ...
 }: let
+   # alias
+  shade-nvim = pkgs.vimPlugins.Shade-nvim;
+
   beancount-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "beancount-nvim";
     version = "2023-01-28";
@@ -14,7 +17,7 @@
     };
   };
 
-  github-nvim-theme = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  github-theme = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "github-nvim-theme";
     version = "2023-05-17";
     src = pkgs.fetchFromGitHub {
@@ -36,7 +39,7 @@ in {
     defaultEditor = true;
 
     plugins = with pkgs.vimPlugins; [
-      github-nvim-theme
+      github-theme
       onedark-nvim
 
       vim-sleuth
@@ -59,6 +62,7 @@ in {
       nvim-treesitter.withAllGrammars
 
       noice-nvim
+      shade-nvim
       nvim-notify
       trouble-nvim
       lualine-nvim

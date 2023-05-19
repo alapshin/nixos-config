@@ -131,6 +131,8 @@ require('bufferline').setup({
   }
 })
 
+require('shade').setup({})
+
 --[[
 require("noice").setup({
   lsp = {
