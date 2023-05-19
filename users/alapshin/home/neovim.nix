@@ -58,6 +58,8 @@ in {
       lspkind-nvim
       nvim-lspconfig
       nvim-treesitter.withAllGrammars
+      nvim-treesitter-context
+      nvim-treesitter-textobjects
 
       noice-nvim
       shade-nvim
