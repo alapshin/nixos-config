@@ -8,4 +8,3 @@ require('null-cfg')
 require('misc-cfg')
 require('noice-cfg')
 require('telescope-cfg')
-
