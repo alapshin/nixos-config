@@ -241,16 +241,10 @@ cmp.setup({
     end, { 'i', 's' }),
   }),
   sources = {
-    { name = 'buffer' },
-    {
-      name = 'cmdline',
-      option = {
-        ignore_cmds = { 'Man', '!' },
-      },
-    },
-    { name = 'path' },
-    { name = 'nvim_lsp' },
-    { name = 'nvim_lsp_signature_help' },
+    { name = 'path', priority = 0 },
+    { name = 'buffer', priority = 1 },
+    { name = 'nvim_lsp', priority = 100 },
+    { name = 'nvim_lsp_signature_help', priority = 100 },
   },
 })
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
