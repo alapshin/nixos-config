@@ -44,6 +44,7 @@ in {
 
       plenary-nvim
 
+      leap-nvim
       comment-nvim
       which-key-nvim
 
