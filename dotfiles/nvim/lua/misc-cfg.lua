@@ -14,3 +14,7 @@ require('bufferline').setup({
     always_show_bufferline = false,
   },
 })
+
+require('indent_blankline').setup({
+  show_current_context = true,
+})
