@@ -38,6 +38,7 @@
 
     gitui = {
       enable = true;
+      keyConfig = /. + dotfileDir + "/gitui/key_bindings.ron";
     };
 
     exa = {
