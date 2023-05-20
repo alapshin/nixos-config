@@ -7,6 +7,7 @@
 in {
   home-manager.users."${username}" = { config, ... }: {
     imports = [
+      ./git.nix
       ./gnupg.nix
       ./shell.nix
       ./plasma.nix

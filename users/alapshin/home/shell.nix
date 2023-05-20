@@ -32,15 +32,6 @@
       enableZshIntegration = true;
     };
 
-    gh = {
-      enable = true;
-    };
-
-    gitui = {
-      enable = true;
-      keyConfig = /. + dotfileDir + "/gitui/key_bindings.ron";
-    };
-
     exa = {
       enable = true;
       enableAliases = true;

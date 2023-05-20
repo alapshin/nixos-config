@@ -40,16 +40,6 @@
     jetbrains-toolbox
   ];
 
-  gitPackages = with pkgs; [
-    git
-    git-crypt
-    git-extras
-    git-filter-repo
-    git-lfs
-    tig
-    transcrypt
-  ];
-
   luaPackages = with pkgs; [
     stylua
   ];
@@ -197,7 +187,6 @@ in {
       ++ accountingTools
       ++ blockchainPackages
       ++ devTools
-      ++ gitPackages
       ++ guiDevTools
       ++ borgPackages
       ++ luaPackages
