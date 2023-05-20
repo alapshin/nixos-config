@@ -4,15 +4,26 @@
   ...
 }: {
   programs = {
+    atuin = {
+      enable = true;
+      settings = {
+        style = "compact";
+        auto_sync = false;
+        update_check = false;
+        inline_height = 10;
+      };
+      enableZshIntegration = true;
+    };
+
     bat.enable = true;
 
     broot = {
       enable = true;
       enableZshIntegration = true;
     };
+
     fzf = {
       enable = true;
-      enableZshIntegration = true;
     };
 
     direnv = {
