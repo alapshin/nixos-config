@@ -2,17 +2,17 @@ require('github-theme').setup({
   options = {
     modules = {
       cmp = {
-        enable = true
+        enable = true,
       },
       gitsigns = {
-        enable = true
+        enable = true,
       },
       telescope = {
-        enable = true
+        enable = true,
       },
       indent_blankline = {
-        enable = true
+        enable = true,
       },
-    }
-  }
+    },
+  },
 })
