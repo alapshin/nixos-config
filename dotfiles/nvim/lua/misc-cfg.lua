@@ -2,7 +2,6 @@ require('Comment').setup()
 require('gitsigns').setup()
 
 require('shade').setup({})
-require('trouble').setup({})
 require('nvim-web-devicons').setup({})
 
 require('lualine').setup({
