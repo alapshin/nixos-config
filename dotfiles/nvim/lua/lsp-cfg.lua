@@ -1,3 +1,6 @@
+require('inc_rename').setup()
+vim.keymap.set("n", "<leader>rn", ":IncRename ")
+
 local lspconfig = require('lspconfig')
 -- Advertise nvim-cmp LSP's capabilities to all LSP servers
 local lsp_defaults = lspconfig.util.default_config

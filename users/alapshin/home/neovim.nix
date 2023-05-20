@@ -58,6 +58,7 @@ in {
       null-ls-nvim
       lspkind-nvim
       nvim-lspconfig
+      inc-rename-nvim
       nvim-treesitter.withAllGrammars
       nvim-treesitter-context
       nvim-treesitter-textobjects
