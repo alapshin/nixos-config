@@ -59,6 +59,10 @@ vim.opt.softtabstop = 4
 -- 14 folding
 vim.opt.foldenable = false
 
+-- 16 mapping
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
+
 -- 17 reading and writing files
 vim.opt.backup = false
 vim.opt.writebackup = false
