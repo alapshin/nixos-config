@@ -23,12 +23,16 @@
     lazygit = {
       enable = true;
       settings = {
-        gui.theme = {
-          lightTheme = true;
+        gui= {
+          border = "rounded";
+          theme = {
+            lightTheme = true;
+          };
         };
       };
     };
   };
+
   home.shellAliases = {
     lg = "lazygit";
   };
