@@ -9,6 +9,8 @@
 	whitespace = cr-at-eol
 [delta]
 	navigate = true
+[diff]
+	colorMoved = default
 [fetch]
 	prune = true
 [init]
@@ -31,6 +33,7 @@
 [user]
 	name = Andrei Lapshin
 	email = alapshin@fastmail.com
+
 [github]
 	user = alapshin
 
