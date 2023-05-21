@@ -135,7 +135,6 @@ in {
         digikam
         element-desktop
         exiftool
-        fd
         ffmpeg
         file
         gimp
@@ -156,14 +155,12 @@ in {
         mkvtoolnix
         moreutils
         mpv
-        ncdu
         obsidian
         obs-studio
         openssl
         p7zip
         pciutils
         qbittorrent
-        ripgrep
         rsync
         s-tui
         skrooge

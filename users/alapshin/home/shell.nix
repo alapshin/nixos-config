@@ -3,6 +3,19 @@
   dotfileDir,
   ...
 }: {
+  home.shellAliases = {
+    cat = "bat";
+  };
+
+  home.packages = with pkgs; [
+    dog
+    duf
+    dust
+    fd
+    httpie
+    ripgrep
+  ];
+
   programs = {
     atuin = {
       enable = true;
@@ -15,7 +28,15 @@
       enableZshIntegration = true;
     };
 
-    bat.enable = true;
+    bat = {
+      enable = true;
+      config = {
+        style = "full";
+        theme = "GitHub";
+        paging = "never";
+        italic-text = "always";
+      };
+    };
 
     broot = {
       enable = true;
