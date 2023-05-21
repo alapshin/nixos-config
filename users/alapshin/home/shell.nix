@@ -34,7 +34,6 @@
       config = {
         style = "full";
         theme = "GitHub";
-        paging = "never";
         italic-text = "always";
       };
     };
