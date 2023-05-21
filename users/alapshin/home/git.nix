@@ -28,7 +28,9 @@
         enable = true;
         options = {
           light = true;
+          hyperlinks = true;
           line-numbers = true;
+          side-by-side = true;
           features = "github";
         };
       };
@@ -52,6 +54,10 @@
         gui= {
           border = "rounded";
           expandFocusedSidePanel = true;
+          theme = {
+            selectedLineBgColor = [ "default" "bold" ];
+            selectedRangeBgColor = [ "reverse" "bold" ];
+          };
         };
         git = {
           paging = {
@@ -60,6 +66,10 @@
             pager = "delta --paging=never";
           };
         };
+        update = {
+          method = "never";
+        };
+        promptToReturnFromSubprocess = false;
       };
     };
   };
