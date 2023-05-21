@@ -3,6 +3,17 @@
   dotfileDir,
   ...
 }: {
+
+  home.shellAliases = {
+    lg = "lazygit";
+  };
+
+  home.packages = with pkgs; [
+    git-extras
+    transcrypt
+    git-filter-repo
+  ];
+
   programs = {
     gh = {
       enable = true;
@@ -13,6 +24,21 @@
       lfs = {
         enable = true;
       };
+      delta = {
+        enable = true;
+        options = {
+          light = true;
+          line-numbers = true;
+          features = "github";
+        };
+      };
+      includes = [
+        { path = /. + dotfileDir + "/gitconfig"; }
+        { 
+          path = /. + dotfileDir + "/gitconfig-alar"; 
+          condition = "~/work/alar";
+        }
+      ];
     };
 
     gitui = {
@@ -25,20 +51,16 @@
       settings = {
         gui= {
           border = "rounded";
-          theme = {
-            lightTheme = true;
+          expandFocusedSidePanel = true;
+        };
+        git = {
+          paging = {
+            useConfig = false;
+            colorArg = "always";
+            pager = "delta --paging=never";
           };
         };
       };
     };
   };
-
-  home.shellAliases = {
-    lg = "lazygit";
-  };
-  home.packages = with pkgs; [
-    git-extras
-    transcrypt
-    git-filter-repo
-  ];
 }

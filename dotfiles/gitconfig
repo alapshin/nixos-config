@@ -5,21 +5,15 @@
 [color]
 	ui = auto
 [core]
-	pager = cat
 	editor = nvim
 	whitespace = cr-at-eol
-[credential]
-	helper = cache --timeout=3600
-[diff]
-	tool = nvimdiff
-	indentHeuristic = true
-	compactionHeuristic = true
+[delta]
+	navigate = true
 [fetch]
 	prune = true
 [init]
   defaultBranch = main
 [merge]
-	tool = nvimdiff
 	conflictstyle = diff3
 [pull]
 	ff = only
@@ -39,9 +33,6 @@
 	email = alapshin@fastmail.com
 [github]
 	user = alapshin
-
-[includeIf "gitdir:~/alar/"]
-        path = ~/.config/git/config-alar
 
 [diff "sopsdiff"]
 	textconv = "sops -d"

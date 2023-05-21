@@ -57,8 +57,6 @@ in {
           recursive = true;
         };
 
-        "git/config".source = "${dotfileDir}/gitconfig";
-        "git/config-alar".source = "${dotfileDir}/gitconfig-alar";
         "ideavim/ideavimrc".source = "${dotfileDir}/ideavimrc";
         "latexmk/latexmkrc".source = "${dotfileDir}/latexmkrc";
         "tig/config".source = "${dotfileDir}/tigrc";
