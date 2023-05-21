@@ -10,8 +10,9 @@
   home.packages = with pkgs; [
     dog
     duf
-    dust
+    du-dust
     fd
+    glow
     httpie
     ripgrep
   ];

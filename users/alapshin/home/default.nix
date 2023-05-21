@@ -57,10 +57,10 @@ in {
           recursive = true;
         };
 
+        "zsh/p10k.zsh".source = "${dotfileDir}/p10k.zsh";
+        "glow/glow.yml".source = "${dotfileDir}/glow/glow.yml";
         "ideavim/ideavimrc".source = "${dotfileDir}/ideavimrc";
         "latexmk/latexmkrc".source = "${dotfileDir}/latexmkrc";
-        "tig/config".source = "${dotfileDir}/tigrc";
-        "zsh/p10k.zsh".source = "${dotfileDir}/p10k.zsh";
         "borgmatic/config.yaml".source = "${dotfileDir}/borgmatic.yaml";
       };
       mimeApps = {
