@@ -61,7 +61,7 @@ vim.opt.foldenable = false
 
 -- 16 mapping
 vim.opt.timeout = true
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 500
 
 -- 17 reading and writing files
 vim.opt.backup = false
