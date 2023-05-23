@@ -38,7 +38,11 @@
         { path = /. + dotfileDir + "/gitconfig"; }
         { 
           path = /. + dotfileDir + "/gitconfig-alar"; 
-          condition = "~/work/alar";
+          condition = "gitdir:~/work/alar/";
+        }
+        { 
+          path = /. + dotfileDir + "/gitconfig-scalable"; 
+          condition = "gitdir:~/work/scalable/";
         }
       ];
     };
