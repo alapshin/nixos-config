@@ -21,6 +21,16 @@ in {
   home.stateVersion = "22.11";
   home.packages = with pkgs; [
     home-manager
+
+    inter
+    ibm-plex
+    liberation_ttf
+    nerdfonts
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    noto-fonts-extra
+
     birdtray-autostart
     keepassxc-autostart
   ];
@@ -29,6 +39,8 @@ in {
     ".curlrc".source = "${dotfileDir}/curlrc";
     ".ssh/config".source = "${dotfileDir}/ssh/config";
   };
+
+  fonts.fontconfig.enable = true;
 
   home.language = {
     base = "en_US.UTF-8";

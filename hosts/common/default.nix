@@ -28,16 +28,6 @@
   };
 
   fonts = {
-    fonts = with pkgs; [
-      inter
-      ibm-plex
-      liberation_ttf
-      nerdfonts
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-      noto-fonts-extra
-    ];
     fontconfig = {
       defaultFonts = {
         emoji = [
