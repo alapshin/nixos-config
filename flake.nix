@@ -30,10 +30,8 @@
 
     system = "x86_64-linux";
 
-    dirs = rec {
-      config = builtins.toString ./.;
-      dotfiles = "${config}/dotfiles";
-    };
+    configDir = builtins.toString ./.;
+    dotfileDir = "${configDir}/dotfiles";
 
     nixpkgsConfig = {
       allowUnfree = true;
@@ -57,7 +55,7 @@
       # Install user packages to /etc/profiles instead.
       # Necessary for nixos-rebuild build-vm to work.
       home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = {dotfileDir = dirs.dotfiles;};
+      home-manager.extraSpecialArgs = { inherit dotfileDir;};
       home-manager.sharedModules = [
         inputs.plasma-manager.homeManagerModules.plasma-manager
       ];
@@ -76,8 +74,7 @@
         inherit system;
         modules = baseModules ++ hostModules ++ userModules;
         specialArgs = {
-          inherit inputs pkgs self;
-          dotfileDir = dirs.dotfiles;
+          inherit inputs pkgs self dotfileDir;
         };
       };
   in {
