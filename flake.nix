@@ -55,7 +55,9 @@
       # Install user packages to /etc/profiles instead.
       # Necessary for nixos-rebuild build-vm to work.
       home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = { inherit dotfileDir;};
+      home-manager.extraSpecialArgs = {
+        inherit dotfileDir;
+      };
       home-manager.sharedModules = [
         inputs.plasma-manager.homeManagerModules.plasma-manager
       ];
@@ -122,6 +124,20 @@
         userModules = [
           ./users/alapshin
         ];
+      };
+    };
+    homeConfigurations = {
+      "alapshin" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./users/alapshin/home/home.nix ];
+        extraSpecialArgs = { 
+          inherit dotfileDir; 
+          osConfig = {
+            networking = {
+              hostName = "foobar";
+            };
+          };
+        };
       };
     };
   };
