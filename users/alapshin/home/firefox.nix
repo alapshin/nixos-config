@@ -17,10 +17,10 @@
         id = 0;
         extensions =
           (with pkgs.firefox-addons; [
-            bypass-paywalls-clean
             linguist-translator
           ])
           ++ (with pkgs.nur.repos.rycee.firefox-addons; [
+            bypass-paywalls-clean
             keepassxc-browser
             languagetool
             leechblock-ng
