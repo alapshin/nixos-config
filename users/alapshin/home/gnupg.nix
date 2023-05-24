@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  osConfig,
   ...
 }: {
   programs.gpg = {
