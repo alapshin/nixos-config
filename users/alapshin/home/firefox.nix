@@ -25,6 +25,7 @@
             languagetool
             leechblock-ng
             metamask
+            multi-account-containers
             plasma-integration
             sponsorblock
             temporary-containers
