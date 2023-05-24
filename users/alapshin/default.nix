@@ -211,7 +211,7 @@ in {
       user = username;
       group = "users";
       dataDir = "/home/${username}";
-      settings = {
+      # settings = {
         devices = {
           altdesk = {
             id = "K77LUC6-BZYZKY3-CHVAHJW-RXHUAPB-T6ZNZ6Q-KF77MQY-RCGE56Y-OV5XRAF";
@@ -232,7 +232,7 @@ in {
             label = "Syncthing";
             devices = ["altdesk" "carbon" "desktop" "pixel"];
           };
-        };
+        # };
       };
       overrideFolders = true;
       overrideDevices = false;
