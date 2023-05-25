@@ -29,7 +29,6 @@
   devTools = with pkgs; [
     age
     hadolint
-    shellcheck
     sops
     ssh-to-age
   ];

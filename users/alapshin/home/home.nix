@@ -33,6 +33,8 @@ in {
     noto-fonts-emoji
     noto-fonts-extra
 
+    shellcheck
+
     birdtray-autostart
     keepassxc-autostart
   ];
