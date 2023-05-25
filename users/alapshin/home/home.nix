@@ -6,8 +6,11 @@
 }: let
   username = "alapshin";
 in {
+  home.stateVersion = "22.11";
+
   home.username = username;
   home.homeDirectory = "/home/${username}";
+
   imports = [
     ./git.nix
     ./gnupg.nix
@@ -18,7 +21,6 @@ in {
     ./thunderbird.nix
   ];
 
-  home.stateVersion = "22.11";
   home.packages = with pkgs; [
     home-manager
 
