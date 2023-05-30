@@ -1,10 +1,6 @@
 {
-  pkgs,
-  config,
-  dotfileDir,
+  username,
   ...
-}: let
-  username = "alapshin";
-in {
-  home-manager.users."${username}" = import ./home.nix;
+} @ args : {
+  home-manager.users."${username}" = import ./home.nix args;
 }

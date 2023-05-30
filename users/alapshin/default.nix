@@ -3,8 +3,8 @@
   lib,
   pkgs,
   ...
-}: let
-  username = "alapshin";
+} @ args: let
+  username = builtins.baseNameOf ./.;
 
   accountingTools = with pkgs; [
     fava
@@ -91,7 +91,7 @@
   texlivePackages = lib.toList pkgs.texlive.combined.scheme-full;
 in {
   imports = [
-    ./home
+    (import ./home (args // { inherit username; }))
   ];
 
   programs.adb.enable = true;

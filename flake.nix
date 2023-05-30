@@ -126,12 +126,14 @@
         ];
       };
     };
-    homeConfigurations = {
-      "alapshin" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations = let
+      username = "alapshin";
+    in {
+      "${username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./users/alapshin/home/home.nix ];
         extraSpecialArgs = { 
-          inherit dotfileDir; 
+          inherit username dotfileDir; 
           osConfig = {
             networking = {
               hostName = "foobar";
