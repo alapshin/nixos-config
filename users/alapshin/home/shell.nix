@@ -1,7 +1,6 @@
-{
-  pkgs,
-  dotfileDir,
-  ...
+{ pkgs
+, dotfileDir
+, ...
 }: {
   home.shellAliases = {
     cat = "bat";

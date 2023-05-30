@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }: {
   imports = [
     ./audio.nix
@@ -17,7 +16,7 @@
     kernel.sysctl = {
       "kernel.sysrq" = 438;
     };
-    kernelModules = ["kvm-amd" "kvm-intel"];
+    kernelModules = [ "kvm-amd" "kvm-intel" ];
     kernelPackages = pkgs.linuxPackages_zen;
   };
 

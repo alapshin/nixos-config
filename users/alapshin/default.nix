@@ -1,9 +1,9 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-} @ args: let
+{ config
+, lib
+, pkgs
+, ...
+} @ args:
+let
   username = builtins.baseNameOf ./.;
 
   accountingTools = with pkgs; [
@@ -74,22 +74,24 @@
   ];
 
   pythonPackages = with pkgs; [
-    (python3.withPackages (ps:
-      with ps; [
-        beancount
-        beanprice
-        ipython
-        notebook
-        matplotlib
-        numpy
-        pandas
-        scikit-learn
-        seaborn
-      ])
+    (
+      python3.withPackages (ps:
+        with ps; [
+          beancount
+          beanprice
+          ipython
+          notebook
+          matplotlib
+          numpy
+          pandas
+          scikit-learn
+          seaborn
+        ])
     )
   ];
   texlivePackages = lib.toList pkgs.texlive.combined.scheme-full;
-in {
+in
+{
   imports = [
     (import ./home (args // { inherit username; }))
   ];
@@ -211,26 +213,26 @@ in {
       group = "users";
       dataDir = "/home/${username}";
       # settings = {
-        devices = {
-          altdesk = {
-            id = "K77LUC6-BZYZKY3-CHVAHJW-RXHUAPB-T6ZNZ6Q-KF77MQY-RCGE56Y-OV5XRAF";
-          };
-          carbon = {
-            id = "BB37FLW-KTKMN6T-2PQERS2-4T4P4U7-6ZWJCDU-BVRFF5F-P7BFCU3-CJH5FQP";
-          };
-          desktop = {
-            id = "SDAJAKH-WCN4BW6-H4H6QWF-43QC7DB-NWGL2RY-HOWYMNP-7TUWZZN-NC7MQAY";
-          };
-          pixel = {
-            id = "QZYNABL-EZ5KIGC-NPZ76I7-7HBM3UR-RV2CEYL-7PUZ6CX-NFPH5V2-TIZU2A7";
-          };
+      devices = {
+        altdesk = {
+          id = "K77LUC6-BZYZKY3-CHVAHJW-RXHUAPB-T6ZNZ6Q-KF77MQY-RCGE56Y-OV5XRAF";
         };
-        folders = {
-          "/home/${username}/Syncthing" = {
-            id = "syncthing";
-            label = "Syncthing";
-            devices = ["altdesk" "carbon" "desktop" "pixel"];
-          };
+        carbon = {
+          id = "BB37FLW-KTKMN6T-2PQERS2-4T4P4U7-6ZWJCDU-BVRFF5F-P7BFCU3-CJH5FQP";
+        };
+        desktop = {
+          id = "SDAJAKH-WCN4BW6-H4H6QWF-43QC7DB-NWGL2RY-HOWYMNP-7TUWZZN-NC7MQAY";
+        };
+        pixel = {
+          id = "QZYNABL-EZ5KIGC-NPZ76I7-7HBM3UR-RV2CEYL-7PUZ6CX-NFPH5V2-TIZU2A7";
+        };
+      };
+      folders = {
+        "/home/${username}/Syncthing" = {
+          id = "syncthing";
+          label = "Syncthing";
+          devices = [ "altdesk" "carbon" "desktop" "pixel" ];
+        };
         # };
       };
       overrideFolders = true;

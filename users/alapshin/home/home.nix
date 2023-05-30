@@ -1,8 +1,7 @@
-{
-  pkgs,
-  username,
-  dotfileDir,
-  ...
+{ pkgs
+, username
+, dotfileDir
+, ...
 }: {
   home.stateVersion = "22.11";
 

@@ -1,25 +1,26 @@
-{
-  fetchurl,
-  lib,
-  stdenv,
-} @ args: let
-  buildFirefoxXpiAddon = lib.makeOverridable ({
-    stdenv ? args.stdenv,
-    fetchurl ? args.fetchurl,
-    pname,
-    version,
-    addonId,
-    url,
-    sha256,
-    meta,
-    ...
-  }:
+{ fetchurl
+, lib
+, stdenv
+,
+} @ args:
+let
+  buildFirefoxXpiAddon = lib.makeOverridable (
+    { stdenv ? args.stdenv
+    , fetchurl ? args.fetchurl
+    , pname
+    , version
+    , addonId
+    , url
+    , sha256
+    , meta
+    , ...
+    }:
     stdenv.mkDerivation {
       name = "${pname}-${version}";
 
       inherit meta;
 
-      src = fetchurl {inherit url sha256;};
+      src = fetchurl { inherit url sha256; };
 
       preferLocalBuild = true;
       allowSubstitutes = true;
@@ -29,13 +30,16 @@
         mkdir -p "$dst"
         install -v -m644 "$src" "$dst/${addonId}.xpi"
       '';
-    });
-in {
+    }
+  );
+in
+{
   inherit buildFirefoxXpiAddon;
 
-  bypass-paywalls-clean = let
-    version = "3.1.7.3";
-  in
+  bypass-paywalls-clean =
+    let
+      version = "3.1.7.3";
+    in
     buildFirefoxXpiAddon {
       pname = "bypass-paywalls-clean";
       inherit version;
@@ -50,9 +54,10 @@ in {
       };
     };
 
-  linguist-translator = let
-    version = "5.0.5";
-  in
+  linguist-translator =
+    let
+      version = "5.0.5";
+    in
     buildFirefoxXpiAddon {
       pname = "linguist-translator";
       inherit version;

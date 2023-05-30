@@ -1,7 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }: {
   hardware = {
     opengl = {
@@ -20,7 +19,7 @@
 
     xserver = {
       dpi = 120;
-      videoDrivers = ["modesetting" "intel"];
+      videoDrivers = [ "modesetting" "intel" ];
 
       displayManager = {
         # startx.enable = true;

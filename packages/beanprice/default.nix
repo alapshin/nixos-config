@@ -14,8 +14,8 @@
 , pytest
 , python-magic
 , requests
+,
 }:
-
 buildPythonPackage rec {
   version = "20230510";
   pname = "beanprice";

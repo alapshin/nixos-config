@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   # This one brings our custom packages from the 'packages' directory
   additions = final: prev: import ../packages { inherit final prev; };
 

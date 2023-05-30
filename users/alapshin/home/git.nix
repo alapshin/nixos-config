@@ -1,9 +1,7 @@
-{
-  pkgs,
-  dotfileDir,
-  ...
+{ pkgs
+, dotfileDir
+, ...
 }: {
-
   home.shellAliases = {
     lg = "lazygit";
   };
@@ -36,12 +34,12 @@
       };
       includes = [
         { path = /. + dotfileDir + "/gitconfig"; }
-        { 
-          path = /. + dotfileDir + "/gitconfig-alar"; 
+        {
+          path = /. + dotfileDir + "/gitconfig-alar";
           condition = "gitdir:~/work/alar/";
         }
-        { 
-          path = /. + dotfileDir + "/gitconfig-scalable"; 
+        {
+          path = /. + dotfileDir + "/gitconfig-scalable";
           condition = "gitdir:~/work/scalable/";
         }
       ];
@@ -55,7 +53,7 @@
     lazygit = {
       enable = true;
       settings = {
-        gui= {
+        gui = {
           border = "rounded";
           expandFocusedSidePanel = true;
           theme = {

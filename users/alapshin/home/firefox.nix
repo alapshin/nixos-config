@@ -1,8 +1,7 @@
-{
-  pkgs,
-  osConfig,
-  dotfileDir,
-  ...
+{ pkgs
+, osConfig
+, dotfileDir
+, ...
 }: {
   programs.firefox = {
     enable = true;

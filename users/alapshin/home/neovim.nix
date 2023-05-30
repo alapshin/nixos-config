@@ -1,9 +1,9 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
-   # alias
+{ config
+, pkgs
+, ...
+}:
+let
+  # alias
   shade-nvim = pkgs.vimPlugins.Shade-nvim;
 
   beancount-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -27,7 +27,8 @@
       hash = "sha256-IK9cRF8sGuLV9BmFJDxn2aHyTaEjq/+vVO0rOwVUKpk=";
     };
   };
-in {
+in
+{
   programs.neovim = {
     enable = true;
     viAlias = true;
