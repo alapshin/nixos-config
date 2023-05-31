@@ -9,7 +9,7 @@
     AWS_SHARED_CREDENTIALS_FILE = "$XDG_CONFIG_HOME/aws/credentials";
     CARGO_HOME = "$XDG_DATA_HOME/cargo";
     CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
-    DOCKER_CONFIG = "$XDG_CONFIG_HOME/docker";
+    DOCKER_CONFIG = "${config.xdg.dataHome}/docker";
     GRADLE_USER_HOME = "${config.xdg.dataHome}/gradle";
     IPYTHONDIR = "$XDG_CONFIG_HOME/jupyter";
     JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
