@@ -40,7 +40,6 @@
   ];
 
   home.file = {
-    ".curlrc".source = "${dotfileDir}/curlrc";
     ".ssh/config".source = "${dotfileDir}/ssh/config";
   };
 
