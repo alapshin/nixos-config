@@ -16,6 +16,8 @@
     ./neovim.nix
     ./firefox.nix
     ./thunderbird.nix
+
+    ./packages.nix
     ./variables.nix
   ];
 
