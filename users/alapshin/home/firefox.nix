@@ -17,9 +17,9 @@
         extensions =
           (with pkgs.firefox-addons; [
             linguist-translator
+            bypass-paywalls-clean
           ])
           ++ (with pkgs.nur.repos.rycee.firefox-addons; [
-            bypass-paywalls-clean
             keepassxc-browser
             languagetool
             leechblock-ng
