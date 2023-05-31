@@ -131,6 +131,7 @@
           ];
         };
       };
+      # Stand-alone home-manager configuration for non NixOS machines
       homeConfigurations =
         let
           username = "alapshin";
@@ -143,7 +144,7 @@
               inherit username dotfileDir;
               osConfig = {
                 networking = {
-                  hostName = "foobar";
+                  hostName = "workstation";
                 };
               };
             };
