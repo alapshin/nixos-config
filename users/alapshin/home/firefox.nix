@@ -2,9 +2,12 @@
 , osConfig
 , dotfileDir
 , ...
-}: {
+}: let
+  isNixOS = builtins.hasAttr "system" osConfig;
+in {
+
   programs.firefox = {
-    enable = true;
+    enable = isNixOS;
     package = pkgs.firefox.override {
       cfg = {
         enablePlasmaBrowserIntegration = true;
