@@ -119,6 +119,7 @@ in
       "libvirtd"
       "networkmanager"
       "syncthing"
+      "tss"
       "wheel"
     ];
 
