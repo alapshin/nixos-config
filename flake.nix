@@ -6,8 +6,12 @@
     nixpkgs.url = "nixpkgs/master";
 
     nur.url = "github:nix-community/nur";
+
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixos";
+
+    lanzaboote.url = "github:nix-community/lanzaboote";
+    lanzaboote.inputs.nixpkgs.follows = "nixos";
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixos";
@@ -23,6 +27,7 @@
     , nixpkgs
     , nur
     , sops-nix
+    , lanzaboote
     , home-manager
     , ...
     }:
@@ -42,7 +47,6 @@
       mkPkgs =
         { pkgs
         , extraOverlays ? [ nur.overlay ]
-        ,
         }:
         import pkgs {
           inherit system;
@@ -69,6 +73,7 @@
         , baseModules ? [
             ./configuration.nix
             sops-nix.nixosModules.sops
+            lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
             homeManagerConfig
           ]

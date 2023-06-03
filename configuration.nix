@@ -27,7 +27,7 @@
   };
 
   nixpkgs = {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   system = {
