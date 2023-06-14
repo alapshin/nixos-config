@@ -2,10 +2,6 @@
 , prev
 ,
 }: {
-  # pricehist = pkgs.callPackage ./pricehist {
-  #   buildPythonPackage = pkgs.python311Packages.buildPythonPackage;
-  # };
-
   android-fhs-env = final.callPackage ./android-fhs-env { };
 
   androidStudioPackages =
