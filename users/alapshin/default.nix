@@ -154,22 +154,16 @@ in
         lm_sensors
         logseq
         man-pages
-        mkvtoolnix
         moreutils
         mpv
-        obsidian
-        obs-studio
         openssl
         p7zip
         pciutils
         qbittorrent
         rsync
         s-tui
-        skrooge
         smartmontools
         smplayer
-        spicetify-cli
-        spotify
         stress-ng
         telegram-desktop
         tor-browser-bundle-bin
@@ -181,7 +175,6 @@ in
         wget
         wireguard-tools
         xclip
-        zoom-us
       ]
       ++ accountingTools
       ++ blockchainPackages
