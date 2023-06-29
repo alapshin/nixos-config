@@ -24,4 +24,5 @@ is hostname of machine with appropriate config.
     * `packages.nix` - Overlay with local packages
 
 [hm]: https://github.com/nix-community/home-manager
-[nixos]: https://channels.nixos.org/nixos-20.09/latest-nixos-minimal-x86_64-linux.iso
+[nixos]: https://channels.nixos.org/nixos-23.05/latest-nixos-minimal-x86_64-linux.iso
+[starter]: https://github.com/Misterio77/nix-starter-configs/
