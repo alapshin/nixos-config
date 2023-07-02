@@ -6,17 +6,6 @@ let
   # alias
   shade-nvim = pkgs.vimPlugins.Shade-nvim;
 
-  beancount-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "beancount-nvim";
-    version = "2023-01-28";
-    src = pkgs.fetchFromGitHub {
-      owner = "polarmutex";
-      repo = "beancount.nvim";
-      rev = "067e6a26a828437ecd72a250a656bf63d5a33d32";
-      hash = "sha256-ZiGTiQoMyg2V5QtyuL4owZ4FL9RmJgfv/VtbJDMZTtU=";
-    };
-  };
-
   github-theme = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "github-nvim-theme";
     version = "2023-05-19";
@@ -41,7 +30,6 @@ in
 
       vim-sleuth
       vim-polyglot
-      beancount-nvim
 
       plenary-nvim
 
@@ -80,11 +68,14 @@ in
       alejandra
       gitlint
       hadolint
-      selene
+
       statix
       rnix-lsp
 
+      selene
       lua-language-server
+
+      beancount
       beancount-language-server
     ];
   };
