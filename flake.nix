@@ -7,6 +7,9 @@
 
     nur.url = "github:nix-community/nur";
 
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixos";
+
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixos";
 
@@ -26,6 +29,7 @@
     , nixos
     , nixpkgs
     , nur
+    , disko
     , sops-nix
     , lanzaboote
     , home-manager
@@ -72,6 +76,7 @@
         { system ? "x86_64-linux"
         , baseModules ? [
             ./configuration.nix
+            disko.nixosModules.disko
             sops-nix.nixosModules.sops
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
