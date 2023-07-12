@@ -121,6 +121,13 @@
           ];
         };
 
+        server = mkNixosConfiguration {
+          hostModules = [
+            ./hosts/server
+            "${nixos}/nixos/modules/profiles/qemu-guest.nix"
+          ];
+        };
+
         desktop = mkNixosConfiguration {
           hostModules = [
             ./hosts/common
