@@ -17,14 +17,14 @@
 ,
 }:
 buildPythonPackage rec {
-  version = "20230510";
+  version = "20230603";
   pname = "beanprice";
 
   src = fetchFromGitHub {
     owner = "beancount";
     repo = pname;
-    rev = "b7611027d28b473e9ee63e0ddda117ed3328187e";
-    hash = "sha256-nH92Jz6QsH9vCmCn/foFSEdkaQRFuEnnTyhF++qNyZ4=";
+    rev = "56e906cd9c8e25459bd65f3b1672c1f367918441";
+    hash = "sha256-erAhrICz/Vs6d5I4+asmBlvb9Vl8DDFsmZQnCVWmtkE=";
   };
 
   # Tests require files not included in the PyPI archive.
