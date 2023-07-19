@@ -41,6 +41,7 @@
       system = "x86_64-linux";
 
       configDir = builtins.toString ./.;
+      secretDir = "${configDir}/secrets";
       dotfileDir = "${configDir}/dotfiles";
 
       nixpkgsConfig = {
@@ -66,7 +67,7 @@
         # Necessary for nixos-rebuild build-vm to work.
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit dotfileDir;
+          inherit secretDir dotfileDir;
         };
         home-manager.sharedModules = [
           sops-nix.homeManagerModules.sops
