@@ -1,16 +1,13 @@
-keys:
-  - &carbon age10ewrmr20gy5pc74tyygws7z80jmh4yn5f4e4sh96mznrvw347ecqjc2ms7
-  - &altdesk age1gwk0m9n4mrr7h572kkjxtkkl4p0t2mfc9f7ms0560s63x4pawgzq433tca
-  - &desktop age18y57gdahad7zhrrgj2m4dd7fcgwfn4gpmxe9mhcrue8suq8e8c3stzd0ge
-  - &alapshin age1k2t56rsp2xvdsvjxraytyfufedxcl7z548tc9dzdhzqpq9yyfc9sz2h70e
-  - &alapshin2 age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
-
 creation_rules:
   - path_regex: secrets/.*
     key_groups:
       - age:
-        - *carbon
-        - *altdesk
-        - *desktop
-        - *alapshin
-        - *alapshin2
+        # carbon
+        - age10ewrmr20gy5pc74tyygws7z80jmh4yn5f4e4sh96mznrvw347ecqjc2ms7
+        # altdesk
+        - age1gwk0m9n4mrr7h572kkjxtkkl4p0t2mfc9f7ms0560s63x4pawgzq433tca
+        # desktop
+        - age18y57gdahad7zhrrgj2m4dd7fcgwfn4gpmxe9mhcrue8suq8e8c3stzd0ge
+        # alapshin
+        - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
+
