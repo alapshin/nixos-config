@@ -69,7 +69,7 @@
           inherit dotfileDir;
         };
         home-manager.sharedModules = [
-          inputs.plasma-manager.homeManagerModules.plasma-manager
+          sops-nix.homeManagerModules.sops
         ];
       };
       mkNixosConfiguration =
@@ -79,8 +79,7 @@
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             lanzaboote.nixosModules.lanzaboote
-            home-manager.nixosModules.home-manager
-            homeManagerConfig
+            home-manager.nixosModules.home-manager homeManagerConfig
           ]
         , hostModules ? [ ]
         , userModules ? [ ]
