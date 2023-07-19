@@ -13,16 +13,14 @@ is hostname of machine with appropriate config.
 ### Structure
 * `flake.nix` - flake file
 * `configuration.nix` - common configuration
+
 * `hosts` - host specific configuration
 * `users` - user specific configuration + [home-manager][hm] configuration
+* `dotfiles` - Dotfiles used by home-manager
+* `overlays` - Overlay definition
+* `packages` - Custom packages not yet in nixpkgs
+* `secrets` - Secrets managed by [sops-nix][sops-nix]
 
-* `dotfiles` - Dotfiles symlinked by Home Manager
-* `packages` - Local packages or packages not yet in nixpkgs
-
-* `overlays` - Overlays definition
-    * `custom.nix` - Overlay with customized packages
-    * `packages.nix` - Overlay with local packages
-
-[hm]: https://github.com/nix-community/home-manager
 [nixos]: https://channels.nixos.org/nixos-23.05/latest-nixos-minimal-x86_64-linux.iso
-[starter]: https://github.com/Misterio77/nix-starter-configs/
+[sops-nix]: https://github.com/Mic92/sops-nix
+[home-manager]: https://github.com/nix-community/home-manager
