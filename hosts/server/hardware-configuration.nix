@@ -11,8 +11,6 @@ in
     loader = {
       grub = {
         devices = [ disk ];
-        efiSupport = true;
-        efiInstallAsRemovable = true;
       };
     };
 
