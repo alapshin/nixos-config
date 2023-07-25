@@ -21,7 +21,6 @@ let
 
   blockchainPackages = with pkgs; [
     electrum
-    bisq-desktop
     monero-cli
     monero-gui
   ];
