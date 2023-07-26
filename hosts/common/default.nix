@@ -43,7 +43,7 @@
         ];
       };
     };
-    enableDefaultFonts = false;
+    enableDefaultPackages = false;
   };
 
   hardware = {
