@@ -3,12 +3,10 @@
 , ...
 }: {
   sops = {
-    defaultSopsFile = ../../secrets/default.yaml;
+    defaultSopsFile = ./secrets.yaml;
     secrets = {
-      rootpass = {
-        format = "binary";
+      "linux/root" = {
         neededForUsers = true;
-        sopsFile = ./secrets/rootpass;
       };
     };
   };
