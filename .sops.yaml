@@ -1,5 +1,5 @@
 creation_rules:
-  - path: secrets/
+  - path_regex: secrets/.*
     key_groups:
       - age:
         # carbon
@@ -10,9 +10,11 @@ creation_rules:
         - age18y57gdahad7zhrrgj2m4dd7fcgwfn4gpmxe9mhcrue8suq8e8c3stzd0ge
         # alapshin
         - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
-  - path: hosts/server/
+  - path_regex: hosts/server/secrets.yaml
     key_groups:
       - age:
+        # server
+        - age12eh8lz7mq639kmzf9jwserzek059a6fyl4u2fkrlrqjxy90zte2szrd4j6
         # alapshin
         - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
 

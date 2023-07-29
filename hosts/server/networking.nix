@@ -5,6 +5,11 @@
   networking = {
     useDHCP = false;
     dhcpcd.enable = false;
+    nftables.enable = true;
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 80 443 ];
+    };
   };
   systemd.network = {
     enable = true;
