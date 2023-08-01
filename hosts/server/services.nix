@@ -4,9 +4,15 @@
 }: 
 let
   hostname = "alapshin.com";
+  keycloakHttpsPort = 8443;
+  keycloakHostname = "keycloak.${hostname}";
+  nextcloudHostname = "nextcloud.${hostname}";
 in {
   sops = {
     secrets = {
+      "keycloak/database" = {
+        owner = config.users.users.postgres.name;
+      };
       "porkbun/api_key" = {
         owner =  config.users.users.acme.name;
       };
@@ -66,9 +72,18 @@ in {
       recommendedTlsSettings = true;
       recommendedOptimisation = true;
       recommendedBrotliSettings = true;
-      virtualHosts.${config.services.nextcloud.hostName} = {
-        forceSSL = true;
-        useACMEHost = hostname;
+      virtualHosts = {
+        ${nextcloudHostname} = {
+          forceSSL = true;
+          useACMEHost = hostname;
+        };
+        ${keycloakHostname} = {
+          forceSSL = true;
+          useACMEHost = hostname;
+          locations."/" = {
+            proxyPass = "https://localhost:${toString keycloakHttpsPort}";
+          };
+        };
       };
     };
 
@@ -77,11 +92,28 @@ in {
       package = pkgs.postgresql_14;
     };
 
+    keycloak = {
+      enable = true;
+      settings = {
+        hostname = keycloakHostname;
+        proxy = "passthrough";
+        http-host = "localhost";
+        https-port = keycloakHttpsPort;
+      };
+      database = {
+        createLocally = true;
+        passwordFile = config.sops.secrets."keycloak/database".path;
+      };
+      initialAdminPassword = "dfdsadsdsAAA";
+      sslCertificate = "${config.security.acme.certs.${hostname}.directory}/cert.pem";
+      sslCertificateKey = "${config.security.acme.certs.${hostname}.directory}/key.pem";
+    };
+
     nextcloud = {
       enable = true;
       package = pkgs.nextcloud27;
       https = true;
-      hostName = "nextcloud.${hostname}";
+      hostName = nextcloudHostname;
 
       caching.redis = true;
       configureRedis = true;
