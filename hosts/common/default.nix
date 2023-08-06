@@ -5,8 +5,8 @@
 }: {
   imports = [
     ./audio.nix
-    ./backup.nix
-    ./secrets.nix
+    # ./backup.nix
+    # ./secrets.nix
     ./services.nix
     ./networking.nix
     ./graphical-desktop.nix
