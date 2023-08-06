@@ -104,7 +104,7 @@ in {
     };
 
     keycloak = {
-      enable = true;
+      enable = false;
       settings = {
         hostname = keycloakHostname;
         proxy = "passthrough";
@@ -115,7 +115,6 @@ in {
         createLocally = true;
         passwordFile = config.sops.secrets."keycloak/database".path;
       };
-      initialAdminPassword = "dfdsadsdsAAA";
       sslCertificate = "${config.security.acme.certs.${hostname}.directory}/cert.pem";
       sslCertificateKey = "${config.security.acme.certs.${hostname}.directory}/key.pem";
     };
