@@ -6,6 +6,7 @@
   imports = [
     ./secrets.nix
     ./services.nix
+    ./xray.nix
     ./wireguard.nix
     ./networking.nix
     ./hardware-configuration.nix

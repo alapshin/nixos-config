@@ -17,7 +17,7 @@ creation_rules:
         - age10ewrmr20gy5pc74tyygws7z80jmh4yn5f4e4sh96mznrvw347ecqjc2ms7
         # alapshin
         - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
-  - path_regex: hosts/server/secrets.yaml
+  - path_regex: hosts/server/secrets.*
     key_groups:
       - age:
         # server

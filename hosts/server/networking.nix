@@ -7,7 +7,8 @@
     dhcpcd.enable = false;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 80 443 ];
+      allowedUDPPorts = [ 1080 ];
+      allowedTCPPorts = [ 80 443 1080 8443 ];
     };
   };
   systemd.network = {
