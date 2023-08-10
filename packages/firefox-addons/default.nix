@@ -38,14 +38,14 @@ in
 
   bypass-paywalls-clean =
     let
-      version = "3.2.5.0";
+      version = "3.2.8.0";
     in
     buildFirefoxXpiAddon {
       pname = "bypass-paywalls-clean";
       inherit version;
       addonId = "{d133e097-46d9-4ecc-9903-fa6a722a6e0e}";
       url = "https://gitlab.com/magnolia1234/bpc-uploads/-/raw/master/bypass_paywalls_clean-${version}.xpi";
-      sha256 = "sha256-m1BVji6Ka3+vRlfdulfN+Ffi81pSzlQObgwrSkbr0IU=";
+      sha256 = "sha256-BZ6eu0mjeUHSuj/ikLf8ZH62bfDC1Aqa8CR1vJNN9Js=";
       meta = with lib; {
         homepage = "https://gitlab.com/magnolia1234/bypass-paywalls-firefox-clean";
         description = "Bypass Paywalls of (custom) news sites";
@@ -56,7 +56,7 @@ in
 
   linguist-translator =
     let
-      version = "5.0.5";
+      version = "5.0.7";
     in
     buildFirefoxXpiAddon {
       pname = "linguist-translator";
