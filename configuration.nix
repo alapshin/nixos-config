@@ -37,7 +37,7 @@
   };
 
   system = {
-    stateVersion = "22.11";
+    stateVersion = "23.11";
     configurationRevision = lib.mkIf (self ? rev) self.rev;
   };
 
