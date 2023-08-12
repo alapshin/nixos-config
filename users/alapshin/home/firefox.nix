@@ -25,7 +25,6 @@ in {
           ++ (with pkgs.nur.repos.rycee.firefox-addons; [
             keepassxc-browser
             languagetool
-            leechblock-ng
             metamask
             multi-account-containers
             plasma-integration
