@@ -24,7 +24,6 @@
   home.packages = with pkgs; [
     home-manager
 
-    inter
     ibm-plex
     liberation_ttf
     nerdfonts
@@ -43,7 +42,6 @@
     ".ssh/config".source = "${dotfileDir}/ssh/config";
   };
 
-  fonts.fontconfig.enable = true;
 
   home.language = {
     base = "en_US.UTF-8";
@@ -62,6 +60,7 @@
   };
 
   xsession.enable = true;
+  fonts.fontconfig.enable = true;
 
   xdg = {
     enable = true;
