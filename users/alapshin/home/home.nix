@@ -54,6 +54,13 @@
     measurement = "en_DK.UTF-8";
   };
 
+  home.pointerCursor = {
+    name = "Breeze";
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.breeze-qt5;
+  };
+
   xsession.enable = true;
 
   xdg = {
