@@ -24,7 +24,7 @@
       displayManager = {
         # startx.enable = true;
         sddm.enable = true;
-        defaultSession = "plasma";
+        defaultSession = "plasmawayland";
       };
       desktopManager.plasma5.enable = true;
     };
