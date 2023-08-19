@@ -27,7 +27,6 @@ let
 
   devTools = with pkgs; [
     age
-    hadolint
     sops
     ssh-to-age
   ];
