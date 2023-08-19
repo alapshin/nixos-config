@@ -67,7 +67,7 @@ in
     extraPackages = with pkgs; [
       alejandra
       gitlint
-      hadolint
+      # hadolint
 
       statix
       rnix-lsp
