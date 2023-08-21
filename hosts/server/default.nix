@@ -5,8 +5,9 @@
 }: {
   imports = [
     ./secrets.nix
-    ./services.nix
     ./xray.nix
+    ./media.nix
+    ./services.nix
     ./wireguard.nix
     ./networking.nix
     ./hardware-configuration.nix
