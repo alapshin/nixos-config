@@ -8,12 +8,12 @@ let
 
   github-theme = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "github-nvim-theme";
-    version = "2023-05-19";
+    version = "1.0.1";
     src = pkgs.fetchFromGitHub {
       owner = "projekt0n";
       repo = "github-nvim-theme";
-      rev = "e6b14d5e80c1a4bb006055851662133ba8cb8f8a";
-      hash = "sha256-IK9cRF8sGuLV9BmFJDxn2aHyTaEjq/+vVO0rOwVUKpk=";
+      rev = "v1.0.1";
+      hash = "sha256-30+5q6qE1GCetNKdUC15LcJeat5e0wj9XtNwGdpRsgk=";
     };
   };
 in
