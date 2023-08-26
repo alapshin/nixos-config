@@ -2,6 +2,9 @@
 , prev
 ,
 }: {
+
+  bazarr = final.callPackage ./bazarr { };
+
   android-fhs-env = final.callPackage ./android-fhs-env { };
 
   androidStudioPackages =
