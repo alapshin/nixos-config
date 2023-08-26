@@ -1,8 +1,9 @@
-{ config
+{ self
 , lib
-, inputs
 , pkgs
-, self
+, config
+, inputs
+, outputs
 , ...
 }: {
   nix = {
