@@ -1,5 +1,4 @@
-{ 
-  disks 
+{ disks
 }: {
   disk = {
     main = {
@@ -8,7 +7,7 @@
       content = {
         type = "table";
         format = "msdos";
-        partitions = [ 
+        partitions = [
           {
             name = "root";
             start = "0%";

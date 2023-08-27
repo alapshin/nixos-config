@@ -2,11 +2,12 @@
 , osConfig
 , secretDir
 , ...
-}: 
-let 
-  accounts = builtins.fromJSON(builtins.readFile "${secretDir}/accounts.json");
-in {
-  accounts.email.accounts  = {
+}:
+let
+  accounts = builtins.fromJSON (builtins.readFile "${secretDir}/accounts.json");
+in
+{
+  accounts.email.accounts = {
     "GMail" = {
       flavor = "gmail.com";
       address = accounts.gmail;
@@ -28,7 +29,7 @@ in {
     profiles = {
       default = {
         isDefault = true;
-        settings = { 
+        settings = {
           # 9205: Avoid information leakage in reply header
           "mailnews.reply_header_type" = 0;
           "mailnews.reply_header_originalmessage" = "";

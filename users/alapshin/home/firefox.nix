@@ -2,9 +2,11 @@
 , osConfig
 , dotfileDir
 , ...
-}: let
+}:
+let
   isNixOS = builtins.hasAttr "system" osConfig;
-in {
+in
+{
 
   programs.firefox = {
     enable = isNixOS;

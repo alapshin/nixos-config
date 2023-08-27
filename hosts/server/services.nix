@@ -1,23 +1,24 @@
 { config
-  , pkgs
-  , ...
-}: 
+, pkgs
+, ...
+}:
 let
   hostname = "alapshin.com";
   keycloakHttpsPort = 8443;
   keycloakHostname = "keycloak.${hostname}";
   nextcloudHostname = "nextcloud.${hostname}";
-in {
+in
+{
   sops = {
     secrets = {
       "keycloak/database" = {
         owner = config.users.users.postgres.name;
       };
       "porkbun/api_key" = {
-        owner =  config.users.users.acme.name;
+        owner = config.users.users.acme.name;
       };
       "porkbun/secret_key" = {
-        owner =  config.users.users.acme.name;
+        owner = config.users.users.acme.name;
       };
       "nextcloud/password" = {
         owner = config.users.users.nextcloud.name;

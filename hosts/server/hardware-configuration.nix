@@ -3,7 +3,7 @@
 , pkgs
 , ...
 }:
-let 
+let
   disk = "/dev/sda";
 in
 {

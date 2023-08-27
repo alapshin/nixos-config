@@ -2,15 +2,16 @@
 { config
 , pkgs
 , ...
-}: 
+}:
 let
   wg = "wg0";
   wan = "ens18";
-in {
+in
+{
 
   sops = {
     secrets = {
-      "wireguard/public_key" = { 
+      "wireguard/public_key" = {
         owner = config.users.users.systemd-network.name;
       };
       "wireguard/private_key" = {
@@ -27,15 +28,15 @@ in {
       };
       allowedUDPPorts = [ 51820 ];
       extraCommands = ''
-      iptables -t nat -A POSTROUTING -o ${wan} -j MASQUERADE
-      ip46tables -A FORWARD -i ${wan} -o ${wg} -j ACCEPT
-      ip46tables -A FORWARD -i ${wg} -j ACCEPT
+        iptables -t nat -A POSTROUTING -o ${wan} -j MASQUERADE
+        ip46tables -A FORWARD -i ${wan} -o ${wg} -j ACCEPT
+        ip46tables -A FORWARD -i ${wg} -j ACCEPT
       '';
       # Flush the chain then remove it
       extraStopCommands = ''
-      iptables -t nat -D POSTROUTING -o ${wan} -j MASQUERADE
-      ip46tables -D FORWARD -i ${wan} -o ${wg} -j ACCEPT
-      ip46tables -D FORWARD -i ${wg} -j ACCEPT
+        iptables -t nat -D POSTROUTING -o ${wan} -j MASQUERADE
+        ip46tables -D FORWARD -i ${wan} -o ${wg} -j ACCEPT
+        ip46tables -D FORWARD -i ${wg} -j ACCEPT
       '';
     };
   };
@@ -57,7 +58,7 @@ in {
     "net.ipv6.conf.all.forwarding" = true;
   };
 
-   systemd.network = {
+  systemd.network = {
     netdevs = {
       "90-wg0" = {
         netdevConfig = { Kind = "wireguard"; Name = wg; };
