@@ -21,17 +21,16 @@ in {
           (with pkgs.firefox-addons; [
             linguist-translator
             bypass-paywalls-clean
-          ])
-          ++ (with pkgs.nur.repos.rycee.firefox-addons; [
-            keepassxc-browser
-            languagetool
+          ]) ++ (with pkgs.nur.repos.rycee.firefox-addons; [
             metamask
-            multi-account-containers
-            plasma-integration
             sponsorblock
-            temporary-containers
-            tree-style-tab
+            languagetool
             ublock-origin
+            tree-style-tab
+            keepassxc-browser
+            plasma-integration
+            temporary-containers
+            multi-account-containers
           ]);
         settings = {
           # Use system's dpi for UI fonts
