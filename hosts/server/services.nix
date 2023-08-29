@@ -1,5 +1,6 @@
-{ config
+{ lib
 , pkgs
+, config
 , ...
 }:
 let
@@ -140,6 +141,7 @@ in
         gpoddersync = pkgs.fetchNextcloudApp rec {
           url = "https://github.com/thrillfall/nextcloud-gpodder/releases/download/3.8.1/gpoddersync.tar.gz";
           sha256 = "sha256-Hi/fBSzO6sjHI4at03mtoiIrc/DtxpdzZb7vT06X4Ag=";
+          license = "agpl3Plus";
         };
       };
     };
