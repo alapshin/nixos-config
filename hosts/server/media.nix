@@ -17,11 +17,11 @@ let
       services = {
         "${app}" = {
           enable = true;
-          openFirewall = openFirewall;
+          inherit openFirewall;
         } // lib.optionalAttrs (user != null) {
-          user = user;
+          inherit user;
         } // lib.optionalAttrs (group != null) {
-          group = group;
+          inherit group;
         };
         nginx.virtualHosts."${app}.${hostname}" = {
           forceSSL = true;
@@ -54,6 +54,7 @@ in
     (mkMediaService { app = "sonarr"; port = 8989; })
     (mkMediaService { app = "prowlarr"; port = 9696; })
     (mkMediaService { app = "jellyfin"; port = 8096; })
+    (mkMediaService { app = "jellyseerr"; port = 5055; })
     (mkMediaService { app = "qbittorrent"; port = 8080; group = mediaGroup; openFirewall = true; })
   ];
 }
