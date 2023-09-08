@@ -54,6 +54,7 @@
 
     exa = {
       enable = true;
+      package = pkgs.eza;
       enableAliases = true;
     };
 
