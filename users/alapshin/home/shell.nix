@@ -3,7 +3,6 @@
 , ...
 }: {
   home.shellAliases = {
-    cat = "bat";
   };
 
   home.packages = with pkgs; [
