@@ -57,9 +57,9 @@
       enableZshIntegration = true;
     };
 
-    exa = {
+    eza = {
       enable = true;
-      package = pkgs.eza;
+      icons = true;
       enableAliases = true;
     };
 
