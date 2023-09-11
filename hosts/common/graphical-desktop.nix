@@ -14,7 +14,7 @@
       xkbDir = "${pkgs.xkbconfig_custom}/etc/X11/xkb";
       layout = "us,ru";
       xkbVariant = "hbs,srp";
-      xkbOptions = "grp:caps_toggle,compose:lwin";
+      xkbOptions = "grp:caps_toggle";
 
       libinput = {
         enable = true;
