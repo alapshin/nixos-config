@@ -35,12 +35,6 @@ in
             multi-account-containers
           ]);
         settings = {
-          # Use system's dpi for UI fonts
-          "layout.css.dpi" = 115;
-          # Setup font dpi for web content
-          "ui.textScaleFactor" = 115;
-          "layout.css.devPixelsPerPx" = "1.2";
-          "browser.display.os-zoom-behavior" = 0;
           # Set minimum font size
           "font.minimum-size.x-cyrillic" = 14;
           "font.minimum-size.x-western" = 14;
