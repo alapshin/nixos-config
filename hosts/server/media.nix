@@ -53,7 +53,7 @@ in
     (mkMediaService { app = "radarr"; port = 7878; })
     (mkMediaService { app = "sonarr"; port = 8989; })
     (mkMediaService { app = "prowlarr"; port = 9696; })
-    (mkMediaService { app = "jellyfin"; port = 8096; })
+    (mkMediaService { app = "jellyfin"; port = 8096; group = mediaGroup; })
     (mkMediaService { app = "jellyseerr"; port = 5055; })
     (mkMediaService { app = "qbittorrent"; port = 8080; group = mediaGroup; openFirewall = true; })
   ];
