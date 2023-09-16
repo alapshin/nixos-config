@@ -10,6 +10,7 @@
       allowedUDPPorts = [ 1080 ];
       allowedTCPPorts = [ 80 443 1080 8443 ];
     };
+    enableIPv6  = false;
   };
   systemd.network = {
     enable = true;
