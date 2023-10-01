@@ -53,7 +53,7 @@
   };
 
   home.pointerCursor = {
-    name = "Breeze";
+    name = "breeze_cursors";
     gtk.enable = true;
     x11.enable = true;
     package = pkgs.breeze-qt5;
