@@ -6,7 +6,7 @@ let
   # alias
   shade-nvim = pkgs.vimPlugins.Shade-nvim;
 
-  github-theme = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  github-theme = pkgs.vimUtils.buildVimPlugin {
     pname = "github-nvim-theme";
     version = "1.0.1";
     src = pkgs.fetchFromGitHub {
