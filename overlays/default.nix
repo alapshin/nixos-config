@@ -24,10 +24,10 @@
     };
 
     libsForQt5 = prev.libsForQt5 // {
-      bismuth = prev.libsForQt5.bismuth.overrideAttrs(finalAttrs: previousAttrs: {
+      bismuth = prev.libsForQt5.bismuth.overrideAttrs (finalAttrs: previousAttrs: {
         patches =
-          (previousAttrs.patches or [])
-          ++ [
+          (previousAttrs.patches or [ ])
+            ++ [
             # (fetchpatch {
             #   name = "bismuth-3.1-4-border-color.patch";
             #   url = "https://github.com/I-Want-ToBelieve/bismuth/commit/dac110934fe1ae0da9e4aca8c331f27987b033cf.patch";
@@ -44,8 +44,8 @@
               sha256 = "sha256-15txf7pRhIvqsrBdBQOH1JDQGim2Kh5kifxQzVs5Zm0=";
             })
           ];
-        });
-      };
+      });
+    };
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

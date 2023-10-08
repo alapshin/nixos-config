@@ -2,8 +2,7 @@
 , dotfileDir
 , ...
 }: {
-  home.shellAliases = {
-  };
+  home.shellAliases = { };
 
   home.packages = with pkgs; [
     dog
