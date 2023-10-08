@@ -94,11 +94,13 @@ in
     (import ./home (args // { inherit username; }))
   ];
 
-  programs.adb.enable = true;
-  programs.zsh.enable = true;
-  programs.java.enable = true;
-  programs.kdeconnect.enable = true;
-  programs.partition-manager.enable = true;
+  programs = {
+    adb.enable = true;
+    java.enable = true;
+    zsh.enable = true;
+    kdeconnect.enable = true;
+    partition-manager.enable = true;
+  };
 
   users.users."${username}" = {
     uid = 1000;
