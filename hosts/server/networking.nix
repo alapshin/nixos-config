@@ -18,7 +18,7 @@
       "10-lan" = {
         name = "enp0s18";
         dns = [
-          "1.1.1.1"
+          "8.8.8.8"
         ];
         DHCP = "no";
         address = [
