@@ -137,6 +137,7 @@ in
         exiftool
         ffmpeg
         file
+        freetube
         gimp
         gnupg
         htop
