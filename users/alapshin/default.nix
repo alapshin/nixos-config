@@ -96,7 +96,10 @@ in
 
   programs = {
     adb.enable = true;
-    java.enable = true;
+    java = {
+      enable = true;
+      package = pkgs.jdk21;
+    };
     zsh.enable = true;
     kdeconnect.enable = true;
     partition-manager.enable = true;

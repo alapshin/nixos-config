@@ -23,7 +23,7 @@ buildFHSEnv {
       file
       findutils
       git
-      jdk
+      jdk21
       portaudio
       SDL2
       SDL2_gfx
