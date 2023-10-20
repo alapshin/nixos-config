@@ -1,5 +1,5 @@
 require('inc_rename').setup()
-vim.keymap.set("n", "<leader>rn", ":IncRename ")
+vim.keymap.set('n', '<leader>rn', ':IncRename ')
 
 local lspconfig = require('lspconfig')
 -- Advertise nvim-cmp LSP's capabilities to all LSP servers
@@ -64,6 +64,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
     nmap('<leader>wl', function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, 'List Workspace Folders')
-
   end,
 })
