@@ -16,11 +16,16 @@
     srcPrefix = "org.keepassxc.";
   };
 
+  telegram-autostart = prev.makeAutostartItem {
+    name = "telegram.desktop";
+    package = prev.telegram-desktop;
+    srcPrefix = "org.";
+  };
+
   thunderbird-autostart = prev.makeAutostartItem {
     name = "thunderbird";
     package = prev.thunderbird;
   };
-
 
   # See nixos/modules/services/x11/extra-layouts.nix
   # xkeyboard-config with customized Serbo-Croatian variant of US layout

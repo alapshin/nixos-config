@@ -35,6 +35,7 @@
     shellcheck
 
     keepassxc-autostart
+    telegram-autostart
     thunderbird-autostart
   ];
 
