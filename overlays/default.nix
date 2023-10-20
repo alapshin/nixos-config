@@ -6,17 +6,6 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
-    birdtray-autostart = prev.makeAutostartItem {
-      name = "Birdtray";
-      package = prev.birdtray;
-      srcPrefix = "com.ulduzsoft.";
-    };
-    keepassxc-autostart = prev.makeAutostartItem {
-      name = "KeePassXC";
-      package = prev.keepassxc;
-      srcPrefix = "org.keepassxc.";
-    };
-
     nerdfonts = prev.nerdfonts.override {
       fonts = [
         "JetBrainsMono"

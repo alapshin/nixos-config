@@ -34,8 +34,8 @@
 
     shellcheck
 
-    birdtray-autostart
     keepassxc-autostart
+    thunderbird-autostart
   ];
 
   home.file = {

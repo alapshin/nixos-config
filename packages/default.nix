@@ -2,7 +2,6 @@
 , prev
 ,
 }: {
-
   bazarr = final.callPackage ./bazarr { };
 
   android-fhs-env = final.callPackage ./android-fhs-env { };
@@ -10,6 +9,18 @@
   androidStudioPackages =
     final.recurseIntoAttrs
       (final.callPackage ./android-studio { });
+
+  keepassxc-autostart = prev.makeAutostartItem {
+    name = "KeePassXC";
+    package = prev.keepassxc;
+    srcPrefix = "org.keepassxc.";
+  };
+
+  thunderbird-autostart = prev.makeAutostartItem {
+    name = "thunderbird";
+    package = prev.thunderbird;
+  };
+
 
   # See nixos/modules/services/x11/extra-layouts.nix
   # xkeyboard-config with customized Serbo-Croatian variant of US layout
