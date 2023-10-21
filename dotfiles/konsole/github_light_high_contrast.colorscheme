@@ -1,5 +1,5 @@
 [General]
-Description=Github Light
+Description=Github Light High Contrast
 Opacity=1
 Wallpaper=
 
@@ -13,58 +13,58 @@ Color=255,255,255
 Color=255,255,255
 
 [Color0]
-Color=36,41,47
+Color=14,17,22
 
 [Color0Faint]
-Color=87,96,106
+Color=75,83,93
 
 [Color0Intense]
-Color=87,96,106
+Color=75,83,93
 
 [Color1]
-Color=207,34,46
+Color=160,17,31
 
 [Color1Faint]
-Color=207,34,46
+Color=160,17,31
 
 [Color1Intense]
-Color=164,14,38
+Color=134,6,29
 
 [Color2]
-Color=17,99,41
+Color=2,76,26
 
 [Color2Faint]
-Color=17,99,41
+Color=2,76,26
 
 [Color2Intense]
-Color=26,127,55
+Color=5,93,32
 
 [Color3]
-Color=77,45,0
+Color=63,34,0
 
 [Color3Faint]
-Color=77,45,0
+Color=63,34,0
 
 [Color3Intense]
-Color=99,60,1
+Color=78,44,0
 
 [Color4]
-Color=9,105,218
+Color=3,73,180
 
 [Color4Faint]
-Color=9,105,218
+Color=3,73,180
 
 [Color4Intense]
-Color=33,139,255
+Color=17,104,227
 
 [Color5]
-Color=130,80,223
+Color=98,44,188
 
 [Color5Faint]
-Color=130,80,223
+Color=98,44,188
 
 [Color5Intense]
-Color=164,117,249
+Color=132,74,231
 
 [Color6]
 Color=27,124,131
@@ -76,19 +76,19 @@ Color=27,124,131
 Color=49,146,170
 
 [Color7]
-Color=110,119,129
+Color=102,112,123
 
 [Color7Faint]
-Color=110,119,129
+Color=102,112,123
 
 [Color7Intense]
-Color=140,149,159
+Color=136,146,157
 
 [Foreground]
-Color=31,35,40
+Color=1,4,9
 
 [ForegroundFaint]
-Color=110,119,129
+Color=102,112,123
 
 [ForegroundIntense]
-Color=101,109,118
+Color=14,17,22
