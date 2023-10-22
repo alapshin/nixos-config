@@ -5,7 +5,10 @@ require('shade').setup({})
 require('nvim-web-devicons').setup({})
 
 require('ibl').setup({
-  show_current_context = true,
+  scope = {
+    show_start = false,
+    highlight = { "SpecialKey", "SpecialKey", "SpecialKey" },
+  },
 })
 
 require('lualine').setup({
