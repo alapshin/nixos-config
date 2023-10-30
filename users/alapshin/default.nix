@@ -20,7 +20,6 @@ let
   ];
 
   blockchainPackages = with pkgs; [
-    electrum
     monero-cli
     monero-gui
   ];
