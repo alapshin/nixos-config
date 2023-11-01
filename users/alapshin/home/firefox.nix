@@ -12,7 +12,9 @@ in
     enable = isNixOS;
     package = pkgs.firefox.override {
       cfg = {
-        enablePlasmaBrowserIntegration = true;
+        nativeMessagingHosts.packages = [
+          pkgs.plasma5Packages.plasma-browser-integration
+        ];
       };
     };
 
