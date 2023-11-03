@@ -67,7 +67,7 @@
         # Necessary for nixos-rebuild build-vm to work.
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit secretDir dotfileDir;
+          inherit dotfileDir secretDir;
         };
         home-manager.sharedModules = [
           sops-nix.homeManagerModules.sops
@@ -164,7 +164,7 @@
             inherit pkgs;
             modules = [ ./users/alapshin/home/home.nix ];
             extraSpecialArgs = {
-              inherit username dotfileDir;
+              inherit username dotfileDir secretDir;
               osConfig = {
                 networking = {
                   hostName = "workstation";

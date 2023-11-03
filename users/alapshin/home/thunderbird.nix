@@ -4,6 +4,7 @@
 , ...
 }:
 let
+  isNixOS = builtins.hasAttr "system" osConfig;
   accounts = builtins.fromJSON (builtins.readFile "${secretDir}/accounts.json");
 in
 {
@@ -24,7 +25,7 @@ in
   };
 
   programs.thunderbird = {
-    enable = true;
+    enable = isNixOS;
 
     profiles = {
       default = {
