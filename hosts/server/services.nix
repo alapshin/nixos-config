@@ -85,6 +85,7 @@ in
       recommendedTlsSettings = true;
       recommendedOptimisation = true;
       recommendedBrotliSettings = true;
+      recommendedProxySettings = true;
       virtualHosts = {
         ${nextcloudHostname} = {
           forceSSL = true;
