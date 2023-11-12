@@ -6,6 +6,7 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
+    anki = final.prs.anki;
     nerdfonts = prev.nerdfonts.override {
       fonts = [
         "JetBrainsMono"
@@ -34,6 +35,12 @@
             })
           ];
       });
+    };
+  };
+
+  pr-packages = final: _prev: {
+    prs = import inputs.ankipr {
+      system = final.system;
     };
   };
 
