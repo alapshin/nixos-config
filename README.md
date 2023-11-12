@@ -21,6 +21,17 @@ is hostname of machine with appropriate config.
 * `packages` - Custom packages not yet in nixpkgs
 * `secrets` - Secrets managed by [sops-nix][sops-nix]
 
+## Projects used in this configuration
+1. [home-manager] - user environment management 
+2. [diskio] - declarative disk partitioning
+3. [sops-nix] - secrect managment based on sops
+4. [lanzaboote] - secure boot support 
+5. [nixos-anywhere] - NixOS provisioning via SSH
+
 [nixos]: https://channels.nixos.org/nixos-23.05/latest-nixos-minimal-x86_64-linux.iso
+[diskio]: https://github.com/nix-community/disko
 [sops-nix]: https://github.com/Mic92/sops-nix
+[lanzaboote]: https://github.com/nix-community/lanzaboote
 [home-manager]: https://github.com/nix-community/home-manager
+[nixos-anywhere]: https://github.com/nix-community/nixos-anywhere
+
