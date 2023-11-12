@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-nix shell nixpkgs#sops --command ci/check.sh
+set -euo pipefail
+
+nix shell nixpkgs#sops --command ci/build.sh check
