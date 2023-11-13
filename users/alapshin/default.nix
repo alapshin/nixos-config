@@ -165,6 +165,7 @@ in
         s-tui
         smartmontools
         smplayer
+        strawberry
         stress-ng
         telegram-desktop
         tor-browser-bundle-bin
