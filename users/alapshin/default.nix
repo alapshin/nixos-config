@@ -160,7 +160,7 @@ in
         openssl
         p7zip
         pciutils
-        qbittorrent
+        qbittorrent-qt5
         rsync
         s-tui
         smartmontools
