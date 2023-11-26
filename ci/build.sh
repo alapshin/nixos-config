@@ -4,6 +4,8 @@ set -euo pipefail
 
 command=$1
 flake_uri=${2:-}
+target_host=${3:-}
+
 secret_files=(
     "secrets/accounts.json"
 )
@@ -41,11 +43,18 @@ function rebuild {
     sudo nixos-rebuild switch --flake "${flake_uri}"
 }
 
+function deploy {
+    decrypt
+    nixos-rebuild switch --flake "${flake_uri}" --target-host "${target_host}"
+}
+
 trap reset EXIT
 
 case $command in
     check)
         check
+        ;;
+    deploy)
         ;;
     rebuild)
         rebuild
