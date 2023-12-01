@@ -19,8 +19,6 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixos";
 
-    ankipr.url = "github:paveloom/nixpkgs?ref=anki";
-
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixos";
     plasma-manager.inputs.home-manager.follows = "home-manager";

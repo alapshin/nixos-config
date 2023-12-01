@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "ankipr": {
-      "locked": {
-        "lastModified": 1701242955,
-        "narHash": "sha256-1kvJJHJZWDqoMwyRruRMGiUuW2gXUZI98E7BxoEG9DY=",
-        "owner": "paveloom",
-        "repo": "nixpkgs",
-        "rev": "97933ba142731df0a11efe3e9be10d873fa4205b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "paveloom",
-        "ref": "anki",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "crane": {
       "inputs": {
         "nixpkgs": [
@@ -168,11 +152,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1700811440,
-        "narHash": "sha256-wrJpW3JCJ9egZpYUMne4c3PFEp+vmkTj5VFpPAT4xdY=",
+        "lastModified": 1701284014,
+        "narHash": "sha256-k/7fo0a/G8T6NYtIFTv1MPE9oxiLeiXONgvWfGmkeOs=",
         "owner": "nix-community",
         "repo": "lanzaboote",
-        "rev": "cbafc8f8fe388fba6f2c27224276f5f984f9ae47",
+        "rev": "43582b56cfd104e5944d38166839d10c7a0d292f",
         "type": "github"
       },
       "original": {
@@ -198,11 +182,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1701277956,
-        "narHash": "sha256-U+nJTFOFSvY/1KZBqPwfUyTKJnX2RUKzDs1L+GKg3Ys=",
+        "lastModified": 1701414478,
+        "narHash": "sha256-xusEMcyt9tXD+kz1q0qx2JDxJV1wyh7Q+P1PTYhP9vw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "790e3e33999334bfa6669520ed30efac17440198",
+        "rev": "cc5a7bb4cfe02aeb300b69c6eb4be7a0ae461190",
         "type": "github"
       },
       "original": {
@@ -245,11 +229,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1701274502,
-        "narHash": "sha256-0q3S6WSHQp40JLQhs6gWx7B0B1iUHqA2JUfD/s9f40k=",
+        "lastModified": 1701412756,
+        "narHash": "sha256-Dpfy+vRD7Yu1vvKyHvx8luNEC1k+waZX0TgkZMqPkBE=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "54e5c1183d178322e0dd79ebba7551ccb543b6b6",
+        "rev": "d3a19e6ae124536bca96f054cff20d21a0fba8c9",
         "type": "github"
       },
       "original": {
@@ -314,7 +298,6 @@
     },
     "root": {
       "inputs": {
-        "ankipr": "ankipr",
         "disko": "disko",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
