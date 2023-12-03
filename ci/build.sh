@@ -55,6 +55,7 @@ case $command in
         check
         ;;
     deploy)
+        deploy
         ;;
     rebuild)
         rebuild
