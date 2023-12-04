@@ -38,12 +38,18 @@ function update {
     nix flake update
 }
 
-function rebuild {
+function home-switch {
+    decrypt
+    home-manager switch --flake "${flake_uri}"
+}
+
+function system-switch {
+    echo "$0"
     decrypt
     sudo nixos-rebuild switch --flake "${flake_uri}"
 }
 
-function deploy {
+function remote-deploy {
     decrypt
     nixos-rebuild switch --flake "${flake_uri}" --target-host "${target_host}"
 }
@@ -54,13 +60,19 @@ case $command in
     check)
         check
         ;;
-    deploy)
-        deploy
-        ;;
-    rebuild)
-        rebuild
-        ;;
     update)
         update
+        ;;
+    home-switch)
+        home-switch
+        ;;
+    system-switch)
+        system-switch
+        ;;
+    remote-deploy)
+        remote-deploy
+        ;;
+    *)
+        echo -n "Unknown command $command"
         ;;
 esac
