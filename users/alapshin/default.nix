@@ -131,7 +131,6 @@ in
         aspellDicts.ru
         atool
         bcache-tools
-        birdtray
         calibre
         colord-kde
         digikam
