@@ -30,6 +30,16 @@ let
     ssh-to-age
   ];
 
+  dictionaries = with pkgs; [
+    aspell
+    aspellDicts.en
+    aspellDicts.ru
+    aspellDicts.sr
+    hunspell
+    hunspellDicts.en-us
+    hunspellDicts.ru-ru
+  ];
+
   guiDevTools = with pkgs; [
     drawio
     insomnia
@@ -126,9 +136,6 @@ in
     packages = with pkgs;
       [
         anki
-        aspell
-        aspellDicts.en
-        aspellDicts.ru
         atool
         bcache-tools
         calibre
@@ -142,9 +149,6 @@ in
         gimp
         gnupg
         htop
-        hunspell
-        hunspellDicts.en_US
-        hunspellDicts.ru_RU
         imagemagick
         inkscape
         jq
@@ -180,6 +184,7 @@ in
       ++ accountingTools
       ++ blockchainPackages
       ++ devTools
+      ++ dictionaries
       ++ guiDevTools
       ++ borgPackages
       ++ luaPackages
