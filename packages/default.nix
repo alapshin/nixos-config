@@ -10,6 +10,8 @@
     final.recurseIntoAttrs
       (final.callPackage ./android-studio { });
 
+  customHunspellDicts = prev.recurseIntoAttrs (prev.callPackages ./hunspell/dictionaries.nix { });
+
   keepassxc-autostart = prev.makeAutostartItem {
     name = "KeePassXC";
     package = prev.keepassxc;

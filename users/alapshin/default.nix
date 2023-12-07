@@ -38,6 +38,7 @@ let
     hunspell
     hunspellDicts.en-us
     hunspellDicts.ru-ru
+    customHunspellDicts.sr
   ];
 
   guiDevTools = with pkgs; [
