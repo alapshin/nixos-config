@@ -90,6 +90,7 @@
     mimeApps = {
       enable = true;
       defaultApplications = {
+        "application/pdf" = "org.kde.okular.desktop";
         "text/html" = "firefox.desktop";
         "text/plain" = "org.kde.kwrite.desktop";
         "x-scheme-handler/http" = "firefox.desktop";
