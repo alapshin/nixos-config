@@ -32,8 +32,6 @@
     noto-fonts-emoji
     noto-fonts-extra
 
-    shellcheck
-
     keepassxc-autostart
     telegram-autostart
     thunderbird-autostart
