@@ -22,16 +22,6 @@
   ];
 
   home.packages = with pkgs; [
-    home-manager
-
-    ibm-plex
-    liberation_ttf
-    nerdfonts
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    noto-fonts-extra
-
     keepassxc-autostart
     telegram-autostart
     thunderbird-autostart

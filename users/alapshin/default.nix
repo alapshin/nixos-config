@@ -152,14 +152,12 @@ in
         htop
         imagemagick
         inkscape
-        jq
         keepassxc
         kleopatra
         libreoffice-qt
         lm_sensors
         logseq
         man-pages
-        moreutils
         mpv
         openssl
         p7zip
