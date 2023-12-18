@@ -31,7 +31,7 @@ lspconfig.lua_ls.setup({
   },
 })
 lspconfig.rnix.setup({})
-lspconfig.beancount.setup({})
+-- lspconfig.beancount.setup({})
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
