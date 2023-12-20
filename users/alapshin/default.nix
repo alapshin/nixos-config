@@ -10,7 +10,6 @@ let
     fava
     gnucash
     ledger2beancount
-    beancount-black
   ];
 
   borgPackages = with pkgs; [
@@ -22,12 +21,6 @@ let
   blockchainPackages = with pkgs; [
     monero-cli
     monero-gui
-  ];
-
-  devTools = with pkgs; [
-    age
-    sops
-    ssh-to-age
   ];
 
   dictionaries = with pkgs; [
@@ -45,10 +38,6 @@ let
     drawio
     insomnia
     jetbrains-toolbox
-  ];
-
-  luaPackages = with pkgs; [
-    stylua
   ];
 
   javaPackages = with pkgs; [
@@ -97,7 +86,6 @@ let
         ])
     )
   ];
-  texlivePackages = lib.toList pkgs.texlive.combined.scheme-full;
 in
 {
   imports = [
@@ -137,60 +125,32 @@ in
     packages = with pkgs;
       [
         anki
-        atool
-        bcache-tools
         calibre
         colord-kde
         digikam
         element-desktop
-        exiftool
-        ffmpeg
-        file
         freetube
         gimp
-        gnupg
-        htop
-        imagemagick
         inkscape
         keepassxc
         kleopatra
         libreoffice-qt
-        lm_sensors
         logseq
-        man-pages
-        mpv
-        openssl
-        p7zip
-        pciutils
         qbittorrent-qt5
-        rsync
-        s-tui
-        smartmontools
         smplayer
         strawberry
-        stress-ng
         telegram-desktop
         tor-browser-bundle-bin
-        tree
         ungoogled-chromium
-        unrar
-        unzip
-        usbutils
-        wget
-        wireguard-tools
-        xclip
       ]
       ++ accountingTools
       ++ blockchainPackages
-      ++ devTools
       ++ dictionaries
       ++ guiDevTools
       ++ borgPackages
-      ++ luaPackages
       ++ javaPackages
       ++ plasmaPackages
-      ++ pythonPackages
-      ++ texlivePackages;
+      ++ pythonPackages;
   };
 
   services = {

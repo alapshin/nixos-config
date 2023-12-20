@@ -4,17 +4,34 @@
   home.packages = with pkgs; [
     home-manager
 
+    # CLI
+    age
+    atool
+    exiftool
+    file
+    glances
+    hadolint
+    imagemagick
+    lm_sensors
+    moreutils
+    openssl
+    p7zip
+    rsync
+    shfmt
+    shellcheck
+    sops
+    ssh-to-age
+    stylua
+    wget
+    wl-clipboard
+    unrar
+    unzip
+
     # AI
     openai-whisper
 
     # Media
-    mpv
     ffmpeg
-
-    jq
-    hadolint
-    moreutils
-    shellcheck
 
     # Fonts
     ibm-plex

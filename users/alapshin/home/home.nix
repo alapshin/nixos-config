@@ -21,6 +21,8 @@
     ./variables.nix
   ];
 
+  programs.home-manager.enable = true;
+
   home.packages = with pkgs; [
     keepassxc-autostart
     telegram-autostart

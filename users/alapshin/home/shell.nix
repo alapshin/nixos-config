@@ -11,7 +11,6 @@
     fd
     glow
     httpie
-    ripgrep
   ];
 
   services = {
@@ -62,7 +61,11 @@
       enableAliases = true;
     };
 
-    lsd = {
+    jq = {
+      enable = true;
+    };
+
+    mpv = {
       enable = true;
     };
 
@@ -75,61 +78,71 @@
       enable = true;
     };
 
-    tealdeer.enable = true;
+    ripgrep = {
+      enable = true;
+    };
+
+    tealdeer = {
+      enable = true;
+    };
+
+    texlive = {
+      enable = true;
+    };
 
     tmux = {
       enable = true;
     };
 
     yt-dlp.enable = true;
-  };
 
-  programs.zsh = {
-    enable = true;
-    dotDir = ".config/zsh";
-
-    enableAutosuggestions = true;
-    enableCompletion = true;
-    syntaxHighlighting = {
+    zsh = {
       enable = true;
-    };
-    enableVteIntegration = true;
+      dotDir = ".config/zsh";
 
-    history = {
-      path = "$ZDOTDIR/.zsh_history";
-      extended = true;
-      expireDuplicatesFirst = true;
-    };
+      enableAutosuggestions = true;
+      enableCompletion = true;
+      syntaxHighlighting = {
+        enable = true;
+      };
+      enableVteIntegration = true;
 
-    plugins = [
-      {
-        name = "p10k";
-        src = "${dotfileDir}";
-        file = "p10k.zsh";
-      }
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-    ];
+      history = {
+        path = "$ZDOTDIR/.zsh_history";
+        extended = true;
+        expireDuplicatesFirst = true;
+      };
 
-    oh-my-zsh = {
-      enable = true;
       plugins = [
-        "adb"
-        "docker"
-        "docker-compose"
-        "fzf"
-        "git"
-        "git-extras"
-        "gradle"
-        "man"
-        "python"
-        "pip"
-        "ripgrep"
-        "systemd"
+        {
+          name = "p10k";
+          src = "${dotfileDir}";
+          file = "p10k.zsh";
+        }
+        {
+          name = "powerlevel10k";
+          src = pkgs.zsh-powerlevel10k;
+          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        }
       ];
+
+      oh-my-zsh = {
+        enable = true;
+        plugins = [
+          "adb"
+          "docker"
+          "docker-compose"
+          "fzf"
+          "git"
+          "git-extras"
+          "gradle"
+          "man"
+          "python"
+          "pip"
+          "ripgrep"
+          "systemd"
+        ];
+      };
     };
   };
 }
