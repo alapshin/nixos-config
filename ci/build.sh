@@ -24,6 +24,7 @@ function encrypt {
 }
 
 function decrypt {
+    trap reset EXIT
     for f in "${secret_files[@]}"; do
         sops --decrypt --in-place "${f}"
     done;
@@ -44,7 +45,6 @@ function home-switch {
 }
 
 function system-switch {
-    echo "$0"
     decrypt
     sudo nixos-rebuild switch --flake "${flake_uri}"
 }
@@ -54,7 +54,12 @@ function remote-deploy {
     nixos-rebuild switch --flake "${flake_uri}" --target-host "${target_host}"
 }
 
-trap reset EXIT
+function sops-update-keys {
+    readarray -t encrypted_files <<< "$(grep --exclude-dir=".git" --files-with-matches --recursive "\"sops\": {")"
+    for f in "${encrypted_files[@]}"; do
+        sops updatekeys --yes "${f}"
+    done
+}
 
 case $command in
     check)
@@ -71,6 +76,9 @@ case $command in
         ;;
     remote-deploy)
         remote-deploy
+        ;;
+    sops-update-keys)
+        sops-update-keys
         ;;
     *)
         echo -n "Unknown command $command"
