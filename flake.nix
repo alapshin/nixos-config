@@ -22,6 +22,8 @@
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixos";
     plasma-manager.inputs.home-manager.follows = "home-manager";
+
+    subtitlecomposer.url = "github:kugland/nixpkgs/?ref=subtitlecomposer";
   };
 
   outputs =

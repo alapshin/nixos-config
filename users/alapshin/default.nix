@@ -142,6 +142,7 @@ in
         telegram-desktop
         tor-browser-bundle-bin
         ungoogled-chromium
+        prs.subtitlecomposer
       ]
       ++ accountingTools
       ++ blockchainPackages
