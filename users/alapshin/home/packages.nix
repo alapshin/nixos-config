@@ -2,8 +2,6 @@
 , ...
 }: {
   home.packages = with pkgs; [
-    home-manager
-
     # CLI
     age
     atool
