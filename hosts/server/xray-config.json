@@ -1,0 +1,71 @@
+{
+	"log": {
+		"loglevel": "info"
+	},
+	"routing": {
+		"rules": [],
+		"domainStrategy": "AsIs"
+	},
+	"inbounds": [
+		{
+			"port": 1080,
+			"tag": "ss",
+			"protocol": "shadowsocks",
+			"settings": {
+				"method": "aes-128-gcm",
+				"password": "@shadowsocks_password@",
+				"network": "tcp,udp"
+			}
+		},
+		{
+			"port": 8443,
+			"tag": "vless_tls",
+			"protocol": "vless",
+			"settings": {
+				"clients": [
+					{
+						"id": "cc593788-115f-4e8a-9c27-b43ef7a7dba7",
+						"flow": "xtls-rprx-vision"
+					}
+				],
+				"decryption": "none"
+			},
+			"streamSettings": {
+				"network": "tcp",
+				"security": "reality",
+				"realitySettings": {
+					"show": false,
+					"dest": "www.example.org:443",
+					"xver": 0,
+					"serverNames": [
+						"www.example.org"
+					],
+					"privateKey": "@vless_private_key@",
+					"minClientVer": "",
+					"maxClientVer": "",
+					"maxTimeDiff": 0,
+					"shortIds": [
+						"aabbccdd"
+					]
+				}
+			},
+			"sniffing": {
+				"enabled": true,
+				"destOverride": [
+					"http",
+					"tls"
+				]
+			}
+		}
+	],
+	"outbounds": [
+		{
+			"tag": "direct",
+			"protocol": "freedom"
+		},
+		{
+			"tag": "block",
+			"protocol": "blackhole"
+		}
+	]
+}

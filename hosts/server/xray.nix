@@ -5,21 +5,26 @@
 }: {
   sops = {
     secrets = {
-      "xray/config.json" = {
-        format = "binary";
-        sopsFile = ./secrets/xray-config.json;
+      "xray/vless_private_key" = {
+      };
+      "xray/shadowsocks_password" = {
       };
     };
+    templates."xray-config.json".content = builtins.readFile (pkgs.substituteAll {
+      src = ./xray-config.json;
+      vless_private_key = config.sops.placeholder."xray/vless_private_key";
+      shadowsocks_password = config.sops.placeholder."xray/shadowsocks_password";
+    });
   };
   services.xray = {
     enable = true;
-    settingsFile = config.sops.secrets."xray/config.json".path;
+    settingsFile = config.sops.templates."xray-config.json".path;
   };
 
   systemd.services.xray = {
     serviceConfig = {
-      LoadCredential = "config.json:${config.services.xray.settingsFile}";
       ExecStart = lib.mkForce "${config.services.xray.package}/bin/xray -config \${CREDENTIALS_DIRECTORY}/config.json";
+      LoadCredential = "config.json:${config.sops.templates."xray-config.json".path}";
     };
   };
 }
