@@ -35,6 +35,10 @@ function check {
     nix flake check
 }
 
+function clean {
+    nix store gc --verbose
+}
+
 function update {
     nix flake update
 }
@@ -64,6 +68,9 @@ function sops-update-keys {
 case $command in
     check)
         check
+        ;;
+    clean)
+        clean
         ;;
     update)
         update
