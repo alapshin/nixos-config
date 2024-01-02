@@ -19,8 +19,8 @@ let
   ];
 
   blockchainPackages = with pkgs; [
-    monero-cli
-    monero-gui
+    feather
+    electrum
   ];
 
   dictionaries = with pkgs; [
