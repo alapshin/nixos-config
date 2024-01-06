@@ -12,9 +12,9 @@
 			"tag": "ss",
 			"protocol": "shadowsocks",
 			"settings": {
-				"network": "tcp,udp"
+				"network": "tcp,udp",
 				"method": "2022-blake3-aes-128-gcm",
-				"password": "@shadowsocks_password@",
+				"password": "@shadowsocks_password@"
 			}
 		},
 		{
