@@ -12,9 +12,9 @@
 			"tag": "ss",
 			"protocol": "shadowsocks",
 			"settings": {
-				"method": "aes-128-gcm",
-				"password": "@shadowsocks_password@",
 				"network": "tcp,udp"
+				"method": "2022-blake3-aes-128-gcm",
+				"password": "@shadowsocks_password@",
 			}
 		},
 		{
@@ -24,7 +24,7 @@
 			"settings": {
 				"clients": [
 					{
-						"id": "cc593788-115f-4e8a-9c27-b43ef7a7dba7",
+						"id": "@vless_user_id@",
 						"flow": "xtls-rprx-vision"
 					}
 				],
@@ -35,10 +35,10 @@
 				"security": "reality",
 				"realitySettings": {
 					"show": false,
-					"dest": "www.example.org:443",
+					"dest": "www.microsoft.com:443",
 					"xver": 0,
 					"serverNames": [
-						"www.example.org"
+						"www.microsoft.com"
 					],
 					"privateKey": "@vless_private_key@",
 					"minClientVer": "",

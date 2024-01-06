@@ -7,8 +7,8 @@
     dhcpcd.enable = false;
     firewall = {
       enable = true;
-      allowedUDPPorts = [ 1080 ];
-      allowedTCPPorts = [ 80 443 1080 8443 ];
+      allowedUDPPorts = [ ];
+      allowedTCPPorts = [ 80 443 ];
     };
     enableIPv6 = false;
   };
