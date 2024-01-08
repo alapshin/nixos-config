@@ -13,6 +13,7 @@ let
     , user ? null
     , group ? null
     , openFirewall ? false
+    , proxyWebsockets ? false
     }: {
       services = {
         "${app}" = {
@@ -27,6 +28,7 @@ let
           forceSSL = true;
           useACMEHost = hostname;
           locations."/" = {
+            inherit proxyWebsockets;
             proxyPass = "http://${localhost}:${builtins.toString port}";
           };
         };
@@ -41,14 +43,16 @@ in
     {
       users.groups.media = {
         members = [
-          "sonarr"
-          "radarr"
-          "jellyfin"
-          "qbittorrent"
+          config.services.sonarr.user
+          config.services.radarr.user
+          config.services.jellyfin.user
+          config.services.qbittorrent.user
+          config.services.audiobookshelf.user
         ];
       };
     }
 
+    (mkMediaService { app = "audiobookshelf"; port = 8000; proxyWebsockets = true; })
     (mkMediaService { app = "bazarr"; port = 6767; })
     (mkMediaService { app = "radarr"; port = 7878; })
     (mkMediaService { app = "sonarr"; port = 8989; })
