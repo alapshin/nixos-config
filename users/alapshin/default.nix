@@ -166,37 +166,5 @@ in
     peroxide = {
       enable = true;
     };
-
-    syncthing = {
-      enable = true;
-      user = username;
-      group = "users";
-      dataDir = "/home/${username}";
-      settings = {
-        devices = {
-          altdesk = {
-            id = "K77LUC6-BZYZKY3-CHVAHJW-RXHUAPB-T6ZNZ6Q-KF77MQY-RCGE56Y-OV5XRAF";
-          };
-          carbon = {
-            id = "BB37FLW-KTKMN6T-2PQERS2-4T4P4U7-6ZWJCDU-BVRFF5F-P7BFCU3-CJH5FQP";
-          };
-          desktop = {
-            id = "SDAJAKH-WCN4BW6-H4H6QWF-43QC7DB-NWGL2RY-HOWYMNP-7TUWZZN-NC7MQAY";
-          };
-          pixel = {
-            id = "QZYNABL-EZ5KIGC-NPZ76I7-7HBM3UR-RV2CEYL-7PUZ6CX-NFPH5V2-TIZU2A7";
-          };
-        };
-        folders = {
-          "/home/${username}/Syncthing" = {
-            id = "syncthing";
-            label = "Syncthing";
-            devices = [ "altdesk" "carbon" "desktop" "pixel" ];
-          };
-        };
-      };
-      overrideFolders = true;
-      overrideDevices = false;
-    };
   };
 }

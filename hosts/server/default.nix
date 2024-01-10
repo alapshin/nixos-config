@@ -8,6 +8,7 @@
     ./xray.nix
     ./media.nix
     ./services.nix
+    ./syncthing.nix
     ./wireguard.nix
     ./networking.nix
     ./hardware-configuration.nix
