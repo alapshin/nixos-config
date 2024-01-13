@@ -64,6 +64,12 @@ in {
         };
       };
       folders = {
+        "${cfg.dataDir}/seedvault" = {
+          id = "seedvault";
+          type = "receiveonly";
+          label = "seedvault";
+          devices = [ "carbon" "pixel" ];
+        };
         "${cfg.dataDir}/${username}" = {
           id = "syncthing";
           label = "Syncthing";
