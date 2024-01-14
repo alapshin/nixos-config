@@ -124,7 +124,7 @@ in
 
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud27;
+      package = pkgs.nextcloud28;
       https = true;
       hostName = nextcloudHostname;
 
@@ -138,12 +138,7 @@ in
       database.createLocally = true;
 
       extraApps = with config.services.nextcloud.package.packages.apps; {
-        inherit calendar contacts memories tasks;
-        gpoddersync = pkgs.fetchNextcloudApp rec {
-          url = "https://github.com/thrillfall/nextcloud-gpodder/releases/download/3.8.2/gpoddersync.tar.gz";
-          sha256 = "sha256-eeBvRZUDVIaym0ngfPD2d7aY3SI/7lPWkrYPnqSh5Kw=";
-          license = "agpl3Plus";
-        };
+        inherit calendar contacts gpoddersync memories tasks;
       };
       extraAppsEnable = true;
     };
