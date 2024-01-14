@@ -12,6 +12,8 @@
     ./wireguard.nix
     ./networking.nix
     ./hardware-configuration.nix
+
+    ./pg-upgrade.nix
   ];
 
   users.users.root.hashedPasswordFile = config.sops.secrets."linux/root".path;
