@@ -8,7 +8,6 @@ let
 
   accountingTools = with pkgs; [
     fava
-    gnucash
     ledger2beancount
   ];
 
