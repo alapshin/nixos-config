@@ -5,12 +5,12 @@
 }: {
   imports = [
     ./secrets.nix
-    ./xray.nix
     ./media.nix
     ./services.nix
     ./syncthing.nix
     ./wireguard.nix
     ./networking.nix
+    ./xray-server.nix
     ./hardware-configuration.nix
 
     ./pg-upgrade.nix

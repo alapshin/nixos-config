@@ -41,9 +41,6 @@
 						"www.microsoft.com"
 					],
 					"privateKey": "@vless_private_key@",
-					"minClientVer": "",
-					"maxClientVer": "",
-					"maxTimeDiff": 0,
 					"shortIds": [
 						"aabbccdd"
 					]

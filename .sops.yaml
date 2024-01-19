@@ -12,6 +12,17 @@ creation_rules:
         - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
         # alapshin-at-work
         - age16a70x09hg5m4as79f8se5l853299vs40t4avgc44c02men3k6f2qyzkcja
+
+  - path_regex: hosts/common/secrets.*
+    key_groups:
+      - age:
+        # server
+        - age12eh8lz7mq639kmzf9jwserzek059a6fyl4u2fkrlrqjxy90zte2szrd4j6
+        # carbon
+        - age10ewrmr20gy5pc74tyygws7z80jmh4yn5f4e4sh96mznrvw347ecqjc2ms7
+        # alapshin-at-carbon
+        - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
+
   - path_regex: hosts/carbon/secrets.*
     key_groups:
       - age:
@@ -19,6 +30,7 @@ creation_rules:
         - age10ewrmr20gy5pc74tyygws7z80jmh4yn5f4e4sh96mznrvw347ecqjc2ms7
         # alapshin-at-carbon
         - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
+
   - path_regex: hosts/server/secrets.*
     key_groups:
       - age:

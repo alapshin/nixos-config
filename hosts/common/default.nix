@@ -6,10 +6,11 @@
   imports = [
     ./audio.nix
     # ./backup.nix
-    # ./secrets.nix
+    ./secrets.nix
     ./services.nix
     ./networking.nix
     ./graphical-desktop.nix
+    ./xray-client.nix
   ];
   boot = {
     # Enable the magic SysRq key
