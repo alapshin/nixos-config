@@ -31,4 +31,6 @@
       };
     };
   };
+
+  systemd.timers."borgbackup-job-carbon".wants = [ "network-online.target" ];
 }
