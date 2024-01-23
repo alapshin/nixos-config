@@ -59,7 +59,13 @@ function remote-deploy {
 }
 
 function sops-update-keys {
-    readarray -t encrypted_files <<< "$(grep --exclude-dir=".git" --files-with-matches --recursive "\"sops\": {")"
+    readarray -t encrypted_files <<< "$(grep \
+        --recursive \
+        --exclude-dir="ci" \
+        --exclude-dir=".git" \
+        --files-with-matches \
+        --regexp "unencrypted_suffix" \
+        )"
     for f in "${encrypted_files[@]}"; do
         sops updatekeys --yes "${f}"
     done
