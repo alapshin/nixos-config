@@ -1,14 +1,23 @@
 { pkgs
+, lib
+, config
 , osConfig
 , secretDir
 , ...
 }:
 let
-  isNixOS = builtins.hasAttr "system" osConfig;
-  accounts = builtins.fromJSON (builtins.readFile "${secretDir}/accounts.json");
+  cfg = config.programs.thunderbird;
+  enabled = builtins.elem osConfig.networking.hostName [
+    "carbon"
+  ];
+  accounts =
+    if !enabled then
+      { }
+    else
+      builtins.fromJSON (builtins.readFile "${secretDir}/accounts.json");
 in
 {
-  accounts.email.accounts = {
+  accounts.email.accounts = lib.mkIf cfg.enable {
     "GMail" = {
       flavor = "gmail.com";
       address = accounts.gmail;
@@ -17,7 +26,7 @@ in
     };
     "Fastmail" = {
       flavor = "fastmail.com";
-      address = "alapshin@fastmail.com";
+      address = accounts.fastmail;
       primary = true;
       realName = "Andrei Lapshin";
       thunderbird.enable = true;
@@ -25,7 +34,7 @@ in
   };
 
   programs.thunderbird = {
-    enable = isNixOS;
+    enable = enabled;
 
     profiles = {
       default = {

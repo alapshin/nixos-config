@@ -4,7 +4,7 @@
 , ...
 }:
 let
-  isNixOS = builtins.hasAttr "system" osConfig;
+  isNixOS = osConfig ? "system";
 in
 {
 
