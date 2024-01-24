@@ -1,12 +1,14 @@
 { config
 , pkgs
 , ...
-}: let
+}:
+let
   cfg = config.services.syncthing;
 
   username = "alapshin";
   usergroup = config.users.users.${username}.group;
-in {
+in
+{
   sops = {
     secrets = {
       "syncthing/key" = {
