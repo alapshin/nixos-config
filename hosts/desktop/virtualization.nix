@@ -3,7 +3,10 @@
 , ...
 }: {
   virtualisation = {
-    docker.enable = true;
+    docker = {
+      enable = true;
+      storageDriver = "overlay2";
+    };
     podman.enable = true;
     libvirtd.enable = true;
   };
