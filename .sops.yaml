@@ -14,6 +14,8 @@ creation_rules:
         - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
         # alapshin-at-altdesk
         - age1sfed5wmvj00snjxrtds0zt83kt7ffek6mdtgfykum6uzxnphwg4qp5rv2l
+        # alapshin-at-desktop
+        - age1k2t56rsp2xvdsvjxraytyfufedxcl7z548tc9dzdhzqpq9yyfc9sz2h70e
         # alapshin-at-work
         - age16a70x09hg5m4as79f8se5l853299vs40t4avgc44c02men3k6f2qyzkcja
 
@@ -26,12 +28,14 @@ creation_rules:
         - age10ewrmr20gy5pc74tyygws7z80jmh4yn5f4e4sh96mznrvw347ecqjc2ms7
         # altdesk
         - age1gwk0m9n4mrr7h572kkjxtkkl4p0t2mfc9f7ms0560s63x4pawgzq433tca
-        # alapshin-at-altdesk
-        - age1sfed5wmvj00snjxrtds0zt83kt7ffek6mdtgfykum6uzxnphwg4qp5rv2l 
-        # alapshin-at-altdesk
-        - age1sfed5wmvj00snjxrtds0zt83kt7ffek6mdtgfykum6uzxnphwg4qp5rv2l 
+        # desktop
+        - age18y57gdahad7zhrrgj2m4dd7fcgwfn4gpmxe9mhcrue8suq8e8c3stzd0ge
         # alapshin-at-carbon
         - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
+        # alapshin-at-altdesk
+        - age1sfed5wmvj00snjxrtds0zt83kt7ffek6mdtgfykum6uzxnphwg4qp5rv2l 
+        # alapshin-at-desktop
+        - age1k2t56rsp2xvdsvjxraytyfufedxcl7z548tc9dzdhzqpq9yyfc9sz2h70e
 
   - path_regex: hosts/carbon/secrets.*
     key_groups:
