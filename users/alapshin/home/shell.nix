@@ -83,7 +83,7 @@
     };
 
     tealdeer = {
-      enable = true;
+      enable = false;
     };
 
     texlive = {
