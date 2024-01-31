@@ -3,7 +3,7 @@ Name=custom
 Parent=FALLBACK/
 
 [Appearance]
-ColorScheme=github_light
+ColorScheme=Catppuccin-Latte
 
 [Scrolling]
 ScrollBarPosition=2
