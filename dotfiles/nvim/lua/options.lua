@@ -24,7 +24,6 @@ vim.opt.colorcolumn = '80'
 vim.opt.cursorline = true
 vim.opt.spelllang = 'ru,en'
 vim.opt.termguicolors = true
-vim.cmd('colorscheme github_light')
 
 -- 6 multiple windows
 vim.opt.laststatus = 2

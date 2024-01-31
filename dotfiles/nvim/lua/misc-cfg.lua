@@ -1,18 +1,17 @@
 require('Comment').setup()
 require('gitsigns').setup()
 
-require('shade').setup({})
 require('nvim-web-devicons').setup({})
 
 require('ibl').setup({
-  scope = {
-    show_start = false,
-    highlight = { "SpecialKey", "SpecialKey", "SpecialKey" },
-  },
+  indent = { },
+  scope = { enabled = true },
 })
 
 require('lualine').setup({
-  theme = 'github_light',
+    options = {
+      theme = "catppuccin"
+    },
 })
 
 require('bufferline').setup({

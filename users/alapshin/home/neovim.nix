@@ -2,21 +2,6 @@
 , pkgs
 , ...
 }:
-let
-  # alias
-  shade-nvim = pkgs.vimPlugins.Shade-nvim;
-
-  github-theme = pkgs.vimUtils.buildVimPlugin {
-    pname = "github-nvim-theme";
-    version = "1.0.1";
-    src = pkgs.fetchFromGitHub {
-      owner = "projekt0n";
-      repo = "github-nvim-theme";
-      rev = "v1.0.1";
-      hash = "sha256-30+5q6qE1GCetNKdUC15LcJeat5e0wj9XtNwGdpRsgk=";
-    };
-  };
-in
 {
   programs.neovim = {
     enable = true;
@@ -26,7 +11,7 @@ in
     defaultEditor = true;
 
     plugins = with pkgs.vimPlugins; [
-      github-theme
+      catppuccin-nvim
 
       vim-sleuth
       vim-polyglot
@@ -53,8 +38,8 @@ in
       nvim-treesitter-textobjects
 
       noice-nvim
-      shade-nvim
       nvim-notify
+      tint-nvim
       trouble-nvim
       lualine-nvim
       gitsigns-nvim
