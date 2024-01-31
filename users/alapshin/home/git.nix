@@ -1,16 +1,31 @@
 { pkgs
+, config
 , dotfileDir
 , ...
 }: {
-  home.shellAliases = {
-    lg = "lazygit";
+  xdg = {
+    configFile = {
+      "lazygit/theme.yml" = {
+        source = "${dotfileDir}/lazygit/theme.yml";
+      };
+    };
   };
 
-  home.packages = with pkgs; [
-    git-extras
-    transcrypt
-    git-filter-repo
-  ];
+  home = {
+    packages = with pkgs; [
+      git-extras
+      transcrypt
+      git-filter-repo
+    ];
+
+    shellAliases = {
+      lg = "lazygit";
+    };
+
+    sessionVariables = {
+      LG_CONFIG_FILE = "${config.xdg.configHome}/lazygit/config.yml,${config.xdg.configHome}/lazygit/theme.yml";
+    };
+  };
 
   programs = {
     gh = {
@@ -70,4 +85,5 @@
       };
     };
   };
+
 }
