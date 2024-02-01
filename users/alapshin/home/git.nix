@@ -41,10 +41,11 @@
         enable = true;
         options = {
           light = true;
+          navigate = true;
           hyperlinks = true;
           line-numbers = true;
           side-by-side = true;
-          features = "github";
+          features = "catppuccin-latte";
         };
       };
       includes = [

@@ -7,8 +7,6 @@
 [core]
 	editor = nvim
 	whitespace = cr-at-eol
-[delta]
-	navigate = true
 [diff]
 	colorMoved = default
 [fetch]
