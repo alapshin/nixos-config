@@ -2,8 +2,6 @@
 , dotfileDir
 , ...
 }: {
-  home.shellAliases = { };
-
   home.packages = with pkgs; [
     dog
     duf
@@ -11,6 +9,7 @@
     fd
     glow
     httpie
+    vivid
   ];
 
   services = {
@@ -112,6 +111,10 @@
         extended = true;
         expireDuplicatesFirst = true;
       };
+
+      initExtra = ''
+        export LS_COLORS="$(vivid generate catppuccin-latte)"
+      '';
 
       plugins = [
         {
