@@ -115,16 +115,6 @@
 
       plugins = [
         {
-          name = "p10k";
-          src = "${dotfileDir}";
-          file = "p10k.zsh";
-        }
-        {
-          name = "powerlevel10k";
-          src = pkgs.zsh-powerlevel10k;
-          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-        }
-        {
           name = "zsh-syntax-highlighting-catpuccin";
           file = "themes/catppuccin_latte-zsh-syntax-highlighting.zsh";
           src = pkgs.fetchFromGitHub {
@@ -153,6 +143,27 @@
           "systemd"
         ];
       };
+    };
+
+    starship =
+      let
+        flavour = "latte"; # One of `latte`, `frappe`, `macchiato`, or `mocha`
+      in
+      {
+        enable = true;
+        enableZshIntegration = true;
+        settings = {
+        # Other config here
+        format = "$all"; # Remove this line to disable the default prompt format
+        palette = "catppuccin_${flavour}";
+      } // builtins.fromTOML (builtins.readFile
+      (pkgs.fetchFromGitHub
+      {
+        owner = "catppuccin";
+        repo = "starship";
+        rev = "5629d2356f62a9f2f8efad3ff37476c19969bd4f";
+        sha256 = "sha256-nsRuxQFKbQkyEI4TXgvAjcroVdG+heKX5Pauq/4Ota0=";
+      } + /palettes/${flavour}.toml));
     };
   };
 }
