@@ -9,6 +9,7 @@
     fd
     glow
     httpie
+    sd
     vivid
   ];
 
