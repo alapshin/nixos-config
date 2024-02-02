@@ -167,17 +167,21 @@
         enable = true;
         enableZshIntegration = true;
         settings = {
-        # Other config here
-        format = "$all"; # Remove this line to disable the default prompt format
-        palette = "catppuccin_${flavour}";
-      } // builtins.fromTOML (builtins.readFile
-      (pkgs.fetchFromGitHub
-      {
-        owner = "catppuccin";
-        repo = "starship";
-        rev = "5629d2356f62a9f2f8efad3ff37476c19969bd4f";
-        sha256 = "sha256-nsRuxQFKbQkyEI4TXgvAjcroVdG+heKX5Pauq/4Ota0=";
-      } + /palettes/${flavour}.toml));
-    };
+          # Other config here
+          format = "$all"; # Remove this line to disable the default prompt format
+          palette = "catppuccin_${flavour}";
+        }
+        // builtins.fromTOML (builtins.readFile (pkgs.fetchurl {
+          url = "https://starship.rs/presets/toml/nerd-font-symbols.toml";
+          hash = "sha256-BVe5JMSIa3CoY2Wf9pvcF1EUtDVCWCLhW3IyKuwfHug=";
+        }))
+        // builtins.fromTOML (builtins.readFile (pkgs.fetchFromGitHub
+          {
+            owner = "catppuccin";
+            repo = "starship";
+            rev = "5629d2356f62a9f2f8efad3ff37476c19969bd4f";
+            sha256 = "sha256-nsRuxQFKbQkyEI4TXgvAjcroVdG+heKX5Pauq/4Ota0=";
+          } + /palettes/${flavour}.toml));
+      };
   };
 }
