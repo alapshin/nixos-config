@@ -11,10 +11,12 @@
   services = {
     xserver = {
       enable = true;
-      xkbDir = "${pkgs.xkbconfig_custom}/etc/X11/xkb";
-      layout = "us,ru";
-      xkbVariant = "hbs,srp";
-      xkbOptions = "grp:caps_toggle";
+      xkb = {
+        dir = "${pkgs.xkbconfig_custom}/etc/X11/xkb";
+        layout = "us,ru";
+        variant = "hbs,srp";
+        options = "grp:caps_toggle";
+      };
 
       libinput = {
         enable = true;
