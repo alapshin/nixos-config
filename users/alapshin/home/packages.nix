@@ -7,7 +7,6 @@
     atool
     exiftool
     file
-    glances
     hadolint
     imagemagick
     lm_sensors

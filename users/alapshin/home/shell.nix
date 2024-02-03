@@ -51,6 +51,21 @@
       };
     };
 
+    bottom =
+      let
+        flavor = "latte";
+      in
+      {
+        enable = true;
+        settings = { } // builtins.fromTOML (builtins.readFile (pkgs.fetchFromGitHub
+          {
+            owner = "catppuccin";
+            repo = "bottom";
+            rev = "c0efe9025f62f618a407999d89b04a231ba99c92";
+            sha256 = "sha256-VaHX2I/Gn82wJWzybpWNqU3dPi3206xItOlt0iF6VVQ=";
+          } + /themes/${flavor}.toml));
+      };
+
     broot = {
       enable = true;
       enableZshIntegration = true;
@@ -162,7 +177,7 @@
 
     starship =
       let
-        flavour = "latte"; # One of `latte`, `frappe`, `macchiato`, or `mocha`
+        flavor = "latte"; # One of `latte`, `frappe`, `macchiato`, or `mocha`
       in
       {
         enable = true;
@@ -170,7 +185,7 @@
         settings = {
           # Other config here
           format = "$all"; # Remove this line to disable the default prompt format
-          palette = "catppuccin_${flavour}";
+          palette = "catppuccin_${flavor}";
         }
         // builtins.fromTOML (builtins.readFile (pkgs.fetchurl {
           url = "https://starship.rs/presets/toml/nerd-font-symbols.toml";
@@ -182,7 +197,7 @@
             repo = "starship";
             rev = "5629d2356f62a9f2f8efad3ff37476c19969bd4f";
             sha256 = "sha256-nsRuxQFKbQkyEI4TXgvAjcroVdG+heKX5Pauq/4Ota0=";
-          } + /palettes/${flavour}.toml));
+          } + /palettes/${flavor}.toml));
       };
   };
 }
