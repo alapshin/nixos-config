@@ -137,6 +137,7 @@ in
         libreoffice-qt
         logseq
         qbittorrent-qt5
+        sddm-kcm
         smplayer
         strawberry
         telegram-desktop
