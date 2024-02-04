@@ -45,8 +45,6 @@
     QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
   };
 
-  environment.systemPackages = with pkgs.libsForQt5; [
-    qqc2-breeze-style
-    qqc2-desktop-style
+  environment.systemPackages = with pkgs; [
   ];
 }
