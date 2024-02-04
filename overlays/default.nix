@@ -11,10 +11,6 @@
         "JetBrainsMono"
       ];
     };
-    catppuccin-kde = prev.catppuccin-kde.override {
-      accents = [ "sky" ];
-      flavour = [ "latte" ];
-    };
   };
 
   pr-packages = final: _prev: {

@@ -17,6 +17,7 @@
     ./firefox.nix
     ./thunderbird.nix
 
+    ./theming.nix
     ./packages.nix
     ./variables.nix
   ];

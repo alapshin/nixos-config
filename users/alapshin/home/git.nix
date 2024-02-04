@@ -3,14 +3,6 @@
 , dotfileDir
 , ...
 }: {
-  xdg = {
-    configFile = {
-      "lazygit/theme.yml" = {
-        source = "${dotfileDir}/lazygit/theme.yml";
-      };
-    };
-  };
-
   home = {
     packages = with pkgs; [
       git-extras
@@ -20,10 +12,6 @@
 
     shellAliases = {
       lg = "lazygit";
-    };
-
-    sessionVariables = {
-      LG_CONFIG_FILE = "${config.xdg.configHome}/lazygit/config.yml,${config.xdg.configHome}/lazygit/theme.yml";
     };
   };
 
@@ -45,7 +33,6 @@
           hyperlinks = true;
           line-numbers = true;
           side-by-side = true;
-          features = "catppuccin-latte";
         };
       };
       includes = [

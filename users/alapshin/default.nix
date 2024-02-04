@@ -126,7 +126,6 @@ in
         anki
         calibre
         colord-kde
-        catppuccin-kde
         digikam
         element-desktop
         freetube
