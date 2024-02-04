@@ -11,6 +11,7 @@
     defaultEditor = true;
 
     plugins = with pkgs.vimPlugins; [
+      tint-nvim
       catppuccin-nvim
 
       vim-sleuth
@@ -29,7 +30,7 @@
       cmp-path
       cmp-nvim-lsp
       cmp-nvim-lsp-signature-help
-      null-ls-nvim
+      none-ls-nvim
       lspkind-nvim
       nvim-lspconfig
       inc-rename-nvim
@@ -39,14 +40,16 @@
 
       noice-nvim
       nvim-notify
-      tint-nvim
+
       trouble-nvim
       lualine-nvim
       gitsigns-nvim
-      telescope-nvim
-      telescope-fzf-native-nvim
+      neo-tree-nvim
       bufferline-nvim
       nvim-web-devicons
+      telescope-nvim
+      telescope-fzf-native-nvim
+
       indent-blankline-nvim
     ];
     extraPackages = with pkgs; [
