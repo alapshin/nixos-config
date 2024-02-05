@@ -26,6 +26,7 @@ in
             linguist-translator
             bypass-paywalls-clean
           ]) ++ (with pkgs.nur.repos.rycee.firefox-addons; [
+            floccus
             metamask
             sponsorblock
             languagetool
@@ -56,6 +57,8 @@ in
           "extensions.autoDisableScopes" = 0;
           # Use hostname as device name for Firefox Sync
           "identity.fxaccounts.account.device.name" = osConfig.networking.hostName;
+          # Sync bookmarks using Floccus instead of Firefox Sync
+          "services.sync.engine.bookmarks" = false;
           # Enable userChrome.css support
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
