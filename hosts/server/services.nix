@@ -138,7 +138,7 @@ in
       database.createLocally = true;
 
       extraApps = with config.services.nextcloud.package.packages.apps; {
-        inherit calendar contacts gpoddersync memories tasks;
+        inherit bookmarks calendar contacts gpoddersync memories tasks;
       };
       extraAppsEnable = true;
     };
