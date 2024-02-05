@@ -89,7 +89,10 @@
       enableZshIntegration = true;
       settings = {
         format = "$all";
-      };
+      } // builtins.fromTOML (builtins.readFile (pkgs.fetchurl {
+        url = "https://starship.rs/presets/toml/plain-text-symbols.toml";
+        hash = "sha256-NdEEgtRNgCc6m6PGPKJ3ud7pQVR9etbytoF84JSVUlU=";
+      }));
     };
 
     tealdeer = {

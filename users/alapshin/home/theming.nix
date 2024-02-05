@@ -6,7 +6,8 @@ let
   accent = "sky";
   flavor = "latte";
   catppuccin = pkgs.catppuccin.override { inherit accent; variant = flavor; };
-in {
+in
+{
   programs = {
     bat = {
       config = {
