@@ -27,6 +27,7 @@ in
             bypass-paywalls-clean
           ]) ++ (with pkgs.nur.repos.rycee.firefox-addons; [
             floccus
+            omnivore
             metamask
             sponsorblock
             languagetool
@@ -55,6 +56,8 @@ in
           "browser.urlbar.decodeURLsOnCopy" = true;
           # Enable preinstalled addons
           "extensions.autoDisableScopes" = 0;
+          # Disable pocket
+          "extensions.pocket.enabled" = false;
           # Use hostname as device name for Firefox Sync
           "identity.fxaccounts.account.device.name" = osConfig.networking.hostName;
           # Sync bookmarks using Floccus instead of Firefox Sync
