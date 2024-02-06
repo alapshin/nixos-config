@@ -4,6 +4,8 @@
 }: {
   networking = {
     useDHCP = false;
+    domain = "com";
+    hostName = "alapshin";
     dhcpcd.enable = false;
     firewall = {
       enable = true;

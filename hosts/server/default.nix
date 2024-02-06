@@ -4,16 +4,20 @@
 , ...
 }: {
   imports = [
-    ./secrets.nix
+    ./acme.nix
+    ./keycloak.nix
     ./media.nix
+    ./nextcloud.nix
+    ./secrets.nix
     ./services.nix
     ./syncthing.nix
     ./wireguard.nix
-    ./networking.nix
     ./xray-server.nix
-    ./hardware-configuration.nix
 
     ./pg-upgrade.nix
+
+    ./networking.nix
+    ./hardware-configuration.nix
   ];
 
   users.users.root.hashedPasswordFile = config.sops.secrets."linux/root".path;
