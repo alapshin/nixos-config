@@ -23,7 +23,7 @@ creation_rules:
     key_groups:
       - age:
         # server
-        - age12eh8lz7mq639kmzf9jwserzek059a6fyl4u2fkrlrqjxy90zte2szrd4j6
+        - age10cfmy5ne9exjnxyqd9886m224x49yyq96us93aznt8s9zmhdfqgscxme0q
         # carbon
         - age10ewrmr20gy5pc74tyygws7z80jmh4yn5f4e4sh96mznrvw347ecqjc2ms7
         # altdesk
@@ -49,6 +49,6 @@ creation_rules:
     key_groups:
       - age:
         # server
-        - age12eh8lz7mq639kmzf9jwserzek059a6fyl4u2fkrlrqjxy90zte2szrd4j6
+        - age10cfmy5ne9exjnxyqd9886m224x49yyq96us93aznt8s9zmhdfqgscxme0q
         # alapshin-at-carbon
         - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
