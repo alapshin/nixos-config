@@ -89,12 +89,13 @@
           ]
         , hostModules ? [ ]
         , userModules ? [ ]
+        , specialArgs ? { }
         ,
         }:
         nixos.lib.nixosSystem {
           inherit system;
           modules = baseModules ++ hostModules ++ userModules;
-          specialArgs = {
+          specialArgs = specialArgs // {
             inherit inputs pkgs self dotfileDir;
           };
         };
@@ -130,13 +131,6 @@
           ];
         };
 
-        server = mkNixosConfiguration {
-          hostModules = [
-            ./hosts/server
-            "${nixos}/nixos/modules/profiles/qemu-guest.nix"
-          ];
-        };
-
         desktop = mkNixosConfiguration {
           hostModules = [
             ./hosts/common
@@ -156,6 +150,15 @@
             ./users/alapshin
           ];
         };
+
+        server = mkNixosConfiguration {
+          hostModules = [
+            ./hosts/server
+            "${nixos}/nixos/modules/profiles/qemu-guest.nix"
+          ];
+          specialArgs = { domainName = "alapshin.com"; };
+        };
+
       };
       # Stand-alone home-manager configuration for non NixOS machines
       homeConfigurations =

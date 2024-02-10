@@ -2,7 +2,7 @@
 , pkgs
 , config
 , ...
-}: 
+}:
 {
   users.users = {
     # Make acme certificates available to nginx user
@@ -12,24 +12,6 @@
   };
 
   services = {
-    openssh = {
-      enable = true;
-      settings = {
-        PasswordAuthentication = false;
-      };
-    };
-
-    borgbackup = {
-      repos = {
-        "carbon" = {
-          path = "/var/lib/borgbackup/carbon";
-          authorizedKeys = [
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOsBOvXebWJDBkdv0oPjwjtB6Icn5kxCv7WN93Qg8VWD"
-          ];
-        };
-      };
-    };
-
     nginx = {
       enable = true;
       recommendedTlsSettings = true;

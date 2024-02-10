@@ -4,8 +4,7 @@
 }: {
   networking = {
     useDHCP = false;
-    domain = "com";
-    hostName = "alapshin";
+    hostName = "homeserver";
     dhcpcd.enable = false;
     firewall = {
       enable = true;
@@ -20,7 +19,7 @@
       "10-lan" = {
         name = "enp0s18";
         dns = [
-          "8.8.8.8"
+          "1.1.1.1"
         ];
         DHCP = "no";
         address = [

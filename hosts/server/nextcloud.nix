@@ -1,10 +1,11 @@
 { lib
 , pkgs
 , config
+, domainName
 , ...
-}: let 
-  fqdn = config.networking.fqdnOrHostName;
-  nextcloudHostname = "nextcloud.${fqdn}";
+}:
+let
+  nextcloudHostname = "nextcloud.${domainName}";
 in
 {
   sops = {
@@ -27,7 +28,7 @@ in
       virtualHosts = {
         ${nextcloudHostname} = {
           forceSSL = true;
-          useACMEHost = fqdn;
+          useACMEHost = domainName;
         };
       };
     };
@@ -81,12 +82,12 @@ in
     nodejs
   ];
   systemd.services.nextcloud-cron = {
-     path = [ pkgs.perl pkgs.exiftool ];
+    path = [ pkgs.perl pkgs.exiftool ];
   };
   systemd.services.nextcloud-setup = {
-     path = [ pkgs.perl pkgs.exiftool ];
+    path = [ pkgs.perl pkgs.exiftool ];
   };
   systemd.services.phpfpm-nextcloud = {
-     path = [ pkgs.perl pkgs.exiftool ];
+    path = [ pkgs.perl pkgs.exiftool ];
   };
 }

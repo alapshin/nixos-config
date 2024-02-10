@@ -1,12 +1,12 @@
 { config
 , lib
 , pkgs
+, domainName
 , ...
 }:
 let
   mediaGroup = "media";
   localhost = "127.0.0.1";
-  hostname = "alapshin.com";
   mkMediaService =
     { app
     , port
@@ -24,9 +24,9 @@ let
         } // lib.optionalAttrs (group != null) {
           inherit group;
         };
-        nginx.virtualHosts."${app}.${hostname}" = {
+        nginx.virtualHosts."${app}.${domainName}" = {
           forceSSL = true;
-          useACMEHost = hostname;
+          useACMEHost = domainName;
           locations."/" = {
             inherit proxyWebsockets;
             proxyPass = "http://${localhost}:${builtins.toString port}";

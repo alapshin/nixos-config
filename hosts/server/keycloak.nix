@@ -1,13 +1,14 @@
-
 { lib
 , pkgs
 , config
+, domainName
 , ...
-}: let 
-  fqdn = config.networking.fqdnOrHostName;
+}:
+let
   keycloakHttpsPort = 8443;
-  keycloakHostname = "keycloak.${fqdn}";
-in {
+  keycloakHostname = "keycloak.${domainName}";
+in
+{
   sops = {
     secrets = {
       "keycloak/database" = {
@@ -21,7 +22,7 @@ in {
       virtualHosts = {
         ${keycloakHostname} = {
           forceSSL = true;
-          useACMEHost = fqdn;
+          useACMEHost = domainName;
           locations."/" = {
             proxyPass = "https://localhost:${toString keycloakHttpsPort}";
           };
@@ -40,8 +41,8 @@ in {
         createLocally = true;
         passwordFile = config.sops.secrets."keycloak/database".path;
       };
-      sslCertificate = "${config.security.acme.certs.${fqdn}.directory}/cert.pem";
-      sslCertificateKey = "${config.security.acme.certs.${fqdn}.directory}/key.pem";
+      sslCertificate = "${config.security.acme.certs.${domainName}.directory}/cert.pem";
+      sslCertificateKey = "${config.security.acme.certs.${domainName}.directory}/key.pem";
     };
   };
 }

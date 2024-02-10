@@ -5,9 +5,11 @@
 }: {
   imports = [
     ./acme.nix
+    ./borg.nix
     ./keycloak.nix
     ./media.nix
     ./nextcloud.nix
+    ./openssh.nix
     ./secrets.nix
     ./services.nix
     ./syncthing.nix

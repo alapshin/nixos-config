@@ -1,10 +1,9 @@
 { lib
 , pkgs
 , config
+, domainName
 , ...
-}: let 
-  fqdn = config.networking.fqdnOrHostName;
-in {
+}: {
   sops = {
     secrets = {
       "porkbun/api_key" = {
@@ -15,7 +14,7 @@ in {
       };
     };
   };
-  
+
   users.users = {
     # Make sops keys available to acme user
     acme.extraGroups = [
@@ -26,18 +25,19 @@ in {
   security = {
     acme = {
       acceptTerms = true;
-      certs."${fqdn}" = {
+      certs."${domainName}" = {
         extraDomainNames = [
-          "*.${fqdn}"
+          "*.${domainName}"
         ];
       };
       defaults = {
-        email = "mail@${fqdn}";
+        email = "mail@${domainName}";
         dnsProvider = "porkbun";
-        credentialsFile = pkgs.writeText "dns-credentials" ''
-          PORKBUN_API_KEY_FILE=${config.sops.secrets."porkbun/api_key".path}
-          PORKBUN_SECRET_API_KEY_FILE=${config.sops.secrets."porkbun/secret_key".path }
-        '';
+        credentialFiles = {
+          "PORKBUN_API_KEY_FILE" = config.sops.secrets."porkbun/api_key".path;
+          "PORKBUN_SECRET_API_KEY_FILE" = config.sops.secrets."porkbun/secret_key".path;
+        };
+        dnsPropagationCheck = false;
       };
     };
   };
