@@ -33,6 +33,11 @@ in
       };
     };
 
+    imaginary = {
+      enable = true;
+      settings.return-size = true;
+    };
+
     nextcloud = {
       enable = true;
       package = pkgs.nextcloud28;
@@ -58,6 +63,11 @@ in
             ffprobe = "${pkgs.jellyfin-ffmpeg}/bin/ffprobe";
           };
         };
+        enabledPreviewProviders = [
+          "OC\\Preview\\Movie"
+          "OC\\Preview\\Imaginary"
+        ];
+        preview_imaginary_url = "http://${config.services.imaginary.address}:${toString config.services.imaginary.port}";
       };
 
       extraApps = with config.services.nextcloud.package.packages.apps; {
