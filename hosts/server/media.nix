@@ -6,7 +6,6 @@
 }:
 let
   mediaGroup = "media";
-  localhost = "127.0.0.1";
   mkMediaService =
     { app
     , port
@@ -24,12 +23,31 @@ let
         } // lib.optionalAttrs (group != null) {
           inherit group;
         };
-        nginx.virtualHosts."${app}.${domainName}" = {
-          forceSSL = true;
-          useACMEHost = domainName;
-          locations."/" = {
-            inherit proxyWebsockets;
-            proxyPass = "http://${localhost}:${builtins.toString port}";
+        nginx = {
+          upstreams = {
+            "${app}" = {
+              servers = {
+                "localhost:${toString port}" = { };
+              };
+            };
+          };
+          virtualHosts."${app}.${domainName}" = {
+            forceSSL = true;
+            useACMEHost = domainName;
+            locations = {
+              "/" = {
+                inherit proxyWebsockets;
+                proxyPass = "http://${app}";
+                extraConfig = lib.strings.concatStringsSep "\n" [
+                  (builtins.readFile ./nginx/proxy.conf)
+                  (builtins.readFile ./nginx/auth-request.conf)
+                ];
+              };
+              "/authenticate" = {
+                proxyPass = "http://authelia/api/verify";
+                extraConfig = builtins.readFile ./nginx/auth-location.conf;
+              };
+            };
           };
         };
       };

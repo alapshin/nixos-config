@@ -5,8 +5,8 @@
 }: {
   imports = [
     ./acme.nix
+    ./authelia.nix
     ./borg.nix
-    ./keycloak.nix
     ./media.nix
     ./nextcloud.nix
     ./openssh.nix
