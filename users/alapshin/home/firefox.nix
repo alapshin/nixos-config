@@ -18,6 +18,51 @@ in
       };
     };
 
+    policies = {
+      "Cookies" = {
+        "Locked" = true;
+        "Behavior" = "reject-tracker-and-partition-foreign";
+        "BehaviorPrivateBrowsing" = "reject-tracker-and-partition-foreign";
+      };
+      "DisablePocket" = true;
+      "DisableSetDesktopBackground" = true;
+      "DontCheckDefaultBrowser" = true;
+      "EnableTrackingProtection" = {
+        "Value" = true;
+        "Locked" = true;
+        "Cryptomining" = true;
+        "Fingerprinting" = true;
+        "EmailTracking" = true;
+      };
+      "ExtensionUpdate" = false;
+      "FirefoxSuggest" = {
+        "Locked" = true;
+        "ImproveSuggest" = false;
+        "WebSuggestions" = false;
+        "SponsoredSuggestions" = false;
+      };
+      "Homepage" = {
+        "Locked" = true;
+        "StartPage" = "previous-session";
+      };
+      "NewTabPage" = false;
+      "NoDefaultBookmarks" = true;
+      "OfferToSaveLogins" = false;
+      "PasswordManagerEnabled" = false;
+      "PictureInPicture" = {
+        "Locked" = true;
+        "Enabled" = true;
+      };
+      "SearchSuggestEnabled" = false;
+      "UserMessaging" = {
+        "Locked" = true;
+        "WhatsNew" = false;
+        "MoreFromMozilla" = false;
+        "UrlbarInterventions" = false;
+        "FeatureRecommendations" = false;
+        "ExtensionRecommendations" = false;
+      };
+    };
     profiles = {
       default = {
         id = 0;
