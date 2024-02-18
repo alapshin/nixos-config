@@ -153,14 +153,4 @@ in
       ++ plasmaPackages
       ++ pythonPackages;
   };
-
-  services = {
-    locate = {
-      enable = true;
-      package = pkgs.plocate;
-      # To silence warning message
-      # See https://github.com/NixOS/nixpkgs/issues/30864
-      localuser = null;
-    };
-  };
 }
