@@ -162,9 +162,5 @@ in
       # See https://github.com/NixOS/nixpkgs/issues/30864
       localuser = null;
     };
-
-    peroxide = {
-      enable = true;
-    };
   };
 }
