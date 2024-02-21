@@ -1,6 +1,6 @@
-{ config
-, lib
+{ lib
 , pkgs
+, config
 , domainName
 , ...
 }:
@@ -12,6 +12,7 @@ let
     , user ? null
     , group ? null
     , openFirewall ? false
+    , useForwardAuth ? true
     , proxyWebsockets ? false
     }: {
       services = {
@@ -38,10 +39,14 @@ let
               "/" = {
                 inherit proxyWebsockets;
                 proxyPass = "http://${app}";
-                extraConfig = lib.strings.concatStringsSep "\n" [
-                  (builtins.readFile ./nginx/proxy.conf)
-                  (builtins.readFile ./nginx/auth-request.conf)
-                ];
+                extraConfig =
+                  if !useForwardAuth then
+                    ""
+                  else
+                    (lib.strings.concatStringsSep "\n" [
+                      (builtins.readFile ./nginx/proxy.conf)
+                      (builtins.readFile ./nginx/auth-request.conf)
+                    ]);
               };
               "/authenticate" = {
                 proxyPass = "http://authelia/api/verify";
@@ -70,13 +75,43 @@ in
       };
     }
 
-    (mkMediaService { app = "audiobookshelf"; port = 8000; proxyWebsockets = true; })
-    (mkMediaService { app = "bazarr"; port = 6767; })
-    (mkMediaService { app = "radarr"; port = 7878; })
-    (mkMediaService { app = "sonarr"; port = 8989; })
-    (mkMediaService { app = "prowlarr"; port = 9696; })
-    (mkMediaService { app = "jellyfin"; port = 8096; group = mediaGroup; })
-    (mkMediaService { app = "jellyseerr"; port = 5055; })
-    (mkMediaService { app = "qbittorrent"; port = 8080; group = mediaGroup; openFirewall = true; })
+    (mkMediaService {
+      app = "audiobookshelf";
+      port = config.services.audiobookshelf.port;
+      useForwardAuth = false;
+      proxyWebsockets = true;
+    })
+    (mkMediaService {
+      app = "bazarr";
+      port = config.services.bazarr.listenPort;
+    })
+    (mkMediaService {
+      app = "radarr";
+      port = 7878;
+    })
+    (mkMediaService {
+      app = "sonarr";
+      port = 8989;
+    })
+    (mkMediaService {
+      app = "prowlarr";
+      port = 9696;
+    })
+    (mkMediaService {
+      app = "jellyfin";
+      port = 8096;
+      group = mediaGroup;
+      useForwardAuth = false;
+      proxyWebsockets = true;
+    })
+    (mkMediaService {
+      app = "jellyseerr";
+      port = 5055;
+    })
+    (mkMediaService {
+      app = "qbittorrent";
+      port = config.services.qbittorrent.port;
+      group = mediaGroup;
+    })
   ];
 }

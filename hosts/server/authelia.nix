@@ -39,6 +39,14 @@ in
       "authelia/storage_secret" = {
         owner = config.users.users."authelia-${instance}".name;
       };
+      "authelia/oidc_hmac_secret" = {
+        owner = config.users.users."authelia-${instance}".name;
+      };
+      "authelia/oidc_issuer_private_key" = {
+        format = "binary";
+        sopsFile = ./secrets/issuer_private_key.pem;
+        owner = config.users.users."authelia-${instance}".name;
+      };
     };
   };
 
@@ -145,11 +153,37 @@ in
           };
         };
         default_2fa_method = "totp";
+        identity_providers = {
+          oidc = {
+            clients = [
+              {
+                id = "jellyfin";
+                secret = "$pbkdf2-sha512$310000$w8/7AXV6ljEACFLwkc.neQ$bMnyFnhUjuFjhKGw.awXKfK1EK6n9XS5P6RcywAbBxLhI6hcJqJ8jDCt3oOBp9YpaPCbNh3Sm23NCwJaUIci5w";
+                description = "Jellyfin media server";
+                authorization_policy = "one_factor";
+                redirect_uris = [
+                  "https://jellyfin.alapshin.com/sso/OID/redirect/authelia"
+                ];
+              }
+              {
+                id = "audiobookshelf";
+                secret = "$pbkdf2-sha512$310000$CYG9RzneGw4EEojmAFaprA$CppTSc1wUVwvVtkD48.UFO7KPMAN9OlHIOMnuNeDAyvTSNXshShlcONmQinyd.D8DaOTGE0Sn.wWqEYRWnq9hg";
+                authorization_policy = "one_factor";
+                redirect_uris = [
+                  "https://audiobookshelf.${domainName}/auth/openid/callback"
+                  "https://audiobookshelf.${domainName}/auth/openid/mobile-redirect"
+                ];
+              }
+            ];
+          };
+        };
       };
       secrets = {
         jwtSecretFile = config.sops.secrets."authelia/jwt_secret".path;
         sessionSecretFile = config.sops.secrets."authelia/session_secret".path;
         storageEncryptionKeyFile = config.sops.secrets."authelia/storage_secret".path;
+        oidcHmacSecretFile = config.sops.secrets."authelia/oidc_hmac_secret".path;
+        oidcIssuerPrivateKeyFile = config.sops.secrets."authelia/oidc_issuer_private_key".path;
       };
     };
   };
