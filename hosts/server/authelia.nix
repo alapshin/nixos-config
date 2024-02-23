@@ -7,6 +7,13 @@
 let
   port = 9091;
   instance = "main";
+  ldapHost = config.services.lldap.settings.ldap_host;
+  ldapPort = config.services.lldap.settings.ldap_port;
+  ldapBaseDN = config.services.lldap.settings.ldap_base_dn;
+  ldapUserDN = config.services.lldap.settings.ldap_user_dn;
+  ldapUserOU = "ou=people";
+  ldapUsernameAttr = "uid";
+  ldapFullUser = "${ldapUsernameAttr}=${ldapUserDN},${ldapUserOU},${ldapBaseDN}";
 in
 {
 
@@ -86,11 +93,17 @@ in
           ];
         };
         authentication_backend = {
-          file = {
-            path = config.sops.secrets."authelia/users".path;
-          };
-          password_reset = {
-            disable = true;
+          ldap = {
+            url = "ldap://${ldapHost}:${toString ldapPort}";
+            user = ldapFullUser;
+            base_dn = ldapBaseDN;
+            mail_attribute = "mail";
+            username_attribute = ldapUsernameAttr;
+            display_name_attribute = "displayName";
+            groups_filter = "(member={dn})";
+            additional_groups_dn = "ou=groups";
+            users_filter = "(&({username_attribute}={input})(objectClass=person))";
+            additional_users_dn = ldapUserOU;
           };
         };
         storage = {
@@ -110,6 +123,17 @@ in
         sessionSecretFile = config.sops.secrets."authelia/session_secret".path;
         storageEncryptionKeyFile = config.sops.secrets."authelia/storage_secret".path;
       };
+    };
+  };
+
+  systemd.services."authelia-${instance}" = {
+    environment = {
+      AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = "%d/ldap_password";
+    };
+    serviceConfig = {
+      LoadCredential = [
+        "ldap_password:${config.sops.secrets."lldap/user_password".path}"
+      ];
     };
   };
 }
