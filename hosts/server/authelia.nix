@@ -14,6 +14,7 @@ let
   ldapUserOU = "ou=people";
   ldapUsernameAttr = "uid";
   ldapFullUser = "${ldapUsernameAttr}=${ldapUserDN},${ldapUserOU},${ldapBaseDN}";
+  redisUnixSocketPath = config.services.redis.servers."authelia-${instance}".unixSocket;
 in
 {
 
@@ -64,6 +65,13 @@ in
       };
     };
 
+    redis.servers."authelia-${instance}" = {
+      enable = true;
+      port = 0;
+      user = config.users.users."authelia-${instance}".name;
+      unixSocket = "/run/redis-authelia-${instance}/redis.sock";
+    };
+
     authelia.instances."${instance}" = {
       enable = true;
       settings = {
@@ -76,8 +84,11 @@ in
           host = "localhost";
         };
         session = {
-          name = "auth";
+          name = "session";
           domain = domainName;
+          redis = {
+            host = redisUnixSocketPath;
+          };
         };
         access_control = {
           default_policy = "deny";
