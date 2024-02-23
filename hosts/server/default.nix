@@ -7,6 +7,7 @@
     ./acme.nix
     ./authelia.nix
     ./borg.nix
+    ./lldap.nix
     ./media.nix
     ./nextcloud.nix
     ./openssh.nix
