@@ -33,11 +33,5 @@
         };
       };
     };
-
-
-    postgresql = {
-      enable = true;
-      package = pkgs.postgresql_16;
-    };
   };
 }

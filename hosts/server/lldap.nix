@@ -5,6 +5,7 @@
 , ...
 }:
 let
+  name = "lldap";
   host = config.services.lldap.settings.http_host;
   port = config.services.lldap.settings.http_port;
   user = config.services.lldap.settings.ldap_user_dn;
@@ -24,6 +25,7 @@ in
         ldap_host = "localhost";
         ldap_base_dn="dc=alapshin,dc=com";
         ldap_user_email = "${user}@${domainName}";
+        database_url = "postgres:///${name}";
       };
       environment = {
         LLDAP_JWT_SECRET_FILE = "%d/jwt_secret";
@@ -53,6 +55,18 @@ in
           };
         };
       };
+    };
+
+    postgresql = {
+      ensureDatabases = [
+        name
+      ];
+      ensureUsers = [
+        {
+          name = name;
+          ensureDBOwnership = true;
+        }
+      ];
     };
   };
   systemd.services.lldap = {

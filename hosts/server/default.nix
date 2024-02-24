@@ -11,6 +11,7 @@
     ./media.nix
     ./nextcloud.nix
     ./openssh.nix
+    ./postgres.nix
     ./secrets.nix
     ./services.nix
     ./syncthing.nix
