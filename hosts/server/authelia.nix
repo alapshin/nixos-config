@@ -5,8 +5,11 @@
 , ...
 }:
 let
-  port = 9091;
   instance = "main";
+  dbHost = "/run/postgresql";
+  dbName = "authelia-${instance}";
+  dbUser = "authelia-${instance}";
+  dbPort = config.services.postgresql.port;
   ldapHost = config.services.lldap.settings.ldap_host;
   ldapPort = config.services.lldap.settings.ldap_port;
   ldapBaseDN = config.services.lldap.settings.ldap_base_dn;
@@ -14,6 +17,8 @@ let
   ldapUserOU = "ou=people";
   ldapUsernameAttr = "uid";
   ldapFullUser = "${ldapUsernameAttr}=${ldapUserDN},${ldapUserOU},${ldapBaseDN}";
+  autheliaHost = config.services.authelia.instances."${instance}".settings.server.host;
+  autheliaPort = config.services.authelia.instances."${instance}".settings.server.port;
   redisUnixSocketPath = config.services.redis.servers."authelia-${instance}".unixSocket;
 in
 {
@@ -42,7 +47,7 @@ in
       upstreams = {
         "authelia" = {
           servers = {
-            "localhost:${toString port}" = { };
+            "${autheliaHost}:${toString autheliaPort}" = { };
           };
         };
       };
@@ -65,6 +70,18 @@ in
       };
     };
 
+    postgresql = {
+      ensureDatabases = [
+        dbName
+      ];
+      ensureUsers = [
+        {
+          name = dbUser;
+          ensureDBOwnership = true;
+        }
+      ];
+    };
+
     redis.servers."authelia-${instance}" = {
       enable = true;
       port = 0;
@@ -78,10 +95,6 @@ in
         log = {
           level = "debug";
           format = "text";
-        };
-        server = {
-          port = port;
-          host = "localhost";
         };
         session = {
           name = "session";
@@ -118,8 +131,12 @@ in
           };
         };
         storage = {
-          local = {
-            path = "/var/lib/authelia-${instance}/db.sqlite3";
+          postgres = {
+            host = dbHost;
+            port = dbPort;
+            database = dbName;
+            password = dbUser;
+            username = dbUser;
           };
         };
         notifier = {
