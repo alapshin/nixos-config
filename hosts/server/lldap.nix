@@ -23,7 +23,7 @@ in
       settings = {
         http_host = "localhost";
         ldap_host = "localhost";
-        ldap_base_dn="dc=alapshin,dc=com";
+        ldap_base_dn = "dc=alapshin,dc=com";
         ldap_user_email = "${user}@${domainName}";
         database_url = "postgres:///${name}";
       };
