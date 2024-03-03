@@ -11,7 +11,6 @@
       allowedUDPPorts = [ ];
       allowedTCPPorts = [ 80 443 ];
     };
-    enableIPv6 = false;
   };
   systemd.network = {
     enable = true;
@@ -20,14 +19,16 @@
         name = "enp0s18";
         dns = [
           "1.1.1.1"
+          "2606:4700:4700::1111"
         ];
         DHCP = "no";
         address = [
           "212.193.3.249/24"
-          # "fe80:dca0:dcff:fe5f:2c1a/64"
+          "2602:fb54:143::22/48"
         ];
         gateway = [
           "212.193.3.1"
+          "2602:fb54:143::1"
         ];
       };
     };
