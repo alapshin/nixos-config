@@ -9,6 +9,7 @@ let
   host = config.services.lldap.settings.http_host;
   port = config.services.lldap.settings.http_port;
   user = config.services.lldap.settings.ldap_user_dn;
+  ldapPort = config.services.lldap.settings.ldap_port;
 in
 {
   sops = {
@@ -17,6 +18,7 @@ in
       "lldap/user_password" = { };
     };
   };
+
   services = {
     lldap = {
       enable = true;
@@ -69,6 +71,11 @@ in
       ];
     };
   };
+
+  networking.firewall.interfaces.lo.allowedTCPPorts = [
+    ldapPort
+  ];
+
   systemd.services.lldap = {
     serviceConfig = {
       LoadCredential = [

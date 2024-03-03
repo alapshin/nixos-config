@@ -68,10 +68,14 @@ in
           "OC\\Preview\\Imaginary"
         ];
         preview_imaginary_url = "http://${config.services.imaginary.address}:${toString config.services.imaginary.port}";
+        user_oidc = {
+          single_logout = false;
+          auto_provision = false;
+        };
       };
 
       extraApps = with config.services.nextcloud.package.packages.apps; {
-        inherit bookmarks calendar contacts gpoddersync memories previewgenerator tasks;
+        inherit bookmarks calendar contacts gpoddersync memories previewgenerator tasks user_oidc;
       } // {
         recognize = pkgs.fetchNextcloudApp {
           license = "agpl3";

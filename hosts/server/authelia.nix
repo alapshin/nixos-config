@@ -166,6 +166,15 @@ in
                 ];
               }
               {
+                id = "nextcloud";
+                secret = "$pbkdf2-sha512$310000$uLH3iUPuaccs8Ps0L7e92A$ivBv3CRJZSuYX8ARlQGWlyyIlpcqcvQl518dOqxDQ5nMRKrOSYQmGkUAlSjF3Btklbs1V6CYSXfAwlIRYjqHFg";
+                description = "Nextcloud";
+                authorization_policy = "one_factor";
+                redirect_uris = [
+                  "https://nextcloud.${domainName}/apps/user_oidc/code"
+                ];
+              }
+              {
                 id = "audiobookshelf";
                 secret = "$pbkdf2-sha512$310000$CYG9RzneGw4EEojmAFaprA$CppTSc1wUVwvVtkD48.UFO7KPMAN9OlHIOMnuNeDAyvTSNXshShlcONmQinyd.D8DaOTGE0Sn.wWqEYRWnq9hg";
                 authorization_policy = "one_factor";
