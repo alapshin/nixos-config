@@ -162,7 +162,7 @@ in
                 description = "Jellyfin media server";
                 authorization_policy = "one_factor";
                 redirect_uris = [
-                  "https://jellyfin.alapshin.com/sso/OID/redirect/authelia"
+                  "https://jellyfin.${domainName}/sso/OID/redirect/authelia"
                 ];
               }
               {
