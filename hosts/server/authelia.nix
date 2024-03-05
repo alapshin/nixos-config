@@ -183,6 +183,14 @@ in
                   "https://audiobookshelf.${domainName}/auth/openid/mobile-redirect"
                 ];
               }
+              {
+                id = "paperless";
+                secret = "$pbkdf2-sha512$310000$ylijOhbBagCwDiaNWPM2GA$mpdcyzbOgih92PY3WQO8x8BiZSLZu33uojolXe5hg/H.U71a.HGTY168YOcBz1TYeYqyCvY2s7jSW86Gb8qtUg";
+                authorization_policy = "one_factor";
+                redirect_uris = [
+                  "https://paperless.${domainName}/accounts/oidc/authelia/login/callback/"
+                ];
+              }
             ];
           };
         };

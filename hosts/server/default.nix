@@ -12,6 +12,7 @@
     ./nextcloud.nix
     ./openssh.nix
     ./postgres.nix
+    ./paperless.nix
     ./secrets.nix
     ./services.nix
     ./syncthing.nix
