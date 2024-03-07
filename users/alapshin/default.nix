@@ -139,10 +139,10 @@ in
         sddm-kcm
         smplayer
         strawberry
+        subtitlecomposer
         telegram-desktop
         tor-browser-bundle-bin
         ungoogled-chromium
-        prs.subtitlecomposer
       ]
       ++ accountingTools
       ++ blockchainPackages

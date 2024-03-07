@@ -306,8 +306,7 @@
         "nixpkgs": "nixpkgs",
         "nur": "nur",
         "plasma-manager": "plasma-manager",
-        "sops-nix": "sops-nix",
-        "subtitlecomposer": "subtitlecomposer"
+        "sops-nix": "sops-nix"
       }
     },
     "rust-overlay": {
@@ -353,22 +352,6 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
-        "type": "github"
-      }
-    },
-    "subtitlecomposer": {
-      "locked": {
-        "lastModified": 1709609002,
-        "narHash": "sha256-Tc60wO0d/kjh801DRGzKdbnrvuiEnnh+pTi6KoV7JB0=",
-        "owner": "kugland",
-        "repo": "nixpkgs",
-        "rev": "bcc708ed6ec9c3a35f703afbd2ae67d3215636b2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kugland",
-        "ref": "subtitlecomposer",
-        "repo": "nixpkgs",
         "type": "github"
       }
     },

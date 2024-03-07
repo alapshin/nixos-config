@@ -14,9 +14,6 @@
   };
 
   pr-packages = final: _prev: {
-    prs = import inputs.subtitlecomposer {
-      system = final.system;
-    };
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
