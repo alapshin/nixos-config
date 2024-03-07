@@ -4,22 +4,31 @@
 	stash-all = stash save --include-untracked
 [color]
 	ui = auto
+[commit]
+	verbose = true
 [core]
 	editor = nvim
 	whitespace = cr-at-eol
 [diff]
+	algorithm = histogram
 	colorMoved = default
 [fetch]
 	prune = true
 [init]
 	defaultBranch = main
+[log]
+	date = iso
 [merge]
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 [pull]
 	ff = only
 [push]
 	default = simple
 	followTag = true
+	autosSetupRemote = true
+[rebase]
+	autosquash = true
+	updateRefs = true
 [rerere]
 	enabled = true
 [stash]
