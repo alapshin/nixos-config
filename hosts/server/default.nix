@@ -1,12 +1,13 @@
-{ config
-, lib
+{ lib
 , pkgs
+, config
 , ...
 }: {
   imports = [
     ./acme.nix
     ./authelia.nix
     ./borg.nix
+    ./dashboard.nix
     ./lldap.nix
     ./media.nix
     ./nextcloud.nix

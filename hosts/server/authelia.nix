@@ -119,8 +119,17 @@ in
               domain = "auth.${domainName}";
             }
             {
-              policy = "one_factor";
+              policy = "bypass";
               domain = [ "*.${domainName}" ];
+              resources = [ 
+                "^/api([/?].*)?$" 
+              ];
+            }
+            {
+              policy = "one_factor";
+              domain = [
+                "*.${domainName}" 
+              ];
             }
           ];
         };
