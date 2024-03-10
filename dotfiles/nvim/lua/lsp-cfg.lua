@@ -30,7 +30,7 @@ lspconfig.lua_ls.setup({
     },
   },
 })
-lspconfig.rnix.setup({})
+lspconfig.nil_ls.setup({})
 -- lspconfig.beancount.setup({})
 
 -- Use LspAttach autocommand to only map the following keys

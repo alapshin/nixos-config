@@ -57,8 +57,8 @@
       gitlint
       # hadolint
 
+      nil
       statix
-      rnix-lsp
 
       selene
       lua-language-server
