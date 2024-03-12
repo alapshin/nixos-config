@@ -90,6 +90,10 @@ in
       port = 7878;
     })
     (mkMediaService {
+      app = "readarr";
+      port = 8787;
+    })
+    (mkMediaService {
       app = "sonarr";
       port = 8989;
     })
