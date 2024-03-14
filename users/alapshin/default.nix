@@ -40,8 +40,6 @@ let
   ];
 
   javaPackages = with pkgs; [
-    async-profiler
-
     gradle
     groovy
     scrcpy
