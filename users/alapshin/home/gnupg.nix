@@ -8,7 +8,6 @@
   };
   services.gpg-agent = {
     enable = true;
-    pinentryFlavor = "qt";
     enableZshIntegration = true;
   };
 }
