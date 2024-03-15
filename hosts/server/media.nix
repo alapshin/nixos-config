@@ -68,9 +68,11 @@ in
         members = [
           config.services.sonarr.user
           config.services.radarr.user
+          config.services.readarr.user
           config.services.jellyfin.user
           config.services.qbittorrent.user
           config.services.audiobookshelf.user
+          config.services.calibre-server.user
         ];
       };
     }
