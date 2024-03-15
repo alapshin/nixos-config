@@ -112,12 +112,12 @@
       enable = true;
       dotDir = ".config/zsh";
 
-      enableAutosuggestions = true;
       enableCompletion = true;
       syntaxHighlighting = {
         enable = true;
       };
       enableVteIntegration = true;
+      autosuggestion.enable = true;
 
       history = {
         path = "$ZDOTDIR/.zsh_history";
