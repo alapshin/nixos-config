@@ -25,11 +25,6 @@ in
 
   sops = {
     secrets = {
-      "authelia/users" = {
-        format = "binary";
-        sopsFile = ./secrets/auth_users.yml.bin;
-        owner = config.users.users."authelia-${instance}".name;
-      };
       "authelia/jwt_secret" = {
         owner = config.users.users."authelia-${instance}".name;
       };
