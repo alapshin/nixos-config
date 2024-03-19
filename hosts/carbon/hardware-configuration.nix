@@ -1,11 +1,17 @@
 { config
 , lib
 , pkgs
-, modulesPath
 , ...
 }: {
   boot = {
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = [ "kvm-intel" "v4l2loopback" ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback
+    ];
+    extraModprobeConfig = ''
+      options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+    '';
+
     loader = {
       timeout = 15;
       efi.canTouchEfiVariables = true;
@@ -30,22 +36,28 @@
     };
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/5952-0C32";
-    fsType = "vfat";
+  fileSystems = {
+    "/boot" = {
+      device = "/dev/disk/by-uuid/5952-0C32";
+      fsType = "vfat";
+    };
+    "/" = {
+      device = "/dev/disk/by-uuid/6d4f3850-0279-46ed-9b2c-4e5382d1d2ad";
+      fsType = "btrfs";
+      options = [ "subvol=root" ];
+    };
+    "/home" = {
+      device = "/dev/disk/by-uuid/6d4f3850-0279-46ed-9b2c-4e5382d1d2ad";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
+    };
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/6d4f3850-0279-46ed-9b2c-4e5382d1d2ad";
-    fsType = "btrfs";
-    options = [ "subvol=root" ];
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/6d4f3850-0279-46ed-9b2c-4e5382d1d2ad";
-    fsType = "btrfs";
-    options = [ "subvol=home" ];
-  };
+  environment.systemPackages = with pkgs; [
+    v4l-utils
+  ];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
 }
+
