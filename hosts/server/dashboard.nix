@@ -71,7 +71,7 @@ in
               Readarr = {
                 icon = "readarr.svg";
                 href = "https://readarr.${domainName}";
-                description = "Movies Management";
+                description = "Books Management";
                 widget = {
                   type = "readarr";
                   url = "https://readarr.${domainName}";
