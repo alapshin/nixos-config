@@ -116,14 +116,14 @@ in
             {
               policy = "bypass";
               domain = [ "*.${domainName}" ];
-              resources = [ 
-                "^/api([/?].*)?$" 
+              resources = [
+                "^/api([/?].*)?$"
               ];
             }
             {
               policy = "one_factor";
               domain = [
-                "*.${domainName}" 
+                "*.${domainName}"
               ];
             }
           ];

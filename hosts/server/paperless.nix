@@ -3,12 +3,14 @@
 , config
 , domainName
 , ...
-}: let 
+}:
+let
   port = config.services.paperless.port;
   dbName = config.services.paperless.user;
   dbUser = config.services.paperless.user;
   redisSocket = config.services.redis.servers."paperless".unixSocket;
-in {
+in
+{
   sops = {
     secrets = {
       "paperless/password" = { };

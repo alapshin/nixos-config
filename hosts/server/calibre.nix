@@ -42,7 +42,7 @@ in
       enable = true;
       port = 8081;
       host = "127.0.0.1";
-      libraries =  [ library ];
+      libraries = [ library ];
       auth = {
         enable = true;
         # Basic auth is used because server is behind Nginx.
@@ -78,13 +78,13 @@ in
                   (builtins.readFile ./nginx/proxy.conf)
                   (builtins.readFile ./nginx/auth-request.conf)
                 ]);
-              };
-              "/authenticate" = {
-                proxyPass = "http://authelia/api/verify";
-                extraConfig = builtins.readFile ./nginx/auth-location.conf;
-              };
+            };
+            "/authenticate" = {
+              proxyPass = "http://authelia/api/verify";
+              extraConfig = builtins.readFile ./nginx/auth-location.conf;
             };
           };
+        };
         "${serverapp}.${domainName}" = {
           forceSSL = true;
           useACMEHost = domainName;

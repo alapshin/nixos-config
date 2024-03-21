@@ -13,8 +13,7 @@
     };
   };
 
-  pr-packages = final: _prev: {
-  };
+  pr-packages = final: _prev: { };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
   # be accessible through 'pkgs.unstable'
