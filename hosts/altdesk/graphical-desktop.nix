@@ -11,8 +11,10 @@
     xserver = {
       dpi = 96;
       enable = true;
-      layout = "us,ru";
-      xkbOptions = "grp:caps_toggle,compose:ralt";
+      xkb = {
+        layout = "us,ru";
+        options = "grp:caps_toggle,compose:ralt";
+      };
 
       videoDrivers = [
         "nvidia"
