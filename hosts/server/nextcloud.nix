@@ -78,7 +78,7 @@ in
         inherit bookmarks calendar contacts gpoddersync memories previewgenerator tasks user_oidc;
       } // {
         recognize = pkgs.fetchNextcloudApp {
-          license = "agpl3";
+          license = "agpl3Plus";
           url = "https://github.com/nextcloud/recognize/releases/download/v6.0.1/recognize-6.0.1.tar.gz";
           sha256 = "sha256-7LuXBz7nrimRRUowu47hADzD5XhVyZP4Z39om8IRAZw=";
         };
