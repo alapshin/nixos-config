@@ -70,7 +70,7 @@ in
   ];
 
   home.sessionVariables = {
-    LG_CONFIG_FILE = "${config.xdg.configHome}/lazygit/config.yml,${catppuccin}/lazygit/themes-mergable/${flavor}-${accent}.yml";
+    LG_CONFIG_FILE = "${config.xdg.configHome}/lazygit/config.yml,${catppuccin}/lazygit/themes-mergable/${accent}.yml";
   };
 
 }
