@@ -10,7 +10,8 @@ in
   boot = {
     loader = {
       grub = {
-        devices = [ disk ];
+        efiSupport = true;
+        efiInstallAsRemovable = true;
       };
     };
 
