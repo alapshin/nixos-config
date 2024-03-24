@@ -3,11 +3,13 @@
 set -euo pipefail
 
 command=$1
-flake_uri=${2:-}
+hostname=${2:-}
 target_host=${3:-}
 
 secret_files=(
     "secrets/accounts.json"
+    "hosts/server/secrets/openssh/etc/ssh/ssh_host_rsa_key"
+    "hosts/server/secrets/openssh/etc/ssh/ssh_host_ed25519_key"
 )
 
 function reset {
@@ -45,17 +47,23 @@ function update {
 
 function home-switch {
     decrypt
-    home-manager switch --flake "${flake_uri}"
+    home-manager switch --flake ".#${hostname}"
 }
 
 function system-switch {
     decrypt
-    sudo nixos-rebuild switch --flake "${flake_uri}"
+    sudo nixos-rebuild switch --flake ".#${hostname}"
 }
 
 function remote-deploy {
     decrypt
-    nixos-rebuild switch --flake "${flake_uri}" --target-host "${target_host}"
+    nixos-rebuild switch --flake ".#${hostname}" --target-host "${target_host}"
+}
+
+function remote-install {
+    decrypt
+    nix run github:nix-community/nixos-anywhere --\
+        --extra-files "host/${hostname}/secrets/openssh" --flake ".#${hostname}" "${target_host}"
 }
 
 function sops-update-keys {
@@ -89,6 +97,9 @@ case $command in
         ;;
     remote-deploy)
         remote-deploy
+        ;;
+    remote-install)
+        remote-install
         ;;
     sops-update-keys)
         sops-update-keys
