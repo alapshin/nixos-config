@@ -4,7 +4,7 @@
 }: {
   networking = {
     useDHCP = false;
-    hostName = "homeserver";
+    hostName = "server";
     dhcpcd.enable = false;
     firewall = {
       enable = true;
