@@ -12,6 +12,10 @@ let
   webport = config.services.calibre-web.listen.port;
   serverport = config.services.calibre-server.port;
   library = "/media/books";
+  metadataFilePath = builtins.path {
+    path = ./calibre/metadata.db;
+    name = "calibre-server-metadata";
+  };
 in
 {
   sops = {
@@ -97,6 +101,33 @@ in
       };
     };
   };
+
+  systemd = {
+    tmpfiles = {
+      settings = {
+        "10-calibre-server" = {
+          "/media/books" = {
+            d = {
+              mode = "0775";
+              user = user;
+              group = "media";
+            };
+          };
+          "/media/books/metadata.db" = {
+            Z = {
+              mode = "0664";
+              user = user;
+              group = "media";
+            };
+            C = {
+              argument = builtins.toString metadataFilePath;
+            };
+          };
+        };
+      };
+    };
+  };
+
   networking.firewall.interfaces.lo.allowedTCPPorts = [
     webport
     serverport
