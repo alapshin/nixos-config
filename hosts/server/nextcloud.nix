@@ -54,6 +54,7 @@ in
       database.createLocally = true;
 
       settings = {
+        ratelimit.protection.enabled = false;
         # Memories options
         memories = {
           exiftool = "${pkgs.exiftool}/bin/exiftool";
@@ -70,7 +71,8 @@ in
         preview_imaginary_url = "http://${config.services.imaginary.address}:${toString config.services.imaginary.port}";
         user_oidc = {
           single_logout = false;
-          auto_provision = false;
+          auto_provision = true;
+          soft_auto_provision = true;
         };
       };
 
