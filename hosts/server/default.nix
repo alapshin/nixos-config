@@ -11,12 +11,12 @@
     ./dashboard.nix
     ./lldap.nix
     ./media.nix
+    ./nginx.nix
     ./nextcloud.nix
     ./openssh.nix
     ./postgres.nix
     ./paperless.nix
     ./secrets.nix
-    ./services.nix
     ./syncthing.nix
     ./wireguard.nix
     ./xray-server.nix
