@@ -5,13 +5,13 @@
 , ...
 }:
 let
+  library = "/media/books";
   webapp = "calibre-web";
   serverapp = "calibre-server";
   user = config.services.calibre-server.user;
   group = config.services.calibre-server.group;
   webport = config.services.calibre-web.listen.port;
   serverport = config.services.calibre-server.port;
-  library = "/media/books";
   metadataFilePath = builtins.path {
     path = ./calibre/metadata.db;
     name = "calibre-server-metadata";
@@ -127,9 +127,4 @@ in
       };
     };
   };
-
-  networking.firewall.interfaces.lo.allowedTCPPorts = [
-    webport
-    serverport
-  ];
 }

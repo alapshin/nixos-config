@@ -11,14 +11,12 @@ let
     , port
     , user ? null
     , group ? null
-    , openFirewall ? false
     , useForwardAuth ? true
     , proxyWebsockets ? false
     }: {
       services = {
         "${app}" = {
           enable = true;
-          inherit openFirewall;
         } // lib.optionalAttrs (user != null) {
           inherit user;
         } // lib.optionalAttrs (group != null) {
@@ -56,9 +54,6 @@ let
           };
         };
       };
-      networking.firewall.interfaces.lo.allowedTCPPorts = [
-        port
-      ];
     };
 in
 {
