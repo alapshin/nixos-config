@@ -6,30 +6,31 @@ command=$1
 hostname=${2:-}
 target_host=${3:-}
 
-secret_files=(
+declare -A build_secrets
+build_secrets["common"]=(
     "secrets/accounts.json"
-    "hosts/server/secrets/openssh/etc/ssh/ssh_host_rsa_key"
-    "hosts/server/secrets/openssh/etc/ssh/ssh_host_ed25519_key"
+)
+
+build_secrets["server"]=(
+    "openssh/etc/ssh/ssh_host_rsa_key"
+    "openssh/etc/ssh/ssh_host_ed25519_key"
 )
 
 function reset {
-    for f in "${secret_files[@]}"; do
-        git restore "${f}"
-    done;
+    hostname=$1
+    git restore "hosts/${hostname}/secrets/build/"
 
 }
 
 function encrypt {
-    for f in "${secret_files[@]}"; do
-        sops --encrypt --in-place "${f}"
-    done;
+    hostname=$1
+    sops --encrypt --in-place "hosts/${hostname}/secrets/**/*"
 }
 
 function decrypt {
-    trap reset EXIT
-    for f in "${secret_files[@]}"; do
-        sops --decrypt --in-place "${f}"
-    done;
+    hostname=$1
+    trap "reset ${hostname}"  EXIT
+    sops --decrypt --in-place "hosts/${hostname}/secrets/**/*"
 }
 
 function check {
