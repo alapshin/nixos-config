@@ -1,39 +1,15 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
+shopt -s globstar
 
 command=$1
 hostname=${2:-}
+username=${2:-}
 target_host=${3:-}
 
-secret_files=(
-    "secrets/accounts.json"
-    "hosts/server/secrets/openssh/etc/ssh/ssh_host_rsa_key"
-    "hosts/server/secrets/openssh/etc/ssh/ssh_host_ed25519_key"
-)
-
-function reset {
-    for f in "${secret_files[@]}"; do
-        git restore "${f}"
-    done;
-
-}
-
-function encrypt {
-    for f in "${secret_files[@]}"; do
-        sops --encrypt --in-place "${f}"
-    done;
-}
-
-function decrypt {
-    trap reset EXIT
-    for f in "${secret_files[@]}"; do
-        sops --decrypt --in-place "${f}"
-    done;
-}
-
 function check {
-    decrypt
+    decrypt-build-secrets "users/alapshin"
     nix flake check
 }
 
@@ -46,22 +22,21 @@ function update {
 }
 
 function home-switch {
-    decrypt
-    home-manager switch --flake ".#${hostname}"
+    decrypt-build-secrets "users/${username}"
+    home-manager switch --flake ".#${username}"
 }
 
 function system-switch {
-    decrypt
+    decrypt-build-secrets "users/alapshin"
     sudo nixos-rebuild switch --flake ".#${hostname}"
 }
 
 function remote-deploy {
-    decrypt
     nixos-rebuild switch --flake ".#${hostname}" --target-host "${target_host}"
 }
 
 function remote-install {
-    decrypt
+    decrypt-build-secrets "hosts/${hostname}"
     nix run github:nix-community/nixos-anywhere --\
         --extra-files "host/${hostname}/secrets/openssh" --flake ".#${hostname}" "${target_host}"
 }
@@ -77,6 +52,25 @@ function sops-update-keys {
     for f in "${encrypted_files[@]}"; do
         sops updatekeys --yes "${f}"
     done
+}
+
+# Reset build-time secrets
+function reset-build-secrets {
+    prefix=$1
+    git restore **/${prefix}/secrets/build/
+}
+
+# Encrypt build-time secrets
+function encrypt-build-secrets {
+    prefix=$1
+    sops --encrypt --in-place **/${prefix}/build/secrets/**/*
+}
+
+# Decrypt build-time secrets
+function decrypt-build-secrets {
+    prefix=$1
+    trap "reset-build-secrets ${prefix}"  EXIT
+    sops --decrypt --in-place **/${prefix}/secrets/build/**/*
 }
 
 case $command in

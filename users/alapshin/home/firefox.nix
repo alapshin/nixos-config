@@ -3,13 +3,9 @@
 , dotfileDir
 , ...
 }:
-let
-  isNixOS = osConfig ? "system";
-in
 {
-
   programs.firefox = {
-    enable = isNixOS;
+    enable = true;
     package = pkgs.firefox.override {
       cfg = {
         nativeMessagingHosts.packages = [

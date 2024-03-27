@@ -1,8 +1,11 @@
 { pkgs
+, lib
+, isNixOS
 , username
 , dotfileDir
 , ...
-}: {
+}:
+{
   home.stateVersion = "23.11";
 
   home.username = username;
@@ -14,13 +17,14 @@
     ./shell.nix
     # ./plasma.nix
     ./neovim.nix
-    ./firefox.nix
-    ./thunderbird.nix
 
     ./theming.nix
     ./packages.nix
     ./variables.nix
-  ];
+  ] ++ (lib.lists.optionals isNixOS [
+    ./firefox.nix
+    ./thunderbird.nix
+  ]);
 
   programs.home-manager.enable = true;
 

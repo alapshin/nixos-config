@@ -86,7 +86,7 @@ let
 in
 {
   imports = [
-    (import ./home (args // { inherit username; }))
+    (import ./home (args // { inherit username; isNixOS = true; }))
   ];
 
   programs = {

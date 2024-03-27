@@ -1,20 +1,13 @@
 { pkgs
 , lib
 , config
-, osConfig
-, secretDir
 , ...
 }:
 let
   cfg = config.programs.thunderbird;
-  enabled = builtins.elem osConfig.networking.hostName [
-    "carbon"
-  ];
-  accounts =
-    if !enabled then
-      { }
-    else
-      builtins.fromJSON (builtins.readFile "${secretDir}/accounts.json");
+  accounts = builtins.fromJSON (
+    builtins.readFile ./../secrets/build/accounts.json
+  );
 in
 {
   accounts.email.accounts = lib.mkIf cfg.enable {
@@ -34,7 +27,7 @@ in
   };
 
   programs.thunderbird = {
-    enable = enabled;
+    enable = true;
 
     profiles = {
       default = {
