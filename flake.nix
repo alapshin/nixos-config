@@ -1,6 +1,20 @@
 {
   description = "A flake-based nixos config.";
 
+  nixConfig = {
+    # Will be appended to the system-level substituters
+    extra-substituters = [
+      # Nix community's cache server
+      "https://nix-community.cachix.org"
+    ];
+
+    # Will be appended to the system-level trusted-public-keys
+    extra-trusted-public-keys = [
+      # Nix community's cache server public key
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
   inputs = {
     nixos.url = "nixpkgs/nixos-unstable";
     nixpkgs.url = "nixpkgs/master";
