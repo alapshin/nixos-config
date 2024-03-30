@@ -86,21 +86,23 @@
     starship = {
       enable = true;
       enableZshIntegration = true;
-      settings = let 
-        preset = builtins.replaceStrings 
-        [ "Rocky" ] 
-        [ "RockyLinux"]
-        (
-          builtins.readFile (
-            pkgs.fetchurl {
-              url = "https://starship.rs/presets/toml/plain-text-symbols.toml";
-              hash = "sha256-9y+G85gawuNvFU9ZqHPyCeSpVBce+KepT87Wp+jGoNM=";
-            }
-          )
-        );
-      in {
-        format = "$all";
-      } // builtins.fromTOML preset;
+      settings =
+        let
+          preset = builtins.replaceStrings
+            [ "Rocky" ]
+            [ "RockyLinux" ]
+            (
+              builtins.readFile (
+                pkgs.fetchurl {
+                  url = "https://starship.rs/presets/toml/plain-text-symbols.toml";
+                  hash = "sha256-9y+G85gawuNvFU9ZqHPyCeSpVBce+KepT87Wp+jGoNM=";
+                }
+              )
+            );
+        in
+        {
+          format = "$all";
+        } // builtins.fromTOML preset;
     };
 
     tealdeer = {
