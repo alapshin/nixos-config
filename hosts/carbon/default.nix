@@ -17,6 +17,6 @@
   ];
 
   time = {
-    timeZone = pkgs.lib.mkForce "Europe/Podgorica";
+    timeZone = pkgs.lib.mkForce "Europe/Belgrade";
   };
 }
