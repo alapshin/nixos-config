@@ -166,9 +166,7 @@ in
       };
     };
   };
-  networking.firewall.interfaces.lo.allowedTCPPorts = [
-    port
-  ];
+
   systemd.services.homepage-dashboard = {
     environment = {
       HOMEPAGE_FILE_SONARR_API_KEY = "%d/sonarr_api_key";

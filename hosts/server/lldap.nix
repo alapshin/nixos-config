@@ -72,10 +72,6 @@ in
     };
   };
 
-  networking.firewall.interfaces.lo.allowedTCPPorts = [
-    ldapPort
-  ];
-
   systemd.services.lldap = {
     serviceConfig = {
       LoadCredential = [
