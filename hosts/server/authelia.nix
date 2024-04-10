@@ -9,7 +9,7 @@ let
   dbHost = "/run/postgresql";
   dbName = "authelia-${instance}";
   dbUser = "authelia-${instance}";
-  dbPort = config.services.postgresql.port;
+  dbPort = config.services.postgresql.settings.port;
   ldapHost = config.services.lldap.settings.ldap_host;
   ldapPort = config.services.lldap.settings.ldap_port;
   ldapBaseDN = config.services.lldap.settings.ldap_base_dn;
