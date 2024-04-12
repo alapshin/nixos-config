@@ -23,19 +23,19 @@
     colord.enable = true;
     flatpak.enable = true;
 
-    xserver = {
-      videoDrivers = [ "modesetting" "intel" ];
-
-      displayManager = {
+    displayManager = {
         # startx.enable = true;
         sddm = {
-          enable = true;
-          wayland.enable = true;
+            enable = true;
+            wayland.enable = true;
         };
         defaultSession = "plasmawayland";
-      };
+    };
+    xserver = {
+      videoDrivers = [ "modesetting" "intel" ];
       desktopManager.plasma5.enable = true;
     };
+
   };
 
   # Workaround for 

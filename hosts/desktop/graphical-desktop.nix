@@ -6,6 +6,11 @@
     colord.enable = true;
     flatpak.enable = true;
 
+    displayManager = {
+        sddm.enable = true;
+        sddm.wayland.enable = true;
+        defaultSession = "plasmawayland";
+    };
     xserver = {
       dpi = 162;
       enable = true;
@@ -20,11 +25,6 @@
         "vesa"
       ];
 
-      displayManager = {
-        sddm.enable = true;
-        sddm.wayland.enable = true;
-        defaultSession = "plasmawayland";
-      };
       desktopManager.plasma5.enable = true;
     };
   };

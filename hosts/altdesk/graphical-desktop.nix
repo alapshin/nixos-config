@@ -8,6 +8,9 @@
     colord.enable = true;
     flatpak.enable = true;
 
+    displayManager = {
+        sddm.enable = true;
+    };
     xserver = {
       dpi = 96;
       enable = true;
@@ -19,9 +22,6 @@
       videoDrivers = [
         "nvidia"
       ];
-      displayManager = {
-        sddm.enable = true;
-      };
       desktopManager.plasma5.enable = true;
 
       screenSection = ''
