@@ -6,7 +6,7 @@ shopt -s globstar
 command=$1
 hostname=${2:-}
 username=${2:-}
-target_host=${3:-}
+remote_host=${3:-}
 
 function check {
     decrypt-build-secrets "users/alapshin"
@@ -32,13 +32,16 @@ function system-switch {
 }
 
 function remote-deploy {
-    nixos-rebuild switch --flake ".#${hostname}" --target-host "${target_host}"
+    nixos-rebuild switch \
+        --flake ".#${hostname}" \
+        --build-host "${remote_host}" \
+        --target-host "${remote_host}"
 }
 
 function remote-install {
     decrypt-build-secrets "hosts/${hostname}"
     nix run github:nix-community/nixos-anywhere --\
-        --extra-files "host/${hostname}/secrets/openssh" --flake ".#${hostname}" "${target_host}"
+        --extra-files "host/${hostname}/secrets/openssh" --flake ".#${hostname}" "${remote_host}"
 }
 
 function sops-update-keys {
