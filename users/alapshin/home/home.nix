@@ -12,6 +12,7 @@
   home.homeDirectory = "/home/${username}";
 
   imports = [
+    ./development.nix
     ./git.nix
     ./gnupg.nix
     ./shell.nix

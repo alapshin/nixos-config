@@ -8,7 +8,6 @@
     du-dust
     fd
     glow
-    httpie
     sd
   ];
 
