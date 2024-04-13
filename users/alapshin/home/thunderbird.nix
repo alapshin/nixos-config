@@ -45,6 +45,7 @@ in
           "mailnews.default_news_view_flags" = 1;
 
           # Check IMAP subfolder for new messages
+          "mail.check_all_imap_folders_for_new" = true;
           "mail.server.default.check_all_folders_for_new" = true;
         };
       };
