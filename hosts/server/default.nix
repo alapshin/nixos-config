@@ -7,7 +7,6 @@
     ./acme.nix
     ./audiobookshelf.nix
     ./authelia.nix
-    ./borg.nix
     ./calibre.nix
     ./dashboard.nix
     ./lldap.nix
