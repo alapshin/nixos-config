@@ -25,6 +25,10 @@
       lfs = {
         enable = true;
       };
+      signing = {
+        key = null;
+        signByDefault = true;
+      };
       delta = {
         enable = true;
         options = {
