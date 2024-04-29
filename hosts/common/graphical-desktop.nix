@@ -9,6 +9,13 @@
   programs.xwayland.enable = true;
 
   services = {
+    libinput = {
+      enable = true;
+      touchpad = {
+          disableWhileTyping = true;
+      };
+    };
+
     xserver = {
       enable = true;
       xkb = {
@@ -16,13 +23,6 @@
         layout = "us,ru";
         variant = "hbs,srp";
         options = "grp:caps_toggle";
-      };
-
-      libinput = {
-        enable = true;
-        touchpad = {
-          disableWhileTyping = true;
-        };
       };
     };
   };
