@@ -15,6 +15,7 @@
     ./development.nix
     ./git.nix
     ./gnupg.nix
+    ./ssh.nix
     ./shell.nix
     # ./plasma.nix
     ./neovim.nix
@@ -34,11 +35,6 @@
     telegram-autostart
     thunderbird-autostart
   ];
-
-  home.file = {
-    ".ssh/config".source = "${dotfileDir}/ssh/config";
-  };
-
 
   home.language = {
     base = "en_US.UTF-8";

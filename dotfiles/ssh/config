@@ -3,7 +3,3 @@ AddKeysToAgent yes
 Host *.amazonaws.com 
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
-Host racoon.alarstudios.com
-    User git
-    HostkeyAlgorithms +ssh-rsa
-    PubkeyAcceptedAlgorithms +ssh-rsa
