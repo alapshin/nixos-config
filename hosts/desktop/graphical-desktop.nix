@@ -7,9 +7,9 @@
     flatpak.enable = true;
 
     displayManager = {
-        sddm.enable = true;
-        sddm.wayland.enable = true;
-        defaultSession = "plasmawayland";
+      sddm.enable = true;
+      sddm.wayland.enable = true;
+      defaultSession = "plasmawayland";
     };
     xserver = {
       dpi = 162;

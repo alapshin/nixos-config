@@ -9,7 +9,7 @@
     flatpak.enable = true;
 
     displayManager = {
-        sddm.enable = true;
+      sddm.enable = true;
     };
     xserver = {
       dpi = 96;

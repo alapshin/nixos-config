@@ -12,7 +12,7 @@
     libinput = {
       enable = true;
       touchpad = {
-          disableWhileTyping = true;
+        disableWhileTyping = true;
       };
     };
 

@@ -24,12 +24,12 @@
     flatpak.enable = true;
 
     displayManager = {
-        # startx.enable = true;
-        sddm = {
-            enable = true;
-            wayland.enable = true;
-        };
-        defaultSession = "plasmawayland";
+      # startx.enable = true;
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+      };
+      defaultSession = "plasmawayland";
     };
     xserver = {
       videoDrivers = [ "modesetting" "intel" ];
