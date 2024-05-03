@@ -40,8 +40,18 @@ function remote-deploy {
 
 function remote-install {
     decrypt-build-secrets "hosts/${hostname}"
-    nix run github:nix-community/nixos-anywhere --\
-        --extra-files "host/${hostname}/secrets/openssh" --flake ".#${hostname}" "${remote_host}"
+
+    sshdir="hosts/${hostname}/secrets/build/openssh"
+    chmod 600 "${sshdir}"/**/*key
+    chmod 644 "${sshdir}"/**/*key.pub
+
+    luks_password_file="hosts/${hostname}/secrets/build/luks/key.txt"
+
+    nix run github:nix-community/nixos-anywhere -- \
+        --flake ".#${hostname}" \
+        --extra-files "${sshdir}" \
+        --disk-encryption-keys /tmp/disk.key "${luks_password_file}" \
+        "${remote_host}"
 }
 
 function sops-update-keys {
@@ -59,21 +69,34 @@ function sops-update-keys {
 
 # Reset build-time secrets
 function reset-build-secrets {
-    prefix=$1
-    git restore **/${prefix}/secrets/build/
+    subdir=$1
+    git restore "${subdir}"/secrets/build/
 }
 
 # Encrypt build-time secrets
 function encrypt-build-secrets {
-    prefix=$1
-    sops --encrypt --in-place **/${prefix}/build/secrets/**/*
+    subdir=$1
+    sops --encrypt --in-place "${subdir}"/build/secrets/**/*
 }
 
 # Decrypt build-time secrets
 function decrypt-build-secrets {
-    prefix=$1
-    trap "reset-build-secrets ${prefix}"  EXIT
-    sops --decrypt --in-place **/${prefix}/secrets/build/**/*
+    subdir=$1
+
+    # Find all build-time secrets under specified subdirectory
+    readarray -t encrypted_files <<< "$(grep \
+        --regexp "unencrypted_suffix" \
+        --recursive \
+        --exclude-dir="ci" \
+        --exclude-dir=".git" \
+        --files-with-matches \
+        "${subdir}"/secrets/build/ \
+    )"
+
+    trap "reset-build-secrets ${subdir}"  EXIT
+    for f in "${encrypted_files[@]}"; do
+        sops --decrypt --in-place "${f}"
+    done
 }
 
 case $command in
