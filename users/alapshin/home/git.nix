@@ -42,10 +42,6 @@
       includes = [
         { path = /. + dotfileDir + "/git/config"; }
         {
-          path = /. + dotfileDir + "/git/config-alar";
-          condition = "gitdir:~/work/alar/";
-        }
-        {
           path = /. + dotfileDir + "/git/config-scalable";
           condition = "gitdir:~/work/scalable/";
         }
