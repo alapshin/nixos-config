@@ -142,6 +142,13 @@
           ];
         };
 
+        niflheim = mkNixosConfiguration {
+          hostModules = [
+            ./hosts/niflheim
+          ];
+          specialArgs = { domainName = "alapshin.com"; };
+        };
+
         desktop = mkNixosConfiguration {
           hostModules = [
             ./hosts/common
@@ -165,7 +172,6 @@
         server = mkNixosConfiguration {
           hostModules = [
             ./hosts/server
-            "${nixos}/nixos/modules/profiles/qemu-guest.nix"
           ];
           specialArgs = { domainName = "alapshin.com"; };
         };
