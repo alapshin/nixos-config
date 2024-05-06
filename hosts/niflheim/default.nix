@@ -14,7 +14,7 @@
     ./nginx.nix
     # ./nextcloud.nix
     ./openssh.nix
-    # ./postgres.nix
+    ./postgres.nix
     # ./paperless.nix
     # ./qbittorrent.nix
     ./secrets.nix
@@ -22,7 +22,7 @@
     # ./wireguard.nix
     # ./xray-server.nix
     #
-    # ./pg-upgrade.nix
+    ./pg-upgrade.nix
     #
     ./networking.nix
     ./hardware-configuration.nix
