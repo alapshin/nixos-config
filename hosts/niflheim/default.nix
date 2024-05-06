@@ -4,14 +4,14 @@
 , ...
 }: {
   imports = [
-    # ./acme.nix
+    ./acme.nix
     # ./audiobookshelf.nix
     # ./authelia.nix
     # ./calibre.nix
     # ./dashboard.nix
     # ./lldap.nix
     # ./media.nix
-    # ./nginx.nix
+    ./nginx.nix
     # ./nextcloud.nix
     ./openssh.nix
     # ./postgres.nix

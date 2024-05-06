@@ -146,7 +146,7 @@
           hostModules = [
             ./hosts/niflheim
           ];
-          specialArgs = { domainName = "alapshin.com"; };
+          specialArgs = { domainName = "hlsrv.dev"; };
         };
 
         desktop = mkNixosConfiguration {
