@@ -6,10 +6,10 @@
   imports = [
     ./acme.nix
     # ./audiobookshelf.nix
-    # ./authelia.nix
+    ./authelia.nix
     # ./calibre.nix
     # ./dashboard.nix
-    # ./lldap.nix
+    ./lldap.nix
     # ./media.nix
     ./nginx.nix
     # ./nextcloud.nix
