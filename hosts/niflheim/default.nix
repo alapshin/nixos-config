@@ -5,12 +5,12 @@
 }: {
   imports = [
     ./acme.nix
-    # ./audiobookshelf.nix
+    ./audiobookshelf.nix
     ./authelia.nix
     # ./calibre.nix
     # ./dashboard.nix
     ./lldap.nix
-    # ./media.nix
+    ./media.nix
     ./nginx.nix
     # ./nextcloud.nix
     ./openssh.nix
