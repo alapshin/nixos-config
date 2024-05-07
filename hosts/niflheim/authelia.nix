@@ -175,7 +175,7 @@ in
                 description = "Nextcloud";
                 authorization_policy = "one_factor";
                 redirect_uris = [
-                  "https://nextcloud.${domainName}/apps/user_oidc/code"
+                  "https://nextcloud.${domainName}/apps/oidc_login/oidc"
                 ];
               }
               {

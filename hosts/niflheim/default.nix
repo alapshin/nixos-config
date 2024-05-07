@@ -12,7 +12,7 @@
     ./lldap.nix
     ./media.nix
     ./nginx.nix
-    # ./nextcloud.nix
+    ./nextcloud.nix
     ./openssh.nix
     ./postgres.nix
     # ./paperless.nix
