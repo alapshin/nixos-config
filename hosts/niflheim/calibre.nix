@@ -5,7 +5,7 @@
 , ...
 }:
 let
-  library = "/media/books";
+  library = "/mnt/data/books";
   webapp = "calibre-web";
   serverapp = "calibre-server";
   user = config.services.calibre-server.user;
@@ -106,14 +106,14 @@ in
     tmpfiles = {
       settings = {
         "10-calibre-server" = {
-          "/media/books" = {
+          "/mnt/data/books" = {
             d = {
               mode = "0775";
               user = user;
               group = "media";
             };
           };
-          "/media/books/metadata.db" = {
+          "/mnt/data/books/metadata.db" = {
             Z = {
               mode = "0664";
               user = user;

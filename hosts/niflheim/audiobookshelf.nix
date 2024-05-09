@@ -11,7 +11,7 @@ in
     tmpfiles = {
       settings = {
         "10-audiobookshelf" = {
-          "/media/audiobooks" = {
+          "/mnt/data/audiobooks" = {
             d = {
               mode = "0775";
               user = config.services.audiobookshelf.user;
