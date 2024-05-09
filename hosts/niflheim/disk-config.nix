@@ -2,16 +2,18 @@
 , ...
 }:
 let
+  dataDisk1 = "/dev/sda";
+  luksData1 = "luks-data1";
+
   # For tesing in VM
-  # rawdisk1 = "/dev/vda";
-  # rawdisk2 = "/dev/vdb";
-  rawdisk1 = "/dev/nvme0n1";
-  rawdisk2 = "/dev/nvme1n1";
-  cryptdisk1 = "luks_disk1";
-  cryptdisk2 = "luks_disk2";
+  # systemDisk1 = "/dev/vda";
+  # systemDisk2 = "/dev/vdb";
+  systemDisk1 = "/dev/nvme0n1";
+  systemDisk2 = "/dev/nvme1n1";
+  luksSystem1 = "luks-system1";
+  luksSystem2 = "luks-system2";
 in
 {
-
   # Use label to mount btrfs device pool
   fileSystems = {
     "/" = {
@@ -21,9 +23,9 @@ in
 
   disko.devices = {
     disk = {
-      "${rawdisk1}" = {
+      "${systemDisk1}" = {
         type = "disk";
-        device = rawdisk1;
+        device = systemDisk1;
         content = {
           type = "gpt";
           partitions = {
@@ -40,10 +42,10 @@ in
             };
             luks = {
               size = "100%";
-              label = cryptdisk1;
+              label = luksSystem1;
               content = {
                 type = "luks";
-                name = cryptdisk1;
+                name = luksSystem1;
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
@@ -56,9 +58,9 @@ in
         };
       };
 
-      "${rawdisk2}" = {
+      "${systemDisk2}" = {
         type = "disk";
-        device = rawdisk2;
+        device = systemDisk2;
         content = {
           type = "gpt";
           partitions = {
@@ -75,10 +77,10 @@ in
             };
             luks = {
               size = "100%";
-              label = cryptdisk2;
+              label = luksSystem2;
               content = {
                 type = "luks";
-                name = cryptdisk2;
+                name = luksSystem2;
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
@@ -92,8 +94,8 @@ in
                     "--data raid1"
                     "--metadata raid1"
                     "--label pool"
-                    "/dev/mapper/${cryptdisk1}"
-                    "/dev/mapper/${cryptdisk2}"
+                    "/dev/mapper/${luksSystem1}"
+                    "/dev/mapper/${luksSystem2}"
                   ];
                   subvolumes = {
                     "/root" = {
@@ -101,6 +103,30 @@ in
                       mountOptions = [ "compress=zstd" "noatime" ];
                     };
                   };
+                };
+              };
+            };
+          };
+        };
+      };
+
+      "${dataDisk1}" = {
+        type = "disk";
+        device = dataDisk1;
+        content = {
+          type = "gpt";
+          partitions = {
+            luks = {
+              size = "100%";
+              label = luksData1;
+              content = {
+                type = "luks";
+                name = luksData1;
+                passwordFile = "/tmp/disk.key";
+                content = {
+                  type = "btrfs";
+                  mountpoint = "/mnt/data";
+                  mountOptions = [ "compress=zstd" "noatime" ];
                 };
               };
             };
