@@ -210,6 +210,9 @@ in
   };
 
   systemd.services."authelia-${instance}" = {
+    requires = [
+      "lldap.service"
+    ];
     environment = {
       AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = "%d/ldap_password";
     };

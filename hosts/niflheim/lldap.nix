@@ -75,6 +75,9 @@ in
   };
 
   systemd.services.lldap = {
+    requires = [
+      "postgresql.service"
+    ];
     serviceConfig = {
       LoadCredential = [
         "jwt_secret:${config.sops.secrets."lldap/jwt_secret".path}"
