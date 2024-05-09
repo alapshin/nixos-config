@@ -88,7 +88,6 @@ in
           id = "preferred_username";
         };
         oidc_login_button_text = "Log in with OpenID";
-        oidc_login_code_challenge_method = "S256";
       };
 
       secretFile = config.sops.secrets."nextcloud/secrets.json".path;
