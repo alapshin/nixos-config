@@ -15,7 +15,7 @@
     ./nextcloud.nix
     ./openssh.nix
     ./postgres.nix
-    # ./paperless.nix
+    ./paperless.nix
     # ./qbittorrent.nix
     ./secrets.nix
     # ./syncthing.nix
