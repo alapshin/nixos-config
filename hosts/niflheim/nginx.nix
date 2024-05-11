@@ -22,13 +22,15 @@
       recommendedZstdSettings = true;
       recommendedProxySettings = true;
 
-      virtualHosts."_" = {
-        default = true;
-        forceSSL = true;
-        useACMEHost = domainName;
-        locations = {
-          "/" = {
-            return = 404;
+      virtualHosts = {
+        "_" = {
+          default = true;
+          forceSSL = true;
+          useACMEHost = domainName;
+          locations = {
+            "/" = {
+              return = 404;
+            };
           };
         };
       };
