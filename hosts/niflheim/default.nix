@@ -16,7 +16,7 @@
     ./openssh.nix
     ./postgres.nix
     ./paperless.nix
-    # ./qbittorrent.nix
+    ./qbittorrent.nix
     ./secrets.nix
     # ./syncthing.nix
     # ./wireguard.nix
