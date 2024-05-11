@@ -130,6 +130,7 @@ in
         gimp
         inkscape
         keepassxc
+        kid3-qt
         kleopatra
         libreoffice-qt
         logseq
