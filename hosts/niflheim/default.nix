@@ -8,7 +8,7 @@
     ./audiobookshelf.nix
     ./authelia.nix
     ./calibre.nix
-    # ./dashboard.nix
+    ./dashboard.nix
     ./lldap.nix
     ./media.nix
     ./nginx.nix
