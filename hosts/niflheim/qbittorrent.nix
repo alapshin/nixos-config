@@ -3,10 +3,18 @@
 , config
 , domainName
 , ...
-}:
-let
-in
-{
+}: {
+  services = {
+    qbittorrent = {
+      enable = true;
+      group = "media";
+    };
+    nginx-ext.applications."qbittorrent" = {
+      auth = true;
+      port = config.services.qbittorrent.port;
+    };
+  };
+
   systemd = {
     tmpfiles = {
       settings = {
@@ -22,4 +30,6 @@ in
       };
     };
   };
+
+  users.users.qbittorrent.extraGroups = [ "media" ];
 }

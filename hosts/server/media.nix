@@ -65,7 +65,6 @@ in
           config.services.radarr.user
           config.services.readarr.user
           config.services.jellyfin.user
-          config.services.qbittorrent.user
           config.services.audiobookshelf.user
           config.services.calibre-server.user
         ];
@@ -108,11 +107,6 @@ in
     (mkMediaService {
       app = "jellyseerr";
       port = 5055;
-    })
-    (mkMediaService {
-      app = "qbittorrent";
-      port = config.services.qbittorrent.port;
-      group = mediaGroup;
     })
   ];
 }

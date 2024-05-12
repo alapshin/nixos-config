@@ -7,10 +7,9 @@
     ./acme.nix
     ./audiobookshelf.nix
     ./authelia.nix
-    ./calibre.nix
+    # ./calibre.nix
     ./dashboard.nix
     ./lldap.nix
-    ./media.nix
     ./nginx.nix
     ./nextcloud.nix
     ./openssh.nix
@@ -18,6 +17,7 @@
     ./paperless.nix
     ./qbittorrent.nix
     ./secrets.nix
+    # ./servarr.nix
     # ./syncthing.nix
     # ./wireguard.nix
     # ./xray-server.nix
@@ -27,6 +27,9 @@
     ./networking.nix
     ./hardware-configuration.nix
   ];
+
+  # Create media group
+  users.groups.media = { };
 
   users.users.root.hashedPasswordFile = config.sops.secrets."linux/root".path;
   users.users.root.openssh.authorizedKeys.keys = [

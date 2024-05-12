@@ -6,8 +6,6 @@
 }:
 let
   library = "/mnt/data/books";
-  webapp = "calibre-web";
-  serverapp = "calibre-server";
   user = config.services.calibre-server.user;
   group = config.services.calibre-server.group;
   webport = config.services.calibre-web.listen.port;
@@ -56,48 +54,13 @@ in
         userDb = config.sops.secrets."calibre/users.sqlite".path;
       };
     };
-    nginx = {
-      upstreams = {
-        "${webapp}" = {
-          servers = {
-            "localhost:${toString webport}" = { };
-          };
-        };
-        "${serverapp}" = {
-          servers = {
-            "localhost:${toString serverport}" = { };
-          };
-        };
-      };
 
-      virtualHosts = {
-        "${webapp}.${domainName}" = {
-          forceSSL = true;
-          useACMEHost = domainName;
-          locations = {
-            "/" = {
-              proxyPass = "http://${webapp}";
-              extraConfig =
-                (lib.strings.concatStringsSep "\n" [
-                  (builtins.readFile ./nginx/proxy.conf)
-                  (builtins.readFile ./nginx/auth-request.conf)
-                ]);
-            };
-            "/authenticate" = {
-              proxyPass = "http://authelia/api/verify";
-              extraConfig = builtins.readFile ./nginx/auth-location.conf;
-            };
-          };
-        };
-        "${serverapp}.${domainName}" = {
-          forceSSL = true;
-          useACMEHost = domainName;
-          locations = {
-            "/" = {
-              proxyPass = "http://${serverapp}";
-            };
-          };
-        };
+    nginx-ext.applications = {
+      "calibre-web" = {
+        port = webport;
+      };
+      "calibre-server" = {
+        port = serverport;
       };
     };
   };

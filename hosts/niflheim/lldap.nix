@@ -37,30 +37,6 @@ in
       };
     };
 
-    nginx = {
-      upstreams = {
-        "ldap" = {
-          servers = {
-            "${host}:${toString port}" = { };
-          };
-        };
-      };
-
-      virtualHosts = {
-        "ldap.${domainName}" = {
-          forceSSL = true;
-          useACMEHost = domainName;
-
-          locations = {
-            "/" = {
-              proxyPass = "http://ldap";
-              extraConfig = builtins.readFile ./nginx/proxy.conf;
-            };
-          };
-        };
-      };
-    };
-
     postgresql = {
       ensureDatabases = [
         name
@@ -71,6 +47,11 @@ in
           ensureDBOwnership = true;
         }
       ];
+    };
+
+    nginx-ext.applications."ldap" = {
+      auth = true;
+      inherit port;
     };
   };
 

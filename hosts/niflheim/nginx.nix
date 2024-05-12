@@ -35,5 +35,10 @@
         };
       };
     };
+
+    nginx-ext = {
+      basedomain = domainName;
+      authdomain = "auth.${domainName}";
+    };
   };
 }

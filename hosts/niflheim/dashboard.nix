@@ -5,7 +5,6 @@
 , ...
 }:
 let
-  app = "dashboard";
   port = config.services.homepage-dashboard.listenPort;
 in
 {
@@ -138,32 +137,10 @@ in
         }
       ];
     };
-    nginx = {
-      upstreams = {
-        "${app}" = {
-          servers = {
-            "localhost:${toString port}" = { };
-          };
-        };
-      };
-      virtualHosts."${app}.${domainName}" = {
-        forceSSL = true;
-        useACMEHost = domainName;
-        locations = {
-          "/" = {
-            proxyPass = "http://${app}";
-            extraConfig =
-              (lib.strings.concatStringsSep "\n" [
-                (builtins.readFile ./nginx/proxy.conf)
-                (builtins.readFile ./nginx/auth-request.conf)
-              ]);
-          };
-          "/authenticate" = {
-            proxyPass = "http://authelia/api/verify";
-            extraConfig = builtins.readFile ./nginx/auth-location.conf;
-          };
-        };
-      };
+
+    nginx-ext.applications."dashboard" = {
+      auth = true;
+      inherit port;
     };
   };
 

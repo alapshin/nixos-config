@@ -63,7 +63,18 @@ in
           locations = {
             "/" = {
               proxyPass = "http://authelia";
-              extraConfig = builtins.readFile ./nginx/proxy.conf;
+              extraConfig = ''
+                # Headers
+                proxy_set_header X-Forwarded-Ssl on;
+                proxy_set_header X-Forwarded-Uri $request_uri;
+                proxy_set_header X-Original-URL $scheme://$http_host$request_uri;
+
+                # Basic Proxy Configuration
+                proxy_no_cache $cookie_session;
+                proxy_cache_bypass $cookie_session;
+                # Timeout if the real server is dead.
+                proxy_next_upstream error timeout invalid_header http_500 http_502 http_503;
+              '';
             };
             "/api/verify" = {
               proxyPass = "http://authelia";

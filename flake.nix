@@ -91,7 +91,6 @@
         { system ? "x86_64-linux"
         , baseModules ? [
             ./configuration.nix
-            self.nixosModules.qbittorrent
 
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
@@ -145,6 +144,8 @@
         niflheim = mkNixosConfiguration {
           hostModules = [
             ./hosts/niflheim
+            self.nixosModules.nginx-ext
+            self.nixosModules.qbittorrent
           ];
           specialArgs = { domainName = "hlsrv.dev"; };
         };

@@ -35,30 +35,6 @@ in
       };
     };
 
-    nginx = {
-      upstreams = {
-        "paperless" = {
-          servers = {
-            "localhost:${toString port}" = { };
-          };
-        };
-      };
-
-      virtualHosts = {
-        "paperless.${domainName}" = {
-          forceSSL = true;
-          useACMEHost = domainName;
-
-          locations = {
-            "/" = {
-              proxyPass = "http://paperless";
-              extraConfig = builtins.readFile ./nginx/proxy.conf;
-            };
-          };
-        };
-      };
-    };
-
     redis.servers."paperless" = {
       enable = true;
       port = 0;
@@ -76,6 +52,11 @@ in
           ensureDBOwnership = true;
         }
       ];
+    };
+
+    nginx-ext.applications."paperless" = {
+      auth = false;
+      inherit port;
     };
   };
 

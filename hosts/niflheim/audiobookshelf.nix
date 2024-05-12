@@ -3,10 +3,18 @@
 , config
 , domainName
 , ...
-}:
-let
-in
-{
+}: {
+  services = {
+    audiobookshelf = {
+      enable = true;
+    };
+
+    nginx-ext.applications."audiobookshelf" = {
+      auth = false;
+      port = config.services.audiobookshelf.port;
+    };
+  };
+
   systemd = {
     tmpfiles = {
       settings = {
