@@ -1,6 +1,7 @@
 { lib
 , pkgs
 , config
+, inputs
 , domainName
 , ...
 }:
@@ -17,11 +18,17 @@ let
   ldapUserOU = "ou=people";
   ldapUsernameAttr = "uid";
   ldapFullUser = "${ldapUsernameAttr}=${ldapUserDN},${ldapUserOU},${ldapBaseDN}";
-  autheliaHost = config.services.authelia.instances."${instance}".settings.server.host;
-  autheliaPort = config.services.authelia.instances."${instance}".settings.server.port;
+  autheliaPort = 9091;
   redisUnixSocketPath = config.services.redis.servers."authelia-${instance}".unixSocket;
 in
 {
+
+  disabledModules = [
+    "services/security/authelia.nix"
+  ];
+  imports = [
+    "${inputs.authelia}/nixos/modules/services/security/authelia.nix"
+  ];
 
   sops = {
     secrets = {
@@ -37,9 +44,9 @@ in
       "authelia/oidc_hmac_secret" = {
         owner = config.users.users."authelia-${instance}".name;
       };
-      "authelia/oidc_issuer_private_key" = {
+      "authelia/jwk_rsa_key.pem" = {
         format = "binary";
-        sopsFile = ./secrets/authelia/issuer_private_key.pem;
+        sopsFile = ./secrets/authelia/jwk_rsa_key.pem;
         owner = config.users.users."authelia-${instance}".name;
       };
     };
@@ -50,7 +57,7 @@ in
       upstreams = {
         "authelia" = {
           servers = {
-            "${autheliaHost}:${toString autheliaPort}" = { };
+            "localhost:${toString autheliaPort}" = { };
           };
         };
       };
@@ -105,6 +112,11 @@ in
 
     authelia.instances."${instance}" = {
       enable = true;
+      package = pkgs.prs.authelia;
+
+      settingsFiles = [
+        ./authelia.yml
+      ];
       settings = {
         log = {
           level = "debug";
@@ -170,6 +182,12 @@ in
         default_2fa_method = "totp";
         identity_providers = {
           oidc = {
+            jwks = [
+              {
+                key_id = "main";
+                key = ''{{ secret "/run/secrets/authelia/jwk_rsa_key.pem" | mindent 10 "|" | msquote }}'';
+              }
+            ];
             clients = [
               {
                 id = "jellyfin";
@@ -215,7 +233,6 @@ in
         sessionSecretFile = config.sops.secrets."authelia/session_secret".path;
         storageEncryptionKeyFile = config.sops.secrets."authelia/storage_secret".path;
         oidcHmacSecretFile = config.sops.secrets."authelia/oidc_hmac_secret".path;
-        oidcIssuerPrivateKeyFile = config.sops.secrets."authelia/oidc_issuer_private_key".path;
       };
     };
   };
@@ -225,6 +242,7 @@ in
       "lldap.service"
     ];
     environment = {
+      X_AUTHELIA_CONFIG_FILTERS = "template";
       AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = "%d/ldap_password";
     };
     serviceConfig = {

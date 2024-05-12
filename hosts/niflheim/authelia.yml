@@ -1,0 +1,32 @@
+identity_providers:
+  oidc:
+    jwks:
+      - key: {{ secret "/run/secrets/authelia/jwk_rsa_key.pem" | mindent 10 "|" | msquote }}
+      # - key: |
+      #     -----BEGIN RSA PRIVATE KEY-----
+      #     MIIEowIBAAKCAQEAsKgbvFJHsFkhQY3hTDKLywd1iYzZebKtf89klOZM8zRr61mL
+      #     oci7Y4FBJC9jEEYtguBpwnmpho7LNFzaBaklzw4T9dR3cLllB2fZhQ32a0swMWLT
+      #     CPFJE+QKCZU/QBPelPMcAXNz2B7O8zfN9uKD6K2C8kfe3eVS0NCOv0W2TC+wy9s7
+      #     aYxWZG2Oe80DNNhhNw9+GKHYlyry+c6u6UYeVClIc84iXpczF0jBzuoFVqquhrSh
+      #     e81QIk3yB4BxEpVFWp3bOrc8gOEjAzWG5ncK2YiPDeX3J/ceSjBMISTG3THSL2C+
+      #     9g5pf3tvrciF1RTlwLT3eEqdeni0POTWg7jwRwIDAQABAoIBAQCi0g7eQCf7Dets
+      #     9EwXYu8drj5TDRLU7C6lgo19/9YkwshFHz9nWg/84oEbzOFNeqEv448Ww/PQJYR9
+      #     OqdoWEKU2LDk/3Mm3nmTndAKppfcxGwi2KcRsvJb9u6ZbonhkW6xcnD5lWPManjs
+      #     Cx820ggqSOJMVJnBg0AVXmRzPtmK1U/t2FDTV7oIS1UmkVwsLttuuA8tr9Ih8IYB
+      #     zhlEepps5s3+oUUY9L3r6oJ+YQmFk1B7b6U/a9hkvGEZVqegPwrctolPYDx3+PZB
+      #     BMIy/61471iBD/rCZkpAvSsfwo/2Cc/w8diPTIbL5U16UlD0Y8cTDdByqluK687m
+      #     xBYCgpLhAoGBAOsXvwKOre+Mz44P2+SW8Q8JTWjGaN5kzGx8MFN5WzqCnPNUwnWn
+      #     WgYfAyuIklnzvD05WvT9HpQhLcXFvE1YboO7SEG5g42mn0y4U0dt2OF+r26JIzzR
+      #     qaOz4O2+kpNqiVkPN64O8JCNelKTkDxmyjixP5nfSFFlPJxJuzXEINFNAoGBAMBd
+      #     +TQtcTARjhxrTdJBkTzc3OTluw4GE/fo/tIpZUZZQ8wfM4f8uDRxbf3Z1NSR65X5
+      #     ynBm8cPz4epa7LycEPnji55lV6PVIabZ2TuFsnxRYpsZvMLnrtny/e3rCB+2bT/m
+      #     MTJlaIOwdypLBuyWXUZzpOK5Sqh8V7xCfNyLwD3jAoGAXASrayDVzBHdm8lxVIQQ
+      #     TsZhWkVu/r2Nllj1wXaa0sgVDtl6U/rxLbwtzXhjcHoKkBxHEeWRdoGWHPdMwSl/
+      #     +Gfx3Gf0qhkx+SGc1zST0492s1lSRZf7QmxB+kzBqpnksMtYC/UlDC+UVYYUys+h
+      #     D5exQVU4RUPO+Y2SjXT7M3ECgYBDCPxsuGE3NQbm1GXcHUk1gmnfwka7DlcrDyCt
+      #     sAtAxp6fpUfZ3bF7ZQPFcIGAShFkxBVNsjIR7Q0PE/xnhaNM0YS3/+zYhM8jS8st
+      #     uNuIAvxvvDpRWVdPUCQ5IqxEENhlahw+yaPwMDB2poqVK5j5khclgxiHOj2At1K3
+      #     sGOfrQKBgBb5nfK8jNSEgJctr6LZDlpum+uhpsPZlfRTvW5fTEKYl8NlYghHRqcS
+      #     30JeG5SokZS5LVHbqahP/YES/iULnub0P8TLCP9w/LoZ3ieGAn38L6+49j6BjhWb
+      #     tZe3TPNBgojvUeDA56vYhnp0OwxAydNYHZD/TnjGLpNA2QWuOcCA
+      #     -----END RSA PRIVATE KEY-----          

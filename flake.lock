@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "authelia": {
+      "locked": {
+        "lastModified": 1714672681,
+        "narHash": "sha256-r/vqZTUi7TxLgZtkgq0YRlH+Hh9rtfjx93OwETrgO4I=",
+        "owner": "nicomem",
+        "repo": "nixpkgs",
+        "rev": "01b37b0465266d7a587546cece37960d7c962e31",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nicomem",
+        "ref": "authelia-4.38",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "crane": {
       "inputs": {
         "nixpkgs": [
@@ -299,6 +315,7 @@
     },
     "root": {
       "inputs": {
+        "authelia": "authelia",
         "disko": "disko",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",

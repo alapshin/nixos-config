@@ -13,7 +13,11 @@
     };
   };
 
-  pr-packages = final: _prev: { };
+  pr-packages = final: _prev: {
+    prs = import inputs.authelia {
+      system = final.system;
+    };
+  };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
   # be accessible through 'pkgs.unstable'
