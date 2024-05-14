@@ -24,17 +24,6 @@ in
   };
 
   services = {
-    paperless = {
-      enable = true;
-      passwordFile = config.sops.secrets."paperless/password".path;
-      settings = {
-        PAPERLESS_APPS = "allauth.socialaccount.providers.openid_connect";
-        PAPERLESS_DBHOST = "/run/postgresql";
-        PAPERLESS_REDIS = "unix://${redisSocket}";
-        PAPERLESS_ADMIN_MAIL = "admin@${domainName}";
-      };
-    };
-
     redis.servers."paperless" = {
       enable = true;
       port = 0;
@@ -58,6 +47,18 @@ in
       auth = false;
       inherit port;
     };
+
+    paperless = {
+      enable = true;
+      passwordFile = config.sops.secrets."paperless/password".path;
+      settings = {
+        PAPERLESS_APPS = "allauth.socialaccount.providers.openid_connect";
+        PAPERLESS_DBHOST = "/run/postgresql";
+        PAPERLESS_REDIS = "unix://${redisSocket}";
+        PAPERLESS_ADMIN_MAIL = "admin@${domainName}";
+      };
+    };
+
   };
 
   systemd.services.paperless-web = {

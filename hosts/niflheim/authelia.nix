@@ -195,6 +195,8 @@ in
                 client_id = "jellyfin";
                 client_name = "Jellyfin";
                 client_secret = "$pbkdf2-sha512$310000$w8/7AXV6ljEACFLwkc.neQ$bMnyFnhUjuFjhKGw.awXKfK1EK6n9XS5P6RcywAbBxLhI6hcJqJ8jDCt3oOBp9YpaPCbNh3Sm23NCwJaUIci5w";
+                require_pkce = true;
+                pkce_challenge_method = "S256";
                 authorization_policy = "one_factor";
                 redirect_uris = [
                   "https://jellyfin.${domainName}/sso/OID/redirect/authelia"
@@ -204,6 +206,8 @@ in
                 client_id = "nextcloud";
                 client_name = "Nextcloud";
                 client_secret = "$pbkdf2-sha512$310000$uLH3iUPuaccs8Ps0L7e92A$ivBv3CRJZSuYX8ARlQGWlyyIlpcqcvQl518dOqxDQ5nMRKrOSYQmGkUAlSjF3Btklbs1V6CYSXfAwlIRYjqHFg";
+                require_pkce = true;
+                pkce_challenge_method = "S256";
                 authorization_policy = "one_factor";
                 redirect_uris = [
                   "https://nextcloud.${domainName}/apps/oidc_login/oidc"
@@ -213,6 +217,8 @@ in
                 client_id = "audiobookshelf";
                 client_name = "Audiobookshelf";
                 client_secret = "$pbkdf2-sha512$310000$CYG9RzneGw4EEojmAFaprA$CppTSc1wUVwvVtkD48.UFO7KPMAN9OlHIOMnuNeDAyvTSNXshShlcONmQinyd.D8DaOTGE0Sn.wWqEYRWnq9hg";
+                require_pkce = true;
+                pkce_challenge_method = "S256";
                 authorization_policy = "one_factor";
                 redirect_uris = [
                   "https://audiobookshelf.${domainName}/auth/openid/callback"
@@ -223,6 +229,8 @@ in
                 client_id = "paperless";
                 client_name = "Paperless";
                 client_secret = "$pbkdf2-sha512$310000$ylijOhbBagCwDiaNWPM2GA$mpdcyzbOgih92PY3WQO8x8BiZSLZu33uojolXe5hg/H.U71a.HGTY168YOcBz1TYeYqyCvY2s7jSW86Gb8qtUg";
+                require_pkce = true;
+                pkce_challenge_method = "S256";
                 authorization_policy = "one_factor";
                 redirect_uris = [
                   "https://paperless.${domainName}/accounts/oidc/authelia/login/callback/"
