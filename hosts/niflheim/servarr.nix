@@ -24,6 +24,10 @@ let
         } // lib.optionalAttrs (group != null) {
           inherit group;
         };
+        nginx-ext.applications."${app}" = {
+          auth = true;
+          inherit port;
+        };
       };
 
       users.users = lib.optionalAttrs (builtins.hasAttr "user" cfg) {

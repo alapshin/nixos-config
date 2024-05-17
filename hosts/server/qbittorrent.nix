@@ -4,14 +4,12 @@
 , domainName
 , ...
 }:
-let
-in
 {
   systemd = {
     tmpfiles = {
       settings = {
         "10-qbittorrent" = {
-          "/media/downloads" = {
+          "/mnt/data/downloads" = {
             d = {
               mode = "0775";
               user = config.services.qbittorrent.user;

@@ -17,7 +17,7 @@
     ./paperless.nix
     ./qbittorrent.nix
     ./secrets.nix
-    # ./servarr.nix
+    ./servarr.nix
     # ./syncthing.nix
     # ./wireguard.nix
     ./xray-server.nix
