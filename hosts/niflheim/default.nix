@@ -20,7 +20,7 @@
     # ./servarr.nix
     # ./syncthing.nix
     # ./wireguard.nix
-    # ./xray-server.nix
+    ./xray-server.nix
     #
     ./pg-upgrade.nix
     #

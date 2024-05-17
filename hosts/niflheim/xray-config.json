@@ -1,0 +1,57 @@
+{
+    "log": {
+        "loglevel": "debug"
+    },
+    "routing": {
+        "rules": [],
+        "domainStrategy": "AsIs"
+    },
+    "inbounds": [
+        {
+            "tag": "proxy",
+            "listen": "127.0.0.1",
+            "port": 1080,
+            "protocol": "socks",
+            "settings": {
+                "udp": true,
+                "auth": "noauth"
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "tag": "direct",
+            "protocol": "freedom"
+        },
+        {
+            "tag": "block",
+            "protocol": "blackhole"
+        },
+        {
+            "tag": "tunnel",
+            "protocol": "wireguard",
+            "settings": {
+                "address": [
+                    "10.2.0.2"
+                ],
+                "peers": [
+                    {
+                        "endpoint": "185.90.60.210:51820",
+                        "publicKey": "ievGDrxV0dKcjO7EM662c1Ziy0PVct0Ujse3CT4NQQw="
+                    }
+                ],
+                "secretKey": "@wireguard_secret_key@"
+            }
+        }
+    ],
+    "routing": {
+        "rules": [
+            {
+                "inboundTag": [
+                    "proxy" 
+                ],
+                "outboundTag": "tunnel"
+            }
+        ]
+    }
+}
