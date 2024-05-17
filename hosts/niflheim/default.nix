@@ -9,6 +9,7 @@
     ./authelia.nix
     # ./calibre.nix
     ./dashboard.nix
+    ./jellyfin.nix
     ./lldap.nix
     ./nginx.nix
     ./nextcloud.nix
