@@ -5,13 +5,14 @@
 }: {
   sops = {
     secrets = {
-      "xray/wireguard_secret_key" = {
+      "xray/wireguard_private_key" = {
+        key = "wireguard/hel_private_key";
         restartUnits = [ "xray.service" ];
       };
     };
     templates."xray-config.json".content = builtins.readFile (pkgs.substituteAll {
       src = ./xray-config.json;
-      wireguard_secret_key = config.sops.placeholder."xray/wireguard_secret_key";
+      wireguard_private_key = config.sops.placeholder."xray/wireguard_private_key";
     });
   };
 

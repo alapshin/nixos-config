@@ -40,7 +40,7 @@
                         "publicKey": "ievGDrxV0dKcjO7EM662c1Ziy0PVct0Ujse3CT4NQQw="
                     }
                 ],
-                "secretKey": "@wireguard_secret_key@"
+                "secretKey": "@wireguard_private_key@"
             }
         }
     ],

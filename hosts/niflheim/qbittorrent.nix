@@ -31,5 +31,11 @@
     };
   };
 
+  networking = {
+    firewall = {
+      allowedUDPPorts = [ 54321 ];
+    };
+  };
+
   users.users.qbittorrent.extraGroups = [ "media" ];
 }
