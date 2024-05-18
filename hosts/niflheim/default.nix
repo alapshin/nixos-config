@@ -7,7 +7,7 @@
     ./acme.nix
     ./audiobookshelf.nix
     ./authelia.nix
-    # ./calibre.nix
+    ./calibre.nix
     ./dashboard.nix
     ./jellyfin.nix
     ./lldap.nix

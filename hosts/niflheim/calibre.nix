@@ -1,3 +1,5 @@
+# Setup calibre-server and calibre-web
+
 { lib
 , pkgs
 , config
@@ -57,9 +59,11 @@ in
 
     nginx-ext.applications = {
       "calibre-web" = {
+        auth = true;
         port = webport;
       };
       "calibre-server" = {
+        auth = false;
         port = serverport;
       };
     };
@@ -68,6 +72,7 @@ in
   systemd = {
     tmpfiles = {
       settings = {
+        # Setup calibre library directory
         "10-calibre-server" = {
           "/mnt/data/books" = {
             d = {
@@ -76,6 +81,7 @@ in
               group = "media";
             };
           };
+          # Place empty metadata databest into library directory
           "/mnt/data/books/metadata.db" = {
             Z = {
               mode = "0664";
