@@ -30,10 +30,10 @@
     ./scrutiny.nix
     ./searx.nix
     ./servarr.nix
-    # ./syncthing.nix
+    ./syncthing.nix
     ./wireguard.nix
     ./xray-server.nix
-    #
+
     ./pg-upgrade.nix
 
     ./networking.nix

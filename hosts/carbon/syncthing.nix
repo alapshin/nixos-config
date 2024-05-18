@@ -42,10 +42,10 @@ in
 
   services.syncthing = {
     enable = true;
-    key = config.sops.secrets."syncthing/key".path;
-    cert = config.sops.secrets."syncthing/cert".path;
     overrideFolders = true;
     overrideDevices = true;
+    key = config.sops.secrets."syncthing/key".path;
+    cert = config.sops.secrets."syncthing/cert".path;
 
     settings = {
       devices = {
@@ -61,8 +61,8 @@ in
         pixel = {
           id = "QZYNABL-EZ5KIGC-NPZ76I7-7HBM3UR-RV2CEYL-7PUZ6CX-NFPH5V2-TIZU2A7";
         };
-        server = {
-          id = "S3PPR5V-TRLJQOD-FHSCUZZ-WYAEJ3B-ENRR5OM-IT7V6SD-LITNRFS-PU23XQK";
+        niflheim = {
+          id = "VHWBRX7-MKV5UQD-WAKMIM2-2EUETPS-IOFHDXW-7VWEBSI-V4MLHW4-5NOPHQP";
         };
       };
       folders = {
