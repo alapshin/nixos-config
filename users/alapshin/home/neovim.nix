@@ -53,16 +53,27 @@
       indent-blankline-nvim
     ];
     extraPackages = with pkgs; [
-      alejandra
-      gitlint
-      # hadolint
-
+      # Nix LSP support
       nil
       statix
+      nixfmt-rfc-style
 
+      # Bash LSP support
+      shfmt
+      shellcheck
+      nodePackages.bash-language-server
+
+      # Lua LSP support
       selene
       lua-language-server
 
+      # LanguageTool LSP support
+      ltex-ls
+
+      gitlint
+      hadolint
+
+      # Beancount LSP support
       beancount
       beancount-language-server
     ];
