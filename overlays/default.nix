@@ -11,6 +11,22 @@
         "JetBrainsMono"
       ];
     };
+    sonarr = prev.sonarr.overrideAttrs (oldAttrs: rec {
+      version = "4.0.4.1668";
+      src = prev.fetchurl {
+        hash = "sha256-thODsC5hb7G3gTpbtjxXsyTENRDcq/cw3vajLSoNdj0=";
+        url = builtins.replaceStrings
+          [
+            "main"
+            oldAttrs.version
+          ]
+          [
+            "develop"
+            version
+          ]
+          oldAttrs.src.url;
+      };
+    });
   };
 
   pr-packages = final: _prev: {
