@@ -3,7 +3,11 @@
 , config
 , domainName
 , ...
-}: {
+}:
+let
+  group = config.users.groups.media.name;
+in
+{
   services = {
     audiobookshelf = {
       enable = true;
@@ -21,9 +25,9 @@
         "10-audiobookshelf" = {
           "/mnt/data/audiobooks" = {
             d = {
-              mode = "0775";
+              mode = "0755";
+              inherit group;
               user = config.services.audiobookshelf.user;
-              group = config.users.groups.media.name;
             };
           };
         };

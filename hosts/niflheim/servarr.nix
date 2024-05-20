@@ -5,41 +5,57 @@
 , ...
 }:
 let
-  mkServarr =
-    { app
-    , port
-    , user ? null
-    , group ? null
-    ,
-    }:
-    let
-      cfg = config.services."${app}";
-    in
-    {
-      services = {
-        "${app}" = {
-          enable = true;
-        } // lib.optionalAttrs (user != null) {
-          inherit user;
-        } // lib.optionalAttrs (group != null) {
-          inherit group;
-        };
-        nginx-ext.applications."${app}" = {
-          auth = true;
-          inherit port;
-        };
-      };
-
-      users.users = lib.optionalAttrs (builtins.hasAttr "user" cfg) {
-        "${cfg.user}".extraGroups = [ "media" ];
-      };
-    };
+  group = config.users.groups.media.name;
 in
 {
-  config = lib.mkMerge [
-    (mkServarr { app = "radarr"; port = 7878; })
-    (mkServarr { app = "readarr"; port = 8787; })
-    (mkServarr { app = "sonarr"; port = 8989; })
-    (mkServarr { app = "prowlarr"; port = 9696; })
-  ];
+  services = {
+    radarr.enable = true;
+    readarr.enable = true;
+    sonarr.enable = true;
+    prowlarr.enable = true;
+
+    nginx-ext.applications = {
+      "radarr" = {
+        auth = true;
+        port = 7878;
+      };
+      "readarr" = {
+        auth = true;
+        port = 8787;
+      };
+      "sonarr" = {
+        auth = true;
+        port = 8989;
+      };
+      "prowlarr" = {
+        auth = true;
+        port = 9696;
+      };
+    };
+  };
+
+  systemd.tmpfiles.settings = {
+    "10-movies" = {
+      "/mnt/data/movies" = {
+        d = {
+          mode = "0755";
+          inherit group;
+          user = config.services.radarr.user;
+        };
+      };
+    };
+    "10-tvshows" = {
+      "/mnt/data/tvshows" = {
+        d = {
+          mode = "0755";
+          inherit group;
+          user = config.services.sonarr.user;
+        };
+      };
+    };
+  };
+
+  users.users.radarr.extraGroups = [ group ];
+  users.users.sonarr.extraGroups = [ group ];
+  users.users.readarr.extraGroups = [ group ];
 }
