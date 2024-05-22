@@ -11,10 +11,73 @@
         "JetBrainsMono"
       ];
     };
-    sonarr = prev.sonarr.overrideAttrs (oldAttrs: rec {
-      version = "4.0.4.1668";
+
+
+    lidarr = prev.lidarr.overrideAttrs (oldAttrs: rec {
+      version = "2.3.3.4204";
       src = prev.fetchurl {
-        hash = "sha256-thODsC5hb7G3gTpbtjxXsyTENRDcq/cw3vajLSoNdj0=";
+        hash = "sha256-ulWg9BhDr/RFE4sfXGf+i9W0KpOYKjtk49qBeIwI9dU=";
+        url = builtins.replaceStrings
+          [
+            oldAttrs.version
+          ]
+          [
+            version
+          ]
+          oldAttrs.src.url;
+      };
+    });
+
+    radarr = prev.radarr.overrideAttrs (oldAttrs: rec {
+      version = "5.6.0.8846";
+      src = prev.fetchurl {
+        hash = "sha256-rKe1xQR3lkPXQBUWmKdHUu/AQ99U1kCINeXV2z/ZG5o=";
+        url = builtins.replaceStrings
+          [
+            oldAttrs.version
+          ]
+          [
+            version
+          ]
+          oldAttrs.src.url;
+      };
+    });
+
+    readarr = prev.readarr.overrideAttrs (oldAttrs: rec {
+      pname = "readarr";
+      version = "0.3.27.2538";
+      src = prev.fetchurl {
+        hash = "sha256-JKGLMu7rIhMAJM2bThTQiHDgc449gWQwmku/yQEAXL4=";
+        url = builtins.replaceStrings
+          [
+            oldAttrs.version
+          ]
+          [
+            version
+          ]
+          oldAttrs.src.url;
+      };
+
+
+      installPhase = ''
+        runHook preInstall
+
+        mkdir -p $out/{bin,share/${pname}-${version}}
+        cp -r * $out/share/${pname}-${version}/.
+        makeWrapper "${prev.dotnet-runtime}/bin/dotnet" $out/bin/Readarr \
+          --add-flags "$out/share/${pname}-${version}/Readarr.dll" \
+          --prefix LD_LIBRARY_PATH : ${prev.lib.makeLibraryPath [
+            prev.curl prev.sqlite prev.libmediainfo prev.icu prev.openssl prev.zlib
+          ]}
+
+        runHook postInstall
+      '';
+    });
+
+    sonarr = prev.sonarr.overrideAttrs (oldAttrs: rec {
+      version = "4.0.4.1695";
+      src = prev.fetchurl {
+        hash = "sha256-hIA/sh8Im2I8YZIO5Fn8rgorFahp3nCxEJzMhF0ysK0=";
         url = builtins.replaceStrings
           [
             "main"
@@ -22,6 +85,21 @@
           ]
           [
             "develop"
+            version
+          ]
+          oldAttrs.src.url;
+      };
+    });
+
+    prowlarr = prev.prowlarr.overrideAttrs (oldAttrs: rec {
+      version = "1.17.2.4511";
+      src = prev.fetchurl {
+        hash = "sha256-bYIavvea6Nwbn22CFiWXpzPGAI13oJYAIZr2FdLkyb8=";
+        url = builtins.replaceStrings
+          [
+            oldAttrs.version
+          ]
+          [
             version
           ]
           oldAttrs.src.url;

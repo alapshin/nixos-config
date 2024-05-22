@@ -12,10 +12,6 @@ in
     secrets = {
       "jellyfin/api_key" = { };
       "jellyseerr/api_key" = { };
-      "radarr/api_key" = { };
-      "readarr/api_key" = { };
-      "sonarr/api_key" = { };
-      "prowlarr/api_key" = { };
       "qbittorrent/username" = { };
       "qbittorrent/password" = { };
     };

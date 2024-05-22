@@ -146,7 +146,7 @@
         niflheim = mkNixosConfiguration {
           hostModules = [
             ./hosts/niflheim
-            self.nixosModules.sonarr
+            self.nixosModules.servarr
             self.nixosModules.nginx-ext
             self.nixosModules.qbittorrent
           ];
