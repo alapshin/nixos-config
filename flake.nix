@@ -21,7 +21,7 @@
 
     nur.url = "github:nix-community/nur";
 
-    disko.url = "github:nix-community/disko?ref=v1.6.0";
+    disko.url = "github:nix-community/disko?ref=v1.6.1";
     disko.inputs.nixpkgs.follows = "nixos";
 
     sops-nix.url = "github:Mic92/sops-nix";
@@ -30,7 +30,7 @@
     lanzaboote.url = "github:nix-community/lanzaboote";
     lanzaboote.inputs.nixpkgs.follows = "nixos";
 
-    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixos";
 
     authelia.url = "github:nicomem/nixpkgs/authelia-4.38";
