@@ -252,6 +252,8 @@ in
   systemd.services."authelia-${instance}" = {
     requires = [
       "lldap.service"
+      "postgresql.service"
+      "redis-authelia-${instance}.service"
     ];
     environment = {
       X_AUTHELIA_CONFIG_FILTERS = "template";
