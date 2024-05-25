@@ -201,6 +201,7 @@ in
                 redirect_uris = [
                   "https://jellyfin.${domainName}/sso/OID/redirect/authelia"
                 ];
+                token_endpoint_auth_method = "client_secret_post";
               }
               {
                 client_id = "nextcloud";
