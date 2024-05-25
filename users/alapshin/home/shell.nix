@@ -82,8 +82,8 @@
       settings = {
         format = "$all";
       } // builtins.fromTOML (builtins.readFile (pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/starship/starship/5d4007f5c179657611d7205e78cd8075eebbf532/docs/public/presets/toml/plain-text-symbols.toml";
-        hash = "sha256-paZyZneqF2BgiGxHdX1RAAYdwSK6HtkB9e8GTGDNimU=";
+        url = "https://raw.githubusercontent.com/starship/starship/v1.19.0/docs/public/presets/toml/plain-text-symbols.toml";
+        hash = "sha256-SRos2o/ZaBK3QOCumqopiFLKnK3mf5wehTkKWpO7OqQ=";
       }));
     };
 
