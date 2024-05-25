@@ -13,9 +13,17 @@ in
       enable = true;
     };
 
-    nginx-ext.applications."jellyfin" = {
-      auth = false;
-      inherit port;
+    jellyseerr.enable = true;
+
+    nginx-ext.applications = {
+      "jellyfin" = {
+        auth = false;
+        inherit port;
+      };
+      "jellyseerr" = {
+        auth = false;
+        port = config.services.jellyseerr.port;
+      };
     };
   };
 }
