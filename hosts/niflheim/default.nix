@@ -4,6 +4,8 @@
 , ...
 }: {
   imports = [
+    ./secrets.nix
+
     ./acme.nix
     ./audiobookshelf.nix
     ./authelia.nix
@@ -17,14 +19,14 @@
     ./postgres.nix
     ./paperless.nix
     ./qbittorrent.nix
-    ./secrets.nix
+    ./searx.nix
     ./servarr.nix
     # ./syncthing.nix
     ./wireguard.nix
     ./xray-server.nix
     #
     ./pg-upgrade.nix
-    #
+
     ./networking.nix
     ./hardware-configuration.nix
   ];
