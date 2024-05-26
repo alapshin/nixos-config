@@ -132,6 +132,7 @@ in
         keepassxc
         kid3-qt
         kleopatra
+        krename
         libreoffice-qt
         logseq
         qbittorrent-qt5
