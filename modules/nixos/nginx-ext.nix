@@ -72,7 +72,6 @@ in
                 # Timeout if the real server is dead.
                 proxy_next_upstream error timeout invalid_header http_500 http_502 http_503;
 
-
                 # Send a subrequest to Authelia to verify if the user is 
                 # authenticated and has permission to access the resource.
                 auth_request /authenticate;

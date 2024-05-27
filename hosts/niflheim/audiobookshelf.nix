@@ -13,6 +13,14 @@ in
       enable = true;
     };
 
+    nginx.virtualHosts = {
+      "audiobookshelf.${domainName}" = {
+        locations."/" = {
+          proxyWebsockets = true;
+        };
+      };
+    };
+
     nginx-ext.applications."audiobookshelf" = {
       auth = false;
       port = config.services.audiobookshelf.port;

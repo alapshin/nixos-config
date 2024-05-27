@@ -15,6 +15,16 @@ in
 
     jellyseerr.enable = true;
 
+    nginx.virtualHosts = {
+      "jellyfin.${domainName}" = {
+        locations = {
+          "/socket" = {
+            proxyWebsockets = true;
+          };
+        };
+      };
+    };
+
     nginx-ext.applications = {
       "jellyfin" = {
         auth = false;
