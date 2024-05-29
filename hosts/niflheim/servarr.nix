@@ -138,13 +138,17 @@ in
     };
 
     nginx-ext.applications = {
+      "lidarr" = {
+        auth = true;
+        port = config.services.lidarr.server.port;
+      };
       "radarr" = {
         auth = true;
-        port = 7878;
+        port = config.services.radarr.server.port;
       };
       "readarr" = {
         auth = true;
-        port = 8787;
+        port = config.services.readarr.server.port;
       };
       "sonarr" = {
         auth = true;
@@ -152,7 +156,7 @@ in
       };
       "prowlarr" = {
         auth = true;
-        port = 9696;
+        port = config.services.prowlarr.server.port;
       };
     };
   };
