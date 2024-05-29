@@ -8,6 +8,12 @@ let
   port = 8096;
 in
 {
+  sops = {
+    secrets = {
+      "jellyfin/api_key" = { };
+      "jellyseerr/api_key" = { };
+    };
+  };
   services = {
     jellyfin = {
       enable = true;
