@@ -8,6 +8,12 @@ let
   group = config.users.groups.media.name;
 in
 {
+  sops = {
+    secrets = {
+      "audiobookshelf/api_key" = { };
+    };
+  };
+
   services = {
     audiobookshelf = {
       enable = true;

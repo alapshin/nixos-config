@@ -116,6 +116,20 @@ in
         {
           Media = [
             {
+              Audiobookshelf = {
+                icon = "audiobookshelf.svg";
+                href = "https://audiobookshelf.${domainName}";
+                description = "Audiobook and podcast server ";
+                widget = {
+                  type = "audiobookshelf";
+                  url = "https://audiobookshelf.${domainName}";
+                  key = "{{HOMEPAGE_FILE_AUDIOBOOKSHELF_API_KEY}}";
+                  enableBlocks = true;
+                  enableNowPlaying = false;
+                };
+              };
+            }
+            {
               Jellyfin = {
                 icon = "jellyfin.svg";
                 href = "https://jellyfin.${domainName}";
@@ -154,6 +168,7 @@ in
 
   systemd.services.homepage-dashboard = {
     environment = {
+      HOMEPAGE_FILE_AUDIOBOOKSHELF_API_KEY = "%d/audiobookshelf_api_key";
       HOMEPAGE_FILE_LIDARR_API_KEY = "%d/lidarr_api_key";
       HOMEPAGE_FILE_SONARR_API_KEY = "%d/sonarr_api_key";
       HOMEPAGE_FILE_RADARR_API_KEY = "%d/radarr_api_key";
@@ -166,6 +181,7 @@ in
     };
     serviceConfig = {
       LoadCredential = [
+        "audiobookshelf_api_key:${config.sops.secrets."audiobookshelf/api_key".path}"
         "lidarr_api_key:${config.sops.secrets."lidarr/api_key".path}"
         "radarr_api_key:${config.sops.secrets."radarr/api_key".path}"
         "readarr_api_key:${config.sops.secrets."readarr/api_key".path}"
