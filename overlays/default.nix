@@ -58,7 +58,6 @@
           oldAttrs.src.url;
       };
 
-
       installPhase = ''
         runHook preInstall
 
@@ -75,6 +74,7 @@
     });
 
     sonarr = prev.sonarr.overrideAttrs (oldAttrs: rec {
+      pname = "sonarr";
       version = "4.0.4.1695";
       src = prev.fetchurl {
         hash = "sha256-hIA/sh8Im2I8YZIO5Fn8rgorFahp3nCxEJzMhF0ysK0=";
@@ -89,6 +89,20 @@
           ]
           oldAttrs.src.url;
       };
+
+    installPhase = ''
+        runHook preInstall
+
+        mkdir -p $out/{bin,share/${pname}-${version}}
+        cp -r * $out/share/${pname}-${version}/.
+
+        makeWrapper "${prev.dotnet-runtime}/bin/dotnet" $out/bin/NzbDrone \
+          --add-flags "$out/share/sonarr-${version}/Sonarr.dll" \
+          --prefix PATH : ${prev.lib.makeBinPath [ prev.ffmpeg ]} \
+          --prefix LD_LIBRARY_PATH : ${prev.lib.makeLibraryPath [ prev.curl prev.sqlite prev.openssl prev.icu prev.zlib ]}
+
+        runHook postInstall
+      '';
     });
 
     prowlarr = prev.prowlarr.overrideAttrs (oldAttrs: rec {
