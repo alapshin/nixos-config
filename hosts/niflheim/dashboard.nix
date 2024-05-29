@@ -33,6 +33,10 @@ in
             style = "row";
             columns = 2;
           };
+          Documents = {
+            style = "row";
+            columns = 1;
+          };
         };
       };
       services = [
@@ -157,6 +161,22 @@ in
             }
           ];
         }
+        {
+          Documents = [
+            {
+              Paperless = {
+                icon = "paperless-ngx.svg";
+                href = "https://paperless.${domainName}";
+                description = "Document management system";
+                widget = {
+                  type = "paperlessngx";
+                  url = "https://paperless.${domainName}";
+                  key = "{{HOMEPAGE_FILE_PAPERLESS_API_KEY}}";
+                };
+              };
+            }
+          ];
+        }
       ];
     };
 
@@ -178,19 +198,25 @@ in
       HOMEPAGE_FILE_JELLYSEERR_API_KEY = "%d/jellyseerr_api_key";
       HOMEPAGE_FILE_QBITTTORRENT_USERNAME = "%d/qbittorrent_username";
       HOMEPAGE_FILE_QBITTTORRENT_PASSWORD = "%d/qbittorrent_password";
+      HOMEPAGE_FILE_PAPERLESS_API_KEY = "%d/paperless_api_key";
     };
     serviceConfig = {
       LoadCredential = [
         "audiobookshelf_api_key:${config.sops.secrets."audiobookshelf/api_key".path}"
+
         "lidarr_api_key:${config.sops.secrets."lidarr/api_key".path}"
         "radarr_api_key:${config.sops.secrets."radarr/api_key".path}"
         "readarr_api_key:${config.sops.secrets."readarr/api_key".path}"
         "sonarr_api_key:${config.sops.secrets."sonarr/api_key".path}"
         "prowlarr_api_key:${config.sops.secrets."prowlarr/api_key".path}"
+
         "jellyfin_api_key:${config.sops.secrets."jellyfin/api_key".path}"
         "jellyseerr_api_key:${config.sops.secrets."jellyseerr/api_key".path}"
         "qbittorrent_username:${config.sops.secrets."qbittorrent/username".path}"
         "qbittorrent_password:${config.sops.secrets."qbittorrent/password".path}"
+
+
+        "paperless_api_key:${config.sops.secrets."paperless/api_key".path}"
       ];
     };
   };

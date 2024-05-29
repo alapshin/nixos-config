@@ -13,6 +13,7 @@ in
 {
   sops = {
     secrets = {
+      "paperless/api_key" = { };
       "paperless/password" = { };
       "paperless/oidc_client_secret" = { };
     };
