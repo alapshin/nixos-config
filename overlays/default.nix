@@ -14,6 +14,7 @@
 
 
     lidarr = prev.lidarr.overrideAttrs (oldAttrs: rec {
+      pname = "lidarr";
       version = "2.3.3.4204";
       src = prev.fetchurl {
         hash = "sha256-ulWg9BhDr/RFE4sfXGf+i9W0KpOYKjtk49qBeIwI9dU=";
@@ -26,6 +27,19 @@
           ]
           oldAttrs.src.url;
       };
+      installPhase = ''
+        runHook preInstall
+
+        mkdir -p $out/{bin,share/${pname}-${version}}
+        cp -r * $out/share/${pname}-${version}/.
+        makeWrapper "${prev.dotnet-runtime}/bin/dotnet" $out/bin/Lidarr \
+          --add-flags "$out/share/${pname}-${version}/Lidarr.dll" \
+          --prefix LD_LIBRARY_PATH : ${prev.lib.makeLibraryPath [
+              prev.curl prev.sqlite prev.libmediainfo prev.icu  prev.openssl prev.zlib
+          ]}
+
+        runHook postInstall
+      '';
     });
 
     radarr = prev.radarr.overrideAttrs (oldAttrs: rec {
@@ -90,7 +104,7 @@
           oldAttrs.src.url;
       };
 
-    installPhase = ''
+      installPhase = ''
         runHook preInstall
 
         mkdir -p $out/{bin,share/${pname}-${version}}
