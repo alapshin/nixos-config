@@ -32,7 +32,8 @@
   };
 
   networking = {
-    firewall = {
+    firewall.interfaces."wg0" = {
+      allowedTCPPorts = [ 54321 ];
       allowedUDPPorts = [ 54321 ];
     };
   };
