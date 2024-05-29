@@ -39,6 +39,18 @@ in
         {
           Arr = [
             {
+              Lidarr = {
+                icon = "lidarr.svg";
+                href = "https://lidarr.${domainName}";
+                description = "Series Management";
+                widget = {
+                  type = "lidarr";
+                  url = "https://lidarr.${domainName}";
+                  key = "{{HOMEPAGE_FILE_LIDARR_API_KEY}}";
+                };
+              };
+            }
+            {
               Sonarr = {
                 icon = "sonarr.svg";
                 href = "https://sonarr.${domainName}";
@@ -142,6 +154,7 @@ in
 
   systemd.services.homepage-dashboard = {
     environment = {
+      HOMEPAGE_FILE_LIDARR_API_KEY = "%d/lidarr_api_key";
       HOMEPAGE_FILE_SONARR_API_KEY = "%d/sonarr_api_key";
       HOMEPAGE_FILE_RADARR_API_KEY = "%d/radarr_api_key";
       HOMEPAGE_FILE_READARR_API_KEY = "%d/readarr_api_key";
@@ -153,6 +166,7 @@ in
     };
     serviceConfig = {
       LoadCredential = [
+        "lidarr_api_key:${config.sops.secrets."lidarr/api_key".path}"
         "radarr_api_key:${config.sops.secrets."radarr/api_key".path}"
         "readarr_api_key:${config.sops.secrets."readarr/api_key".path}"
         "sonarr_api_key:${config.sops.secrets."sonarr/api_key".path}"
