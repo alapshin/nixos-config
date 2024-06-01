@@ -9,7 +9,7 @@
     package = pkgs.firefox.override {
       cfg = {
         nativeMessagingHosts.packages = [
-          pkgs.plasma5Packages.plasma-browser-integration
+          pkgs.kdePackages.plasma-browser-integration
         ];
       };
     };

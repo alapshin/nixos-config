@@ -52,17 +52,13 @@ let
     androidStudioPackages.canary
   ];
 
-  plasmaPackages = with pkgs.plasma5Packages; [
+  kdePackages = with pkgs.kdePackages; [
     ark
-    bismuth
     dolphin
     filelight
     gwenview
     kate
-    kamoso
-    kasts
     kcolorchooser
-    kwalletmanager
     okular
     spectacle
   ];
@@ -135,7 +131,7 @@ in
         krename
         libreoffice-qt
         logseq
-        qbittorrent-qt5
+        qbittorrent
         sddm-kcm
         smplayer
         strawberry
@@ -150,7 +146,7 @@ in
       ++ guiDevTools
       ++ borgPackages
       ++ javaPackages
-      ++ plasmaPackages
+      ++ kdePackages
       ++ pythonPackages;
   };
 }

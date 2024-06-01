@@ -49,7 +49,7 @@
     name = "breeze_cursors";
     gtk.enable = true;
     x11.enable = true;
-    package = pkgs.breeze-qt5;
+    package = pkgs.kdePackages.breeze;
   };
 
   xsession.enable = true;

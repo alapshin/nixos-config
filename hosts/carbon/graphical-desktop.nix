@@ -29,13 +29,12 @@
         enable = true;
         wayland.enable = true;
       };
-      defaultSession = "plasmawayland";
+      defaultSession = "plasma";
     };
     xserver = {
       videoDrivers = [ "modesetting" "intel" ];
-      desktopManager.plasma5.enable = true;
     };
-
+    desktopManager.plasma6.enable = true;
   };
 
   # Workaround for 
