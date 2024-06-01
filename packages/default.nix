@@ -10,8 +10,6 @@
 
   customHunspellDicts = prev.recurseIntoAttrs (prev.callPackages ./hunspell/dictionaries.nix { });
 
-  catppuccin-sddm = final.callPackage ./catpuccin-sddm { };
-
   keepassxc-autostart = prev.makeAutostartItem {
     name = "KeePassXC";
     package = prev.keepassxc;
