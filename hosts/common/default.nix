@@ -19,6 +19,11 @@
     };
     kernelModules = [ "kvm-amd" "kvm-intel" ];
     kernelPackages = pkgs.linuxPackages_zen;
+    initrd = {
+      systemd = {
+        enable = true;
+      };
+    };
   };
 
   console = {

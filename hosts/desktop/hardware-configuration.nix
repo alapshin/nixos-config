@@ -23,6 +23,9 @@ in
       };
     };
     initrd = {
+      systemd = {
+        enable = true;
+      };
       network = {
         enable = true;
         ssh = {
@@ -50,14 +53,12 @@ in
           keyFileSize = 4096;
           keyFile = "/dev/disk/by-uuid/2022-08-09-12-03-48-00";
           allowDiscards = true;
-          fallbackToPassword = true;
         };
         "luksdata" = {
           device = "/dev/disk/by-uuid/f8c9d40f-d397-46d2-a058-55a225d2670e";
           keyFileSize = 4096;
           keyFile = "/dev/disk/by-uuid/2022-08-09-12-03-48-00";
           allowDiscards = true;
-          fallbackToPassword = true;
         };
       };
     };
