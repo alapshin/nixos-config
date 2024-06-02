@@ -1,5 +1,8 @@
+[gpg]
+  format = ssh
 [user]
 	name = Andrei Lapshin
 	email = a.lapshin@scalablesolutions.io
+  signingkey = ~/.ssh/sc_id_ed25519.pub
 [core]
 	sshCommand = ssh -i ~/.ssh/sc_id_ed25519
