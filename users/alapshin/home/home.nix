@@ -19,6 +19,7 @@
     ./shell.nix
     # ./plasma.nix
     ./neovim.nix
+    ./texlive.nix
 
     ./theming.nix
     ./packages.nix
