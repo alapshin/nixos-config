@@ -46,13 +46,6 @@
     measurement = "en_DK.UTF-8";
   };
 
-  home.pointerCursor = {
-    name = "breeze_cursors";
-    gtk.enable = true;
-    x11.enable = true;
-    package = pkgs.kdePackages.breeze;
-  };
-
   xsession.enable = true;
   fonts.fontconfig.enable = true;
 
