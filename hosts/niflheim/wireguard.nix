@@ -44,13 +44,11 @@ in
         };
         wireguardPeers = [
           {
-            wireguardPeerConfig = {
-              Endpoint = "185.90.60.210:51820";
-              AllowedIPs = [
-                "0.0.0.0/0"
-              ];
-              PublicKey = "ievGDrxV0dKcjO7EM662c1Ziy0PVct0Ujse3CT4NQQw=";
-            };
+            Endpoint = "185.90.60.210:51820";
+            AllowedIPs = [
+              "0.0.0.0/0"
+            ];
+            PublicKey = "ievGDrxV0dKcjO7EM662c1Ziy0PVct0Ujse3CT4NQQw=";
           }
         ];
       };
@@ -68,21 +66,17 @@ in
         };
         routingPolicyRules = [
           {
-            routingPolicyRuleConfig = {
-              Priority = 1;
-              User = config.users.users.qbittorrent.name;
-              Table = "main";
-              Family = "both";
-              SuppressPrefixLength = 0;
-            };
+            Priority = 1;
+            User = config.users.users.qbittorrent.name;
+            Table = "main";
+            Family = "both";
+            SuppressPrefixLength = 0;
           }
           {
-            routingPolicyRuleConfig = {
-              Priority = 2;
-              User = config.users.users.qbittorrent.name;
-              Table = wgRouteTable;
-              Family = "both";
-            };
+            Priority = 2;
+            User = config.users.users.qbittorrent.name;
+            Table = wgRouteTable;
+            Family = "both";
           }
         ];
       };
