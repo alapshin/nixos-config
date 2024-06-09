@@ -59,9 +59,9 @@
 
     readarr = prev.readarr.overrideAttrs (oldAttrs: rec {
       pname = "readarr";
-      version = "0.3.27.2538";
+      version = "0.3.28.2554";
       src = prev.fetchurl {
-        hash = "sha256-JKGLMu7rIhMAJM2bThTQiHDgc449gWQwmku/yQEAXL4=";
+        hash = "sha256-GncaJNZEbApPl6Tt9k0NblRPdYnOGiR1V6VTJB8+LIU=";
         url = builtins.replaceStrings
           [
             oldAttrs.version
