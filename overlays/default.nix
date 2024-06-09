@@ -89,16 +89,14 @@
 
     sonarr = prev.sonarr.overrideAttrs (oldAttrs: rec {
       pname = "sonarr";
-      version = "4.0.4.1695";
+      version = "4.0.5.1710";
       src = prev.fetchurl {
-        hash = "sha256-hIA/sh8Im2I8YZIO5Fn8rgorFahp3nCxEJzMhF0ysK0=";
+        hash = "sha256-MkRKWMhH4x5Z9mURh8qpShaozHrBFOHHwTmFlU1wqS8=";
         url = builtins.replaceStrings
           [
-            "main"
             oldAttrs.version
           ]
           [
-            "develop"
             version
           ]
           oldAttrs.src.url;
