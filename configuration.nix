@@ -12,7 +12,7 @@
       dates = "daily";
       options = "--delete-older-than 7d";
     };
-    package = pkgs.nixVersions.nix_2_19;
+    package = pkgs.nixVersions.nix_2_21;
     settings = {
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
