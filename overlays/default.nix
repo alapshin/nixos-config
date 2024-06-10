@@ -12,7 +12,6 @@
       ];
     };
 
-
     lidarr = prev.lidarr.overrideAttrs (oldAttrs: rec {
       pname = "lidarr";
       version = "2.3.3.4204";
@@ -40,21 +39,6 @@
 
         runHook postInstall
       '';
-    });
-
-    radarr = prev.radarr.overrideAttrs (oldAttrs: rec {
-      version = "5.6.0.8846";
-      src = prev.fetchurl {
-        hash = "sha256-rKe1xQR3lkPXQBUWmKdHUu/AQ99U1kCINeXV2z/ZG5o=";
-        url = builtins.replaceStrings
-          [
-            oldAttrs.version
-          ]
-          [
-            version
-          ]
-          oldAttrs.src.url;
-      };
     });
 
     readarr = prev.readarr.overrideAttrs (oldAttrs: rec {
@@ -87,50 +71,6 @@
       '';
     });
 
-    sonarr = prev.sonarr.overrideAttrs (oldAttrs: rec {
-      pname = "sonarr";
-      version = "4.0.5.1710";
-      src = prev.fetchurl {
-        hash = "sha256-MkRKWMhH4x5Z9mURh8qpShaozHrBFOHHwTmFlU1wqS8=";
-        url = builtins.replaceStrings
-          [
-            oldAttrs.version
-          ]
-          [
-            version
-          ]
-          oldAttrs.src.url;
-      };
-
-      installPhase = ''
-        runHook preInstall
-
-        mkdir -p $out/{bin,share/${pname}-${version}}
-        cp -r * $out/share/${pname}-${version}/.
-
-        makeWrapper "${prev.dotnet-runtime}/bin/dotnet" $out/bin/NzbDrone \
-          --add-flags "$out/share/sonarr-${version}/Sonarr.dll" \
-          --prefix PATH : ${prev.lib.makeBinPath [ prev.ffmpeg ]} \
-          --prefix LD_LIBRARY_PATH : ${prev.lib.makeLibraryPath [ prev.curl prev.sqlite prev.openssl prev.icu prev.zlib ]}
-
-        runHook postInstall
-      '';
-    });
-
-    prowlarr = prev.prowlarr.overrideAttrs (oldAttrs: rec {
-      version = "1.17.2.4511";
-      src = prev.fetchurl {
-        hash = "sha256-bYIavvea6Nwbn22CFiWXpzPGAI13oJYAIZr2FdLkyb8=";
-        url = builtins.replaceStrings
-          [
-            oldAttrs.version
-          ]
-          [
-            version
-          ]
-          oldAttrs.src.url;
-      };
-    });
   };
 
   pr-packages = final: _prev: {

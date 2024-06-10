@@ -101,6 +101,7 @@ in
 
     sonarr = {
       enable = true;
+      package = pkgs.unstable.sonarr;
       dataDir = "/var/lib/sonarr";
       auth = {
         method = "External";
