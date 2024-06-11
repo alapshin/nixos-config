@@ -27,7 +27,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixos";
 
-    lanzaboote.url = "github:nix-community/lanzaboote";
+    lanzaboote.url = "github:nix-community/lanzaboote?ref=v0.4.1";
     lanzaboote.inputs.nixpkgs.follows = "nixos";
 
     home-manager.url = "github:nix-community/home-manager";
