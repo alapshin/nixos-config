@@ -16,5 +16,9 @@
     openssh = {
       enable = true;
     };
+
+    languagetool = {
+      enable = true;
+    };
   };
 }
