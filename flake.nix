@@ -62,7 +62,9 @@
       nixpkgsConfig = {
         allowUnfree = true;
         android_sdk.accept_license = true;
-        permittedInsecurePackages = [ ];
+        permittedInsecurePackages = [
+            "electron-27.3.11"
+        ];
       };
 
       mkPkgs =
