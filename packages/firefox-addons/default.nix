@@ -38,14 +38,14 @@ in
 
   bypass-paywalls-clean =
     let
-      version = "3.6.9.0";
+      version = "3.7.1.0";
     in
     buildFirefoxXpiAddon {
       pname = "bypass-paywalls-clean";
       inherit version;
       addonId = "{d133e097-46d9-4ecc-9903-fa6a722a6e0e}";
       url = "https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass_paywalls_clean-${version}.xpi";
-      sha256 = "sha256-CnlQHlNo3lDTiDfAwrQsHKiQFcrCp7e1FlfPyMfubAg=";
+      sha256 = "sha256-cXPIDD3PWfgeeATaFUUjRvQoqUT77t7PZM3J6Sf12UA=";
       meta = with lib; {
         homepage = "https://gitlab.com/magnolia1234/bypass-paywalls-firefox-clean";
         description = "Bypass Paywalls of (custom) news sites";
@@ -56,14 +56,14 @@ in
 
   linguist-translator =
     let
-      version = "5.0.7";
+      version = "5.0.17";
     in
     buildFirefoxXpiAddon {
       pname = "linguist-translator";
       inherit version;
-      addonId = "{33718e7a-4cbc-43da-b9c9-dc14dabf735}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4102378/linguist_translator-${version}.xpi";
-      sha256 = "sha256-8/9zjNwvRiFegIgoQfBmwZGhdFszS2047b4t1K7Cr7c=";
+      addonId = "{33718e7a-4cbc-43da-b9c9-dc14dabf735c}";
+      url = "https://addons.mozilla.org/firefox/downloads/file/3955129/linguist_translator-${version}.0.1.xpi";
+      sha256 = "sha256-4ZpMuJRkNFpe36yblVtJjvuiLIGxAyctv3t4ZkS4a9o=";
       meta = with lib; {
         homepage = "https://github.com/translate-tools/linguist";
         description = "Translate web pages, highlighted text, Netflix subtitles, private messages, speak text, and save important translations to your personal dictionary to learn words in 130 languages.";
