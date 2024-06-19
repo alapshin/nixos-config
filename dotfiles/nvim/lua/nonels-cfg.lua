@@ -3,6 +3,5 @@ nls.setup({
   sources = {
     nls.builtins.diagnostics.gitlint,
     nls.builtins.diagnostics.hadolint,
-    nls.builtins.diagnostics.selene,
   },
 })

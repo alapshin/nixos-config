@@ -32,6 +32,8 @@
       cmp-nvim-lsp-signature-help
       none-ls-nvim
       lspkind-nvim
+      lspsaga-nvim
+      lsp-zero-nvim
       nvim-lspconfig
       inc-rename-nvim
       nvim-treesitter.withAllGrammars
@@ -61,7 +63,6 @@
       # Bash LSP support
       shfmt
       shellcheck
-      nodePackages.bash-language-server
 
       # Lua LSP support
       selene
