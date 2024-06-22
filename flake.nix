@@ -63,7 +63,7 @@
         allowUnfree = true;
         android_sdk.accept_license = true;
         permittedInsecurePackages = [
-            "electron-27.3.11"
+          "electron-28.3.3"
         ];
       };
 
