@@ -100,9 +100,6 @@ in
       enable = true;
       package = pkgs.prs.authelia;
 
-      settingsFiles = [
-        ./authelia.yml
-      ];
       settings = {
         log = {
           level = "debug";
@@ -245,6 +242,7 @@ in
         sessionSecretFile = config.sops.secrets."authelia/session_secret".path;
         storageEncryptionKeyFile = config.sops.secrets."authelia/storage_secret".path;
         oidcHmacSecretFile = config.sops.secrets."authelia/oidc_hmac_secret".path;
+        oidcIssuerPrivateKeyFile = config.sops.secrets."authelia/jwk_rsa_key.pem".path;
       };
     };
   };
