@@ -8,7 +8,6 @@
 
     firewall = {
       enable = true;
-      allowedUDPPorts = [ ];
       allowedTCPPorts = [ 80 443 ];
     };
   };

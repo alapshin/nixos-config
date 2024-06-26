@@ -150,7 +150,6 @@
             ./hosts/niflheim
             self.nixosModules.servarr
             self.nixosModules.nginx-ext
-            self.nixosModules.qbittorrent
           ];
           specialArgs = { domainName = "hlsrv.dev"; };
         };

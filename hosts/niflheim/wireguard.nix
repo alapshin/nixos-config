@@ -67,14 +67,14 @@ in
         routingPolicyRules = [
           {
             Priority = 1;
-            User = config.users.users.qbittorrent.name;
+            User = config.users.users.transmission.name;
             Table = "main";
             Family = "both";
             SuppressPrefixLength = 0;
           }
           {
             Priority = 2;
-            User = config.users.users.qbittorrent.name;
+            User = config.users.users.transmission.name;
             Table = wgRouteTable;
             Family = "both";
           }

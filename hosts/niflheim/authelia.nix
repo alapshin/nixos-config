@@ -16,7 +16,7 @@ let
   ldapUserOU = "ou=people";
   ldapUsernameAttr = "uid";
   ldapFullUser = "${ldapUsernameAttr}=${ldapUserDN},${ldapUserOU},${ldapBaseDN}";
-  autheliaPort = 9091;
+  autheliaPort = 9090;
   redisUnixSocketPath = config.services.redis.servers."authelia-${instance}".unixSocket;
 in
 {
@@ -106,7 +106,7 @@ in
           format = "text";
         };
         server = {
-          address = "tcp://localhost:9091";
+          address = "tcp://localhost:${toString autheliaPort}";
           endpoints = {
             authz = {
               auth-request = {

@@ -12,8 +12,6 @@ in
     secrets = {
       "jellyfin/api_key" = { };
       "jellyseerr/api_key" = { };
-      "qbittorrent/username" = { };
-      "qbittorrent/password" = { };
     };
   };
   services = {
@@ -103,15 +101,13 @@ in
               };
             }
             {
-              qBittorrent = {
-                icon = "qbittorrent.svg";
-                href = "https://qbittorrent.${domainName}";
+              Transmission = {
+                icon = "transmission.svg";
+                href = "https://transmission.${domainName}";
                 description = "Torrent Management";
                 widget = {
-                  type = "qbittorrent";
-                  url = "https://qbittorrent.${domainName}";
-                  username = "{{HOMEPAGE_FILE_QBITTORRENT_USERNAME}}";
-                  password = "{{HOMEPAGE_FILE_QBITTORRENT_PASSWORD}}";
+                  type = "transmission";
+                  url = "https://transmission.${domainName}";
                 };
               };
             }
@@ -196,8 +192,6 @@ in
       HOMEPAGE_FILE_PROWLARR_API_KEY = "%d/prowlarr_api_key";
       HOMEPAGE_FILE_JELLYFIN_API_KEY = "%d/jellyfin_api_key";
       HOMEPAGE_FILE_JELLYSEERR_API_KEY = "%d/jellyseerr_api_key";
-      HOMEPAGE_FILE_QBITTTORRENT_USERNAME = "%d/qbittorrent_username";
-      HOMEPAGE_FILE_QBITTTORRENT_PASSWORD = "%d/qbittorrent_password";
       HOMEPAGE_FILE_PAPERLESS_API_KEY = "%d/paperless_api_key";
     };
     serviceConfig = {
@@ -212,9 +206,6 @@ in
 
         "jellyfin_api_key:${config.sops.secrets."jellyfin/api_key".path}"
         "jellyseerr_api_key:${config.sops.secrets."jellyseerr/api_key".path}"
-        "qbittorrent_username:${config.sops.secrets."qbittorrent/username".path}"
-        "qbittorrent_password:${config.sops.secrets."qbittorrent/password".path}"
-
 
         "paperless_api_key:${config.sops.secrets."paperless/api_key".path}"
       ];

@@ -18,7 +18,7 @@
     ./openssh.nix
     ./postgres.nix
     ./paperless.nix
-    ./qbittorrent.nix
+    ./transmission.nix
     ./searx.nix
     ./servarr.nix
     # ./syncthing.nix
