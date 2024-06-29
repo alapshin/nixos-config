@@ -16,6 +16,7 @@
     ./lldap.nix
     ./navidrome.nix
     ./nginx.nix
+    ./ntfy.nix
     ./nextcloud.nix
     ./openssh.nix
     ./photoprism.nix
