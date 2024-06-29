@@ -13,6 +13,7 @@
     ./dashboard.nix
     ./jellyfin.nix
     ./lldap.nix
+    ./navidrome.nix
     ./nginx.nix
     ./nextcloud.nix
     ./openssh.nix

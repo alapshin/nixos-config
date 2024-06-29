@@ -137,7 +137,12 @@ in
               policy = "bypass";
               domain = [ "*.${domainName}" ];
               resources = [
+                # General API
                 "^/api([/?].*)?$"
+                # Navidrome API
+                "^/rest([/?].*)?$"
+                # Navidrome Share API
+                "^/share([/?].*)?$"
               ];
             }
             {
