@@ -3,11 +3,7 @@
 , config
 , domainName
 , ...
-}:
-let
-  group = config.users.groups.media.name;
-in
-{
+}: {
   sops = {
     secrets = {
       "audiobookshelf/api_key" = { };
@@ -40,8 +36,8 @@ in
           "/mnt/data/audiobooks" = {
             d = {
               mode = "0755";
-              inherit group;
               user = config.services.audiobookshelf.user;
+              group = config.users.groups.media.name;
             };
           };
         };
