@@ -16,6 +16,7 @@
     ./nginx.nix
     ./nextcloud.nix
     ./openssh.nix
+    ./photoprism.nix
     ./postgres.nix
     ./paperless.nix
     ./transmission.nix
