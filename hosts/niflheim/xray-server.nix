@@ -6,7 +6,7 @@
   sops = {
     secrets = {
       "xray/wireguard_private_key" = {
-        key = "wireguard/hel_private_key";
+        key = "wireguard/private_key";
         restartUnits = [ "xray.service" ];
       };
     };

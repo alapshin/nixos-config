@@ -11,8 +11,12 @@ in
 
   sops = {
     secrets = {
-      "wireguard/hel_private_key" = {
-        key = "wireguard/hel_private_key";
+      "wireguard/private_key" = {
+        key = "wireguard/private_key";
+        owner = config.users.users.systemd-network.name;
+      };
+      "wireguard/preshared_key" = {
+        key = "wireguard/preshared_key";
         owner = config.users.users.systemd-network.name;
       };
     };
@@ -40,15 +44,17 @@ in
         wireguardConfig = {
           ListenPort = wgPort;
           RouteTable = wgRouteTable;
-          PrivateKeyFile = config.sops.secrets."wireguard/hel_private_key".path;
+          PrivateKeyFile = config.sops.secrets."wireguard/private_key".path;
         };
         wireguardPeers = [
           {
-            Endpoint = "185.90.60.210:51820";
+            Endpoint = "wg010.njalla.no:51820";
             AllowedIPs = [
               "0.0.0.0/0"
             ];
-            PublicKey = "ievGDrxV0dKcjO7EM662c1Ziy0PVct0Ujse3CT4NQQw=";
+            PublicKey = "UGz2woATzV0P1fqXZ+wjCRoZdFDJ/Kdr1aYuw25u7D4=";
+            # PresharedKeyFile = config.sops.secrets."wireguard/preshared_key".path;
+            PersistentKeepalive = 25;
           }
         ];
       };
@@ -56,10 +62,10 @@ in
     networks = {
       "20-wg0" = {
         dns = [
-          "10.2.0.1"
+          "95.215.19.53"
         ];
         address = [
-          "10.2.0.2/32"
+          "10.13.37.228/24"
         ];
         matchConfig = {
           Name = wg;
