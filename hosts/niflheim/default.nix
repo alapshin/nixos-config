@@ -10,6 +10,7 @@
     ./audiobookshelf.nix
     ./authelia.nix
     ./calibre.nix
+    ./changedetection.nix
     ./dashboard.nix
     ./jellyfin.nix
     ./lldap.nix
