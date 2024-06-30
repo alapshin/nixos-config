@@ -12,6 +12,7 @@
     ./calibre.nix
     ./changedetection.nix
     ./dashboard.nix
+    ./influxdb.nix
     ./jellyfin.nix
     ./lldap.nix
     ./navidrome.nix
@@ -23,6 +24,7 @@
     ./postgres.nix
     ./paperless.nix
     ./transmission.nix
+    ./scrutiny.nix
     ./searx.nix
     ./servarr.nix
     # ./syncthing.nix
