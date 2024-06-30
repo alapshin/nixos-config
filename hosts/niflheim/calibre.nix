@@ -25,6 +25,8 @@ in
         format = "binary";
         sopsFile = ./secrets/calibre/users.sqlite;
       };
+      "calibreweb/admin_username" = { };
+      "calibreweb/admin_password" = { };
     };
   };
   services = {
@@ -58,7 +60,7 @@ in
     };
 
     nginx-ext.applications = {
-      "calibre-web" = {
+      "calibre" = {
         auth = true;
         port = webport;
       };

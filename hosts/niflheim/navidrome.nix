@@ -3,6 +3,13 @@
 , config
 , ...
 }: {
+  sops = {
+    secrets = {
+      "navidrome/salt" = { };
+      "navidrome/token" = { };
+    };
+  };
+
   services = {
     navidrome = {
       enable = true;

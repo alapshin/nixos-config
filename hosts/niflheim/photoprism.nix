@@ -6,6 +6,7 @@
 }: {
   sops = {
     secrets = {
+      "photoprism/admin_username" = { };
       "photoprism/admin_password" = { };
     };
   };
