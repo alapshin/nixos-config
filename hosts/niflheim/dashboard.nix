@@ -1,23 +1,35 @@
 { lib
 , pkgs
 , config
+, libutil
 , domainName
 , ...
 }:
 let
-  port = config.services.homepage-dashboard.listenPort;
+  mkService = { app, description, widget ? { } }:
+    let
+      name = libutil.capitalize app;
+      listenPort = config.services.nginx-ext.applications."${app}".port;
+    in
+    {
+      "${name}" = {
+        icon = "${app}.svg";
+        href = "https://${app}.${domainName}";
+        description = description;
+        widget = {
+          type = app;
+          url = "http://localhost:${toString listenPort}";
+          key = "{{HOMEPAGE_FILE_${lib.toUpper app}_API_KEY}}";
+        } // widget;
+      };
+    };
 in
 {
-  sops = {
-    secrets = {
-      "jellyfin/api_key" = { };
-      "jellyseerr/api_key" = { };
-    };
-  };
   services = {
     homepage-dashboard = {
       enable = true;
       settings = {
+        base = "https://dashboard.${domainName}";
         theme = "dark";
         hideVersion = true;
         headerStyle = "clean";
@@ -40,137 +52,69 @@ in
       services = [
         {
           Arr = [
-            {
-              Lidarr = {
-                icon = "lidarr.svg";
-                href = "https://lidarr.${domainName}";
-                description = "Series Management";
-                widget = {
-                  type = "lidarr";
-                  url = "https://lidarr.${domainName}";
-                  key = "{{HOMEPAGE_FILE_LIDARR_API_KEY}}";
-                };
+            (mkService {
+              app = "lidarr";
+              description = "Music Management";
+            })
+            (mkService {
+              app = "sonarr";
+              description = "Series Management";
+              widget = {
+                key = "{{HOMEPAGE_FILE_SONARR_API_KEY}}";
               };
-            }
-            {
-              Sonarr = {
-                icon = "sonarr.svg";
-                href = "https://sonarr.${domainName}";
-                description = "Series Management";
-                widget = {
-                  type = "sonarr";
-                  url = "https://sonarr.${domainName}";
-                  key = "{{HOMEPAGE_FILE_SONARR_API_KEY}}";
-                };
+            })
+            (mkService {
+              app = "radarr";
+              description = "Movies Management";
+              widget = {
+                key = "{{HOMEPAGE_FILE_RADARR_API_KEY}}";
               };
-            }
-            {
-              Radarr = {
-                icon = "radarr.svg";
-                href = "https://radarr.${domainName}";
-                description = "Movies Management";
-                widget = {
-                  type = "radarr";
-                  url = "https://radarr.${domainName}";
-                  key = "{{HOMEPAGE_FILE_RADARR_API_KEY}}";
-                };
+            })
+            (mkService {
+              app = "readarr";
+              description = "Ebooks Management";
+              widget = {
+                key = "{{HOMEPAGE_FILE_READARR_API_KEY}}";
               };
-            }
-            {
-              Readarr = {
-                icon = "readarr.svg";
-                href = "https://readarr.${domainName}";
-                description = "Books Management";
-                widget = {
-                  type = "readarr";
-                  url = "https://readarr.${domainName}";
-                  key = "{{HOMEPAGE_FILE_READARR_API_KEY}}";
-                };
+            })
+            (mkService {
+              app = "prowlarr";
+              description = "Indexer Management";
+              widget = {
+                key = "{{HOMEPAGE_FILE_PROWLARR_API_KEY}}";
               };
-            }
-            {
-              Prowlarr = {
-                icon = "prowlarr.svg";
-                href = "https://prowlarr.${domainName}";
-                description = "Indexer Management";
-                widget = {
-                  type = "prowlarr";
-                  url = "https://prowlarr.${domainName}";
-                  key = "{{HOMEPAGE_FILE_PROWLARR_API_KEY}}";
-                };
-              };
-            }
-            {
-              Transmission = {
-                icon = "transmission.svg";
-                href = "https://transmission.${domainName}";
-                description = "Torrent Management";
-                widget = {
-                  type = "transmission";
-                  url = "https://transmission.${domainName}";
-                };
-              };
-            }
+            })
+            (mkService {
+              app = "transmission";
+              description = "Torrent Management";
+            })
           ];
         }
         {
           Media = [
-            {
-              Audiobookshelf = {
-                icon = "audiobookshelf.svg";
-                href = "https://audiobookshelf.${domainName}";
-                description = "Audiobook and podcast server ";
-                widget = {
-                  type = "audiobookshelf";
-                  url = "https://audiobookshelf.${domainName}";
-                  key = "{{HOMEPAGE_FILE_AUDIOBOOKSHELF_API_KEY}}";
-                  enableBlocks = true;
-                  enableNowPlaying = false;
-                };
-              };
-            }
-            {
-              Jellyfin = {
-                icon = "jellyfin.svg";
-                href = "https://jellyfin.${domainName}";
-                description = "Media System";
-                widget = {
-                  type = "jellyfin";
-                  url = "https://jellyfin.${domainName}";
-                  key = "{{HOMEPAGE_FILE_JELLYFIN_API_KEY}}";
-                  enableBlocks = true;
-                  enableNowPlaying = false;
-                };
-              };
-            }
-            {
-              Jellyseer = {
-                icon = "jellyseerr.svg";
-                href = "https://jellyseerr.${domainName}";
-                description = "Media request management";
-                widget = {
-                  type = "jellyseerr";
-                  url = "https://jellyseerr.${domainName}";
-                  key = "{{HOMEPAGE_FILE_JELLYSEERR_API_KEY}}";
-                };
-              };
-            }
+            (mkService {
+              app = "audiobookshelf";
+              description = "Audiobook and podcast server";
+            })
+            (mkService {
+              app = "jellyfin";
+              description = "The Free Software Media System ";
+            })
+            # (mkService {
+            #   app = "jellyseer" ;
+            #   description = "Media request management";
+            # })
           ];
         }
         {
           Documents = [
-            {
-              Paperless = {
-                icon = "paperless-ngx.svg";
-                href = "https://paperless.${domainName}";
-                description = "Document management system";
-                widget = {
-                  type = "paperlessngx";
-                  url = "https://paperless.${domainName}";
-                  key = "{{HOMEPAGE_FILE_PAPERLESS_API_KEY}}";
-                };
+            (mkService {
+              app = "paperless";
+              widget = {
+                type = "paperlessngx";
               };
-            }
+              description = "Document management system";
+            })
           ];
         }
       ];
@@ -178,12 +122,13 @@ in
 
     nginx-ext.applications."dashboard" = {
       auth = true;
-      inherit port;
+      port = config.services.homepage-dashboard.listenPort;
     };
   };
 
   systemd.services.homepage-dashboard = {
     environment = {
+      LOG_LEVEL = "debug";
       HOMEPAGE_FILE_AUDIOBOOKSHELF_API_KEY = "%d/audiobookshelf_api_key";
       HOMEPAGE_FILE_LIDARR_API_KEY = "%d/lidarr_api_key";
       HOMEPAGE_FILE_SONARR_API_KEY = "%d/sonarr_api_key";

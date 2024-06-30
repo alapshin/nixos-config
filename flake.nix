@@ -56,6 +56,7 @@
 
       system = "x86_64-linux";
 
+      libutil = import ./util-lib { lib = nixos.lib; };
       configDir = builtins.toString ./.;
       dotfileDir = "${configDir}/dotfiles";
 
@@ -110,7 +111,7 @@
           inherit system;
           modules = baseModules ++ hostModules ++ userModules;
           specialArgs = specialArgs // {
-            inherit inputs pkgs self dotfileDir;
+            inherit inputs pkgs self libutil dotfileDir;
           };
         };
     in
