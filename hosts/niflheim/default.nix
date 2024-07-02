@@ -12,6 +12,7 @@
     ./calibre.nix
     ./changedetection.nix
     ./dashboard.nix
+    ./grafana.nix
     ./influxdb.nix
     ./jellyfin.nix
     ./lldap.nix
@@ -23,6 +24,7 @@
     ./photoprism.nix
     ./postgres.nix
     ./paperless.nix
+    ./prometheus.nix
     ./transmission.nix
     ./scrutiny.nix
     ./searx.nix

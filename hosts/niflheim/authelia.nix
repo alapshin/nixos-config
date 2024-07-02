@@ -193,6 +193,29 @@ in
             ];
             clients = [
               {
+                client_id = "audiobookshelf";
+                client_name = "Audiobookshelf";
+                client_secret = "$pbkdf2-sha512$310000$CYG9RzneGw4EEojmAFaprA$CppTSc1wUVwvVtkD48.UFO7KPMAN9OlHIOMnuNeDAyvTSNXshShlcONmQinyd.D8DaOTGE0Sn.wWqEYRWnq9hg";
+                require_pkce = true;
+                pkce_challenge_method = "S256";
+                authorization_policy = "one_factor";
+                redirect_uris = [
+                  "https://audiobookshelf.${domainName}/auth/openid/callback"
+                  "https://audiobookshelf.${domainName}/auth/openid/mobile-redirect"
+                ];
+              }
+              {
+                client_id = "grafana";
+                client_name = "Grafana";
+                client_secret = "$pbkdf2-sha512$310000$c6S3Q5j25GIJu2VBLf5VFg$S.j/GnNOjD40jpaSlizdi8gQnY2YXJusJcSOcIg8QgV8IkwAC9ILW1U21FrGMqePzfwoXYoYvgG.ZWk01MTo2Q";
+                require_pkce = true;
+                pkce_challenge_method = "S256";
+                authorization_policy = "one_factor";
+                redirect_uris = [
+                  "https://grafana.${domainName}/login/generic_oauth"
+                ];
+              }
+              {
                 client_id = "jellyfin";
                 client_name = "Jellyfin";
                 client_secret = "$pbkdf2-sha512$310000$w8/7AXV6ljEACFLwkc.neQ$bMnyFnhUjuFjhKGw.awXKfK1EK6n9XS5P6RcywAbBxLhI6hcJqJ8jDCt3oOBp9YpaPCbNh3Sm23NCwJaUIci5w";
@@ -213,18 +236,6 @@ in
                 authorization_policy = "one_factor";
                 redirect_uris = [
                   "https://nextcloud.${domainName}/apps/oidc_login/oidc"
-                ];
-              }
-              {
-                client_id = "audiobookshelf";
-                client_name = "Audiobookshelf";
-                client_secret = "$pbkdf2-sha512$310000$CYG9RzneGw4EEojmAFaprA$CppTSc1wUVwvVtkD48.UFO7KPMAN9OlHIOMnuNeDAyvTSNXshShlcONmQinyd.D8DaOTGE0Sn.wWqEYRWnq9hg";
-                require_pkce = true;
-                pkce_challenge_method = "S256";
-                authorization_policy = "one_factor";
-                redirect_uris = [
-                  "https://audiobookshelf.${domainName}/auth/openid/callback"
-                  "https://audiobookshelf.${domainName}/auth/openid/mobile-redirect"
                 ];
               }
               {
