@@ -22,7 +22,7 @@
         # for now.
         enable = lib.mkForce false;
         consoleMode = "max";
-        configurationLimit = 10;
+        configurationLimit = 7;
       };
     };
     lanzaboote = {
