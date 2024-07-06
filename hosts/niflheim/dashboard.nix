@@ -45,10 +45,34 @@ in
           };
           Documents = {
             style = "row";
-            columns = 1;
+            columns = 2;
+          };
+          Monitoring = {
+            style = "row";
+            columns = 2;
           };
         };
       };
+      widgets = [
+        {
+          datetime = {
+            text_size = "xl";
+            format = {
+              hour12 = false;
+              dateStyle = "long";
+              timeStyle = "long";
+            };
+          };
+        }
+        {
+          resources = {
+            cpu = true;
+            memory = true;
+            cputemp = true;
+            uptime = true;
+          };
+        }
+      ];
       services = [
         {
           Arr = [
@@ -127,11 +151,21 @@ in
         {
           Documents = [
             (mkService {
+              app = "nextcloud";
+              description = "A safe home for all your data";
+              widget = {
+                url = "https://nextcloud.${domainName}";
+                key = null;
+                username = "{{HOMEPAGE_VAR_NEXTCLOUD_USERNAME}}";
+                password = "{{HOMEPAGE_FILE_NEXTCLOUD_PASSWORD}}";
+              };
+            })
+            (mkService {
               app = "paperless";
               widget = {
                 type = "paperlessngx";
               };
-              description = "Document management system";
+              description = "Community-supported open-source document management system";
             })
             (mkService {
               app = "photoprism";
@@ -140,6 +174,26 @@ in
                 username = "{{HOMEPAGE_FILE_PHOTOPRISM_USERNAME}}";
                 password = "{{HOMEPAGE_FILE_PHOTOPRISM_PASSWORD}}";
               };
+            })
+          ];
+        }
+        {
+          Monitoring = [
+            (mkService {
+              app = "prometheus";
+              description = "Monitoring system and time series database";
+            })
+            (mkService {
+              app = "grafana";
+              description = "The open and composable observability and data visualization platform";
+              widget = {
+                username = "{{HOMEPAGE_FILE_GRAFANA_USERNAME}}";
+                password = "{{HOMEPAGE_FILE_GRAFANA_PASSWORD}}";
+              };
+            })
+            (mkService {
+              app = "scrutiny";
+              description = "Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds";
             })
           ];
         }
@@ -159,6 +213,9 @@ in
       HOMEPAGE_FILE_CALIBREWEB_USERNAME = "%d/calibreweb_username";
       HOMEPAGE_FILE_CALIBREWEB_PASSWORD = "%d/calibreweb_password";
 
+      HOMEPAGE_FILE_GRAFANA_USERNAME = "%d/grafana_username";
+      HOMEPAGE_FILE_GRAFANA_PASSWORD = "%d/grafana_password";
+
       HOMEPAGE_FILE_LIDARR_API_KEY = "%d/lidarr_api_key";
       HOMEPAGE_FILE_SONARR_API_KEY = "%d/sonarr_api_key";
       HOMEPAGE_FILE_RADARR_API_KEY = "%d/radarr_api_key";
@@ -170,6 +227,9 @@ in
       HOMEPAGE_FILE_NAVIDROME_SALT = "%d/navidrome_salt";
       HOMEPAGE_FILE_NAVIDROME_TOKEN = "%d/navidrome_token";
 
+      HOMEPAGE_VAR_NEXTCLOUD_USERNAME = config.services.nextcloud.config.adminuser;
+      HOMEPAGE_FILE_NEXTCLOUD_PASSWORD = "%d/nextcloud_password";
+
       HOMEPAGE_FILE_PAPERLESS_API_KEY = "%d/paperless_api_key";
       HOMEPAGE_FILE_PHOTOPRISM_USERNAME = "%d/photoprism_username";
       HOMEPAGE_FILE_PHOTOPRISM_PASSWORD = "%d/photoprism_password";
@@ -179,6 +239,10 @@ in
         "audiobookshelf_api_key:${config.sops.secrets."audiobookshelf/api_key".path}"
         "calibreweb_username:${config.sops.secrets."calibreweb/admin_username".path}"
         "calibreweb_password:${config.sops.secrets."calibreweb/admin_password".path}"
+
+
+        "grafana_username:${config.sops.secrets."grafana/admin_username".path}"
+        "grafana_password:${config.sops.secrets."grafana/admin_password".path}"
 
         "lidarr_api_key:${config.sops.secrets."lidarr/api_key".path}"
         "radarr_api_key:${config.sops.secrets."radarr/api_key".path}"
@@ -191,6 +255,8 @@ in
 
         "navidrome_salt:${config.sops.secrets."navidrome/salt".path}"
         "navidrome_token:${config.sops.secrets."navidrome/token".path}"
+
+        "nextcloud_password:${config.sops.secrets."nextcloud/admin_password".path}"
 
         "paperless_api_key:${config.sops.secrets."paperless/api_key".path}"
         "photoprism_username:${config.sops.secrets."photoprism/admin_username".path}"
