@@ -61,20 +61,6 @@ in
 
       settings = {
         ratelimit.protection.enabled = false;
-        # Memories options
-        memories = {
-          exiftool = "${pkgs.exiftool}/bin/exiftool";
-          exiftool_no_local = true;
-          vod = {
-            ffmpeg = "${pkgs.jellyfin-ffmpeg}/bin/ffmpeg";
-            ffprobe = "${pkgs.jellyfin-ffmpeg}/bin/ffprobe";
-          };
-        };
-        enabledPreviewProviders = [
-          "OC\\Preview\\Movie"
-          "OC\\Preview\\Imaginary"
-        ];
-        preview_imaginary_url = "http://${config.services.imaginary.address}:${toString config.services.imaginary.port}";
 
         user_oidc = {
           single_logout = false;
@@ -95,13 +81,8 @@ in
       secretFile = config.sops.secrets."nextcloud/secrets.json".path;
 
       extraApps = with config.services.nextcloud.package.packages.apps; {
-        inherit bookmarks calendar contacts gpoddersync memories previewgenerator tasks;
+        inherit bookmarks calendar contacts gpoddersync tasks;
       } // {
-        # recognize = pkgs.fetchNextcloudApp {
-        #   license = "agpl3Plus";
-        #   url = "https://github.com/nextcloud/recognize/releases/download/v6.0.1/recognize-6.0.1.tar.gz";
-        #   sha256 = "sha256-7LuXBz7nrimRRUowu47hADzD5XhVyZP4Z39om8IRAZw=";
-        # };
         oidc_login = pkgs.fetchNextcloudApp {
           license = "agpl3Plus";
           url = "https://github.com/pulsejet/nextcloud-oidc-login/releases/download/v3.1.1/oidc_login.tar.gz";
@@ -110,23 +91,5 @@ in
       };
       extraAppsEnable = true;
     };
-  };
-
-  environment.systemPackages = with pkgs; [
-    # Memories app
-    perl
-    exiftool
-    jellyfin-ffmpeg
-    # Recognize app
-    nodejs
-  ];
-  systemd.services.nextcloud-cron = {
-    path = [ pkgs.perl pkgs.exiftool ];
-  };
-  systemd.services.nextcloud-setup = {
-    path = [ pkgs.perl pkgs.exiftool ];
-  };
-  systemd.services.phpfpm-nextcloud = {
-    path = [ pkgs.perl pkgs.exiftool ];
   };
 }
