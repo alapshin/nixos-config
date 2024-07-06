@@ -146,6 +146,12 @@
           ];
         };
 
+        bifrost = mkNixosConfiguration {
+          hostModules = [
+            ./hosts/bifrost
+          ];
+        };
+
         niflheim = mkNixosConfiguration {
           hostModules = [
             ./hosts/niflheim
@@ -181,7 +187,6 @@
           ];
           specialArgs = { domainName = "alapshin.com"; };
         };
-
       };
       # Stand-alone home-manager configuration for non NixOS machines
       homeConfigurations =

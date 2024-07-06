@@ -14,7 +14,11 @@
       enable = true;
       addKeysToAgent = "yes";
       matchBlocks = {
-        "gelmir" = {
+        "bifrost" = {
+          user = "root";
+          hostname = "95.217.6.218";
+        };
+        "hel" = {
           user = "root";
           port = 2222;
           hostname = "37.27.114.205";
