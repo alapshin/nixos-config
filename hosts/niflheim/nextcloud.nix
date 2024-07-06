@@ -10,7 +10,7 @@ in
 {
   sops = {
     secrets = {
-      "nextcloud/password" = {
+      "nextcloud/admin_password" = {
         owner = config.users.users.nextcloud.name;
       };
       "nextcloud/secrets.json" = {
@@ -54,7 +54,7 @@ in
       config = {
         dbtype = "pgsql";
         adminuser = "admin";
-        adminpassFile = config.sops.secrets."nextcloud/password".path;
+        adminpassFile = config.sops.secrets."nextcloud/admin_password".path;
       };
       database.createLocally = true;
 
