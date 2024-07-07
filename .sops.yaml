@@ -45,6 +45,14 @@ creation_rules:
         # alapshin-at-carbon
         - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
 
+  - path_regex: hosts/bifrost/secrets.*
+    key_groups:
+      - age:
+        # bifrost
+        - age1rs5rev3ks20s67052nshr5asqctvylrlytksjrfsns8e93t78dssr7wzg9
+        # alapshin-at-carbon
+        - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
+
   - path_regex: hosts/niflheim/secrets.*
     key_groups:
       - age:
@@ -60,15 +68,6 @@ creation_rules:
         - age1rs5rev3ks20s67052nshr5asqctvylrlytksjrfsns8e93t78dssr7wzg9
         # alapshin-at-carbon
         - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
-
-  - path_regex: hosts/jotunheim/secrets.*
-    key_groups:
-      - age:
-        # jotunheim
-        - age1rs5rev3ks20s67052nshr5asqctvylrlytksjrfsns8e93t78dssr7wzg9
-        # alapshin-at-carbon
-        - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
-
 
   - path_regex: users/alapshin/secrets.*
     key_groups:
