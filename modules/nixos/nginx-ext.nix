@@ -36,7 +36,13 @@ in
 
           auth = mkOption {
             type = types.bool;
-            description = "Protect application with auth";
+            description = "Whether to support SSO authentication.";
+          };
+
+          proxyWebsockets = mkOption {
+            type = types.bool;
+            default = false;
+            description = "Whether to support proxying websocket connections with HTTP/1.1.";
           };
         };
       });
@@ -64,6 +70,7 @@ in
           locations = {
             "/" = {
               proxyPass = "http://${app}";
+              proxyWebsockets = opts.proxyWebsockets;
               extraConfig = mkIf opts.auth (lib.strings.concatStringsSep "\n" [
                 (builtins.readFile ./nginx/auth-proxy.conf)
                 (builtins.readFile ./nginx/auth-request.conf)

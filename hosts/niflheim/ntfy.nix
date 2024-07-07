@@ -21,16 +21,11 @@ in
         auth-default-access = "deny-all";
       };
     };
-    nginx.virtualHosts = {
-      "ntfy.${config.domain.base}" = {
-        locations."/" = {
-          proxyWebsockets = true;
-        };
-      };
-    };
+
     nginx-ext.applications."ntfy" = {
       auth = true;
       port = port;
+      proxyWebsockets = true;
     };
   };
 }
