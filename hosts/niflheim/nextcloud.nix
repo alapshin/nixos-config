@@ -1,11 +1,10 @@
 { lib
 , pkgs
 , config
-, domainName
 , ...
 }:
 let
-  nextcloudHostname = "nextcloud.${domainName}";
+  nextcloudHostname = "nextcloud.${config.domain.base}";
 in
 {
   sops = {
@@ -33,7 +32,7 @@ in
       virtualHosts = {
         ${nextcloudHostname} = {
           forceSSL = true;
-          useACMEHost = domainName;
+          useACMEHost = config.domain.base;
         };
       };
     };
@@ -69,7 +68,7 @@ in
         };
 
         oidc_login_client_id = "nextcloud";
-        oidc_login_provider_url = "https://auth.${domainName}";
+        oidc_login_provider_url = "https://auth.${config.domain.base}";
         oidc_login_attributes = {
           id = "preferred_username";
         };

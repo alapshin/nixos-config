@@ -1,7 +1,6 @@
 { lib
 , pkgs
 , config
-, domainName
 , ...
 }:
 let
@@ -19,7 +18,7 @@ in
     };
     templates."paperless.env".content = builtins.readFile (pkgs.substituteAll {
       src = ./paperless.env;
-      server_url = "https://auth.${domainName}";
+      server_url = "https://${config.domain.auth}";
       oidc_client_secret = config.sops.placeholder."paperless/oidc_client_secret";
     });
   };
@@ -56,7 +55,7 @@ in
         PAPERLESS_APPS = "allauth.socialaccount.providers.openid_connect";
         PAPERLESS_DBHOST = "/run/postgresql";
         PAPERLESS_REDIS = "unix://${redisSocket}";
-        PAPERLESS_ADMIN_MAIL = "admin@${domainName}";
+        PAPERLESS_ADMIN_MAIL = "admin@${config.domain.base}";
       };
     };
 

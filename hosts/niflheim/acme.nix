@@ -1,7 +1,6 @@
 { lib
 , pkgs
 , config
-, domainName
 , ...
 }: {
   sops = {
@@ -25,13 +24,13 @@
   security = {
     acme = {
       acceptTerms = true;
-      certs."${domainName}" = {
+      certs."${config.domain.base}" = {
         extraDomainNames = [
-          "*.${domainName}"
+          "*.${config.domain.base}"
         ];
       };
       defaults = {
-        email = "mail@${domainName}";
+        email = "mail@${config.domain.base}";
         dnsProvider = "porkbun";
         credentialFiles = {
           "PORKBUN_API_KEY_FILE" = config.sops.secrets."porkbun/api_key".path;

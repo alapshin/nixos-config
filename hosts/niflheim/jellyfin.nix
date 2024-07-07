@@ -1,7 +1,6 @@
 { lib
 , pkgs
 , config
-, domainName
 , ...
 }:
 let
@@ -22,7 +21,7 @@ in
     jellyseerr.enable = true;
 
     nginx.virtualHosts = {
-      "jellyfin.${domainName}" = {
+      "jellyfin.${config.domain.base}" = {
         locations = {
           "/socket" = {
             proxyWebsockets = true;

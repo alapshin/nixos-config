@@ -1,7 +1,6 @@
 { lib
 , pkgs
 , config
-, domainName
 , ...
 }: {
   sops = {
@@ -18,7 +17,7 @@
     };
 
     nginx.virtualHosts = {
-      "photoprism.${domainName}" = {
+      "photoprism.${config.domain.base}" = {
         locations."/" = {
           proxyWebsockets = true;
         };

@@ -4,6 +4,7 @@
 , ...
 }: {
   imports = [
+    ./domain.nix
     ./secrets.nix
 
     ./acme.nix

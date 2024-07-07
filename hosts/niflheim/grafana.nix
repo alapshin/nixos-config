@@ -1,7 +1,6 @@
 { lib
 , pkgs
 , config
-, domainName
 , ...
 }:
 let
@@ -38,7 +37,7 @@ in
       enable = true;
       settings = {
         server = {
-          root_url = "https://grafana.${domainName}";
+          root_url = "https://grafana.${config.domain.base}";
         };
         database = {
           type = "postgres";
@@ -60,9 +59,9 @@ in
           name = "Authelia";
           client_id = "grafana";
           client_secret = "$__file{${config.sops.secrets."grafana/oidc_client_secret".path}}";
-          api_url = "https://auth.${domainName}/api/oidc/userinfo";
-          auth_url = "https://auth.${domainName}/api/oidc/authorization";
-          token_url = "https://auth.${domainName}/api/oidc/token";
+          api_url = "https://${config.domain.auth}/api/oidc/userinfo";
+          auth_url = "https://${config.domain.auth}/api/oidc/authorization";
+          token_url = "https://${config.domain.auth}/api/oidc/token";
 
           use_pkce = true;
           empty_scopes = false;

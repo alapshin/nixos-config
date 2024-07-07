@@ -2,7 +2,6 @@
 , pkgs
 , config
 , libutil
-, domainName
 , ...
 }:
 let
@@ -14,7 +13,7 @@ let
     {
       "${name}" = {
         icon = "${app}.svg";
-        href = "https://${app}.${domainName}";
+        href = "https://${app}.${config.domain.base}";
         description = description;
         widget = {
           type = app;
@@ -29,7 +28,7 @@ in
     homepage-dashboard = {
       enable = true;
       settings = {
-        base = "https://dashboard.${domainName}";
+        base = "https://dashboard.${config.domain.base}";
         theme = "dark";
         hideVersion = true;
         headerStyle = "clean";
@@ -154,7 +153,7 @@ in
               app = "nextcloud";
               description = "A safe home for all your data";
               widget = {
-                url = "https://nextcloud.${domainName}";
+                url = "https://nextcloud.${config.domain.base}";
                 key = null;
                 username = "{{HOMEPAGE_VAR_NEXTCLOUD_USERNAME}}";
                 password = "{{HOMEPAGE_FILE_NEXTCLOUD_PASSWORD}}";

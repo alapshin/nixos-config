@@ -1,7 +1,6 @@
 { lib
 , pkgs
 , config
-, domainName
 , ...
 }:
 let
@@ -13,7 +12,7 @@ in
     ntfy-sh = {
       enable = true;
       settings = {
-        base-url = "https://ntfy.${domainName}";
+        base-url = "https://ntfy.${config.domain.base}";
         behind-proxy = true;
         listen-http = "${host}:${toString port}";
 
@@ -23,7 +22,7 @@ in
       };
     };
     nginx.virtualHosts = {
-      "ntfy.${domainName}" = {
+      "ntfy.${config.domain.base}" = {
         locations."/" = {
           proxyWebsockets = true;
         };

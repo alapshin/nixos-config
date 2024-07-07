@@ -1,7 +1,6 @@
 { lib
 , pkgs
 , config
-, domainName
 , ...
 }: {
   sops = {
@@ -16,7 +15,7 @@
     };
 
     nginx.virtualHosts = {
-      "audiobookshelf.${domainName}" = {
+      "audiobookshelf.${config.domain.base}" = {
         locations."/" = {
           proxyWebsockets = true;
         };

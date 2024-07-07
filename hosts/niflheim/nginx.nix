@@ -1,7 +1,6 @@
 { lib
 , pkgs
 , config
-, domainName
 , ...
 }:
 {
@@ -26,7 +25,7 @@
         "_" = {
           default = true;
           forceSSL = true;
-          useACMEHost = domainName;
+          useACMEHost = config.domain.base;
           locations = {
             "/" = {
               return = 404;
@@ -34,11 +33,6 @@
           };
         };
       };
-    };
-
-    nginx-ext = {
-      basedomain = domainName;
-      authdomain = "auth.${domainName}";
     };
   };
 }

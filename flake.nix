@@ -158,7 +158,6 @@
             self.nixosModules.servarr
             self.nixosModules.nginx-ext
           ];
-          specialArgs = { domainName = "hlsrv.dev"; };
         };
 
         desktop = mkNixosConfiguration {

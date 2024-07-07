@@ -1,7 +1,6 @@
 { lib
 , pkgs
 , config
-, domainName
 , ...
 }:
 let
@@ -10,7 +9,7 @@ let
   port = config.services.lldap.settings.http_port;
   user = config.services.lldap.settings.ldap_user_dn;
   ldapPort = config.services.lldap.settings.ldap_port;
-  domainParts = lib.strings.splitString "." domainName;
+  domainParts = lib.strings.splitString "." config.domain.base;
   ldapBaseDn = lib.strings.concatMapStringsSep "," (s: "dc=${s}") domainParts;
 in
 {
@@ -28,7 +27,7 @@ in
         http_host = "localhost";
         ldap_host = "localhost";
         ldap_base_dn = ldapBaseDn;
-        ldap_user_email = "${user}@${domainName}";
+        ldap_user_email = "${user}@${config.domain.base}";
         database_url = "postgres:///${name}";
       };
       environment = {

@@ -2,7 +2,6 @@
 , pkgs
 , config
 , inputs
-, domainName
 , ...
 }:
 let
@@ -61,9 +60,9 @@ in
       };
 
       virtualHosts = {
-        "auth.${domainName}" = {
+        "${config.domain.auth}" = {
           forceSSL = true;
-          useACMEHost = domainName;
+          useACMEHost = config.domain.base;
 
           locations = {
             "/" = {
@@ -121,8 +120,8 @@ in
           };
           cookies = [
             {
-              domain = domainName;
-              authelia_url = "https://auth.${domainName}";
+              domain = config.domain.base;
+              authelia_url = "https://${config.domain.auth}";
             }
           ];
         };
@@ -131,11 +130,11 @@ in
           rules = [
             {
               policy = "bypass";
-              domain = "auth.${domainName}";
+              domain = config.domain.auth;
             }
             {
               policy = "bypass";
-              domain = [ "*.${domainName}" ];
+              domain = [ "*.${config.domain.base}" ];
               resources = [
                 # General API
                 "^/api([/?].*)?$"
@@ -148,7 +147,7 @@ in
             {
               policy = "one_factor";
               domain = [
-                "*.${domainName}"
+                "*.${config.domain.base}"
               ];
             }
           ];
@@ -200,8 +199,8 @@ in
                 pkce_challenge_method = "S256";
                 authorization_policy = "one_factor";
                 redirect_uris = [
-                  "https://audiobookshelf.${domainName}/auth/openid/callback"
-                  "https://audiobookshelf.${domainName}/auth/openid/mobile-redirect"
+                  "https://audiobookshelf.${config.domain.base}/auth/openid/callback"
+                  "https://audiobookshelf.${config.domain.base}/auth/openid/mobile-redirect"
                 ];
               }
               {
@@ -212,7 +211,7 @@ in
                 pkce_challenge_method = "S256";
                 authorization_policy = "one_factor";
                 redirect_uris = [
-                  "https://grafana.${domainName}/login/generic_oauth"
+                  "https://grafana.${config.domain.base}/login/generic_oauth"
                 ];
               }
               {
@@ -223,7 +222,7 @@ in
                 pkce_challenge_method = "S256";
                 authorization_policy = "one_factor";
                 redirect_uris = [
-                  "https://jellyfin.${domainName}/sso/OID/redirect/authelia"
+                  "https://jellyfin.${config.domain.base}/sso/OID/redirect/authelia"
                 ];
                 token_endpoint_auth_method = "client_secret_post";
               }
@@ -235,7 +234,7 @@ in
                 pkce_challenge_method = "S256";
                 authorization_policy = "one_factor";
                 redirect_uris = [
-                  "https://nextcloud.${domainName}/apps/oidc_login/oidc"
+                  "https://nextcloud.${config.domain.base}/apps/oidc_login/oidc"
                 ];
               }
               {
@@ -246,7 +245,7 @@ in
                 pkce_challenge_method = "S256";
                 authorization_policy = "one_factor";
                 redirect_uris = [
-                  "https://paperless.${domainName}/accounts/oidc/authelia/login/callback/"
+                  "https://paperless.${config.domain.base}/accounts/oidc/authelia/login/callback/"
                 ];
               }
             ];
