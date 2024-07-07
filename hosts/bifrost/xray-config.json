@@ -13,7 +13,7 @@
 			"protocol": "shadowsocks",
 			"settings": {
 				"network": "tcp,udp",
-				"method": "2022-blake3-aes-128-gcm",
+				"method": "chacha20-ietf-poly1305",
 				"password": "@shadowsocks_password@"
 			}
 		},
