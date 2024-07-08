@@ -41,6 +41,8 @@
     prev.pythonPackagesExtensions
     ++ [
       (python-final: python-prev: {
+        autobean = python-final.callPackage ./autobean { };
+        # Install standalone beanprice
         beanprice = python-final.callPackage ./beanprice { };
         beancount = python-prev.beancount.overridePythonAttrs (oldAttrs: {
           # Rename old bean-price binary to avoid confict with standalone version
