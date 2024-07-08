@@ -31,7 +31,7 @@ buildPythonPackage rec {
   meta = with lib; {
     homepage = "https://github.com/SEIAROTg/autobean";
     description = "A collection of plugins and scripts that help automating bookkeeping with beancount.";
-    license = licenses.agpl3Plus;
+    license = licenses.gpl2Only;
     maintainers = with maintainers; [ alapshin ];
   };
 }
