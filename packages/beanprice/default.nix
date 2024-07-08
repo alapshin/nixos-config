@@ -1,48 +1,49 @@
 { lib
-, buildPythonPackage
-, fetchFromGitHub
 , beancount
-, beautifulsoup4
-, bottle
-, chardet
+, buildPythonPackage
+, click
+, fetchFromGitHub
+, pytestCheckHook
 , python-dateutil
-, google-api-python-client
-, google-auth-oauthlib
-, lxml
-, oauth2client
-, ply
-, pytest
-, python-magic
+, regex
 , requests
-,
+, setuptools
 }:
 buildPythonPackage rec {
-  version = "20231231";
   pname = "beanprice";
+  version = "1.2.1-unstable-2024-06-19";
+  pyproject = true;
 
   src = fetchFromGitHub {
     owner = "beancount";
-    repo = pname;
-    rev = "41576e2ac889e4825e4985b6f6c56aa71de28304";
-    hash = "sha256-LA1itMpbqXFTRg1vHAZJDmOK+koQvfwy3RQtcWSi3sI=";
+    repo = "beanprice";
+    rev = "e894c9182f4d16f9a46ccb87bdaeca1a7dede040";
+    hash = "sha256-l96W77gldE06Za8fj84LADGCqlYeWlHKvWQO+oLy1gI=";
   };
 
-  # Tests require files not included in the PyPI archive.
-  doCheck = false;
+  build-system = [
+    setuptools
+  ];
 
-  catchConflicts = false;
-
-  propagatedBuildInputs = [
+  dependencies = [
     beancount
     python-dateutil
     requests
-    # pytest really is a runtime dependency
-    # https://github.com/beancount/beancount/blob/v2/setup.py#L81-L82
-    pytest
+  ];
+
+  nativeCheckInputs = [
+    click
+    pytestCheckHook
+    regex
+  ];
+
+  pythonImportsCheck = [
+    "beancount"
+    "beanprice"
   ];
 
   meta = with lib; {
-    homepage = "https://gitlab.com/chrisberkhout/pricehist";
+    homepage = "https://github.com/beancount/beanprice";
     description = "Price quotes fetcher for Beancount";
     longDescription = ''
       A script to fetch market data prices from various sources on the internet
@@ -50,5 +51,6 @@ buildPythonPackage rec {
     '';
     license = licenses.gpl2Only;
     maintainers = with maintainers; [ alapshin ];
+    mainProgram = "bean-price";
   };
 }

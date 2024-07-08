@@ -44,12 +44,6 @@
         autobean = python-final.callPackage ./autobean { };
         # Install standalone beanprice
         beanprice = python-final.callPackage ./beanprice { };
-        beancount = python-prev.beancount.overridePythonAttrs (oldAttrs: {
-          # Rename old bean-price binary to avoid confict with standalone version
-          postPatch = ''
-            substituteInPlace setup.py --replace 'bean-price' 'bean-price-legacy'
-          '';
-        });
         beancount-plugin-utils = python-final.callPackage ./beancount-plugin-utils { };
       })
     ];
