@@ -1,0 +1,33 @@
+{ lib
+, python3
+, fetchFromGitHub
+, buildPythonPackage
+}:
+
+buildPythonPackage rec {
+  pname = "beancount-plugin-utils";
+  version = "0.0.4";
+  pyproject = true;
+
+  src = fetchFromGitHub {
+    owner = "Akuukis";
+    repo = "beancount_plugin_utils";
+    rev = "v${version}";
+    sha256 = "sha256-oyfL2K/sS4zZ7cq1P36h0dTcW1m5GUyQ9+IyZGfpb2E=";
+  };
+
+  build-system = with python3.pkgs; [
+    setuptools
+  ];
+
+  dependencies = with python3.pkgs; [
+    beancount
+  ];
+
+  meta = with lib; {
+    homepage = "https://github.com/Akuukis/beancount_plugin_utils";
+    description = "Utils for beancount plugin writers - BeancountError, mark, metaset, etc.";
+    license = licenses.agpl3Only;
+    maintainers = with maintainers; [ alapshin ];
+  };
+}

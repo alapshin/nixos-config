@@ -48,6 +48,7 @@
             substituteInPlace setup.py --replace 'bean-price' 'bean-price-legacy'
           '';
         });
+        beancount-plugin-utils = python-final.callPackage ./beancount-plugin-utils { };
       })
     ];
 }
