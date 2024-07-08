@@ -6,6 +6,8 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
+    authelia = inputs.authelia.legacyPackages.${final.system}.authelia;
+
     nerdfonts = prev.nerdfonts.override {
       fonts = [
         "JetBrainsMono"
@@ -71,12 +73,6 @@
       '';
     });
 
-  };
-
-  pr-packages = final: _prev: {
-    prs = import inputs.authelia {
-      system = final.system;
-    };
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

@@ -97,7 +97,6 @@ in
 
     authelia.instances."${instance}" = {
       enable = true;
-      package = pkgs.prs.authelia;
 
       settings = {
         log = {
