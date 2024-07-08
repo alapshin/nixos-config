@@ -4,26 +4,25 @@
 , ...
 }:
 let
-  port = 10000;
-  host = "127.0.0.1";
+  port = 8084;
 in
 {
   services = {
     ntfy-sh = {
       enable = true;
       settings = {
-        base-url = "https://ntfy.${config.domain.base}";
-        behind-proxy = true;
-        listen-http = "${host}:${toString port}";
-
-        enable-login = false;
+        enable-login = true;
         enable-signup = false;
         auth-default-access = "deny-all";
+
+        base-url = "https://ntfy.${config.domain.base}";
+        behind-proxy = true;
+        listen-http = "localhost:${toString port}";
       };
     };
 
     nginx-ext.applications."ntfy" = {
-      auth = true;
+      auth = false;
       port = port;
       proxyWebsockets = true;
     };
