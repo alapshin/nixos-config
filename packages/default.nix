@@ -44,6 +44,7 @@
         autobean = python-final.callPackage ./autobean { };
         # Install standalone beanprice
         beanprice = python-final.callPackage ./beanprice { };
+        beanquery = python-final.callPackage ./beanquery { };
         beancount-plugin-utils = python-final.callPackage ./beancount-plugin-utils { };
       })
     ];

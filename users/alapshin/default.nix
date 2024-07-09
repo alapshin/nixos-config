@@ -69,6 +69,7 @@ let
           autobean
           beancount
           beanprice
+          beanquery
           ipython
           notebook
           matplotlib
