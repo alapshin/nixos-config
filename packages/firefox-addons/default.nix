@@ -38,14 +38,14 @@ in
 
   bypass-paywalls-clean =
     let
-      version = "3.7.1.0";
+      version = "3.7.4.0";
     in
     buildFirefoxXpiAddon {
       pname = "bypass-paywalls-clean";
       inherit version;
       addonId = "{d133e097-46d9-4ecc-9903-fa6a722a6e0e}";
       url = "https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass_paywalls_clean-${version}.xpi";
-      sha256 = "sha256-cXPIDD3PWfgeeATaFUUjRvQoqUT77t7PZM3J6Sf12UA=";
+      sha256 = "sha256-PEZc4z8R1t5e3m8E5q5GWH1I+MRb48At2NM5rbrOLFA=";
       meta = with lib; {
         homepage = "https://gitlab.com/magnolia1234/bypass-paywalls-firefox-clean";
         description = "Bypass Paywalls of (custom) news sites";
