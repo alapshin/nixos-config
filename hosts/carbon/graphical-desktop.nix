@@ -24,7 +24,6 @@
     flatpak.enable = true;
 
     displayManager = {
-      # startx.enable = true;
       sddm = {
         enable = true;
         wayland.enable = true;
