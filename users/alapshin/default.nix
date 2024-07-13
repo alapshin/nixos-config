@@ -7,7 +7,7 @@ let
   username = builtins.baseNameOf ./.;
 
   accountingTools = with pkgs; [
-    fava
+    # fava
     ledger2beancount
   ];
 
@@ -19,7 +19,7 @@ let
 
   blockchainPackages = with pkgs; [
     feather
-    electrum
+    # electrum
   ];
 
   dictionaries = with pkgs; [
@@ -36,7 +36,6 @@ let
   guiDevTools = with pkgs; [
     drawio
     insomnia
-    jetbrains-toolbox
   ];
 
   javaPackages = with pkgs; [
@@ -46,7 +45,7 @@ let
     # Install android-fhs-env package used as devShell for android
     android-fhs-env
     android-udev-rules
-    jetbrains.idea-ultimate
+    # jetbrains.idea-ultimate
     androidStudioPackages.stable
     androidStudioPackages.beta
     androidStudioPackages.canary
