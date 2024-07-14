@@ -20,25 +20,21 @@
     flatpak.enable = true;
 
     displayManager = {
-      sddm.enable = true;
-      sddm.wayland.enable = true;
-      defaultSession = "plasmawayland";
-    };
-    xserver = {
-      dpi = 162;
-      enable = true;
-      xkb = {
-        layout = "us,ru";
-        options = "grp:caps_toggle,compose:ralt";
+      sddm = {
+        enable = true;
+        wayland.enable = true;
       };
+      defaultSession = "plasma";
+    };
+    desktopManager.plasma6.enable = true;
 
+    xserver = {
       videoDrivers = [
         "amdgpu"
         "modesetting"
         "vesa"
       ];
 
-      desktopManager.plasma5.enable = true;
     };
   };
 
