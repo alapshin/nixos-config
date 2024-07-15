@@ -3,14 +3,6 @@
 , pkgs
 , ...
 }:
-let
-  # Mount options for external storage drives that could be missing during boot
-  externalMountOptions = [
-    "noatime"
-    "nofail"
-    "x-systemd.device-timeout=5"
-  ];
-in
 {
   boot = {
     loader = {
@@ -83,16 +75,6 @@ in
       device = "/dev/disk/by-uuid/1a34979e-9d0a-47bf-a2a8-2034afddec19";
       fsType = "btrfs";
       options = [ "subvol=data" "discard=async" ];
-    };
-    "/mnt/bcache" = {
-      device = "/dev/disk/by-uuid/fe06889b-37fe-4252-ba03-84ca1ae57264";
-      fsType = "ext4";
-      options = externalMountOptions;
-    };
-    "/mnt/hitachi" = {
-      device = "/dev/disk/by-uuid/0c21a12f-488e-41f2-bd92-3a8ef4db020e";
-      fsType = "ext4";
-      options = externalMountOptions;
     };
   };
 }
