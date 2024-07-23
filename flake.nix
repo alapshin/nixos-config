@@ -33,8 +33,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixos";
 
-    authelia.url = "github:nicomem/nixpkgs/authelia-4.38";
-
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixos";
     plasma-manager.inputs.home-manager.follows = "home-manager";

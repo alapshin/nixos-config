@@ -42,6 +42,7 @@
     ++ [
       (python-final: python-prev: {
         autobean = python-final.callPackage ./autobean { };
+        beancount = python-final.callPackage ./beancount { };
         # Install standalone beanprice
         beanprice = python-final.callPackage ./beanprice { };
         beanquery = python-final.callPackage ./beanquery { };

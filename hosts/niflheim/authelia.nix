@@ -19,14 +19,6 @@ let
   redisUnixSocketPath = config.services.redis.servers."authelia-${instance}".unixSocket;
 in
 {
-
-  disabledModules = [
-    "services/security/authelia.nix"
-  ];
-  imports = [
-    "${inputs.authelia}/nixos/modules/services/security/authelia.nix"
-  ];
-
   sops = {
     secrets = {
       "authelia/jwt_secret" = {
