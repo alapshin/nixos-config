@@ -7,6 +7,7 @@
     atool
     exiftool
     file
+    ghostscript
     hadolint
     imagemagick
     lm_sensors
