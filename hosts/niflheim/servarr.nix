@@ -136,6 +136,10 @@ in
       environmentFile = config.sops.templates."prowlarr/api_key.env".path;
     };
 
+    flaresolverr = {
+      enable = true;
+    };
+
     nginx-ext.applications = {
       "lidarr" = {
         auth = true;
