@@ -177,13 +177,6 @@
             ./users/alapshin
           ];
         };
-
-        server = mkNixosConfiguration {
-          hostModules = [
-            ./hosts/server
-          ];
-          specialArgs = { domainName = "alapshin.com"; };
-        };
       };
       # Stand-alone home-manager configuration for non NixOS machines
       homeConfigurations =
