@@ -1,5 +1,5 @@
 { lib
-, beancount
+, beancount3
 , buildPythonPackage
 , fetchFromGitHub
 , pytest-bdd
@@ -25,7 +25,7 @@ buildPythonPackage rec {
   ];
 
   dependencies = [
-    beancount
+    beancount3
   ];
 
   nativeCheckInputs = [

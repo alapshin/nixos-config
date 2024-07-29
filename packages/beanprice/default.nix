@@ -1,5 +1,5 @@
 { lib
-, beancount
+, beancount3
 , buildPythonPackage
 , click
 , fetchFromGitHub
@@ -26,7 +26,7 @@ buildPythonPackage rec {
   ];
 
   dependencies = [
-    beancount
+    beancount3
     python-dateutil
     requests
   ];

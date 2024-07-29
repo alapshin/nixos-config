@@ -66,7 +66,7 @@ let
       python3.withPackages (ps:
         with ps; [
           autobean
-          beancount
+          beancount3
           beanprice
           beanquery
           ipython

@@ -1,7 +1,12 @@
 { lib
-, python3
+, beancount3
+, beancount-plugin-utils
 , fetchFromGitHub
 , buildPythonPackage
+, pdm-pep517
+, pyyaml
+, python-dateutil
+, requests
 }:
 
 buildPythonPackage rec {
@@ -16,12 +21,12 @@ buildPythonPackage rec {
     sha256 = "sha256-Qc8erF9yF8HnxhKQmyTAbJ196C93NgiaDBr+7kBjLDs=";
   };
 
-  build-system = with python3.pkgs; [
+  build-system = [
     pdm-pep517
   ];
 
-  dependencies = with python3.pkgs; [
-    beancount
+  dependencies = [
+    beancount3
     beancount-plugin-utils
     python-dateutil
     pyyaml
