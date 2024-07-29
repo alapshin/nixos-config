@@ -7,7 +7,7 @@ let
   username = builtins.baseNameOf ./.;
 
   accountingTools = with pkgs; [
-    # fava
+    fava
     ledger2beancount
   ];
 

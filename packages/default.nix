@@ -35,6 +35,8 @@
     ];
   });
 
+  fava = final.callPackage ./fava { };
+
   firefox-addons = final.recurseIntoAttrs (final.callPackage ./firefox-addons { });
 
   pythonPackagesExtensions =
@@ -46,6 +48,7 @@
         # Install standalone beanprice
         beanprice = python-final.callPackage ./beanprice { };
         beanquery = python-final.callPackage ./beanquery { };
+        beancount2 = python-prev.beancount;
         beancount-plugin-utils = python-final.callPackage ./beancount-plugin-utils { };
       })
     ];
