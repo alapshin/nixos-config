@@ -14,7 +14,6 @@ let
   borgPackages = with pkgs; [
     vorta
     borgbackup
-    borgmatic
   ];
 
   blockchainPackages = with pkgs; [
