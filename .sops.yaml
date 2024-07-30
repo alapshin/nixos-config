@@ -41,6 +41,14 @@ creation_rules:
         # alapshin-at-carbon
         - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
 
+  - path_regex: hosts/desktop/secrets.*
+    key_groups:
+      - age:
+        # desktop
+        - age18y57gdahad7zhrrgj2m4dd7fcgwfn4gpmxe9mhcrue8suq8e8c3stzd0ge
+        # alapshin-at-desktop
+        - age1k2t56rsp2xvdsvjxraytyfufedxcl7z548tc9dzdhzqpq9yyfc9sz2h70e
+
   - path_regex: hosts/bifrost/secrets.*
     key_groups:
       - age:
