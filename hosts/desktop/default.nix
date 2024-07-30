@@ -1,6 +1,6 @@
-{ config
-, lib
+{ lib
 , pkgs
+, config
 , ...
 }: {
   imports = [
@@ -8,6 +8,7 @@
     ./gaming.nix
     ./networking.nix
     ./services.nix
+    ./syncthing.nix
     ./virtualization.nix
 
     ./graphical-desktop.nix
