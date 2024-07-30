@@ -5,19 +5,18 @@
 }:
 {
   boot = {
+
     loader = {
       timeout = 15;
       efi.canTouchEfiVariables = true;
       systemd-boot = {
         enable = true;
         consoleMode = "max";
-        configurationLimit = 10;
+        configurationLimit = 7;
       };
     };
+
     initrd = {
-      systemd = {
-        enable = true;
-      };
       network = {
         enable = true;
         ssh = {
@@ -75,4 +74,5 @@
       options = [ "subvol=data" "discard=async" ];
     };
   };
+
 }

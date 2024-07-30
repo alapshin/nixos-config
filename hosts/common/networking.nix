@@ -1,5 +1,6 @@
-{ config
+{ lib
 , pkgs
+, config
 , ...
 }: {
   networking = {
@@ -8,10 +9,6 @@
     networkmanager = {
       enable = true;
       wifi.backend = "iwd";
-      plugins = with pkgs; [
-        networkmanager-sstp
-        networkmanager-openvpn
-      ];
     };
   };
 }

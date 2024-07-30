@@ -3,14 +3,6 @@
 , pkgs
 , ...
 }:
-let
-  # Mount options for external storage drives that could be missing during boot
-  externalMountOptions = [
-    "noatime"
-    "nofail"
-    "x-systemd.device-timeout=5"
-  ];
-in
 {
   boot = {
     loader = {

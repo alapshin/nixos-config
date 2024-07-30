@@ -31,9 +31,6 @@
     };
 
     initrd = {
-      systemd = {
-        enable = true;
-      };
       luks.devices."luksroot".device = "/dev/disk/by-uuid/8119ac87-97bb-44fd-889f-79389f22588b";
       availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
     };
@@ -55,12 +52,6 @@
       options = [ "subvol=home" ];
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    v4l-utils
-  ];
-
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
 }
 
