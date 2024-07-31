@@ -26,7 +26,7 @@
     unzip
 
     # AI
-    openai-whisper
+    whisper-ctranslate2
 
     # Media
     ffmpeg
