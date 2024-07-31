@@ -35,6 +35,11 @@ in
   };
 
   fileSystems = {
+    "/home/${username}/books" = {
+      fsType = "fuse.bindfs";
+      device = "${cfg.dataDir}/${username}/books";
+      options = bindFsMountOptions;
+    };
     "/home/${username}/Documents" = {
       fsType = "fuse.bindfs";
       device = "${cfg.dataDir}/${username}/documents";
@@ -44,6 +49,35 @@ in
       fsType = "fuse.bindfs";
       device = "${cfg.dataDir}/${username}/syncthing";
       options = bindFsMountOptions;
+    };
+  };
+
+  systemd.tmpfiles.settings = {
+    "10-syncthing" = {
+      "${cfg.dataDir}/${username}/seedvault" = {
+        d = {
+          user = cfg.user;
+          group = cfg.group;
+        };
+      };
+      "${cfg.dataDir}/${username}/books" = {
+        d = {
+          user = cfg.user;
+          group = cfg.group;
+        };
+      };
+      "${cfg.dataDir}/${username}/documents" = {
+        d = {
+          user = cfg.user;
+          group = cfg.group;
+        };
+      };
+      "${cfg.dataDir}/${username}/syncthing" = {
+        d = {
+          user = cfg.user;
+          group = cfg.group;
+        };
+      };
     };
   };
 
@@ -78,6 +112,11 @@ in
           type = "receiveonly";
           label = "seedvault";
           devices = [ "carbon" "desktop" "pixel" ];
+        };
+        "${cfg.dataDir}/${username}/books" = {
+          id = "books";
+          label = "Books";
+          devices = [ "carbon" "desktop" ];
         };
         "${cfg.dataDir}/${username}/documents" = {
           id = "documents";
