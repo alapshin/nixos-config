@@ -83,11 +83,23 @@ in
           id = "documents";
           label = "Documents";
           devices = [ "carbon" "desktop" "pixel" ];
+          versioning = {
+            type = "simple";
+            params = {
+              keep = "7";
+            };
+          };
         };
         "${cfg.dataDir}/${username}/syncthing" = {
           id = "syncthing";
           label = "Syncthing";
           devices = [ "carbon" "desktop" "pixel" ];
+          versioning = {
+            type = "simple";
+            params = {
+              keep = "7";
+            };
+          };
         };
       };
     };
