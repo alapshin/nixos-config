@@ -1,5 +1,6 @@
-{ config
+{ lib
 , pkgs
+, config
 , ...
 }:
 let
@@ -7,6 +8,11 @@ let
 
   username = "alapshin";
   usergroup = config.users.users.${username}.group;
+  bindFsMountOptions = [
+    "nofail"
+    "x-systemd.automount"
+    "map=${cfg.user}/${username}:@${cfg.group}/@${usergroup}"
+  ];
 in
 {
   sops = {
@@ -29,14 +35,15 @@ in
   };
 
   fileSystems = {
+    "/home/${username}/Documents" = {
+      fsType = "fuse.bindfs";
+      device = "${cfg.dataDir}/${username}/documents";
+      options = bindFsMountOptions;
+    };
     "/home/${username}/Syncthing" = {
       fsType = "fuse.bindfs";
-      device = "${cfg.dataDir}/${username}";
-      options = [
-        "nofail"
-        "x-systemd.automount"
-        "map=${cfg.user}/${username}:@${cfg.group}/@${usergroup}"
-      ];
+      device = "${cfg.dataDir}/${username}/syncthing";
+      options = bindFsMountOptions;
     };
   };
 
@@ -70,12 +77,17 @@ in
           id = "seedvault";
           type = "receiveonly";
           label = "seedvault";
-          devices = [ "carbon" "pixel" ];
+          devices = [ "carbon" "desktop" "pixel" ];
         };
-        "${cfg.dataDir}/${username}" = {
+        "${cfg.dataDir}/${username}/documents" = {
+          id = "documents";
+          label = "Documents";
+          devices = [ "carbon" "desktop" "pixel" ];
+        };
+        "${cfg.dataDir}/${username}/syncthing" = {
           id = "syncthing";
           label = "Syncthing";
-          devices = [ "altdesk" "carbon" "desktop" "pixel" ];
+          devices = [ "carbon" "desktop" "pixel" ];
         };
       };
     };
