@@ -1,5 +1,5 @@
-{ pkgs
-, lib
+{ lib
+, pkgs
 , isNixOS
 , username
 , dotfileDir
@@ -17,6 +17,7 @@
     ./gnupg.nix
     ./ssh.nix
     ./shell.nix
+    ./syncthing.nix
     # ./plasma.nix
     ./neovim.nix
     ./texlive.nix

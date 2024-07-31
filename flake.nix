@@ -36,6 +36,8 @@
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixos";
     plasma-manager.inputs.home-manager.follows = "home-manager";
+
+    home-manager-syncthing.url = "github:karaolidis/home-manager/syncthing-declarative";
   };
 
   outputs =
@@ -84,7 +86,7 @@
         # Necessary for nixos-rebuild build-vm to work.
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit dotfileDir;
+          inherit dotfileDir inputs;
         };
         home-manager.sharedModules = [
           sops-nix.homeManagerModules.sops

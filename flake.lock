@@ -139,6 +139,25 @@
         "type": "github"
       }
     },
+    "home-manager-syncthing": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1722408717,
+        "narHash": "sha256-1nKAicPoQVrCcatj84LnAagtCeriztszBlmB2rllnT8=",
+        "owner": "karaolidis",
+        "repo": "home-manager",
+        "rev": "091a99d2cd377d786d6d38ed541be3902179ccc1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "karaolidis",
+        "ref": "syncthing-declarative",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -183,17 +202,18 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1722419558,
-        "narHash": "sha256-jOVJ2SL9WeEP32wWjL3cIiCtQneocW4BUe+nnpO1/BQ=",
+        "lastModified": 1722062969,
+        "narHash": "sha256-QOS0ykELUmPbrrUGmegAUlpmUFznDQeR4q7rFhl8eQg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4048ba10fd1446f16fbb942291dbb8c200d2286d",
+        "rev": "b73c2221a46c13557b1b3be9c2070cc42cf01eb3",
         "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "ref": "master",
-        "type": "indirect"
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs-stable": {
@@ -226,6 +246,21 @@
         "ref": "release-24.05",
         "repo": "nixpkgs",
         "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1722419558,
+        "narHash": "sha256-jOVJ2SL9WeEP32wWjL3cIiCtQneocW4BUe+nnpO1/BQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4048ba10fd1446f16fbb942291dbb8c200d2286d",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "master",
+        "type": "indirect"
       }
     },
     "nur": {
@@ -297,9 +332,10 @@
       "inputs": {
         "disko": "disko",
         "home-manager": "home-manager",
+        "home-manager-syncthing": "home-manager-syncthing",
         "lanzaboote": "lanzaboote",
         "nixos": "nixos",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nur": "nur",
         "plasma-manager": "plasma-manager",
         "sops-nix": "sops-nix"
