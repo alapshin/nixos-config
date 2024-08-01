@@ -41,10 +41,6 @@
       };
       includes = [
         { path = /. + dotfileDir + "/git/config"; }
-        {
-          path = /. + dotfileDir + "/git/config-scalable";
-          condition = "gitdir:~/work/scalable/";
-        }
       ];
     };
 
