@@ -79,9 +79,14 @@
     mimeApps = {
       enable = true;
       defaultApplications = {
-        "application/pdf" = "org.kde.okular.desktop";
         "text/html" = "firefox.desktop";
         "text/plain" = "org.kde.kwrite.desktop";
+
+        "application/pdf" = "org.kde.okular.desktop";
+        "application/vnd.oasis.opendocument.text" = "writer.desktop";
+        "application/vnd.oasis.opendocument.spreadsheet" = "calc.desktop";
+        "application/vnd.oasis.opendocument.presentation" = "impress.desktop";
+
         "x-scheme-handler/http" = "firefox.desktop";
         "x-scheme-handler/https" = "firefox.desktop";
         "x-scheme-handler/mailto" = "thunderbird.desktop";
