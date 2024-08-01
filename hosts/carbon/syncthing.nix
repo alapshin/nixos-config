@@ -110,7 +110,7 @@ in
         "${cfg.dataDir}/seedvault" = {
           id = "seedvault";
           type = "receiveonly";
-          label = "seedvault";
+          label = "SeedVault";
           devices = [ "carbon" "desktop" "pixel" ];
         };
         "${cfg.dataDir}/${username}/books" = {
