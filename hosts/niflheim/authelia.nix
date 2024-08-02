@@ -229,6 +229,15 @@ in
                 ];
               }
               {
+                client_id = "open-webui";
+                client_name = "Open WebUI";
+                client_secret = "$pbkdf2-sha512$310000$b6mTChIj/dqB1tgrNWpJCA$L0o17Sn8c2U2G9U3AHmOsI03TsHIwnU9rjiqvw2hEcl/lcbc6r48cBS4aU/Bq4g9PYF9lihl3o2fbhlIOE7fEA";
+                authorization_policy = "one_factor";
+                redirect_uris = [
+                  "https://owui.${config.domain.base}/oauth/oidc/callback"
+                ];
+              }
+              {
                 client_id = "paperless";
                 client_name = "Paperless";
                 client_secret = "$pbkdf2-sha512$310000$ylijOhbBagCwDiaNWPM2GA$mpdcyzbOgih92PY3WQO8x8BiZSLZu33uojolXe5hg/H.U71a.HGTY168YOcBz1TYeYqyCvY2s7jSW86Gb8qtUg";

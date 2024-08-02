@@ -8,6 +8,7 @@
     ./secrets.nix
 
     ./acme.nix
+    ./ai.nix
     ./audiobookshelf.nix
     ./authelia.nix
     ./calibre.nix
