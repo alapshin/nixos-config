@@ -5,7 +5,7 @@
 }: {
   imports = [
     ./audio.nix
-    # ./backup.nix
+    ./backup.nix
     ./secrets.nix
     ./services.nix
     ./networking.nix

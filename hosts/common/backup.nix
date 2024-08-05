@@ -1,18 +1,35 @@
-{ config
+{ lib
 , pkgs
+, config
 , ...
-}: {
+}: 
+let 
+  user = "u399502";
+  host = "${user}.your-storagebox.de";
+  jobname = "default";
+  hostname = config.networking.hostName;
+in
+{
+  sops.secrets = {
+    "borg/borg_ed25519" = {
+      mode = "0600";
+      format = "binary";
+      sopsFile = ./secrets/borg/borg_ed25519;
+    };
+    "borg/borg_ed25519.pub" = {
+      mode = "0600";
+      format = "binary";
+      sopsFile = ./secrets/borg/borg_ed25519.pub;
+    };
+  };
+
   services.borgbackup.jobs = {
-    borgbase = {
-      paths = [
-        "/home/alapshin/calibre"
-        "/home/alapshin/Documents"
-        "/home/alapshin/Syncthing"
-      ];
-      repo = "rm4i22x5@rm4i22x5.repo.borgbase.com:repo";
+    ${jobname} = {
+      repo = "ssh://${user}@${host}:23/./borgbackup/${hostname}";
+      paths = [ ];
       encryption = {
-        mode = "keyfile-blake2";
-        passCommand = "cat /run/secrets/borg/encryption_passphrase";
+        mode = "repokey-blake2";
+        passCommand = "cat ${config.sops.secrets."borg/passphrase".path}";
       };
       compression = "auto,lzma";
 
@@ -22,13 +39,20 @@
         monthly = 1;
       };
 
-      startAt = "*-*-* 12:00:00";
+      startAt = "*-*-* 21:00:00";
       persistentTimer = true;
 
       environment = {
-        BORG_RSH = "ssh -i /run/secrets/borg/borgbase_ed25519";
-        BORG_KEYS_DIR = "/run/secrets/borg/keys";
+        BORG_RSH = "ssh -i ${config.sops.secrets."borg/borg_ed25519".path}";
       };
+    };
+  };
+
+  systemd.timers."borgbackup-job-${jobname}".wants = [ "network-online.target" ];
+
+  programs.ssh.knownHosts = {
+    "${host}" = {
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIICf9svRenC/PLKIL9nk6K/pxQgoiFC41wTNvoIncOxs";
     };
   };
 }

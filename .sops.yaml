@@ -31,6 +31,14 @@ creation_rules:
         # alapshin-at-desktop
         - age1k2t56rsp2xvdsvjxraytyfufedxcl7z548tc9dzdhzqpq9yyfc9sz2h70e
 
+  - path_regex: hosts/altdesk/secrets.*
+    key_groups:
+      - age:
+        # altdesk
+        - age1gwk0m9n4mrr7h572kkjxtkkl4p0t2mfc9f7ms0560s63x4pawgzq433tca
+        # alapshin-at-altdesk
+        - age1sfed5wmvj00snjxrtds0zt83kt7ffek6mdtgfykum6uzxnphwg4qp5rv2l
+
   - path_regex: hosts/bifrost/secrets.*
     key_groups:
       - age:

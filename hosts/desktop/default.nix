@@ -4,6 +4,7 @@
 , ...
 }: {
   imports = [
+    ./backup.nix
     ./bluetooth.nix
     ./gaming.nix
     ./networking.nix

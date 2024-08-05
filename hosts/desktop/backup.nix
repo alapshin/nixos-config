@@ -2,14 +2,15 @@
 {
   sops.secrets = {
     "borg/passphrase" = {
-      sopsFile = lib.mkForce ./secrets/borg/passphrase.yaml;
+      sopsFile = ./secrets/borg/passphrase.yaml;
     };
   };
+
   services.borgbackup.jobs = {
     default = {
       paths = [
-        "/home/alapshin/books"
-        "/home/alapshin/Documents"
+        "/home/alapshin/books/"
+        "/home/alapshin/Documents/"
       ];
     };
   };
