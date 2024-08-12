@@ -121,7 +121,6 @@
       oh-my-zsh = {
         enable = true;
         plugins = [
-          "adb"
           "docker"
           "docker-compose"
           "fzf"
@@ -131,7 +130,6 @@
           "man"
           "python"
           "pip"
-          "ripgrep"
           "systemd"
         ];
       };
