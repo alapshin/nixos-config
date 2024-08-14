@@ -22,7 +22,7 @@ python3Packages.buildPythonApplication rec {
 
   dependencies = with python3Packages; [
     babel
-    beancount2
+    beancount
     cheroot
     click
     flask
