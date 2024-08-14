@@ -65,7 +65,6 @@
         extensions =
           (with pkgs.firefox-addons; [
             linguist-translator
-            bypass-paywalls-clean
           ]) ++ (with pkgs.nur.repos.rycee.firefox-addons; [
             floccus
             omnivore

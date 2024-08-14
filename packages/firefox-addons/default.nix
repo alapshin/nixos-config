@@ -36,24 +36,6 @@ in
 {
   inherit buildFirefoxXpiAddon;
 
-  bypass-paywalls-clean =
-    let
-      version = "3.7.6.0";
-    in
-    buildFirefoxXpiAddon {
-      pname = "bypass-paywalls-clean";
-      inherit version;
-      addonId = "{d133e097-46d9-4ecc-9903-fa6a722a6e0e}";
-      url = "https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass_paywalls_clean-${version}.xpi";
-      sha256 = "sha256-3IaEI4vHNc6UllLW15RrNmTfwrbgUOFHcum13+PDdX0=";
-      meta = with lib; {
-        homepage = "https://gitlab.com/magnolia1234/bypass-paywalls-firefox-clean";
-        description = "Bypass Paywalls of (custom) news sites";
-        license = licenses.mit;
-        platforms = platforms.all;
-      };
-    };
-
   linguist-translator =
     let
       version = "5.0.17";
