@@ -1,8 +1,17 @@
-{ config
+{ lib
 , pkgs
+, config
 , ...
 }: {
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    gamescopeSession = {
+      enable = true;
+    };
+  };
+  environment.sessionVariables = {
+    STEAM_FORCE_DESKTOPUI_SCALING = "1.25";
+  };
   environment.systemPackages = with pkgs; [
     lutris
     mangohud
