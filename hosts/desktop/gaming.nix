@@ -5,9 +5,11 @@
 }: {
   programs.steam = {
     enable = true;
+    extest.enable = true;
     gamescopeSession = {
       enable = true;
     };
+    protontricks.enable = true;
   };
   environment.sessionVariables = {
     STEAM_FORCE_DESKTOPUI_SCALING = "1.25";
