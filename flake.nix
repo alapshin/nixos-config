@@ -16,7 +16,7 @@
   };
 
   inputs = {
-    nixos.url = "nixpkgs/nixos-unstable";
+    nixos.url = "nixpkgs/nixos-unstable-small";
     nixpkgs.url = "nixpkgs/master";
 
     nur.url = "github:nix-community/nur";
@@ -63,6 +63,7 @@
         android_sdk.accept_license = true;
         permittedInsecurePackages = [
           "electron-27.3.11"
+          "jitsi-meet-1.0.8043"
         ];
       };
 
