@@ -9,6 +9,9 @@
     ./disk-config.nix
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
+
+  zramSwap.enable = true;
+
   boot = {
     loader = {
       grub = {
