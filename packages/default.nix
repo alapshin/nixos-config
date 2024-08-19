@@ -35,8 +35,6 @@
     ];
   });
 
-  fava = final.callPackage ./fava { };
-
   firefox-addons = final.recurseIntoAttrs (final.callPackage ./firefox-addons { });
 
   pythonPackagesExtensions =
