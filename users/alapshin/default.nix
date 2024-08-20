@@ -8,6 +8,7 @@ let
 
   accountingTools = with pkgs; [
     fava
+    beanprice
     ledger2beancount
   ];
 
@@ -67,7 +68,6 @@ let
         with ps; [
           autobean
           beancount3
-          beanprice
           beanquery
           ipython
           notebook

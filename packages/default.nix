@@ -37,14 +37,16 @@
 
   firefox-addons = final.recurseIntoAttrs (final.callPackage ./firefox-addons { });
 
+  beanprice = prev.python3.pkgs.callPackage ./beanprice { };
+
   pythonPackagesExtensions =
     prev.pythonPackagesExtensions
     ++ [
       (python-final: python-prev: {
+
         autobean = python-final.callPackage ./autobean { };
         beancount3 = python-final.callPackage ./beancount { };
         # Install standalone beanprice
-        beanprice = python-final.callPackage ./beanprice { };
         beanquery = python-final.callPackage ./beanquery { };
         beancount-plugin-utils = python-final.callPackage ./beancount-plugin-utils { };
       })
