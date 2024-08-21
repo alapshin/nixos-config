@@ -39,5 +39,8 @@
     noto-fonts-cjk
     noto-fonts-emoji
     noto-fonts-extra
+
+    # Productivity
+    super-productivity
   ];
 }
