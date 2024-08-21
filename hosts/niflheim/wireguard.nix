@@ -56,10 +56,19 @@ in
     };
     networks = {
       "20-wg0" = {
-        dns = [ "95.215.19.53" ];
-        address = [ "10.13.37.228/24" ];
+        dns = [
+          "95.215.19.53"
+          "2001:67c:2354:2::53"
+        ];
+        address = [
+          "10.13.37.228/24"
+          " fd03:1337::228/64"
+        ];
         matchConfig = {
           Name = wg;
+        };
+        networkConfig = {
+          IPv6AcceptRA = false;
         };
         routingPolicyRules = [
           {
