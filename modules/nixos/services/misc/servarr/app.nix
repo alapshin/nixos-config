@@ -1,9 +1,10 @@
 app:
 
-{ lib
-, pkgs
-, config
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  ...
 }:
 with lib;
 
@@ -31,8 +32,7 @@ let
       abort "App ${app} is not supported";
 
   defaultDataDir =
-    if app == "sonarr"
-    then
+    if app == "sonarr" then
       "${app}/.config/NzbDrone"
     else if app == "radarr" then
       "${app}/.config/Radarr"
@@ -45,17 +45,17 @@ let
     else
       abort "App ${app} is not supported";
 
-  capitalize = str:
-    lib.strings.toUpper (lib.strings.substring 0 1 str) +
-    lib.strings.substring 1 (lib.strings.stringLength str) str;
+  capitalize =
+    str:
+    lib.strings.toUpper (lib.strings.substring 0 1 str)
+    + lib.strings.substring 1 (lib.strings.stringLength str) str;
   boolToSharpString = b: capitalize (boolToString b);
 
   # List of databses used by an application
-  databases = [
-    cfg.postgres.mainDatabase
-  ]
-  ++ lib.lists.optional cfg.log.databaseEnabled cfg.postgres.logDatabase
-  ++ lib.lists.optional (cfg.postgres ? "cacheDatabase") cfg.postgres.cacheDatabase;
+  databases =
+    [ cfg.postgres.mainDatabase ]
+    ++ lib.lists.optional cfg.log.databaseEnabled cfg.postgres.logDatabase
+    ++ lib.lists.optional (cfg.postgres ? "cacheDatabase") cfg.postgres.cacheDatabase;
   # Command to alter databse ownership
   alterDbCmd = db: ''
     $PSQL -tAc 'ALTER DATABASE "${db}" OWNER TO "${cfg.user}";'
@@ -106,143 +106,157 @@ in
       };
 
       app = mkOption {
-        type = types.nullOr (types.submodule {
-          instance = mkOption {
-            type = types.str;
-            default = appName;
-            description = "Instance name";
-          };
-        });
+        type = types.nullOr (
+          types.submodule {
+            instance = mkOption {
+              type = types.str;
+              default = appName;
+              description = "Instance name";
+            };
+          }
+        );
         default = null;
         description = "App options";
       };
 
       auth = mkOption {
-        type = types.nullOr (types.submodule {
-          options = {
-            method = mkOption {
-              type = types.nullOr (types.enum [
-                "None"
-                "Basic"
-                "Forms"
-                "External"
-              ]);
-              default = "None";
-              example = "External";
-              description = "Authentication method for access to the Web UI";
-            };
+        type = types.nullOr (
+          types.submodule {
+            options = {
+              method = mkOption {
+                type = types.nullOr (
+                  types.enum [
+                    "None"
+                    "Basic"
+                    "Forms"
+                    "External"
+                  ]
+                );
+                default = "None";
+                example = "External";
+                description = "Authentication method for access to the Web UI";
+              };
 
-            type = mkOption {
-              type = types.nullOr (types.enum [
-                "Enabled"
-                "DisabledForLocalAddresses"
-              ]);
-              default = "Enabled";
-              example = "DisabledForLocalAddresses";
-              description = "Which addresses authentication is applied to";
+              type = mkOption {
+                type = types.nullOr (
+                  types.enum [
+                    "Enabled"
+                    "DisabledForLocalAddresses"
+                  ]
+                );
+                default = "Enabled";
+                example = "DisabledForLocalAddresses";
+                description = "Which addresses authentication is applied to";
+              };
             };
-          };
-        });
+          }
+        );
         default = null;
         description = "Authentication options";
       };
 
       log = mkOption {
-        type = types.nullOr (types.submodule {
-          options = {
-            level = mkOption {
-              type = types.enum [
-                "info"
-                "debug"
-                "trace"
-              ];
-              default = "info";
-              example = "debug";
-              description = "Log level";
-            };
+        type = types.nullOr (
+          types.submodule {
+            options = {
+              level = mkOption {
+                type = types.enum [
+                  "info"
+                  "debug"
+                  "trace"
+                ];
+                default = "info";
+                example = "debug";
+                description = "Log level";
+              };
 
-            consoleLevel = mkOption {
-              type = types.nullOr types.enum [
-                "info"
-                "debug"
-                "trace"
-              ];
-              default = null;
-              example = "info";
-              description = "Console log level";
-            };
+              consoleLevel = mkOption {
+                type = types.nullOr types.enum [
+                  "info"
+                  "debug"
+                  "trace"
+                ];
+                default = null;
+                example = "info";
+                description = "Console log level";
+              };
 
-            databaseEnabled = mkOption {
-              type = types.bool;
-              default = true;
-              description = "Enable database log storage.";
-            };
+              databaseEnabled = mkOption {
+                type = types.bool;
+                default = true;
+                description = "Enable database log storage.";
+              };
 
-            analyticsEnabled = mkOption {
-              type = types.bool;
-              default = false;
-              description = "Enable sending of anonymous usage and error information";
-            };
+              analyticsEnabled = mkOption {
+                type = types.bool;
+                default = false;
+                description = "Enable sending of anonymous usage and error information";
+              };
 
-          };
-        });
+            };
+          }
+        );
         default = null;
         description = "Logging options";
       };
 
       postgres = mkOption {
-        type = types.nullOr (types.submodule {
-          options = {
-            host = mkOption {
-              type = types.str;
-            };
+        type = types.nullOr (
+          types.submodule {
+            options =
+              {
+                host = mkOption { type = types.str; };
 
-            port = mkOption {
-              type = types.port;
-              default = config.services.postgresql.settings.port;
-            };
+                port = mkOption {
+                  type = types.port;
+                  default = config.services.postgresql.settings.port;
+                };
 
-            logDatabase = mkOption {
-              type = types.str;
-              default = "${app}-log";
-              description = "Log databse name used to store logs";
-            };
+                logDatabase = mkOption {
+                  type = types.str;
+                  default = "${app}-log";
+                  description = "Log databse name used to store logs";
+                };
 
-            mainDatabase = mkOption {
-              type = types.str;
-              default = "${app}-main";
-              description = "Main databse name used to store configuration and history";
-            };
-          } // lib.optionalAttrs (app == "readarr") {
-            cacheDatabase = mkOption {
-              type = types.str;
-              default = "${app}-cache";
-              description = "Cache databse name used to store GoodReads cache";
-            };
-          };
-        });
+                mainDatabase = mkOption {
+                  type = types.str;
+                  default = "${app}-main";
+                  description = "Main databse name used to store configuration and history";
+                };
+              }
+              // lib.optionalAttrs (app == "readarr") {
+                cacheDatabase = mkOption {
+                  type = types.str;
+                  default = "${app}-cache";
+                  description = "Cache databse name used to store GoodReads cache";
+                };
+              };
+          }
+        );
         default = null;
         description = "PostgreSQL connection options";
       };
 
       server = mkOption {
-        type = types.nullOr (types.submodule {
-          options = {
-            host = mkOption {
-              type = types.str;
-              default = "0.0.0.0";
-              example = "127.0.0.1";
-              description = "The host ${appName} binds to.";
-            };
+        type = types.nullOr (
+          types.submodule {
+            options = {
+              host = mkOption {
+                type = types.str;
+                default = "0.0.0.0";
+                example = "127.0.0.1";
+                description = "The host ${appName} binds to.";
+              };
 
-            port = mkOption {
-              type = types.port;
-              default = defaultPort;
-              example = 9999;
-              description = "The TCP port ${appName} will listen on.";
+              port = mkOption {
+                type = types.port;
+                default = defaultPort;
+                example = 9999;
+                description = "The TCP port ${appName} will listen on.";
+              };
             };
-          };
-        });
+          }
+        );
         default = null;
         description = "Server options";
       };
@@ -267,9 +281,7 @@ in
     systemd.services."${app}" = {
       description = appName;
       after = [ "network.target" ];
-      requires = mkIf (cfg.postgres != null) [
-        "postgresql.service"
-      ];
+      requires = mkIf (cfg.postgres != null) [ "postgresql.service" ];
       wantedBy = [ "multi-user.target" ];
 
       environment = {
@@ -281,8 +293,12 @@ in
 
         "${envVarPrefix}__LOG__LEVEL" = mkIf (cfg.log != null) cfg.log.level;
         "${envVarPrefix}__LOG__CONSOLELEVEL" = mkIf (cfg.log != null) cfg.log.level;
-        "${envVarPrefix}__LOG__DBENABLED" = mkIf (cfg.log != null) (boolToSharpString cfg.log.analyticsEnabled);
-        "${envVarPrefix}__LOG__ANALYTICSENABLED" = mkIf (cfg.log != null) (boolToSharpString cfg.log.analyticsEnabled);
+        "${envVarPrefix}__LOG__DBENABLED" = mkIf (cfg.log != null) (
+          boolToSharpString cfg.log.analyticsEnabled
+        );
+        "${envVarPrefix}__LOG__ANALYTICSENABLED" = mkIf (cfg.log != null) (
+          boolToSharpString cfg.log.analyticsEnabled
+        );
 
         "${envVarPrefix}__SERVER__PORT" = mkIf (cfg.server != null) (toString cfg.server.port);
         "${envVarPrefix}__SERVER__BINDADDRESS" = mkIf (cfg.server != null) cfg.server.host;
@@ -304,9 +320,7 @@ in
       };
     };
 
-    networking.firewall = mkIf cfg.openFirewall {
-      allowedTCPPorts = [ cfg.port ];
-    };
+    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.port ]; };
 
     users.users = mkIf (cfg.user == userName) {
       "${userName}" = {
@@ -326,11 +340,7 @@ in
     };
 
     services.postgresql = mkIf (cfg.postgres != null) {
-      ensureUsers = [
-        {
-          name = cfg.user;
-        }
-      ];
+      ensureUsers = [ { name = cfg.user; } ];
       ensureDatabases = databases;
     };
 

@@ -1,7 +1,8 @@
-{ lib
-, pkgs
-, config
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  ...
 }:
 let
   dbUser = "grafana";
@@ -11,9 +12,7 @@ let
     url = "https://github.com/rfmoz/grafana-dashboards.git";
     rev = "cad8539cc4c4ed043935e69b9c1ec23e551806f4";
     nonConeMode = true;
-    sparseCheckout = [
-      "/prometheus/node-exporter-full.json"
-    ];
+    sparseCheckout = [ "/prometheus/node-exporter-full.json" ];
     sha256 = "sha256-KtUmo5+p49lEWl8C8IFIT3volMYm99SV5CEyRcPsy3U=";
   };
 in
@@ -94,9 +93,7 @@ in
     };
 
     postgresql = {
-      ensureDatabases = [
-        dbName
-      ];
+      ensureDatabases = [ dbName ];
       ensureUsers = [
         {
           name = dbUser;
@@ -112,8 +109,6 @@ in
   };
 
   systemd.services."grafana" = {
-    requires = [
-      "postgresql.service"
-    ];
+    requires = [ "postgresql.service" ];
   };
 }

@@ -1,8 +1,10 @@
-{ lib
-, pkgs
-, config
-, ...
-}: {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
   services = {
     colord.enable = true;
     flatpak.enable = true;
@@ -22,9 +24,7 @@
         options = "grp:caps_toggle,compose:ralt";
       };
 
-      videoDrivers = [
-        "nvidia"
-      ];
+      videoDrivers = [ "nvidia" ];
     };
   };
 

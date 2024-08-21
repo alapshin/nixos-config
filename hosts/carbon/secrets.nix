@@ -1,7 +1,5 @@
-{ config
-, pkgs
-, ...
-}: {
+{ config, pkgs, ... }:
+{
   sops = {
     secrets = {
       "wireguard/public_key" = {

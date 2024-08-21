@@ -1,7 +1,4 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, config, ... }:
 let
   wg = "wg0";
   wgPort = 51820;
@@ -49,9 +46,7 @@ in
         wireguardPeers = [
           {
             Endpoint = "wg010.njalla.no:51820";
-            AllowedIPs = [
-              "0.0.0.0/0"
-            ];
+            AllowedIPs = [ "0.0.0.0/0" ];
             PublicKey = "UGz2woATzV0P1fqXZ+wjCRoZdFDJ/Kdr1aYuw25u7D4=";
             # PresharedKeyFile = config.sops.secrets."wireguard/preshared_key".path;
             PersistentKeepalive = 25;
@@ -61,12 +56,8 @@ in
     };
     networks = {
       "20-wg0" = {
-        dns = [
-          "95.215.19.53"
-        ];
-        address = [
-          "10.13.37.228/24"
-        ];
+        dns = [ "95.215.19.53" ];
+        address = [ "10.13.37.228/24" ];
         matchConfig = {
           Name = wg;
         };

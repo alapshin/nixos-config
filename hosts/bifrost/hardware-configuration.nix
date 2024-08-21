@@ -1,8 +1,9 @@
-{ config
-, lib
-, pkgs
-, modulesPath
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
 }:
 {
   imports = [
@@ -20,7 +21,13 @@
     };
 
     initrd = {
-      availableKernelModules = [ "ahci" "nvme" "usbhid" "usb_storage" "xhci_pci" ];
+      availableKernelModules = [
+        "ahci"
+        "nvme"
+        "usbhid"
+        "usb_storage"
+        "xhci_pci"
+      ];
     };
   };
 }

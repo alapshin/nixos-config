@@ -1,11 +1,11 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, config, ... }:
 let
   accent = "sky";
   flavor = "latte";
-  catppuccin = pkgs.catppuccin.override { inherit accent; variant = flavor; };
+  catppuccin = pkgs.catppuccin.override {
+    inherit accent;
+    variant = flavor;
+  };
 in
 {
   programs = {

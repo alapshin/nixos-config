@@ -1,7 +1,4 @@
-{ lib
-, config
-, ...
-}:
+{ lib, config, ... }:
 let
   port = 8086;
 in

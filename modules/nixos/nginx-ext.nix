@@ -1,7 +1,8 @@
-{ lib
-, pkgs
-, config
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  ...
 }:
 let
   cfg = config.services.nginx-ext;
@@ -27,64 +28,69 @@ in
     };
 
     applications = mkOption {
-      type = types.attrsOf (types.submodule {
-        options = {
-          port = mkOption {
-            type = types.port;
-            description = "Application listen port.";
-          };
+      type = types.attrsOf (
+        types.submodule {
+          options = {
+            port = mkOption {
+              type = types.port;
+              description = "Application listen port.";
+            };
 
-          auth = mkOption {
-            type = types.bool;
-            description = "Whether to support SSO authentication.";
-          };
+            auth = mkOption {
+              type = types.bool;
+              description = "Whether to support SSO authentication.";
+            };
 
-          proxyWebsockets = mkOption {
-            type = types.bool;
-            default = false;
-            description = "Whether to support proxying websocket connections with HTTP/1.1.";
+            proxyWebsockets = mkOption {
+              type = types.bool;
+              default = false;
+              description = "Whether to support proxying websocket connections with HTTP/1.1.";
+            };
           };
-        };
-      });
+        }
+      );
     };
   };
 
   config = {
     services.nginx = {
-      upstreams = attrsets.mapAttrs
-        (app: opts: {
-          servers = {
-            "localhost:${toString opts.port}" = { };
-          };
-        })
-        cfg.applications;
-
-      virtualHosts = {
-        "${cfg.authdomain}" = {
-          extraConfig = builtins.readFile ./nginx/auth-proxy.conf;
+      upstreams = attrsets.mapAttrs (app: opts: {
+        servers = {
+          "localhost:${toString opts.port}" = { };
         };
-      } // attrsets.mapAttrs'
-        (app: opts: nameValuePair ("${app}.${cfg.basedomain}") {
-          forceSSL = true;
-          useACMEHost = cfg.basedomain;
-          locations = {
-            "/" = {
-              proxyPass = "http://${app}";
-              proxyWebsockets = opts.proxyWebsockets;
-              extraConfig = mkIf opts.auth (lib.strings.concatStringsSep "\n" [
-                (builtins.readFile ./nginx/auth-proxy.conf)
-                (builtins.readFile ./nginx/auth-request.conf)
-              ]);
-            };
+      }) cfg.applications;
 
-            # Corresponds to https://www.authelia.com/integration/proxies/nginx/#authelia-locationconf
-            "/internal/authelia/authz" = mkIf opts.auth {
-              proxyPass = "http://authelia/api/authz/auth-request";
-              extraConfig = builtins.readFile ./nginx/auth-location.conf;
-            };
+      virtualHosts =
+        {
+          "${cfg.authdomain}" = {
+            extraConfig = builtins.readFile ./nginx/auth-proxy.conf;
           };
-        })
-        cfg.applications;
+        }
+        // attrsets.mapAttrs' (
+          app: opts:
+          nameValuePair ("${app}.${cfg.basedomain}") {
+            forceSSL = true;
+            useACMEHost = cfg.basedomain;
+            locations = {
+              "/" = {
+                proxyPass = "http://${app}";
+                proxyWebsockets = opts.proxyWebsockets;
+                extraConfig = mkIf opts.auth (
+                  lib.strings.concatStringsSep "\n" [
+                    (builtins.readFile ./nginx/auth-proxy.conf)
+                    (builtins.readFile ./nginx/auth-request.conf)
+                  ]
+                );
+              };
+
+              # Corresponds to https://www.authelia.com/integration/proxies/nginx/#authelia-locationconf
+              "/internal/authelia/authz" = mkIf opts.auth {
+                proxyPass = "http://authelia/api/authz/auth-request";
+                extraConfig = builtins.readFile ./nginx/auth-location.conf;
+              };
+            };
+          }
+        ) cfg.applications;
     };
   };
 }

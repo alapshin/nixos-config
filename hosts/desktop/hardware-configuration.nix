@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 {
   boot = {
@@ -21,9 +22,7 @@
         enable = true;
         ssh = {
           enable = true;
-          hostKeys = [
-            "/etc/secrets/initrd/host_ed25519"
-          ];
+          hostKeys = [ "/etc/secrets/initrd/host_ed25519" ];
           authorizedKeys = [
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGlJo3xdypmwSS2lsHCzf6GsqyEGvr+HzvbU+TGuPjmA"
           ];
@@ -57,7 +56,10 @@
     "/" = {
       device = "/dev/disk/by-uuid/20b4e7b3-3a81-468e-9ca9-2fdc1b6c2238";
       fsType = "btrfs";
-      options = [ "subvol=root" "discard=async" ];
+      options = [
+        "subvol=root"
+        "discard=async"
+      ];
     };
     "/boot" = {
       device = "/dev/disk/by-uuid/A0D1-44CF";
@@ -66,17 +68,21 @@
     "/home" = {
       device = "/dev/disk/by-uuid/20b4e7b3-3a81-468e-9ca9-2fdc1b6c2238";
       fsType = "btrfs";
-      options = [ "subvol=home" "discard=async" ];
+      options = [
+        "subvol=home"
+        "discard=async"
+      ];
     };
     "/mnt/data" = {
       device = "/dev/disk/by-uuid/1a34979e-9d0a-47bf-a2a8-2034afddec19";
       fsType = "btrfs";
-      options = [ "subvol=data" "discard=async" ];
+      options = [
+        "subvol=data"
+        "discard=async"
+      ];
     };
   };
 
-  systemd.tmpfiles.rules = [
-    "L+ /opt/rocm/hip - - - - ${pkgs.rocmPackages.clr}"
-  ];
+  systemd.tmpfiles.rules = [ "L+ /opt/rocm/hip - - - - ${pkgs.rocmPackages.clr}" ];
 
 }

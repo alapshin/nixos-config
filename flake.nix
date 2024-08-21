@@ -39,15 +39,16 @@
   };
 
   outputs =
-    inputs @ { self
-    , nixos
-    , nixpkgs
-    , nur
-    , disko
-    , sops-nix
-    , lanzaboote
-    , home-manager
-    , ...
+    inputs@{
+      self,
+      nixos,
+      nixpkgs,
+      nur,
+      disko,
+      sops-nix,
+      lanzaboote,
+      home-manager,
+      ...
     }:
     let
       inherit (nixos) lib;
@@ -68,8 +69,9 @@
       };
 
       mkPkgs =
-        { pkgs
-        , extraOverlays ? [ nur.overlay ]
+        {
+          pkgs,
+          extraOverlays ? [ nur.overlay ],
         }:
         import pkgs {
           inherit system;
@@ -78,39 +80,43 @@
         };
       pkgs = mkPkgs { pkgs = nixos; };
 
-      homeManagerConfig = {
-        # Use global pkgs configured via nixpkgs.* options
-        home-manager.useGlobalPkgs = true;
-        # Install user packages to /etc/profiles instead.
-        # Necessary for nixos-rebuild build-vm to work.
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {
-          inherit dotfileDir;
-        };
-        home-manager.sharedModules = [
-          sops-nix.homeManagerModules.sops
-        ];
-      };
       mkNixosConfiguration =
-        { system ? "x86_64-linux"
-        , baseModules ? [
+        {
+          system ? "x86_64-linux",
+          baseModules ? [
             ./configuration.nix
 
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             lanzaboote.nixosModules.lanzaboote
-            home-manager.nixosModules.home-manager homeManagerConfig
-          ]
-        , hostModules ? [ ]
-        , userModules ? [ ]
-        , specialArgs ? { }
-        ,
+            home-manager.nixosModules.home-manager
+            {
+              # Use global pkgs configured via nixpkgs.* options
+              home-manager.useGlobalPkgs = true;
+              # Install user packages to /etc/profiles instead.
+              # Necessary for nixos-rebuild build-vm to work.
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit dotfileDir;
+              };
+              home-manager.sharedModules = [ sops-nix.homeManagerModules.sops ];
+            }
+          ],
+          hostModules ? [ ],
+          userModules ? [ ],
+          specialArgs ? { },
         }:
         nixos.lib.nixosSystem {
           inherit system;
           modules = baseModules ++ hostModules ++ userModules;
           specialArgs = specialArgs // {
-            inherit inputs pkgs self libutil dotfileDir;
+            inherit
+              inputs
+              pkgs
+              self
+              libutil
+              dotfileDir
+              ;
           };
         };
     in
@@ -127,7 +133,7 @@
         };
       };
       formatter = {
-        ${system} = pkgs.nixpkgs-fmt;
+        ${system} = pkgs.nixfmt-rfc-style;
       };
 
       # Reusable nixos modules you might want to export
@@ -140,16 +146,10 @@
             ./hosts/common
             ./hosts/carbon
           ];
-          userModules = [
-            ./users/alapshin
-          ];
+          userModules = [ ./users/alapshin ];
         };
 
-        bifrost = mkNixosConfiguration {
-          hostModules = [
-            ./hosts/bifrost
-          ];
-        };
+        bifrost = mkNixosConfiguration { hostModules = [ ./hosts/bifrost ]; };
 
         niflheim = mkNixosConfiguration {
           hostModules = [
@@ -164,9 +164,7 @@
             ./hosts/common
             ./hosts/desktop
           ];
-          userModules = [
-            ./users/alapshin
-          ];
+          userModules = [ ./users/alapshin ];
         };
 
         altdesk = mkNixosConfiguration {
@@ -174,9 +172,7 @@
             ./hosts/common
             ./hosts/altdesk
           ];
-          userModules = [
-            ./users/alapshin
-          ];
+          userModules = [ ./users/alapshin ];
         };
       };
       # Stand-alone home-manager configuration for non NixOS machines

@@ -1,7 +1,5 @@
-{ pkgs
-, config
-, ...
-}: {
+{ pkgs, config, ... }:
+{
   programs.gpg = {
     enable = true;
     homedir = "${config.xdg.dataHome}/gnupg";

@@ -1,8 +1,10 @@
-{ config
-, lib
-, pkgs
-, ...
-}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   imports = [
     ./audio.nix
     ./backup.nix
@@ -17,7 +19,10 @@
     kernel.sysctl = {
       "kernel.sysrq" = 438;
     };
-    kernelModules = [ "kvm-amd" "kvm-intel" ];
+    kernelModules = [
+      "kvm-amd"
+      "kvm-intel"
+    ];
     kernelPackages = pkgs.linuxPackages_zen;
     initrd = {
       systemd = {
@@ -35,18 +40,10 @@
   fonts = {
     fontconfig = {
       defaultFonts = {
-        emoji = [
-          "Noto Color Emoji"
-        ];
-        serif = [
-          "IBM Plex Serif"
-        ];
-        sansSerif = [
-          "IBM Plex Sans"
-        ];
-        monospace = [
-          "JetBrainsMono Nerd Font Mono"
-        ];
+        emoji = [ "Noto Color Emoji" ];
+        serif = [ "IBM Plex Serif" ];
+        sansSerif = [ "IBM Plex Sans" ];
+        monospace = [ "JetBrainsMono Nerd Font Mono" ];
       };
     };
     enableDefaultPackages = false;

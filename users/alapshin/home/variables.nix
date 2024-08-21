@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   # Enforce XDG directories usage for some apps
   home.sessionVariables = {
     ANDROID_SDK_ROOT = "$HOME/opt/android-sdk";

@@ -1,11 +1,12 @@
-{ lib
-, beancount3
-, buildPythonPackage
-, fetchFromGitHub
-, pytest-bdd
-, pytestCheckHook
-, regex
-, setuptools
+{
+  lib,
+  beancount3,
+  buildPythonPackage,
+  fetchFromGitHub,
+  pytest-bdd,
+  pytestCheckHook,
+  regex,
+  setuptools,
 }:
 
 buildPythonPackage rec {
@@ -20,13 +21,9 @@ buildPythonPackage rec {
     hash = "sha256-oyfL2K/sS4zZ7cq1P36h0dTcW1m5GUyQ9+IyZGfpb2E=";
   };
 
-  build-system = [
-    setuptools
-  ];
+  build-system = [ setuptools ];
 
-  dependencies = [
-    beancount3
-  ];
+  dependencies = [ beancount3 ];
 
   nativeCheckInputs = [
     pytest-bdd
@@ -34,13 +31,9 @@ buildPythonPackage rec {
     regex
   ];
 
-  pytestFlagsArray = [
-    "--fixtures tests/"
-  ];
+  pytestFlagsArray = [ "--fixtures tests/" ];
 
-  pythonImportsCheck = [
-    "beancount"
-  ];
+  pythonImportsCheck = [ "beancount" ];
 
   meta = with lib; {
     homepage = "https://github.com/Akuukis/beancount_plugin_utils";

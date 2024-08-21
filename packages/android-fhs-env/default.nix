@@ -1,9 +1,9 @@
-{ stdenv
-, buildFHSEnv
-, runtimeShell
-, writeScript
-, extraPkgs ? pkgs: [ ]
-,
+{
+  stdenv,
+  buildFHSEnv,
+  runtimeShell,
+  writeScript,
+  extraPkgs ? pkgs: [ ],
 }:
 buildFHSEnv {
   name = "android-fhs-env";
@@ -14,7 +14,8 @@ buildFHSEnv {
     export JAVA_HOME="/usr/lib64/openjdk/"
   '';
 
-  targetPkgs = pkgs:
+  targetPkgs =
+    pkgs:
     with pkgs;
     [
       zsh
@@ -37,8 +38,5 @@ buildFHSEnv {
     ]
     ++ extraPkgs pkgs;
 
-  multiPkgs = pkgs:
-    with pkgs; [
-      zlib
-    ];
+  multiPkgs = pkgs: with pkgs; [ zlib ];
 }

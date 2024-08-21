@@ -1,7 +1,5 @@
-{ pkgs
-, dotfileDir
-, ...
-}: {
+{ pkgs, dotfileDir, ... }:
+{
   home.packages = with pkgs; [
     dog
     duf
@@ -79,12 +77,18 @@
     starship = {
       enable = true;
       enableZshIntegration = true;
-      settings = {
-        format = "$all";
-      } // builtins.fromTOML (builtins.readFile (pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/starship/starship/v1.19.0/docs/public/presets/toml/plain-text-symbols.toml";
-        hash = "sha256-SRos2o/ZaBK3QOCumqopiFLKnK3mf5wehTkKWpO7OqQ=";
-      }));
+      settings =
+        {
+          format = "$all";
+        }
+        // builtins.fromTOML (
+          builtins.readFile (
+            pkgs.fetchurl {
+              url = "https://raw.githubusercontent.com/starship/starship/v1.19.0/docs/public/presets/toml/plain-text-symbols.toml";
+              hash = "sha256-SRos2o/ZaBK3QOCumqopiFLKnK3mf5wehTkKWpO7OqQ=";
+            }
+          )
+        );
     };
 
     tealdeer = {

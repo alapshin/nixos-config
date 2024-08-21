@@ -1,14 +1,15 @@
-{ pkgs
-, config
-, ...
-}: {
+{ pkgs, config, ... }:
+{
   networking = {
     hostName = "niflheim";
     useNetworkd = true;
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 80 443 ];
+      allowedTCPPorts = [
+        80
+        443
+      ];
     };
   };
 

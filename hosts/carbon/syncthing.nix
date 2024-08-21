@@ -1,7 +1,8 @@
-{ lib
-, pkgs
-, config
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  ...
 }:
 let
   cfg = config.services.syncthing;
@@ -29,9 +30,7 @@ in
   };
 
   environment = {
-    systemPackages = with pkgs; [
-      bindfs
-    ];
+    systemPackages = with pkgs; [ bindfs ];
   };
 
   fileSystems = {
@@ -111,17 +110,28 @@ in
           id = "seedvault";
           type = "receiveonly";
           label = "SeedVault";
-          devices = [ "carbon" "desktop" "pixel" ];
+          devices = [
+            "carbon"
+            "desktop"
+            "pixel"
+          ];
         };
         "${cfg.dataDir}/${username}/books" = {
           id = "books";
           label = "Books";
-          devices = [ "carbon" "desktop" ];
+          devices = [
+            "carbon"
+            "desktop"
+          ];
         };
         "${cfg.dataDir}/${username}/documents" = {
           id = "documents";
           label = "Documents";
-          devices = [ "carbon" "desktop" "pixel" ];
+          devices = [
+            "carbon"
+            "desktop"
+            "pixel"
+          ];
           versioning = {
             type = "simple";
             params = {
@@ -132,7 +142,11 @@ in
         "${cfg.dataDir}/${username}/syncthing" = {
           id = "syncthing";
           label = "Syncthing";
-          devices = [ "carbon" "desktop" "pixel" ];
+          devices = [
+            "carbon"
+            "desktop"
+            "pixel"
+          ];
           versioning = {
             type = "simple";
             params = {

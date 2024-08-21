@@ -1,11 +1,11 @@
-{ lib
-, pkgs
-, config
-, ...
-}: {
-  home.packages = with pkgs; [
-    typst
-  ];
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
+  home.packages = with pkgs; [ typst ];
   programs.texlive = {
     enable = true;
     packageSet = pkgs.texlive;

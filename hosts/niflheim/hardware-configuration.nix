@@ -1,8 +1,9 @@
-{ lib
-, pkgs
-, config
-, modulesPath
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  modulesPath,
+  ...
 }:
 {
   imports = [
@@ -20,8 +21,14 @@
         efiInstallAsRemovable = true;
         devices = lib.mkForce [ ]; # disko adds /boot here, we want /boot1 /boot2
         mirroredBoots = [
-          { path = "/boot1"; devices = [ "nodev" ]; }
-          { path = "/boot2"; devices = [ "nodev" ]; }
+          {
+            path = "/boot1";
+            devices = [ "nodev" ];
+          }
+          {
+            path = "/boot2";
+            devices = [ "nodev" ];
+          }
         ];
       };
     };
@@ -32,9 +39,7 @@
         ssh = {
           enable = true;
           port = 2222;
-          hostKeys = [
-            /etc/ssh/ssh_initrd_ed25519_key
-          ];
+          hostKeys = [ /etc/ssh/ssh_initrd_ed25519_key ];
         };
       };
       systemd = {

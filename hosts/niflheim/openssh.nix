@@ -1,8 +1,10 @@
-{ lib
-, pkgs
-, config
-, ...
-}: {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
   services = {
     openssh = {
       enable = true;
@@ -12,4 +14,3 @@
     };
   };
 }
-

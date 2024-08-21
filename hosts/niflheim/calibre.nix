@@ -1,9 +1,10 @@
 # Setup calibre-server and calibre-web
 
-{ lib
-, pkgs
-, config
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  ...
 }:
 let
   library = "/mnt/data/books";

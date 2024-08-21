@@ -1,13 +1,16 @@
-{ config
-, lib
-, pkgs
-, ...
-}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   boot = {
-    kernelModules = [ "kvm-intel" "v4l2loopback" ];
-    extraModulePackages = with config.boot.kernelPackages; [
-      v4l2loopback
+    kernelModules = [
+      "kvm-intel"
+      "v4l2loopback"
     ];
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     extraModprobeConfig = ''
       options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
     '';
@@ -32,7 +35,13 @@
 
     initrd = {
       luks.devices."luksroot".device = "/dev/disk/by-uuid/8119ac87-97bb-44fd-889f-79389f22588b";
-      availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
+      availableKernelModules = [
+        "xhci_pci"
+        "thunderbolt"
+        "nvme"
+        "usb_storage"
+        "sd_mod"
+      ];
     };
   };
 
@@ -54,4 +63,3 @@
   };
 
 }
-

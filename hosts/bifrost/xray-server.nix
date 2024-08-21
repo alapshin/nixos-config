@@ -1,8 +1,10 @@
-{ config
-, lib
-, pkgs
-, ...
-}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   sops = {
     secrets = {
       "xray/vless_user_id" = {
@@ -15,12 +17,14 @@
         restartUnits = [ "xray.service" ];
       };
     };
-    templates."xray-config.json".content = builtins.readFile (pkgs.substituteAll {
-      src = ./xray-config.json;
-      vless_user_id = config.sops.placeholder."xray/vless_user_id";
-      vless_private_key = config.sops.placeholder."xray/vless_private_key";
-      shadowsocks_password = config.sops.placeholder."xray/shadowsocks_password";
-    });
+    templates."xray-config.json".content = builtins.readFile (
+      pkgs.substituteAll {
+        src = ./xray-config.json;
+        vless_user_id = config.sops.placeholder."xray/vless_user_id";
+        vless_private_key = config.sops.placeholder."xray/vless_private_key";
+        shadowsocks_password = config.sops.placeholder."xray/shadowsocks_password";
+      }
+    );
   };
 
   services.xray = {
@@ -31,7 +35,10 @@
   networking = {
     firewall = {
       allowedUDPPorts = [ 1080 ];
-      allowedTCPPorts = [ 1080 8443 ];
+      allowedTCPPorts = [
+        1080
+        8443
+      ];
     };
   };
 

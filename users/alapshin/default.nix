@@ -1,8 +1,9 @@
-{ config
-, lib
-, pkgs
-, ...
-} @ args:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}@args:
 let
   username = builtins.baseNameOf ./.;
 
@@ -63,26 +64,31 @@ let
   ];
 
   pythonPackages = with pkgs; [
-    (
-      python3.withPackages (ps:
-        with ps; [
-          autobean
-          beancount3
-          beanquery
-          ipython
-          notebook
-          matplotlib
-          numpy
-          pandas
-          scikit-learn
-          seaborn
-        ])
-    )
+    (python3.withPackages (
+      ps: with ps; [
+        autobean
+        beancount3
+        beanquery
+        ipython
+        notebook
+        matplotlib
+        numpy
+        pandas
+        scikit-learn
+        seaborn
+      ]
+    ))
   ];
 in
 {
   imports = [
-    (import ./home (args // { inherit username; isNixOS = true; }))
+    (import ./home (
+      args
+      // {
+        inherit username;
+        isNixOS = true;
+      }
+    ))
   ];
 
   programs = {
@@ -115,7 +121,8 @@ in
       "wheel"
     ];
 
-    packages = with pkgs;
+    packages =
+      with pkgs;
       [
         anki
         calibre

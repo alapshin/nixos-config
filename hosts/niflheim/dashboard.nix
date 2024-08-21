@@ -1,11 +1,17 @@
-{ lib
-, pkgs
-, config
-, libutil
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  libutil,
+  ...
 }:
 let
-  mkService = { app, description, widget ? { } }:
+  mkService =
+    {
+      app,
+      description,
+      widget ? { },
+    }:
     let
       name = libutil.capitalize app;
       listenPort = config.services.nginx-ext.applications."${app}".port;
@@ -238,7 +244,6 @@ in
         "audiobookshelf_api_key:${config.sops.secrets."audiobookshelf/api_key".path}"
         "calibreweb_username:${config.sops.secrets."calibreweb/admin_username".path}"
         "calibreweb_password:${config.sops.secrets."calibreweb/admin_password".path}"
-
 
         "grafana_username:${config.sops.secrets."grafana/admin_username".path}"
         "grafana_password:${config.sops.secrets."grafana/admin_password".path}"

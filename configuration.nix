@@ -1,11 +1,13 @@
-{ self
-, lib
-, pkgs
-, config
-, inputs
-, outputs
-, ...
-}: {
+{
+  self,
+  lib,
+  pkgs,
+  config,
+  inputs,
+  outputs,
+  ...
+}:
+{
   nix = {
     gc = {
       automatic = true;

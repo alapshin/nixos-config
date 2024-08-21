@@ -1,16 +1,15 @@
-{ pkgs
-, osConfig
-, dotfileDir
-, ...
+{
+  pkgs,
+  osConfig,
+  dotfileDir,
+  ...
 }:
 {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox.override {
       cfg = {
-        nativeMessagingHosts.packages = [
-          pkgs.kdePackages.plasma-browser-integration
-        ];
+        nativeMessagingHosts.packages = [ pkgs.kdePackages.plasma-browser-integration ];
       };
     };
 
@@ -63,9 +62,8 @@
       default = {
         id = 0;
         extensions =
-          (with pkgs.firefox-addons; [
-            linguist-translator
-          ]) ++ (with pkgs.nur.repos.rycee.firefox-addons; [
+          (with pkgs.firefox-addons; [ linguist-translator ])
+          ++ (with pkgs.nur.repos.rycee.firefox-addons; [
             floccus
             omnivore
             metamask

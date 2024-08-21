@@ -1,12 +1,13 @@
-{ lib
-, beancount3
-, click
-, buildPythonPackage
-, fetchFromGitHub
-, python-dateutil
-, pytestCheckHook
-, setuptools
-, tatsu
+{
+  lib,
+  beancount3,
+  click,
+  buildPythonPackage,
+  fetchFromGitHub,
+  python-dateutil,
+  pytestCheckHook,
+  setuptools,
+  tatsu,
 }:
 buildPythonPackage rec {
   pname = "beanquery";
@@ -20,9 +21,7 @@ buildPythonPackage rec {
     hash = "sha256-xFhlkFlD+VG0n6WfKLjuhm7Cwz3t2V6GxmMXc5TgIPc=";
   };
 
-  build-system = [
-    setuptools
-  ];
+  build-system = [ setuptools ];
 
   dependencies = [
     beancount3
@@ -31,13 +30,9 @@ buildPythonPackage rec {
     tatsu
   ];
 
-  pythonRelaxDeps = [
-    "tatsu"
-  ];
+  pythonRelaxDeps = [ "tatsu" ];
 
-  nativeCheckInputs = [
-    pytestCheckHook
-  ];
+  nativeCheckInputs = [ pytestCheckHook ];
 
   pythonImportsCheck = [
     "beancount"

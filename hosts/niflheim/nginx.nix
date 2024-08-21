@@ -1,14 +1,13 @@
-{ lib
-, pkgs
-, config
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  ...
 }:
 {
   users.users = {
     # Make acme certificates available to nginx user
-    nginx.extraGroups = [
-      config.users.groups.acme.name
-    ];
+    nginx.extraGroups = [ config.users.groups.acme.name ];
   };
 
   services = {

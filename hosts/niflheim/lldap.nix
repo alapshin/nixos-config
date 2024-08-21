@@ -1,7 +1,8 @@
-{ lib
-, pkgs
-, config
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  ...
 }:
 let
   name = "lldap";
@@ -37,9 +38,7 @@ in
     };
 
     postgresql = {
-      ensureDatabases = [
-        name
-      ];
+      ensureDatabases = [ name ];
       ensureUsers = [
         {
           name = name;
@@ -55,9 +54,7 @@ in
   };
 
   systemd.services.lldap = {
-    requires = [
-      "postgresql.service"
-    ];
+    requires = [ "postgresql.service" ];
     serviceConfig = {
       LoadCredential = [
         "jwt_secret:${config.sops.secrets."lldap/jwt_secret".path}"

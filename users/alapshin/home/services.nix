@@ -1,8 +1,10 @@
-{ pkgs
-, osConfig
-, dotfileDir
-, ...
-}: {
+{
+  pkgs,
+  osConfig,
+  dotfileDir,
+  ...
+}:
+{
   services = {
     nextcloud-client = {
       enable = true;

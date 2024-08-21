@@ -1,7 +1,4 @@
-{ lib
-, config
-, ...
-}:
+{ lib, config, ... }:
 let
   org = "homelab";
   bucket = "scrutiny";

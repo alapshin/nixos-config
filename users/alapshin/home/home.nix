@@ -1,9 +1,10 @@
-{ pkgs
-, lib
-, isNixOS
-, username
-, dotfileDir
-, ...
+{
+  pkgs,
+  lib,
+  isNixOS,
+  username,
+  dotfileDir,
+  ...
 }:
 {
   home.stateVersion = "23.11";
@@ -11,23 +12,25 @@
   home.username = username;
   home.homeDirectory = "/home/${username}";
 
-  imports = [
-    ./development.nix
-    ./git.nix
-    ./gnupg.nix
-    ./ssh.nix
-    ./shell.nix
-    # ./plasma.nix
-    ./neovim.nix
-    ./texlive.nix
+  imports =
+    [
+      ./development.nix
+      ./git.nix
+      ./gnupg.nix
+      ./ssh.nix
+      ./shell.nix
+      # ./plasma.nix
+      ./neovim.nix
+      ./texlive.nix
 
-    ./theming.nix
-    ./packages.nix
-    ./variables.nix
-  ] ++ (lib.lists.optionals isNixOS [
-    ./firefox.nix
-    ./thunderbird.nix
-  ]);
+      ./theming.nix
+      ./packages.nix
+      ./variables.nix
+    ]
+    ++ (lib.lists.optionals isNixOS [
+      ./firefox.nix
+      ./thunderbird.nix
+    ]);
 
   programs.home-manager.enable = true;
 

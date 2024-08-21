@@ -1,8 +1,10 @@
-{ lib
-, pkgs
-, config
-, ...
-}: {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
   sops = {
     secrets = {
       "audiobookshelf/api_key" = { };

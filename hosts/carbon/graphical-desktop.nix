@@ -1,7 +1,5 @@
-{ config
-, pkgs
-, ...
-}: {
+{ config, pkgs, ... }:
+{
   hardware = {
     graphics = {
       enable = true;
@@ -31,7 +29,10 @@
       defaultSession = "plasma";
     };
     xserver = {
-      videoDrivers = [ "modesetting" "intel" ];
+      videoDrivers = [
+        "modesetting"
+        "intel"
+      ];
     };
     desktopManager.plasma6.enable = true;
   };
@@ -43,6 +44,5 @@
     QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
   };
 
-  environment.systemPackages = with pkgs; [
-  ];
+  environment.systemPackages = with pkgs; [ ];
 }

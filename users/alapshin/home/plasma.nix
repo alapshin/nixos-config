@@ -1,7 +1,5 @@
-{ config
-, pkgs
-, ...
-}: {
+{ config, pkgs, ... }:
+{
   programs.plasma = {
     enable = true;
     workspace.clickItemTo = "select";

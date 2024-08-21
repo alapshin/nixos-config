@@ -1,7 +1,8 @@
-{ lib
-, pkgs
-, config
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  ...
 }:
 let
   port = config.services.paperless.port;
@@ -16,11 +17,13 @@ in
       "paperless/password" = { };
       "paperless/oidc_client_secret" = { };
     };
-    templates."paperless.env".content = builtins.readFile (pkgs.substituteAll {
-      src = ./paperless.env;
-      server_url = "https://${config.domain.auth}";
-      oidc_client_secret = config.sops.placeholder."paperless/oidc_client_secret";
-    });
+    templates."paperless.env".content = builtins.readFile (
+      pkgs.substituteAll {
+        src = ./paperless.env;
+        server_url = "https://${config.domain.auth}";
+        oidc_client_secret = config.sops.placeholder."paperless/oidc_client_secret";
+      }
+    );
   };
 
   services = {
@@ -32,9 +35,7 @@ in
     };
 
     postgresql = {
-      ensureDatabases = [
-        dbName
-      ];
+      ensureDatabases = [ dbName ];
       ensureUsers = [
         {
           name = dbUser;

@@ -1,8 +1,10 @@
-{ pkgs
-, config
-, dotfileDir
-, ...
-}: {
+{
+  pkgs,
+  config,
+  dotfileDir,
+  ...
+}:
+{
   home = {
     packages = with pkgs; [
       git-extras
@@ -39,9 +41,7 @@
           side-by-side = true;
         };
       };
-      includes = [
-        { path = /. + dotfileDir + "/git/config"; }
-      ];
+      includes = [ { path = /. + dotfileDir + "/git/config"; } ];
     };
 
     lazygit = {
@@ -51,8 +51,14 @@
           border = "rounded";
           expandFocusedSidePanel = true;
           theme = {
-            selectedLineBgColor = [ "default" "bold" ];
-            selectedRangeBgColor = [ "reverse" "bold" ];
+            selectedLineBgColor = [
+              "default"
+              "bold"
+            ];
+            selectedRangeBgColor = [
+              "reverse"
+              "bold"
+            ];
           };
         };
         git = {

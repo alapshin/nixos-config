@@ -1,8 +1,10 @@
-{ pkgs
-, config
-, dotfileDir
-, ...
-}: {
+{
+  pkgs,
+  config,
+  dotfileDir,
+  ...
+}:
+{
   services = {
     ssh-agent = {
       enable = true;

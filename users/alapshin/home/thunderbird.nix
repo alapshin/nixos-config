@@ -1,13 +1,12 @@
-{ pkgs
-, lib
-, config
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  ...
 }:
 let
   cfg = config.programs.thunderbird;
-  accounts = builtins.fromJSON (
-    builtins.readFile ./../secrets/build/accounts.json
-  );
+  accounts = builtins.fromJSON (builtins.readFile ./../secrets/build/accounts.json);
 in
 {
   accounts.email.accounts = lib.mkIf cfg.enable {

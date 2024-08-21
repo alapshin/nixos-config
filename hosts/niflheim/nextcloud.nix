@@ -1,7 +1,8 @@
-{ lib
-, pkgs
-, config
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  ...
 }:
 let
   nextcloudHostname = "nextcloud.${config.domain.base}";
@@ -22,9 +23,7 @@ in
 
   users.users = {
     # Make sops keys available to nextcloud user
-    nextcloud.extraGroups = [
-      config.users.groups.keys.name
-    ];
+    nextcloud.extraGroups = [ config.users.groups.keys.name ];
   };
 
   services = {
@@ -57,7 +56,6 @@ in
       };
       database.createLocally = true;
 
-
       settings = {
         ratelimit.protection.enabled = false;
 
@@ -79,15 +77,24 @@ in
 
       secretFile = config.sops.secrets."nextcloud/secrets.json".path;
 
-      extraApps = with config.services.nextcloud.package.packages.apps; {
-        inherit bookmarks calendar contacts gpoddersync tasks;
-      } // {
-        oidc_login = pkgs.fetchNextcloudApp {
-          license = "agpl3Plus";
-          url = "https://github.com/pulsejet/nextcloud-oidc-login/releases/download/v3.1.1/oidc_login.tar.gz";
-          sha256 = "sha256-b/tKk+y+ZypCHGNDtunDua2msYD6/TzA0haoC0k85F4=";
+      extraApps =
+        with config.services.nextcloud.package.packages.apps;
+        {
+          inherit
+            bookmarks
+            calendar
+            contacts
+            gpoddersync
+            tasks
+            ;
+        }
+        // {
+          oidc_login = pkgs.fetchNextcloudApp {
+            license = "agpl3Plus";
+            url = "https://github.com/pulsejet/nextcloud-oidc-login/releases/download/v3.1.1/oidc_login.tar.gz";
+            sha256 = "sha256-b/tKk+y+ZypCHGNDtunDua2msYD6/TzA0haoC0k85F4=";
+          };
         };
-      };
       extraAppsEnable = true;
     };
   };

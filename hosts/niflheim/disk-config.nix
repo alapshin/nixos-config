@@ -1,6 +1,4 @@
-{ lib
-, ...
-}:
+{ lib, ... }:
 let
   dataDisk1 = "/dev/sda";
   luksData1 = "luks-data1";
@@ -100,7 +98,10 @@ in
                   subvolumes = {
                     "/root" = {
                       mountpoint = "/";
-                      mountOptions = [ "compress=zstd" "noatime" ];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                   };
                 };
@@ -126,7 +127,10 @@ in
                 content = {
                   type = "btrfs";
                   mountpoint = "/mnt/data";
-                  mountOptions = [ "compress=zstd" "noatime" ];
+                  mountOptions = [
+                    "compress=zstd"
+                    "noatime"
+                  ];
                 };
               };
             };
@@ -136,4 +140,3 @@ in
     };
   };
 }
-

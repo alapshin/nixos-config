@@ -1,46 +1,56 @@
-{ lib
-, stdenv
-, fetchurl
-, fetchzip
-, fetchFromGitHub
-, bash
-, unzip
-, coreutils
-, which
-, zip
-, ispell
-, perl
-, python3
-, hunspell
+{
+  lib,
+  stdenv,
+  fetchurl,
+  fetchzip,
+  fetchFromGitHub,
+  bash,
+  unzip,
+  coreutils,
+  which,
+  zip,
+  ispell,
+  perl,
+  python3,
+  hunspell,
 }:
 let
   mkDict =
-    { pname, readmeFile, dictFileName, ... }@args:
-    stdenv.mkDerivation ({
-      inherit pname;
-      installPhase = ''
-        runHook preInstall
-        # hunspell dicts
-        install -dm755 "$out/share/hunspell"
-        install -m644 ${dictFileName}.dic "$out/share/hunspell/"
-        install -m644 ${dictFileName}.aff "$out/share/hunspell/"
-        # myspell dicts symlinks
-        install -dm755 "$out/share/myspell/dicts"
-        ln -sv "$out/share/hunspell/${dictFileName}.dic" "$out/share/myspell/dicts/"
-        ln -sv "$out/share/hunspell/${dictFileName}.aff" "$out/share/myspell/dicts/"
-        # docs
-        install -dm755 "$out/share/doc"
-        install -m644 ${readmeFile} $out/share/doc/${pname}.txt
-        runHook postInstall
-      '';
-    } // args);
+    {
+      pname,
+      readmeFile,
+      dictFileName,
+      ...
+    }@args:
+    stdenv.mkDerivation (
+      {
+        inherit pname;
+        installPhase = ''
+          runHook preInstall
+          # hunspell dicts
+          install -dm755 "$out/share/hunspell"
+          install -m644 ${dictFileName}.dic "$out/share/hunspell/"
+          install -m644 ${dictFileName}.aff "$out/share/hunspell/"
+          # myspell dicts symlinks
+          install -dm755 "$out/share/myspell/dicts"
+          ln -sv "$out/share/hunspell/${dictFileName}.dic" "$out/share/myspell/dicts/"
+          ln -sv "$out/share/hunspell/${dictFileName}.aff" "$out/share/myspell/dicts/"
+          # docs
+          install -dm755 "$out/share/doc"
+          install -m644 ${readmeFile} $out/share/doc/${pname}.txt
+          runHook postInstall
+        '';
+      }
+      // args
+    );
   mkDictFromLibreOffice =
-    { shortName
-    , shortDescription
-    , dictFileName
-    , license
-    , readmeFile ? "README_${dictFileName}.txt"
-    , sourceRoot ? dictFileName
+    {
+      shortName,
+      shortDescription,
+      dictFileName,
+      license,
+      readmeFile ? "README_${dictFileName}.txt",
+      sourceRoot ? dictFileName,
     }:
     mkDict rec {
       pname = "hunspell-dict-${shortName}-libreoffice";
@@ -70,7 +80,10 @@ rec {
     dictFileName = "sr";
     shortDescription = "Serbian";
     readmeFile = "README.txt";
-    license = with lib.licenses; [ gpl2 lgpl21 mpl11 ];
+    license = with lib.licenses; [
+      gpl2
+      lgpl21
+      mpl11
+    ];
   };
 }
-

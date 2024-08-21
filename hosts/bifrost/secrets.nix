@@ -1,7 +1,5 @@
-{ config
-, pkgs
-, ...
-}: {
+{ config, pkgs, ... }:
+{
   sops = {
     defaultSopsFile = ./secrets.yaml;
     secrets = {

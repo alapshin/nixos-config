@@ -1,8 +1,9 @@
-{ lib
-, pkgs
-, config
-, inputs
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  inputs,
+  ...
 }:
 let
   instance = "main";
@@ -69,9 +70,7 @@ in
     };
 
     postgresql = {
-      ensureDatabases = [
-        dbName
-      ];
+      ensureDatabases = [ dbName ];
       ensureUsers = [
         {
           name = dbUser;
@@ -137,9 +136,7 @@ in
             }
             {
               policy = "one_factor";
-              domain = [
-                "*.${config.domain.base}"
-              ];
+              domain = [ "*.${config.domain.base}" ];
             }
           ];
         };
@@ -201,9 +198,7 @@ in
                 require_pkce = true;
                 pkce_challenge_method = "S256";
                 authorization_policy = "one_factor";
-                redirect_uris = [
-                  "https://grafana.${config.domain.base}/login/generic_oauth"
-                ];
+                redirect_uris = [ "https://grafana.${config.domain.base}/login/generic_oauth" ];
               }
               {
                 client_id = "jellyfin";
@@ -212,9 +207,7 @@ in
                 require_pkce = true;
                 pkce_challenge_method = "S256";
                 authorization_policy = "one_factor";
-                redirect_uris = [
-                  "https://jellyfin.${config.domain.base}/sso/OID/redirect/authelia"
-                ];
+                redirect_uris = [ "https://jellyfin.${config.domain.base}/sso/OID/redirect/authelia" ];
                 token_endpoint_auth_method = "client_secret_post";
               }
               {
@@ -224,18 +217,14 @@ in
                 require_pkce = true;
                 pkce_challenge_method = "S256";
                 authorization_policy = "one_factor";
-                redirect_uris = [
-                  "https://nextcloud.${config.domain.base}/apps/oidc_login/oidc"
-                ];
+                redirect_uris = [ "https://nextcloud.${config.domain.base}/apps/oidc_login/oidc" ];
               }
               {
                 client_id = "open-webui";
                 client_name = "Open WebUI";
                 client_secret = "$pbkdf2-sha512$310000$b6mTChIj/dqB1tgrNWpJCA$L0o17Sn8c2U2G9U3AHmOsI03TsHIwnU9rjiqvw2hEcl/lcbc6r48cBS4aU/Bq4g9PYF9lihl3o2fbhlIOE7fEA";
                 authorization_policy = "one_factor";
-                redirect_uris = [
-                  "https://owui.${config.domain.base}/oauth/oidc/callback"
-                ];
+                redirect_uris = [ "https://owui.${config.domain.base}/oauth/oidc/callback" ];
               }
               {
                 client_id = "paperless";
@@ -273,9 +262,7 @@ in
       AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = "%d/ldap_password";
     };
     serviceConfig = {
-      LoadCredential = [
-        "ldap_password:${config.sops.secrets."lldap/user_password".path}"
-      ];
+      LoadCredential = [ "ldap_password:${config.sops.secrets."lldap/user_password".path}" ];
     };
   };
 }

@@ -1,8 +1,10 @@
-{ lib
-, pkgs
-, config
-, ...
-}: {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
   sops = {
     secrets = {
       "porkbun/api_key" = {
@@ -16,18 +18,14 @@
 
   users.users = {
     # Make sops keys available to acme user
-    acme.extraGroups = [
-      config.users.groups.keys.name
-    ];
+    acme.extraGroups = [ config.users.groups.keys.name ];
   };
 
   security = {
     acme = {
       acceptTerms = true;
       certs."${config.domain.base}" = {
-        extraDomainNames = [
-          "*.${config.domain.base}"
-        ];
+        extraDomainNames = [ "*.${config.domain.base}" ];
       };
       defaults = {
         email = "mail@${config.domain.base}";

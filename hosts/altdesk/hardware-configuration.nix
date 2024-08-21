@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 {
   boot = {
@@ -22,7 +23,13 @@
     '';
 
     initrd = {
-      availableKernelModules = [ "ahci" "nvme" "usbhid" "usb_storage" "xhci_pci" ];
+      availableKernelModules = [
+        "ahci"
+        "nvme"
+        "usbhid"
+        "usb_storage"
+        "xhci_pci"
+      ];
       luks.devices."luks-9ebe5c59-eac5-47eb-b517-c82f2ede2ca3" = {
         device = "/dev/disk/by-uuid/9ebe5c59-eac5-47eb-b517-c82f2ede2ca3";
         keyFile = "/dev/sda";
@@ -40,12 +47,18 @@
     "/" = {
       device = "/dev/disk/by-uuid/4a5edb30-f86b-4ec3-a493-8de48c8ee703";
       fsType = "btrfs";
-      options = [ "subvol=root" "discard=async" ];
+      options = [
+        "subvol=root"
+        "discard=async"
+      ];
     };
     "/home" = {
       device = "/dev/disk/by-uuid/4a5edb30-f86b-4ec3-a493-8de48c8ee703";
       fsType = "btrfs";
-      options = [ "subvol=home" "discard=async" ];
+      options = [
+        "subvol=home"
+        "discard=async"
+      ];
     };
   };
 

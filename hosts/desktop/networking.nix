@@ -1,7 +1,5 @@
-{ config
-, pkgs
-, ...
-}: {
+{ config, pkgs, ... }:
+{
   networking = {
     hostName = "desktop";
     interfaces = {

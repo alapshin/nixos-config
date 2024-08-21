@@ -1,8 +1,10 @@
-{ config
-, lib
-, pkgs
-, ...
-}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   sops = {
     secrets = {
       "xray/wireguard_private_key" = {
@@ -10,10 +12,12 @@
         restartUnits = [ "xray.service" ];
       };
     };
-    templates."xray-config.json".content = builtins.readFile (pkgs.substituteAll {
-      src = ./xray-config.json;
-      wireguard_private_key = config.sops.placeholder."xray/wireguard_private_key";
-    });
+    templates."xray-config.json".content = builtins.readFile (
+      pkgs.substituteAll {
+        src = ./xray-config.json;
+        wireguard_private_key = config.sops.placeholder."xray/wireguard_private_key";
+      }
+    );
   };
 
   services.xray = {
@@ -24,7 +28,10 @@
   networking = {
     firewall = {
       allowedUDPPorts = [ 1080 ];
-      allowedTCPPorts = [ 1080 8443 ];
+      allowedTCPPorts = [
+        1080
+        8443
+      ];
     };
   };
 
