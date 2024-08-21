@@ -1,7 +1,7 @@
 {
-  config,
   lib,
   pkgs,
+  config,
   ...
 }:
 {
@@ -28,7 +28,6 @@
           ];
         };
       };
-      kernelModules = [ "amdgpu" ];
       availableKernelModules = [
         "ahci"
         "nvme"
@@ -82,7 +81,4 @@
       ];
     };
   };
-
-  systemd.tmpfiles.rules = [ "L+ /opt/rocm/hip - - - - ${pkgs.rocmPackages.clr}" ];
-
 }
