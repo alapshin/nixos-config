@@ -5,6 +5,8 @@
   ...
 }:
 {
+  zramSwap.enable = true;
+
   boot = {
 
     loader = {
