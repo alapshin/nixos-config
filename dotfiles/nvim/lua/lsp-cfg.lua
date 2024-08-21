@@ -1,4 +1,4 @@
-require('inc_rename').setup()
+require('inc_rename').setup({})
 vim.keymap.set('n', '<leader>rn', ':IncRename ')
 
 local lspzero = require('lsp-zero')
@@ -35,6 +35,18 @@ lspconfig.lua_ls.setup({
   },
 })
 
-lspconfig.ltex.setup({})
-
 lspconfig.nil_ls.setup({})
+
+lspconfig.ltex.setup(
+  {
+    settings = {
+      ltex = {
+        enabled = {
+          "markdown",
+          "plaintex",
+          "tex",
+        }
+      }
+    }
+  }
+)
