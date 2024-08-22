@@ -4,32 +4,12 @@
   config,
   ...
 }:
+
 {
   zramSwap.enable = true;
 
   boot = {
-
-    loader = {
-      timeout = 15;
-      efi.canTouchEfiVariables = true;
-      systemd-boot = {
-        enable = true;
-        consoleMode = "max";
-        configurationLimit = 7;
-      };
-    };
-
     initrd = {
-      network = {
-        enable = true;
-        ssh = {
-          enable = true;
-          hostKeys = [ "/etc/secrets/initrd/host_ed25519" ];
-          authorizedKeys = [
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGlJo3xdypmwSS2lsHCzf6GsqyEGvr+HzvbU+TGuPjmA"
-          ];
-        };
-      };
       availableKernelModules = [
         "ahci"
         "nvme"
@@ -41,12 +21,10 @@
       luks.devices = {
         "luksroot" = {
           device = "/dev/disk/by-uuid/56cd0776-0e1a-46b2-8e61-56a1aab91c4a";
-          keyFileSize = 4096;
           allowDiscards = true;
         };
         "luksdata" = {
           device = "/dev/disk/by-uuid/f8c9d40f-d397-46d2-a058-55a225d2670e";
-          keyFileSize = 4096;
           allowDiscards = true;
         };
       };

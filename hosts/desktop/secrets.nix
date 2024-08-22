@@ -6,5 +6,4 @@
 }:
 
 {
-  networking.hostName = "desktop";
 }

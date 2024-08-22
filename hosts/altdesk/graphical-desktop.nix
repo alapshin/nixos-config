@@ -4,20 +4,10 @@
   config,
   ...
 }:
+
 {
+
   services = {
-    colord.enable = true;
-    flatpak.enable = true;
-
-    displayManager = {
-      sddm = {
-        enable = true;
-        wayland.enable = true;
-      };
-      defaultSession = "plasma";
-    };
-    desktopManager.plasma6.enable = true;
-
     xserver = {
       xkb = {
         layout = "us,ru";

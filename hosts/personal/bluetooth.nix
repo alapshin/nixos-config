@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   hardware = {
     bluetooth = {

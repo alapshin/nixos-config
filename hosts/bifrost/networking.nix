@@ -7,19 +7,12 @@
 {
   networking = {
     hostName = "bifrost";
-    firewall = {
-      enable = true;
-      allowedUDPPorts = [ ];
-      allowedTCPPorts = [ ];
-    };
-    useNetworkd = true;
   };
-  systemd.network = {
-    enable = true;
 
+  systemd.network = {
     # See https://wiki.nixos.org/wiki/Install_NixOS_on_Hetzner_Cloud#Network_configuration
-    networks."10-wan" = {
-      matchConfig.Name = "enp1s0";
+    networks."10-uplink" = {
+      matchConfig.Name = "eth0 en*";
       networkConfig = {
         DHCP = "ipv4";
         Gateway = "fe80::1";
@@ -27,4 +20,7 @@
       };
     };
   };
+
+  # Network configuration i.e. when we unlock machines with openssh in the initrd
+  boot.initrd.systemd.network.networks."10-uplink" = config.systemd.network.networks."10-uplink";
 }

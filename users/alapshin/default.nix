@@ -107,7 +107,6 @@ in
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Andrei Lapshin";
-    initialPassword = "12345678";
     extraGroups = [
       "adbusers"
       "audio"

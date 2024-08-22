@@ -1,9 +1,10 @@
 {
-  config,
   lib,
   pkgs,
+  config,
   ...
 }:
+
 {
   boot = {
     loader = {

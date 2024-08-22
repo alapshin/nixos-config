@@ -132,6 +132,7 @@
           android = pkgs.android-fhs-env.env;
         };
       };
+
       formatter = {
         ${system} = pkgs.nixfmt-rfc-style;
       };
@@ -141,27 +142,37 @@
       nixosModules = import ./modules/nixos;
 
       nixosConfigurations = {
-        carbon = mkNixosConfiguration {
+        bifrost = mkNixosConfiguration {
           hostModules = [
             ./hosts/common
-            ./hosts/carbon
+            ./hosts/server
+            ./hosts/bifrost
           ];
-          userModules = [ ./users/alapshin ];
         };
-
-        bifrost = mkNixosConfiguration { hostModules = [ ./hosts/bifrost ]; };
 
         niflheim = mkNixosConfiguration {
           hostModules = [
+            ./hosts/common
+            ./hosts/server
             ./hosts/niflheim
             self.nixosModules.servarr
             self.nixosModules.nginx-ext
           ];
         };
 
+        carbon = mkNixosConfiguration {
+          hostModules = [
+            ./hosts/common
+            ./hosts/personal
+            ./hosts/carbon
+          ];
+          userModules = [ ./users/alapshin ];
+        };
+
         desktop = mkNixosConfiguration {
           hostModules = [
             ./hosts/common
+            ./hosts/personal
             ./hosts/desktop
           ];
           userModules = [ ./users/alapshin ];
@@ -170,11 +181,13 @@
         altdesk = mkNixosConfiguration {
           hostModules = [
             ./hosts/common
+            ./hosts/personal
             ./hosts/altdesk
           ];
           userModules = [ ./users/alapshin ];
         };
       };
+
       # Stand-alone home-manager configuration for non NixOS machines
       homeConfigurations =
         let

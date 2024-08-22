@@ -8,25 +8,6 @@
   ...
 }:
 {
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 7d";
-    };
-    package = pkgs.nixVersions.latest;
-    settings = {
-      # Deduplicate and optimize nix store
-      auto-optimise-store = true;
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      trusted-users = [
-        "root"
-        "@wheel"
-      ];
-    };
-  };
-
   nixpkgs = {
     inherit pkgs;
   };

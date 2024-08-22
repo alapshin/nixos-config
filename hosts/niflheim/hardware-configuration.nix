@@ -5,6 +5,7 @@
   modulesPath,
   ...
 }:
+
 {
   imports = [
     ./disk-config.nix
@@ -33,30 +34,14 @@
       };
     };
 
-    initrd = {
-      network = {
-        enable = true;
-        ssh = {
-          enable = true;
-          port = 2222;
-          hostKeys = [ /etc/ssh/ssh_initrd_ed25519_key ];
-        };
-      };
-      systemd = {
-        enable = true;
-        network = {
-          enable = true;
-        };
-      };
-      availableKernelModules = [
-        "ahci"
-        "igb"
-        "e1000e"
-        "nvme"
-        "usbhid"
-        "usb_storage"
-        "xhci_pci"
-      ];
-    };
+    initrd.availableKernelModules = [
+      "ahci"
+      "igb"
+      "e1000e"
+      "nvme"
+      "usbhid"
+      "usb_storage"
+      "xhci_pci"
+    ];
   };
 }

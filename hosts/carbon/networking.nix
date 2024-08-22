@@ -1,6 +1,10 @@
-{ config, pkgs, ... }:
 {
-  networking = {
-    hostName = "carbon";
-  };
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+
+{
+  networking.hostName = "carbon";
 }

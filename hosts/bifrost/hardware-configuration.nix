@@ -1,10 +1,11 @@
 {
-  config,
   lib,
   pkgs,
+  config,
   modulesPath,
   ...
 }:
+
 {
   imports = [
     ./disk-config.nix
@@ -20,14 +21,12 @@
       };
     };
 
-    initrd = {
-      availableKernelModules = [
-        "ahci"
-        "nvme"
-        "usbhid"
-        "usb_storage"
-        "xhci_pci"
-      ];
-    };
+    initrd.availableKernelModules = [
+      "ahci"
+      "nvme"
+      "usbhid"
+      "usb_storage"
+      "xhci_pci"
+    ];
   };
 }
