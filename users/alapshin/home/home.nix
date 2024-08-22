@@ -73,7 +73,6 @@
       # https://github.com/nix-community/home-manager/issues/1213#issuecomment-626240819
       "mimeapps.list".force = true;
 
-      "zsh/p10k.zsh".source = "${dotfileDir}/p10k.zsh";
       "glow/glow.yml".source = "${dotfileDir}/glow/glow.yml";
       "ideavim/ideavimrc".source = "${dotfileDir}/ideavimrc";
       "latexmk/latexmkrc".source = "${dotfileDir}/latexmkrc";
