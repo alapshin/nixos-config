@@ -54,14 +54,6 @@
     };
   };
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-kde
-      xdg-desktop-portal-gtk
-    ];
-  };
-
   environment.sessionVariables = {
     # https://xkbcommon.org/doc/current/group__include-path.html
     # runtime override supported by multiple libraries e. g. libxkbcommon
