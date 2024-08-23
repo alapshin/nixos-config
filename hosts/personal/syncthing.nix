@@ -26,6 +26,11 @@ in
       device = "${cfg.dataDir}/${username}/books";
       options = bindFsMountOptions;
     };
+    "/home/${username}/calibre" = {
+      fsType = "fuse.bindfs";
+      device = "${cfg.dataDir}/${username}/calibre";
+      options = bindFsMountOptions;
+    };
     "/home/${username}/Documents" = {
       fsType = "fuse.bindfs";
       device = "${cfg.dataDir}/${username}/documents";
@@ -47,6 +52,12 @@ in
         };
       };
       "${cfg.dataDir}/${username}/books" = {
+        d = {
+          user = cfg.user;
+          group = cfg.group;
+        };
+      };
+      "${cfg.dataDir}/${username}/calibre" = {
         d = {
           user = cfg.user;
           group = cfg.group;
@@ -104,6 +115,14 @@ in
         "${cfg.dataDir}/${username}/books" = {
           id = "books";
           label = "Books";
+          devices = [
+            "carbon"
+            "desktop"
+          ];
+        };
+        "${cfg.dataDir}/${username}/calibre" = {
+          id = "calibre";
+          label = "Calibre";
           devices = [
             "carbon"
             "desktop"
