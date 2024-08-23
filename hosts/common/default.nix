@@ -12,7 +12,6 @@
     ./secrets.nix
     ./services.nix
     ./networking.nix
-    ./xray-client.nix
   ];
 
   boot = {

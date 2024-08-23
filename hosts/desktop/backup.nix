@@ -1,4 +1,5 @@
 { lib, config, ... }:
+
 {
   sops.secrets = {
     "borg/passphrase" = {
