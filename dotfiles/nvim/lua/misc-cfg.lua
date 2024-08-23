@@ -1,15 +1,15 @@
-require('Comment').setup()
-require('gitsigns').setup()
+require("Comment").setup()
+require("gitsigns").setup()
 
-require('nvim-web-devicons').setup({})
+require("nvim-web-devicons").setup({})
 
-require('ibl').setup({
-  indent = { },
-  scope = { enabled = true },
+require("ibl").setup({
+    indent = {},
+    scope = { enabled = true },
 })
 
-require('lualine').setup({
+require("lualine").setup({
     options = {
-      theme = "catppuccin"
+        theme = "catppuccin",
     },
 })

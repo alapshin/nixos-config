@@ -11,18 +11,18 @@ vim.opt.number = true
 vim.opt.wrap = false
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 5
-vim.opt.display = 'lastline'
+vim.opt.display = "lastline"
 vim.opt.list = false
-vim.opt.listchars = { eol = '↴', space = '·', tab = '>-' }
+vim.opt.listchars = { eol = "↴", space = "·", tab = ">-" }
 
 -- 5 syntax, highlighting and spelling
 vim.cmd([[
     syntax on
     filetype plugin indent on
 ]])
-vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
-vim.opt.spelllang = 'ru,en'
+vim.opt.spelllang = "ru,en"
 vim.opt.termguicolors = true
 
 -- 6 multiple windows
@@ -37,18 +37,18 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- 9 using the mouse
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- 10 messages and info
 vim.opt.shortmess:append({ I = true })
 
 -- 11 selecting text
-vim.opt.clipboard = 'unnamedplus' -- use X11 clipboard
+vim.opt.clipboard = "unnamedplus" -- use X11 clipboard
 
 -- 12 editing text
 vim.opt.undofile = true
 vim.opt.pumheight = 12
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- 13 tabs and indenting
 vim.opt.expandtab = true
@@ -67,18 +67,18 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 
 -- 18 the swap file
-vim.opt.directory = '/var/tmp'
+vim.opt.directory = "/var/tmp"
 
 -- 19 command line editing
 vim.opt.history = 100
 vim.opt.wildmenu = true
-vim.opt.wildmode = { 'longest:list', 'full' }
+vim.opt.wildmode = { "longest:list", "full" }
 
 -- 22 language specific
 local function escape(str)
-  -- You need to escape these characters to work correctly
-  local escape_chars = [[;,."|\]]
-  return vim.fn.escape(str, escape_chars)
+    -- You need to escape these characters to work correctly
+    local escape_chars = [[;,."|\]]
+    return vim.fn.escape(str, escape_chars)
 end
 -- Recommended to use lua template string
 local en = [[`qwertyuiop[]asdfghjkl;'zxcvbnm]]
@@ -86,12 +86,12 @@ local ru = [[ёйцукенгшщзхъфывапролджэячсмить]]
 local en_shift = [[~QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>]]
 local ru_shift = [[ËЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ]]
 vim.opt.langmap = vim.fn.join({
-  -- | `to` should be first     | `from` should be second
-  escape(ru)
-    .. ';'
-    .. escape(en),
-  escape(ru_shift) .. ';' .. escape(en_shift),
-}, ',')
+    -- | `to` should be first     | `from` should be second
+    escape(ru)
+        .. ";"
+        .. escape(en),
+    escape(ru_shift) .. ";" .. escape(en_shift),
+}, ",")
 
 -- 24 various
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
