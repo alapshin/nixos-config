@@ -6,11 +6,8 @@
 }:
 {
   networking = {
-    # Use networkd instead of the pile of shell scripts
-    useDHCP = lib.mkDefault false;
-    useNetworkd = lib.mkDefault true;
-
     firewall = {
+      enable = lib.mkDefault true;
       logRefusedConnections = lib.mkDefault false;
     };
   };
