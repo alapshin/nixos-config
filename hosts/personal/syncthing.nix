@@ -97,9 +97,6 @@ in
         pixel = {
           id = "QZYNABL-EZ5KIGC-NPZ76I7-7HBM3UR-RV2CEYL-7PUZ6CX-NFPH5V2-TIZU2A7";
         };
-        niflheim = {
-          id = "VHWBRX7-MKV5UQD-WAKMIM2-2EUETPS-IOFHDXW-7VWEBSI-V4MLHW4-5NOPHQP";
-        };
       };
       folders = {
         "${cfg.dataDir}/seedvault" = {

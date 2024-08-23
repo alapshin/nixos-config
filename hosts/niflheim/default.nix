@@ -33,7 +33,6 @@
     ./scrutiny.nix
     ./searx.nix
     ./servarr.nix
-    ./syncthing.nix
     ./wireguard.nix
 
     ./pg-upgrade.nix
