@@ -35,8 +35,6 @@ lspconfig.lua_ls.setup({
     },
 })
 
-lspconfig.nil_ls.setup({})
-
 lspconfig.ltex.setup({
     settings = {
         ltex = {
@@ -44,6 +42,24 @@ lspconfig.ltex.setup({
                 "markdown",
                 "plaintex",
                 "tex",
+            },
+        },
+    },
+})
+
+lspconfig.nixd.setup({
+    settings = {
+        nixd = {
+            nixpkgs = {
+                expr = 'import (builtins.getFlake "/home/alapshin/nixos-config").inputs.nixos { }',
+            },
+            options = {
+                nixos = {
+                    expr = '(builtins.getFlake "/home/alapshin/nixos-config").nixosConfigurations.desktop.options',
+                },
+                home_manager = {
+                    expr = '(builtins.getFlake "/home/alapshin/nixos-config").homeConfigurations.alapshin.options',
+                },
             },
         },
     },

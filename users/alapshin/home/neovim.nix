@@ -53,8 +53,7 @@
     ];
     extraPackages = with pkgs; [
       # Nix LSP support
-      nil
-      statix
+      nixd
       nixfmt-rfc-style
 
       # Bash LSP support
