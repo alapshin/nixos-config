@@ -53,6 +53,14 @@
       icons = true;
     };
 
+    fastfetch = {
+      enable = true;
+    };
+
+    gallery-dl = {
+      enable = true;
+    };
+
     jq = {
       enable = true;
     };
