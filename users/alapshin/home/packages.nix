@@ -39,6 +39,9 @@
     noto-fonts-emoji
     noto-fonts-extra
 
+    # Messaging
+    element-desktop-wayland
+
     # Productivity
     super-productivity
   ];
