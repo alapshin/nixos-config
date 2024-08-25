@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ./ai.nix
     ./backup.nix
     ./gaming.nix
     ./networking.nix
