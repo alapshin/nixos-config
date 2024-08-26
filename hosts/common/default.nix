@@ -52,6 +52,15 @@
       pkcs11.enable = false;
       tctiEnvironment.enable = true;
     };
+
+    pam.loginLimits = [
+      {
+        domain = "*";
+        item = "nofile";
+        type = "soft";
+        value = "2048";
+      }
+    ];
   };
 
   system = {
@@ -68,6 +77,8 @@
       '';
     };
   };
+
+  systemd.user.extraConfig = "DefaultLimitNOFILE=2048";
 
   environment.systemPackages = with pkgs; [
     sbctl
