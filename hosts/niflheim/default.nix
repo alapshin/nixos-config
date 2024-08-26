@@ -14,7 +14,7 @@
     ./audiobookshelf.nix
     ./authelia.nix
     ./calibre.nix
-    # ./changedetection.nix
+    ./changedetection.nix
     ./dashboard.nix
     ./grafana.nix
     ./influxdb.nix
