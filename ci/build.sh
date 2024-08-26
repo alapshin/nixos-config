@@ -26,12 +26,12 @@ function clean-store {
     nix store gc --verbose
 }
 
-function home-switch {
+function switch-home {
     decrypt-build-secrets "users/${username}"
     home-manager switch --flake ".#${username}"
 }
 
-function system-switch {
+function switch-system {
     decrypt-build-secrets "users/alapshin"
     nixos-rebuild switch \
         --verbose \
@@ -39,7 +39,7 @@ function system-switch {
         --flake ".#${hostname}"
 }
 
-function remote-deploy {
+function deploy-remote {
     nixos-rebuild switch \
         --verbose \
         --use-remote-sudo \
@@ -48,7 +48,7 @@ function remote-deploy {
         --flake ".#${hostname}"
 }
 
-function remote-install {
+function install-remote {
     decrypt-build-secrets "hosts/${hostname}"
 
     sshdir="hosts/${hostname}/secrets/build/openssh"
@@ -122,17 +122,17 @@ case $command in
     clean-store)
         clean-store
         ;;
-    home-switch)
-        home-switch
+    switch-home)
+        switch-home
         ;;
-    system-switch)
-        system-switch
+    switch-system)
+        switch-system
         ;;
-    remote-deploy)
-        remote-deploy
+    deploy-remote)
+        deploy-remote
         ;;
-    remote-install)
-        remote-install
+    install-remote)
+        install-remote
         ;;
     sops-update-keys)
         sops-update-keys
