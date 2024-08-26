@@ -3,11 +3,12 @@ on:
   pull_request:
   push:
 jobs:
-  tests:
-    runs-on: ubuntu-latest
+  check:
+    runs-on: ubuntu-24.04
     steps:
-    - uses: actions/checkout@v3
-    - uses: cachix/install-nix-action@v22
+    - uses: actions/checkout@v4
+    - uses: DeterminateSystems/nix-installer-action@v13
+    - uses: DeterminateSystems/magic-nix-cache-action@v7
     - name: "Run nix flake checks"
       run: ci/shell.sh
       env:

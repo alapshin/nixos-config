@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-nix shell nixpkgs#sops --command ci/build.sh check
+nix shell nixpkgs#sops --command ci/check.sh

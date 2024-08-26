@@ -13,12 +13,17 @@ function check {
     nix flake check
 }
 
-function clean {
-    nix store gc --verbose
+function build {
+    decrypt-build-secrets "users/alapshin"
+    nix build ".#nixosConfigurations.${hostname}.config.system.build.toplevel"
 }
 
 function update {
     nix flake update
+}
+
+function clean-store {
+    nix store gc --verbose
 }
 
 function home-switch {
@@ -108,11 +113,14 @@ case $command in
     check)
         check
         ;;
-    clean)
-        clean
+    build)
+        build
         ;;
     update)
         update
+        ;;
+    clean-store)
+        clean-store
         ;;
     home-switch)
         home-switch
@@ -130,6 +138,6 @@ case $command in
         sops-update-keys
         ;;
     *)
-        echo -n "Unknown command $command"
+        echo -n "Unknown command $command" && exit 1
         ;;
 esac
