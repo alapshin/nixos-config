@@ -28,14 +28,19 @@ function home-switch {
 
 function system-switch {
     decrypt-build-secrets "users/alapshin"
-    sudo nixos-rebuild switch --flake ".#${hostname}"
+    nixos-rebuild switch \
+        --verbose \
+        --use-remote-sudo \
+        --flake ".#${hostname}"
 }
 
 function remote-deploy {
     nixos-rebuild switch \
-        --flake ".#${hostname}" \
+        --verbose \
+        --use-remote-sudo \
         --build-host "${remote_host}" \
-        --target-host "${remote_host}"
+        --target-host "${remote_host}" \
+        --flake ".#${hostname}"
 }
 
 function remote-install {
