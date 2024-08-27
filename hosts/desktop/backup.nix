@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ config, ... }:
 
 {
   sops.secrets = {
@@ -7,12 +7,18 @@
     };
   };
 
-  services.borgbackup.jobs = {
-    default = {
-      paths = [
-        "/home/alapshin/books/"
-        "/home/alapshin/Documents/"
-      ];
+  services.backup = {
+    enable = true;
+
+    borg.jobs = {
+      home = {
+        paths = [
+          "/home/alapshin/books/"
+          "/home/alapshin/Documents/"
+        ];
+      };
     };
+
+    passphraseFile = config.sops.secrets."borg/passphrase".path;
   };
 }

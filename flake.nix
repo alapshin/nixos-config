@@ -86,6 +86,7 @@
           baseModules ? [
             ./configuration.nix
 
+            self.nixosModules.backup
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             lanzaboote.nixosModules.lanzaboote
