@@ -29,6 +29,11 @@
           user = "root";
           hostname = "37.27.114.205";
         };
+        "storagebox" = {
+          user = "u399502";
+          port = 23;
+          hostname = "u399502.your-storagebox.de";
+        };
       };
     };
   };
