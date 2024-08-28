@@ -13,11 +13,6 @@ let
     ledger2beancount
   ];
 
-  borgPackages = with pkgs; [
-    vorta
-    borgbackup
-  ];
-
   blockchainPackages = with pkgs; [
     feather
     electrum
@@ -150,7 +145,6 @@ in
       ++ blockchainPackages
       ++ dictionaries
       ++ guiDevTools
-      ++ borgPackages
       ++ javaPackages
       ++ kdePackages
       ++ pythonPackages;
