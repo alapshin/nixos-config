@@ -11,6 +11,7 @@
 
     ./acme.nix
     ./ai.nix
+    ./anki.nix
     ./audiobookshelf.nix
     ./authelia.nix
     ./backup.nix
