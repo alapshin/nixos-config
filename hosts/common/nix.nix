@@ -29,6 +29,8 @@
         "root"
         "@wheel"
       ];
+
+      use-xdg-base-directories = true;
     };
   };
 
