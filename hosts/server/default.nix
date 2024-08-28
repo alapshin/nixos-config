@@ -4,7 +4,6 @@
   imports = [
     ./nix.nix
 
-    ./backup.nix
     ./openssh.nix
     ./networking.nix
   ];

@@ -13,6 +13,7 @@
     ./ai.nix
     ./audiobookshelf.nix
     ./authelia.nix
+    ./backup.nix
     ./calibre.nix
     ./changedetection.nix
     ./dashboard.nix
