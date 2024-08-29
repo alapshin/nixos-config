@@ -64,7 +64,6 @@
         extensions =
           (with pkgs.firefox-addons; [ linguist-translator ])
           ++ (with pkgs.nur.repos.rycee.firefox-addons; [
-            floccus
             omnivore
             metamask
             sponsorblock
