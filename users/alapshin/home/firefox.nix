@@ -9,7 +9,9 @@
     enable = true;
     package = pkgs.firefox.override {
       cfg = {
-        nativeMessagingHosts.packages = [ pkgs.kdePackages.plasma-browser-integration ];
+        nativeMessagingHosts.packages = [
+          pkgs.kdePackages.plasma-browser-integration
+        ];
       };
     };
 
@@ -106,4 +108,7 @@
       };
     };
   };
+
+  # Workaround for plasma-browser-integration when using Plasma6 and installing Firefox via home-manager
+  home.file.".mozilla/native-messaging-hosts/org.kde.plasma.browser_integration.json".source = "${pkgs.kdePackages.plasma-browser-integration}/lib/mozilla/native-messaging-hosts/org.kde.plasma.browser_integration.json";
 }
