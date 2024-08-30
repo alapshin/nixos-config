@@ -128,6 +128,8 @@ in
               resources = [
                 # General API
                 "^/api([/?].*)?$"
+                # Calibre OPDS API
+                "^/opds([/?].*)?$"
                 # Navidrome API
                 "^/rest([/?].*)?$"
                 # Navidrome Share API
