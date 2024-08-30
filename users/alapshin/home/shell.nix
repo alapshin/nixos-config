@@ -1,7 +1,7 @@
 { pkgs, dotfileDir, ... }:
 {
   home.packages = with pkgs; [
-    dog
+    doggo
     duf
     du-dust
     fd
