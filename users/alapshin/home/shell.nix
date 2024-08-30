@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     doggo
     duf
-    du-dust
+    dust
     fd
     glow
     sd
