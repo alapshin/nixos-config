@@ -6,6 +6,7 @@
 }:
 {
   home.packages = with pkgs; [ typst ];
+
   programs.texlive = {
     enable = true;
     packageSet = pkgs.texlive;

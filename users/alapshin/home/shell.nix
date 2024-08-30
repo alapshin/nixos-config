@@ -103,10 +103,6 @@
       enable = false;
     };
 
-    texlive = {
-      enable = true;
-    };
-
     tmux = {
       enable = true;
     };
