@@ -16,6 +16,14 @@
     };
 
     policies = {
+      # Needed for ActivityWatch Addon
+      "3rdparty" = {
+        "Extensions" = {
+          "{ef87d84c-2127-493f-b952-5b4e744245bc}" = {
+            "consentOfflineDataCollection" = true;
+          };
+        };
+      };
       "Cookies" = {
         "Locked" = true;
         "Behavior" = "reject-tracker-and-partition-foreign";
@@ -67,6 +75,7 @@
           (with pkgs.firefox-addons; [ linguist-translator ])
           ++ (with pkgs.nur.repos.rycee.firefox-addons; [
             awesome-rss
+            aw-watcher-web
             omnivore
             metamask
             sponsorblock
