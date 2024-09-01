@@ -68,7 +68,7 @@ in
         }
         // attrsets.mapAttrs' (
           app: opts:
-          nameValuePair ("${app}.${cfg.basedomain}") {
+          nameValuePair "${app}.${cfg.basedomain}" {
             forceSSL = true;
             useACMEHost = cfg.basedomain;
             locations = {

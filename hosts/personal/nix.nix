@@ -1,7 +1,9 @@
 { lib, ... }:
 
 {
-  nix.daemonIOSchedClass = "idle";
-  nix.daemonIOSchedPriority = 7;
-  nix.daemonCPUSchedPolicy = "idle";
+  nix = {
+    daemonIOSchedClass = "idle";
+    daemonIOSchedPriority = 7;
+    daemonCPUSchedPolicy = "idle";
+  };
 }

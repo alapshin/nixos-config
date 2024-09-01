@@ -38,9 +38,10 @@
         hostKeys = [ /etc/ssh/ssh_initrd_ed25519_key ];
       };
     };
+    systemd.network = {
+      enable = true;
+      # Network configuration i.e. when we unlock machines with openssh in the initrd
+      networks."10-uplink" = config.systemd.network.networks."10-uplink";
+    };
   };
-
-  boot.initrd.systemd.network.enable = true;
-  # Network configuration i.e. when we unlock machines with openssh in the initrd
-  boot.initrd.systemd.network.networks."10-uplink" = config.systemd.network.networks."10-uplink";
 }

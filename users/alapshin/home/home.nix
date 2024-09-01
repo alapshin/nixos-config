@@ -8,10 +8,11 @@
   ...
 }:
 {
-  home.stateVersion = "23.11";
-
-  home.username = username;
-  home.homeDirectory = "/home/${username}";
+  home = {
+    username = username;
+    stateVersion = "23.11";
+    homeDirectory = "/home/${username}";
+  };
 
   imports =
     [
