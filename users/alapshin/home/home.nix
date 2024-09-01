@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   isNixOS,
   username,
   dotfileDir,
@@ -97,4 +98,8 @@
       };
     };
   };
+
+  home.activation.diff = inputs.home-manager.lib.hm.dag.entryAnywhere ''
+    ${pkgs.nvd}/bin/nvd diff $oldGenPath $newGenPath
+  '';
 }
