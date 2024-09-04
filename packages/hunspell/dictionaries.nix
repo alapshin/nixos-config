@@ -1,18 +1,7 @@
 {
   lib,
   stdenv,
-  fetchurl,
-  fetchzip,
   fetchFromGitHub,
-  bash,
-  unzip,
-  coreutils,
-  which,
-  zip,
-  ispell,
-  perl,
-  python3,
-  hunspell,
 }:
 let
   mkDict =
@@ -74,7 +63,7 @@ let
       };
     };
 in
-rec {
+{
   sr = mkDictFromLibreOffice {
     shortName = "sr";
     dictFileName = "sr";
