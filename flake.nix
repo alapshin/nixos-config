@@ -60,11 +60,21 @@
       dotfileDir = "${configDir}/dotfiles";
 
       nixpkgsConfig = {
-        allowUnfree = true;
         android_sdk.accept_license = true;
         permittedInsecurePackages = [
           "electron-27.3.11"
-          "jitsi-meet-1.0.8043"
+        ];
+        allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+          "languagetool"
+
+          "steam"
+          "steam-original"
+          "steam-run"
+
+          "idea-ultimate"
+          "android-studio-stable"
+          "android-studio-beta"
+          "android-studio-canary"
         ];
       };
 

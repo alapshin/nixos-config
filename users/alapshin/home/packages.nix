@@ -21,7 +21,6 @@
     stylua
     wget
     wl-clipboard
-    unrar
     unzip
 
     # AI
