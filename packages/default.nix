@@ -41,10 +41,8 @@
 
   pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
     (python-final: python-prev: {
-
-      autobean = python-final.callPackage ./autobean { };
       beancount3 = python-final.callPackage ./beancount { };
-      # Install standalone beanprice
+      autobean = python-final.callPackage ./autobean { };
       beanquery = python-final.callPackage ./beanquery { };
       beancount-plugin-utils = python-final.callPackage ./beancount-plugin-utils { };
     })
