@@ -6,4 +6,5 @@ Parent=FALLBACK/
 ColorScheme=Catppuccin-Latte
 
 [Scrolling]
-ScrollBarPosition=2
+HistoryMode=2
+ScrollBarPosition=1
