@@ -184,6 +184,15 @@ in
         };
       };
     };
+    "10-music" = {
+      "/mnt/data/music" = {
+        d = {
+          mode = "0755";
+          inherit group;
+          user = config.services.lidarr.user;
+        };
+      };
+    };
   };
 
   users.users.radarr.extraGroups = [ group ];
