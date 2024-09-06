@@ -4,5 +4,9 @@
     hurl
     xh
     yamlfmt
+
+    # AI
+    aider-chat
+    whisper-ctranslate2
   ];
 }

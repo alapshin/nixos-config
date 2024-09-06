@@ -23,9 +23,6 @@
     wl-clipboard
     unzip
 
-    # AI
-    whisper-ctranslate2
-
     # Media
     ffmpeg
 
