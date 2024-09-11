@@ -71,6 +71,9 @@
           "steam-original"
           "steam-run"
 
+          "nvidia-x11"
+          "nvidia-settings"
+
           "idea-ultimate"
           "android-studio-stable"
           "android-studio-beta"
