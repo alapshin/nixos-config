@@ -27,7 +27,7 @@ in
   };
 
   config = {
-    domain.base = "hlsrv.dev";
+    domain.base = "bitgarage.dev";
     domain.auth = "auth.${config.domain.base}";
     services.nginx-ext.basedomain = config.domain.base;
     services.nginx-ext.authdomain = config.domain.auth;
