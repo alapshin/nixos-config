@@ -13,12 +13,12 @@ let
     sha256Hash = "sha256-dFFogg6YmpCF/4QtR85UFAfbCd97irIHcPbqieQabpI=";
   };
   betaVersion = {
-    version = "2024.1.2.11"; # "Android Studio Koala Feature Drop | 2024.1.2 RC 1"
-    sha256Hash = "sha256-Qn5NNW2Rt6f9QiEUamIumme45uUVeTiMJ/9niAC6ilM=";
+    version = "2024.2.1.7"; # "Android Studio Ladybug | 2024.2.1 Beta 2"
+    sha256Hash = "sha256-YNUtRsKwXHfb7McJmTTT39/wW1rHjzw4kFQRwa12kJE=";
   };
   latestVersion = {
-    version = "2024.2.1.4"; # "Android Studio Ladybug | 2024.2.1 Canary 8"
-    sha256Hash = "sha256-H2NN6/ywQCMunX1mk0gbgEoY75gHV+fpru+mZNe9fpk=";
+    version = "2024.2.2.2"; # "Android Studio Ladybug Feature Drop | 2024.2.2 Canary 2"
+    sha256Hash = "sha256-TSjKJ4gAqZlycMP1or8MV+Il+KOQJL/F1kUKQr6/rSw=";
   };
 in {
   # Attributes are named by their corresponding release channels
