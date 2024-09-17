@@ -25,12 +25,6 @@
     package = prev.thunderbird;
   };
 
-  super-productivity = prev.callPackage ./super-productivity { };
-  super-productivity-autostart = prev.makeAutostartItem {
-    name = "super-productivity";
-    package = prev.super-productivity;
-  };
-
   # See nixos/modules/services/x11/extra-layouts.nix
   # xkeyboard-config with customized Serbo-Croatian variant of US layout
   xkbconfig_custom = final.xorg.xkeyboardconfig.overrideAttrs (oldAttrs: {

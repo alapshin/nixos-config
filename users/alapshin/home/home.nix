@@ -41,7 +41,6 @@
     keepassxc-autostart
     telegram-autostart
     thunderbird-autostart
-    super-productivity-autostart
   ];
 
   home.language = {

@@ -37,8 +37,5 @@
 
     # Messaging
     element-desktop-wayland
-
-    # Productivity
-    super-productivity
   ];
 }
