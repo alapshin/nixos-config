@@ -23,7 +23,6 @@
   fonts.fontconfig.enable = lib.mkDefault false;
 
   environment = {
-    noXlibs = lib.mkDefault true;
     stub-ld.enable = lib.mkDefault false;
   };
 }
