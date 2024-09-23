@@ -121,7 +121,6 @@ in
         anki
         calibre
         colord-kde
-        digikam
         element-desktop
         freetube
         gimp
