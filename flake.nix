@@ -21,7 +21,7 @@
 
     nur.url = "github:nix-community/nur";
 
-    disko.url = "github:nix-community/disko?ref=v1.7.0";
+    disko.url = "github:nix-community/disko?ref=v1.8.0";
     disko.inputs.nixpkgs.follows = "nixos";
 
     sops-nix.url = "github:Mic92/sops-nix";
