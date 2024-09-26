@@ -64,21 +64,26 @@
         permittedInsecurePackages = [
           "electron-27.3.11"
         ];
-        allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-          "languagetool"
+        allowUnfreePredicate =
+          pkg:
+          builtins.elem (lib.getName pkg) [
+            "android-sdk-tools"
+            "android-sdk-cmdline-tools"
 
-          "steam"
-          "steam-original"
-          "steam-run"
+            "languagetool"
 
-          "nvidia-x11"
-          "nvidia-settings"
+            "steam"
+            "steam-original"
+            "steam-run"
 
-          "idea-ultimate"
-          "android-studio-stable"
-          "android-studio-beta"
-          "android-studio-canary"
-        ];
+            "nvidia-x11"
+            "nvidia-settings"
+
+            "idea-ultimate"
+            "android-studio-stable"
+            "android-studio-beta"
+            "android-studio-canary"
+          ];
       };
 
       mkPkgs =
@@ -143,7 +148,33 @@
 
       devShells = {
         ${system} = {
-          android = pkgs.android-fhs-env.env;
+          android =
+            let
+              buildToolsVersion = "35.0.0";
+              androidComposition = pkgs.androidenv.composeAndroidPackages {
+                repoJson = ./packages/androidenv/repo.json;
+
+                toolsVersion = "26.1.1";
+                cmdLineToolsVersion = "16.0";
+                platformToolsVersion = "35.0.2";
+                buildToolsVersions = [ buildToolsVersion ];
+
+                includeNDK = true;
+                ndkVersions = [ "27.1.12297006" ];
+
+                includeEmulator = false;
+                emulatorVersion = "35.1.21";
+              };
+            in
+            pkgs.mkShell rec {
+              shellHook = "exec zsh";
+              buildInputs = [ androidComposition.androidsdk ];
+
+              ANDROID_HOME = "${androidComposition.androidsdk}/libexec/android-sdk";
+              ANDROID_NDK_ROOT = "${ANDROID_HOME}/ndk-bundle";
+              # Use the same buildToolsVersion here
+              GRADLE_OPTS = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${ANDROID_HOME}/build-tools/${buildToolsVersion}/aapt2";
+            };
         };
       };
 

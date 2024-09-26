@@ -1,7 +1,5 @@
 { final, prev }:
 {
-  android-fhs-env = final.callPackage ./android-fhs-env { };
-
   androidStudioPackages = final.recurseIntoAttrs (final.callPackage ./android-studio { });
 
   firefox-addons = final.recurseIntoAttrs (final.callPackage ./firefox-addons { });
