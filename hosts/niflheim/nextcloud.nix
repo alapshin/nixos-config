@@ -84,6 +84,7 @@ in
             bookmarks
             calendar
             contacts
+            deck
             gpoddersync
             tasks
             ;
