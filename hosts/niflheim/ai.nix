@@ -20,7 +20,7 @@ in
 
   services = {
     ollama = {
-      enable = true;
+      enable = false;
       loadModels = [
         "llama3.1:8b"
         "llama3.1:70b"
@@ -28,7 +28,7 @@ in
     };
 
     open-webui = {
-      enable = true;
+      enable = false;
       port = 8085;
       environment = {
         ENABLE_SIGNUP = "False";
