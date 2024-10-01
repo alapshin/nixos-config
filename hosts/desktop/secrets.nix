@@ -4,6 +4,8 @@
   config,
   ...
 }:
-
 {
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+  };
 }
