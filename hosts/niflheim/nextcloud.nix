@@ -43,7 +43,7 @@ in
 
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud29;
+      package = pkgs.nextcloud30;
       https = true;
       hostName = nextcloudHostname;
 
@@ -92,8 +92,8 @@ in
         // {
           oidc_login = pkgs.fetchNextcloudApp {
             license = "agpl3Plus";
-            url = "https://github.com/pulsejet/nextcloud-oidc-login/releases/download/v3.1.1/oidc_login.tar.gz";
-            sha256 = "sha256-b/tKk+y+ZypCHGNDtunDua2msYD6/TzA0haoC0k85F4=";
+            url = "https://github.com/pulsejet/nextcloud-oidc-login/releases/download/v3.2.0/oidc_login.tar.gz";
+            sha256 = "sha256-DrbaKENMz2QJfbDKCMrNGEZYpUEvtcsiqw9WnveaPZA=";
           };
         };
       extraAppsEnable = true;
