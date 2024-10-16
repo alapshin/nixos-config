@@ -50,7 +50,7 @@
 
     eza = {
       enable = true;
-      icons = true;
+      icons = "auto";
     };
 
     fastfetch = {
