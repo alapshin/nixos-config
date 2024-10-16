@@ -15,7 +15,7 @@ let
 
   blockchainPackages = with pkgs; [
     feather
-    electrum
+    # electrum
   ];
 
   dictionaries = with pkgs; [
@@ -133,7 +133,6 @@ in
         sddm-kcm
         smplayer
         strawberry
-        subtitlecomposer
         telegram-desktop
         tor-browser-bundle-bin
         ungoogled-chromium

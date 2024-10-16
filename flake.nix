@@ -18,6 +18,7 @@
   inputs = {
     nixos.url = "nixpkgs/nixos-unstable-small";
     nixpkgs.url = "nixpkgs/master";
+    nixpkgs-pinned.url = "nixpkgs/f6f24b0bbb0461887719d10c77c9fe81e7bea37d";
 
     nur.url = "github:nix-community/nur";
 
@@ -42,7 +43,6 @@
     inputs@{
       self,
       nixos,
-      nixpkgs,
       nur,
       disko,
       sops-nix,
@@ -75,6 +75,7 @@
             "steam"
             "steam-original"
             "steam-run"
+            "steam-unwrapped"
 
             "nvidia-x11"
             "nvidia-settings"

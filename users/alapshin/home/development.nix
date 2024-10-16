@@ -6,7 +6,7 @@
     yamlfmt
 
     # AI
-    aider-chat
-    whisper-ctranslate2
+    # aider-chat
+    # whisper-ctranslate2
   ];
 }

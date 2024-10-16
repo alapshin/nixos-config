@@ -28,9 +28,5 @@
     openssh = {
       enable = true;
     };
-
-    automatic-timezoned = {
-      enable = true;
-    };
   };
 }
