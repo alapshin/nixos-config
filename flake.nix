@@ -67,9 +67,6 @@
         allowUnfreePredicate =
           pkg:
           builtins.elem (lib.getName pkg) [
-            "android-sdk-tools"
-            "android-sdk-cmdline-tools"
-
             "languagetool"
 
             "steam"
@@ -84,6 +81,8 @@
             "android-studio-stable"
             "android-studio-beta"
             "android-studio-canary"
+            "android-sdk-tools"
+            "android-sdk-cmdline-tools"
           ];
       };
 
