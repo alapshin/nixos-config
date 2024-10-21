@@ -90,6 +90,15 @@ in
       enable = true;
       package = pkgs.jdk21;
     };
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        obs-composite-blur
+        obs-move-transition
+        obs-pipewire-audio-capture
+      ];
+    };
+
     zsh.enable = true;
     kdeconnect.enable = true;
     partition-manager.enable = true;
