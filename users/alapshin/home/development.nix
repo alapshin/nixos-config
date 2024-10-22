@@ -6,6 +6,10 @@
     hurl
     xh
 
+    # OpenAPI & Swagger
+    redocly
+
+    # YAML
     yamlfmt
 
     # AI
