@@ -67,6 +67,7 @@
         allowUnfreePredicate =
           pkg:
           builtins.elem (lib.getName pkg) [
+            "drawio"
             "languagetool"
 
             "steam"
