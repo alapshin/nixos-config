@@ -151,24 +151,11 @@
           android =
             let
               buildToolsVersion = "35.0.0";
-              androidComposition = pkgs.androidenv.composeAndroidPackages {
-                repoJson = ./packages/androidenv/repo.json;
-
-                toolsVersion = "26.1.1";
-                cmdLineToolsVersion = "16.0";
-                platformToolsVersion = "35.0.2";
-                buildToolsVersions = [ buildToolsVersion ];
-
-                includeNDK = true;
-                ndkVersions = [ "27.1.12297006" ];
-
-                includeEmulator = false;
-                emulatorVersion = "35.1.21";
-              };
+              androidComposition = pkgs.androidBuildEnv;
             in
             pkgs.mkShell rec {
               shellHook = "exec zsh";
-              buildInputs = [ androidComposition.androidsdk ];
+              buildInputs = [ pkgs.androidBuildEnv.androidsdk ];
 
               ANDROID_HOME = "${androidComposition.androidsdk}/libexec/android-sdk";
               ANDROID_NDK_ROOT = "${ANDROID_HOME}/ndk-bundle";
