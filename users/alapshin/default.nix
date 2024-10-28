@@ -40,7 +40,8 @@ let
     scrcpy
     android-udev-rules
     jetbrains.idea-ultimate
-    androidStudioPackages.stable
+    # androidStudioPackages.stable
+    android-studio-stable-with-sdk
     androidStudioPackages.beta
     androidStudioPackages.canary
   ];

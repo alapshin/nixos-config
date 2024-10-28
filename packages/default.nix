@@ -1,8 +1,10 @@
 { final, prev }:
 {
-  androidBuildEnv = final.callPackage ./androidenv { };
-  androidStudioPackages = final.recurseIntoAttrs (
-    final.callPackage ./android-studio { }
+  androidComposition = final.callPackage ./androidenv { };
+
+  androidStudioPackages = final.recurseIntoAttrs (final.callPackage ./android-studio { });
+  android-studio-stable-with-sdk = (
+    final.androidStudioPackages.stable.withSdk final.androidComposition.androidsdk
   );
 
   firefox-addons = final.recurseIntoAttrs (final.callPackage ./firefox-addons { });

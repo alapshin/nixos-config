@@ -151,11 +151,11 @@
           android =
             let
               buildToolsVersion = "35.0.0";
-              androidComposition = pkgs.androidBuildEnv;
+              androidComposition = pkgs.androidComposition;
             in
             pkgs.mkShell rec {
               shellHook = "exec zsh";
-              buildInputs = [ pkgs.androidBuildEnv.androidsdk ];
+              buildInputs = [ androidComposition.androidsdk ];
 
               ANDROID_HOME = "${androidComposition.androidsdk}/libexec/android-sdk";
               ANDROID_NDK_ROOT = "${ANDROID_HOME}/ndk-bundle";
