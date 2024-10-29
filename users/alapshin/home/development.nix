@@ -14,6 +14,6 @@
 
     # AI
     # aider-chat
-    # whisper-ctranslate2
+    whisper-ctranslate2
   ];
 }
