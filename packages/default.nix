@@ -34,6 +34,8 @@
     patches = [ ./xkb/custom-us-hbs.patch ];
   });
 
+  lldap = final.callPackage ./lldap { };
+
   beanprice = prev.python3.pkgs.callPackage ./beanprice { };
 
   pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
