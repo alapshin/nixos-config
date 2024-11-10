@@ -73,6 +73,19 @@ in
         routingPolicyRules = [
           {
             Priority = 1;
+            User = config.users.users.bitmagnet.name;
+            Table = "main";
+            Family = "both";
+            SuppressPrefixLength = 0;
+          }
+          {
+            Priority = 2;
+            User = config.users.users.bitmagnet.name;
+            Table = wgRouteTable;
+            Family = "both";
+          }
+          {
+            Priority = 1;
             User = config.users.users.transmission.name;
             Table = "main";
             Family = "both";

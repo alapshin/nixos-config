@@ -15,6 +15,7 @@
     ./audiobookshelf.nix
     ./authelia.nix
     ./backup.nix
+    ./bitmagnet.nix
     ./calibre.nix
     ./changedetection.nix
     ./dashboard.nix
