@@ -127,6 +127,7 @@ in
       with pkgs;
       [
         anki
+        audacity
         calibre
         colord-kde
         element-desktop
