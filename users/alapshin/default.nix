@@ -145,7 +145,7 @@ in
         smplayer
         strawberry
         telegram-desktop
-        tor-browser-bundle-bin
+        tor-browser
         ungoogled-chromium
       ]
       ++ accountingTools
