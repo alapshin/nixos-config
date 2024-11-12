@@ -76,7 +76,6 @@
           ++ (with pkgs.nur.repos.rycee.firefox-addons; [
             awesome-rss
             aw-watcher-web
-            omnivore
             metamask
             sponsorblock
             languagetool
