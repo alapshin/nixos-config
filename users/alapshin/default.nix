@@ -31,7 +31,6 @@ let
 
   guiDevTools = with pkgs; [
     drawio
-    insomnia
   ];
 
   javaPackages = with pkgs; [
