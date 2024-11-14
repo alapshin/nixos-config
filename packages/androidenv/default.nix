@@ -19,7 +19,13 @@ pkgs.androidenv.composeAndroidPackages {
 
   includeSources = true;
   includeSystemImages = true;
-  abiVersions = [ "x86_64" "x86" ];
-  platformVersions = [ "34" "35" ];
+  abiVersions = [
+    "x86"
+    "x86_64"
+  ];
+  platformVersions = [
+    "34"
+    "35"
+  ];
   systemImageTypes = [ "google_apis_playstore" ];
 }
