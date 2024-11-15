@@ -7,7 +7,7 @@
 {
   services = {
     changedetection-io = {
-      enable = false;
+      enable = true;
       behindProxy = true;
     };
     nginx-ext.applications."cdio" = {
