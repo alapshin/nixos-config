@@ -1,7 +1,13 @@
-{ pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 let
   accent = "sky";
   flavor = "latte";
+  capitalizedFlavor = lib.strings.capitalize flavor;
   catppuccin = pkgs.catppuccin.override {
     inherit accent;
     variant = flavor;
@@ -16,7 +22,7 @@ in
       themes = {
         "catppuccin-${flavor}" = {
           src = catppuccin;
-          file = "bat/Catppuccin-${flavor}.tmTheme";
+          file = "bat/Catppuccin ${capitalizedFlavor}.tmTheme";
         };
       };
     };
