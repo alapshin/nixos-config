@@ -2,7 +2,6 @@
   lib,
   pkgs,
   config,
-  libutil,
   ...
 }:
 let
@@ -13,7 +12,7 @@ let
       widget ? { },
     }:
     let
-      name = libutil.capitalize app;
+      name = lib.strings.capitalize app;
       listenPort = config.services.nginx-ext.applications."${app}".port;
     in
     {

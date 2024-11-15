@@ -24,7 +24,7 @@
     "disko": {
       "inputs": {
         "nixpkgs": [
-          "nixos"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -122,7 +122,7 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "nixos"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -146,7 +146,7 @@
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "nixos"
+          "nixpkgs"
         ],
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
         "rust-overlay": "rust-overlay"
@@ -166,33 +166,18 @@
         "type": "github"
       }
     },
-    "nixos": {
+    "nixpkgs": {
       "locked": {
-        "lastModified": 1731611831,
-        "narHash": "sha256-R51rOqkWMfubBkZ9BY4Y1VaRoeqEBshlfQ8mMH5RjqI=",
+        "lastModified": 1731655425,
+        "narHash": "sha256-86Nv++/fLo7odqCHtkjuu0VDpiJ6WYlnkzqcS5QEPxs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "cea28c811faadb50bee00d433bbf2fea845a43e4",
+        "rev": "91350eb041833e2f37dccd69ff596a1981ebbd33",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
         "ref": "nixos-unstable-small",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs": {
-      "locked": {
-        "lastModified": 1731656851,
-        "narHash": "sha256-rK+4gec4940Bkmj97ZY7CdNX7hQsbiiZXuL5+o/cCj0=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "9087c296b0f3537528d3eb0a7ea2266f923337ba",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "master",
         "type": "indirect"
       }
     },
@@ -230,11 +215,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1731653227,
-        "narHash": "sha256-Oy7VEPB0jTjWy/MexmMWu0MQq1asYCLgwuMiYpejfbU=",
+        "lastModified": 1731695757,
+        "narHash": "sha256-w+bGxRbZpWc6SyBbtjW2ci2fw1zk0udTjFpQW0g0Pc8=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "2beaf55f518df124a7fd9d1269617effee23869d",
+        "rev": "6e17acc00a48253a4d25e5ee4e6c215b8950c039",
         "type": "github"
       },
       "original": {
@@ -249,7 +234,7 @@
           "home-manager"
         ],
         "nixpkgs": [
-          "nixos"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -298,7 +283,6 @@
         "disko": "disko",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
-        "nixos": "nixos",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
         "plasma-manager": "plasma-manager",
@@ -333,7 +317,7 @@
     "sops-nix": {
       "inputs": {
         "nixpkgs": [
-          "nixos"
+          "nixpkgs"
         ],
         "nixpkgs-stable": "nixpkgs-stable_2"
       },

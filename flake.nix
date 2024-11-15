@@ -16,32 +16,31 @@
   };
 
   inputs = {
-    nixos.url = "nixpkgs/nixos-unstable-small";
-    nixpkgs.url = "nixpkgs/master";
+    nixpkgs.url = "nixpkgs/nixos-unstable-small";
 
     nur.url = "github:nix-community/nur";
 
     disko.url = "github:nix-community/disko?ref=v1.9.0";
-    disko.inputs.nixpkgs.follows = "nixos";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix?rev=c5ae1e214ff935f2d3593187a131becb289ea639";
-    sops-nix.inputs.nixpkgs.follows = "nixos";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     lanzaboote.url = "github:nix-community/lanzaboote?ref=v0.4.1";
-    lanzaboote.inputs.nixpkgs.follows = "nixos";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixos";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     plasma-manager.url = "github:pjones/plasma-manager";
-    plasma-manager.inputs.nixpkgs.follows = "nixos";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
   };
 
   outputs =
     inputs@{
       self,
-      nixos,
+      nixpkgs,
       nur,
       disko,
       sops-nix,
@@ -50,11 +49,10 @@
       ...
     }:
     let
-      inherit (nixos) lib;
+      lib = nixpkgs.lib.extend (_: prev: home-manager.lib // (import ./lib { lib = prev; }));
 
       system = "x86_64-linux";
 
-      libutil = import ./util-lib { lib = nixos.lib; };
       configDir = builtins.toString ./.;
       dotfileDir = "${configDir}/dotfiles";
 
@@ -96,7 +94,7 @@
           config = nixpkgsConfig;
           overlays = (lib.attrValues self.overlays) ++ extraOverlays;
         };
-      pkgs = mkPkgs { pkgs = nixos; };
+      pkgs = mkPkgs { pkgs = nixpkgs; };
 
       mkNixosConfiguration =
         {
@@ -110,6 +108,7 @@
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
             {
+              home-manager.verbose = true;
               # Use global pkgs configured via nixpkgs.* options
               home-manager.useGlobalPkgs = true;
               # Install user packages to /etc/profiles instead.
@@ -125,15 +124,15 @@
           userModules ? [ ],
           specialArgs ? { },
         }:
-        nixos.lib.nixosSystem {
+        nixpkgs.lib.nixosSystem {
           inherit system;
           modules = baseModules ++ hostModules ++ userModules;
           specialArgs = specialArgs // {
             inherit
               inputs
+              lib
               pkgs
               self
-              libutil
               dotfileDir
               ;
           };
