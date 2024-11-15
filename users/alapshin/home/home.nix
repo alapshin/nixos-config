@@ -31,6 +31,7 @@
       ./variables.nix
     ]
     ++ (lib.lists.optionals isNixOS [
+      ./chromium.nix
       ./firefox.nix
       ./thunderbird.nix
     ]);

@@ -145,7 +145,6 @@ in
         strawberry
         telegram-desktop
         tor-browser
-        ungoogled-chromium
       ]
       ++ accountingTools
       ++ blockchainPackages
