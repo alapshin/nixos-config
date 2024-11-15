@@ -19,6 +19,7 @@
       ./development.nix
       ./git.nix
       ./gnupg.nix
+      ./programs.nix
       ./ssh.nix
       ./shell.nix
       # ./plasma.nix

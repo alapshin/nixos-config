@@ -1,4 +1,4 @@
-{ pkgs, dotfileDir, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     doggo
@@ -51,6 +51,7 @@
     eza = {
       enable = true;
       icons = "auto";
+      colors = "auto";
     };
 
     fastfetch = {
@@ -62,10 +63,6 @@
     };
 
     jq = {
-      enable = true;
-    };
-
-    mpv = {
       enable = true;
     };
 
