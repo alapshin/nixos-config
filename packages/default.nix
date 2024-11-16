@@ -34,6 +34,8 @@
     patches = [ ./xkb/custom-us-hbs.patch ];
   });
 
+  monica = final.callPackage ./monica { };
+
   beanprice = prev.python3.pkgs.callPackage ./beanprice { };
 
   pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [

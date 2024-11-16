@@ -23,6 +23,7 @@
     ./influxdb.nix
     ./jellyfin.nix
     ./lldap.nix
+    ./monica.nix
     ./navidrome.nix
     ./nginx.nix
     ./ntfy.nix

@@ -186,6 +186,7 @@
             ./hosts/common
             ./hosts/server
             ./hosts/niflheim
+            self.nixosModules.monica5
             self.nixosModules.servarr
             self.nixosModules.nginx-ext
           ];
