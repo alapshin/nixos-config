@@ -41,8 +41,6 @@ let
     jetbrains.idea-ultimate
     # androidStudioPackages.stable
     android-studio-stable-with-sdk
-    androidStudioPackages.beta
-    androidStudioPackages.canary
   ];
 
   kdePackages = with pkgs.kdePackages; [
