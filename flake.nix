@@ -23,7 +23,7 @@
     disko.url = "github:nix-community/disko?ref=v1.9.0";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
-    sops-nix.url = "github:Mic92/sops-nix?rev=c5ae1e214ff935f2d3593187a131becb289ea639";
+    sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     lanzaboote.url = "github:nix-community/lanzaboote?ref=v0.4.1";
