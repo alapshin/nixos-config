@@ -51,7 +51,6 @@ in
 
   environment.systemPackages = with pkgs; [
     clinfo
-    nvtopPackages.amd
     rocmPackages.rocminfo
   ];
 }
