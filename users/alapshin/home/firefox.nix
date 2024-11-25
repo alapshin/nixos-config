@@ -74,8 +74,6 @@
         extensions =
           (with pkgs.firefox-addons; [ linguist-translator ])
           ++ (with pkgs.nur.repos.rycee.firefox-addons; [
-            awesome-rss
-            aw-watcher-web
             metamask
             sponsorblock
             languagetool
