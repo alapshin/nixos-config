@@ -15,7 +15,7 @@ let
 
   blockchainPackages = with pkgs; [
     feather
-    # electrum
+    electrum
   ];
 
   dictionaries = with pkgs; [
