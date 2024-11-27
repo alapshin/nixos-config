@@ -7,7 +7,6 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
-    nerdfonts = prev.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

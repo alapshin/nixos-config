@@ -20,7 +20,7 @@
       fonts = [
         {
           name = "";
-          package = pkgs.nerdfonts;
+          package = pkgs.nerd-fonts.jetbrains-mono;
         }
       ];
     };

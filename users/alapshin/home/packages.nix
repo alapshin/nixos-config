@@ -29,12 +29,12 @@
     # Fonts
     ibm-plex
     liberation_ttf
-    nerdfonts
     noto-fonts
     noto-fonts-lgc-plus
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
+    nerd-fonts.jetbrains-mono
 
     # Messaging
     element-desktop-wayland
