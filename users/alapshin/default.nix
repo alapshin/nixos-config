@@ -136,7 +136,7 @@ in
         kid3-qt
         kleopatra
         krename
-        libreoffice-qt
+        libreoffice-qt6-fresh
         logseq
         qbittorrent
         sddm-kcm
