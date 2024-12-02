@@ -71,6 +71,11 @@
       enableZshIntegration = true;
     };
 
+    nix-your-shell = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     pandoc = {
       enable = true;
     };

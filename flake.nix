@@ -159,7 +159,6 @@
               androidComposition = pkgs.androidComposition;
             in
             pkgs.mkShell rec {
-              shellHook = "exec zsh";
               buildInputs = [ androidComposition.androidsdk ];
 
               ANDROID_HOME = "${androidComposition.androidsdk}/libexec/android-sdk";
