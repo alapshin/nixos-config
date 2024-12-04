@@ -1,9 +1,9 @@
 {
   lib,
   beancount3,
-  click,
   buildPythonPackage,
-  fetchFromGitHub,
+  click,
+  fetchPypi,
   python-dateutil,
   pytestCheckHook,
   setuptools,
@@ -11,14 +11,12 @@
 }:
 buildPythonPackage rec {
   pname = "beanquery";
-  version = "0.1.dev1-2024-06-30";
+  version = "0.1.0";
   pyproject = true;
 
-  src = fetchFromGitHub {
-    owner = "beancount";
-    repo = "beanquery";
-    rev = "7577b6c1b93cfdecd76e9c5f466e0ab96bddd045";
-    hash = "sha256-xFhlkFlD+VG0n6WfKLjuhm7Cwz3t2V6GxmMXc5TgIPc=";
+  src = fetchPypi {
+    inherit pname version;
+    hash = "sha256-tp4Jm4Qhshm7zDKTr3fjxMyterJb9SD+5IeIZy/79ko=";
   };
 
   build-system = [ setuptools ];
@@ -30,12 +28,16 @@ buildPythonPackage rec {
     tatsu
   ];
 
+  postPatch = ''
+    substituteInPlace pyproject.toml \
+      --replace-fail "find = {}" "find = { exclude = [ \"docs*\" ] }"
+  '';
+
   pythonRelaxDeps = [ "tatsu" ];
 
   nativeCheckInputs = [ pytestCheckHook ];
 
   pythonImportsCheck = [
-    "beancount"
     "beanquery"
   ];
 
