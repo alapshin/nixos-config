@@ -15,8 +15,11 @@
       settings = {
         style = "compact";
         auto_sync = false;
-        update_check = false;
         inline_height = 10;
+        update_check = false;
+      };
+      daemon = {
+        enable = true;
       };
       enableZshIntegration = true;
     };
@@ -125,6 +128,7 @@
       history = {
         path = "$ZDOTDIR/.zsh_history";
         extended = true;
+        ignoreAllDups = true;
         expireDuplicatesFirst = true;
       };
 
