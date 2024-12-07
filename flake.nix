@@ -18,16 +18,25 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable-small";
 
-    nur.url = "github:nix-community/nur";
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
-    disko.url = "github:nix-community/disko?ref=v1.9.0";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+    nur.url = "github:nix-community/nur";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
+    nur.inputs.flake-parts.follows = "flake-parts";
+    nur.inputs.treefmt-nix.follows = "treefmt-nix";
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    disko.url = "github:nix-community/disko?ref=v1.9.0";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
     lanzaboote.url = "github:nix-community/lanzaboote?ref=v0.4.1";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
+    lanzaboote.inputs.flake-parts.follows = "flake-parts";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -93,7 +102,7 @@
       mkPkgs =
         {
           pkgs,
-          extraOverlays ? [ nur.overlay ],
+          extraOverlays ? [ nur.overlays.default ],
         }:
         import pkgs {
           inherit system;
