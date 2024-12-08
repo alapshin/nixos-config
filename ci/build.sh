@@ -65,13 +65,14 @@ function install-remote {
 }
 
 function sops-update-keys {
-    readarray -t encrypted_files <<< "$(grep \
-        --recursive \
-        --exclude-dir="ci" \
-        --exclude-dir=".git" \
-        --files-with-matches \
-        --regexp "unencrypted_suffix" \
-        )"
+    readarray -t encrypted_files <<<"$(
+        grep \
+            --recursive \
+            --exclude-dir="ci" \
+            --exclude-dir=".git" \
+            --files-with-matches \
+            --regexp "unencrypted_suffix"
+    )"
     for f in "${encrypted_files[@]}"; do
         sops updatekeys --yes "${f}"
     done
@@ -94,50 +95,51 @@ function decrypt-build-secrets {
     subdir=$1
 
     # Find all build-time secrets under specified subdirectory
-    readarray -t encrypted_files <<< "$(grep \
-        --regexp "unencrypted_suffix" \
-        --recursive \
-        --exclude-dir="ci" \
-        --exclude-dir=".git" \
-        --files-with-matches \
-        "${subdir}"/secrets/build/ \
+    readarray -t encrypted_files <<<"$(
+        grep \
+            --regexp "unencrypted_suffix" \
+            --recursive \
+            --exclude-dir="ci" \
+            --exclude-dir=".git" \
+            --files-with-matches \
+            "${subdir}"/secrets/build/
     )"
 
-    trap "reset-build-secrets ${subdir}"  EXIT
+    trap "reset-build-secrets ${subdir}" EXIT
     for f in "${encrypted_files[@]}"; do
         sops --decrypt --in-place "${f}"
     done
 }
 
 case $command in
-    check)
-        check
-        ;;
-    build)
-        build
-        ;;
-    update)
-        update
-        ;;
-    clean-store)
-        clean-store
-        ;;
-    switch-home)
-        switch-home
-        ;;
-    switch-system)
-        switch-system
-        ;;
-    deploy-remote)
-        deploy-remote
-        ;;
-    install-remote)
-        install-remote
-        ;;
-    sops-update-keys)
-        sops-update-keys
-        ;;
-    *)
-        echo -n "Unknown command $command" && exit 1
-        ;;
+check)
+    check
+    ;;
+build)
+    build
+    ;;
+update)
+    update
+    ;;
+clean-store)
+    clean-store
+    ;;
+switch-home)
+    switch-home
+    ;;
+switch-system)
+    switch-system
+    ;;
+deploy-remote)
+    deploy-remote
+    ;;
+install-remote)
+    install-remote
+    ;;
+sops-update-keys)
+    sops-update-keys
+    ;;
+*)
+    echo -n "Unknown command $command" && exit 1
+    ;;
 esac

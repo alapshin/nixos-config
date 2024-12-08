@@ -32,11 +32,11 @@
         "network": "tcp",
         "security": "reality",
         "realitySettings": {
-          "shortId": "aabbccdd", // Required
+          "shortId": "aabbccdd",
           "fingerprint": "chrome",
-          "spiderX": "", // If your dest is `1.1.1.1:443`, then you can fill it with `/dns-query/` or just leave it empty
-          "serverName": "www.microsoft.com", // If your dest is `1.1.1.1:443`, then leave it empty
-          "publicKey": "@vless_public_key@" // run `xray x25519` to generate. Public and private keys need to be corresponding.
+          "spiderX": "",
+          "serverName": "www.microsoft.com",
+          "publicKey": "@vless_public_key@"
         }
       }
     },
@@ -50,7 +50,9 @@
     "rules": [
       {
         "type": "field",
-        "ip": ["geoip:private"],
+        "ip": [
+          "geoip:private"
+        ],
         "outboundTag": "direct"
       }
     ]

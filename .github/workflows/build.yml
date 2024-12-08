@@ -6,10 +6,10 @@ jobs:
   check:
     runs-on: ubuntu-24.04
     steps:
-    - uses: actions/checkout@v4
-    - uses: DeterminateSystems/nix-installer-action@v13
-    - uses: DeterminateSystems/magic-nix-cache-action@v7
-    - name: "Run nix flake checks"
-      run: ci/shell.sh
-      env:
-        SOPS_AGE_KEY: ${{ secrets.AGE_SECRET_KEY }}
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v13
+      - uses: DeterminateSystems/magic-nix-cache-action@v7
+      - name: "Run nix flake checks"
+        run: ci/shell.sh
+        env:
+          SOPS_AGE_KEY: ${{ secrets.AGE_SECRET_KEY }}

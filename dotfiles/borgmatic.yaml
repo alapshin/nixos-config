@@ -3,53 +3,47 @@
 # https://borgbackup.readthedocs.io/en/stable/usage/create.html
 # for details.
 location:
-    # List of source directories to backup (required). Globs and
-    # tildes are expanded. Do not backslash spaces in path names.
-    source_directories:
-        - /home/alapshin/calibre
-        - /home/alapshin/Documents
-        - /home/alapshin/Pictues
-        - /home/alapshin/Videos
-        - /home/alapshin/Syncthing
-
-    # Paths to local or remote repositories (required). Tildes are
-    # expanded. Multiple repositories are backed up to in
-    # sequence. Borg placeholders can be used. See the output of
-    # "borg help placeholders" for details. See ssh_command for
-    # SSH options like identity file or port. If systemd service
-    # is used, then add local repository paths in the systemd
-    # service file to the ReadWritePaths list.
-    repositories:
-        - rm4i22x5@rm4i22x5.repo.borgbase.com:repo
-
+  # List of source directories to backup (required). Globs and
+  # tildes are expanded. Do not backslash spaces in path names.
+  source_directories:
+    - /home/alapshin/calibre
+    - /home/alapshin/Documents
+    - /home/alapshin/Pictues
+    - /home/alapshin/Videos
+    - /home/alapshin/Syncthing
+  # Paths to local or remote repositories (required). Tildes are
+  # expanded. Multiple repositories are backed up to in
+  # sequence. Borg placeholders can be used. See the output of
+  # "borg help placeholders" for details. See ssh_command for
+  # SSH options like identity file or port. If systemd service
+  # is used, then add local repository paths in the systemd
+  # service file to the ReadWritePaths list.
+  repositories:
+    - rm4i22x5@rm4i22x5.repo.borgbase.com:repo
 # Retention policy for how many backups to keep in each category. See
 # https://borgbackup.readthedocs.io/en/stable/usage/prune.html for
 # details. At least one of the "keep" options is required for pruning
 # to work. To skip pruning entirely, run "borgmatic create" or "check"
 # without the "prune" action. See borgmatic documentation for details.
 retention:
-    keep_daily: 7
-    keep_weekly: 4
-    keep_monthly: 1
-
+  keep_daily: 7
+  keep_weekly: 4
+  keep_monthly: 1
 # Repository storage options. See
 # https://borgbackup.readthedocs.io/en/stable/usage/create.html and
 # https://borgbackup.readthedocs.io/en/stable/usage/general.html for
 # details.
 storage:
-    # Command to use instead of "ssh". This can be used to specify
-    # ssh options.  Defaults to not set.
-    ssh_command: ssh -i /run/secrets/borg/borgbase_ed25519
-
-    # Path for Borg encryption key files. Defaults to
-    # $borg_base_directory/.config/borg/keys
-    borg_keys_directory: /run/secrets/borg/keys
-
-    # The standard output of this command is used to unlock the
-    # encryption key. Only use on repositories that were
-    # initialized with passcommand/repokey/keyfile encryption.
-    # Note that if both encryption_passcommand and
-    # encryption_passphrase are set, then encryption_passphrase
-    # takes precedence. Defaults to not set.
-    encryption_passcommand: cat /run/secrets/borg/encryption_passphrase
-    
+  # Command to use instead of "ssh". This can be used to specify
+  # ssh options.  Defaults to not set.
+  ssh_command: ssh -i /run/secrets/borg/borgbase_ed25519
+  # Path for Borg encryption key files. Defaults to
+  # $borg_base_directory/.config/borg/keys
+  borg_keys_directory: /run/secrets/borg/keys
+  # The standard output of this command is used to unlock the
+  # encryption key. Only use on repositories that were
+  # initialized with passcommand/repokey/keyfile encryption.
+  # Note that if both encryption_passcommand and
+  # encryption_passphrase are set, then encryption_passphrase
+  # takes precedence. Defaults to not set.
+  encryption_passcommand: cat /run/secrets/borg/encryption_passphrase
