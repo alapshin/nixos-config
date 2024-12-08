@@ -75,6 +75,7 @@
           (with pkgs.firefox-addons; [ linguist-translator ])
           ++ (with pkgs.nur.repos.rycee.firefox-addons; [
             metamask
+            linkwarden
             sponsorblock
             languagetool
             ublock-origin
