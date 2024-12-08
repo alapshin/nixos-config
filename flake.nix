@@ -203,6 +203,7 @@
             self.nixosModules.monica5
             self.nixosModules.servarr
             self.nixosModules.nginx-ext
+            self.nixosModules.linkwarden
           ];
         };
 
