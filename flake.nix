@@ -1,5 +1,5 @@
 {
-  description = "A flake-based nixos config.";
+  description = "A flake-based NixOS config.";
 
   nixConfig = {
     # Will be appended to the system-level substituters
@@ -17,6 +17,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable-small";
+    systems.url = "github:nix-systems/default";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
@@ -50,66 +51,46 @@
     inputs@{
       self,
       nixpkgs,
+      systems,
       nur,
       disko,
       sops-nix,
       lanzaboote,
+      treefmt-nix,
       home-manager,
       ...
     }:
     let
       lib = nixpkgs.lib.extend (_: prev: home-manager.lib // (import ./lib { lib = prev; }));
 
-      system = "x86_64-linux";
+      dotfileDir = ./dotfiles;
 
-      configDir = builtins.toString ./.;
-      dotfileDir = "${configDir}/dotfiles";
-
-      nixpkgsConfig = {
-        android_sdk.accept_license = true;
-        permittedInsecurePackages = [
-          # Used by logseq
-          "electron-27.3.11"
-          # Used by Servarr apps
-          "dotnet-sdk-6.0.428"
-          "dotnet-sdk-wrapped-6.0.428"
-          "aspnetcore-runtime-6.0.36"
-          "aspnetcore-runtime-wrapped-6.0.36"
-        ];
-        allowUnfreePredicate =
-          pkg:
-          builtins.elem (lib.getName pkg) [
-            "drawio"
-            "languagetool"
-
-            "steam"
-            "steam-original"
-            "steam-run"
-            "steam-unwrapped"
-
-            "nvidia-x11"
-            "nvidia-settings"
-
-            "idea-ultimate"
-            "android-studio-stable"
-            "android-studio-beta"
-            "android-studio-canary"
-            "android-sdk-tools"
-            "android-sdk-cmdline-tools"
-          ];
+      nixpkgsConfig = import ./pkgs-config.nix {
+        inherit lib;
       };
+      treefmtConfig = import ./treefmt-config.nix;
+      homeManagerConfig = import ./hm-config.nix {
+        inherit dotfileDir;
+        sharedModules = [
+          sops-nix.homeManagerModules.sops
+        ];
+      };
+
+      eachSystem = nixpkgs.lib.genAttrs (import systems);
+      eachSystemPkgs = f: eachSystem (system: f customPkgs.${system});
 
       mkPkgs =
         {
-          pkgs,
+          system,
+          nixpkgs,
           extraOverlays ? [ nur.overlays.default ],
         }:
-        import pkgs {
+        import nixpkgs {
           inherit system;
           config = nixpkgsConfig;
           overlays = (lib.attrValues self.overlays) ++ extraOverlays;
         };
-      pkgs = mkPkgs { pkgs = nixpkgs; };
+      customPkgs = eachSystem (system: mkPkgs { inherit nixpkgs system; });
 
       mkNixosConfiguration =
         {
@@ -122,32 +103,24 @@
             sops-nix.nixosModules.sops
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
-            {
-              home-manager.verbose = true;
-              # Use global pkgs configured via nixpkgs.* options
-              home-manager.useGlobalPkgs = true;
-              # Install user packages to /etc/profiles instead.
-              # Necessary for nixos-rebuild build-vm to work.
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit dotfileDir;
-              };
-              home-manager.sharedModules = [ sops-nix.homeManagerModules.sops ];
-            }
+            homeManagerConfig
           ],
           hostModules ? [ ],
           userModules ? [ ],
           specialArgs ? { },
         }:
+        let
+          pkgs = customPkgs."${system}";
+        in
         nixpkgs.lib.nixosSystem {
           inherit system;
           modules = baseModules ++ hostModules ++ userModules;
           specialArgs = specialArgs // {
             inherit
-              inputs
+              self
               lib
               pkgs
-              self
+              inputs
               dotfileDir
               ;
           };
@@ -157,30 +130,23 @@
       # Custom packages and modifications, exported as overlays
       overlays = import ./overlays { inherit inputs; };
 
-      # Custom packages acessible through 'nix build', 'nix shell', etc
-      # packages = import ./packages {inherit pkgs;};
+      devShells = eachSystemPkgs (pkgs: {
+        android =
+          let
+            buildToolsVersion = "35.0.0";
+            androidComposition = pkgs.androidComposition;
+          in
+          pkgs.mkShell rec {
+            buildInputs = [ androidComposition.androidsdk ];
 
-      devShells = {
-        ${system} = {
-          android =
-            let
-              buildToolsVersion = "35.0.0";
-              androidComposition = pkgs.androidComposition;
-            in
-            pkgs.mkShell rec {
-              buildInputs = [ androidComposition.androidsdk ];
+            ANDROID_HOME = "${androidComposition.androidsdk}/libexec/android-sdk";
+            ANDROID_NDK_ROOT = "${ANDROID_HOME}/ndk-bundle";
+            # Use the same buildToolsVersion here
+            GRADLE_OPTS = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${ANDROID_HOME}/build-tools/${buildToolsVersion}/aapt2";
+          };
+      });
 
-              ANDROID_HOME = "${androidComposition.androidsdk}/libexec/android-sdk";
-              ANDROID_NDK_ROOT = "${ANDROID_HOME}/ndk-bundle";
-              # Use the same buildToolsVersion here
-              GRADLE_OPTS = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${ANDROID_HOME}/build-tools/${buildToolsVersion}/aapt2";
-            };
-        };
-      };
-
-      formatter = {
-        ${system} = pkgs.nixfmt-rfc-style;
-      };
+      formatter = eachSystemPkgs (pkgs: treefmt-nix.lib.mkWrapper pkgs treefmtConfig);
 
       # Reusable nixos modules you might want to export
       # These are usually stuff you would upstream into nixpkgs
@@ -242,7 +208,7 @@
         in
         {
           "${username}" = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
+            pkgs = customPkgs;
             modules = [ ./users/alapshin/home/home.nix ];
             extraSpecialArgs = {
               inherit username dotfileDir;
