@@ -93,6 +93,7 @@ in
       plugins = with pkgs.obs-studio-plugins; [
         obs-composite-blur
         obs-move-transition
+        obs-backgroundremoval
         obs-pipewire-audio-capture
       ];
     };
