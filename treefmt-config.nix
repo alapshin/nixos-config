@@ -5,7 +5,7 @@
     # Use .editorconfig config
     indent_size = null;
   };
+  programs.nixfmt.enable = true;
   programs.jsonfmt.enable = true;
   programs.yamlfmt.enable = true;
-  programs.nixfmt-rfc-style.enable = true;
 }
