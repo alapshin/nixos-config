@@ -14,8 +14,4 @@
       ];
     };
   };
-
-  services.xserver.videoDrivers = [
-    "intel"
-  ];
 }
