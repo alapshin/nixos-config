@@ -2,7 +2,6 @@
 {
   home.packages = with pkgs; [
     # HTTP API
-    bruno
     hurl
     xh
 
