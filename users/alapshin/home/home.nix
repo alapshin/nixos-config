@@ -17,6 +17,7 @@
   imports =
     [
       ./development.nix
+      ./gaming.nix
       ./git.nix
       ./gnupg.nix
       ./programs.nix
