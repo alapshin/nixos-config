@@ -6,11 +6,12 @@
       storageDriver = "overlay2";
     };
     podman.enable = true;
-    libvirtd.enable = true;
+    libvirtd.enable = false;
   };
 
+  programs.virt-manager.enable = false;
+
   environment.systemPackages = with pkgs; [
-    virt-manager
     docker-compose
   ];
 }
