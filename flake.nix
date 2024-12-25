@@ -17,8 +17,9 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable-small";
-    systems.url = "github:nix-systems/default";
+    nixpkgs-rocm.url = "github:LunNova/nixpkgs/rocm-update";
 
+    systems.url = "github:nix-systems/default";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     nur.url = "github:nix-community/nur";

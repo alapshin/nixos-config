@@ -7,6 +7,8 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
+    ollama = inputs.nixpkgs-rocm.legacyPackages."${prev.system}".ollama;
+    rocmPackages = inputs.nixpkgs-rocm.legacyPackages."${prev.system}".rocmPackages.gfx1030;
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
