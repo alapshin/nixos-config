@@ -35,6 +35,7 @@ function switch-system {
     decrypt-build-secrets "users/alapshin"
     nixos-rebuild switch \
         --verbose \
+        --show-trace \
         --use-remote-sudo \
         --flake ".#${hostname}"
 }
@@ -42,6 +43,7 @@ function switch-system {
 function deploy-remote {
     nixos-rebuild switch \
         --verbose \
+        --show-trace \
         --use-remote-sudo \
         --build-host "${remote_host}" \
         --target-host "${remote_host}" \
