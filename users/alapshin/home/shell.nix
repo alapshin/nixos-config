@@ -7,6 +7,7 @@
     fd
     glow
     sd
+    trippy
   ];
 
   programs = {
