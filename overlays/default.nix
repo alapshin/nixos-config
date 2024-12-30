@@ -7,6 +7,9 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
+    prisma = inputs.nixpkgs-lw.legacyPackages."${prev.system}".prisma;
+    linkwarden = inputs.nixpkgs-lw.legacyPackages."${prev.system}".linkwarden;
+
     ollama = inputs.nixpkgs-rocm.legacyPackages."${prev.system}".ollama;
     rocmPackages = inputs.nixpkgs-rocm.legacyPackages."${prev.system}".rocmPackages.gfx1030;
   };

@@ -18,6 +18,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable-small";
+    nixpkgs-lw.url = "github:jvanbruegge/nixpkgs/linkwarden";
     nixpkgs-rocm.url = "github:LunNova/nixpkgs/rocm-update";
 
     systems.url = "github:nix-systems/default";
@@ -171,7 +172,8 @@
             self.nixosModules.monica5
             self.nixosModules.servarr
             self.nixosModules.nginx-ext
-            self.nixosModules.linkwarden
+
+            "${inputs.nixpkgs-lw}/nixos/modules/services/web-apps/linkwarden.nix"
           ];
         };
 

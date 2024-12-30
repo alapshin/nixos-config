@@ -192,6 +192,22 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/5487e69da40cbd611ab2cadee0b4637225f7cfae.tar.gz"
       }
     },
+    "nixpkgs-lw": {
+      "locked": {
+        "lastModified": 1735486844,
+        "narHash": "sha256-26ZjbIUizfQ4g/4Ax3OTerYeiPjwWhDuYe3L/gpgRRI=",
+        "owner": "jvanbruegge",
+        "repo": "nixpkgs",
+        "rev": "3d97e49b4d5f6bf9d22cfe2d6c7367e462e35d35",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jvanbruegge",
+        "ref": "linkwarden",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-rocm": {
       "locked": {
         "lastModified": 1735303427,
@@ -237,11 +253,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735546575,
-        "narHash": "sha256-/61SYi7EQUV4+4iNK90WhzWSqsc96k7WxEwmu752dDE=",
+        "lastModified": 1735583216,
+        "narHash": "sha256-er3LxuMNxTORbdCyvzxPVXKJiomg2ot8Gw74OuSKhK4=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "429cbb95aeaf9ba25690b34a184a7aa7df306427",
+        "rev": "9b8e4b87ff11dee31e28a32b70fba6280a49b515",
         "type": "github"
       },
       "original": {
@@ -307,6 +323,7 @@
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-lw": "nixpkgs-lw",
         "nixpkgs-rocm": "nixpkgs-rocm",
         "nur": "nur",
         "plasma-manager": "plasma-manager",
