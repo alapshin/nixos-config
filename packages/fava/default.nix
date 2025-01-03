@@ -23,7 +23,7 @@ python3Packages.buildPythonApplication rec {
 
   dependencies = with python3Packages; [
     babel
-    beancount3
+    beancount
     beangulp
     beanquery
     cheroot

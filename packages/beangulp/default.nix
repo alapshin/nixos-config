@@ -1,6 +1,6 @@
 {
   lib,
-  beancount3,
+  beancount,
   buildPythonPackage,
   chardet,
   click,
@@ -27,7 +27,7 @@ buildPythonPackage {
   build-system = [ setuptools ];
 
   dependencies = [
-    beancount3
+    beancount
     chardet
     click
     lxml

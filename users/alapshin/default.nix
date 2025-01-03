@@ -58,7 +58,7 @@ let
     (python3.withPackages (
       ps: with ps; [
         autobean
-        beancount3
+        beancount
         beanquery
         ipython
         notebook

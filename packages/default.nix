@@ -42,7 +42,7 @@
 
   pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
     (python-final: python-prev: {
-      beancount3 = python-final.callPackage ./beancount { };
+      beancount = python-final.callPackage ./beancount { };
       autobean = python-final.callPackage ./autobean { };
       beangulp = python-final.callPackage ./beangulp { };
       beanquery = python-final.callPackage ./beanquery { };

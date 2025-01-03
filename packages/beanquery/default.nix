@@ -1,6 +1,6 @@
 {
   lib,
-  beancount3,
+  beancount,
   buildPythonPackage,
   click,
   fetchPypi,
@@ -22,7 +22,7 @@ buildPythonPackage rec {
   build-system = [ setuptools ];
 
   dependencies = [
-    beancount3
+    beancount
     click
     python-dateutil
     tatsu

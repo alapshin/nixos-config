@@ -1,6 +1,6 @@
 {
   lib,
-  beancount3,
+  beancount,
   beancount-plugin-utils,
   fetchFromGitHub,
   buildPythonPackage,
@@ -25,7 +25,7 @@ buildPythonPackage rec {
   build-system = [ pdm-pep517 ];
 
   dependencies = [
-    beancount3
+    beancount
     beancount-plugin-utils
     python-dateutil
     pyyaml
