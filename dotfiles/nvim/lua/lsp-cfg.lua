@@ -64,3 +64,5 @@ lspconfig.nixd.setup({
         },
     },
 })
+
+lspconfig.beancount.setup{}
