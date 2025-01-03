@@ -45,6 +45,7 @@
       autobean = python-final.callPackage ./autobean { };
       beanquery = python-final.callPackage ./beanquery { };
       beancount-plugin-utils = python-final.callPackage ./beancount-plugin-utils { };
+      petl = python-final.callPackage ./petl { };
     })
   ];
 }
