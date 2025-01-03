@@ -37,6 +37,7 @@
   monica = final.callPackage ./monica { };
   linkwarden = final.callPackage ./linkwarden { };
 
+  fava = prev.python3.pkgs.callPackage ./fava { };
   beanprice = prev.python3.pkgs.callPackage ./beanprice { };
 
   pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
