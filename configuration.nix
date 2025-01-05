@@ -8,9 +8,7 @@
   ...
 }:
 {
-  nixpkgs = {
-    inherit pkgs;
-  };
+  nixpkgs.pkgs = pkgs;
 
   system = {
     stateVersion = "24.11";

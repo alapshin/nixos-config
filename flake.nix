@@ -101,6 +101,7 @@
           baseModules ? [
             ./configuration.nix
 
+            nixpkgs.nixosModules.readOnlyPkgs
             self.nixosModules.backup
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
@@ -116,7 +117,7 @@
           pkgs = customPkgs."${system}";
         in
         nixpkgs.lib.nixosSystem {
-          inherit system;
+          # inherit system;
           modules = baseModules ++ hostModules ++ userModules;
           specialArgs = specialArgs // {
             inherit
