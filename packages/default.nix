@@ -35,5 +35,4 @@
   });
 
   monica = final.callPackage ./monica { };
-  linkwarden = final.callPackage ./linkwarden { };
 }
