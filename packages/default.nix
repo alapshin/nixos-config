@@ -36,18 +36,4 @@
 
   monica = final.callPackage ./monica { };
   linkwarden = final.callPackage ./linkwarden { };
-
-  fava = prev.python3.pkgs.callPackage ./fava { };
-  beanprice = prev.python3.pkgs.callPackage ./beanprice { };
-
-  pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
-    (python-final: python-prev: {
-      beancount = python-final.callPackage ./beancount { };
-      autobean = python-final.callPackage ./autobean { };
-      beangulp = python-final.callPackage ./beangulp { };
-      beanquery = python-final.callPackage ./beanquery { };
-      beancount-plugin-utils = python-final.callPackage ./beancount-plugin-utils { };
-      petl = python-final.callPackage ./petl { };
-    })
-  ];
 }

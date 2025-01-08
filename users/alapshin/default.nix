@@ -10,7 +10,6 @@ let
   accountingTools = with pkgs; [
     fava
     beanprice
-    ledger2beancount
   ];
 
   blockchainPackages = with pkgs; [
