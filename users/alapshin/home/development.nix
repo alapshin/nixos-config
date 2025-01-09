@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 {
   home.packages = with pkgs; [
     # HTTP API
@@ -15,4 +19,12 @@
     # aider-chat
     # whisper-ctranslate2
   ];
+
+  programs.gradle = {
+    enable = true;
+    home = "${config.xdg.dataHome}/gradle";
+    settings = {
+      "org.gradle.java.installations.paths" = "${pkgs.jdk17}/lib/openjdk";
+    };
+  };
 }

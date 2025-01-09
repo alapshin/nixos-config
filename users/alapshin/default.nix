@@ -33,6 +33,8 @@ let
   ];
 
   javaPackages = with pkgs; [
+    jdk17
+    jdk21
     gradle
     groovy
     scrcpy

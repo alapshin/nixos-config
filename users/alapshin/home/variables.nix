@@ -8,7 +8,6 @@
     DVDCSS_CACHE = "${config.xdg.dataHome}/dvdcss";
     DOCKER_CONFIG = "${config.xdg.configHome}/docker";
     ELECTRUMDIR = "${config.xdg.dataHome}/electrum";
-    GRADLE_USER_HOME = "${config.xdg.dataHome}/gradle";
     # RIPGREP_CONFIG_PATH = "${config.xdg.configHome}/ripgrep/config";
 
     _JAVA_OPTIONS = ''
