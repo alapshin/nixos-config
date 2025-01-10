@@ -81,7 +81,6 @@
       };
 
       eachSystem = nixpkgs.lib.genAttrs (import systems);
-      eachSystemPkgs = f: eachSystem (system: f customPkgs.${system});
 
       mkPkgs =
         {
@@ -94,14 +93,14 @@
           config = nixpkgsConfig;
           overlays = (lib.attrValues self.overlays) ++ extraOverlays;
         };
-      customPkgs = eachSystem (system: mkPkgs { inherit nixpkgs system; });
+      packages = eachSystem (system: mkPkgs { inherit nixpkgs system; });
+      eachSystemPkgs = f: eachSystem (system: f packages.${system});
 
       mkNixosConfiguration =
         {
           system ? "x86_64-linux",
           baseModules ? [
             ./configuration.nix
-
             nixpkgs.nixosModules.readOnlyPkgs
             self.nixosModules.backup
             disko.nixosModules.disko
@@ -112,22 +111,17 @@
           ],
           hostModules ? [ ],
           userModules ? [ ],
-          specialArgs ? { },
         }:
-        let
-          pkgs = customPkgs."${system}";
-        in
         nixpkgs.lib.nixosSystem {
-          # inherit system;
           modules = baseModules ++ hostModules ++ userModules;
-          specialArgs = specialArgs // {
+          specialArgs = {
             inherit
               self
               lib
-              pkgs
               inputs
               dotfileDir
               ;
+            pkgs = packages."${system}";
           };
         };
     in
@@ -214,7 +208,7 @@
         in
         {
           "${username}" = home-manager.lib.homeManagerConfiguration {
-            pkgs = customPkgs;
+            pkgs = packages;
             modules = [ ./users/alapshin/home/home.nix ];
             extraSpecialArgs = {
               inherit username dotfileDir;
