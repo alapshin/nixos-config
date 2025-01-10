@@ -20,6 +20,7 @@
     ./changedetection.nix
     ./dashboard.nix
     ./grafana.nix
+    ./immich.nix
     ./influxdb.nix
     ./jellyfin.nix
     ./lldap.nix
