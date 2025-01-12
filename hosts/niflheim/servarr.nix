@@ -138,7 +138,7 @@ in
     };
 
     flaresolverr = {
-      enable = true;
+      enable = false;
     };
 
     nginx-ext.applications = {
