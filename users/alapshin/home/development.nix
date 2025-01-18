@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   config,
   ...
@@ -22,7 +23,7 @@
 
   programs.gradle = {
     enable = true;
-    home = "${config.xdg.dataHome}/gradle";
+    home = ".local/share/gradle";
     settings = {
       "org.gradle.java.installations.paths" = "${pkgs.jdk17}/lib/openjdk";
     };
