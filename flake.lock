@@ -208,6 +208,22 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/e9b51731911566bbf7e4895475a87fe06961de0b.tar.gz"
       }
     },
+    "nixpkgs-lldap": {
+      "locked": {
+        "lastModified": 1736987677,
+        "narHash": "sha256-lRleMLx1TKZRXAImjunDmiTVhXopnXLsU7FdX1MwgJM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "33950a17821d1ad5b85085f763911a3c6fc178f3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "pull/374179/head",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lw": {
       "locked": {
         "lastModified": 1736260616,
@@ -340,6 +356,7 @@
         "lanzaboote": "lanzaboote",
         "nixpkgs": "nixpkgs",
         "nixpkgs-beancount3": "nixpkgs-beancount3",
+        "nixpkgs-lldap": "nixpkgs-lldap",
         "nixpkgs-lw": "nixpkgs-lw",
         "nixpkgs-rocm": "nixpkgs-rocm",
         "nur": "nur",
