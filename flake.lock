@@ -228,14 +228,14 @@
       "locked": {
         "lastModified": 1736260616,
         "narHash": "sha256-OPVXq0UQ4pOWUU3ba0lbAecNJWM4dcsk3sQA/9CRpeI=",
-        "owner": "jvanbruegge",
+        "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "ff6c2d59ba4067dfa456cb644d669698f31d8d6e",
         "type": "github"
       },
       "original": {
-        "owner": "jvanbruegge",
-        "ref": "linkwarden",
+        "owner": "NixOS",
+        "ref": "pull/347353/head",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -244,14 +244,14 @@
       "locked": {
         "lastModified": 1736021900,
         "narHash": "sha256-pn49acHllDzLz+1wMdrm8CrtpujTofBj8U+MuUDp1lo=",
-        "owner": "LunNova",
+        "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "9e969682e617e2226edd7c60075e1bf9d3b95d73",
         "type": "github"
       },
       "original": {
-        "owner": "LunNova",
-        "ref": "rocm-update",
+        "owner": "NixOS",
+        "ref": "pull/367695/head",
         "repo": "nixpkgs",
         "type": "github"
       }

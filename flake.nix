@@ -18,8 +18,8 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable-small";
-    nixpkgs-lw.url = "github:jvanbruegge/nixpkgs/linkwarden";
-    nixpkgs-rocm.url = "github:LunNova/nixpkgs/rocm-update";
+    nixpkgs-lw.url = "github:NixOS/nixpkgs/pull/347353/head";
+    nixpkgs-rocm.url = "github:NixOS/nixpkgs/pull/367695/head";
     nixpkgs-lldap.url = "github:NixOS/nixpkgs/pull/374179/head";
     nixpkgs-beancount3.url = "github:alapshin/nixpkgs/beancount3";
 
