@@ -31,7 +31,6 @@
     ];
 
     prisma = inputs.nixpkgs-lw.legacyPackages."${prev.system}".prisma;
-    lldap = inputs.nixpkgs-lldap.legacyPackages."${prev.system}".lldap;
     linkwarden = inputs.nixpkgs-lw.legacyPackages."${prev.system}".linkwarden;
   };
 
