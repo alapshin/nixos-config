@@ -15,6 +15,9 @@
   services = {
     sunshine = {
       enable = true;
+      package = pkgs.sunshine.override {
+        boost = pkgs.boost186;
+      };
       autoStart = true;
       capSysAdmin = true; # only needed for Wayland -- omit this when using with Xorg
       openFirewall = true;
