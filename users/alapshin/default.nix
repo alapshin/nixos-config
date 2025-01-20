@@ -13,7 +13,7 @@ let
   ];
 
   blockchainPackages = with pkgs; [
-    feather
+    # feather
     electrum
   ];
 
