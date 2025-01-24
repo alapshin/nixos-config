@@ -25,6 +25,7 @@
       "nvidia-x11"
       "nvidia-settings"
 
+      "datagrip"
       "idea-ultimate"
       "android-studio-stable"
       "android-studio-beta"

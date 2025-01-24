@@ -39,6 +39,7 @@ let
     groovy
     scrcpy
     android-udev-rules
+    jetbrains.datagrip
     jetbrains.idea-ultimate
     # androidStudioPackages.stable
     android-studio-stable-with-sdk
