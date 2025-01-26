@@ -142,6 +142,10 @@
             ANDROID_NDK_ROOT = "${ANDROID_HOME}/ndk-bundle";
             # Use the same buildToolsVersion here
             GRADLE_OPTS = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${ANDROID_HOME}/build-tools/${buildToolsVersion}/aapt2";
+
+            shellHook = ''
+              echo "sdk.dir=${androidComposition.androidsdk}/libexec/android-sdk" > local.properties
+            '';
           };
       });
 
