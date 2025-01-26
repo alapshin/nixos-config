@@ -19,6 +19,7 @@
 
     fava = prev.callPackage prev.beancountpr.fava.override { };
 
+    open-webui = prev.rocmpr.open-webui.override { };
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
         petl = prev.beancountpr.python3Packages.petl;
@@ -27,6 +28,7 @@
         beangulp = pyfinal.callPackage prev.beancountpr.python3Packages.beangulp.override { };
 
         torch = pyfinal.callPackage prev.rocmpr.python3Packages.torch.override { };
+        torchaudio = pyfinal.callPackage prev.rocmpr.python3Packages.torchaudio.override { };
       })
     ];
 

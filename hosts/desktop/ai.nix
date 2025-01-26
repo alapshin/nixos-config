@@ -26,7 +26,7 @@ in
     };
 
     open-webui = {
-      enable = false;
+      enable = true;
       port = 8085;
       environment = {
         WEBUI_AUTH = "False";
