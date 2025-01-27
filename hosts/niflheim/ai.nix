@@ -11,9 +11,11 @@ in
 {
   sops = {
     secrets = {
+      "open-webui/deepinfra_api_key" = { };
       "open-webui/oidc_client_secret" = { };
     };
     templates."open-webui.env".content = ''
+      OPENAI_API_KEY=${config.sops.placeholder."open-webui/deepinfra_api_key"}
       OAUTH_CLIENT_SECRET=${config.sops.placeholder."open-webui/oidc_client_secret"}
     '';
   };
@@ -21,10 +23,6 @@ in
   services = {
     ollama = {
       enable = true;
-      loadModels = [
-        "llama3.1:8b"
-        "llama3.1:70b"
-      ];
     };
 
     open-webui = {
@@ -41,6 +39,7 @@ in
         SCARF_NO_ANALYTICS = "True";
         ANONYMIZED_TELEMETRY = "False";
 
+        OPENAI_API_BASE_URL = "https://api.deepinfra.com/v1/openai";
         OLLAMA_API_BASE_URL = "http://${ollamaHost}:${toString ollamaPort}";
       };
     };
@@ -48,13 +47,11 @@ in
     nginx-ext.applications."owui" = {
       auth = false;
       port = config.services.open-webui.port;
+      proxyWebsockets = true;
     };
   };
 
   systemd.services = {
-    ollama.serviceConfig = {
-      TimeoutStartSec = "15m";
-    };
     open-webui.serviceConfig = {
       EnvironmentFile = config.sops.templates."open-webui.env".path;
     };

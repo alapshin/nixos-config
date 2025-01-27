@@ -20,7 +20,7 @@
   services = {
     linkwarden = {
       enable = true;
-      port = 8085;
+      port = 8087;
       environment = {
         NEXT_PUBLIC_AUTHELIA_ENABLED = "true";
         NEXTAUTH_URL = "https://linkwarden.${config.domain.base}/api/v1/auth";
