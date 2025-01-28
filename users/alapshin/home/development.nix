@@ -17,7 +17,7 @@
     yamlfmt
 
     # AI
-    # aider-chat
+    aider-chat
     # whisper-ctranslate2
   ];
 
