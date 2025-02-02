@@ -11,23 +11,6 @@
 
   customHunspellDicts = prev.recurseIntoAttrs (prev.callPackages ./hunspell/dictionaries.nix { });
 
-  keepassxc-autostart = prev.makeAutostartItem {
-    name = "KeePassXC";
-    package = prev.keepassxc;
-    srcPrefix = "org.keepassxc.";
-  };
-
-  telegram-autostart = prev.makeAutostartItem {
-    name = "telegram.desktop";
-    package = prev.telegram-desktop;
-    srcPrefix = "org.";
-  };
-
-  thunderbird-autostart = prev.makeAutostartItem {
-    name = "thunderbird";
-    package = prev.thunderbird;
-  };
-
   # See nixos/modules/services/x11/extra-layouts.nix
   # xkeyboard-config with customized Serbo-Croatian variant of US layout
   xkbconfig_custom = final.xorg.xkeyboardconfig.overrideAttrs (oldAttrs: {

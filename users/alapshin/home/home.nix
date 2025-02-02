@@ -40,12 +40,6 @@
 
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; [
-    keepassxc-autostart
-    telegram-autostart
-    thunderbird-autostart
-  ];
-
   home.language = {
     base = "en_US.UTF-8";
     time = "en_DK.UTF-8";
@@ -60,6 +54,14 @@
 
   xdg = {
     enable = true;
+    autostart = {
+      enable = true;
+      entries = [
+        "${pkgs.keepassxc}/share/applications/org.keepassxc.KeePassXC.desktop"
+        "${pkgs.thunderbird}/share/applications/thunderbird.desktop"
+        "${pkgs.telegram-desktop}/share/applications/org.telegram.desktop.desktop"
+      ];
+    };
     dataFile = {
       "konsole" = {
         source = "${dotfileDir}/konsole";
