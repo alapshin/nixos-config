@@ -10,6 +10,12 @@ in
       settings = {
         classifier = {
           delete_xxx = true;
+          flags = {
+            delete_content_types = [
+              "xxx"
+              "software"
+            ];
+          };
         };
         postgres.user = cfg.user;
         http_server = {
