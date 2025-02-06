@@ -26,6 +26,7 @@
         beancount = prev.beancountpr.python3Packages.beancount3;
         autobean = pyfinal.callPackage ../packages/autobean { };
         beangulp = pyfinal.callPackage prev.beancountpr.python3Packages.beangulp.override { };
+        beanquery = pyfinal.callPackage prev.beancountpr.python3Packages.beanquery.override { };
 
         torch = pyfinal.callPackage prev.rocmpr.python3Packages.torch.override { };
         torchaudio = pyfinal.callPackage prev.rocmpr.python3Packages.torchaudio.override { };
