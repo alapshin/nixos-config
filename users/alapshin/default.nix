@@ -14,7 +14,7 @@ let
 
   blockchainPackages = with pkgs; [
     # feather
-    electrum
+    # electrum
   ];
 
   dictionaries = with pkgs; [
@@ -39,8 +39,8 @@ let
     groovy
     scrcpy
     android-udev-rules
-    jetbrains.datagrip
-    jetbrains.idea-ultimate
+    # jetbrains.datagrip
+    # jetbrains.idea-ultimate
     # androidStudioPackages.stable
     android-studio-stable-with-sdk
   ];
