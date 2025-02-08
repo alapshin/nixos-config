@@ -19,7 +19,7 @@ in
       enable = true;
     };
 
-    jellyseerr.enable = true;
+    jellyseerr.enable = false;
 
     nginx.virtualHosts = {
       "jellyfin.${config.domain.base}" = {
