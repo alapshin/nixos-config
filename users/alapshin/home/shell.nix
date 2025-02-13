@@ -22,7 +22,6 @@
       daemon = {
         enable = true;
       };
-      enableZshIntegration = true;
     };
 
     bat = {
@@ -39,7 +38,6 @@
 
     broot = {
       enable = true;
-      enableZshIntegration = true;
     };
 
     fzf = {
@@ -49,7 +47,6 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-      enableZshIntegration = true;
     };
 
     eza = {
@@ -72,12 +69,10 @@
 
     navi = {
       enable = true;
-      enableZshIntegration = true;
     };
 
     nix-your-shell = {
       enable = true;
-      enableZshIntegration = true;
     };
 
     pandoc = {
@@ -90,7 +85,6 @@
 
     starship = {
       enable = true;
-      enableZshIntegration = true;
       settings =
         {
           format = "$all";
