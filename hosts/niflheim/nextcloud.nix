@@ -86,6 +86,7 @@ in
             contacts
             deck
             gpoddersync
+            onlyoffice
             tasks
             ;
         }

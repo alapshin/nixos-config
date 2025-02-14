@@ -14,6 +14,9 @@
   allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [
+      # Used by only-office
+      "corefonts"
+
       "drawio"
       "languagetool"
 
@@ -32,5 +35,6 @@
       "android-studio-canary"
       "android-sdk-tools"
       "android-sdk-cmdline-tools"
+
     ];
 }

@@ -31,6 +31,7 @@
     ./ntfy.nix
     ./nextcloud.nix
     ./openssh.nix
+    ./onlyoffice.nix
     ./photoprism.nix
     ./postgres.nix
     ./paperless.nix
