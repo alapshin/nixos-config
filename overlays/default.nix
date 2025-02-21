@@ -23,9 +23,11 @@
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
         petl = prev.beancountpr.python3Packages.petl;
-        beancount = prev.beancountpr.python3Packages.beancount3;
+        tatsu-lts = prev.beancountpr.python3Packages.tatsu-lts;
+        beancount = prev.beancountpr.python3Packages.beancount;
         autobean = pyfinal.callPackage ../packages/autobean { };
         beangulp = pyfinal.callPackage prev.beancountpr.python3Packages.beangulp.override { };
+        beanprice = pyfinal.callPackage prev.beancountpr.python3Packages.beanprice.override { };
         beanquery = pyfinal.callPackage prev.beancountpr.python3Packages.beanquery.override { };
 
         torch = pyfinal.callPackage prev.rocmpr.python3Packages.torch.override { };
