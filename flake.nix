@@ -46,6 +46,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.inputs.nixpkgs.follows = "nixpkgs";
+
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
@@ -62,6 +65,7 @@
       lanzaboote,
       treefmt-nix,
       home-manager,
+      catppuccin,
       ...
     }:
     let
@@ -77,6 +81,7 @@
         inherit dotfileDir;
         sharedModules = [
           sops-nix.homeManagerModules.sops
+          catppuccin.homeManagerModules.catppuccin
         ];
       };
 
