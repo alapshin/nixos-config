@@ -5,11 +5,11 @@
   ...
 }: {
   catppuccin = {
+    accent = "mauve";
     flavor = "latte";
-    accent = "lavender";
 
     bat.enable = true;
-    # delta.enble = true;
+    delta.enable = true;
     bottom.enable = true;
     lazygit.enable = true;
     starship.enable = true;

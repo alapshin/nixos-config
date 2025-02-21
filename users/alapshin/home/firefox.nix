@@ -71,7 +71,7 @@
     profiles = {
       default = {
         id = 0;
-        extensions =
+        extensions.packages =
           (with pkgs.firefox-addons; [ linguist-translator ])
           ++ (with pkgs.nur.repos.rycee.firefox-addons; [
             metamask
