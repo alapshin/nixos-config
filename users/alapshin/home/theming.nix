@@ -3,7 +3,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   catppuccin = {
     accent = "mauve";
     flavor = "latte";
