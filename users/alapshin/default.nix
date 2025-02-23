@@ -52,6 +52,7 @@ let
     gwenview
     kate
     kcolorchooser
+    kleopatra
     okular
     spectacle
   ];
@@ -129,7 +130,6 @@ in
         anki
         audacity
         calibre
-        colord-kde
         element-desktop
         freetube
         gimp
@@ -137,12 +137,10 @@ in
         jellyfin-media-player
         keepassxc
         kid3-qt
-        kleopatra
         krename
         libreoffice-qt6-fresh
         logseq
         qbittorrent
-        sddm-kcm
         smplayer
         strawberry
         telegram-desktop

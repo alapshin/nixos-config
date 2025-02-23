@@ -7,7 +7,6 @@
   # will be accessible through 'pkgs.<pull-request-name>'
   development = final: _prev: {
     rocmpr = import inputs.nixpkgs-rocm { system = final.system; };
-    beancountpr = import inputs.nixpkgs-beancount3 { system = final.system; };
   };
 
   # https://nixos.wiki/wiki/Overlays
@@ -17,18 +16,10 @@
     ollama = prev.rocmpr.ollama;
     rocmPackages = prev.rocmpr.rocmPackages.gfx1030;
 
-    fava = prev.callPackage prev.beancountpr.fava.override { };
-
     open-webui = prev.rocmpr.open-webui.override { };
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
-        petl = prev.beancountpr.python3Packages.petl;
-        tatsu-lts = prev.beancountpr.python3Packages.tatsu-lts;
-        beancount = prev.beancountpr.python3Packages.beancount;
         autobean = pyfinal.callPackage ../packages/autobean { };
-        beangulp = pyfinal.callPackage prev.beancountpr.python3Packages.beangulp.override { };
-        beanprice = pyfinal.callPackage prev.beancountpr.python3Packages.beanprice.override { };
-        beanquery = pyfinal.callPackage prev.beancountpr.python3Packages.beanquery.override { };
 
         torch = pyfinal.callPackage prev.rocmpr.python3Packages.torch.override { };
         torchaudio = pyfinal.callPackage prev.rocmpr.python3Packages.torchaudio.override { };

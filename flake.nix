@@ -20,7 +20,6 @@
     nixpkgs.url = "nixpkgs/nixos-unstable-small";
     nixpkgs-lw.url = "github:NixOS/nixpkgs/pull/347353/head";
     nixpkgs-rocm.url = "github:NixOS/nixpkgs/pull/367695/head";
-    nixpkgs-beancount3.url = "github:alapshin/nixpkgs/beancount3";
 
     systems.url = "github:nix-systems/default";
     flake-parts.url = "github:hercules-ci/flake-parts";
