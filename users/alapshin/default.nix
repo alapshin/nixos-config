@@ -103,7 +103,7 @@ in
 
     zsh.enable = true;
     kdeconnect.enable = true;
-    partition-manager.enable = false;
+    partition-manager.enable = true;
   };
 
   users.users."${username}" = {
