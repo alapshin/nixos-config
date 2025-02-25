@@ -12,8 +12,11 @@
 [diff]
 	algorithm = histogram
 	colorMoved = default
+	renames = true
+	mnemonicPrefix = true
 [fetch]
 	prune = true
+	pruneTags = true
 [init]
 	defaultBranch = main
 [log]
@@ -27,14 +30,16 @@
 	followTag = true
 	autosSetupRemote = true
 [rebase]
-	autosquash = true
+	autoStash = true
+	autoSquash = true
 	updateRefs = true
 [rerere]
 	enabled = true
+	autoUpdate = true
 [stash]
 	showPatch = true
 [tag]
-	sort = v:refname
+	sort = version:refname
 [transfer]
 	fsckobjects = true
 [user]
