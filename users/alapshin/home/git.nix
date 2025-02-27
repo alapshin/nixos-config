@@ -74,5 +74,7 @@
         promptToReturnFromSubprocess = false;
       };
     };
+
+    git-worktree-switcher.enable = true;
   };
 }
