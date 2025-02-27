@@ -19,6 +19,7 @@
     ./calibre.nix
     ./changedetection.nix
     ./dashboard.nix
+    ./freshrss.nix
     ./grafana.nix
     ./immich.nix
     ./influxdb.nix
