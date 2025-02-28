@@ -31,7 +31,7 @@ in
       };
     };
 
-    nginx-ext.applications."influxdb" = {
+    webhost.applications."influxdb" = {
       auth = true;
       inherit port;
     };

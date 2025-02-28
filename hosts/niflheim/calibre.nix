@@ -59,7 +59,7 @@ in
       };
     };
 
-    nginx-ext.applications = {
+    webhost.applications = {
       "calibre" = {
         auth = true;
         port = webport;

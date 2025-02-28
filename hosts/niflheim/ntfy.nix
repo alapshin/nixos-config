@@ -16,16 +16,15 @@ in
         enable-signup = false;
         auth-default-access = "deny-all";
 
-        base-url = "https://ntfy.${config.domain.base}";
+        base-url = "https://ntfy.${config.services.webhost.basedomain}";
         behind-proxy = true;
         listen-http = "localhost:${toString port}";
       };
     };
 
-    nginx-ext.applications."ntfy" = {
+    webhost.applications."ntfy" = {
       auth = false;
       port = port;
-      proxyWebsockets = true;
     };
   };
 }

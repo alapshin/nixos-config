@@ -43,29 +43,11 @@ in
   };
 
   services = {
-    nginx = {
-      upstreams = {
-        "authelia" = {
-          servers = {
-            "localhost:${toString autheliaPort}" = { };
-          };
-        };
-      };
-
-      virtualHosts = {
-        "${config.domain.auth}" = {
-          forceSSL = true;
-          useACMEHost = config.domain.base;
-
-          locations = {
-            "/" = {
-              proxyPass = "http://authelia";
-            };
-            "/api/authz" = {
-              proxyPass = "http://authelia";
-            };
-          };
-        };
+    caddy = {
+      virtualHosts."${config.services.webhost.authdomain}" = {
+        extraConfig = ''
+          reverse_proxy localhost:${toString autheliaPort}
+        '';
       };
     };
 
@@ -101,6 +83,9 @@ in
               auth-request = {
                 implementation = "AuthRequest";
               };
+              forward-auth = {
+                implementation = "ForwardAuth";
+              };
             };
           };
         };
@@ -110,8 +95,8 @@ in
           };
           cookies = [
             {
-              domain = config.domain.base;
-              authelia_url = "https://${config.domain.auth}";
+              domain = config.services.webhost.basedomain;
+              authelia_url = "https://${config.services.webhost.authdomain}";
             }
           ];
         };
@@ -120,11 +105,11 @@ in
           rules = [
             {
               policy = "bypass";
-              domain = config.domain.auth;
+              domain = config.services.webhost.authdomain;
             }
             {
               policy = "bypass";
-              domain = [ "*.${config.domain.base}" ];
+              domain = [ "*.${config.services.webhost.basedomain}" ];
               resources = [
                 # General API
                 "^/api([/?].*)?$"
@@ -138,7 +123,7 @@ in
             }
             {
               policy = "one_factor";
-              domain = [ "*.${config.domain.base}" ];
+              domain = [ "*.${config.services.webhost.basedomain}" ];
             }
           ];
         };
@@ -178,66 +163,6 @@ in
               {
                 key_id = "main";
                 key = ''{{ secret "/run/secrets/authelia/jwk_rsa_key.pem" | mindent 10 "|" | msquote }}'';
-              }
-            ];
-            clients = [
-              {
-                client_id = "audiobookshelf";
-                client_name = "Audiobookshelf";
-                client_secret = "$pbkdf2-sha512$310000$CYG9RzneGw4EEojmAFaprA$CppTSc1wUVwvVtkD48.UFO7KPMAN9OlHIOMnuNeDAyvTSNXshShlcONmQinyd.D8DaOTGE0Sn.wWqEYRWnq9hg";
-                require_pkce = true;
-                pkce_challenge_method = "S256";
-                authorization_policy = "one_factor";
-                redirect_uris = [
-                  "https://audiobookshelf.${config.domain.base}/auth/openid/callback"
-                  "https://audiobookshelf.${config.domain.base}/auth/openid/mobile-redirect"
-                ];
-              }
-              {
-                client_id = "grafana";
-                client_name = "Grafana";
-                client_secret = "$pbkdf2-sha512$310000$c6S3Q5j25GIJu2VBLf5VFg$S.j/GnNOjD40jpaSlizdi8gQnY2YXJusJcSOcIg8QgV8IkwAC9ILW1U21FrGMqePzfwoXYoYvgG.ZWk01MTo2Q";
-                require_pkce = true;
-                pkce_challenge_method = "S256";
-                authorization_policy = "one_factor";
-                redirect_uris = [ "https://grafana.${config.domain.base}/login/generic_oauth" ];
-              }
-              {
-                client_id = "jellyfin";
-                client_name = "Jellyfin";
-                client_secret = "$pbkdf2-sha512$310000$w8/7AXV6ljEACFLwkc.neQ$bMnyFnhUjuFjhKGw.awXKfK1EK6n9XS5P6RcywAbBxLhI6hcJqJ8jDCt3oOBp9YpaPCbNh3Sm23NCwJaUIci5w";
-                require_pkce = true;
-                pkce_challenge_method = "S256";
-                authorization_policy = "one_factor";
-                redirect_uris = [ "https://jellyfin.${config.domain.base}/sso/OID/redirect/authelia" ];
-                token_endpoint_auth_method = "client_secret_post";
-              }
-              {
-                client_id = "nextcloud";
-                client_name = "Nextcloud";
-                client_secret = "$pbkdf2-sha512$310000$uLH3iUPuaccs8Ps0L7e92A$ivBv3CRJZSuYX8ARlQGWlyyIlpcqcvQl518dOqxDQ5nMRKrOSYQmGkUAlSjF3Btklbs1V6CYSXfAwlIRYjqHFg";
-                require_pkce = true;
-                pkce_challenge_method = "S256";
-                authorization_policy = "one_factor";
-                redirect_uris = [ "https://nextcloud.${config.domain.base}/apps/oidc_login/oidc" ];
-              }
-              {
-                client_id = "open-webui";
-                client_name = "Open WebUI";
-                client_secret = "$pbkdf2-sha512$310000$b6mTChIj/dqB1tgrNWpJCA$L0o17Sn8c2U2G9U3AHmOsI03TsHIwnU9rjiqvw2hEcl/lcbc6r48cBS4aU/Bq4g9PYF9lihl3o2fbhlIOE7fEA";
-                authorization_policy = "one_factor";
-                redirect_uris = [ "https://owui.${config.domain.base}/oauth/oidc/callback" ];
-              }
-              {
-                client_id = "paperless";
-                client_name = "Paperless";
-                client_secret = "$pbkdf2-sha512$310000$ylijOhbBagCwDiaNWPM2GA$mpdcyzbOgih92PY3WQO8x8BiZSLZu33uojolXe5hg/H.U71a.HGTY168YOcBz1TYeYqyCvY2s7jSW86Gb8qtUg";
-                require_pkce = true;
-                pkce_challenge_method = "S256";
-                authorization_policy = "one_factor";
-                redirect_uris = [
-                  "https://paperless.${config.domain.base}/accounts/oidc/authelia/login/callback/"
-                ];
               }
             ];
           };

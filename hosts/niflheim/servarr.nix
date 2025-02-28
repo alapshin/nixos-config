@@ -141,7 +141,7 @@ in
       enable = false;
     };
 
-    nginx-ext.applications = {
+    webhost.applications = {
       "lidarr" = {
         auth = true;
         port = config.services.lidarr.server.port;

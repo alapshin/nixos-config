@@ -23,7 +23,7 @@ in
         };
       };
     };
-    nginx-ext.applications."bitmagnet" = {
+    webhost.applications."bitmagnet" = {
       auth = true;
       port = lib.strings.toInt config.services.bitmagnet.settings.http_server.port;
     };

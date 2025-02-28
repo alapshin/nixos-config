@@ -10,7 +10,7 @@ let
   port = config.services.lldap.settings.http_port;
   user = config.services.lldap.settings.ldap_user_dn;
   ldapPort = config.services.lldap.settings.ldap_port;
-  domainParts = lib.strings.splitString "." config.domain.base;
+  domainParts = lib.strings.splitString "." config.services.webhost.basedomain;
   ldapBaseDn = lib.strings.concatMapStringsSep "," (s: "dc=${s}") domainParts;
 in
 {
@@ -28,7 +28,7 @@ in
         http_host = "localhost";
         ldap_host = "localhost";
         ldap_base_dn = ldapBaseDn;
-        ldap_user_email = "${user}@${config.domain.base}";
+        ldap_user_email = "${user}@${config.services.webhost.basedomain}";
         database_url = "postgres:///${name}";
       };
       environment = {
@@ -47,7 +47,7 @@ in
       ];
     };
 
-    nginx-ext.applications."ldap" = {
+    webhost.applications."ldap" = {
       auth = true;
       inherit port;
     };

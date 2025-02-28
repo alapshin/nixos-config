@@ -24,18 +24,17 @@
       settings = {
         PHOTOPRISM_OIDC_WEBDAV = "true";
         PHOTOPRISM_OIDC_REGISTER = "true";
-        PHOTOPRISM_OIDC_URI = "https://${config.domain.auth}";
+        PHOTOPRISM_OIDC_URI = "https://${config.services.webhost.authdomain}";
         PHOTOPRISM_OIDC_CLIENT = "photoprism";
         PHOTOPRISM_OIDC_PROVIDER = "Authelia";
 
-        PHOTOPRISM_SITE_URL = "https://photoprism.${config.domain.base}";
+        PHOTOPRISM_SITE_URL = "https://photoprism.${config.services.webhost.basedomain}";
       };
     };
 
-    nginx-ext.applications."photoprism" = {
+    webhost.applications."photoprism" = {
       auth = false;
       port = config.services.photoprism.port;
-      proxyWebsockets = true;
     };
 
     authelia.instances."main".settings = {
@@ -55,7 +54,7 @@
                 "profile"
               ];
               redirect_uris = [
-                "https://photoprism.${config.domain.base}/api/v1/oidc/redirect"
+                "https://photoprism.${config.services.webhost.basedomain}/api/v1/oidc/redirect"
               ];
             }
           ];

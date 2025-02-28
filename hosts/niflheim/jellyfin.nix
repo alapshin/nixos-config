@@ -21,17 +21,7 @@ in
 
     jellyseerr.enable = false;
 
-    nginx.virtualHosts = {
-      "jellyfin.${config.domain.base}" = {
-        locations = {
-          "/socket" = {
-            proxyWebsockets = true;
-          };
-        };
-      };
-    };
-
-    nginx-ext.applications = {
+    webhost.applications = {
       "jellyfin" = {
         auth = false;
         inherit port;
@@ -41,5 +31,27 @@ in
         port = config.services.jellyseerr.port;
       };
     };
+
+    authelia.instances."main".settings = {
+      identity_providers = {
+        oidc = {
+          clients = [
+            {
+              client_id = "jellyfin";
+              client_name = "Jellyfin";
+              client_secret = "$pbkdf2-sha512$310000$w8/7AXV6ljEACFLwkc.neQ$bMnyFnhUjuFjhKGw.awXKfK1EK6n9XS5P6RcywAbBxLhI6hcJqJ8jDCt3oOBp9YpaPCbNh3Sm23NCwJaUIci5w";
+              require_pkce = true;
+              pkce_challenge_method = "S256";
+              authorization_policy = "one_factor";
+              redirect_uris = [
+                "https://jellyfin.${config.services.webhost.basedomain}/sso/OID/redirect/authelia"
+              ];
+              token_endpoint_auth_method = "client_secret_post";
+            }
+          ];
+        };
+      };
+    };
+
   };
 }

@@ -21,7 +21,7 @@
       ];
     };
 
-    nginx-ext.applications."prometheus" = {
+    webhost.applications."prometheus" = {
       auth = true;
       port = config.services.prometheus.port;
     };

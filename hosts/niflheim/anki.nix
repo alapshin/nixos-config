@@ -17,7 +17,7 @@
       ];
     };
 
-    nginx-ext.applications."anki" = {
+    webhost.applications."anki" = {
       auth = false;
       port = config.services.anki-sync-server.port;
     };

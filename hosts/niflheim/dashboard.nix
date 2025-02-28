@@ -13,12 +13,12 @@ let
     }:
     let
       name = lib.strings.capitalize app;
-      listenPort = config.services.nginx-ext.applications."${app}".port;
+      listenPort = config.services.webhost.applications."${app}".port;
     in
     {
       "${name}" = {
         icon = "${app}.svg";
-        href = "https://${app}.${config.domain.base}";
+        href = "https://${app}.${config.services.webhost.basedomain}";
         description = description;
         widget = {
           type = app;
@@ -33,7 +33,7 @@ in
     homepage-dashboard = {
       enable = true;
       settings = {
-        base = "https://dashboard.${config.domain.base}";
+        base = "https://dashboard.${config.services.webhost.basedomain}";
         theme = "dark";
         hideVersion = true;
         headerStyle = "clean";
@@ -158,7 +158,7 @@ in
               app = "nextcloud";
               description = "A safe home for all your data";
               widget = {
-                url = "https://nextcloud.${config.domain.base}";
+                url = "https://nextcloud.${config.services.webhost.basedomain}";
                 key = null;
                 username = "{{HOMEPAGE_VAR_NEXTCLOUD_USERNAME}}";
                 password = "{{HOMEPAGE_FILE_NEXTCLOUD_PASSWORD}}";
@@ -204,7 +204,7 @@ in
       ];
     };
 
-    nginx-ext.applications."dashboard" = {
+    webhost.applications."dashboard" = {
       auth = true;
       port = config.services.homepage-dashboard.listenPort;
     };

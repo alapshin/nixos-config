@@ -14,9 +14,11 @@ let
   user = cfg.user;
   group = cfg.group;
 
-  monica = pkgs.monica.override {
+  monica = cfg.package.override {
     dataDir = cfg.dataDir;
   };
+
+  webserver = config.services.${cfg.webserver};
 
   # shell script for local administration
   artisan = pkgs.writeScriptBin "monica" ''
@@ -41,6 +43,8 @@ in
 {
   options.services.monica = {
     enable = mkEnableOption "monica";
+
+    package = mkPackageOption pkgs "monica" { };
 
     user = mkOption {
       default = "monica";
@@ -226,6 +230,17 @@ in
       '';
     };
 
+    webserver = lib.mkOption {
+      type = lib.types.enum [
+        "nginx"
+        "caddy"
+      ];
+      default = "nginx";
+      description = ''
+        Type of virtualhost to use and setup.
+      '';
+    };
+
     nginx = mkOption {
       type = types.submodule (
         recursiveUpdate (import (modulesPath + "/services/web-servers/nginx/vhost-options.nix") {
@@ -381,13 +396,12 @@ in
         upload_max_filesize = ${cfg.maxUploadSize}
       '';
       settings = {
-        "listen.mode" = "0660";
-        "listen.owner" = user;
-        "listen.group" = group;
+        "listen.owner" = webserver.user;
+        "listen.group" = webserver.group;
       } // cfg.poolConfig;
     };
 
-    services.nginx = {
+    services.nginx = mkIf (cfg.webserver == "nginx") {
       enable = mkDefault true;
       recommendedTlsSettings = true;
       recommendedOptimisation = true;
@@ -412,6 +426,15 @@ in
           };
         }
       ];
+    };
+
+    services.caddy = mkIf (cfg.webserver == "caddy") {
+      enable = mkDefault true;
+      virtualHosts."${cfg.hostname}".extraConfig = ''
+        root *  ${monica}/public
+        php_fastcgi unix/${config.services.phpfpm.pools."monica".socket}
+        file_server
+      '';
     };
 
     systemd.services.monica-setup = {
@@ -526,10 +549,11 @@ in
           inherit group;
           isSystemUser = true;
         };
-        "${config.services.nginx.user}".extraGroups = [ group ];
       };
       groups = mkIf (group == "monica") {
-        monica = { };
+        monica = {
+          members = [ webserver.user ];
+        };
       };
     };
   };

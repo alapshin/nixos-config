@@ -5,14 +5,14 @@
   ...
 }:
 let
-  hostname = "freshrss.${config.domain.base}";
+  hostname = "freshrss.${config.services.webhost.basedomain}";
 in
 {
 
   sops = {
     secrets = {
       "freshrss/admin_password" = {
-        owner = "freshrss";
+        owner = config.services.freshrss.user;
       };
     };
   };
@@ -26,13 +26,9 @@ in
         host = "/run/postgresql";
 
       };
+      webserver = "caddy";
       virtualHost = "${hostname}";
       passwordFile = config.sops.secrets."freshrss/admin_password".path;
-    };
-
-    nginx.virtualHosts."${hostname}" = {
-      forceSSL = true;
-      useACMEHost = config.domain.base;
     };
 
     postgresql = {

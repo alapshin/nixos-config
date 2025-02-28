@@ -6,16 +6,16 @@
 }:
 {
   imports = [
-    ./domain.nix
     ./secrets.nix
+    ./webhost.nix
 
-    ./acme.nix
     ./ai.nix
     ./anki.nix
     ./audiobookshelf.nix
     ./authelia.nix
     ./backup.nix
     ./bitmagnet.nix
+    ./caddy.nix
     ./calibre.nix
     ./changedetection.nix
     ./dashboard.nix
@@ -28,11 +28,9 @@
     ./linkwarden.nix
     ./monica.nix
     ./navidrome.nix
-    ./nginx.nix
     ./ntfy.nix
     ./nextcloud.nix
     ./openssh.nix
-    ./onlyoffice.nix
     ./photoprism.nix
     ./postgres.nix
     ./paperless.nix

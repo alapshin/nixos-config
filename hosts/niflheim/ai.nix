@@ -44,7 +44,7 @@ in
         OAUTH_MERGE_ACCOUNTS_BY_EMAIL = "True";
         OAUTH_ROLES_CLAIM = "groups";
         ENABLE_OAUTH_ROLE_MANAGEMENT = "True";
-        OPENID_PROVIDER_URL = "https://${config.domain.auth}/.well-known/openid-configuration";
+        OPENID_PROVIDER_URL = "https://${config.services.webhost.authdomain}/.well-known/openid-configuration";
 
         OPENAI_API_BASE_URL = "https://api.deepinfra.com/v1/openai";
         OLLAMA_API_BASE_URL = "http://${ollamaHost}:${toString ollamaPort}";
@@ -62,10 +62,25 @@ in
       ];
     };
 
-    nginx-ext.applications."owui" = {
+    webhost.applications."owui" = {
       auth = false;
       port = config.services.open-webui.port;
-      proxyWebsockets = true;
+    };
+
+    authelia.instances."main".settings = {
+      identity_providers = {
+        oidc = {
+          clients = [
+            {
+              client_id = "open-webui";
+              client_name = "Open WebUI";
+              client_secret = "$pbkdf2-sha512$310000$b6mTChIj/dqB1tgrNWpJCA$L0o17Sn8c2U2G9U3AHmOsI03TsHIwnU9rjiqvw2hEcl/lcbc6r48cBS4aU/Bq4g9PYF9lihl3o2fbhlIOE7fEA";
+              authorization_policy = "one_factor";
+              redirect_uris = [ "https://owui.${config.services.webhost.basedomain}/oauth/oidc/callback" ];
+            }
+          ];
+        };
+      };
     };
   };
 

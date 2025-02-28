@@ -20,6 +20,7 @@
     nixpkgs.url = "nixpkgs/nixos-unstable-small";
     nixpkgs-lw.url = "github:NixOS/nixpkgs/pull/347353/head";
     nixpkgs-rocm.url = "github:NixOS/nixpkgs/pull/367695/head";
+    nixpkgs-nextcloud.url = "github:NixOS/nixpkgs/pull/384565/head";
 
     systems.url = "github:nix-systems/default";
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -173,11 +174,12 @@
             ./hosts/common
             ./hosts/server
             ./hosts/niflheim
-            self.nixosModules.monica5
+            self.nixosModules.monica
             self.nixosModules.servarr
-            self.nixosModules.nginx-ext
+            self.nixosModules.webhost
 
             "${inputs.nixpkgs-lw}/nixos/modules/services/web-apps/linkwarden.nix"
+            "${inputs.nixpkgs-nextcloud}/nixos/modules/services/web-apps/nextcloud.nix"
           ];
         };
 

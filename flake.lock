@@ -228,6 +228,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-nextcloud": {
+      "locked": {
+        "lastModified": 1740418340,
+        "narHash": "sha256-z3CTxiwDxFoqa03/XB1DPDLj+OKns/qL/M93QuO3eTo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8dca898a997100ed873b38d482fe9f631c0c740e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "pull/384565/head",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-rocm": {
       "locked": {
         "lastModified": 1737433353,
@@ -345,6 +361,7 @@
         "lanzaboote": "lanzaboote",
         "nixpkgs": "nixpkgs",
         "nixpkgs-lw": "nixpkgs-lw",
+        "nixpkgs-nextcloud": "nixpkgs-nextcloud",
         "nixpkgs-rocm": "nixpkgs-rocm",
         "nur": "nur",
         "plasma-manager": "plasma-manager",

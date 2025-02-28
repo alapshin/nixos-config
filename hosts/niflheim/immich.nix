@@ -15,7 +15,7 @@
       machine-learning.enable = false;
     };
 
-    nginx-ext.applications."immich" = {
+    webhost.applications."immich" = {
       auth = false;
       port = config.services.immich.port;
     };
@@ -36,8 +36,8 @@
               ];
               redirect_uris = [
                 "app.immich:///oauth-callback"
-                "https://immich.${config.domain.base}/auth/login"
-                "https://immich.${config.domain.base}/user-settings"
+                "https://immich.${config.services.webhost.basedomain}/auth/login"
+                "https://immich.${config.services.webhost.basedomain}/user-settings"
               ];
             }
           ];

@@ -36,7 +36,7 @@ in
       enable = true;
       settings = {
         server = {
-          root_url = "https://grafana.${config.domain.base}";
+          root_url = "https://grafana.${config.services.webhost.basedomain}";
         };
         database = {
           type = "postgres";
@@ -58,9 +58,9 @@ in
           name = "Authelia";
           client_id = "grafana";
           client_secret = "$__file{${config.sops.secrets."grafana/oidc_client_secret".path}}";
-          api_url = "https://${config.domain.auth}/api/oidc/userinfo";
-          auth_url = "https://${config.domain.auth}/api/oidc/authorization";
-          token_url = "https://${config.domain.auth}/api/oidc/token";
+          api_url = "https://${config.services.webhost.authdomain}/api/oidc/userinfo";
+          auth_url = "https://${config.services.webhost.authdomain}/api/oidc/authorization";
+          token_url = "https://${config.services.webhost.authdomain}/api/oidc/token";
 
           use_pkce = true;
           empty_scopes = false;
@@ -102,9 +102,27 @@ in
       ];
     };
 
-    nginx-ext.applications."grafana" = {
+    webhost.applications."grafana" = {
       auth = true;
       port = config.services.grafana.settings.server.http_port;
+    };
+
+    authelia.instances."main".settings = {
+      identity_providers = {
+        oidc = {
+          clients = [
+            {
+              client_id = "grafana";
+              client_name = "Grafana";
+              client_secret = "$pbkdf2-sha512$310000$c6S3Q5j25GIJu2VBLf5VFg$S.j/GnNOjD40jpaSlizdi8gQnY2YXJusJcSOcIg8QgV8IkwAC9ILW1U21FrGMqePzfwoXYoYvgG.ZWk01MTo2Q";
+              require_pkce = true;
+              pkce_challenge_method = "S256";
+              authorization_policy = "one_factor";
+              redirect_uris = [ "https://grafana.${config.services.webhost.basedomain}/login/generic_oauth" ];
+            }
+          ];
+        };
+      };
     };
   };
 

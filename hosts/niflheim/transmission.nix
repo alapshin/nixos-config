@@ -26,7 +26,7 @@
         rpc-host-whitelist-enabled = false;
       };
     };
-    nginx-ext.applications."transmission" = {
+    webhost.applications."transmission" = {
       auth = true;
       port = config.services.transmission.settings.rpc-port;
     };

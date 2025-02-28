@@ -28,7 +28,7 @@ in
       };
     };
 
-    nginx-ext.applications."scrutiny" = {
+    webhost.applications."scrutiny" = {
       auth = true;
       port = config.services.scrutiny.settings.web.listen.port;
     };

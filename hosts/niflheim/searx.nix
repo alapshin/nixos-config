@@ -27,11 +27,10 @@
       };
       environmentFile = config.sops.templates."searx/secret_key.env".path;
     };
-    nginx-ext.applications = {
-      "searx" = {
-        auth = true;
-        port = config.services.searx.settings.server.port;
-      };
+
+    webhost.applications."searx" = {
+      auth = true;
+      port = config.services.searx.settings.server.port;
     };
   };
 }
