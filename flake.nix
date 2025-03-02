@@ -175,7 +175,6 @@
             ./hosts/server
             ./hosts/niflheim
             self.nixosModules.monica
-            self.nixosModules.servarr
             self.nixosModules.webhost
 
             "${inputs.nixpkgs-lw}/nixos/modules/services/web-apps/linkwarden.nix"
