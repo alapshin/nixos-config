@@ -13,8 +13,9 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
-    ollama = prev.rocmpr.ollama;
+    ollama = prev.rocmpr.ollama.override { };
     rocmPackages = prev.rocmpr.rocmPackages.gfx1030;
+    rocmPackages_6 = prev.rocmpr.rocmPackages_6.gfx1030;
 
     open-webui = prev.rocmpr.open-webui.override { };
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
