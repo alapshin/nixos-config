@@ -1,6 +1,5 @@
 { lib }:
 {
-  rocmSupport = true;
   android_sdk.accept_license = true;
   permittedInsecurePackages = [
     # Used by logseq

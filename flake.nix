@@ -85,24 +85,24 @@
         ];
       };
 
-      eachSystem = nixpkgs.lib.genAttrs (import systems);
-
-      mkPkgs =
+      mkNixpkgs =
         {
+          config ? nixpkgsConfig,
           system,
           nixpkgs,
           extraOverlays ? [ nur.overlays.default ],
         }:
         import nixpkgs {
-          inherit system;
-          config = nixpkgsConfig;
+          inherit config system;
           overlays = (lib.attrValues self.overlays) ++ extraOverlays;
         };
-      packages = eachSystem (system: mkPkgs { inherit nixpkgs system; });
-      eachSystemPkgs = f: eachSystem (system: f packages.${system});
+      forEachSystem = nixpkgs.lib.genAttrs (import systems);
+      eachSystemPkgs = forEachSystem (system: mkNixpkgs { inherit system nixpkgs; });
+      forEachSystemPkgs = function: forEachSystem (system: function eachSystemPkgs.${system});
 
       mkNixosConfiguration =
         {
+          config ? nixpkgsConfig,
           system ? "x86_64-linux",
           baseModules ? [
             ./configuration.nix
@@ -126,7 +126,7 @@
               inputs
               dotfileDir
               ;
-            pkgs = packages."${system}";
+            pkgs = mkNixpkgs { inherit config system nixpkgs; };
           };
         };
     in
@@ -134,7 +134,7 @@
       # Custom packages and modifications, exported as overlays
       overlays = import ./overlays { inherit inputs; };
 
-      devShells = eachSystemPkgs (pkgs: {
+      devShells = forEachSystemPkgs (pkgs: {
         android =
           let
             buildToolsVersion = "35.0.0";
@@ -154,7 +154,7 @@
           };
       });
 
-      formatter = eachSystemPkgs (pkgs: treefmt-nix.lib.mkWrapper pkgs treefmtConfig);
+      formatter = forEachSystemPkgs (pkgs: treefmt-nix.lib.mkWrapper pkgs treefmtConfig);
 
       # Reusable nixos modules you might want to export
       # These are usually stuff you would upstream into nixpkgs
@@ -192,6 +192,9 @@
         };
 
         desktop = mkNixosConfiguration {
+          config = nixpkgsConfig // {
+            rocmSupport = true;
+          };
           hostModules = [
             ./hosts/common
             ./hosts/personal
@@ -217,7 +220,6 @@
         in
         {
           "${username}" = home-manager.lib.homeManagerConfiguration {
-            pkgs = packages;
             modules = [ ./users/alapshin/home/home.nix ];
             extraSpecialArgs = {
               inherit username dotfileDir;
