@@ -10,18 +10,10 @@
     package = pkgs.firefox;
 
     nativeMessagingHosts = with pkgs; [
-        kdePackages.plasma-browser-integration
+      kdePackages.plasma-browser-integration
     ];
 
     policies = {
-      # Needed for ActivityWatch Addon
-      "3rdparty" = {
-        "Extensions" = {
-          "{ef87d84c-2127-493f-b952-5b4e744245bc}" = {
-            "consentOfflineDataCollection" = true;
-          };
-        };
-      };
       "Cookies" = {
         "Locked" = true;
         "Behavior" = "reject-tracker-and-partition-foreign";
@@ -30,6 +22,10 @@
       "DisableAppUpdate" = true;
       "DisablePocket" = true;
       "DisableSetDesktopBackground" = true;
+      "DisplayBookmarksToolbar" = "never";
+      "DNSOverHTTPS" = {
+        "Enabled" = false;
+      };
       "DontCheckDefaultBrowser" = true;
       "EnableTrackingProtection" = {
         "Value" = true;
@@ -39,6 +35,16 @@
         "EmailTracking" = true;
       };
       "ExtensionUpdate" = false;
+      "FirefoxHome" = {
+        "Locked" = true;
+        "Search" = false;
+        "Highlights" = false;
+        "Pocket" = false;
+        "TopSites" = false;
+        "Snippets" = false;
+        "SponsoredPocket" = false;
+        "SponsoredTopSites" = false;
+      };
       "FirefoxSuggest" = {
         "Locked" = true;
         "ImproveSuggest" = false;
@@ -49,6 +55,7 @@
         "Locked" = true;
         "StartPage" = "previous-session";
       };
+      "HttpsOnlyMode" = "force_enabled";
       "NewTabPage" = false;
       "NoDefaultBookmarks" = true;
       "OfferToSaveLogins" = false;
@@ -56,6 +63,10 @@
       "PictureInPicture" = {
         "Locked" = true;
         "Enabled" = true;
+      };
+      "PopupBlocking" = {
+        "Locked" = true;
+        "Default" = true;
       };
       "SearchSuggestEnabled" = false;
       "UserMessaging" = {
@@ -91,24 +102,14 @@
           "font.minimum-size.x-western" = 14;
           "font.size.monospace.x-western" = 14;
 
-          # Disable default browser check due to
-          # https://bugzilla.mozilla.org/show_bug.cgi?id=1516290
-          "browser.shell.checkDefaultBrowser" = false;
-
-          "browser.startup.homepage" = "about:blank";
-          "browser.newtabpage.enabled" = false;
           # Don't close window with last tab
           "browser.tabs.closeWindowWithLastTab" = false;
           # Disable URL encoding on copying
           "browser.urlbar.decodeURLsOnCopy" = true;
           # Enable preinstalled addons
           "extensions.autoDisableScopes" = 0;
-          # Disable pocket
-          "extensions.pocket.enabled" = false;
           # Use hostname as device name for Firefox Sync
           "identity.fxaccounts.account.device.name" = osConfig.networking.hostName;
-          # Sync bookmarks using Floccus instead of Firefox Sync
-          "services.sync.engine.bookmarks" = false;
           # Enable userChrome.css support
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
