@@ -7,13 +7,11 @@
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox.override {
-      cfg = {
-        nativeMessagingHosts.packages = [
-          pkgs.kdePackages.plasma-browser-integration
-        ];
-      };
-    };
+    package = pkgs.firefox;
+
+    nativeMessagingHosts = with pkgs; [
+        kdePackages.plasma-browser-integration
+    ];
 
     policies = {
       # Needed for ActivityWatch Addon
@@ -29,6 +27,7 @@
         "Behavior" = "reject-tracker-and-partition-foreign";
         "BehaviorPrivateBrowsing" = "reject-tracker-and-partition-foreign";
       };
+      "DisableAppUpdate" = true;
       "DisablePocket" = true;
       "DisableSetDesktopBackground" = true;
       "DontCheckDefaultBrowser" = true;
@@ -117,8 +116,4 @@
       };
     };
   };
-
-  # Workaround for plasma-browser-integration when using Plasma6 and installing Firefox via home-manager
-  home.file.".mozilla/native-messaging-hosts/org.kde.plasma.browser_integration.json".source =
-    "${pkgs.kdePackages.plasma-browser-integration}/lib/mozilla/native-messaging-hosts/org.kde.plasma.browser_integration.json";
 }
