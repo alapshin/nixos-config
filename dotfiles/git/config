@@ -1,7 +1,3 @@
-[alias]
-	# https://blog.filippo.io/git-fixup-amending-an-older-commit/
-	fixup = "!f() { REV=$(git rev-parse "$1"); git commit --fixup=$REV ${@:2} && GIT_SEQUENCE_EDITOR=true git rebase -i --autostash --autosquash $REV^; }; f"
-	stash-all = stash save --include-untracked
 [color]
 	ui = auto
 [commit]
@@ -42,9 +38,6 @@
 	sort = version:refname
 [transfer]
 	fsckobjects = true
-[user]
-	name = Andrei Lapshin
-	email = alapshin@fastmail.com
 
 [github]
 	user = alapshin

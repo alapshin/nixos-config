@@ -4,6 +4,9 @@
   dotfileDir,
   ...
 }:
+let
+  accounts = builtins.fromJSON (builtins.readFile ./../secrets/build/accounts.json);
+in
 {
   home = {
     packages = with pkgs; [
@@ -24,13 +27,20 @@
 
     git = {
       enable = true;
+      ignores = [
+        ".envrc"
+        ".direnv/"
+      ];
+
       lfs = {
         enable = true;
       };
+
       signing = {
         key = null;
         signByDefault = true;
       };
+
       delta = {
         enable = true;
         options = {
@@ -41,7 +51,26 @@
           side-by-side = true;
         };
       };
-      includes = [ { path = /. + dotfileDir + "/git/config"; } ];
+
+      userName = "Andrei Lapshin";
+      userEmail = accounts.fastmail;
+
+      includes = [
+        { path = /. + dotfileDir + "/git/config"; }
+        {
+          condition = "gitdir:~/work/qic/";
+          contents = {
+            core = {
+              sshCommand = "ssh -i ~/.ssh/qic_id_ed25519";
+            };
+            user = {
+              name = "Andrei Lapshin";
+              email = accounts.work-qic;
+            };
+          };
+        }
+      ];
+
     };
 
     lazygit = {
