@@ -19,6 +19,8 @@
       "drawio"
       "languagetool"
 
+      "slack"
+
       "steam"
       "steam-original"
       "steam-run"
