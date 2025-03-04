@@ -26,6 +26,9 @@
     # Media
     ffmpeg
 
+    # Messaging
+    slack
+
     # Fonts
     ibm-plex
     liberation_ttf
