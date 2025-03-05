@@ -4,9 +4,6 @@
   dotfileDir,
   ...
 }:
-let
-  accounts = builtins.fromJSON (builtins.readFile ./../secrets/build/accounts.json);
-in
 {
   home = {
     packages = with pkgs; [
@@ -53,7 +50,7 @@ in
       };
 
       userName = "Andrei Lapshin";
-      userEmail = accounts.fastmail;
+      userEmail = config.secrets.contents.email.fastmail;
 
       includes = [
         { path = /. + dotfileDir + "/git/config"; }
@@ -65,7 +62,7 @@ in
             };
             user = {
               name = "Andrei Lapshin";
-              email = accounts.work-qic;
+              email = config.secrets.contents.email.work-qic;
             };
           };
         }

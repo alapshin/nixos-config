@@ -38,6 +38,10 @@
       ./thunderbird.nix
     ]);
 
+  secrets = {
+    path = ../secrets/build/secrets.json;
+  };
+
   programs.home-manager.enable = true;
 
   home.language = {

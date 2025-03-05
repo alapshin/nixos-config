@@ -6,19 +6,18 @@
 }:
 let
   cfg = config.programs.thunderbird;
-  accounts = builtins.fromJSON (builtins.readFile ./../secrets/build/accounts.json);
 in
 {
   accounts.email.accounts = lib.mkIf cfg.enable {
     "GMail" = {
       flavor = "gmail.com";
-      address = accounts.gmail;
+      address = config.secrets.contents.email.gmail;
       realName = "Andrei Lapshin";
       thunderbird.enable = true;
     };
     "Fastmail" = {
       flavor = "fastmail.com";
-      address = accounts.fastmail;
+      address = config.secrets.contents.email.fastmail;
       primary = true;
       realName = "Andrei Lapshin";
       thunderbird.enable = true;
