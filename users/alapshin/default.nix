@@ -139,7 +139,6 @@ in
         kid3-qt
         krename
         libreoffice-qt6-fresh
-        logseq
         qbittorrent
         smplayer
         strawberry

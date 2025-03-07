@@ -2,8 +2,6 @@
 {
   android_sdk.accept_license = true;
   permittedInsecurePackages = [
-    # Used by logseq
-    "electron-27.3.11"
     # Used by Servarr apps
     "dotnet-sdk-6.0.428"
     "dotnet-sdk-wrapped-6.0.428"
