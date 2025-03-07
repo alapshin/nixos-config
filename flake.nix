@@ -39,7 +39,7 @@
     disko.url = "github:nix-community/disko?ref=v1.11.0";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
-    lanzaboote.url = "github:nix-community/lanzaboote?ref=v0.4.1";
+    lanzaboote.url = "github:nix-community/lanzaboote?ref=v0.4.2";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     lanzaboote.inputs.flake-parts.follows = "flake-parts";
 
