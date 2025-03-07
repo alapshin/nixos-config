@@ -58,7 +58,7 @@
         domain = "*";
         item = "nofile";
         type = "soft";
-        value = "2048";
+        value = "4096";
       }
     ];
   };
