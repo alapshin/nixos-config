@@ -53,7 +53,7 @@ in
         extraConfig = (
           builtins.concatStringsSep "\n" [
             (lib.strings.optionalString (opts.port != null) ''
-              reverse_proxy :${toString opts.port}
+              reverse_proxy localhost:${toString opts.port}
             '')
             (lib.strings.optionalString (opts.auth) ''
               forward_auth :8001 {
