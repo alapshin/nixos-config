@@ -7,6 +7,7 @@ pkgs.androidenv.composeAndroidPackages {
   cmdLineToolsVersion = "17.0";
   platformToolsVersion = "35.0.2";
   buildToolsVersions = [
+    "30.0.3"
     "34.0.0"
     "35.0.0"
   ];
@@ -24,6 +25,7 @@ pkgs.androidenv.composeAndroidPackages {
     "x86_64"
   ];
   platformVersions = [
+    "32"
     "34"
     "35"
   ];
