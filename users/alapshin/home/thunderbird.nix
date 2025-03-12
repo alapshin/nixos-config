@@ -26,6 +26,7 @@ in
 
   programs.thunderbird = {
     enable = true;
+    package = pkgs.thunderbird-latest;
 
     profiles = {
       default = {
@@ -49,6 +50,17 @@ in
       };
     };
   };
+
+  xdg = {
+    enable = true;
+    autostart = {
+      enable = true;
+      entries = [
+        "${config.programs.thunderbird.package}/share/applications/thunderbird.desktop"
+      ];
+    };
+  };
+
   home.file = {
     # ".thunderbird/default/user.js".source = "${dotfileDir}/thunderbird/user.js";
   };

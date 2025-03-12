@@ -62,7 +62,6 @@
       enable = true;
       entries = [
         "${pkgs.keepassxc}/share/applications/org.keepassxc.KeePassXC.desktop"
-        "${pkgs.thunderbird}/share/applications/thunderbird.desktop"
         "${pkgs.telegram-desktop}/share/applications/org.telegram.desktop.desktop"
       ];
     };
