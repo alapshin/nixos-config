@@ -25,7 +25,7 @@
     enable = true;
     home = ".local/share/gradle";
     settings = {
-      "org.gradle.java.installations.paths" = "${pkgs.jdk17}/lib/openjdk";
+      "org.gradle.java.installations.paths" = "${pkgs.jdk8}/lib/openjdk,${pkgs.jdk17}/lib/openjdk";
     };
   };
 }
