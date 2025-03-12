@@ -34,7 +34,6 @@ let
 
   javaPackages = with pkgs; [
     scrcpy
-    android-udev-rules
     jetbrains.datagrip
     jetbrains.idea-ultimate
     android-studio-stable-with-sdk
