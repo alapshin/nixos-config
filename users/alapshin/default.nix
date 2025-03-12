@@ -33,16 +33,10 @@ let
   ];
 
   javaPackages = with pkgs; [
-    jdk8
-    jdk17
-    jdk21
-    gradle
-    groovy
     scrcpy
     android-udev-rules
     jetbrains.datagrip
     jetbrains.idea-ultimate
-    # androidStudioPackages.stable
     android-studio-stable-with-sdk
   ];
 
