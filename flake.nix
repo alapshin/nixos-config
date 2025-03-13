@@ -138,7 +138,7 @@
       devShells = forEachSystemPkgs (pkgs: {
         android =
           let
-            buildToolsVersion = "35.0.0";
+            buildToolsVersion = "35.0.1";
             androidComposition = pkgs.androidComposition;
           in
           pkgs.mkShell rec {

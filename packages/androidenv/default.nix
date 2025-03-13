@@ -4,19 +4,18 @@ pkgs.androidenv.composeAndroidPackages {
   repoJson = ./repo.json;
 
   toolsVersion = "26.1.1";
-  cmdLineToolsVersion = "17.0";
+  cmdLineToolsVersion = "19.0";
   platformToolsVersion = "35.0.2";
   buildToolsVersions = [
-    "30.0.3"
     "34.0.0"
-    "35.0.0"
+    "35.0.1"
   ];
 
   includeNDK = true;
-  ndkVersions = [ "27.2.12479018" ];
+  ndkVersions = [ "28.0.13004108" ];
 
   includeEmulator = true;
-  emulatorVersion = "35.3.11";
+  emulatorVersion = "35.4.9";
 
   includeSources = true;
   includeSystemImages = true;
