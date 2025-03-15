@@ -18,7 +18,7 @@
 
   services = {
     photoprism = {
-      enable = true;
+      enable = false;
       originalsPath = "/mnt/data/photos";
       passwordFile = config.sops.secrets."photoprism/admin_password".path;
       settings = {

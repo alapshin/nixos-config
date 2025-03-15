@@ -7,6 +7,7 @@
 {
   sops = {
     secrets = {
+      "immich/api_key" = { };
     };
   };
   services = {

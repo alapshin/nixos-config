@@ -155,6 +155,13 @@ in
         {
           Documents = [
             (mkService {
+              app = "immich";
+              description = "High performance self-hosted photo and video management solution";
+              widget = {
+                key = "{{HOMEPAGE_FILE_IMMICH_API_KEY}}";
+              };
+            })
+            (mkService {
               app = "nextcloud";
               description = "A safe home for all your data";
               widget = {
@@ -170,14 +177,6 @@ in
                 type = "paperlessngx";
               };
               description = "Community-supported open-source document management system";
-            })
-            (mkService {
-              app = "photoprism";
-              description = "AI-Powered Photos App for the Decentralized Web";
-              widget = {
-                username = "{{HOMEPAGE_FILE_PHOTOPRISM_USERNAME}}";
-                password = "{{HOMEPAGE_FILE_PHOTOPRISM_PASSWORD}}";
-              };
             })
           ];
         }
@@ -234,9 +233,8 @@ in
       HOMEPAGE_VAR_NEXTCLOUD_USERNAME = config.services.nextcloud.config.adminuser;
       HOMEPAGE_FILE_NEXTCLOUD_PASSWORD = "%d/nextcloud_password";
 
+      HOMEPAGE_FILE_IMMICH_API_KEY = "%d/immich_api_key";
       HOMEPAGE_FILE_PAPERLESS_API_KEY = "%d/paperless_api_key";
-      HOMEPAGE_FILE_PHOTOPRISM_USERNAME = "%d/photoprism_username";
-      HOMEPAGE_FILE_PHOTOPRISM_PASSWORD = "%d/photoprism_password";
     };
     serviceConfig = {
       LoadCredential = [
@@ -259,11 +257,9 @@ in
         "navidrome_salt:${config.sops.secrets."navidrome/salt".path}"
         "navidrome_token:${config.sops.secrets."navidrome/token".path}"
 
-        "nextcloud_password:${config.sops.secrets."nextcloud/admin_password".path}"
-
+        "immich_api_key:${config.sops.secrets."immich/api_key".path}"
         "paperless_api_key:${config.sops.secrets."paperless/api_key".path}"
-        "photoprism_username:${config.sops.secrets."photoprism/admin_username".path}"
-        "photoprism_password:${config.sops.secrets."photoprism/admin_password".path}"
+        "nextcloud_password:${config.sops.secrets."nextcloud/admin_password".path}"
       ];
     };
   };
