@@ -55,13 +55,14 @@
 
     pam.loginLimits = [
       {
-        domain = "*";
+        domain = "@users";
         item = "nofile";
-        type = "soft";
-        value = "4096";
+        type = "-";
+        value = "8192";
       }
     ];
   };
+
 
   system = {
     switch = {
@@ -78,7 +79,7 @@
     };
   };
 
-  systemd.user.extraConfig = "DefaultLimitNOFILE=2048";
+  systemd.user.extraConfig = "DefaultLimitNOFILE=8192";
 
   environment.systemPackages = with pkgs; [
     sbctl
