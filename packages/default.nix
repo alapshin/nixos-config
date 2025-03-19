@@ -1,21 +1,21 @@
 { final, prev }:
 {
-  androidComposition = final.callPackage ./androidenv { };
+  monica = prev.callPackage ./monica { };
 
-  androidStudioPackages = final.recurseIntoAttrs (final.callPackage ./android-studio { });
+  androidComposition = prev.callPackage ./androidenv { };
+
+  androidStudioPackages = prev.recurseIntoAttrs (prev.callPackage ./android-studio { });
   android-studio-stable-with-sdk = (
-    final.androidStudioPackages.stable.withSdk final.androidComposition.androidsdk
+    prev.androidStudioPackages.stable.withSdk final.androidComposition.androidsdk
   );
 
-  firefox-addons = final.recurseIntoAttrs (final.callPackage ./firefox-addons { });
+  firefox-addons = prev.recurseIntoAttrs (prev.callPackage ./firefox-addons { });
 
   customHunspellDicts = prev.recurseIntoAttrs (prev.callPackages ./hunspell/dictionaries.nix { });
 
   # See nixos/modules/services/x11/extra-layouts.nix
   # xkeyboard-config with customized Serbo-Croatian variant of US layout
-  xkbconfig_custom = final.xorg.xkeyboardconfig.overrideAttrs (oldAttrs: {
+  xkbconfig_custom = prev.xorg.xkeyboardconfig.overrideAttrs (oldAttrs: {
     patches = [ ./xkb/custom-us-hbs.patch ];
   });
-
-  monica = final.callPackage ./monica { };
 }

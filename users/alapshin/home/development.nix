@@ -24,7 +24,7 @@
   programs = {
     java = {
       enable = true;
-      package = pkgs.jdk21;
+      package = pkgs.jdk17;
     };
     gradle = {
       enable = true;

@@ -7,6 +7,7 @@ pkgs.androidenv.composeAndroidPackages {
   cmdLineToolsVersion = "19.0";
   platformToolsVersion = "35.0.2";
   buildToolsVersions = [
+    "30.0.3"
     "34.0.0"
     "35.0.1"
   ];
