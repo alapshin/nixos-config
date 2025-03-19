@@ -84,5 +84,6 @@
   environment.systemPackages = with pkgs; [
     sbctl
     ntfs3g
+    pciutils
   ];
 }
