@@ -6,6 +6,7 @@
 }:
 {
   home.packages = with pkgs; [
+    tokei
     # HTTP API
     hurl
     xh
@@ -18,7 +19,6 @@
 
     # AI
     aider-chat
-    # whisper-ctranslate2
   ];
 
   programs = {
