@@ -13,6 +13,10 @@
   ];
 
   boot = {
+    kernelParams = [
+      "amd_iommu=on"
+      "iommu=pt"
+    ];
     initrd = {
       availableKernelModules = [
         "ahci"
