@@ -9,7 +9,7 @@ pkgs.androidenv.composeAndroidPackages {
   buildToolsVersions = [
     "30.0.3"
     "34.0.0"
-    "35.0.1"
+    "36.0.0"
   ];
 
   includeNDK = true;
