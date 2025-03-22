@@ -11,6 +11,10 @@
     hurl
     xh
 
+    # Swift
+    swift
+    swiftpm
+
     # OpenAPI & Swagger
     redocly
 
