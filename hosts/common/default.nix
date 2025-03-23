@@ -63,7 +63,6 @@
     ];
   };
 
-
   system = {
     switch = {
       enable = lib.mkDefault false;

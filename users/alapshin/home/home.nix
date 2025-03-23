@@ -44,15 +44,14 @@
   };
 
   sops = {
-      age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
-      defaultSopsFile = ../secrets/secrets.yaml;
-      secrets = {
-        "openrouter_api_key" = {
-          path = "%r/openrouter_api_key";
-        };
+    age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
+    defaultSopsFile = ../secrets/secrets.yaml;
+    secrets = {
+      "openrouter_api_key" = {
+        path = "%r/openrouter_api_key";
       };
+    };
   };
-
 
   programs.home-manager.enable = true;
 
