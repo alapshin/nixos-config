@@ -11,11 +11,6 @@
     hurl
     xh
 
-    # Swift
-    clang
-    swift
-    swiftpm
-
     # OpenAPI & Swagger
     redocly
 
