@@ -25,7 +25,7 @@
     ./influxdb.nix
     ./jellyfin.nix
     ./lldap.nix
-    ./linkwarden.nix
+    # ./linkwarden.nix
     ./monica.nix
     ./navidrome.nix
     ./ntfy.nix
