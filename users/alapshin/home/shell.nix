@@ -83,6 +83,10 @@
       enable = true;
     };
 
+    ripgrep-all = {
+      enable = true;
+    };
+
     starship = {
       enable = true;
       settings =
