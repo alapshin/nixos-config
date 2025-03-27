@@ -1,5 +1,0 @@
-AddKeysToAgent yes
-
-Host *.amazonaws.com 
-  StrictHostKeyChecking no
-  UserKnownHostsFile /dev/null
