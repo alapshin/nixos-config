@@ -42,6 +42,14 @@
 
     fzf = {
       enable = true;
+      defaultOptions = [
+        "--style=full"
+        "--color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39"
+        "--color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78"
+        "--color=marker:#7287fd,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
+        "--color=selected-bg:#bcc0cc"
+        "--color=border:#ccd0da,label:#4c4f69"
+      ];
     };
 
     direnv = {
@@ -96,8 +104,8 @@
         // builtins.fromTOML (
           builtins.readFile (
             pkgs.fetchurl {
-              url = "https://raw.githubusercontent.com/starship/starship/v1.21.1/docs/public/presets/toml/plain-text-symbols.toml";
-              hash = "sha256-SRos2o/ZaBK3QOCumqopiFLKnK3mf5wehTkKWpO7OqQ=";
+              url = "https://raw.githubusercontent.com/starship/starship/v1.22.1/docs/public/presets/toml/plain-text-symbols.toml";
+              hash = "sha256-cJht5h+MlMhYM4PZXW8hidnkap+xOeOgj5sfEWSpSno=";
             }
           )
         );
@@ -120,6 +128,11 @@
       enableCompletion = true;
       syntaxHighlighting = {
         enable = true;
+        highlighters = [
+          "main"
+          "cursor"
+          "brackets"
+        ];
       };
       enableVteIntegration = true;
       autosuggestion.enable = true;
@@ -134,15 +147,14 @@
       oh-my-zsh = {
         enable = true;
         plugins = [
-          "docker"
-          "docker-compose"
           "fzf"
+          "gh"
           "git"
           "git-extras"
           "gradle"
           "man"
-          "python"
-          "pip"
+          "podman"
+          "swiftpm"
           "systemd"
         ];
       };
