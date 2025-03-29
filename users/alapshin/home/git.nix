@@ -82,6 +82,8 @@
         gui = {
           border = "rounded";
           expandFocusedSidePanel = true;
+          showPanelJumps = true;
+          showDivergenceFromBaseBranch = "arrowAndNumber";
           theme = {
             selectedLineBgColor = [
               "default"
