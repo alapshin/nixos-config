@@ -21,6 +21,7 @@
     ./dashboard.nix
     ./freshrss.nix
     ./grafana.nix
+    ./handbrake.nix
     ./immich.nix
     ./influxdb.nix
     ./jellyfin.nix
