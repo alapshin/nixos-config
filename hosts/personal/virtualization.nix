@@ -1,12 +1,12 @@
 { config, pkgs, ... }:
 {
   virtualisation = {
-    docker = {
+    podman = {
       enable = true;
-      storageDriver = "overlay2";
+      dockerCompat = true;
+      autoPrune.enable = true;
     };
-    podman.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [ docker-compose ];
+  environment.systemPackages = with pkgs; [ podman-compose ];
 }

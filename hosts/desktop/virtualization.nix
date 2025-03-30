@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 {
   virtualisation = {
-    docker = {
+    podman = {
       enable = true;
-      storageDriver = "overlay2";
+      dockerCompat = true;
+      autoPrune.enable = true;
     };
-    podman.enable = true;
     libvirtd = {
       enable = true;
       qemu = {
@@ -21,7 +21,6 @@
   environment.systemPackages = with pkgs; [
     dmg2img
     qemu_kvm
-    docker-compose
     podman-compose
   ];
 }
