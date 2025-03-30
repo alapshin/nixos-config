@@ -10,30 +10,22 @@
   ];
   allowUnfreePredicate =
     pkg:
-    builtins.elem (lib.getName pkg) [
-      # Used by only-office
-      "corefonts"
+    let
+      name = lib.getName pkg;
+      prefixes = [
+        "drawio"
+        "languagetool"
 
-      "drawio"
-      "languagetool"
+        "slack"
+        "steam"
+        "nvidia"
 
-      "slack"
-
-      "steam"
-      "steam-original"
-      "steam-run"
-      "steam-unwrapped"
-
-      "nvidia-x11"
-      "nvidia-settings"
-
-      "datagrip"
-      "idea-ultimate"
-      "android-studio-stable"
-      "android-studio-beta"
-      "android-studio-canary"
-      "android-sdk-tools"
-      "android-sdk-cmdline-tools"
-      "android-sdk-platform-tools"
-    ];
+        "idea"
+        "datagrip"
+        "androidsdk"
+        "android-sdk"
+        "android-studio"
+      ];
+    in
+    builtins.any (prefix: lib.strings.hasPrefix prefix name) prefixes;
 }
