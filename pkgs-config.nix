@@ -34,6 +34,6 @@
       "android-studio-canary"
       "android-sdk-tools"
       "android-sdk-cmdline-tools"
-
+      "android-sdk-platform-tools"
     ];
 }
