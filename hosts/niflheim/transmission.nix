@@ -14,6 +14,9 @@
       webHome = pkgs.flood-for-transmission;
       settings = {
         download-dir = "/mnt/data/downloads";
+        preallocation = 2;
+        rename-partial-files = true;
+        incomplete-dir-enabled = false;
 
         peer-port = 56789;
         port-forwarding-enabled = false;
