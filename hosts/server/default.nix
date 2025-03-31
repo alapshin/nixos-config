@@ -1,4 +1,8 @@
-{ lib, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 
 {
   imports = [
@@ -18,6 +22,7 @@
 
   # No mutable users by default
   users.mutableUsers = false;
+  services.userborn.enable = true;
 
   # No need for fonts on a server
   fonts.fontconfig.enable = lib.mkDefault false;
@@ -25,4 +30,22 @@
   environment = {
     stub-ld.enable = lib.mkDefault false;
   };
+
+  # Work-around for missing subuid support in userbon
+  # See https://github.com/nikstur/userborn/issues/7#issuecomment-2462106017
+  environment.etc =
+    let
+      autosubs = lib.pipe config.users.users [
+        lib.attrValues
+        (lib.filter (u: u.uid != null && u.autoSubUidGidRange))
+        (lib.concatMapStrings (u: "${toString u.uid}:${toString (100000 + u.uid * 65536)}:65536\n"))
+      ];
+    in
+    {
+      "subuid".text = autosubs;
+      "subuid".mode = "0444";
+      "subgid".text = autosubs;
+      "subgid".mode = "0444";
+    };
+
 }
