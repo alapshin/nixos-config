@@ -5,25 +5,62 @@
   ...
 }:
 {
+  sops = {
+    secrets = {
+      "dockerhub/password" = {
+        owner = "makemkv";
+      };
+    };
+  };
 
+  users.groups."makemkv" = {
+    gid = 970;
+  };
   users.users."makemkv" = {
-    isSystemUser = true;
-    group = "media";
+    uid = 970;
+    group = "makemkv";
+    extraGroups = [
+      "media"
+    ];
     home = "/var/lib/makemkv";
-    linger = true;
     createHome = true;
+    isSystemUser = true;
+    useDefaultShell = true;
     autoSubUidGidRange = true;
   };
 
-  # users.users."handbrake" = {
-  #   isSystemUser = true;
-  #   group = "media";
-  #   home = "/var/lib/handbrake";
-  #   linger = true;
-  #   createHome = true;
-  #   autoSubUidGidRange = true;
-  # };
-  #
+  users.groups."mkvtoolnix" = {
+    gid = 2001;
+  };
+  users.users."mkvtoolnix" = {
+    uid = 2001;
+    group = "mkvtoolnix";
+    extraGroups = [
+      "media"
+    ];
+    home = "/var/lib/mkvtoolnix";
+    createHome = true;
+    isSystemUser = true;
+    useDefaultShell = true;
+    autoSubUidGidRange = true;
+  };
+
+  users.groups."handbrake" = {
+    gid = 971;
+  };
+  users.users."handbrake" = {
+    uid = 971;
+    group = "handbrake";
+    extraGroups = [
+      "media"
+    ];
+    home = "/var/lib/handbrake";
+    createHome = true;
+    isSystemUser = true;
+    useDefaultShell = true;
+    autoSubUidGidRange = true;
+  };
+
   services = {
     webhost.applications = {
       "makemkv" = {
@@ -34,20 +71,33 @@
       #   auth = true;
       #   port = 9999;
       # };
+      "mkvtoolnix" = {
+        auth = true;
+        port = 5801;
+      };
     };
   };
 
   virtualisation.oci-containers = {
     containers = {
       makemkv = {
-        image = "jlesage/makemkv";
+        image = "docker.io/jlesage/makemkv:v25.02.3";
         ports = [ "127.0.0.1:5800:5800" ];
         volumes = [
           "/var/lib/makemkv:/config"
           "/mnt/data/output:/output"
           "/mnt/data/downloads:/storage"
         ];
-        podman.user = "makemkv";
+      };
+
+      mkvtoolnix = {
+        image = "docker.io/jlesage/mkvtoolnix:v25.03.1";
+        ports = [ "127.0.0.1:5801:5800" ];
+        volumes = [
+          "/mnt/data:/storage"
+          "/var/lib/mkvtoolnix:/config"
+        ];
+        podman.user = "mkvtoolnix";
       };
 
       # handbrake-server = {
@@ -74,7 +124,11 @@
     };
   };
 
-  # systemd.services."${containerBackend}-handbrake-server".serviceConfig = {
-  #   StateDirectory = "handbrake";
-  # };
+  systemd.services."podman-makemkv".serviceConfig = {
+    StateDirectory = "makemkv";
+  };
+
+  systemd.services."podman-mkvtoolnix".serviceConfig = {
+    StateDirectory = "mkvtoolnix";
+  };
 }
