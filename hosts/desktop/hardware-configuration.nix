@@ -45,4 +45,13 @@
       ];
     };
   };
+
+  services.beesd.filesystems = {
+    data = {
+      spec = "LABEL=data";
+    };
+    root = {
+      spec = "LABEL=system";
+    };
+  };
 }
