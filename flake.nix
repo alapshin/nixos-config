@@ -80,9 +80,9 @@
       homeManagerConfig = import ./hm-config.nix {
         inherit dotfileDir;
         sharedModules = [
-          self.homeManagerModules.secrets
+          self.homeModules.secrets
           sops-nix.homeManagerModules.sops
-          catppuccin.homeManagerModules.catppuccin
+          catppuccin.homeModules.catppuccin
         ];
       };
 
@@ -226,7 +226,7 @@
         };
       };
 
-      homeManagerModules = import ./modules/home;
+      homeModules = import ./modules/home;
 
       # Stand-alone home-manager configuration for non NixOS machines
       homeConfigurations =
