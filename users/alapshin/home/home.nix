@@ -83,10 +83,6 @@
       };
     };
     configFile = {
-      "nvim" = {
-        source = "${dotfileDir}/nvim";
-        recursive = true;
-      };
       "fontconfig" = {
         source = "${dotfileDir}/fontconfig";
         recursive = true;

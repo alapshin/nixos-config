@@ -48,6 +48,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nvf.url = "github:notashelf/nvf";
+    nvf.inputs.nixpkgs.follows = "nixpkgs";
+    nvf.inputs.systems.follows = "systems";
+    nvf.inputs.flake-parts.follows = "flake-parts";
+    nvf.inputs.flake-utils.follows = "flake-utils";
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
@@ -67,6 +72,7 @@
       lanzaboote,
       treefmt-nix,
       home-manager,
+      nvf,
       catppuccin,
       ...
     }:
@@ -83,6 +89,7 @@
         inherit dotfileDir;
         sharedModules = [
           self.homeModules.secrets
+          nvf.homeManagerModules.nvf
           sops-nix.homeManagerModules.sops
           catppuccin.homeModules.catppuccin
         ];

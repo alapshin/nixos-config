@@ -1,78 +1,169 @@
-{ config, pkgs, ... }:
 {
-  programs.neovim = {
+  lib,
+  pkgs,
+  ...
+}:
+let
+  inherit (lib.generators) mkLuaInline;
+in
+{
+  programs.nvf = {
     enable = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-    defaultEditor = true;
+    settings.vim = {
+      viAlias = true;
+      vimAlias = true;
+      enableLuaLoader = true;
 
-    plugins = with pkgs.vimPlugins; [
-      tint-nvim
-      catppuccin-nvim
+      extraPackages = with pkgs; [
+        gitlint
+        dotenv-linter
+      ];
 
-      vim-sleuth
-      vim-polyglot
+      autocomplete = {
+        blink-cmp = {
+          enable = true;
+        };
+      };
 
-      plenary-nvim
+      binds.whichKey.enable = true;
+      comments.comment-nvim.enable = true;
 
-      leap-nvim
-      comment-nvim
-      which-key-nvim
+      debugger.nvim-dap.enable = true;
 
-      luasnip
-      nvim-cmp
-      cmp-buffer
-      cmp-cmdline
-      cmp-path
-      cmp-nvim-lsp
-      cmp-nvim-lsp-signature-help
-      none-ls-nvim
-      lspkind-nvim
-      lspsaga-nvim
-      lsp-zero-nvim
-      nvim-lspconfig
-      inc-rename-nvim
-      nvim-treesitter.withAllGrammars
-      nvim-treesitter-context
-      nvim-treesitter-textobjects
+      diagnostics = {
+        enable = true;
+        nvim-lint = {
+          enable = true;
+        };
+      };
+      filetree.neo-tree.enable = true;
+      formatter.conform-nvim.enable = true;
 
-      noice-nvim
-      nvim-notify
+      git = {
+        gitsigns = {
+          enable = true;
+        };
+      };
 
-      trouble-nvim
-      lualine-nvim
-      gitsigns-nvim
-      neo-tree-nvim
-      bufferline-nvim
-      nvim-web-devicons
-      telescope-nvim
-      telescope-fzf-native-nvim
+      languages = {
+        enableLSP = true;
+        enableTreesitter = true;
+        enableFormat = true;
+        enableExtraDiagnostics = true;
 
-      indent-blankline-nvim
-    ];
-    extraPackages = with pkgs; [
-      # Nix LSP support
-      nixd
-      nixfmt-rfc-style
+        bash.enable = true;
+        lua.enable = true;
+        markdown = {
+          enable = true;
+          extensions = {
+            render-markdown-nvim.enable = true;
+          };
+        };
+        nix = {
+          enable = true;
+          lsp.server = "nixd";
+          format = {
+            type = "nixfmt";
+            package = pkgs.nixfmt-rfc-style;
+          };
+        };
+        python = {
+          enable = true;
+        };
+        yaml.enable = true;
+      };
 
-      # Bash LSP support
-      shfmt
-      shellcheck
+      lsp = {
+        enable = true;
+        inlayHints.enable = true;
 
-      # Lua LSP support
-      selene
-      lua-language-server
+        null-ls = {
+          enable = true;
+          setupOpts.debug = true;
+          setupOpts.sources = {
+            gitcommit = mkLuaInline ''
+              require("null-ls").builtins.diagnostics.gitlint
+            '';
+          };
+        };
+        lspkind.enable = true;
+        trouble.enable = true;
+        lightbulb.enable = true;
+      };
 
-      # LanguageTool LSP support
-      ltex-ls
+      notify.nvim-notify = {
+        enable = true;
+        setupOpts = {
+          render = "default";
+          timeout = 2500;
+        };
+      };
 
-      gitlint
-      hadolint
+      statusline.lualine = {
+        enable = true;
+        theme = "catppuccin";
+      };
 
-      # Beancount LSP support
-      beancount
-      beancount-language-server
-    ];
+      tabline.nvimBufferline = {
+        enable = true;
+        setupOpts.options = {
+          indicator.style = "icon";
+          separator_style = "slant";
+        };
+      };
+
+      telescope = {
+        enable = true;
+      };
+
+      theme = {
+        enable = true;
+        name = "catppuccin";
+        style = "latte";
+      };
+
+      treesitter = {
+        indent.enable = false;
+      };
+
+      ui = {
+        borders = {
+          enable = true;
+          globalStyle = "rounded";
+        };
+        breadcrumbs.enable = true;
+        colorizer.enable = true;
+        fastaction.enable = true;
+        illuminate.enable = true;
+        # modes-nvim.enable = true;
+        noice = {
+          enable = true;
+          setupOpts = {
+            presets = {
+              inc_rename = true;
+              bottom_search = false;
+            };
+            lsp.override = {
+              "cmp.entry.get_documentation" = true;
+              "vim.lsp.util.stylize_markdown" = true;
+              "vim.lsp.util.convert_input_to_markdown_lines" = true;
+            };
+          };
+        };
+        nvim-ufo.enable = true;
+        smartcolumn.enable = true;
+      };
+
+      visuals = {
+        indent-blankline.enable = true;
+        nvim-scrollbar.enable = true;
+        nvim-web-devicons.enable = true;
+        rainbow-delimiters.enable = true;
+      };
+
+      extraLuaFiles = [
+        ./neovim.lua
+      ];
+    };
   };
 }
