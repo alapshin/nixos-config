@@ -20,6 +20,20 @@ in
         dotenv-linter
       ];
 
+      # Run nvim-lint when leaving insert
+      autocmds = [
+        {
+          event = [
+            "InsertLeave"
+          ];
+          callback = mkLuaInline ''
+            function()
+              require("lint").try_lint()
+            end
+          '';
+        }
+      ];
+
       autocomplete = {
         blink-cmp = {
           enable = true;
@@ -33,8 +47,15 @@ in
 
       diagnostics = {
         enable = true;
+        config = {
+          virtual_text = true;
+          virtual_lines = false;
+        };
         nvim-lint = {
           enable = true;
+          linters_by_ft = {
+            gitcommit = [ "gitlint" ];
+          };
         };
       };
       filetree.neo-tree.enable = true;
@@ -78,15 +99,6 @@ in
         enable = true;
         inlayHints.enable = true;
 
-        null-ls = {
-          enable = true;
-          setupOpts.debug = true;
-          setupOpts.sources = {
-            gitcommit = mkLuaInline ''
-              require("null-ls").builtins.diagnostics.gitlint
-            '';
-          };
-        };
         lspkind.enable = true;
         trouble.enable = true;
         lightbulb.enable = true;
@@ -152,7 +164,14 @@ in
           };
         };
         nvim-ufo.enable = true;
-        smartcolumn.enable = true;
+        smartcolumn = {
+          enable = true;
+          setupOpts = {
+            custom_colorcolumn = {
+              gitcommit = "72";
+            };
+          };
+        };
       };
 
       visuals = {
