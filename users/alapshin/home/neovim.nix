@@ -20,6 +20,12 @@ in
         dotenv-linter
       ];
 
+      extraPlugins = with pkgs.vimPlugins; {
+        sleuth = {
+          package = vim-sleuth;
+        };
+      };
+
       # Run nvim-lint when leaving insert
       autocmds = [
         {
@@ -33,6 +39,11 @@ in
           '';
         }
       ];
+
+      options = {
+        tabstop = 4;
+        autoindent = true;
+      };
 
       autocomplete = {
         blink-cmp = {
@@ -58,8 +69,12 @@ in
           };
         };
       };
+
       filetree.neo-tree.enable = true;
-      formatter.conform-nvim.enable = true;
+
+      formatter.conform-nvim = {
+        enable = true;
+      };
 
       git = {
         gitsigns = {
@@ -136,7 +151,7 @@ in
       };
 
       treesitter = {
-        indent.enable = false;
+        context.enable = true;
       };
 
       ui = {

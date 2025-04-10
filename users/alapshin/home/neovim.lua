@@ -27,11 +27,6 @@ vim.opt.termguicolors = true
 
 -- 6 multiple windows
 vim.opt.laststatus = 2
---vim.opt.statusline = "%F"
---vim.opt.statusline.append("%m")
---vim.opt.statusline.append("%=")
---vim.opt.statusline.append("[%Y,%{strlen(&fenc)?&fenc:'none'},%{&ff}]")
---vim.opt.statusline.append(" %(%l/%L,%c%V%) %P")
 vim.opt.hidden = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
