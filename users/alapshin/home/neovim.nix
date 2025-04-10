@@ -7,6 +7,7 @@ let
   inherit (lib.generators) mkLuaInline;
 in
 {
+  home.sessionVariables.EDITOR = "nvim";
   programs.nvf = {
     enable = true;
     settings.vim = {
