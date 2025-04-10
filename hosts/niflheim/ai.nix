@@ -13,11 +13,11 @@ in
 {
   sops = {
     secrets = {
-      "open-webui/deepinfra_api_key" = { };
+      "open-webui/openrouter_api_key" = { };
       "open-webui/oidc_client_secret" = { };
     };
     templates."open-webui.env".content = ''
-      OPENAI_API_KEY=${config.sops.placeholder."open-webui/deepinfra_api_key"}
+      OPENAI_API_KEY=${config.sops.placeholder."open-webui/openrouter_api_key"}
       OAUTH_CLIENT_SECRET=${config.sops.placeholder."open-webui/oidc_client_secret"}
     '';
   };
@@ -46,7 +46,7 @@ in
         ENABLE_OAUTH_ROLE_MANAGEMENT = "True";
         OPENID_PROVIDER_URL = "https://${config.services.webhost.authdomain}/.well-known/openid-configuration";
 
-        OPENAI_API_BASE_URL = "https://api.deepinfra.com/v1/openai";
+        OPENAI_API_BASE_URL = "https://openrouter.ai/api/v1";
         OLLAMA_API_BASE_URL = "http://${ollamaHost}:${toString ollamaPort}";
       };
       environmentFile = config.sops.templates."open-webui.env".path;
