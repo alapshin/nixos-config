@@ -46,8 +46,23 @@ in
       };
 
       autocomplete = {
+        enableSharedCmpSources = true;
         blink-cmp = {
           enable = true;
+          setupOpts = {
+            sources = {
+              default = [
+                "lsp"
+                "path"
+                "buffer"
+                "omni"
+                "snippets"
+              ];
+            };
+          };
+          sourcePlugins = {
+            ripgrep.enable = true;
+          };
         };
       };
 
@@ -74,6 +89,19 @@ in
 
       formatter.conform-nvim = {
         enable = true;
+        setupOpts = {
+          formatters_by_ft = {
+            beancount = [ "bean-format" ];
+          };
+          formatters = {
+            bean-format = {
+              prepend_args = [
+                "--currency-column"
+                "80"
+              ];
+            };
+          };
+        };
       };
 
       git = {
@@ -152,6 +180,9 @@ in
 
       treesitter = {
         context.enable = true;
+        grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+          beancount
+        ];
       };
 
       ui = {
@@ -162,7 +193,7 @@ in
         breadcrumbs.enable = true;
         colorizer.enable = true;
         fastaction.enable = true;
-        illuminate.enable = true;
+        # illuminate.enable = true;
         # modes-nvim.enable = true;
         noice = {
           enable = true;
@@ -184,6 +215,7 @@ in
           setupOpts = {
             custom_colorcolumn = {
               gitcommit = "72";
+              beancount = "79";
             };
           };
         };
