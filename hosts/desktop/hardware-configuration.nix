@@ -49,9 +49,21 @@
   services.beesd.filesystems = {
     data = {
       spec = "LABEL=data";
+      extraOptions = [
+        "--thread-factor"
+        "0.25"
+        "--loadavg-target"
+        "2"
+      ];
     };
     root = {
       spec = "LABEL=system";
+      extraOptions = [
+        "--thread-factor"
+        "0.25"
+        "--loadavg-target"
+        "2"
+      ];
     };
   };
 }
