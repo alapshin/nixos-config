@@ -20,13 +20,13 @@ in
 
   services = {
     ollama = {
-      enable = true;
+      enable = false;
       acceleration = "rocm";
       rocmOverrideGfx = "10.3.0";
     };
 
     open-webui = {
-      enable = true;
+      enable = false;
       port = 8085;
       environment = {
         WEBUI_AUTH = "False";
