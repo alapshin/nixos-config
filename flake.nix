@@ -2,6 +2,7 @@
   description = "A flake-based NixOS config.";
 
   nixConfig = {
+    build-dir = "/var/tmp";
     # Will be appended to the system-level substituters
     extra-substituters = [
       # Nix community's cache server
@@ -19,7 +20,6 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable-small";
     nixpkgs-lw.url = "github:NixOS/nixpkgs/pull/347353/head";
-    nixpkgs-rocm.url = "github:NixOS/nixpkgs/pull/367695/head";
     nixpkgs-nextcloud.url = "github:NixOS/nixpkgs/pull/384565/head";
 
     systems.url = "github:nix-systems/default";
