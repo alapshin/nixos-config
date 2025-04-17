@@ -14,7 +14,16 @@
   modifications = final: prev: {
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
-        autobean = pyfinal.callPackage ../packages/autobean { };
+        autobean = pyprev.callPackage ../packages/autobean { };
+        flask-limiter = pyprev.flask-limiter.overrideAttrs {
+          version = "3.12-unstable-2025-04-16";
+          src = prev.fetchFromGitHub {
+            owner = "alisaifee";
+            repo = "flask-limiter";
+            rev = "d4a97dbb53a6e0cc751efc8c30c4d8fc493a7eb6";
+            hash = "sha256-XiY+ygzNfaWNyA9vDT6J8g3xwxdMmHUJsYV/1diB8Kw=";
+          };
+        };
       })
     ];
 
