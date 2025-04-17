@@ -12,9 +12,18 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
+    changedetection-io = prev.changedetection-io.overrideAttrs (oldAttrs: rec {
+      version = "0.49.4";
+      src = prev.fetchFromGitHub {
+        owner = "dgtlmoon";
+        repo = "changedetection.io";
+        tag = version;
+        hash = "sha256-EmtJ8XXPb75W4VPj4Si9fdzVLDKVfm+8P6UZZlMpMdI=";
+      };
+    });
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
-        autobean = pyprev.callPackage ../packages/autobean { };
+        autobean = pyfinal.callPackage ../packages/autobean { };
         flask-limiter = pyprev.flask-limiter.overrideAttrs {
           version = "3.12-unstable-2025-04-16";
           src = prev.fetchFromGitHub {
