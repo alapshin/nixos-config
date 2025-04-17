@@ -164,7 +164,17 @@
           # Enable userChrome.css support
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
-        userChrome = "${dotfileDir}/mozilla/firefox/chrome/userChrome.css";
+        userChrome = ''
+          /* Hide sidebar header */
+          #sidebar-header {
+            display: none;
+          }
+
+          /* Hide tabs */
+          #TabsToolbar {
+            visibility: collapse !important;
+          }
+        '';
       };
     };
   };
