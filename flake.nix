@@ -2,7 +2,6 @@
   description = "A flake-based NixOS config.";
 
   nixConfig = {
-    build-dir = "/var/tmp";
     # Will be appended to the system-level substituters
     extra-substituters = [
       # Nix community's cache server
