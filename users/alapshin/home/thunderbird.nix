@@ -32,6 +32,8 @@ in
       default = {
         isDefault = true;
         settings = {
+          "extensions.autoDisableScopes" = 0;
+
           # 9205: Avoid information leakage in reply header
           "mailnews.reply_header_type" = 0;
           "mailnews.reply_header_originalmessage" = "";
@@ -47,6 +49,9 @@ in
           "mail.check_all_imap_folders_for_new" = true;
           "mail.server.default.check_all_folders_for_new" = true;
         };
+        extensions = with pkgs; [
+          # TODO: Add some extensions
+        ];
       };
     };
   };
