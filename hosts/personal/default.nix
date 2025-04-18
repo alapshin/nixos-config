@@ -23,10 +23,11 @@
 
   fonts = {
     fontconfig = {
+      allowBitmaps = true;
       defaultFonts = {
-        emoji = [ "Noto Color Emoji" ];
-        serif = [ "IBM Plex Serif" ];
-        sansSerif = [ "IBM Plex Sans" ];
+        emoji = [ "Noto Emoji" ];
+        serif = [ "Noto Serif" ];
+        sansSerif = [ "Noto Sans" ];
         monospace = [ "JetBrainsMono Nerd Font Mono" ];
       };
     };

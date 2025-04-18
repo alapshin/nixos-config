@@ -65,7 +65,15 @@
   };
 
   xsession.enable = true;
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      serif = [ "Noto Serif" ];
+      sansSerif = [ "Noto Sans" ];
+      emoji = [ "Noto Emoji" ];
+      monospace = [ "JetBrainsMono Nerd Font Mono" ];
+    };
+  };
 
   xdg = {
     enable = true;
