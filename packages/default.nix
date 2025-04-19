@@ -1,6 +1,7 @@
 { final, prev }:
 {
   monica = prev.callPackage ./monica { };
+  cuesplit = prev.callPackage ./cuesplit { };
 
   androidComposition = prev.callPackage ./androidenv { };
 
