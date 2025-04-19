@@ -48,6 +48,7 @@ in
       enable = true;
       passwordFile = config.sops.secrets."paperless/password".path;
       settings = {
+        PAPERLESS_URL = "https://paperless.${config.services.webhost.basedomain}";
         PAPERLESS_APPS = "allauth.socialaccount.providers.openid_connect";
         PAPERLESS_DBHOST = "/run/postgresql";
         PAPERLESS_REDIS = "unix://${redisSocket}";
