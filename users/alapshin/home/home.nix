@@ -24,7 +24,6 @@
       ./programs.nix
       ./ssh.nix
       ./shell.nix
-      # ./plasma.nix
       ./neovim.nix
       ./texlive.nix
       ./timetracking.nix
@@ -34,6 +33,7 @@
       ./variables.nix
     ]
     ++ (lib.lists.optionals isNixOS [
+      ./plasma.nix
       ./chromium.nix
       ./firefox.nix
       ./thunderbird.nix

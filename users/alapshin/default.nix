@@ -47,7 +47,6 @@ let
     kate
     kcolorchooser
     kleopatra
-    okular
     spectacle
   ];
 

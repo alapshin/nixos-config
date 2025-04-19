@@ -72,6 +72,7 @@
       lanzaboote,
       treefmt-nix,
       home-manager,
+      plasma-manager,
       nvf,
       catppuccin,
       ...
@@ -92,6 +93,7 @@
           nvf.homeManagerModules.nvf
           sops-nix.homeManagerModules.sops
           catppuccin.homeModules.catppuccin
+          plasma-manager.homeManagerModules.plasma-manager
         ];
       };
 
