@@ -129,7 +129,6 @@ in
         gimp
         inkscape
         jellyfin-media-player
-        keepassxc
         kid3-qt
         krename
         libreoffice-qt6-fresh

@@ -80,7 +80,6 @@
     autostart = {
       enable = true;
       entries = [
-        "${pkgs.keepassxc}/share/applications/org.keepassxc.KeePassXC.desktop"
         "${pkgs.telegram-desktop}/share/applications/org.telegram.desktop.desktop"
       ];
     };
