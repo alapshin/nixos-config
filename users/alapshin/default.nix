@@ -125,7 +125,7 @@ in
         calibre
         element-desktop
         freetube
-        gimp
+        gimp3
         inkscape
         jellyfin-media-player
         kid3-qt
