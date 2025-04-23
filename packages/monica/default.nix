@@ -7,11 +7,11 @@
 }:
 stdenv.mkDerivation rec {
   pname = "monica";
-  version = "5.0.0-beta.4";
+  version = "5.0.0-beta.5";
 
   src = fetchurl {
     url = "https://github.com/monicahq/monica/releases/download/v${version}/monica-v${version}.tar.bz2";
-    hash = "sha256-1kq2vMdOtUXW8ztOpfnNcruZlO0uextyscQd0O9Pjtc=";
+    hash = "sha256-cvgrSTcKtY0LzHEgA+XakVJlYhRk0xTwtT14CSALvY8=";
   };
 
   dontBuild = true;
