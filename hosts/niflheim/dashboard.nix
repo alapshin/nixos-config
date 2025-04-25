@@ -5,6 +5,7 @@
   ...
 }:
 let
+  host = "dashboard.${config.services.webhost.basedomain}";
   mkService =
     {
       app,
@@ -32,8 +33,9 @@ in
   services = {
     homepage-dashboard = {
       enable = true;
+      allowedHosts = host;
       settings = {
-        base = "https://dashboard.${config.services.webhost.basedomain}";
+        base = "https://${host}";
         theme = "dark";
         hideVersion = true;
         headerStyle = "clean";
