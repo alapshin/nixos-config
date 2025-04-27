@@ -47,7 +47,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    mnw.url = "github:Gerg-L/mnw";
     nvf.url = "github:notashelf/nvf";
+    nvf.inputs.mnw.follows = "mnw";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
     nvf.inputs.systems.follows = "systems";
     nvf.inputs.flake-parts.follows = "flake-parts";
