@@ -31,6 +31,8 @@ in
       enable = true;
       port = 8085;
       environment = {
+        ENABLE_PERSISTENT_CONFIG = "False";
+
         DATABASE_URL = "postgresql:///${database}?host=/run/postgresql";
 
         DO_NOT_TRACK = "True";
