@@ -6,6 +6,8 @@
 }:
 let
   group = config.users.groups.media.name;
+  radarrSettings = config.services.radarr.settings;
+  sonarrSettings = config.services.sonarr.settings;
 in
 {
   sops = {
@@ -15,6 +17,14 @@ in
       "readarr/api_key" = { };
       "sonarr/api_key" = { };
       "prowlarr/api_key" = { };
+      "recyclarr/radarr_api_key" = {
+        key = "radarr/api_key";
+        owner = config.services.recyclarr.user;
+      };
+      "recyclarr/sonarr_api_key" = {
+        key = "sonarr/api_key";
+        owner = config.services.recyclarr.user;
+      };
     };
     templates."lidarr/api_key.env".content = ''
       LIDARR__AUTH__APIKEY=${config.sops.placeholder."lidarr/api_key"}
@@ -151,6 +161,64 @@ in
       environmentFiles = [
         config.sops.templates."prowlarr/api_key.env".path
       ];
+    };
+
+    recyclarr = {
+      enable = true;
+      configuration = {
+        radarr = {
+          "radarr-main" = {
+            api_key = {
+              _secret = config.sops.secrets."recyclarr/radarr_api_key".path;
+            };
+            base_url = "http://${radarrSettings.server.host}:${toString radarrSettings.server.port}";
+            media_naming = {
+              folder = "default";
+              movie = {
+                rename = true;
+                standard = "default";
+              };
+            };
+
+            delete_old_custom_formats = true;
+            replace_existing_custom_formats = true;
+            include = [
+              { template = "radarr-quality-definition-movie"; }
+              { template = "radarr-quality-profile-remux-web-1080p"; }
+              { template = "radarr-custom-formats-remux-web-1080p"; }
+              { template = "radarr-quality-profile-remux-web-2160p"; }
+              { template = "radarr-custom-formats-remux-web-2160p"; }
+            ];
+          };
+        };
+        sonarr = {
+          "sonarr-main" = {
+            api_key = {
+              _secret = config.sops.secrets."recyclarr/sonarr_api_key".path;
+            };
+            base_url = "http://${sonarrSettings.server.host}:${toString sonarrSettings.server.port}";
+            media_naming = {
+              series = "default";
+              season = "default";
+              episodes = {
+                rename = true;
+                anime = "default";
+                daily = "default";
+                standard = "default";
+              };
+            };
+            delete_old_custom_formats = true;
+            replace_existing_custom_formats = true;
+            include = [
+              { template = "sonarr-quality-definition-series"; }
+              { template = "sonarr-v4-quality-profile-web-1080p"; }
+              { template = "sonarr-v4-custom-formats-web-1080p"; }
+              { template = "sonarr-v4-quality-profile-web-2160p"; }
+              { template = "sonarr-v4-custom-formats-web-2160p"; }
+            ];
+          };
+        };
+      };
     };
 
     flaresolverr = {
