@@ -139,11 +139,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1746287478,
-        "narHash": "sha256-z3HiHR2CNAdwyZTWPM2kkzhE1gD1G6ExPxkaiQfNh7s=",
+        "lastModified": 1746317522,
+        "narHash": "sha256-/jZ4Wd4HHUEWPSlNj48k1E4Mh+1fUbwI/vSlPPIMG3U=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "75268f62525920c4936404a056f37b91e299c97e",
+        "rev": "621986fed37c5d0cb8df010ed8369694dc47c09b",
         "type": "github"
       },
       "original": {
@@ -182,11 +182,11 @@
     },
     "mnw": {
       "locked": {
-        "lastModified": 1746282055,
-        "narHash": "sha256-3s3IKZYE2iWonSDSeUrjmLK/2MOWx08tGGeJPmG+vI8=",
+        "lastModified": 1746230955,
+        "narHash": "sha256-X32sM3RQ3X2y6PzfNnX3rhUAlhuITdDOdfSrwZXjlsQ=",
         "owner": "Gerg-L",
         "repo": "mnw",
-        "rev": "c7decd4ef00941e7fa82ce237677c379ca284621",
+        "rev": "2a1678ba8e4807bd855dd0da94ea2bef5bca733d",
         "type": "github"
       },
       "original": {
@@ -312,11 +312,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1746290006,
-        "narHash": "sha256-LKvcXXMvyekIr+kOi1Yb641HQNtUuXR1EBtquduZDPY=",
+        "lastModified": 1746336606,
+        "narHash": "sha256-MZssTb72jUGU48k3nykIucrRBUEnlbkcJfwuIOcf21A=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "ad9a7c554a3cacc9bfc168afe847cfc4c8fab966",
+        "rev": "844a6a8c76a0676bb4730171ae5a9dd4e96f5295",
         "type": "github"
       },
       "original": {
@@ -333,9 +333,7 @@
         "flake-utils": [
           "flake-utils"
         ],
-        "mnw": [
-          "mnw"
-        ],
+        "mnw": "mnw",
         "nil": "nil",
         "nixpkgs": [
           "nixpkgs"
@@ -416,7 +414,6 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
-        "mnw": "mnw",
         "nixpkgs": "nixpkgs",
         "nixpkgs-lw": "nixpkgs-lw",
         "nixpkgs-nextcloud": "nixpkgs-nextcloud",
