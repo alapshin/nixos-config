@@ -46,7 +46,10 @@ in
       };
 
       autocomplete = {
-        enableSharedCmpSources = true;
+        nvim-cmp = {
+          enable = false;
+          sources = { };
+        };
         blink-cmp = {
           enable = true;
           setupOpts = {
