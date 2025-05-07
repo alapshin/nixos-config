@@ -5,7 +5,7 @@
 
   androidComposition = prev.callPackage ./androidenv { };
 
-  androidStudioPackages = prev.recurseIntoAttrs (prev.callPackage ./android-studio { });
+  # androidStudioPackages = prev.recurseIntoAttrs (prev.callPackage ./android-studio { });
   android-studio-stable-with-sdk = (
     prev.androidStudioPackages.stable.withSdk final.androidComposition.androidsdk
   );
