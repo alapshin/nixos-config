@@ -111,14 +111,9 @@
         );
     };
 
-    tealdeer = {
-      enable = false;
-    };
-
-    tmux = {
-      enable = true;
-    };
-
+    tealdeer.enable = true;
+    television.enable = true;
+    tmux.enable = true;
     yt-dlp.enable = true;
 
     zsh = {
