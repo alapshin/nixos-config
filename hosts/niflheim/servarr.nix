@@ -176,9 +176,22 @@ in
               folder = "default";
               movie = {
                 rename = true;
-                standard = "default";
+                standard = "standard";
               };
             };
+
+            custom_formats = [
+              {
+                trash_ids = [
+                  "385e9e8581d33133c3961bdcdeffb7b4" # DV HDR10Plus Boost
+                ];
+                assign_scores_to = [
+                  {
+                    name = "WEB-2160p";
+                  }
+                ];
+              }
+            ];
 
             delete_old_custom_formats = true;
             replace_existing_custom_formats = true;
