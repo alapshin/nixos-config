@@ -34,22 +34,9 @@
 
     bottom = {
       enable = true;
-    };
-
-    broot = {
-      enable = true;
-    };
-
-    fzf = {
-      enable = true;
-      defaultOptions = [
-        "--style=full"
-        "--color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39"
-        "--color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78"
-        "--color=marker:#7287fd,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
-        "--color=selected-bg:#bcc0cc"
-        "--color=border:#ccd0da,label:#4c4f69"
-      ];
+      settings = {
+        network_use_binary_prefix = true;
+      };
     };
 
     direnv = {
@@ -63,37 +50,14 @@
       colors = "auto";
     };
 
-    fastfetch = {
-      enable = true;
-    };
-
-    gallery-dl = {
-      enable = true;
-    };
-
-    jq = {
-      enable = true;
-    };
-
-    navi = {
-      enable = true;
-    };
-
-    nix-your-shell = {
-      enable = true;
-    };
-
-    pandoc = {
-      enable = true;
-    };
-
-    ripgrep = {
-      enable = true;
-    };
-
-    ripgrep-all = {
-      enable = true;
-    };
+    fastfetch.enable = true;
+    gallery-dl.enable = true;
+    jq.enable = true;
+    navi.enable = true;
+    nix-your-shell.enable = true;
+    pandoc.enable = true;
+    ripgrep.enable = true;
+    ripgrep-all.enable = true;
 
     starship = {
       enable = true;
@@ -142,7 +106,6 @@
       oh-my-zsh = {
         enable = true;
         plugins = [
-          "fzf"
           "gh"
           "git"
           "git-extras"
