@@ -6,12 +6,13 @@
 }:
 {
   catppuccin = {
-    accent = "mauve";
+    accent = "pink";
     flavor = "latte";
 
+    atuin.enable = true;
     bat.enable = true;
-    delta.enable = true;
     bottom.enable = true;
+    delta.enable = true;
     gh-dash.enable = true;
     lazygit.enable = true;
     obs.enable = true;
