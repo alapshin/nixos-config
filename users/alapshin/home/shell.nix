@@ -68,8 +68,8 @@
         // builtins.fromTOML (
           builtins.readFile (
             pkgs.fetchurl {
-              url = "https://raw.githubusercontent.com/starship/starship/v1.22.1/docs/public/presets/toml/plain-text-symbols.toml";
-              hash = "sha256-cJht5h+MlMhYM4PZXW8hidnkap+xOeOgj5sfEWSpSno=";
+              url = "https://raw.githubusercontent.com/starship/starship/v1.23.0/docs/public/presets/toml/plain-text-symbols.toml";
+              hash = "sha256-1LnKMIx0HrmULhcLxfu5VImuHvOAWTntVDjtI+Y4sjY=";
             }
           )
         );
