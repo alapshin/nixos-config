@@ -6,6 +6,7 @@
     indent_size = null;
   };
   programs.nixfmt.enable = true;
+  programs.stylua.enable = true;
   programs.jsonfmt.enable = true;
   programs.yamlfmt.enable = true;
 }
