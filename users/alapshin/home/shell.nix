@@ -51,6 +51,14 @@
     };
 
     fastfetch.enable = true;
+
+    fish = {
+      enable = true;
+      interactiveShellInit = ''
+        set -g fish_greeting
+      '';
+    };
+
     gallery-dl.enable = true;
     jq.enable = true;
     navi.enable = true;

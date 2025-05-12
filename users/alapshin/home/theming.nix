@@ -13,6 +13,7 @@
     bat.enable = true;
     bottom.enable = true;
     delta.enable = true;
+    fish.enable = true;
     gh-dash.enable = true;
     lazygit.enable = true;
     obs.enable = true;

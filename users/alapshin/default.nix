@@ -95,13 +95,14 @@ in
     };
 
     zsh.enable = true;
+    fish.enable = true;
     kdeconnect.enable = true;
     partition-manager.enable = true;
   };
 
   users.users."${username}" = {
     uid = 1000;
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     isNormalUser = true;
     description = "Andrei Lapshin";
     extraGroups = [
