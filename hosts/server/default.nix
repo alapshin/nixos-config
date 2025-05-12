@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }:
@@ -48,4 +49,8 @@
       "subgid".mode = "0444";
     };
 
+  environment.systemPackager = with pkgs; [
+    wezterm
+    zellij
+  ];
 }

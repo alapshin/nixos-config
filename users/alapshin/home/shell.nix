@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, dotfileDir, ... }:
 {
   home.packages = with pkgs; [
     doggo
@@ -77,8 +77,23 @@
 
     tealdeer.enable = true;
     television.enable = true;
-    tmux.enable = true;
     yt-dlp.enable = true;
+
+    wezterm = {
+      enable = true;
+      extraConfig = builtins.readFile "${dotfileDir}/wezterm/wezterm.lua";
+    };
+
+    zellij = {
+      enable = true;
+      settings = {
+        ui = {
+          pane_frames = {
+            rounded_corners = true;
+          };
+        };
+      };
+    };
 
     zsh = {
       enable = true;

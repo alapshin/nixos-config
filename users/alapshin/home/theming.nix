@@ -18,6 +18,7 @@
     obs.enable = true;
     starship.enable = true;
     thunderbird.enable = true;
+    zellij.enable = true;
     zsh-syntax-highlighting.enable = true;
   };
 }
