@@ -57,6 +57,12 @@
       interactiveShellInit = ''
         set -g fish_greeting
       '';
+      plugins = [
+        {
+          name = "plugin-git";
+          src = pkgs.fishPlugins.plugin-git.src;
+        }
+      ];
     };
 
     gallery-dl.enable = true;
