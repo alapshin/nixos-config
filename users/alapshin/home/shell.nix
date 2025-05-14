@@ -104,6 +104,7 @@
     zellij = {
       enable = true;
       settings = {
+        pane_frames = false;
         ui = {
           pane_frames = {
             rounded_corners = true;
@@ -149,6 +150,13 @@
           "systemd"
         ];
       };
+    };
+  };
+
+  xdg.configFile = {
+    "zellij" = {
+      source = "${dotfileDir}/zellij";
+      recursive = true;
     };
   };
 }
