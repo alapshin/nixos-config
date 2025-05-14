@@ -165,9 +165,14 @@ in
 
       tabline.nvimBufferline = {
         enable = true;
-        setupOpts.options = {
-          indicator.style = "icon";
-          separator_style = "slant";
+        setupOpts = {
+          options = {
+            indicator.style = "icon";
+            separator_style = "slope";
+          };
+          highlights = lib.mkLuaInline ''
+            require("catppuccin.groups.integrations.bufferline").get()
+          '';
         };
       };
 
