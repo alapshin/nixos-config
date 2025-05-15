@@ -25,15 +25,6 @@
         "beanprice/sources/yahoo_test.py"
       ];
     };
-    changedetection-io = prev.changedetection-io.overrideAttrs (oldAttrs: rec {
-      version = "0.49.4";
-      src = prev.fetchFromGitHub {
-        owner = "dgtlmoon";
-        repo = "changedetection.io";
-        tag = version;
-        hash = "sha256-EmtJ8XXPb75W4VPj4Si9fdzVLDKVfm+8P6UZZlMpMdI=";
-      };
-    });
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
         autobean = pyfinal.callPackage ../packages/autobean { };
