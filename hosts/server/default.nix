@@ -49,7 +49,7 @@
       "subgid".mode = "0444";
     };
 
-  environment.systemPackager = with pkgs; [
+  environment.systemPackages = with pkgs; [
     wezterm
     zellij
   ];
