@@ -161,6 +161,25 @@ in
       statusline.lualine = {
         enable = true;
         theme = "catppuccin";
+        activeSection.a = [
+          ''
+            {
+              "mode",
+              icons_enabled = true,
+              separator = {
+                left = "",
+                right = ""
+              },
+            }
+          ''
+          ''
+            {
+              "",
+              draw_empty = true,
+              separator = { left = "", right = "" }
+            }
+          ''
+        ];
       };
 
       tabline.nvimBufferline = {
