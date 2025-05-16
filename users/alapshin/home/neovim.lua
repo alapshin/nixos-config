@@ -37,9 +37,6 @@ vim.opt.mouse = "a"
 -- 10 messages and info
 vim.opt.shortmess:append({ I = true })
 
--- 11 selecting text
-vim.opt.clipboard = "unnamedplus" -- use X11 clipboard
-
 -- 12 editing text
 vim.opt.undofile = true
 vim.opt.pumheight = 12

@@ -70,6 +70,12 @@ in
       };
 
       binds.whichKey.enable = true;
+      clipboard = {
+        enable = true;
+        registers = "unnamedplus";
+        providers.wl-copy.enable = true;
+      };
+
       comments.comment-nvim.enable = true;
 
       debugger.nvim-dap.enable = true;
