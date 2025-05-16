@@ -288,10 +288,11 @@ in
         setupOpts = {
           options = {
             indicator.style = "icon";
-            separator_style = "slope";
           };
           highlights = lib.mkLuaInline ''
-            require("catppuccin.groups.integrations.bufferline").get()
+            require("catppuccin.groups.integrations.bufferline").get {
+              styles = { "bold" },
+            }
           '';
         };
       };
