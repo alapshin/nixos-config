@@ -20,12 +20,6 @@ in
         dotenv-linter
       ];
 
-      extraPlugins = with pkgs.vimPlugins; {
-        sleuth = {
-          package = vim-sleuth;
-        };
-      };
-
       # Run nvim-lint when leaving insert
       autocmds = [
         {
@@ -69,7 +63,11 @@ in
         };
       };
 
-      binds.whichKey.enable = true;
+      binds = {
+        whichKey.enable = true;
+        hardtime-nvim.enable = true;
+      };
+
       clipboard = {
         enable = true;
         registers = "unnamedplus";
@@ -117,6 +115,7 @@ in
         gitsigns = {
           enable = true;
         };
+        git-conflict.enable = true;
       };
 
       languages = {
@@ -141,9 +140,7 @@ in
             package = pkgs.nixfmt-rfc-style;
           };
         };
-        python = {
-          enable = true;
-        };
+        python.enable = true;
         yaml.enable = true;
       };
 
@@ -162,6 +159,14 @@ in
           render = "default";
           timeout = 2500;
         };
+      };
+
+      spellcheck = {
+        enable = true;
+        languages = [
+          "en"
+          "ru"
+        ];
       };
 
       statusline.lualine = {
@@ -354,7 +359,7 @@ in
         };
         fastaction.enable = true;
         # illuminate.enable = true;
-        # modes-nvim.enable = true;
+        modes-nvim.enable = true;
         noice = {
           enable = true;
           setupOpts = {
@@ -381,10 +386,22 @@ in
         };
       };
 
+      utility = {
+        sleuth.enable = true;
+      };
+
       visuals = {
+        cinnamon-nvim.enable = true;
         indent-blankline.enable = true;
         nvim-scrollbar.enable = true;
         nvim-web-devicons.enable = true;
+        tiny-devicons-auto-colors = {
+          enable = true;
+          setupOpts = {
+            colors = mkLuaInline ''latte'';
+          };
+        };
+
         rainbow-delimiters.enable = true;
       };
 
