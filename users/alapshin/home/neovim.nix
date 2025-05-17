@@ -318,9 +318,8 @@ in
         style = "latte";
         extraConfig = ''
           require("catppuccin").setup({
-            term_colors = false,
+            show_end_of_buffer = true,
             integrations = {
-              cmp = false,
               blink_cmp = true,
             },
           })
@@ -392,6 +391,15 @@ in
       extraLuaFiles = [
         ./neovim.lua
       ];
+
+      lazy.plugins = {
+        "vimade" = {
+          package = pkgs.vimPlugins.vimade;
+          setupModule = "vimade";
+          setupOpts = {
+          };
+        };
+      };
     };
   };
 }
