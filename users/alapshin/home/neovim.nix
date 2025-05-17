@@ -298,6 +298,11 @@ in
           highlights = lib.mkLuaInline ''
             require("catppuccin.groups.integrations.bufferline").get {
               styles = { "bold" },
+              custom = {
+                latte = {
+                  fill = { bg = latte.mantle },
+                },
+              },
             }
           '';
         };
@@ -313,10 +318,13 @@ in
         style = "latte";
         extraConfig = ''
           require("catppuccin").setup({
+            term_colors = false,
             integrations = {
+              cmp = false,
               blink_cmp = true,
             },
           })
+          local latte = require("catppuccin.palettes").get_palette "latte"
         '';
       };
 
