@@ -321,9 +321,7 @@ in
       };
 
       treesitter = {
-        grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-          beancount
-        ];
+        grammars = pkgs.vimPlugins.nvim-treesitter.allGrammars;
       };
 
       ui = {
