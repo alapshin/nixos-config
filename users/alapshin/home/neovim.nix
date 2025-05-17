@@ -330,7 +330,21 @@ in
           globalStyle = "rounded";
         };
         breadcrumbs.enable = true;
-        colorizer.enable = true;
+        colorizer = {
+          enable = true;
+          setupOpts = {
+            filetypes = {
+              "*" = {
+                names = false;
+                RGB = true;
+                RRGGBB = true;
+                RRGGBBAA = true;
+                mode = "background";
+                always_update = true;
+              };
+            };
+          };
+        };
         fastaction.enable = true;
         # illuminate.enable = true;
         # modes-nvim.enable = true;
