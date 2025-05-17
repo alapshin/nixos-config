@@ -311,6 +311,13 @@ in
         enable = true;
         name = "catppuccin";
         style = "latte";
+        extraConfig = ''
+          require("catppuccin").setup({
+            integrations = {
+              blink_cmp = true,
+            },
+          })
+        '';
       };
 
       treesitter = {
