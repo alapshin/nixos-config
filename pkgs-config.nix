@@ -13,12 +13,13 @@
     let
       name = lib.getName pkg;
       prefixes = [
-        "drawio"
-        "languagetool"
-
         "slack"
         "steam"
         "nvidia"
+
+        "drawio"
+        "open-webui"
+        "languagetool"
 
         "idea"
         "datagrip"
