@@ -1,58 +1,58 @@
 [color]
-	ui = auto
+    ui = auto
 [commit]
-	verbose = true
+    verbose = true
 [core]
-	editor = nvim
-	whitespace = cr-at-eol
+    editor = nvim
+    whitespace = cr-at-eol
 [diff]
-	algorithm = histogram
-	colorMoved = default
-	renames = true
-	mnemonicPrefix = true
+    algorithm = histogram
+    colorMoved = default
+    renames = true
+    mnemonicPrefix = true
 [fetch]
-	prune = true
-	pruneTags = true
+    prune = true
+    pruneTags = true
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [log]
-	date = iso
+    date = iso
 [merge]
-	conflictstyle = zdiff3
+    conflictstyle = zdiff3
 [pull]
-	ff = only
+    ff = only
 [push]
-	default = simple
-	followTag = true
-	autosSetupRemote = true
+    default = simple
+    followTag = true
+    autoSetupRemote = true
 [rebase]
-	autoStash = true
-	autoSquash = true
-	updateRefs = true
+    autoStash = true
+    autoSquash = true
+    updateRefs = true
 [rerere]
-	enabled = true
-	autoUpdate = true
+    enabled = true
+    autoUpdate = true
 [stash]
-	showPatch = true
+    showPatch = true
 [tag]
-	sort = version:refname
+    sort = version:refname
 [transfer]
-	fsckobjects = true
+    fsckobjects = true
 
 [github]
-	user = alapshin
+    user = alapshin
 
 [diff "sopsdiff"]
-	textconv = "sops --decrypt"
+    textconv = "sops --decrypt"
 
 [filter "sopsfilter"]
-	clean = "sops --encrypt /dev/stdin"
-	smudge = "sops --decrypt /dev/stdin"
+    clean = "sops --encrypt /dev/stdin"
+    smudge = "sops --decrypt /dev/stdin"
 
 [difftool "androidstudio"]
-	cmd = android-studio nosplash diff $LOCAL $REMOTE 2>/dev/null
-	trustExitCode = true
+    cmd = android-studio nosplash diff $LOCAL $REMOTE 2>/dev/null
+    trustExitCode = true
 
 [mergetool "androidstudio"]
-	cmd = android-studio nosplash merge $LOCAL $REMOTE $BASE $MERGED 2>/dev/null
-	trustExitCode = true
+    cmd = android-studio nosplash merge $LOCAL $REMOTE $BASE $MERGED 2>/dev/null
+    trustExitCode = true
