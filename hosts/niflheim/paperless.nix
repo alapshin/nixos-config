@@ -18,8 +18,7 @@ in
       "paperless/oidc_client_secret" = { };
     };
     templates."paperless.env".content = builtins.readFile (
-      pkgs.substituteAll {
-        src = ./paperless.env;
+      pkgs.replaceVars ./paperless.env {
         server_url = "https://${config.services.webhost.authdomain}";
         oidc_client_secret = config.sops.placeholder."paperless/oidc_client_secret";
       }

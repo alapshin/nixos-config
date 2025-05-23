@@ -18,8 +18,7 @@
       };
     };
     templates."xray-config.json".content = builtins.readFile (
-      pkgs.substituteAll {
-        src = ./xray-config.json;
+      pkgs.replaceVars ./xray-config.json {
         vless_user_id = config.sops.placeholder."xray/vless_user_id";
         vless_private_key = config.sops.placeholder."xray/vless_private_key";
         shadowsocks_password = config.sops.placeholder."xray/shadowsocks_password";

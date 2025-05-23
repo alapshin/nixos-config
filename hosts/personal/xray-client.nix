@@ -15,8 +15,7 @@
       };
     };
     templates."xray-config.json".content = builtins.readFile (
-      pkgs.substituteAll {
-        src = ./xray-config.json;
+      pkgs.replaceVars ./xray-config.json {
         vless_user_id = config.sops.placeholder."xray/vless_user_id";
         vless_public_key = config.sops.placeholder."xray/vless_public_key";
       }
