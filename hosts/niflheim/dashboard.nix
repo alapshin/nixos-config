@@ -139,15 +139,6 @@ in
               app = "jellyfin";
               description = "The Free Software Media System";
             })
-            (mkService {
-              app = "navidrome";
-              description = "Modern Music Server and Streamer";
-              widget = {
-                user = "admin";
-                salt = "{{HOMEPAGE_FILE_NAVIDROME_SALT}}";
-                token = "{{HOMEPAGE_FILE_NAVIDROME_TOKEN}}";
-              };
-            })
             # (mkService {
             #   app = "jellyseer" ;
             #   description = "Media request management";
@@ -229,9 +220,6 @@ in
       HOMEPAGE_FILE_JELLYFIN_API_KEY = "%d/jellyfin_api_key";
       HOMEPAGE_FILE_JELLYSEERR_API_KEY = "%d/jellyseerr_api_key";
 
-      HOMEPAGE_FILE_NAVIDROME_SALT = "%d/navidrome_salt";
-      HOMEPAGE_FILE_NAVIDROME_TOKEN = "%d/navidrome_token";
-
       HOMEPAGE_VAR_NEXTCLOUD_USERNAME = config.services.nextcloud.config.adminuser;
       HOMEPAGE_FILE_NEXTCLOUD_PASSWORD = "%d/nextcloud_password";
 
@@ -255,9 +243,6 @@ in
 
         "jellyfin_api_key:${config.sops.secrets."jellyfin/api_key".path}"
         "jellyseerr_api_key:${config.sops.secrets."jellyseerr/api_key".path}"
-
-        "navidrome_salt:${config.sops.secrets."navidrome/salt".path}"
-        "navidrome_token:${config.sops.secrets."navidrome/token".path}"
 
         "immich_api_key:${config.sops.secrets."immich/api_key".path}"
         "paperless_api_key:${config.sops.secrets."paperless/api_key".path}"

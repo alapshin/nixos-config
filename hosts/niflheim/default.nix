@@ -29,7 +29,6 @@
     ./lldap.nix
     ./linkwarden.nix
     ./monica.nix
-    ./navidrome.nix
     ./ntfy.nix
     ./nextcloud.nix
     ./openssh.nix
