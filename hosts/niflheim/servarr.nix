@@ -238,7 +238,6 @@ in
       enable = false;
     };
 
-    # Setup PostreSQL databases for servarr apps
     postgresql = {
       ensureDatabases = [
         "lidarr-log"
@@ -267,7 +266,7 @@ in
           name = config.services.sonarr.user;
         }
         {
-          name = config.services.prowlarr.user;
+          name = config.services.prowlarr.user or "prowlarr";
         }
       ];
     };
@@ -294,6 +293,14 @@ in
         port = config.services.prowlarr.settings.server.port;
       };
     };
+  };
+
+  # Needed to allow Prowlarr to connect to Postgres socket
+  users.users."prowlarr" = {
+    group = "prowlarr";
+    isSystemUser = true;
+  };
+  users.groups."prowlarr" = {
   };
 
   systemd.tmpfiles.settings = {
