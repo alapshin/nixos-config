@@ -124,7 +124,6 @@ in
         anki
         audacity
         calibre
-        element-desktop
         freetube
         gimp3
         inkscape

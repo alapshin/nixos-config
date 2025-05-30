@@ -20,6 +20,9 @@
         FdoSecrets.Enabled = true;
       };
     };
+    element-desktop = {
+      enable = true;
+    };
   };
 
   xdg = {
