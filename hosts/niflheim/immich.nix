@@ -10,6 +10,7 @@
       "immich/api_key" = { };
     };
   };
+
   services = {
     immich = {
       enable = true;
@@ -42,4 +43,17 @@
       };
     };
   };
+
+  systemd.tmpfiles.settings = {
+    "10-photos" = {
+      "/mnt/data/photos" = {
+        d = {
+          mode = "0755";
+          user = config.services.immich.user;
+          group = config.services.immich.group;
+        };
+      };
+    };
+  };
+
 }
