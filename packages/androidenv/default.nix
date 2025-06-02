@@ -11,8 +11,6 @@ pkgs.androidenv.composeAndroidPackages {
     "x86_64"
   ];
   platformVersions = [
-    "30"
-    "32"
     "34"
     "35"
   ];
@@ -21,5 +19,5 @@ pkgs.androidenv.composeAndroidPackages {
     "34.0.0"
     "36.0.0"
   ];
-  systemImageTypes = [ "google_apis_playstore" ];
+  systemImageTypes = [ "google_apis" "google_apis_playstore" ];
 }
