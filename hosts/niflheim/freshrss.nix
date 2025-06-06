@@ -77,7 +77,7 @@ in
     OIDC_PROVIDER_METADATA_URL = "https://${config.services.webhost.authdomain}/.well-known/openid-configuration";
     OIDC_SCOPES = "openid groups email profile";
     OIDC_REMOTE_USER_CLAIM = "preferred_username";
-    OIDC_X_FORWARDED_HEADERS="X-Forwarded-Host X-Forwarded-Port X-Forwarded-Proto";
+    OIDC_X_FORWARDED_HEADERS = "X-Forwarded-Host X-Forwarded-Port X-Forwarded-Proto";
   };
 
   systemd.services.freshrss-config.environment = {
@@ -86,6 +86,6 @@ in
     OIDC_PROVIDER_METADATA_URL = "https://${config.services.webhost.authdomain}/.well-known/openid-configuration";
     OIDC_SCOPES = "openid groups email profile";
     OIDC_REMOTE_USER_CLAIM = "preferred_username";
-    OIDC_X_FORWARDED_HEADERS="X-Forwarded-Host X-Forwarded-Port X-Forwarded-Proto";
+    OIDC_X_FORWARDED_HEADERS = "X-Forwarded-Host X-Forwarded-Port X-Forwarded-Proto";
   };
 }
