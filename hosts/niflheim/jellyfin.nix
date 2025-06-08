@@ -15,11 +15,8 @@ in
     };
   };
   services = {
-    jellyfin = {
-      enable = true;
-    };
-
-    jellyseerr.enable = false;
+    jellyfin.enable = true;
+    jellyseerr.enable = true;
 
     webhost.applications = {
       "jellyfin" = {
@@ -27,7 +24,7 @@ in
         inherit port;
       };
       "jellyseerr" = {
-        auth = false;
+        auth = true;
         port = config.services.jellyseerr.port;
       };
     };
