@@ -38,6 +38,20 @@ in
       passwordFile = config.sops.secrets."freshrss/admin_password".path;
     };
 
+    rss-bridge = {
+      enable = true;
+      config.system.enabled_bridges = [
+        "DevToBridge"
+        "HarvardBusinessReviewBridge"
+        "HarvardHealthBlogBridge"
+        "ReutersBridge"
+        "TelegramBridge"
+        "WikipediaBridge"
+      ];
+      webserver = "caddy";
+      virtualHost = "rssbridge.${config.services.webhost.basedomain}";
+    };
+
     postgresql = {
       ensureDatabases = [ config.services.freshrss.database.name ];
       ensureUsers = [
@@ -48,9 +62,7 @@ in
       ];
     };
 
-    webhost.applications."freshrss" = {
-      auth = true;
-    };
+    webhost.applications."rssbridge".auth = true;
 
     authelia.instances."main".settings = {
       identity_providers = {
