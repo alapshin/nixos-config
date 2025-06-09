@@ -41,6 +41,7 @@ in
     rss-bridge = {
       enable = true;
       config.system.enabled_bridges = [
+        "AssociatedPressNewsBridge"
         "DevToBridge"
         "HarvardBusinessReviewBridge"
         "HarvardHealthBlogBridge"
