@@ -234,9 +234,7 @@ in
       };
     };
 
-    flaresolverr = {
-      enable = false;
-    };
+    flaresolverr.enable = true;
 
     postgresql = {
       ensureDatabases = [
