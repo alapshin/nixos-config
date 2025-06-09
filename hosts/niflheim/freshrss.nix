@@ -44,6 +44,7 @@ in
         "DevToBridge"
         "HarvardBusinessReviewBridge"
         "HarvardHealthBlogBridge"
+        "LWNprevBridge"
         "ReutersBridge"
         "TelegramBridge"
         "WikipediaBridge"
