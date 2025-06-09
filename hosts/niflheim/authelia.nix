@@ -115,10 +115,6 @@ in
                 "^/api([/?].*)?$"
                 # Calibre OPDS API
                 "^/opds([/?].*)?$"
-                # Navidrome API
-                "^/rest([/?].*)?$"
-                # Navidrome Share API
-                "^/share([/?].*)?$"
               ];
             }
             {
