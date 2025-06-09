@@ -118,6 +118,17 @@ in
               ];
             }
             {
+              policy = "bypass";
+              domain = [ "rssbridge.${config.services.webhost.basedomain}" ];
+              query = [
+                {
+                  key = "action";
+                  operator = "equal";
+                  value = "display";
+                }
+              ];
+            }
+            {
               policy = "one_factor";
               domain = [ "*.${config.services.webhost.basedomain}" ];
             }
