@@ -2,11 +2,6 @@
 {
   android_sdk.accept_license = true;
   permittedInsecurePackages = [
-    # Used by Servarr apps
-    "dotnet-sdk-6.0.428"
-    "dotnet-sdk-wrapped-6.0.428"
-    "aspnetcore-runtime-6.0.36"
-    "aspnetcore-runtime-wrapped-6.0.36"
   ];
   allowUnfreePredicate =
     pkg:
