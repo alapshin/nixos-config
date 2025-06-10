@@ -87,6 +87,7 @@ in
     obs-studio = {
       enable = true;
       plugins = with pkgs.obs-studio-plugins; [
+        input-overlay
         obs-composite-blur
         obs-move-transition
         obs-backgroundremoval
