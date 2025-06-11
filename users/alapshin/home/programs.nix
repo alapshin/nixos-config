@@ -4,6 +4,14 @@
     mpv = {
       enable = true;
     };
+    joplin-desktop = {
+      enable = true;
+      extraConfig = {
+        "locale" = "en_GB";
+        "dateFormat" = "YYYY-MM-DD";
+        "showTrayIcon" = true;
+      };
+    };
     keepassxc = {
       enable = true;
       settings = {
