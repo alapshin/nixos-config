@@ -65,6 +65,12 @@
           src = pkgs.fishPlugins.plugin-git.src;
         }
       ];
+      # Additional abbreviations from oh-my-zsh git plugin that are missing from fish's git plugin
+      shellAbbrs = {
+        gpr = "git pull --rebase";
+        gpd = "git push --dry-run";
+        gpf = "git push --force-with-lease --force-if-includes";
+      };
     };
 
     gallery-dl.enable = true;
