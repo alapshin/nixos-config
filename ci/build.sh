@@ -9,8 +9,7 @@ username=${2:-}
 remote_host=${3:-}
 
 function check {
-    decrypt-build-secrets "users/alapshin"
-    nix flake check
+    decrypt-build-secrets "users/alapshin" && nix flake check
 }
 
 function build {
@@ -32,17 +31,13 @@ function switch-home {
 }
 
 function switch-system {
-    decrypt-build-secrets "users/alapshin"
-    nixos-rebuild switch \
-        --verbose \
-        --use-remote-sudo \
-        --flake ".#${hostname}"
+    decrypt-build-secrets "users/alapshin" &&
+        nh os switch ".#nixosConfigurations.${hostname}"
 }
 
 function deploy-remote {
     nixos-rebuild switch \
-        --verbose \
-        --use-remote-sudo \
+        --sudo \
         --build-host "${remote_host}" \
         --target-host "${remote_host}" \
         --flake ".#${hostname}"
