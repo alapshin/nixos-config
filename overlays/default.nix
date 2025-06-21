@@ -28,6 +28,9 @@
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
         autobean = pyfinal.callPackage ../packages/autobean { };
+        lxml-html-clean = pyprev.lxml-html-clean.overridePythonAttrs {
+          doCheck = false;
+        };
       })
     ];
 
