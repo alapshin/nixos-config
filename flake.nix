@@ -147,18 +147,6 @@
       overlays = import ./overlays { inherit inputs; };
 
       devShells = forEachSystemPkgs (pkgs: {
-        swift = pkgs.mkShell.override { stdenv = pkgs.swift.stdenv; } {
-          buildInputs = with pkgs; [
-            swift
-            swiftPackages.swiftpm
-            swiftPackages.Dispatch
-            swiftPackages.Foundation
-            swiftPackages.XCTest
-          ];
-          shellHook = ''
-            export LD_LIBRARY_PATH="${pkgs.swiftPackages.Dispatch}/lib:$LD_LIBRARY_PATH"
-          '';
-        };
         android =
           let
             buildToolsVersion = "36.0.0";
