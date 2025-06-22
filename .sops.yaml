@@ -23,6 +23,8 @@ creation_rules:
           - age1sfed5wmvj00snjxrtds0zt83kt7ffek6mdtgfykum6uzxnphwg4qp5rv2l
           # alapshin-at-desktop
           - age1k2t56rsp2xvdsvjxraytyfufedxcl7z548tc9dzdhzqpq9yyfc9sz2h70e
+          # alapshin-at-macbook
+          - age14hh5cmhznwdpnyehtqlm2qzsl6m3kud2pn4rvy2jlp3yvqmj6e0qcrgh69
   - path_regex: hosts/personal/secrets.*
     key_groups:
       - age:
@@ -86,3 +88,5 @@ creation_rules:
           - age1sfed5wmvj00snjxrtds0zt83kt7ffek6mdtgfykum6uzxnphwg4qp5rv2l
           # alapshin-at-desktop
           - age1k2t56rsp2xvdsvjxraytyfufedxcl7z548tc9dzdhzqpq9yyfc9sz2h70e
+          # alapshin-at-macbook
+          - age14hh5cmhznwdpnyehtqlm2qzsl6m3kud2pn4rvy2jlp3yvqmj6e0qcrgh69
