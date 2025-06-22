@@ -102,16 +102,18 @@ in
 
     rss-bridge = {
       enable = true;
-      config.system.enabled_bridges = [
-        "AssociatedPressNewsBridge"
-        "DevToBridge"
-        "HarvardBusinessReviewBridge"
-        "HarvardHealthBlogBridge"
-        "LWNprevBridge"
-        "ReutersBridge"
-        "TelegramBridge"
-        "WikipediaBridge"
-      ];
+      config = {
+        system.enabled_bridges = [
+          "AssociatedPressNewsBridge"
+          "DevToBridge"
+          "HarvardBusinessReviewBridge"
+          "HarvardHealthBlogBridge"
+          "LWNprevBridge"
+          "ReutersBridge"
+          "TelegramBridge"
+          "WikipediaBridge"
+        ];
+      };
       webserver = "caddy";
       virtualHost = "rssbridge.${config.services.webhost.basedomain}";
     };
