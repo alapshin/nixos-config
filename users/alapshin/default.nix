@@ -72,7 +72,6 @@ in
     (import ./home (
       args
       // {
-        isNixOS = true;
         inherit username;
       }
     ))

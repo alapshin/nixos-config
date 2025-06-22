@@ -2,6 +2,7 @@
   pkgs,
   lib,
   inputs,
+  isLinux,
   isNixOS,
   username,
   dotfileDir,
@@ -18,7 +19,6 @@
   imports =
     [
       ./development.nix
-      ./gaming.nix
       ./git.nix
       ./gnupg.nix
       ./programs.nix
@@ -31,6 +31,9 @@
       ./packages.nix
       ./variables.nix
     ]
+    ++ (lib.lists.optionals isLinux [
+      ./gaming.nix
+    ])
     ++ (lib.lists.optionals isNixOS [
       ./plasma.nix
       ./chromium.nix
@@ -63,7 +66,7 @@
     measurement = "en_DK.UTF-8";
   };
 
-  xsession.enable = true;
+  xsession.enable = isLinux || isNixOS;
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
@@ -88,22 +91,24 @@
         recursive = true;
       };
     };
-    configFile = {
-      "fontconfig" = {
-        source = "${dotfileDir}/fontconfig";
-        recursive = true;
+    configFile =
+      {
+        "fontconfig" = {
+          source = "${dotfileDir}/fontconfig";
+          recursive = true;
+        };
+
+        "glow/glow.yml".source = "${dotfileDir}/glow/glow.yml";
+        "ideavim/ideavimrc".source = "${dotfileDir}/ideavimrc";
+        "latexmk/latexmkrc".source = "${dotfileDir}/latexmkrc";
+        "borgmatic/config.yaml".source = "${dotfileDir}/borgmatic.yaml";
+      }
+      // lib.attrsets.optionalAttrs (isLinux || isNixOS) {
+        # https://github.com/nix-community/home-manager/issues/1213#issuecomment-626240819
+        "mimeapps.list".force = true;
       };
-
-      # https://github.com/nix-community/home-manager/issues/1213#issuecomment-626240819
-      "mimeapps.list".force = true;
-
-      "glow/glow.yml".source = "${dotfileDir}/glow/glow.yml";
-      "ideavim/ideavimrc".source = "${dotfileDir}/ideavimrc";
-      "latexmk/latexmkrc".source = "${dotfileDir}/latexmkrc";
-      "borgmatic/config.yaml".source = "${dotfileDir}/borgmatic.yaml";
-    };
     mimeApps = {
-      enable = true;
+      enable = isLinux || isNixOS;
       defaultApplications = {
         "text/html" = "firefox.desktop";
         "text/plain" = "org.kde.kwrite.desktop";

@@ -102,15 +102,27 @@
       eachSystemPkgs = forEachSystem (system: mkNixpkgs { inherit system nixpkgs; });
       forEachSystemPkgs = function: forEachSystem (system: function eachSystemPkgs.${system});
 
-      hmConfig = import ./hm-config.nix {
-        inherit dotfileDir;
-        sharedModules = [
-          self.homeModules.secrets
-          nvf.homeManagerModules.nvf
-          sops-nix.homeManagerModules.sops
-          catppuccin.homeModules.catppuccin
-          plasma-manager.homeManagerModules.plasma-manager
-        ];
+      hmConfig = {
+        home-manager = {
+          # Use global pkgs configured via nixpkgs.* options
+          useGlobalPkgs = true;
+          # Install user packages to /etc/profiles instead.
+          # Necessary for nixos-rebuild build-vm to work.
+          useUserPackages = true;
+          sharedModules = [
+            self.homeModules.secrets
+            nvf.homeManagerModules.nvf
+            sops-nix.homeManagerModules.sops
+            catppuccin.homeModules.catppuccin
+            plasma-manager.homeManagerModules.plasma-manager
+          ];
+          extraSpecialArgs = {
+            isLinux = true;
+            isNixOS = true;
+            isDarwin = false;
+            inherit dotfileDir;
+          };
+        };
       };
       mkHomeConfiguration =
         {
@@ -119,22 +131,24 @@
           config ? pkgConfig,
           system ? "x86_64-linux",
           userModules ? [ ],
-          sharedModules ? hmConfig.home-manager.sharedModules,
+          extraSpecialArgs,
         }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = mkNixpkgs {
             inherit config system nixpkgs;
           };
-          modules = userModules ++ sharedModules;
-          extraSpecialArgs = hmConfig.home-manager.extraSpecialArgs // {
-            isNixOS = false;
-            osConfig = {
-              networking = {
-                hostName = hostname;
+          modules = userModules ++ hmConfig.home-manager.sharedModules;
+          extraSpecialArgs =
+            hmConfig.home-manager.extraSpecialArgs
+            // {
+              osConfig = {
+                networking = {
+                  hostName = hostname;
+                };
               };
-            };
-            inherit username;
-          };
+              inherit username;
+            }
+            // extraSpecialArgs;
         };
 
       mkNixosConfiguration =
@@ -163,6 +177,9 @@
           };
           modules = hostModules ++ userModules ++ sharedModules;
           specialArgs = {
+            isNixOS = true;
+            isLinux = false;
+            isDarwin = false;
             inherit
               self
               lib
@@ -267,6 +284,11 @@
           userModules = [
             ./users/alapshin/home/home.nix
           ];
+          extraSpecialArgs = {
+            isLinux = false;
+            isNixOS = false;
+            isDarwin = true;
+          };
         };
       };
     };
