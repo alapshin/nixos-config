@@ -36,11 +36,10 @@ function switch-system {
 }
 
 function deploy-remote {
-    nixos-rebuild switch \
-        --sudo \
+    nh os switch \
         --build-host "${remote_host}" \
         --target-host "${remote_host}" \
-        --flake ".#${hostname}"
+        ".#nixosConfigurations.${hostname}"
 }
 
 function install-remote {
