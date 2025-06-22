@@ -5,7 +5,7 @@ shopt -s globstar
 
 command=$1
 hostname=${2:-}
-username=${2:-}
+username=${3:-}
 remote_host=${3:-}
 
 function check {
@@ -26,8 +26,8 @@ function clean-store {
 }
 
 function switch-home {
-    decrypt-build-secrets "users/${username}"
-    home-manager switch --flake ".#${username}"
+    decrypt-build-secrets "users/${username}" &&
+        nh home build --configuration "${username}@${hostname}" .
 }
 
 function switch-system {

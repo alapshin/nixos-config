@@ -5,8 +5,6 @@
   ...
 }:
 {
-  nixpkgs.pkgs = pkgs;
-
   system = {
     stateVersion = "24.11";
     configurationRevision = lib.mkIf (self ? rev) self.rev;

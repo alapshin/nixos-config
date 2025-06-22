@@ -82,24 +82,14 @@
 
       dotfileDir = ./dotfiles;
 
-      nixpkgsConfig = import ./pkgs-config.nix {
+      pkgConfig = import ./pkgs-config.nix {
         inherit lib;
       };
       treefmtConfig = import ./treefmt-config.nix;
-      homeManagerConfig = import ./hm-config.nix {
-        inherit dotfileDir;
-        sharedModules = [
-          self.homeModules.secrets
-          nvf.homeManagerModules.nvf
-          sops-nix.homeManagerModules.sops
-          catppuccin.homeModules.catppuccin
-          plasma-manager.homeManagerModules.plasma-manager
-        ];
-      };
 
       mkNixpkgs =
         {
-          config ? nixpkgsConfig,
+          config ? pkgConfig,
           system,
           nixpkgs,
           extraOverlays ? [ nur.overlays.default ],
@@ -112,25 +102,66 @@
       eachSystemPkgs = forEachSystem (system: mkNixpkgs { inherit system nixpkgs; });
       forEachSystemPkgs = function: forEachSystem (system: function eachSystemPkgs.${system});
 
+      hmConfig = import ./hm-config.nix {
+        inherit dotfileDir;
+        sharedModules = [
+          self.homeModules.secrets
+          nvf.homeManagerModules.nvf
+          sops-nix.homeManagerModules.sops
+          catppuccin.homeModules.catppuccin
+          plasma-manager.homeManagerModules.plasma-manager
+        ];
+      };
+      mkHomeConfiguration =
+        {
+          hostname,
+          username,
+          config ? pkgConfig,
+          system ? "x86_64-linux",
+          userModules ? [ ],
+          sharedModules ? hmConfig.home-manager.sharedModules,
+        }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = mkNixpkgs {
+            inherit config system nixpkgs;
+          };
+          modules = userModules ++ sharedModules;
+          extraSpecialArgs = hmConfig.home-manager.extraSpecialArgs // {
+            isNixOS = false;
+            osConfig = {
+              networking = {
+                hostName = hostname;
+              };
+            };
+            inherit username;
+          };
+        };
+
       mkNixosConfiguration =
         {
-          config ? nixpkgsConfig,
+          config ? pkgConfig,
           system ? "x86_64-linux",
-          baseModules ? [
+          hostModules ? [ ],
+          userModules ? [ ],
+          sharedModules ? [
             ./configuration.nix
             nixpkgs.nixosModules.readOnlyPkgs
             self.nixosModules.backup
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             lanzaboote.nixosModules.lanzaboote
-            home-manager.nixosModules.home-manager
-            homeManagerConfig
+            home-manager.nixosModules.home-manager hmConfig
           ],
-          hostModules ? [ ],
-          userModules ? [ ],
         }:
         nixpkgs.lib.nixosSystem {
-          modules = baseModules ++ hostModules ++ userModules;
+          pkgs = mkNixpkgs {
+            inherit
+              config
+              system
+              nixpkgs
+              ;
+          };
+          modules = hostModules ++ userModules ++ sharedModules;
           specialArgs = {
             inherit
               self
@@ -138,14 +169,10 @@
               inputs
               dotfileDir
               ;
-            pkgs = mkNixpkgs { inherit config system nixpkgs; };
           };
         };
     in
     {
-      # Custom packages and modifications, exported as overlays
-      overlays = import ./overlays { inherit inputs; };
-
       devShells = forEachSystemPkgs (pkgs: {
         android =
           let
@@ -168,6 +195,10 @@
 
       formatter = forEachSystemPkgs (pkgs: treefmt-nix.lib.mkWrapper pkgs treefmtConfig);
 
+      # Custom packages and modifications, exported as overlays
+      overlays = import ./overlays {
+        inherit inputs;
+      };
       # Reusable nixos modules you might want to export
       # These are usually stuff you would upstream into nixpkgs
       nixosModules = import ./modules/nixos;
@@ -204,7 +235,7 @@
         };
 
         desktop = mkNixosConfiguration {
-          config = nixpkgsConfig // {
+          config = pkgConfig // {
             rocmSupport = true;
           };
           hostModules = [
@@ -228,23 +259,15 @@
       homeModules = import ./modules/home;
 
       # Stand-alone home-manager configuration for non NixOS machines
-      homeConfigurations =
-        let
+      homeConfigurations = {
+        "alapshin@macbook" = mkHomeConfiguration {
+          system = "aarch64-darwin";
+          hostname = "macbook";
           username = "alapshin";
-        in
-        {
-          "${username}" = home-manager.lib.homeManagerConfiguration {
-            modules = [ ./users/alapshin/home/home.nix ];
-            extraSpecialArgs = {
-              inherit username dotfileDir;
-              isNixOS = false;
-              osConfig = {
-                networking = {
-                  hostName = "workstation";
-                };
-              };
-            };
-          };
+          userModules = [
+            ./users/alapshin/home/home.nix
+          ];
         };
+      };
     };
 }
