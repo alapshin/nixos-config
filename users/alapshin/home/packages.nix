@@ -9,7 +9,6 @@
     ghostscript
     hadolint
     imagemagick
-    lm_sensors
     moreutils
     openssl
     p7zip
