@@ -26,7 +26,6 @@
       ./shell.nix
       ./neovim.nix
       ./texlive.nix
-      ./timetracking.nix
 
       ./theming.nix
       ./packages.nix
