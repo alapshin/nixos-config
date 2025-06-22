@@ -8,7 +8,7 @@
   home.packages = with pkgs; [
     tokei
     # HTTP API
-    hurl
+    # hurl
     xh
 
     # OpenAPI & Swagger
