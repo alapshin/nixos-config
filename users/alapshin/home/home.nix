@@ -25,7 +25,6 @@
       ./ssh.nix
       ./shell.nix
       ./neovim.nix
-      ./texlive.nix
 
       ./theming.nix
       ./packages.nix
@@ -36,6 +35,7 @@
     ])
     ++ (lib.lists.optionals isNixOS [
       ./plasma.nix
+      ./texlive.nix
       ./chromium.nix
       ./firefox.nix
       ./thunderbird.nix
