@@ -1,4 +1,8 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 {
   programs.gpg = {
     enable = true;
@@ -13,6 +17,6 @@
   };
   services.gpg-agent = {
     enable = true;
-    pinentry.package = pkgs.pinentry-qt;
+    pinentry.package = if pkgs.stdenv.isLinux then pkgs.pinentry-qt else pkgs.pinentry_mac;
   };
 }
