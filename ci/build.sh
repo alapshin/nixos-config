@@ -28,7 +28,7 @@ function clean-store {
 
 function switch-home {
     decrypt-build-secrets "users/${username}" &&
-        nh home build --configuration "${username}@${hostname}" .
+        nh home switch --configuration "${username}@${hostname}" .
 }
 
 function switch-system {
