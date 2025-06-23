@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 
 config.default_prog = { "zellij" }
 
-config.font = wezterm.font("monospace")
+config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.font_size = 10
 config.custom_block_glyphs = false
 config.bold_brightens_ansi_colors = "BrightAndBold"
