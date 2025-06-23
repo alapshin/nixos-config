@@ -280,7 +280,7 @@
         "alapshin@macbook" = mkHomeConfiguration {
           system = "aarch64-darwin";
           hostname = "macbook";
-          username = "alapshin";
+          username = "andrei.lapshin";
           userModules = [
             ./users/alapshin/home/home.nix
           ];

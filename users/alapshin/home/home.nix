@@ -11,9 +11,9 @@
 {
 
   home = {
-    username = username;
+    inherit username;
     stateVersion = "24.11";
-    homeDirectory = "/home/${username}";
+    homeDirectory = if pkgs.stdenv.isLinux then "/home/${username}" else "/Users/${username}";
   };
 
   imports =
