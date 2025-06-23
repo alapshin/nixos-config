@@ -9,7 +9,8 @@ username=${3:-}
 remote_host=${3:-}
 
 function check {
-    decrypt-build-secrets "users/alapshin" && nix flake check
+    decrypt-build-secrets "users/alapshin" &&
+        nix flake check
 }
 
 function build {
