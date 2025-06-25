@@ -117,9 +117,6 @@
             plasma-manager.homeManagerModules.plasma-manager
           ];
           extraSpecialArgs = {
-            isLinux = true;
-            isNixOS = true;
-            isDarwin = false;
             inherit dotfileDir;
           };
         };
@@ -177,9 +174,6 @@
           };
           modules = hostModules ++ userModules ++ sharedModules;
           specialArgs = {
-            isNixOS = true;
-            isLinux = false;
-            isDarwin = false;
             inherit
               self
               lib
@@ -285,9 +279,6 @@
             ./users/alapshin/home/home.nix
           ];
           extraSpecialArgs = {
-            isLinux = false;
-            isNixOS = false;
-            isDarwin = true;
           };
         };
       };

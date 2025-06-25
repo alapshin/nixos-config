@@ -1,14 +1,12 @@
 {
   pkgs,
   config,
-  isLinux,
-  isNixOS,
   ...
 }:
 {
   services = {
     ssh-agent = {
-      enable = isLinux || isNixOS;
+      enable = pkgs.hostPlatform.isLinux;
     };
   };
 

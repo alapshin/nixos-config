@@ -2,8 +2,6 @@
   pkgs,
   lib,
   inputs,
-  isLinux,
-  isNixOS,
   username,
   dotfileDir,
   ...
@@ -30,15 +28,13 @@
       ./packages.nix
       ./variables.nix
     ]
-    ++ (lib.lists.optionals isLinux [
-      ./gaming.nix
-    ])
-    ++ (lib.lists.optionals isNixOS [
+    ++ (lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
       ./plasma.nix
       ./texlive.nix
       ./chromium.nix
       ./firefox.nix
       ./thunderbird.nix
+      ./gaming.nix
     ]);
 
   secrets = {
@@ -66,7 +62,7 @@
     measurement = "en_DK.UTF-8";
   };
 
-  xsession.enable = isLinux || isNixOS;
+  xsession.enable = pkgs.stdenv.hostPlatform.isLinux;
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
@@ -103,12 +99,12 @@
         "latexmk/latexmkrc".source = "${dotfileDir}/latexmkrc";
         "borgmatic/config.yaml".source = "${dotfileDir}/borgmatic.yaml";
       }
-      // lib.attrsets.optionalAttrs (isLinux || isNixOS) {
+      // lib.attrsets.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
         # https://github.com/nix-community/home-manager/issues/1213#issuecomment-626240819
         "mimeapps.list".force = true;
       };
     mimeApps = {
-      enable = isLinux || isNixOS;
+      enable = pkgs.stdenv.hostPlatform.isLinux;
       defaultApplications = {
         "text/html" = "firefox.desktop";
         "text/plain" = "org.kde.kwrite.desktop";

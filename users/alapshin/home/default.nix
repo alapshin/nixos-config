@@ -1,18 +1,10 @@
 {
-  isNixOS,
-  isLinux,
-  isDarwin,
   username,
   ...
 }@args:
 {
   home-manager.extraSpecialArgs = {
-    inherit
-      isNixOS
-      isLinux
-      isDarwin
-      username
-      ;
+    inherit username;
   };
   home-manager.users."${username}" = import ./home.nix args;
 }
