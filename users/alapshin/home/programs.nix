@@ -24,6 +24,9 @@
           MinimizeOnClose = true;
           TrayIconAppearance = "monochrome-dark";
         };
+        Security = {
+          IconDownloadFallback = true;
+        };
         SSHAgent.Enabled = true;
         FdoSecrets.Enabled = true;
       };
