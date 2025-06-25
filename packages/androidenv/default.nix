@@ -7,6 +7,7 @@ pkgs.androidenv.composeAndroidPackages {
   includeSources = true;
   includeEmulator = true;
   includeSystemImages = true;
+  platformToolsVersion = "35.0.2";
   abiVersions = [
     "x86_64"
   ];
