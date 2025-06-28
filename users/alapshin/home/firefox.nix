@@ -1,9 +1,23 @@
 {
   pkgs,
+  config,
   osConfig,
   ...
 }:
 {
+  # home.file =
+  #   let
+  #     self = config.programs.firefox;
+  #     profile =
+  #       self.configPath
+  #       + (if pkgs.stdenv.hostPlatform.isDarwin then "/Profiles/" else "/")
+  #       + self.profiles."default".path;
+  #   in
+  #   {
+  #     "${profile}/chrome".source = "${pkgs.firefox-ui-fix}/chrome";
+  #     "${profile}/user.js".source = "${pkgs.firefox-ui-fix}/user.js";
+  #   };
+
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
@@ -164,14 +178,16 @@
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
         userChrome = ''
-          /* Hide sidebar header */
-          #sidebar-header {
-            display: none;
-          }
+          /* Hide tab bar in FF Quantum */
+          @-moz-document url(chrome://browser/content/browser.xul), url(chrome://browser/content/browser.xhtml) {
+            #TabsToolbar {
+              visibility: collapse !important;
+              margin-bottom: 21px !important;
+            }
 
-          /* Hide tabs */
-          #TabsToolbar {
-            visibility: collapse !important;
+            #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+              visibility: collapse !important;
+            }
           }
         '';
       };
