@@ -5,18 +5,17 @@
   ...
 }:
 {
-  # home.file =
-  #   let
-  #     self = config.programs.firefox;
-  #     profile =
-  #       self.configPath
-  #       + (if pkgs.stdenv.hostPlatform.isDarwin then "/Profiles/" else "/")
-  #       + self.profiles."default".path;
-  #   in
-  #   {
-  #     "${profile}/chrome".source = "${pkgs.firefox-ui-fix}/chrome";
-  #     "${profile}/user.js".source = "${pkgs.firefox-ui-fix}/user.js";
-  #   };
+  home.file =
+    let
+      self = config.programs.firefox;
+      profile =
+        self.configPath
+        + (if pkgs.stdenv.hostPlatform.isDarwin then "/Profiles/" else "/")
+        + self.profiles."default".path;
+    in
+    {
+      "${profile}/chrome".source = "${pkgs.firefox-ui-fix}/chrome";
+    };
 
   programs.firefox = {
     enable = true;
@@ -97,6 +96,7 @@
         extensions.packages =
           (with pkgs.firefox-addons; [ linguist-translator ])
           ++ (with pkgs.nur.repos.rycee.firefox-addons; [
+            clearurls
             metamask
             linkwarden
             sponsorblock
@@ -170,26 +170,22 @@
           "browser.tabs.closeWindowWithLastTab" = false;
           # Disable URL encoding on copying
           "browser.urlbar.decodeURLsOnCopy" = true;
+          #  Disable calculator in url bar
+          "browser.urlbar.suggest.calculator" = false;
           # Enable preinstalled addons
           "extensions.autoDisableScopes" = 0;
           # Use hostname as device name for Firefox Sync
           "identity.fxaccounts.account.device.name" = osConfig.networking.hostName;
           # Enable userChrome.css support
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        };
-        userChrome = ''
-          /* Hide tab bar in FF Quantum */
-          @-moz-document url(chrome://browser/content/browser.xul), url(chrome://browser/content/browser.xhtml) {
-            #TabsToolbar {
-              visibility: collapse !important;
-              margin-bottom: 21px !important;
-            }
 
-            #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
-              visibility: collapse !important;
-            }
-          }
-        '';
+          # Firefox-Ui-Fix settings
+          "userChrome.icon.disabled" = true;
+          "userChrome.hidden.tabbar" = true;
+          "userChrome.hidden.sidebar_header" = true;
+          "userChrome.theme.non_native_menu" = false;
+        };
+        extraConfig = builtins.readFile "${pkgs.firefox-ui-fix}/user.js";
       };
     };
   };

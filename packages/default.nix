@@ -10,6 +10,7 @@
     prev.androidStudioPackages.stable.withSdk final.androidComposition.androidsdk
   );
 
+  firefox-ui-fix = prev.callPackage ./firefox-ui-fix { };
   firefox-addons = prev.recurseIntoAttrs (prev.callPackage ./firefox-addons { });
 
   customHunspellDicts = prev.recurseIntoAttrs (prev.callPackages ./hunspell/dictionaries.nix { });
