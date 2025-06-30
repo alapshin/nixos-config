@@ -21,6 +21,8 @@
         "androidsdk"
         "android-sdk"
         "android-studio"
+
+        "pritunl-client"
       ];
     in
     builtins.any (prefix: lib.strings.hasPrefix prefix name) prefixes;
