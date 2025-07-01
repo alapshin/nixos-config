@@ -335,17 +335,17 @@ in
   users.users.sonarr.extraGroups = [ group ];
   users.users.readarr.extraGroups = [ group ];
 
-  systemd.services.postgresql.postStart = ''
-    $PSQL -tAc 'ALTER DATABASE "lidarr-log" OWNER TO "lidarr";'
-    $PSQL -tAc 'ALTER DATABASE "lidarr-main" OWNER TO "lidarr";'
-    $PSQL -tAc 'ALTER DATABASE "radarr-log" OWNER TO "radarr";'
-    $PSQL -tAc 'ALTER DATABASE "radarr-main" OWNER TO "radarr";'
-    $PSQL -tAc 'ALTER DATABASE "readarr-log" OWNER TO "readarr";'
-    $PSQL -tAc 'ALTER DATABASE "readarr-main" OWNER TO "readarr";'
-    $PSQL -tAc 'ALTER DATABASE "readarr-cache" OWNER TO "readarr";'
-    $PSQL -tAc 'ALTER DATABASE "sonarr-log" OWNER TO "sonarr";'
-    $PSQL -tAc 'ALTER DATABASE "sonarr-main" OWNER TO "sonarr";'
-    $PSQL -tAc 'ALTER DATABASE "prowlarr-log" OWNER TO "prowlarr";'
-    $PSQL -tAc 'ALTER DATABASE "prowlarr-main" OWNER TO "prowlarr";'
+  systemd.services.postgresql-setup.postStart = ''
+    psql -tAc 'ALTER DATABASE "lidarr-log" OWNER TO "lidarr";'
+    psql -tAc 'ALTER DATABASE "lidarr-main" OWNER TO "lidarr";'
+    psql -tAc 'ALTER DATABASE "radarr-log" OWNER TO "radarr";'
+    psql -tAc 'ALTER DATABASE "radarr-main" OWNER TO "radarr";'
+    psql -tAc 'ALTER DATABASE "readarr-log" OWNER TO "readarr";'
+    psql -tAc 'ALTER DATABASE "readarr-main" OWNER TO "readarr";'
+    psql -tAc 'ALTER DATABASE "readarr-cache" OWNER TO "readarr";'
+    psql -tAc 'ALTER DATABASE "sonarr-log" OWNER TO "sonarr";'
+    psql -tAc 'ALTER DATABASE "sonarr-main" OWNER TO "sonarr";'
+    psql -tAc 'ALTER DATABASE "prowlarr-log" OWNER TO "prowlarr";'
+    psql -tAc 'ALTER DATABASE "prowlarr-main" OWNER TO "prowlarr";'
   '';
 }
