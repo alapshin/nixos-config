@@ -13,6 +13,13 @@
     };
   };
 
+  services.xserver = {
+    xkb = {
+      layout = "us,ru,us";
+      variant = "hbs,srp,altgr-intl";
+    };
+  };
+
   services.xserver.videoDrivers = [
     "amdgpu"
   ];

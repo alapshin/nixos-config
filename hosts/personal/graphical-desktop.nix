@@ -43,8 +43,8 @@
       enable = true;
       xkb = {
         dir = "${pkgs.xkbconfig_custom}/etc/X11/xkb";
-        layout = "us,ru,us";
-        variant = "hbs,srp,altgr-intl";
+        layout = lib.mkDefault "us,ru";
+        variant = lib.mkDefault "hbs,srp";
         options = "grp:caps_toggle";
       };
       videoDrivers = [
