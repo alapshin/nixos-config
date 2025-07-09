@@ -25,6 +25,7 @@
   users.mutableUsers = false;
   services.userborn.enable = true;
 
+  documentation.enable = false;
   # No need for fonts on a server
   fonts.fontconfig.enable = lib.mkDefault false;
 
