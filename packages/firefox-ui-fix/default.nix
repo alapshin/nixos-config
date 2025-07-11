@@ -5,11 +5,11 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "firefox-ui-fix";
-  version = "8.7.1";
+  version = "8.7.2";
 
   src = fetchzip {
-    url = "https://github.com/black7375/Firefox-UI-Fix/releases/download/v8.7.1/Lepton-Photon-Style.zip";
-    hash = "sha256-rD3peGDrK7dszgyaj4GfibbYvQUvT9CQfZLilIlFW2Q=";
+    url = "https://github.com/black7375/Firefox-UI-Fix/releases/download/v${version}/Lepton-Photon-Style.zip";
+    hash = "sha256-mUDvXUW4jw2eB1PykjUJVMh5hvYXYAdAmZYfhqBhynQ=";
     stripRoot = false;
   };
 
