@@ -87,11 +87,7 @@
           theme = {
             selectedLineBgColor = [
               "default"
-              "bold"
-            ];
-            selectedRangeBgColor = [
-              "reverse"
-              "bold"
+              "#ccd0da"
             ];
           };
         };
