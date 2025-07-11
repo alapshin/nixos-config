@@ -6,6 +6,13 @@ config.default_prog = { "zellij" }
 
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.font_size = 10
+config.font_rules = {
+    {
+        italic = false,
+        intensity = "Bold",
+        font = wezterm.font("JetBrains Mono Nerd Font Mono", { weight = "Bold" }),
+    },
+}
 config.custom_block_glyphs = false
 config.bold_brightens_ansi_colors = "BrightAndBold"
 
