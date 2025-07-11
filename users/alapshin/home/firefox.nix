@@ -180,7 +180,11 @@
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
           # Firefox-Ui-Fix settings
-          "userChrome.icon.disabled" = true;
+          "userChrome.icon.menu.full" = true;
+          "userChrome.icon.panel_full" = true;
+          "userChrome.icon.panel_photon" = false;
+          "userChrome.icon.global_menu" = false;
+          "userChrome.icon.global_menubar" = false;
           "userChrome.hidden.tabbar" = true;
           "userChrome.hidden.sidebar_header" = true;
           "userChrome.theme.non_native_menu" = false;
