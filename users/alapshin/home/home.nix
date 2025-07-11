@@ -16,6 +16,7 @@
 
   imports =
     [
+      ./anki.nix
       ./development.nix
       ./git.nix
       ./gnupg.nix

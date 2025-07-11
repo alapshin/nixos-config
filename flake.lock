@@ -210,6 +210,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-anki": {
+      "locked": {
+        "lastModified": 1750672724,
+        "narHash": "sha256-zxrfDlr3C5aXNKIMpXqzSTkb/ag/O3So9geC+P8nPr0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "bd0b9dd21bde2b2c61650866df62322ee54c4c28",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "pull/419034/head",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1751159883,
@@ -385,6 +401,7 @@
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-anki": "nixpkgs-anki",
         "nixpkgs-lw": "nixpkgs-lw",
         "nixpkgs-nextcloud": "nixpkgs-nextcloud",
         "nur": "nur",

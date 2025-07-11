@@ -121,7 +121,6 @@ in
     packages =
       with pkgs;
       [
-        anki
         audacity
         calibre
         freetube

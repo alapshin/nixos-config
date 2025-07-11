@@ -33,5 +33,7 @@
 
     prisma = inputs.nixpkgs-lw.legacyPackages."${prev.system}".prisma;
     linkwarden = inputs.nixpkgs-lw.legacyPackages."${prev.system}".linkwarden;
+
+    ankiAddons = inputs.nixpkgs-anki.legacyPackages."${prev.system}".ankiAddons;
   };
 }
