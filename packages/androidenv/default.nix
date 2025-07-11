@@ -12,11 +12,10 @@ pkgs.androidenv.composeAndroidPackages {
     "x86_64"
   ];
   platformVersions = [
-    "34"
     "35"
+    "36"
   ];
   buildToolsVersions = [
-    "30.0.3"
     "34.0.0"
     "36.0.0"
   ];
