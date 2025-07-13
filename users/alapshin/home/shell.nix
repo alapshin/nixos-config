@@ -112,6 +112,7 @@
       attachExistingSession = true;
       settings = {
         pane_frames = false;
+        copy_on_select = false;
         ui = {
           pane_frames = {
             rounded_corners = true;
