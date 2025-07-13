@@ -32,13 +32,6 @@ let
     drawio
   ];
 
-  javaPackages = with pkgs; [
-    scrcpy
-    jetbrains.datagrip
-    jetbrains.idea-ultimate
-    android-studio-stable-with-sdk
-  ];
-
   kdePackages = with pkgs.kdePackages; [
     ark
     dolphin
@@ -140,7 +133,6 @@ in
       ++ blockchainPackages
       ++ dictionaries
       ++ guiDevTools
-      ++ javaPackages
       ++ kdePackages
       ++ pythonPackages;
   };

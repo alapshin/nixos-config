@@ -8,7 +8,7 @@
   home.packages = with pkgs; [
     tokei
     # HTTP API
-    # hurl
+    hurl
     xh
 
     # OpenAPI & Swagger
@@ -19,18 +19,25 @@
 
     # AI
     aider-chat
+
+    # Development
+    scrcpy
+    jetbrains.datagrip
+    jetbrains.idea-ultimate
+    android-studio-stable-with-sdk
   ];
 
   programs = {
     java = {
       enable = true;
-      package = pkgs.jdk17;
+      package = pkgs.jdk21;
     };
     gradle = {
       enable = true;
       home = ".local/share/gradle";
       settings = {
-        "org.gradle.java.installations.paths" = "${pkgs.jdk8}/lib/openjdk,${pkgs.jdk17}/lib/openjdk";
+        "org.gradle.java.installations.paths" =
+          "${pkgs.jdk8}/lib/openjdk,${pkgs.jdk17}/lib/openjdk,${pkgs.jdk21}/lib/openjdk";
       };
     };
   };
