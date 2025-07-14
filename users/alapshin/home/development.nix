@@ -5,27 +5,31 @@
   ...
 }:
 {
-  home.packages = with pkgs; [
-    tokei
-    # HTTP API
-    hurl
-    xh
+  home.packages =
+    with pkgs;
+    [
+      tokei
+      # HTTP API
+      hurl
+      xh
 
-    # OpenAPI & Swagger
-    redocly
+      # OpenAPI & Swagger
+      redocly
 
-    # YAML
-    yamlfmt
+      # YAML
+      yamlfmt
 
-    # AI
-    aider-chat
+      # AI
+      aider-chat
 
-    # Development
-    scrcpy
-    jetbrains.datagrip
-    jetbrains.idea-ultimate
-    android-studio-stable-with-sdk
-  ];
+      # Development
+      scrcpy
+    ]
+    ++ (lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
+      jetbrains.datagrip
+      jetbrains.idea-ultimate
+      android-studio-stable-with-sdk
+    ]);
 
   programs = {
     java = {

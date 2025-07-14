@@ -5,7 +5,7 @@
   ...
 }:
 {
-  home.packages = [
+  home.packages = lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
     pkgs.anki
   ];
   programs.anki = {

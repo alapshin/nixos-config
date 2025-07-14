@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   config,
   osConfig,
@@ -21,8 +22,8 @@
     enable = true;
     package = pkgs.firefox;
 
-    nativeMessagingHosts = with pkgs; [
-      kdePackages.plasma-browser-integration
+    nativeMessagingHosts = lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
+      pkgs.kdePackages.plasma-browser-integration
     ];
 
     policies = {
@@ -105,10 +106,11 @@
             ublock-origin
             tree-style-tab
             keepassxc-browser
-            plasma-integration
             temporary-containers
             multi-account-containers
-          ]);
+          ]) ++ (lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux (with pkgs.nur.repos.rycee.firefox-addons; [
+            plasma-integration
+          ]));
         search = {
           force = true;
           default = "ddg";

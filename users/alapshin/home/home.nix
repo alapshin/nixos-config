@@ -11,33 +11,31 @@
   home = {
     inherit username;
     stateVersion = "24.11";
-    homeDirectory = if pkgs.stdenv.isLinux then "/home/${username}" else "/Users/${username}";
+    homeDirectory =
+      if pkgs.stdenv.hostPlatform.isLinux then "/home/${username}" else "/Users/${username}";
   };
 
-  imports =
-    [
-      ./anki.nix
-      ./development.nix
-      ./git.nix
-      ./gnupg.nix
-      ./programs.nix
-      ./ssh.nix
-      ./shell.nix
-      ./syncthing.nix
-      ./neovim.nix
+  imports = [
+    ./anki.nix
+    ./chromium.nix
+    ./development.nix
+    ./firefox.nix
+    ./gaming.nix
+    ./git.nix
+    ./gnupg.nix
+    ./neovim.nix
+    ./plasma.nix
+    ./programs.nix
+    ./ssh.nix
+    ./shell.nix
+    ./syncthing.nix
+    ./texlive.nix
+    ./thunderbird.nix
 
-      ./theming.nix
-      ./packages.nix
-      ./variables.nix
-    ]
-    ++ (lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
-      ./plasma.nix
-      ./texlive.nix
-      ./chromium.nix
-      ./firefox.nix
-      ./thunderbird.nix
-      ./gaming.nix
-    ]);
+    ./theming.nix
+    ./packages.nix
+    ./variables.nix
+  ];
 
   secrets = {
     path = ../secrets/build/secrets.json;

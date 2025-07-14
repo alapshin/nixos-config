@@ -8,7 +8,7 @@
   home.packages = with pkgs; [ typst ];
 
   programs.texlive = {
-    enable = true;
+    enable = false;
     packageSet = pkgs.texlive;
     extraPackages = tpkgs: {
       inherit (tpkgs)

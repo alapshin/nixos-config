@@ -5,7 +5,7 @@
 }:
 {
   programs.mangohud = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     enableSessionWide = true;
   };
 }

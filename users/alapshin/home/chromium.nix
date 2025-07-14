@@ -5,7 +5,7 @@
 }:
 {
   programs.chromium = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     package = pkgs.ungoogled-chromium;
   };
 }

@@ -1,14 +1,17 @@
 { config, pkgs, ... }:
+let
+  enable = pkgs.hostPlatform.isLinux;
+in
 {
   programs = {
     konsole = {
-      enable = true;
+      inherit enable;
     };
     okular = {
-      enable = true;
+      inherit enable;
     };
     plasma = {
-      enable = true;
+      inherit enable;
       workspace.clickItemTo = "select";
 
       configFile = {
