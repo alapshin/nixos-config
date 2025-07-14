@@ -108,9 +108,13 @@
             keepassxc-browser
             temporary-containers
             multi-account-containers
-          ]) ++ (lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux (with pkgs.nur.repos.rycee.firefox-addons; [
-            plasma-integration
-          ]));
+          ])
+          ++ (lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux (
+            with pkgs.nur.repos.rycee.firefox-addons;
+            [
+              plasma-integration
+            ]
+          ));
         search = {
           force = true;
           default = "ddg";

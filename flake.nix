@@ -44,6 +44,9 @@
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     lanzaboote.inputs.flake-parts.follows = "flake-parts";
 
+    nix-darwin.url = "github:nix-darwin/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -71,6 +74,7 @@
       sops-nix,
       lanzaboote,
       treefmt-nix,
+      nix-darwin,
       home-manager,
       plasma-manager,
       nvf,
@@ -128,7 +132,7 @@
           config ? pkgConfig,
           system ? "x86_64-linux",
           userModules ? [ ],
-          extraSpecialArgs,
+          extraSpecialArgs ? { },
         }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = mkNixpkgs {
@@ -148,6 +152,42 @@
             // extraSpecialArgs;
         };
 
+      mkDarwinConfiguration =
+        {
+          config ? pkgConfig,
+          system ? "aarch64-darwin",
+          hostModules ? [ ],
+          sharedModules ? [
+            ./configuration.nix
+            sops-nix.darwinModules.sops
+            home-manager.darwinModules.home-manager hmConfig
+          ],
+          userModules ? [ ],
+          extraSpecialArgs ? { },
+        }:
+        let 
+          pkgs = mkNixpkgs {
+            inherit
+              config
+              system
+              nixpkgs
+              ;
+          };
+        in
+        nix-darwin.lib.darwinSystem {
+          inherit pkgs;
+          modules = hostModules ++ sharedModules ++ userModules;
+          specialArgs = {
+            inherit
+              self
+              lib
+              pkgs
+              inputs
+              dotfileDir
+              ;
+          } // extraSpecialArgs;
+        };
+
       mkNixosConfiguration =
         {
           config ? pkgConfig,
@@ -163,6 +203,7 @@
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager hmConfig
           ],
+          extraSpecialArgs ? { },
         }:
         nixpkgs.lib.nixosSystem {
           pkgs = mkNixpkgs {
@@ -180,7 +221,7 @@
               inputs
               dotfileDir
               ;
-          };
+          } // extraSpecialArgs;
         };
     in
     {
@@ -267,6 +308,20 @@
         };
       };
 
+      darwinConfigurations = {
+        macbook = mkDarwinConfiguration {
+          hostModules = [
+            ./hosts/macbook
+          ];
+          userModules = [
+            ./users/alapshin/home
+          ];
+          extraSpecialArgs = {
+            username = "andrei.lapshin";
+          };
+        };
+      };
+
       homeModules = import ./modules/home;
 
       # Stand-alone home-manager configuration for non NixOS machines
@@ -275,11 +330,6 @@
           system = "aarch64-darwin";
           hostname = "macbook";
           username = "andrei.lapshin";
-          userModules = [
-            ./users/alapshin/home/home.nix
-          ];
-          extraSpecialArgs = {
-          };
         };
       };
     };

@@ -6,7 +6,7 @@
 }:
 {
   system = {
-    stateVersion = "24.11";
+    stateVersion = if pkgs.stdenv.hostPlatform.isLinux then "24.11" else 6;
     configurationRevision = lib.mkIf (self ? rev) self.rev;
   };
 

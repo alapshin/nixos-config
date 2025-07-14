@@ -20,7 +20,7 @@
         update_check = false;
       };
       daemon = {
-        enable = true;
+        enable = pkgs.stdenv.hostPlatform.isLinux;
       };
     };
 

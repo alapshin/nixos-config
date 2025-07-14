@@ -36,6 +36,11 @@ function switch-system {
         nh os switch ".#nixosConfigurations.${hostname}"
 }
 
+function switch-darwin {
+    decrypt-build-secrets "users/alapshin" &&
+        nh darwin switch ".#darwinConfigurations.${hostname}"
+}
+
 function deploy-remote {
     nh os switch \
         --build-host "${remote_host}" \
@@ -124,6 +129,9 @@ switch-home)
     ;;
 switch-system)
     switch-system
+    ;;
+switch-darwin)
+    switch-darwin
     ;;
 deploy-remote)
     deploy-remote
