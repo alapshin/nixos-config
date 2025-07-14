@@ -23,6 +23,7 @@
       ./programs.nix
       ./ssh.nix
       ./shell.nix
+      ./syncthing.nix
       ./neovim.nix
 
       ./theming.nix

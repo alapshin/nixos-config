@@ -9,7 +9,6 @@
     ./bluetooth.nix
     ./networking.nix
     ./services.nix
-    ./syncthing.nix
     ./virtualization.nix
 
     ./graphical-desktop.nix

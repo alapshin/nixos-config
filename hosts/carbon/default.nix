@@ -12,7 +12,6 @@
     ./secrets.nix
     ./networking.nix
     ./services.nix
-    ./syncthing.nix
     ./users.nix
 
     ./graphical-desktop.nix
