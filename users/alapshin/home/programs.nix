@@ -32,7 +32,7 @@
       };
     };
     element-desktop = {
-      enable = true;
+      enable = false;
     };
   };
 
