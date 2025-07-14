@@ -10,7 +10,7 @@ config.font_rules = {
     {
         italic = false,
         intensity = "Bold",
-        font = wezterm.font("JetBrains Mono Nerd Font Mono", { weight = "Bold" }),
+        font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Bold" }),
     },
 }
 config.custom_block_glyphs = false
