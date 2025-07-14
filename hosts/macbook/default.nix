@@ -30,4 +30,9 @@
     home = "/Users/andrei.lapshin";
     shell = pkgs.fish;
   };
+  system.primaryUser = "andrei.lapshin";
+  # For correct PATH
+  launchd.user.envVariables = {
+    PATH = config.environment.systemPath;
+  };
 }
