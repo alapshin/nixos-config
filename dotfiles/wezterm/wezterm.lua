@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.default_prog = { "zellij" }
+-- config.default_prog = { "zellij" }
 
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.font_size = 10
