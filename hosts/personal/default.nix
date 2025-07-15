@@ -8,6 +8,7 @@
     ./boot.nix
     ./bluetooth.nix
     ./networking.nix
+    ./programs.nix
     ./services.nix
     ./virtualization.nix
 

@@ -26,8 +26,5 @@
         };
       };
     };
-    udev.packages = with pkgs; [
-      android-udev-rules
-    ];
   };
 }

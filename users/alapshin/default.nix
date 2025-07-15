@@ -70,29 +70,6 @@ in
     ))
   ];
 
-  programs = {
-    adb.enable = true;
-    java = {
-      enable = true;
-      package = pkgs.jdk21;
-    };
-    obs-studio = {
-      enable = true;
-      plugins = with pkgs.obs-studio-plugins; [
-        input-overlay
-        obs-composite-blur
-        obs-move-transition
-        obs-backgroundremoval
-        obs-pipewire-audio-capture
-      ];
-    };
-
-    zsh.enable = true;
-    fish.enable = true;
-    kdeconnect.enable = true;
-    partition-manager.enable = true;
-  };
-
   users.users."${username}" = {
     uid = 1000;
     shell = pkgs.fish;
