@@ -125,7 +125,6 @@ in
         libreoffice-qt6-fresh
         qbittorrent
         smplayer
-        strawberry
         telegram-desktop
         tor-browser
       ]
