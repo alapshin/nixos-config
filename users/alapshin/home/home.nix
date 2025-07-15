@@ -10,7 +10,8 @@
   home = {
     inherit username;
     stateVersion = "24.11";
-    homeDirectory = if pkgs.stdenv.hostPlatform.isLinux then "/home/${username}" else "/Users/${username}";
+    homeDirectory =
+      if pkgs.stdenv.hostPlatform.isLinux then "/home/${username}" else "/Users/${username}";
   };
 
   imports = [
