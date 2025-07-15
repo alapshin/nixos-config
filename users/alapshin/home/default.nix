@@ -1,10 +1,9 @@
 {
-  username,
+  lib,
+  pkgs,
+  config,
   ...
 }@args:
 {
-  home-manager.extraSpecialArgs = {
-    inherit username;
-  };
-  home-manager.users."${username}" = import ./home.nix args;
+  home-manager.users."alapshin" = import ./home.nix (args // { username = "alapshin"; });
 }

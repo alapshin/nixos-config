@@ -81,6 +81,7 @@
       ...
     }:
     let
+      # Extend lib with custom helper functions
       lib = nixpkgs.lib.extend (_: prev: home-manager.lib // (import ./lib { lib = prev; }));
 
       dotfileDir = ./dotfiles;
@@ -95,17 +96,16 @@
           config ? pkgConfig,
           system,
           nixpkgs,
-          extraOverlays ? [ nur.overlays.default ],
         }:
         import nixpkgs {
           inherit config system;
-          overlays = (lib.attrValues self.overlays) ++ extraOverlays;
+          overlays = (lib.attrValues self.overlays) ++ [ nur.overlays.default ];
         };
       forEachSystem = nixpkgs.lib.genAttrs (import systems);
       eachSystemPkgs = forEachSystem (system: mkNixpkgs { inherit system nixpkgs; });
       forEachSystemPkgs = function: forEachSystem (system: function eachSystemPkgs.${system});
 
-      hmConfig = {
+      homeConfig = {
         home-manager = {
           # Use global pkgs configured via nixpkgs.* options
           useGlobalPkgs = true;
@@ -130,52 +130,44 @@
           username,
           config ? pkgConfig,
           system ? "x86_64-linux",
-          userModules ? [ ],
-          extraSpecialArgs ? { },
+          homeModules,
         }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = mkNixpkgs {
             inherit config system nixpkgs;
           };
-          modules = userModules ++ hmConfig.home-manager.sharedModules;
+          modules = homeConfig.home-manager.sharedModules ++ homeModules;
           extraSpecialArgs =
-            hmConfig.home-manager.extraSpecialArgs
+            homeConfig.home-manager.extraSpecialArgs
             // {
+              inherit username;
               osConfig = {
                 networking = {
                   hostName = hostname;
                 };
               };
-              inherit username;
-            }
-            // extraSpecialArgs;
+            };
         };
-
       mkDarwinConfiguration =
         {
           config ? pkgConfig,
           system ? "aarch64-darwin",
           hostModules ? [ ],
-          sharedModules ? [
+          userModules ? [ ],
+        }:
+        let
+          pkgs = mkNixpkgs {
+            inherit config system nixpkgs;
+          };
+          sharedModules = [
             ./configuration.nix
             sops-nix.darwinModules.sops
-            home-manager.darwinModules.home-manager hmConfig
-          ],
-          userModules ? [ ],
-          extraSpecialArgs ? { },
-        }:
-        let 
-          pkgs = mkNixpkgs {
-            inherit
-              config
-              system
-              nixpkgs
-              ;
-          };
+            home-manager.darwinModules.home-manager homeConfig
+          ];
         in
         nix-darwin.lib.darwinSystem {
           inherit pkgs;
-          modules = hostModules ++ sharedModules ++ userModules;
+          modules = sharedModules ++ hostModules ++ userModules;
           specialArgs = {
             inherit
               self
@@ -184,7 +176,7 @@
               inputs
               dotfileDir
               ;
-          } // extraSpecialArgs;
+          };
         };
 
       mkNixosConfiguration =
@@ -193,26 +185,23 @@
           system ? "x86_64-linux",
           hostModules ? [ ],
           userModules ? [ ],
-          sharedModules ? [
+        }:
+        let
+          sharedModules = [
             ./configuration.nix
             nixpkgs.nixosModules.readOnlyPkgs
             self.nixosModules.backup
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             lanzaboote.nixosModules.lanzaboote
-            home-manager.nixosModules.home-manager hmConfig
-          ],
-          extraSpecialArgs ? { },
-        }:
+            home-manager.nixosModules.home-manager homeConfig
+          ];
+        in
         nixpkgs.lib.nixosSystem {
           pkgs = mkNixpkgs {
-            inherit
-              config
-              system
-              nixpkgs
-              ;
+            inherit config system nixpkgs;
           };
-          modules = hostModules ++ userModules ++ sharedModules;
+          modules = sharedModules ++ hostModules ++ userModules;
           specialArgs = {
             inherit
               self
@@ -220,7 +209,7 @@
               inputs
               dotfileDir
               ;
-          } // extraSpecialArgs;
+          };
         };
     in
     {
@@ -294,7 +283,10 @@
             ./hosts/personal
             ./hosts/desktop
           ];
-          userModules = [ ./users/alapshin ];
+          userModules = [
+            ./users/alapshin
+            ./users/alapshin/home
+          ];
         };
 
         altdesk = mkNixosConfiguration {
@@ -315,9 +307,6 @@
           userModules = [
             ./users/alapshin/home
           ];
-          extraSpecialArgs = {
-            username = "andrei.lapshin";
-          };
         };
       };
 
@@ -329,6 +318,17 @@
           system = "aarch64-darwin";
           hostname = "macbook";
           username = "andrei.lapshin";
+          homeModules = [
+            ./users/alapshin/home/home.nix
+          ];
+        };
+        "alapshin@desktop" = mkHomeConfiguration {
+          system = "x86_64-linux";
+          hostname = "desktop";
+          username = "alapshin";
+          homeModules = [
+            ./users/alapshin/home/home.nix
+          ];
         };
       };
     };

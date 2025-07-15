@@ -61,15 +61,6 @@ let
   ];
 in
 {
-  imports = [
-    (import ./home (
-      args
-      // {
-        inherit username;
-      }
-    ))
-  ];
-
   users.users."${username}" = {
     uid = 1000;
     shell = pkgs.fish;
