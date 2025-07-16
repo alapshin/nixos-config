@@ -26,7 +26,7 @@
         NEXTAUTH_URL = "https://linkwarden.${config.services.webhost.basedomain}/api/v1/auth";
         AUTHELIA_WELLKNOWN_URL = "https://${config.services.webhost.authdomain}/.well-known/openid-configuration";
       };
-      secretsFile = config.sops.templates."linkwarden.env".path;
+      environmentFile = config.sops.templates."linkwarden.env".path;
     };
 
     webhost.applications."linkwarden" = {
