@@ -2,8 +2,12 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }:
+let
+  username = "andrei.lapshin";
+in
 {
   nix.enable = false;
   programs.bash.enable = true;
@@ -26,13 +30,30 @@
     bash
     fish
   ];
-  users.users."andrei.lapshin" = {
-    home = "/Users/andrei.lapshin";
+  users.users."${username}" = {
+    home = "/Users/${username}";
     shell = pkgs.fish;
   };
-  system.primaryUser = "andrei.lapshin";
+  system.primaryUser = username;
   # For correct PATH
   launchd.user.envVariables = {
     PATH = config.environment.systemPath;
+  };
+
+  homebrew = {
+    enable = true;
+    global = {
+      autoUpdate = false;
+    };
+  };
+
+  nix-homebrew = {
+    enable = true;
+    user = config.system.primaryUser;
+    taps = {
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
+    };
+    mutableTaps = false;
   };
 }

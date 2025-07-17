@@ -45,6 +45,15 @@
 
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -74,6 +83,7 @@
       lanzaboote,
       treefmt-nix,
       nix-darwin,
+      nix-homebrew,
       home-manager,
       plasma-manager,
       nvf,
@@ -162,6 +172,7 @@
           sharedModules = [
             ./configuration.nix
             sops-nix.darwinModules.sops
+            nix-homebrew.darwinModules.nix-homebrew
             home-manager.darwinModules.home-manager homeConfig
           ];
         in
@@ -312,7 +323,6 @@
 
       homeModules = import ./modules/home;
 
-      # Stand-alone home-manager configuration for non NixOS machines
       homeConfigurations = {
         "alapshin@macbook" = mkHomeConfiguration {
           system = "aarch64-darwin";
