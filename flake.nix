@@ -101,7 +101,7 @@
       };
       treefmtConfig = import ./treefmt-config.nix;
 
-      mkNixpkgs =
+      mkPkgs =
         {
           config ? pkgConfig,
           system,
@@ -112,7 +112,7 @@
           overlays = (lib.attrValues self.overlays) ++ [ nur.overlays.default ];
         };
       forEachSystem = nixpkgs.lib.genAttrs (import systems);
-      eachSystemPkgs = forEachSystem (system: mkNixpkgs { inherit system nixpkgs; });
+      eachSystemPkgs = forEachSystem (system: mkPkgs { inherit system nixpkgs; });
       forEachSystemPkgs = function: forEachSystem (system: function eachSystemPkgs.${system});
 
       homeConfig = {
@@ -143,7 +143,7 @@
           homeModules,
         }:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = mkNixpkgs {
+          pkgs = mkPkgs {
             inherit config system nixpkgs;
           };
           modules = homeConfig.home-manager.sharedModules ++ homeModules;
@@ -166,7 +166,7 @@
           userModules ? [ ],
         }:
         let
-          pkgs = mkNixpkgs {
+          pkgs = mkPkgs {
             inherit config system nixpkgs;
           };
           sharedModules = [
@@ -209,7 +209,7 @@
           ];
         in
         nixpkgs.lib.nixosSystem {
-          pkgs = mkNixpkgs {
+          pkgs = mkPkgs {
             inherit config system nixpkgs;
           };
           modules = sharedModules ++ hostModules ++ userModules;
