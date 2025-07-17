@@ -12,6 +12,8 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
+    bash-language-server = inputs.nixpkgs-bashls.legacyPackages."${prev.system}".bash-language-server;
+
     beanprice = prev.beanprice.overrideAttrs {
       version = "2.0.0-unstalbe-2025-02-25";
       src = prev.fetchFromGitHub {
