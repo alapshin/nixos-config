@@ -32,7 +32,7 @@
       };
     };
     element-desktop = {
-      enable = false;
+      enable = true;
     };
 
     obs-studio = {
