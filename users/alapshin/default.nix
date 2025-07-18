@@ -20,10 +20,12 @@ let
   dictionaries = with pkgs; [
     aspell
     aspellDicts.en
+    aspellDicts.es
     aspellDicts.ru
     aspellDicts.sr
     hunspell
     hunspellDicts.en-us
+    hunspellDicts.es-es
     hunspellDicts.ru-ru
     customHunspellDicts.sr
   ];
