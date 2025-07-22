@@ -26,8 +26,7 @@
       scrcpy
     ]
     ++ (lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
-      # jetbrains.datagrip
-      # jetbrains.idea-ultimate
+      jetbrains.idea-ultimate
       android-studio-stable-with-sdk
     ]);
 

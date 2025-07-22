@@ -313,6 +313,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-jbr": {
+      "locked": {
+        "lastModified": 1752862078,
+        "narHash": "sha256-0D0c1BddL/W6ct+3BUUuuga9HoISOfCy7NDD+kWgVEQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6895a8b63bbdcbdeac7d8f0a332893c2ebbc2498",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "pull/426285/head",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1751159883,
@@ -493,6 +509,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-jbr": "nixpkgs-jbr",
         "nixpkgs-lw": "nixpkgs-lw",
         "nixpkgs-nextcloud": "nixpkgs-nextcloud",
         "nur": "nur",
