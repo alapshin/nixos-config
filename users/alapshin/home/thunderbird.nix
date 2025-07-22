@@ -8,19 +8,42 @@ let
   cfg = config.programs.thunderbird;
 in
 {
-  accounts.email.accounts = lib.mkIf cfg.enable {
-    "GMail" = {
-      flavor = "gmail.com";
-      address = config.secrets.contents.email.gmail;
-      realName = "Andrei Lapshin";
-      thunderbird.enable = true;
+  accounts = {
+    email.accounts = {
+      "GMail" = {
+        flavor = "gmail.com";
+        address = config.secrets.contents.email.gmail;
+        realName = "Andrei Lapshin";
+        thunderbird.enable = cfg.enable;
+      };
+      "Fastmail" = {
+        flavor = "fastmail.com";
+        address = config.secrets.contents.email.fastmail;
+        primary = true;
+        realName = "Andrei Lapshin";
+        thunderbird.enable = cfg.enable;
+      };
     };
-    "Fastmail" = {
-      flavor = "fastmail.com";
-      address = config.secrets.contents.email.fastmail;
-      primary = true;
-      realName = "Andrei Lapshin";
-      thunderbird.enable = true;
+    calendar.accounts = {
+      "Nextcloud" = {
+        primary = true;
+        remote = rec {
+          type = "caldav";
+          url = "https://nextcloud.bitgarage.dev/remote.php/dav/calendars/${userName}/personal/";
+          userName = "user1";
+        };
+        thunderbird.enable = cfg.enable;
+      };
+    };
+    contact.accounts = {
+      "Nextcloud" = {
+        remote = rec {
+          type = "carddav";
+          url = "https://nextcloud.bitgarage.dev/remote.php/dav/addressbooks/users/${userName}/contacts/";
+          userName = "user1";
+        };
+        thunderbird.enable = cfg.enable;
+      };
     };
   };
 
