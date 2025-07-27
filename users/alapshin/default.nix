@@ -84,7 +84,7 @@ in
     packages =
       with pkgs;
       [
-        audacity
+        # audacity
         calibre
         freetube
         gimp3

@@ -31,7 +31,7 @@ in
   };
   services = {
     calibre-web = {
-      enable = true;
+      enable = false;
       user = user;
       group = group;
       listen.ip = "127.0.0.1";
