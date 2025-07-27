@@ -33,9 +33,5 @@
 
     prisma = inputs.nixpkgs-lw.legacyPackages."${prev.system}".prisma;
     linkwarden = inputs.nixpkgs-lw.legacyPackages."${prev.system}".linkwarden;
-
-    jetbrains = prev.jetbrains // {
-      jdk = inputs.nixpkgs-jbr.legacyPackages."${prev.system}".jetbrains.jdk;
-    };
   };
 }
