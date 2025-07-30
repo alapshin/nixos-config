@@ -62,7 +62,6 @@
     nvf.inputs.nixpkgs.follows = "nixpkgs";
     nvf.inputs.systems.follows = "systems";
     nvf.inputs.flake-parts.follows = "flake-parts";
-    nvf.inputs.flake-utils.follows = "flake-utils";
 
     catppuccin.url = "github:catppuccin/nix";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
