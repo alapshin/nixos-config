@@ -46,6 +46,7 @@ in
     paperless = {
       enable = true;
       passwordFile = config.sops.secrets."paperless/password".path;
+      environmentFile = config.sops.templates."paperless.env".path;
       settings = {
         PAPERLESS_URL = "https://paperless.${config.services.webhost.basedomain}";
         PAPERLESS_APPS = "allauth.socialaccount.providers.openid_connect";
@@ -80,11 +81,5 @@ in
       };
     };
 
-  };
-
-  systemd.services.paperless-web = {
-    serviceConfig = {
-      EnvironmentFile = config.sops.templates."paperless.env".path;
-    };
   };
 }
