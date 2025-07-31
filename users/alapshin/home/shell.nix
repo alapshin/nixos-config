@@ -1,4 +1,9 @@
-{ pkgs, dotfileDir, ... }:
+{
+  pkgs,
+  config,
+  dotfileDir,
+  ...
+}:
 {
   home.packages = with pkgs; [
     doggo
@@ -124,7 +129,7 @@
 
     zsh = {
       enable = true;
-      dotDir = ".config/zsh";
+      dotDir = "${config.xdg.configHome}/zsh";
 
       enableCompletion = true;
       syntaxHighlighting = {
