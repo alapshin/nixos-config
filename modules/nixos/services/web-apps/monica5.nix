@@ -398,7 +398,8 @@ in
       settings = {
         "listen.owner" = webserver.user;
         "listen.group" = webserver.group;
-      } // cfg.poolConfig;
+      }
+      // cfg.poolConfig;
     };
 
     services.nginx = mkIf (cfg.webserver == "nginx") {
@@ -524,24 +525,23 @@ in
       };
     };
 
-    systemd.tmpfiles.rules =
-      [
-        "d ${cfg.dataDir}                            0710 ${user} ${group} - -"
-        "d ${cfg.dataDir}/public                     0750 ${user} ${group} - -"
-        "d ${cfg.dataDir}/public/uploads             0750 ${user} ${group} - -"
-        "d ${cfg.dataDir}/storage                    0700 ${user} ${group} - -"
-        "d ${cfg.dataDir}/storage/app                0700 ${user} ${group} - -"
-        "d ${cfg.dataDir}/storage/fonts              0700 ${user} ${group} - -"
-        "d ${cfg.dataDir}/storage/framework          0700 ${user} ${group} - -"
-        "d ${cfg.dataDir}/storage/framework/cache    0700 ${user} ${group} - -"
-        "d ${cfg.dataDir}/storage/framework/sessions 0700 ${user} ${group} - -"
-        "d ${cfg.dataDir}/storage/framework/views    0700 ${user} ${group} - -"
-        "d ${cfg.dataDir}/storage/logs               0700 ${user} ${group} - -"
-        "d ${cfg.dataDir}/storage/uploads            0700 ${user} ${group} - -"
-      ]
-      ++ lib.optionals (db.type == "sqlite") [
-        "f ${sqlitePath}                             0750 ${user} ${group} - -"
-      ];
+    systemd.tmpfiles.rules = [
+      "d ${cfg.dataDir}                            0710 ${user} ${group} - -"
+      "d ${cfg.dataDir}/public                     0750 ${user} ${group} - -"
+      "d ${cfg.dataDir}/public/uploads             0750 ${user} ${group} - -"
+      "d ${cfg.dataDir}/storage                    0700 ${user} ${group} - -"
+      "d ${cfg.dataDir}/storage/app                0700 ${user} ${group} - -"
+      "d ${cfg.dataDir}/storage/fonts              0700 ${user} ${group} - -"
+      "d ${cfg.dataDir}/storage/framework          0700 ${user} ${group} - -"
+      "d ${cfg.dataDir}/storage/framework/cache    0700 ${user} ${group} - -"
+      "d ${cfg.dataDir}/storage/framework/sessions 0700 ${user} ${group} - -"
+      "d ${cfg.dataDir}/storage/framework/views    0700 ${user} ${group} - -"
+      "d ${cfg.dataDir}/storage/logs               0700 ${user} ${group} - -"
+      "d ${cfg.dataDir}/storage/uploads            0700 ${user} ${group} - -"
+    ]
+    ++ lib.optionals (db.type == "sqlite") [
+      "f ${sqlitePath}                             0750 ${user} ${group} - -"
+    ];
 
     users = {
       users = mkIf (user == "monica") {

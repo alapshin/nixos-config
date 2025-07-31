@@ -23,7 +23,7 @@ function update {
 }
 
 function clean-store {
-    nh clean all --keep 5
+	nh clean all --keep 5
 }
 
 function os-switch {

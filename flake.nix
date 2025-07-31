@@ -146,16 +146,14 @@
             inherit config system nixpkgs;
           };
           modules = homeConfig.home-manager.sharedModules ++ homeModules;
-          extraSpecialArgs =
-            homeConfig.home-manager.extraSpecialArgs
-            // {
-              inherit username;
-              osConfig = {
-                networking = {
-                  hostName = hostname;
-                };
+          extraSpecialArgs = homeConfig.home-manager.extraSpecialArgs // {
+            inherit username;
+            osConfig = {
+              networking = {
+                hostName = hostname;
               };
             };
+          };
         };
       mkDarwinConfiguration =
         {

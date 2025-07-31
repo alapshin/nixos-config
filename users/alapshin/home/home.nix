@@ -86,22 +86,21 @@
         recursive = true;
       };
     };
-    configFile =
-      {
-        "fontconfig" = {
-          source = "${dotfileDir}/fontconfig";
-          recursive = true;
-        };
-
-        "glow/glow.yml".source = "${dotfileDir}/glow/glow.yml";
-        "ideavim/ideavimrc".source = "${dotfileDir}/ideavimrc";
-        "latexmk/latexmkrc".source = "${dotfileDir}/latexmkrc";
-        "borgmatic/config.yaml".source = "${dotfileDir}/borgmatic.yaml";
-      }
-      // lib.attrsets.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
-        # https://github.com/nix-community/home-manager/issues/1213#issuecomment-626240819
-        "mimeapps.list".force = true;
+    configFile = {
+      "fontconfig" = {
+        source = "${dotfileDir}/fontconfig";
+        recursive = true;
       };
+
+      "glow/glow.yml".source = "${dotfileDir}/glow/glow.yml";
+      "ideavim/ideavimrc".source = "${dotfileDir}/ideavimrc";
+      "latexmk/latexmkrc".source = "${dotfileDir}/latexmkrc";
+      "borgmatic/config.yaml".source = "${dotfileDir}/borgmatic.yaml";
+    }
+    // lib.attrsets.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
+      # https://github.com/nix-community/home-manager/issues/1213#issuecomment-626240819
+      "mimeapps.list".force = true;
+    };
     mimeApps = {
       enable = pkgs.stdenv.hostPlatform.isLinux;
       defaultApplications = {

@@ -88,18 +88,17 @@
 
     starship = {
       enable = true;
-      settings =
-        {
-          format = "$all";
-        }
-        // builtins.fromTOML (
-          builtins.readFile (
-            pkgs.fetchurl {
-              url = "https://raw.githubusercontent.com/starship/starship/v1.23.0/docs/public/presets/toml/plain-text-symbols.toml";
-              hash = "sha256-1LnKMIx0HrmULhcLxfu5VImuHvOAWTntVDjtI+Y4sjY=";
-            }
-          )
-        );
+      settings = {
+        format = "$all";
+      }
+      // builtins.fromTOML (
+        builtins.readFile (
+          pkgs.fetchurl {
+            url = "https://raw.githubusercontent.com/starship/starship/v1.23.0/docs/public/presets/toml/plain-text-symbols.toml";
+            hash = "sha256-1LnKMIx0HrmULhcLxfu5VImuHvOAWTntVDjtI+Y4sjY=";
+          }
+        )
+      );
     };
 
     tealdeer.enable = true;

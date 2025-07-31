@@ -25,7 +25,8 @@ let
           type = app;
           url = "http://localhost:${toString listenPort}";
           key = "{{HOMEPAGE_FILE_${lib.toUpper app}_API_KEY}}";
-        } // widget;
+        }
+        // widget;
       };
     };
 in
