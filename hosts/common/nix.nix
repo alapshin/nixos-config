@@ -18,7 +18,6 @@
       auto-optimise-store = true;
 
       max-jobs = 2;
-      build-dir = "/var/tmp";
       # Avoid copying unnecessary stuff over SSH
       builders-use-substitutes = true;
 
