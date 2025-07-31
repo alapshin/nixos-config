@@ -136,7 +136,7 @@ in
           lsp.server = "nixd";
           format = {
             type = "nixfmt";
-            package = pkgs.nixfmt-rfc-style;
+            package = pkgs.nixfmt;
           };
         };
         python.enable = true;
