@@ -30,9 +30,6 @@ in
     bash
     fish
   ];
-  environment.systemPackages = with pkgs; [
-    firefox
-  ];
 
   users.users."${username}" = {
     home = "/Users/${username}";
@@ -65,12 +62,30 @@ in
     mutableTaps = false;
   };
 
-  system.defaults.NSGlobalDomain = {
-    AppleShowScrollBars = "Always";
-    AppleShowAllExtensions = true;
-  };
+  system = {
+    defaults = {
+      controlcenter = {
+        BatteryShowPercentage = true;
+      };
+      finder = {
+        AppleShowAllExtensions = true;
+        FXPreferredViewStyle = "Nlsv";
+        NewWindowTarget = "Home";
+        ShowPathbar = true;
+        ShowStatusBar = true;
+        _FXShowPosixPathInTitle = true;
+        _FXSortFoldersFirst = true;
+        _FXSortFoldersFirstOnDesktop = true;
+      };
+      menuExtraClock = {
+        ShowDate = 1;
+      };
+      LaunchServices.LSQuarantine = false;
+      NSGlobalDomain = {
+        AppleShowScrollBars = "Always";
+        AppleShowAllExtensions = true;
+      };
 
-  system.defaults.controlcenter = {
-    BatteryShowPercentage = true;
+    };
   };
 }
