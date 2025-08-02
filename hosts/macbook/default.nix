@@ -35,10 +35,6 @@ in
     shell = pkgs.fish;
   };
   system.primaryUser = username;
-  # For correct PATH
-  launchd.user.envVariables = {
-    PATH = config.environment.systemPath;
-  };
 
   homebrew = {
     enable = true;
