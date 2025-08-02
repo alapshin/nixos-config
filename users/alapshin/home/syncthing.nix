@@ -107,6 +107,7 @@ in
           id = "worksync";
           label = "Work Syncthing";
           devices = [
+            "desktop"
             "pixel-work"
           ];
           versioning = {
