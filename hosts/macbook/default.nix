@@ -60,4 +60,13 @@ in
     };
     mutableTaps = false;
   };
+
+  system.defaults.NSGlobalDomain = {
+    AppleShowScrollBars = "Always";
+    AppleShowAllExtensions = true;
+  };
+
+  system.defaults.controlcenter = {
+    BatteryShowPercentage = true;
+  };
 }
