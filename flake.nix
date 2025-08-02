@@ -20,6 +20,7 @@
     nixpkgs.url = "nixpkgs/nixos-unstable-small";
     nixpkgs-lw.url = "github:NixOS/nixpkgs/pull/347353/head";
     nixpkgs-nextcloud.url = "github:NixOS/nixpkgs/pull/384565/head";
+    nixpkgs-firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
 
     systems.url = "github:nix-systems/default";
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -77,7 +78,6 @@
       self,
       nixpkgs,
       systems,
-      nur,
       disko,
       sops-nix,
       lanzaboote,
@@ -110,7 +110,10 @@
         }:
         import nixpkgs {
           inherit config system;
-          overlays = (lib.attrValues self.overlays) ++ [ nur.overlays.default ];
+          overlays = (lib.attrValues self.overlays) ++ [ 
+            inputs.nur.overlays.default 
+            # inputs.nixpkgs-firefox-darwin.overlay
+          ];
         };
       forEachSystem = nixpkgs.lib.genAttrs (import systems);
       eachSystemPkgs = forEachSystem (system: mkPkgs { inherit system nixpkgs; });
