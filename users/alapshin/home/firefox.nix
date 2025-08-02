@@ -5,13 +5,16 @@
   osConfig,
   ...
 }:
+let
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+in
 {
   home.file =
     let
       self = config.programs.firefox;
       profile =
         self.configPath
-        + (if pkgs.stdenv.hostPlatform.isDarwin then "/Profiles/" else "/")
+        + (if isDarwin then "/Profiles/" else "/")
         + self.profiles."default".path;
     in
     {
@@ -20,6 +23,7 @@
 
   programs.firefox = {
     enable = true;
+    package = if isDarwin then pkgs.firefox else pkgs.firefox;
 
     nativeMessagingHosts = lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
       pkgs.kdePackages.plasma-browser-integration

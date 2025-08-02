@@ -30,6 +30,10 @@ in
     bash
     fish
   ];
+  environment.systemPackages = with pkgs; [
+    firefox
+  ];
+
   users.users."${username}" = {
     home = "/Users/${username}";
     shell = pkgs.fish;
