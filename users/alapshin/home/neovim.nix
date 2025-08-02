@@ -71,7 +71,7 @@ in
       clipboard = {
         enable = true;
         registers = "unnamedplus";
-        providers.wl-copy.enable = true;
+        providers.wl-copy.enable = pkgs.stdenv.hostPlatform.isLinux;
       };
 
       comments.comment-nvim.enable = true;

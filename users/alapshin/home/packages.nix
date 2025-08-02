@@ -19,7 +19,6 @@
     ssh-to-age
     stylua
     wget
-    wl-clipboard
     unzip
 
     # Media
@@ -36,5 +35,7 @@
     nerd-fonts.jetbrains-mono
 
     noto-fonts-monochrome-emoji
+  ] ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
+    wl-clipboard
   ];
 }
