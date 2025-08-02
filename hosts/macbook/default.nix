@@ -38,6 +38,11 @@ in
 
   homebrew = {
     enable = true;
+    brews = [
+    ];
+    casks = [
+      "android-studio"
+    ];
     global = {
       autoUpdate = false;
     };
