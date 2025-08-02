@@ -6,6 +6,7 @@
   ...
 }:
 let
+  isLinux = pkgs.stdenv.hostPlatform.isLinux;
   isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
 in
 {
@@ -21,9 +22,13 @@ in
       "${profile}/chrome".source = "${pkgs.firefox-ui-fix}/chrome";
     };
 
+  programs.librewolf.enable = true;
+
   programs.firefox = {
     enable = true;
-    package = if isDarwin then pkgs.firefox else pkgs.firefox;
+    package = if isLinux
+      then pkgs.firefox
+      else lib.makeOverridable (_: pkgs.firefox-bin) {};
 
     nativeMessagingHosts = lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
       pkgs.kdePackages.plasma-browser-integration
