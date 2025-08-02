@@ -7,13 +7,6 @@
 }:
 {
 
-  home = {
-    inherit username;
-    stateVersion = "24.11";
-    homeDirectory =
-      if pkgs.stdenv.hostPlatform.isLinux then "/home/${username}" else "/Users/${username}";
-  };
-
   imports = [
     ./anki.nix
     ./chromium.nix
@@ -52,6 +45,13 @@
 
   programs.nh.enable = true;
   programs.home-manager.enable = true;
+
+  home = {
+    inherit username;
+    stateVersion = "24.11";
+    homeDirectory =
+      if pkgs.stdenv.hostPlatform.isLinux then "/home/${username}" else "/Users/${username}";
+  };
 
   home.language = {
     base = "en_US.UTF-8";
