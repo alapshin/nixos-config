@@ -77,7 +77,7 @@
     enable = true;
     autostart = {
       enable = true;
-      entries = [
+      entries = lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
         "${pkgs.telegram-desktop}/share/applications/org.telegram.desktop.desktop"
       ];
     };
