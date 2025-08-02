@@ -36,7 +36,7 @@
     };
 
     obs-studio = {
-      enable = true;
+      enable = pkgs.stdenv.hostPlatform.isLinux;
       plugins = with pkgs.obs-studio-plugins; [
         input-overlay
         obs-composite-blur
