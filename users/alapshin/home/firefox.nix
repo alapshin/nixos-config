@@ -20,7 +20,6 @@
 
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox;
 
     nativeMessagingHosts = lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
       pkgs.kdePackages.plasma-browser-integration
