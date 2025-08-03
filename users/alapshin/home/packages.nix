@@ -1,41 +1,44 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    # CLI
-    age
-    atool
-    exiftool
-    file
-    ghostscript
-    hadolint
-    imagemagick
-    moreutils
-    openssl
-    p7zip
-    rsync
-    shfmt
-    shellcheck
-    sops
-    ssh-to-age
-    stylua
-    wget
-    unzip
+  home.packages =
+    with pkgs;
+    [
+      # CLI
+      age
+      atool
+      exiftool
+      file
+      ghostscript
+      hadolint
+      imagemagick
+      moreutils
+      openssl
+      p7zip
+      rsync
+      shfmt
+      shellcheck
+      sops
+      ssh-to-age
+      stylua
+      wget
+      unzip
 
-    # Media
-    ffmpeg
+      # Media
+      ffmpeg
 
-    # Messaging
-    slack
+      # Messaging
+      slack
 
-    # Fonts
-    noto-fonts
-    noto-fonts-lgc-plus
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    nerd-fonts.jetbrains-mono
+      # Fonts
+      noto-fonts
+      noto-fonts-lgc-plus
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      nerd-fonts.jetbrains-mono
 
-    noto-fonts-monochrome-emoji
-  ] ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
-    wl-clipboard
-  ];
+      noto-fonts-monochrome-emoji
+    ]
+    ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
+      wl-clipboard
+    ];
 }

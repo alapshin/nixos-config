@@ -13,10 +13,7 @@ in
   home.file =
     let
       self = config.programs.firefox;
-      profile =
-        self.configPath
-        + (if isDarwin then "/Profiles/" else "/")
-        + self.profiles."default".path;
+      profile = self.configPath + (if isDarwin then "/Profiles/" else "/") + self.profiles."default".path;
     in
     {
       "${profile}/chrome".source = "${pkgs.firefox-ui-fix}/chrome";
@@ -24,10 +21,8 @@ in
 
   programs.firefox = {
     enable = true;
-    package = if isLinux
-      then pkgs.firefox
-      else pkgs.firefox;
-      # else lib.makeOverridable (_: pkgs.firefox-bin) {};
+    package = if isLinux then pkgs.firefox else pkgs.firefox;
+    # else lib.makeOverridable (_: pkgs.firefox-bin) {};
 
     nativeMessagingHosts = lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
       pkgs.kdePackages.plasma-browser-integration
