@@ -50,6 +50,10 @@ in
     global = {
       autoUpdate = false;
     };
+    onActivation = {
+      cleanup = "uninstall";
+    };
+    taps = builtins.attrNames config.nix-homebrew.taps;
   };
 
   nix-homebrew = {
