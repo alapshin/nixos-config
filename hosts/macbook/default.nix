@@ -62,7 +62,10 @@ in
     mutableTaps = false;
   };
 
+  time.timeZone = "Europe/Belgrade";
+
   system = {
+    startup.chime = false;
     defaults = {
       controlcenter = {
         BatteryShowPercentage = true;
