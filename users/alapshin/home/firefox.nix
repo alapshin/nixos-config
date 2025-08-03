@@ -200,6 +200,7 @@ in
           "userChrome.icon.global_menubar" = false;
           "userChrome.hidden.tabbar" = true;
           "userChrome.hidden.sidebar_header" = true;
+          "userChrome.tabbar.as_titlebar" = true;
           "userChrome.theme.non_native_menu" = false;
         };
         extraConfig = builtins.readFile "${pkgs.firefox-ui-fix}/user.js";
