@@ -12,6 +12,7 @@
       # HTTP API
       hurl
       xh
+      mitmproxy
 
       # OpenAPI & Swagger
       redocly
