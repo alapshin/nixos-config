@@ -17,7 +17,7 @@
         "languagetool"
 
         "idea"
-        "datagrip"
+        "cursor"
         "androidsdk"
         "android-sdk"
         "android-studio"

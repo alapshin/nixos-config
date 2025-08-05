@@ -26,6 +26,7 @@
       scrcpy
     ]
     ++ (lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
+      code-cursor-fhs
       jetbrains.idea-ultimate
       android-studio-stable-with-sdk
     ]);
