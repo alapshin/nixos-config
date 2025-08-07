@@ -30,10 +30,6 @@ let
     customHunspellDicts.sr
   ];
 
-  guiDevTools = with pkgs; [
-    drawio
-  ];
-
   kdePackages = with pkgs.kdePackages; [
     ark
     dolphin
@@ -100,7 +96,6 @@ in
       ++ accountingTools
       ++ blockchainPackages
       ++ dictionaries
-      ++ guiDevTools
       ++ kdePackages
       ++ pythonPackages;
   };
