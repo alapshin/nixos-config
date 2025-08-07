@@ -14,6 +14,7 @@
     };
     keepassxc = {
       enable = true;
+      autostart = true;
       settings = {
         Browser.Enabled = true;
         GUI = {
@@ -51,9 +52,6 @@
     enable = true;
     autostart = {
       enable = true;
-      entries = [
-        "${pkgs.keepassxc}/share/applications/org.keepassxc.KeePassXC.desktop"
-      ];
     };
   };
 }
