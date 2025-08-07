@@ -28,6 +28,12 @@
   fonts = {
     fontconfig = {
       allowBitmaps = true;
+      hinting = {
+        style = "medium";
+      };
+      subpixel = {
+        rgba = "rgb";
+      };
       defaultFonts = {
         emoji = [ "Noto Emoji" ];
         serif = [ "Noto Serif" ];
