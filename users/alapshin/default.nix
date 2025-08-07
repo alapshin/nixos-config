@@ -86,7 +86,6 @@ in
       [
         # audacity
         calibre
-        freetube
         gimp3
         inkscape
         jellyfin-media-player
