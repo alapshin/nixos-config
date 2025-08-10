@@ -190,7 +190,7 @@ in
           "userChrome.icon.panel_photon" = false;
           "userChrome.icon.global_menu" = false;
           "userChrome.icon.global_menubar" = false;
-          "userChrome.hidden.tabbar" = true;
+          "userChrome.hidden.tabbar" = !isDarwin;
           "userChrome.hidden.sidebar_header" = true;
           "userChrome.tabbar.as_titlebar" = true;
           "userChrome.theme.non_native_menu" = false;
