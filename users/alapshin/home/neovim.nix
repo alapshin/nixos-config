@@ -126,7 +126,7 @@ in
         bash.enable = true;
         lua.enable = true;
         markdown = {
-          enable = true;
+          enable = false;
           extensions = {
             render-markdown-nvim.enable = true;
           };
