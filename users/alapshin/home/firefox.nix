@@ -100,7 +100,6 @@ in
             metamask
             linkwarden
             sponsorblock
-            skip-redirect
             languagetool
             ublock-origin
             tree-style-tab
