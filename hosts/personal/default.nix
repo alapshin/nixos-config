@@ -54,7 +54,5 @@
     ];
   };
 
-  time = {
-    timeZone = "Europe/Belgrade";
-  };
+  time.timeZone = lib.mkDefault "Europe/Belgrade";
 }

@@ -10,4 +10,6 @@
     ./graphical-desktop.nix
     ./hardware-configuration.nix
   ];
+
+  time.timeZone = "Europe/Moscow";
 }
