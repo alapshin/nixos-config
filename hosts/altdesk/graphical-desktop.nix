@@ -18,6 +18,6 @@
     };
   };
 
-  hardware.nvidia.open = true;
+  hardware.nvidia.open = false;
   hardware.nvidia.modesetting.enable = true;
 }
