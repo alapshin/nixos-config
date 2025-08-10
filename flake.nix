@@ -307,7 +307,10 @@
             ./hosts/personal
             ./hosts/altdesk
           ];
-          userModules = [ ./users/alapshin ];
+          userModules = [
+            ./users/alapshin
+            ./users/alapshin/home
+          ];
         };
       };
 
