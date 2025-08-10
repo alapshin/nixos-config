@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  osConfig,
   ...
 }:
 {
@@ -26,11 +27,14 @@
       # Development
       scrcpy
     ]
-    ++ (lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
-      code-cursor-fhs
-      jetbrains.idea-ultimate
-      android-studio-stable-with-sdk
-    ]);
+    ++ (lib.lists.optionals
+      (pkgs.stdenv.hostPlatform.isLinux && osConfig.networking.hostName == "desktop")
+      [
+        code-cursor-fhs
+        jetbrains.idea-ultimate
+        android-studio-stable-with-sdk
+      ]
+    );
 
   programs = {
     java = {
