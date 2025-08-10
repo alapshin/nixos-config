@@ -95,7 +95,7 @@
         builtins.readFile (
           pkgs.fetchurl {
             url = "https://raw.githubusercontent.com/starship/starship/v1.23.0/docs/public/presets/toml/plain-text-symbols.toml";
-            hash = "sha256-X2MCGknvHGprfYHPclmYSGtNs1WJsDQvwDnJ2MqXm6s=";
+            hash = "sha256-1LnKMIx0HrmULhcLxfu5VImuHvOAWTntVDjtI+Y4sjY=";
           }
         )
       );
