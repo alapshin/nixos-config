@@ -89,9 +89,15 @@ in
       };
       LaunchServices.LSQuarantine = false;
       NSGlobalDomain = {
+        ApplePressAndHoldEnabled = false;
         AppleShowScrollBars = "Always";
         AppleShowAllExtensions = true;
         "com.apple.keyboard.fnState" = true;
+        NSAutomaticCapitalizationEnabled = false;
+        NSAutomaticDashSubstitutionEnabled = false;
+        NSAutomaticInlinePredictionEnabled = false;
+        NSAutomaticQuoteSubstitutionEnabled = false;
+        NSAutomaticSpellingCorrectionEnabled = false;
       };
     };
   };
