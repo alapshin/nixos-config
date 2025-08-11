@@ -48,7 +48,7 @@ in
       "android-studio"
     ];
     masApps = {
-      # Xcode = 497799835;
+      Xcode = 497799835;
     };
     global = {
       autoUpdate = false;
