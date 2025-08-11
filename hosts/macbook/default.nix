@@ -91,8 +91,8 @@ in
       NSGlobalDomain = {
         AppleShowScrollBars = "Always";
         AppleShowAllExtensions = true;
+        "com.apple.keyboard.fnState" = true;
       };
-
     };
   };
 }
