@@ -5,9 +5,10 @@
 }:
 {
   services = {
-    safeeyes.enable = true;
+    safeeyes.enable = pkgs.stdenv.hostPlatform.isLinux;
+    flameshot.enable = pkgs.stdenv.hostPlatform.isLinux;
     nextcloud-client = {
-      enable = true;
+      enable = pkgs.stdenv.hostPlatform.isLinux;
       startInBackground = false;
     };
   };

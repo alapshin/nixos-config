@@ -19,6 +19,7 @@
     ./plasma.nix
     ./programs.nix
     ./ssh.nix
+    ./services.nix
     ./shell.nix
     ./syncthing.nix
     ./texlive.nix
