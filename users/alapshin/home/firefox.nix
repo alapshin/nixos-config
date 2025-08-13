@@ -185,13 +185,12 @@ in
 
           # Firefox-Ui-Fix settings
           "userChrome.icon.menu.full" = true;
-          "userChrome.icon.panel_full" = true;
           "userChrome.icon.panel_photon" = false;
           "userChrome.icon.global_menu" = false;
           "userChrome.icon.global_menubar" = false;
-          "userChrome.hidden.tabbar" = !isDarwin;
+          "userChrome.hidden.tabbar" = true;
           "userChrome.hidden.sidebar_header" = true;
-          "userChrome.tabbar.as_titlebar" = true;
+          "userChrome.hidden.titlebar_container" = isDarwin;
           "userChrome.theme.non_native_menu" = false;
         };
         extraConfig = builtins.readFile "${pkgs.firefox-ui-fix}/user.js";
