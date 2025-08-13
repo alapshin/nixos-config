@@ -46,7 +46,7 @@ in
           id = "P75SKEA-ZPCPQIA-MK6VO4H-LQDUX37-AVCLACA-HZGOCHN-3KI24LT-Q3CKNQ3";
         };
         pixel = {
-          id = "QZYNABL-EZ5KIGC-NPZ76I7-7HBM3UR-RV2CEYL-7PUZ6CX-NFPH5V2-TIZU2A7";
+          id = "7UTPQY6-MQYRNG6-VPCVFRW-25OTN4L-CZLXSBC-TTDNALD-OT2FVXM-UIWQ7Q2";
         };
         macbook = {
           id = "KN6REOP-YQVDXWY-Z454FBH-FHWDYVD-PTKPRYD-PIKTXF4-PMYIVSX-P27TRQD";
@@ -56,25 +56,28 @@ in
         };
       };
       folders = {
-        "~/books" = {
+        "~/books" = rec {
           id = "books";
           label = "Books";
+          enable = builtins.elem hostname devices;
           devices = [
             "carbon"
             "desktop"
           ];
         };
-        "~/calibre" = {
+        "~/calibre" = rec {
           id = "calibre";
           label = "Calibre";
+          enable = builtins.elem hostname devices;
           devices = [
             "carbon"
             "desktop"
           ];
         };
-        "~/Documents" = {
+        "~/Documents" = rec {
           id = "documents";
           label = "Documents";
+          enable = builtins.elem hostname devices;
           devices = [
             "carbon"
             "desktop"
@@ -87,14 +90,16 @@ in
             };
           };
         };
-        "~/Syncthing" = {
+        "~/Syncthing" = rec {
           id = "syncthing";
           label = "Syncthing";
+          enable = builtins.elem hostname devices;
           devices = [
-            "carbon"
-            "desktop"
             "ebook"
             "pixel"
+            "carbon"
+            "desktop"
+            "macbook"
           ];
           versioning = {
             type = "simple";
@@ -103,11 +108,14 @@ in
             };
           };
         };
-        "~/worksync" = {
+        "~/worksync" = rec {
           id = "worksync";
           label = "Work Syncthing";
+          enable = builtins.elem hostname devices;
+
           devices = [
             "desktop"
+            "macbook"
             "pixel-work"
           ];
           versioning = {
