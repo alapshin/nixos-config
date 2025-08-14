@@ -42,10 +42,17 @@ function darwin-switch {
 }
 
 function remote-switch {
-	nh os switch \
-		--hostname "${hostname}" \
+	# Broken https://github.com/nix-community/nh/issues/308
+	# nh os switch \
+	# 	--hostname "${hostname}" \
+	# 	--build-host "${remote_host}" \
+	# 	--target-host "${remote_host}" "$PWD"
+	nixos-rebuild switch \
+		--fast \
+		--use-remote-sudo \
 		--build-host "${remote_host}" \
-		--target-host "${remote_host}" "$PWD"
+		--target-host "${remote_host}" \
+		--flake "$PWD#${hostname}"
 }
 
 function install-remote {
