@@ -17,12 +17,17 @@ in
       "paperless/password" = { };
       "paperless/oidc_client_secret" = { };
     };
-    templates."paperless.env".content = builtins.readFile (
-      pkgs.replaceVars ./paperless.env {
-        server_url = "https://${config.services.webhost.authdomain}";
-        oidc_client_secret = config.sops.placeholder."paperless/oidc_client_secret";
-      }
-    );
+    templates."paperless.env".content =
+      builtins.replaceStrings
+        [
+          "@server_url@"
+          "@oidc_client_secret@"
+        ]
+        [
+          "https://${config.services.webhost.authdomain}"
+          config.sops.placeholder."paperless/oidc_client_secret"
+        ]
+        (builtins.readFile ./paperless.env);
   };
 
   services = {
