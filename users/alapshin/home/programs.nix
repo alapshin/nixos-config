@@ -16,7 +16,10 @@
       enable = true;
       autostart = true;
       settings = {
-        Browser.Enabled = true;
+        Browser = {
+          Enabled = true;
+          UpdateBinaryPath = false;
+        };
         GUI = {
           AdvancedSettings = true;
           ApplicationTheme = "classic";
