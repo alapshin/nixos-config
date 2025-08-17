@@ -2,21 +2,25 @@
   pkgs,
   lib,
   config,
+  osConfig,
   ...
 }:
 let
   cfg = config.programs.thunderbird;
+  hostname = osConfig.networking.hostName;
 in
 {
   accounts = {
     email.accounts = {
       "GMail" = {
+        enable = hostname != "altdesk";
         flavor = "gmail.com";
         address = config.secrets.contents.email.gmail;
         realName = "Andrei Lapshin";
         thunderbird.enable = cfg.enable;
       };
       "Fastmail" = {
+        enable = hostname != "altdesk";
         flavor = "fastmail.com";
         address = config.secrets.contents.email.fastmail;
         primary = true;
