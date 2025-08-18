@@ -40,5 +40,6 @@
     ]
     ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
       wl-clipboard
+      rustdesk-flutter
     ];
 }

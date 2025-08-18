@@ -12,4 +12,8 @@
   ];
 
   time.timeZone = "Europe/Moscow";
+
+  environment.systemPackages = with pkgs; [
+    rustdesk-flutter
+  ];
 }
