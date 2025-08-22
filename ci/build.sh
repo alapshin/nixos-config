@@ -47,9 +47,10 @@ function remote-switch {
 	# 	--hostname "${hostname}" \
 	# 	--build-host "${remote_host}" \
 	# 	--target-host "${remote_host}" "$PWD"
-	nixos-rebuild switch \
-		--fast \
-		--use-remote-sudo \
+	nixos-rebuild-ng switch \
+		--no-reexec \
+        --sudo \
+        --ask-sudo-password \
 		--build-host "${remote_host}" \
 		--target-host "${remote_host}" \
 		--flake "$PWD#${hostname}"

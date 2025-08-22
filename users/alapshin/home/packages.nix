@@ -37,6 +37,10 @@
       nerd-fonts.jetbrains-mono
 
       noto-fonts-monochrome-emoji
+
+      # Needed for deploying remote hosts from darwin
+      nixos-rebuild-ng
+
     ]
     ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
       wl-clipboard
