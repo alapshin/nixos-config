@@ -28,9 +28,10 @@ in
       enable = true;
       port = 8085;
       environment = {
+        ENV = "prod";
         ENABLE_PERSISTENT_CONFIG = "False";
 
-        OFFLINE_MODE = "True";
+        OFFLINE_MODE = "False";
         DO_NOT_TRACK = "True";
         SCARF_NO_ANALYTICS = "True";
         ANONYMIZED_TELEMETRY = "False";
@@ -39,16 +40,21 @@ in
         ENABLE_SIGNUP = "False";
         ENABLE_LOGIN_FORM = "False";
         ENABLE_OAUTH_SIGNUP = "True";
+        DEFAULT_USER_ROLE = "user";
         OAUTH_CLIENT_ID = "open-webui";
         OAUTH_MERGE_ACCOUNTS_BY_EMAIL = "True";
         OAUTH_ROLES_CLAIM = "groups";
         ENABLE_OAUTH_ROLE_MANAGEMENT = "True";
         OPENID_PROVIDER_URL = "https://${config.services.webhost.authdomain}/.well-known/openid-configuration";
 
+        SHOW_ADMIN_DETAILS = "False";
+        ENABLE_EVALUATION_ARENA_MODELS = "False";
+
         REDIS_URL = "unix://${redisSocket}";
         WEBUI_URL = "https://owui.${config.services.webhost.basedomain}";
         DATABASE_URL = "postgresql:///${database}?host=/run/postgresql";
 
+        DEFAULT_MODELS = "openai/gpt-5";
         OPENAI_API_BASE_URL = "https://openrouter.ai/api/v1";
       };
       environmentFile = config.sops.templates."open-webui.env".path;
