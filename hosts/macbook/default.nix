@@ -45,6 +45,7 @@ in
     brews = [
     ];
     casks = [
+      "pritunl"
       "android-studio"
     ];
     masApps = {
