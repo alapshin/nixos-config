@@ -11,7 +11,7 @@
     [
       tokei
       # HTTP API
-      hurl
+      # hurl
       xh
       mitmproxy
 
@@ -22,7 +22,7 @@
       yamlfmt
 
       # AI
-      aider-chat
+      # aider-chat
 
       # Development
       scrcpy
