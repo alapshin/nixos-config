@@ -5,6 +5,9 @@
   dotfileDir,
   ...
 }:
+let
+  hostname = osConfig.networking.hostName;
+in
 {
 
   imports = [
@@ -78,9 +81,6 @@
     enable = true;
     autostart = {
       enable = true;
-      entries = lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
-        "${pkgs.telegram-desktop}/share/applications/org.telegram.desktop.desktop"
-      ];
     };
     dataFile = {
       "konsole" = {

@@ -87,7 +87,7 @@ in
     enable = true;
     autostart = {
       enable = true;
-      entries = [
+      entries = lib.lists.optionals (pkgs.stdenv.hostPlatform.isLinux && hostname != "altdesk") [
         "${config.programs.thunderbird.package}/share/applications/thunderbird.desktop"
       ];
     };
