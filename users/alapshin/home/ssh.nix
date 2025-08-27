@@ -13,8 +13,11 @@
   programs = {
     ssh = {
       enable = true;
-      addKeysToAgent = "yes";
+      enableDefaultConfig = false;
       matchBlocks = {
+        "*" = {
+          addKeysToAgent = "yes";
+        };
         "bifrost" = {
           user = "root";
           hostname = "95.217.6.218";
