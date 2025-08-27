@@ -2,6 +2,7 @@
 {
   android_sdk.accept_license = true;
   permittedInsecurePackages = [
+    "qtwebengine-5.15.19"
   ];
   allowUnfreePredicate =
     pkg:
