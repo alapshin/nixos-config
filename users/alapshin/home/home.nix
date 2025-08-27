@@ -5,9 +5,6 @@
   dotfileDir,
   ...
 }:
-let
-  hostname = osConfig.networking.hostName;
-in
 {
 
   imports = [
