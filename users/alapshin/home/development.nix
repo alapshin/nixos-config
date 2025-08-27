@@ -5,6 +5,9 @@
   osConfig,
   ...
 }:
+let
+  hostname = osConfig.networking.hostName;
+in
 {
   home.packages =
     with pkgs;
@@ -26,12 +29,13 @@
 
       # Development
       scrcpy
+
+      jetbrains.idea-ultimate
     ]
     ++ (lib.lists.optionals
       (pkgs.stdenv.hostPlatform.isLinux && osConfig.networking.hostName == "desktop")
       [
         code-cursor-fhs
-        jetbrains.idea-ultimate
         android-studio-stable-with-sdk
       ]
     );
