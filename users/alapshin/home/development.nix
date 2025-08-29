@@ -29,16 +29,14 @@ in
 
       # Development
       scrcpy
-
-      jetbrains.idea-ultimate
     ]
-    ++ (lib.lists.optionals
-      (pkgs.stdenv.hostPlatform.isLinux && osConfig.networking.hostName == "desktop")
-      [
-        code-cursor-fhs
-        android-studio-stable-with-sdk
-      ]
-    );
+    ++ (lib.lists.optionals (pkgs.stdenv.hostPlatform.isLinux && hostname != "altdesk") [
+      jetbrains.idea-ultimate
+    ])
+    ++ (lib.lists.optionals (pkgs.stdenv.hostPlatform.isLinux && hostname == "desktop") [
+      code-cursor-fhs
+      android-studio-stable-with-sdk
+    ]);
 
   programs = {
     java = {
