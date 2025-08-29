@@ -79,6 +79,9 @@
     lazygit = {
       enable = true;
       settings = {
+        git = {
+          overrideGpg = false;
+        };
         gui = {
           border = "rounded";
           expandFocusedSidePanel = true;
