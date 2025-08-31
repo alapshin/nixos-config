@@ -19,9 +19,20 @@
 
         "idea"
         "cursor"
+        # Android stuff
         "androidsdk"
         "android-sdk"
         "android-studio"
+        "build-tools"
+        "cmake"
+        "cmdline-tools"
+        "emulator"
+        "ndk"
+        "platforms"
+        "platform-tools"
+        "sources"
+        "system-image"
+        "tools"
 
         "pritunl-client"
       ];
