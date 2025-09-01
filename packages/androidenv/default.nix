@@ -12,6 +12,7 @@ pkgs.androidenv.composeAndroidPackages {
     "x86_64"
   ];
   platformVersions = [
+    "29"
     "35"
     "36"
   ];
