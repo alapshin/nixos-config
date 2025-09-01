@@ -299,16 +299,6 @@ in
           options = {
             indicator.style = "icon";
           };
-          highlights = lib.mkLuaInline ''
-            require("catppuccin.groups.integrations.bufferline").get {
-              styles = { "bold" },
-              custom = {
-                latte = {
-                  fill = { bg = latte.mantle },
-                },
-              },
-            }
-          '';
         };
       };
 
