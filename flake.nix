@@ -130,7 +130,7 @@
             sops-nix.homeManagerModules.sops
             catppuccin.homeModules.catppuccin
             mac-app-util.homeManagerModules.default
-            plasma-manager.homeManagerModules.plasma-manager
+            plasma-manager.homeModules.plasma-manager
           ];
           extraSpecialArgs = {
             inherit dotfileDir;
