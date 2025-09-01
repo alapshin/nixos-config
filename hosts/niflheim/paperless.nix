@@ -50,10 +50,10 @@ in
 
     paperless = {
       enable = true;
+      domain = "paperless.${config.services.webhost.basedomain}";
       passwordFile = config.sops.secrets."paperless/password".path;
       environmentFile = config.sops.templates."paperless.env".path;
       settings = {
-        PAPERLESS_URL = "https://paperless.${config.services.webhost.basedomain}";
         PAPERLESS_APPS = "allauth.socialaccount.providers.openid_connect";
         PAPERLESS_DBHOST = "/run/postgresql";
         PAPERLESS_REDIS = "unix://${redisSocket}";
