@@ -5,7 +5,11 @@
 
   # When applied, the  nixpkgs set from pull-request (declared in the flake inputs)
   # will be accessible through 'pkgs.<pull-request-name>'
-  development = final: _prev: {
+  development = final: prev: {
+    pr-open-webui = import inputs.nixpkgs-openwebui {
+      config = prev.config;
+      system = prev.system;
+    };
   };
 
   # https://nixos.wiki/wiki/Overlays
@@ -30,6 +34,8 @@
         autobean = pyfinal.callPackage ../packages/autobean { };
       })
     ];
+
+    open-webui = prev.pr-open-webui.open-webui;
 
     prisma = inputs.nixpkgs-lw.legacyPackages."${prev.system}".prisma;
     linkwarden = inputs.nixpkgs-lw.legacyPackages."${prev.system}".linkwarden;

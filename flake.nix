@@ -20,6 +20,7 @@
     nixpkgs.url = "nixpkgs/nixos-unstable-small";
     nixpkgs-lw.url = "github:NixOS/nixpkgs/pull/347353/head";
     nixpkgs-nextcloud.url = "github:NixOS/nixpkgs/pull/384565/head";
+    nixpkgs-openwebui.url = "github:NixOS/nixpkgs/pull/438551/head";
 
     systems.url = "github:nix-systems/default";
     flake-parts.url = "github:hercules-ci/flake-parts";
