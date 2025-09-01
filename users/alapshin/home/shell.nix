@@ -102,7 +102,6 @@
     };
 
     tealdeer.enable = true;
-    television.enable = true;
     yazi.enable = true;
     yt-dlp.enable = true;
 
