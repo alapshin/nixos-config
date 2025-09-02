@@ -15,8 +15,14 @@ in
 {
   sops = {
     secrets = {
-      "lldap/jwt_secret" = { };
-      "lldap/user_password" = { };
+      "lldap/jwt_secret" = {
+        owner = "lldap";
+        group = "lldap";
+      };
+      "lldap/user_password" = {
+        owner = "lldap";
+        group = "lldap";
+      };
     };
   };
 
