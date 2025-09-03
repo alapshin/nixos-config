@@ -86,7 +86,6 @@ in
         inkscape
         jellyfin-media-player
         kid3-qt
-        krename
         libreoffice-qt6-fresh
         qbittorrent
         smplayer
