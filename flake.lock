@@ -436,22 +436,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-openwebui": {
-      "locked": {
-        "lastModified": 1756902501,
-        "narHash": "sha256-a89pyAbY2qVZaiFxYdt9+fvXI8pLKgu/g7CqkCUUf94=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "898a1df732414f7d293a207459c8e47679b33364",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "pull/438551/head",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1730741070,
@@ -616,7 +600,6 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-lw": "nixpkgs-lw",
         "nixpkgs-nextcloud": "nixpkgs-nextcloud",
-        "nixpkgs-openwebui": "nixpkgs-openwebui",
         "nur": "nur",
         "nvf": "nvf",
         "plasma-manager": "plasma-manager",
