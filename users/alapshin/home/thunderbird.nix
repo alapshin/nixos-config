@@ -10,6 +10,16 @@ let
   hostname = osConfig.networking.hostName;
 in
 {
+  sops = {
+    secrets = {
+      "nextcloud_caldav" = {
+        path = "%r/nextcloud_caldav";
+      };
+      "nextcloud_carddav" = {
+        path = "%r/nextcloud_carddav";
+      };
+    };
+  };
   accounts = {
     email.accounts = {
       "GMail" = {
@@ -34,7 +44,11 @@ in
         remote = rec {
           type = "caldav";
           url = "https://nextcloud.bitgarage.dev/remote.php/dav/calendars/${userName}/personal/";
-          userName = "user1";
+          userName = "admin";
+          passwordCommand = [
+            "cat"
+            config.sops.secrets."nextcloud_caldav".path
+          ];
         };
         thunderbird.enable = cfg.enable;
       };
@@ -44,7 +58,11 @@ in
         remote = rec {
           type = "carddav";
           url = "https://nextcloud.bitgarage.dev/remote.php/dav/addressbooks/users/${userName}/contacts/";
-          userName = "user1";
+          userName = "admin";
+          passwordCommand = [
+            "cat"
+            config.sops.secrets."nextcloud_carddav".path
+          ];
         };
         thunderbird.enable = cfg.enable;
       };
