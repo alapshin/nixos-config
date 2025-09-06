@@ -19,6 +19,8 @@
 
         "idea"
         "cursor"
+        "claude-code"
+        "gemini-cli"
         # Android stuff
         "androidsdk"
         "android-sdk"

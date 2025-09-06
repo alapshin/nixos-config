@@ -25,7 +25,7 @@ in
       yamlfmt
 
       # AI
-      # aider-chat
+      aider-chat
 
       # Development
       scrcpy
@@ -49,6 +49,13 @@ in
       settings = {
         "org.gradle.java.installations.paths" = "${pkgs.jdk8.home},${pkgs.jdk17.home},${pkgs.jdk21.home}";
       };
+    };
+
+    claude-code = {
+     enable = true;
+    };
+    gemini-cli = {
+      enable = true;
     };
   };
 }
