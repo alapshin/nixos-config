@@ -14,7 +14,7 @@ in
     [
       tokei
       # HTTP API
-      # hurl
+      hurl
       xh
       mitmproxy
 
