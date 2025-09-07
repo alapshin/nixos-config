@@ -129,6 +129,6 @@ in
     };
   };
 
-  systemd.user.services.syncthing.unitConfig.After = [ "sops-nix.service" ];
-  systemd.user.services.syncthing-init.unitConfig.After = [ "sops-nix.service" ];
+  systemd.user.services.syncthing.Unit.After = [ "sops-nix.service" ];
+  systemd.user.services.syncthing-init.Unit.After = [ "sops-nix.service" ];
 }
