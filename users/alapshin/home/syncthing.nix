@@ -25,10 +25,6 @@ in
     enable = true;
     overrideDevices = true;
     overrideFolders = true;
-    extraOptions = [
-      # Don't create default ~/Sync folder
-      "--no-default-folder"
-    ];
     key = config.sops.secrets."syncthing/key".path;
     cert = config.sops.secrets."syncthing/cert".path;
     settings = {
