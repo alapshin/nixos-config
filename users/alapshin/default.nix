@@ -84,7 +84,6 @@ in
         calibre
         gimp3
         inkscape
-        jellyfin-media-player
         kid3-qt
         libreoffice-qt6-fresh
         qbittorrent
