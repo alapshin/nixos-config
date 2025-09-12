@@ -25,6 +25,9 @@
         "beanprice/sources/yahoo_test.py"
       ];
     };
+    open-webui = prev.open-webui.overridePythonAttrs(oldAttrs: rec {
+      dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
+    });
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
         autobean = pyfinal.callPackage ../packages/autobean { };
