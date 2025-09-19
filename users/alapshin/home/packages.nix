@@ -30,6 +30,7 @@
       slack
 
       # Fonts
+      liberation_ttf
       noto-fonts
       noto-fonts-lgc-plus
       noto-fonts-cjk-sans
@@ -40,7 +41,6 @@
 
       # Needed for deploying remote hosts from darwin
       nixos-rebuild-ng
-
     ]
     ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
       wl-clipboard
