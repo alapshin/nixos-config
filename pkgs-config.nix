@@ -17,10 +17,13 @@
         "open-webui"
         "languagetool"
 
-        "idea"
+        # AI tools
         "cursor"
         "claude-code"
         "gemini-cli"
+        # Jetbrains IDEs
+        "idea"
+        "pycharm"
         # Android stuff
         "androidsdk"
         "android-sdk"
