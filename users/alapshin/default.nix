@@ -47,12 +47,20 @@ let
         autobean
         beancount
         beanquery
+        flask
+        gunicorn
         ipython
         notebook
         matplotlib
         numpy
+        openai
+        openai-whisper
         pandas
+        pytest
+        python-dotenv
         scikit-learn
+        torch
+        transformers
         seaborn
       ]
     ))

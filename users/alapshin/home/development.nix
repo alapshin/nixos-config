@@ -51,6 +51,13 @@ in
         "org.gradle.java.installations.paths" = "${pkgs.jdk8.home},${pkgs.jdk17.home},${pkgs.jdk21.home}";
       };
     };
+    uv = {
+      enable = true;
+      settings = {
+        python-downloads = "never";
+        python-preference = "only-system";
+      };
+    };
 
     claude-code = {
      enable = true;
