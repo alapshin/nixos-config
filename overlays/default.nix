@@ -12,19 +12,15 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
-    beanprice = prev.beanprice.overrideAttrs {
-      version = "2.0.0-unstalbe-2025-02-25";
-      src = prev.fetchFromGitHub {
-        owner = "beancount";
-        repo = "beanprice";
-        rev = "7a6efa7e0b0c9567df27c98e3fd4e8fc3e1c7117";
-        hash = "sha256-FKKmh+xpKuV/mUtRVBHDfKVhPpQnBgUPc9UcIfkHxf8=";
+    beanprice = prev.beanprice.overrideAttrs(oldAttrs: rec {
+      version = "2.1.0";
+
+      src = oldAttrs.src // {
+        tag = "v${version}";
+        hash = "sha256-Lhr8CRysZbI6dpPwRSN6DgvnKrxsIzH5YyZXRLU1l3Q=";
       };
-      disabledTestPaths = [
-        "beanprice/price_test.py"
-        "beanprice/sources/yahoo_test.py"
-      ];
-    };
+    });
+
     open-webui = prev.open-webui.overridePythonAttrs(oldAttrs: rec {
       dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
     });
