@@ -47,6 +47,7 @@ let
         autobean
         beancount
         beanquery
+        coverage
         flask
         gunicorn
         ipython
@@ -57,11 +58,14 @@ let
         openai-whisper
         pandas
         pytest
+        pytest-cov
+        pytest-mock
         python-dotenv
         scikit-learn
+        seaborn
         torch
         transformers
-        seaborn
+        yt-dlp
       ]
     ))
   ];
