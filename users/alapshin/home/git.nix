@@ -7,6 +7,7 @@
 {
   home = {
     packages = with pkgs; [
+      gitleaks
       git-extras
       transcrypt
       git-filter-repo
