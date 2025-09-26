@@ -24,9 +24,6 @@ in
       # YAML
       yamlfmt
 
-      # AI
-      aider-chat
-
       # Development
       scrcpy
     ]
@@ -59,6 +56,15 @@ in
       };
     };
 
+    aider-chat = {
+      enable = true;
+      settings = {
+        # Git
+        auto-commits = false;
+        # Upgrading
+        check-update = false;
+      };
+    };
     claude-code = {
      enable = true;
     };
