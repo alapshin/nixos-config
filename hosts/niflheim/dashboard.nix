@@ -139,6 +139,12 @@ in
             (mkService {
               app = "jellyfin";
               description = "The Free Software Media System";
+              widget = {
+                enableUser= true;
+                enableBlocks = true;
+                enableNowPlaying = false;
+                showEpisodeNumber = true;
+              };
             })
             # (mkService {
             #   app = "jellyseer" ;
