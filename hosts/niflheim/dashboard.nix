@@ -158,7 +158,7 @@ in
               app = "immich";
               description = "High performance self-hosted photo and video management solution";
               widget = {
-                key = "{{HOMEPAGE_FILE_IMMICH_API_KEY}}";
+                version = "2";
               };
             })
             (mkService {
@@ -211,7 +211,7 @@ in
 
   systemd.services.homepage-dashboard = {
     environment = {
-      LOG_LEVEL = "debug";
+      # LOG_LEVEL = "debug";
       HOMEPAGE_FILE_AUDIOBOOKSHELF_API_KEY = "%d/audiobookshelf_api_key";
       HOMEPAGE_FILE_CALIBREWEB_USERNAME = "%d/calibreweb_username";
       HOMEPAGE_FILE_CALIBREWEB_PASSWORD = "%d/calibreweb_password";
