@@ -234,7 +234,7 @@ in
       };
     };
 
-    flaresolverr.enable = true;
+    flaresolverr.enable = false;
 
     postgresql = {
       ensureDatabases = [
