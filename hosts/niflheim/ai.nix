@@ -54,7 +54,7 @@ in
         WEBUI_URL = "https://owui.${config.services.webhost.basedomain}";
         DATABASE_URL = "postgresql:///${database}?host=/run/postgresql";
 
-        DEFAULT_MODELS = "openai/gpt-5";
+        DEFAULT_MODELS = "openai/gpt-5-chat";
         OPENAI_API_BASE_URL = "https://openrouter.ai/api/v1";
       };
       environmentFile = config.sops.templates."open-webui.env".path;
