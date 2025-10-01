@@ -12,15 +12,6 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
-    beanprice = prev.beanprice.overrideAttrs(oldAttrs: rec {
-      version = "2.1.0";
-
-      src = oldAttrs.src // {
-        tag = "v${version}";
-        hash = "sha256-Lhr8CRysZbI6dpPwRSN6DgvnKrxsIzH5YyZXRLU1l3Q=";
-      };
-    });
-
     open-webui = prev.open-webui.overridePythonAttrs(oldAttrs: rec {
       dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
     });
