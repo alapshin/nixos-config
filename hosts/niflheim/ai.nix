@@ -14,16 +14,80 @@ in
 {
   sops = {
     secrets = {
+      "open-webui/openai_api_key" = { };
       "open-webui/openrouter_api_key" = { };
       "open-webui/oidc_client_secret" = { };
     };
+
+    templates."litellm.env".content = ''
+      OPENROUTER_API_KEY=${config.sops.placeholder."open-webui/openrouter_api_key"}
+    '';
     templates."open-webui.env".content = ''
-      OPENAI_API_KEY=${config.sops.placeholder."open-webui/openrouter_api_key"}
+      IMAGES_OPENAI_API_KEY=${config.sops.placeholder."open-webui/openai_api_key"}
+      AUDIO_STT_OPENAI_API_KEY=${config.sops.placeholder."open-webui/openai_api_key"}
+      AUDIO_TTS_OPENAI_API_KEY=${config.sops.placeholder."open-webui/openai_api_key"}
       OAUTH_CLIENT_SECRET=${config.sops.placeholder."open-webui/oidc_client_secret"}
     '';
   };
 
   services = {
+    litellm = {
+      enable = true;
+      port = 10000;
+      environment = {
+        NO_DOCS = "True";
+        NO_REDOC = "True";
+        DISABLE_ADMIN_UI = "True";
+      };
+      environmentFile = config.sops.templates."litellm.env".path;
+      settings = {
+        model_list = [
+          {
+            model_name = "gpt-5";
+            litellm_params = {
+              model = "openrouter/openai/gpt-5";
+            };
+          }
+          {
+            model_name = "gpt-5-codex";
+            litellm_params = {
+              model = "openrouter/openai/gpt-5-codex";
+            };
+          }
+          {
+            model_name = "gpt-5-chat";
+            litellm_params = {
+              model = "openrouter/openai/gpt-5-chat";
+            };
+          }
+          {
+            model_name = "claude-sonnet-4";
+            litellm_params = {
+              model = "openrouter/anthropic/claude-sonnet-4";
+            };
+          }
+          {
+            model_name = "claude-sonnet-4.5";
+            litellm_params = {
+              model = "openrouter/anthropic/claude-sonnet-4.5";
+            };
+          }
+          {
+            model_name = "gemini-2.5-flash-preview";
+            litellm_params = {
+              model = "openrouter/google/gemini-2.5-flash-preview-09-2025";
+            };
+          }
+          {
+            model_name = "gemini-2.5-flash-lite-preview";
+            litellm_params = {
+              model = "openrouter/google/gemini-2.5-flash-lite-preview-09-2025";
+            };
+          }
+        ];
+      };
+    };
+
     open-webui = {
       enable = true;
       port = 8085;
@@ -50,12 +114,41 @@ in
         SHOW_ADMIN_DETAILS = "False";
         ENABLE_EVALUATION_ARENA_MODELS = "False";
 
-        REDIS_URL = "unix://${redisSocket}";
         WEBUI_URL = "https://owui.${config.services.webhost.basedomain}";
+
+        DEFAULT_MODELS = "gpt-5-chat";
+        OPENAI_API_BASE_URL = "http://localhost:${toString config.services.litellm.port}";
+
+        # Redis
+        # REDIS_URL = "unix://${redisSocket}";
+        # Database
         DATABASE_URL = "postgresql:///${database}?host=/run/postgresql";
 
-        DEFAULT_MODELS = "openai/gpt-5-chat";
-        OPENAI_API_BASE_URL = "https://openrouter.ai/api/v1";
+        # Audio
+        AUDIO_STT_ENGINE = "openai";
+        AUDIO_STT_MODEL = "gpt-4o-mini-transcribe";
+        AUDIO_STT_OPENAI_API_BASE_URL = "https://api.openai.com/v1/";
+        AUDIO_TTS_ENGINE = "openai";
+        AUDIO_TTS_MODEL = "gpt-4o-mini-tts";
+        AUDIO_TTS_VOICE = "ash";
+        AUDIO_TTS_OPENAI_API_BASE_URL = "https://api.openai.com/v1/";
+        # RAG
+        RAG_EMBEDDING_ENGINE = "";
+        RAG_EMBEDDING_MODEL = "sentence-transformers/all-mpnet-base-v2";
+        CONTENT_EXTRACTION_ENGINE = "docling";
+        DOCLING_OCR_ENGINE = "tesserocr";
+        DOCLING_OCR_LANG = "eng,rus,spa,srp,srp_latn";
+        DOCLING_SERVER_URL = "http://localhost:${toString config.services.docling-serve.port}";
+        # Image Generation
+        ENABLE_IMAGE_GENERATION = "True";
+        IMAGE_SIZE = "1024x1024";
+        IMAGE_GENERATION_ENGINE = "openai";
+        IMAGE_GENERATION_MODEL = "dall-e-3";
+        IMAGES_OPENAI_API_BASE_URL = "https://api.openai.com/v1/";
+        # Web Search
+        ENABLE_WEB_SEARCH = "True";
+        WEB_SEARCH_ENGINE = "searxng";
+        SEARXNG_QUERY_URL = "http://localhost:${toString config.services.searx.settings.server.port}/search?q=<query>";
       };
       environmentFile = config.sops.templates."open-webui.env".path;
     };
@@ -74,6 +167,8 @@ in
       enable = true;
       port = 0;
       user = user;
+      save = [
+      ];
     };
 
     webhost.applications."owui" = {
