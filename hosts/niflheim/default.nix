@@ -19,6 +19,7 @@
     ./calibre.nix
     ./changedetection.nix
     ./dashboard.nix
+    ./docling.nix
     ./forgejo.nix
     ./freshrss.nix
     ./grafana.nix
