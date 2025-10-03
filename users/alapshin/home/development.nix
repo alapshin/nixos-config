@@ -66,7 +66,7 @@ in
       };
     };
     claude-code = {
-     enable = true;
+      enable = true;
     };
     gemini-cli = {
       enable = true;

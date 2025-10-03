@@ -140,7 +140,7 @@ in
               app = "jellyfin";
               description = "The Free Software Media System";
               widget = {
-                enableUser= true;
+                enableUser = true;
                 enableBlocks = true;
                 enableNowPlaying = false;
                 showEpisodeNumber = true;
