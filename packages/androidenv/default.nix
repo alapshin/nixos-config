@@ -19,6 +19,7 @@ pkgs.androidenv.composeAndroidPackages {
   buildToolsVersions = [
     "34.0.0"
     "36.0.0"
+    "36.1.0"
   ];
   systemImageTypes = [ "google_apis" "google_apis_playstore" ];
 }
