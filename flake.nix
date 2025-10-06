@@ -288,7 +288,7 @@
 
         desktop = mkNixosConfiguration {
           config = pkgConfig // {
-            rocmSupport = true;
+            rocmSupport = false;
           };
           hostModules = [
             ./hosts/common
