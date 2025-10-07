@@ -92,7 +92,7 @@ in
     packages =
       with pkgs;
       [
-        # audacity
+        audacity
         calibre
         gimp3
         inkscape
