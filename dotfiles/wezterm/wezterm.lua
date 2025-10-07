@@ -29,6 +29,8 @@ config.show_new_tab_button_in_tab_bar = false
 
 config.color_scheme = "Catppuccin Latte"
 
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
+
 wezterm.on("gui-startup", function(cmd)
     select(3, wezterm.mux.spawn_window(cmd or {})):gui_window():maximize()
 end)
