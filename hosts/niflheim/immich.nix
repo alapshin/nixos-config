@@ -15,6 +15,8 @@
     immich = {
       enable = true;
       machine-learning.enable = false;
+      settings = {
+      };
     };
 
     webhost.applications."immich" = {
