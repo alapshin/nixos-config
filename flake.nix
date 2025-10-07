@@ -17,9 +17,11 @@
   };
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable-small";
-    nixpkgs-lw.url = "github:NixOS/nixpkgs/pull/347353/head";
+    nixpkgs-unstable.url = "nixpkgs/master";
+    # nixpkgs.url = "nixpkgs/nixos-unstable-small";
+    nixpkgs-pinned.url = "nixpkgs/ee5dae584d759073a83cfe45195a1be807e77b74";
     nixpkgs-nextcloud.url = "github:NixOS/nixpkgs/pull/384565/head";
+    nixpkgs-linkwarden.url = "github:NixOS/nixpkgs/pull/347353/head";
 
     systems.url = "github:nix-systems/default";
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -105,8 +107,8 @@
       mkPkgs =
         {
           config ? pkgConfig,
-          system,
-          nixpkgs,
+          system ? "x86_64-linux",
+          nixpkgs ? nixpkgs,
         }:
         import nixpkgs {
           inherit config system;
@@ -195,6 +197,7 @@
         {
           config ? pkgConfig,
           system ? "x86_64-linux",
+          nixpkgs ? nixpkgs,
           hostModules ? [ ],
           userModules ? [ ],
         }:
@@ -257,6 +260,7 @@
 
       nixosConfigurations = {
         bifrost = mkNixosConfiguration {
+          nixpkgs = inputs.nixpkgs-pinned;
           hostModules = [
             ./hosts/common
             ./hosts/server
@@ -265,6 +269,7 @@
         };
 
         niflheim = mkNixosConfiguration {
+          nixpkgs = inputs.nixpkgs-pinned;
           hostModules = [
             ./hosts/common
             ./hosts/server
@@ -272,12 +277,13 @@
             self.nixosModules.monica
             self.nixosModules.webhost
 
-            "${inputs.nixpkgs-lw}/nixos/modules/services/web-apps/linkwarden.nix"
             "${inputs.nixpkgs-nextcloud}/nixos/modules/services/web-apps/nextcloud.nix"
+            "${inputs.nixpkgs-linkwarden}/nixos/modules/services/web-apps/linkwarden.nix"
           ];
         };
 
         carbon = mkNixosConfiguration {
+          nixpkgs = inputs.nixpkgs-unstable;
           hostModules = [
             ./hosts/common
             ./hosts/personal
@@ -290,6 +296,7 @@
           config = pkgConfig // {
             rocmSupport = false;
           };
+          nixpkgs = inputs.nixpkgs-unstable;
           hostModules = [
             ./hosts/common
             ./hosts/personal
@@ -302,6 +309,7 @@
         };
 
         altdesk = mkNixosConfiguration {
+          nixpkgs = inputs.nixpkgs-unstable;
           hostModules = [
             ./hosts/common
             ./hosts/personal

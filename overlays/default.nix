@@ -21,7 +21,7 @@
       })
     ];
 
-    prisma = inputs.nixpkgs-lw.legacyPackages."${prev.system}".prisma;
-    linkwarden = inputs.nixpkgs-lw.legacyPackages."${prev.system}".linkwarden;
+    prisma = inputs.nixpkgs-linkwarden.legacyPackages."${prev.system}".prisma;
+    linkwarden = inputs.nixpkgs-linkwarden.legacyPackages."${prev.system}".linkwarden;
   };
 }
