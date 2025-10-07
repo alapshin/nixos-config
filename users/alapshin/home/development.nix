@@ -29,10 +29,8 @@ in
     ]
     ++ (lib.lists.optionals (pkgs.stdenv.hostPlatform.isLinux && hostname != "altdesk") [
       jetbrains.idea-ultimate
-      jetbrains.pycharm-professional
     ])
     ++ (lib.lists.optionals (pkgs.stdenv.hostPlatform.isLinux && hostname == "desktop") [
-      code-cursor-fhs
       android-studio-stable-with-sdk
     ]);
 
