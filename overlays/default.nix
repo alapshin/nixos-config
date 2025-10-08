@@ -23,8 +23,5 @@
         autobean = pyfinal.callPackage ../packages/autobean { };
       })
     ];
-
-    prisma = inputs.nixpkgs-linkwarden.legacyPackages."${prev.system}".prisma;
-    linkwarden = inputs.nixpkgs-linkwarden.legacyPackages."${prev.system}".linkwarden;
   };
 }

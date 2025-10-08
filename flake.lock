@@ -404,22 +404,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-linkwarden": {
-      "locked": {
-        "lastModified": 1759838276,
-        "narHash": "sha256-jYPZZSrdFtfEbSVjJcgsvNxwizBh+kiY488AKkBPUfc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "5ae9c6959e5439e19a960ccd3fd361fa322397ee",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "pull/347353/head",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-nextcloud": {
       "locked": {
         "lastModified": 1740418340,
@@ -627,7 +611,6 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-linkwarden": "nixpkgs-linkwarden",
         "nixpkgs-nextcloud": "nixpkgs-nextcloud",
         "nixpkgs-pinned": "nixpkgs-pinned",
         "nixpkgs-unstable": "nixpkgs-unstable",
