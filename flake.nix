@@ -269,7 +269,7 @@
         };
 
         niflheim = mkNixosConfiguration {
-          nixpkgs = inputs.nixpkgs-pinned;
+          nixpkgs = inputs.nixpkgs-unstable;
           hostModules = [
             ./hosts/common
             ./hosts/server
