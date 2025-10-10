@@ -109,6 +109,7 @@ in
           "HarvardBusinessReviewBridge"
           "HarvardHealthBlogBridge"
           "LWNprevBridge"
+          "PhoronixBridge"
           "ReutersBridge"
           "TelegramBridge"
           "WikipediaBridge"
