@@ -42,21 +42,17 @@ in
 {
   inherit buildFirefoxXpiAddon;
 
-  linguist-translator =
-    let
-      version = "6.0.1";
-    in
-    buildFirefoxXpiAddon {
-      pname = "linguist-translator";
-      inherit version;
-      addonId = "{33718e7a-4cbc-43da-b9c9-dc14dabf735c}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/3955129/linguist_translator-${version}.xpi";
-      sha256 = "sha256-4ZpMuJRkNFpe36yblVtJjvuiLIGxAyctv3t4ZkS4a9o=";
-      meta = with lib; {
-        homepage = "https://github.com/translate-tools/linguist";
-        description = "Translate web pages, highlighted text, Netflix subtitles, private messages, speak the translated text, and save important translations to your personal dictionary to learn words even offline";
-        license = licenses.gpl3;
-        platforms = platforms.all;
-      };
+  linguist-translator = buildFirefoxXpiAddon rec {
+    pname = "linguist-translator";
+    version = "7.0.4";
+    addonId = "{33718e7a-4cbc-43da-b9c9-dc14dabf735c}";
+    url = "https://addons.mozilla.org/firefox/downloads/file/3955129/linguist_translator-${version}.xpi";
+    sha256 = "sha256-4ZpMuJRkNFpe36yblVtJjvuiLIGxAyctv3t4ZkS4a9o=";
+    meta = with lib; {
+      homepage = "https://github.com/translate-tools/linguist";
+      description = "Translate web pages, highlighted text, Netflix subtitles, private messages, speak the translated text, and save important translations to your personal dictionary to learn words even offline";
+      license = licenses.gpl3;
+      platforms = platforms.all;
     };
+  };
 }
