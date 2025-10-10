@@ -11,7 +11,8 @@ let
       pname,
       version,
       addonId,
-      url,
+      url ? "",
+      urls ? [ ], # Alternative for 'url' a list of URLs to try in specified order.
       sha256,
       meta,
       ...
@@ -21,10 +22,14 @@ let
 
       inherit meta;
 
-      src = fetchurl { inherit url sha256; };
+      src = fetchurl { inherit url urls sha256; };
 
       preferLocalBuild = true;
       allowSubstitutes = true;
+
+      passthru = {
+        inherit addonId;
+      };
 
       buildCommand = ''
         dst="$out/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
