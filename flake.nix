@@ -17,8 +17,8 @@
   };
 
   inputs = {
-    nixpkgs-unstable.url = "nixpkgs/master";
-    # nixpkgs.url = "nixpkgs/nixos-unstable-small";
+    # nixpkgs-unstable.url = "nixpkgs/master";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable-small";
     nixpkgs-pinned.url = "nixpkgs/ee5dae584d759073a83cfe45195a1be807e77b74";
     nixpkgs-nextcloud.url = "github:NixOS/nixpkgs/pull/384565/head";
 
