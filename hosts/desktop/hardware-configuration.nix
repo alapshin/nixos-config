@@ -26,36 +26,10 @@
         "usb_storage"
         "xhci_pci"
       ];
-      luks.devices = {
-        "luksdata" = {
-          device = "/dev/disk/by-uuid/f8c9d40f-d397-46d2-a058-55a225d2670e";
-          allowDiscards = true;
-        };
-      };
-    };
-  };
-
-  fileSystems = {
-    "/mnt/data" = {
-      device = "/dev/disk/by-uuid/1a34979e-9d0a-47bf-a2a8-2034afddec19";
-      fsType = "btrfs";
-      options = [
-        "subvol=data"
-        "discard=async"
-      ];
     };
   };
 
   services.beesd.filesystems = {
-    data = {
-      spec = "LABEL=data";
-      extraOptions = [
-        "--thread-factor"
-        "0.25"
-        "--loadavg-target"
-        "2"
-      ];
-    };
     root = {
       spec = "LABEL=system";
       extraOptions = [
