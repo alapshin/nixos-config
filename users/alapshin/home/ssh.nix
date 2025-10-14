@@ -18,6 +18,14 @@
         "*" = {
           addKeysToAgent = "yes";
         };
+        "github.com" = {
+          user = "git";
+          host = "github.com";
+        };
+        "gitlab.com" = {
+          user = "git";
+          host = "gitlab.com";
+        };
         "bifrost" = {
           user = "root";
           hostname = "95.217.6.218";
