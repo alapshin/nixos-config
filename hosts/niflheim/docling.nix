@@ -7,7 +7,7 @@
 {
   services = {
     docling-serve = {
-      enable = true;
+      enable = false;
       package = pkgs.docling-serve.override {
         withUI = true;
         withTesserocr = true;
