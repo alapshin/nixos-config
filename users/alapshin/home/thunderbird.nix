@@ -70,7 +70,7 @@ in
   };
 
   programs.thunderbird = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     package = pkgs.thunderbird-latest;
 
     profiles = {
