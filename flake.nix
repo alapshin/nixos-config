@@ -17,8 +17,8 @@
   };
 
   inputs = {
-    # nixpkgs-unstable.url = "nixpkgs/master";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixpkgs-pinned.url = "github:NixOS/nixpkgs/ee5dae584d759073a83cfe45195a1be807e77b74";
     nixpkgs-nextcloud.url = "github:NixOS/nixpkgs/pull/384565/head";
 
@@ -143,6 +143,7 @@
           username,
           config ? pkgConfig,
           system ? "x86_64-linux",
+          nixpkgs ? inputs.nixpkgs,
           homeModules,
         }:
         home-manager.lib.homeManagerConfiguration {
