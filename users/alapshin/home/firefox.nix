@@ -99,7 +99,6 @@ in
             clearurls
             metamask
             linkwarden
-            single-file
             sponsorblock
             languagetool
             ublock-origin
