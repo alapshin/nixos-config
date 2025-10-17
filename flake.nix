@@ -18,8 +18,8 @@
 
   inputs = {
     # nixpkgs-unstable.url = "nixpkgs/master";
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable-small";
-    nixpkgs-pinned.url = "nixpkgs/ee5dae584d759073a83cfe45195a1be807e77b74";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs-pinned.url = "github:NixOS/nixpkgs/ee5dae584d759073a83cfe45195a1be807e77b74";
     nixpkgs-nextcloud.url = "github:NixOS/nixpkgs/pull/384565/head";
 
     systems.url = "github:nix-systems/default";
@@ -268,7 +268,7 @@
         };
 
         niflheim = mkNixosConfiguration {
-          nixpkgs = inputs.nixpkgs-unstable;
+          nixpkgs = inputs.nixpkgs;
           hostModules = [
             ./hosts/common
             ./hosts/server
