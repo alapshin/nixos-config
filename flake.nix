@@ -19,7 +19,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
-    nixpkgs-staging.url = "github:NixOS/nixpkgs/staging";
     nixpkgs-pinned.url = "github:NixOS/nixpkgs/ee5dae584d759073a83cfe45195a1be807e77b74";
     nixpkgs-nextcloud.url = "github:NixOS/nixpkgs/pull/384565/head";
 
@@ -198,7 +197,7 @@
         {
           config ? pkgConfig,
           system ? "x86_64-linux",
-          nixpkgs ? nixpkgs,
+          nixpkgs ? inputs.nixpkgs,
           hostModules ? [ ],
           userModules ? [ ],
         }:
@@ -261,7 +260,6 @@
 
       nixosConfigurations = {
         bifrost = mkNixosConfiguration {
-          nixpkgs = inputs.nixpkgs-pinned;
           hostModules = [
             ./hosts/common
             ./hosts/server
@@ -283,7 +281,6 @@
         };
 
         carbon = mkNixosConfiguration {
-          nixpkgs = inputs.nixpkgs-unstable;
           hostModules = [
             ./hosts/common
             ./hosts/personal
@@ -296,7 +293,6 @@
           config = pkgConfig // {
             rocmSupport = false;
           };
-          nixpkgs = inputs.nixpkgs-unstable;
           hostModules = [
             ./hosts/common
             ./hosts/personal
@@ -309,7 +305,6 @@
         };
 
         altdesk = mkNixosConfiguration {
-          nixpkgs = inputs.nixpkgs-unstable;
           hostModules = [
             ./hosts/common
             ./hosts/personal
