@@ -42,6 +42,8 @@
         "pritunl-client"
 
         # Darwin stuff
+        "zoom"
+        "keka"
         "betterdisplay"
       ];
     in

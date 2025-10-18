@@ -22,6 +22,7 @@
       stylua
       wget
       unzip
+      zoom-us
 
       # Media
       ffmpeg
@@ -47,6 +48,11 @@
       rustdesk-flutter
     ]
     ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isDarwin [
+      iina
+      keka
+      maccy
+      skimpdf
+      rectangle
       betterdisplay
     ];
 }

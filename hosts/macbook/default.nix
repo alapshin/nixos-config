@@ -42,6 +42,9 @@ in
     brews = [
     ];
     casks = [
+      "sol"
+      "marta"
+      "alt-tab"
       "pritunl"
       "android-studio"
     ];
