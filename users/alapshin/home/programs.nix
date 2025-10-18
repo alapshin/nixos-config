@@ -39,6 +39,8 @@
       enable = true;
     };
 
+    man.generateCaches = false;
+
     obs-studio = {
       enable = pkgs.stdenv.hostPlatform.isLinux;
       plugins = with pkgs.obs-studio-plugins; [
