@@ -25,9 +25,6 @@ in
   };
 
   networking.hostName = "macbook";
-  environment.systemPackages = with pkgs; [
-    pritunl-client
-  ];
 
   environment.shells = with pkgs; [
     bash
