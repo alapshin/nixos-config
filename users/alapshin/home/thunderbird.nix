@@ -70,8 +70,13 @@ in
   };
 
   programs.thunderbird = {
-    enable = pkgs.stdenv.hostPlatform.isLinux;
-    package = pkgs.thunderbird-latest;
+    enable = true;
+    package =
+      (pkgs.wrapThunderbird.override {
+        wrapFirefox = pkgs.wrapFirefox.override {
+          libcanberra-gtk3 = pkgs.libcanberra-gtk2;
+        };
+      }) pkgs.thunderbird-unwrapped { };
 
     profiles = {
       default = {

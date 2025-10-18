@@ -20,6 +20,9 @@ in
 
   programs.firefox = {
     enable = true;
+    package = (pkgs.wrapFirefox.override {
+      libcanberra-gtk3 = pkgs.libcanberra-gtk2;
+    }) pkgs.firefox-unwrapped { };
 
     nativeMessagingHosts = lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
       pkgs.kdePackages.plasma-browser-integration
