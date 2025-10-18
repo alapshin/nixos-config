@@ -40,6 +40,9 @@
         "tools"
 
         "pritunl-client"
+
+        # Darwin stuff
+        "betterdisplay"
       ];
     in
     builtins.any (prefix: lib.strings.hasPrefix prefix name) prefixes;
