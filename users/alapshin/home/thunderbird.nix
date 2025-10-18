@@ -8,6 +8,11 @@
 let
   cfg = config.programs.thunderbird;
   hostname = osConfig.networking.hostName;
+  thunderbirdPkg = pkgs.wrapThunderbird {
+    thunderbird = pkgs.thunderbird-latest-unwrapped.override {
+      libcanberra-gtk3 = pkgs.libcanberra-gtk2;
+    };
+  };
 in
 {
   sops = {
@@ -70,8 +75,10 @@ in
   };
 
   programs.thunderbird = {
-    enable = pkgs.stdenv.hostPlatform.isLinux;
-    package = pkgs.thunderbird-latest;
+    enable = true;
+    package = (pkgs.wrapThunderbird.override {
+      wrapFirefox = pkgs.wrapFirefox.override { libcanberra-gtk3 = pkgs.libcanberra-gtk2; };
+    }) pkgs.thunderbird-unwrapped { };
 
     profiles = {
       default = {

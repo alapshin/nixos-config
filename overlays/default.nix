@@ -15,6 +15,18 @@
     jetbrains = prev.jetbrains // {
       jdk = prev.jetbrains.jdk-no-jcef;
     };
+
+    firefox =
+      if prev.stdenv.hostPlatform.isLinux then
+        prev.firefox
+      else
+        inputs.nixpkgs-pinned.legacyPackages."${prev.system}".firefox;
+    firefox-unwrapped =
+      if prev.stdenv.hostPlatform.isLinux then
+        prev.firefox-unwrapped
+      else
+        inputs.nixpkgs-pinned.legacyPackages."${prev.system}".firefox-unwrapped;
+
     open-webui = prev.open-webui.overridePythonAttrs (oldAttrs: rec {
       dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
     });
