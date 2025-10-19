@@ -73,6 +73,10 @@ in
 
   time.timeZone = "Europe/Belgrade";
 
+  services = {
+    openssh.enable = true;
+  };
+
   system = {
     startup.chime = false;
     defaults = {
