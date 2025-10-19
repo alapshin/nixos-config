@@ -20,6 +20,7 @@
       sops
       ssh-to-age
       stylua
+      telegram-desktop
       wget
       unzip
       zoom-us

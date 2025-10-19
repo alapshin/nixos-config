@@ -100,7 +100,6 @@ in
         libreoffice-qt6-fresh
         qbittorrent
         smplayer
-        telegram-desktop
         tor-browser
       ]
       ++ accountingTools
