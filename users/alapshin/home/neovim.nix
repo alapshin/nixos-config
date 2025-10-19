@@ -408,4 +408,8 @@ in
       };
     };
   };
+
+  programs.neovide = {
+    enable = true;
+  };
 }
