@@ -43,6 +43,7 @@ in
     ];
     casks = [
       "sol"
+      "doll"
       "marta"
       "alt-tab"
       "pritunl"
