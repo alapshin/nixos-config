@@ -75,6 +75,7 @@ in
 
   services = {
     openssh.enable = true;
+    karabiner-elements.enable = true;
   };
 
   system = {

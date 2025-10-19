@@ -27,6 +27,15 @@
       else
         inputs.nixpkgs-pinned.legacyPackages."${prev.system}".firefox-unwrapped;
 
+    karabiner-elements = prev.karabiner-elements.overrideAttrs (oldAttrs: {
+      version = "14.13.0";
+
+      src = prev.fetchurl {
+        url = oldAttrs.src.url;
+        hash = "sha256-gmJwoht/Tfm5qMecmq1N6PSAIfWOqsvuHU8VDJY8bLw=";
+      };
+    });
+
     open-webui = prev.open-webui.overridePythonAttrs (oldAttrs: rec {
       dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
     });
