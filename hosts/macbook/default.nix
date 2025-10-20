@@ -48,6 +48,7 @@ in
       "alt-tab"
       "pritunl"
       "android-studio"
+      "background-music"
     ];
     masApps = {
       Xcode = 497799835;
