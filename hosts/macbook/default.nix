@@ -86,7 +86,10 @@ in
       };
       dock = {
         autohide = true;
+        autohide-delay = 0.0;
         tilesize = 48;
+        mineffect = "scale";
+        orientation = "bottom";
         static-only = true;
       };
       finder = {
