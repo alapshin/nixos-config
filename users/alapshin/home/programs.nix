@@ -91,8 +91,7 @@
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       nerd-fonts.jetbrains-mono
-
-      noto-fonts-monochrome-emoji
+      noto-fonts-color-emoji
 
       # Needed for deploying remote hosts from darwin
       nixos-rebuild-ng
