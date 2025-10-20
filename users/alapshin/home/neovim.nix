@@ -411,5 +411,11 @@ in
 
   programs.neovide = {
     enable = true;
+    settings = {
+      font = {
+        size = 11.0;
+        normal = "JetBrainsMono Nerd Font Mono";
+      };
+    };
   };
 }
