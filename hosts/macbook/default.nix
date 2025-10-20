@@ -87,26 +87,7 @@ in
       dock = {
         autohide = true;
         tilesize = 48;
-        # persistent-apps = [
-        #   {
-        #     app = "/Applications/App Store.app";
-        #   }
-        #   {
-        #     app = "/Applications/System Settings.app";
-        #   }
-        #   {
-        #     app = "/Applications/Android Studio.app";
-        #   }
-        #   {
-        #     app = "~/Applications/Home Manager Trampolines/Slack.app";
-        #   }
-        #   {
-        #     app = "~/Applications/Home Manager Trampolines/Firefox.app";
-        #   }
-        #   {
-        #     app = "~/Applications/Home Manager Trampolines/WezTerm.app";
-        #   }
-        # ];
+        static-only = true;
       };
       finder = {
         AppleShowAllExtensions = true;
