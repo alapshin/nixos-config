@@ -44,6 +44,7 @@
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     lanzaboote.inputs.flake-parts.follows = "flake-parts";
 
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
@@ -173,6 +174,7 @@
           };
           sharedModules = [
             ./configuration.nix
+            inputs.determinate.darwinModules.default
             sops-nix.darwinModules.sops
             mac-app-util.darwinModules.default
             nix-homebrew.darwinModules.nix-homebrew
