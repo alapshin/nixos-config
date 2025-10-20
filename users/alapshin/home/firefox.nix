@@ -168,10 +168,17 @@ in
           };
         };
         settings = {
-          # Set minimum font size
-          "font.minimum-size.x-cyrillic" = 14;
-          "font.minimum-size.x-western" = 14;
-          "font.size.monospace.x-western" = 14;
+          # Font settings
+          "font.minimum-size.x-cyrillic" = 13;
+          "font.minimum-size.x-western" = 13;
+          "font.size.variable.x-cyrillic" = 13;
+          "font.size.variable.x-western" = 13;
+          "font.size.monospace.x-cyrillic" = 13;
+          "font.size.monospace.x-western" = 13;
+
+          "font.name.serif.x-western" = "Noto Sans";
+          "font.name.sans-serif.x-western" = "Noto Serif";
+          "font.name.monospace.x-western" = "JetBrainsMono Nerd Font";
 
           # Don't close window with last tab
           "browser.tabs.closeWindowWithLastTab" = false;

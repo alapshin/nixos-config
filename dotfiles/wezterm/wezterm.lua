@@ -9,7 +9,7 @@ config.default_prog = {
 }
 
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
-config.font_size = 10
+config.font_size = 11
 config.font_rules = {
     {
         italic = false,
