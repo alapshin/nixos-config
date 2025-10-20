@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   username,
   dotfileDir,
   ...
@@ -26,7 +27,6 @@
     ./thunderbird.nix
 
     ./theming.nix
-    ./packages.nix
     ./variables.nix
   ];
 
@@ -61,6 +61,10 @@
     numeric = "en_DK.UTF-8";
     monetary = "en_IE.UTF-8";
     measurement = "en_DK.UTF-8";
+  };
+  # Needed on darwin
+  home.sessionVariables = {
+    LC_ALL = "${config.home.language.base}";
   };
 
   xsession.enable = pkgs.stdenv.hostPlatform.isLinux;
