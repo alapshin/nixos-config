@@ -78,6 +78,7 @@
     enable = true;
     autostart = {
       enable = true;
+      readOnly = true;
     };
     dataFile = {
       "konsole" = {
