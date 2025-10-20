@@ -25,8 +25,22 @@
         git_protocol = "ssh";
       };
     };
+
     gh-dash = {
       enable = true;
+    };
+
+
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
+        light = true;
+        navigate = true;
+        hyperlinks = true;
+        line-numbers = true;
+        side-by-side = true;
+      };
     };
 
     git = {
@@ -45,19 +59,12 @@
         signByDefault = true;
       };
 
-      delta = {
-        enable = true;
-        options = {
-          light = true;
-          navigate = true;
-          hyperlinks = true;
-          line-numbers = true;
-          side-by-side = true;
+      settings = {
+        user = {
+          name = "Andrei Lapshin";
+          email = config.secrets.contents.email.fastmail;
         };
       };
-
-      userName = "Andrei Lapshin";
-      userEmail = config.secrets.contents.email.fastmail;
 
       includes = [
         { path = /. + dotfileDir + "/git/config"; }
