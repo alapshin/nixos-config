@@ -91,7 +91,10 @@ in
         tilesize = 48;
         mineffect = "scale";
         orientation = "bottom";
+        mru-spaces = false;
         static-only = true;
+        show-recents = false;
+        minimize-to-application = true;
       };
       finder = {
         AppleShowAllExtensions = true;
