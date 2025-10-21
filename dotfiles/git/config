@@ -12,9 +12,6 @@
     colorMoved = default
     renames = true
     mnemonicPrefix = true
-[fetch]
-    prune = true
-    pruneTags = true
 [init]
     defaultBranch = main
 [log]
