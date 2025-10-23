@@ -7,6 +7,20 @@
 }:
 let
   hostname = osConfig.networking.hostName;
+  pythonPackages = with pkgs; [
+    (python3.withPackages (
+      ps: with ps; [
+        coverage
+        ipython
+        pytest
+        pytest-cov
+        pytest-mock
+        requests
+        google-auth
+        google-api-python-client
+      ]
+    ))
+  ];
 in
 {
   home.packages =
@@ -26,7 +40,9 @@ in
 
       # Development
       scrcpy
+      google-cloud-sdk
     ]
+    ++ pythonPackages
     ++ (lib.lists.optionals (pkgs.stdenv.hostPlatform.isLinux && hostname != "altdesk") [
       jetbrains.idea-ultimate
     ])

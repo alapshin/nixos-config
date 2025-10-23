@@ -40,35 +40,6 @@ let
     kleopatra
     spectacle
   ];
-
-  pythonPackages = with pkgs; [
-    (python3.withPackages (
-      ps: with ps; [
-        autobean
-        beancount
-        beanquery
-        coverage
-        flask
-        gunicorn
-        ipython
-        notebook
-        matplotlib
-        numpy
-        openai
-        openai-whisper
-        pandas
-        pytest
-        pytest-cov
-        pytest-mock
-        python-dotenv
-        scikit-learn
-        seaborn
-        torch
-        transformers
-        yt-dlp
-      ]
-    ))
-  ];
 in
 {
   users.users."${username}" = {
