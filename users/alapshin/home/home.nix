@@ -64,7 +64,7 @@
   };
   # Needed on darwin
   home.sessionVariables = {
-    LC_ALL = "${config.home.language.base}";
+    LC_ALL = "en_US.UTF-8";
   };
 
   # See
