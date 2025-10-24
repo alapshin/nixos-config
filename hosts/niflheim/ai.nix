@@ -61,6 +61,12 @@ in
             };
           }
           {
+            model_name = "claude-haiku-4.5";
+            litellm_params = {
+              model = "openrouter/anthropic/claude-haiku-4.5";
+            };
+          }
+          {
             model_name = "claude-sonnet-4";
             litellm_params = {
               model = "openrouter/anthropic/claude-sonnet-4";
