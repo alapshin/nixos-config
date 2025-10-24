@@ -67,6 +67,15 @@
     LC_ALL = "${config.home.language.base}";
   };
 
+  # See
+  targets.darwin = {
+    copyApps = {
+      enable = true;
+      enableChecks = false;
+    };
+    linkApps.enable = false;
+  };
+
   xsession.enable = pkgs.stdenv.hostPlatform.isLinux;
   fonts.fontconfig = {
     enable = true;
@@ -122,4 +131,5 @@
       };
     };
   };
+
 }
