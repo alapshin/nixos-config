@@ -27,6 +27,16 @@
       else
         inputs.nixpkgs-pinned.legacyPackages."${prev.system}".firefox-unwrapped;
 
+    # See https://github.com/NixOS/nixpkgs/issues/455059
+    # kdePackages = prev.kdePackages.overrideScope (sfinal: sprev: {
+    #   qtbase = sprev.qtbase.override { withWayland = false; };
+    # });
+    telegram-desktop =
+      if prev.stdenv.hostPlatform.isLinux then
+        prev.telegram-desktop
+      else
+        inputs.nixpkgs-pinned.legacyPackages."${prev.system}".telegram-desktop;
+
     karabiner-elements = prev.karabiner-elements.overrideAttrs (oldAttrs: {
       version = "14.13.0";
 
