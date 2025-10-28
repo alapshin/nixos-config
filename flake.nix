@@ -270,7 +270,6 @@
         };
 
         niflheim = mkNixosConfiguration {
-          nixpkgs = inputs.nixpkgs;
           hostModules = [
             ./hosts/common
             ./hosts/server
