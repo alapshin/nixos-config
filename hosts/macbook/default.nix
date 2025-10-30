@@ -74,8 +74,7 @@ in
   time.timeZone = "Europe/Belgrade";
 
   services = {
-    openssh.enable = true;
-    karabiner-elements.enable = true;
+    openssh.enable = false;
   };
 
   system = {
