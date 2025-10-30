@@ -71,12 +71,6 @@ in
 
   programs.thunderbird = {
     enable = true;
-    package =
-      (pkgs.wrapThunderbird.override {
-        wrapFirefox = pkgs.wrapFirefox.override {
-          libcanberra-gtk3 = pkgs.libcanberra-gtk2;
-        };
-      }) pkgs.thunderbird-unwrapped { };
 
     profiles = {
       default = {
