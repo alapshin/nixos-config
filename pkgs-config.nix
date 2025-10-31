@@ -2,6 +2,8 @@
 {
   android_sdk.accept_license = true;
   permittedInsecurePackages = [
+    # Used by electrum
+    "python3.13-ecdsa-0.19.1"
   ];
   allowUnfreePredicate =
     pkg:

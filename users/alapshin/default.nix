@@ -76,7 +76,6 @@ in
       ++ accountingTools
       ++ blockchainPackages
       ++ dictionaries
-      ++ kdePackages
-      ++ pythonPackages;
+      ++ kdePackages;
   };
 }

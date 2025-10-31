@@ -68,7 +68,7 @@
   };
 
   # See
-  targets.darwin = {
+  targets.darwin = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
     copyApps = {
       enable = true;
       enableChecks = false;
