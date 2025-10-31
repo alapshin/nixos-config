@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  enable = pkgs.hostPlatform.isLinux;
+  enable = pkgs.stdenv.hostPlatform.isLinux;
 in
 {
   programs = {
