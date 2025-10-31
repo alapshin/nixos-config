@@ -110,19 +110,6 @@
       extraConfig = builtins.readFile "${dotfileDir}/wezterm/wezterm.lua";
     };
 
-    zellij = {
-      enable = true;
-      attachExistingSession = true;
-      settings = {
-        pane_frames = false;
-        copy_on_select = false;
-        ui = {
-          pane_frames = {
-            rounded_corners = true;
-          };
-        };
-      };
-    };
     zoxide.enable = true;
 
     zsh = {
@@ -165,9 +152,5 @@
   };
 
   xdg.configFile = {
-    "zellij" = {
-      source = "${dotfileDir}/zellij";
-      recursive = true;
-    };
   };
 }

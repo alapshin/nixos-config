@@ -52,6 +52,5 @@
 
   environment.systemPackages = with pkgs; [
     wezterm
-    zellij
   ];
 }

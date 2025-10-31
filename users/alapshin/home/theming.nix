@@ -20,7 +20,6 @@
     starship.enable = true;
     thunderbird.enable = true;
     yazi.enable = true;
-    zellij.enable = true;
     zsh-syntax-highlighting.enable = true;
   };
 }

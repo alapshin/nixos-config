@@ -2,12 +2,6 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.default_prog = {
-    os.getenv("SHELL"),
-    "-c",
-    "zellij",
-}
-
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.font_size = 12
 config.font_rules = {
