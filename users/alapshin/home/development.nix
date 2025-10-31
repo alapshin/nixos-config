@@ -40,6 +40,7 @@ in
 
       # Development
       scrcpy
+      fastlane
       google-cloud-sdk
     ]
     ++ pythonPackages
