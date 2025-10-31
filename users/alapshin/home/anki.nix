@@ -5,13 +5,13 @@
   ...
 }:
 {
-  home.packages = 
+  home.packages =
     lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
       pkgs.anki
-    ] ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isDarwin [
-      pkgs.anki-bin
     ]
-;
+    ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isDarwin [
+      pkgs.anki-bin
+    ];
   programs.anki = {
     enable = false;
     style = "native";
