@@ -14,6 +14,8 @@
     ./networking.nix
   ];
 
+  disabledModules = [ "hardware/facter/system.nix" ];
+
   boot = {
     # Enable the magic SysRq key
     kernel.sysctl = {
