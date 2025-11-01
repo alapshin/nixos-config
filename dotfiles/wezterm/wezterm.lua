@@ -18,7 +18,7 @@ config.enable_tab_bar = true
 config.tab_max_width = 48
 config.enable_scroll_bar = true
 config.use_fancy_tab_bar = false
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 config.show_new_tab_button_in_tab_bar = false
 
 config.window_padding = {
@@ -29,6 +29,7 @@ config.window_padding = {
 }
 
 config.color_scheme = "Catppuccin Latte"
+local scheme = wezterm.get_builtin_color_schemes()[config.color_scheme]
 
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
@@ -43,6 +44,39 @@ tabline.setup({
         tab_separators = "",
         section_separators = "",
         component_separators = "",
+        theme_overrides = {
+            tab = {
+                active = {
+                    fg = scheme.tab_bar.active_tab.fg_color,
+                    bg = scheme.tab_bar.active_tab.bg_color,
+                },
+                inactive = {
+                    fg = scheme.tab_bar.inactive_tab.fg_color,
+                    bg = scheme.tab_bar.inactive_tab.bg_color,
+                },
+                inactive_hover = {
+                    fg = scheme.tab_bar.inactive_tab_hover.fg_color,
+                    bg = scheme.tab_bar.inactive_tab_hover.bg_color,
+                },
+            },
+        },
+    },
+    sections = {
+        tab_active = {
+            { Attribute = { Intensity = "Bold" } },
+            "index",
+            { Attribute = { Intensity = "Bold" } },
+            "process",
+            { Attribute = { Intensity = "Bold" } },
+            { "cwd", padding = { left = 0, right = 1 } },
+            { "zoomed", padding = 0 },
+        },
+        tab_inactive = {
+            "index",
+            "process",
+            { "cwd", padding = { left = 0, right = 1 } },
+            { "zoomed", padding = 0 },
+        },
     },
 })
 
