@@ -59,7 +59,9 @@
       # CLI
       age
       atool
+      beanprice
       exiftool
+      fava
       file
       ghostscript
       hadolint

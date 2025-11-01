@@ -16,8 +16,9 @@ let
         pytest-cov
         pytest-mock
         requests
-        google-auth
-        google-api-python-client
+
+        autobean
+        beancount
       ]
     ))
   ];

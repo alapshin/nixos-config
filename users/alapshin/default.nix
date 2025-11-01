@@ -7,11 +7,6 @@
 let
   username = builtins.baseNameOf ./.;
 
-  accountingTools = with pkgs; [
-    fava
-    beanprice
-  ];
-
   blockchainPackages = with pkgs; [
     feather
     electrum
@@ -73,7 +68,6 @@ in
         smplayer
         tor-browser
       ]
-      ++ accountingTools
       ++ blockchainPackages
       ++ dictionaries
       ++ kdePackages;
