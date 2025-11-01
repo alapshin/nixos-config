@@ -24,17 +24,6 @@ let
     hunspellDicts.ru-ru
     customHunspellDicts.sr
   ];
-
-  kdePackages = with pkgs.kdePackages; [
-    ark
-    dolphin
-    filelight
-    gwenview
-    kate
-    kcolorchooser
-    kleopatra
-    spectacle
-  ];
 in
 {
   users.users."${username}" = {
@@ -70,6 +59,15 @@ in
       ]
       ++ blockchainPackages
       ++ dictionaries
-      ++ kdePackages;
+      ++ (with pkgs.kdePackages; [
+        ark
+        dolphin
+        filelight
+        gwenview
+        kate
+        kcolorchooser
+        kleopatra
+        spectacle
+      ]);
   };
 }
