@@ -6,7 +6,7 @@
 }:
 {
   catppuccin = {
-    accent = "pink";
+    accent = "mauve";
     flavor = "latte";
 
     atuin.enable = true;
@@ -19,6 +19,7 @@
     obs.enable = true;
     starship.enable = true;
     thunderbird.enable = true;
+    wezterm.enable = true;
     yazi.enable = true;
     zsh-syntax-highlighting.enable = true;
   };
