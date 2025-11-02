@@ -94,19 +94,15 @@
           expandFocusedSidePanel = true;
           showPanelJumps = true;
           showDivergenceFromBaseBranch = "arrowAndNumber";
-          theme = {
-            selectedLineBgColor = [
-              "default"
-              "#ccd0da"
-            ];
-          };
         };
         git = {
-          paging = {
-            useConfig = false;
-            colorArg = "always";
-            pager = "delta --paging=never";
-          };
+          pagers = [
+            {
+              useConfig = false;
+              colorArg = "always";
+              pager = "delta --paging=never";
+            }
+          ];
         };
         update = {
           method = "never";
