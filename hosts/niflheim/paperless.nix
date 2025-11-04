@@ -58,6 +58,7 @@ in
         PAPERLESS_DBHOST = "/run/postgresql";
         PAPERLESS_REDIS = "unix://${redisSocket}";
         PAPERLESS_ADMIN_MAIL = "admin@${config.services.webhost.basedomain}";
+        PAPERLESS_OCR_SKIP_ARCHIVE_FILE = "with_text";
       };
     };
 
