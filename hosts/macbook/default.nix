@@ -122,4 +122,20 @@ in
       };
     };
   };
+
+  environment.etc = {
+    "sysctl.conf" = {
+      enable = true;
+      text = ''
+        kern.maxfiles=131072
+        kern.maxfilesperproc=65536
+      '';
+    };
+  };
+
+  launchd.daemons.limit-maxfiles = {
+    command = "launchctl limit maxfiles 65536 131072";
+    serviceConfig.RunAtLoad = true;
+    serviceConfig.KeepAlive = false;
+  };
 }
