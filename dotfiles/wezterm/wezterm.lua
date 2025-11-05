@@ -31,7 +31,7 @@ local scheme_name = "Catppuccin Latte"
 config.color_scheme = scheme_name
 local color_scheme = wezterm.get_builtin_color_schemes()[scheme_name]
 config.color_schemes = {
-    [scheme_name] = color_scheme
+    [scheme_name] = color_scheme,
 }
 color_scheme.ansi[6] = color_scheme.tab_bar.active_tab.bg_color
 color_scheme.brights[6] = color_scheme.tab_bar.active_tab.bg_color
