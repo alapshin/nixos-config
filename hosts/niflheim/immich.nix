@@ -15,8 +15,13 @@
     immich = {
       enable = true;
       machine-learning.enable = false;
-      settings = {
-      };
+      # settings = {
+      #   oauth = {
+      #     enabled = true;
+      #     clientId = "immich";
+      #     issuerUrl = "https://${config.services.webhost.authdomain}/.well-known/openid-configuration";
+      #   };
+      # };
     };
 
     webhost.applications."immich" = {
@@ -31,7 +36,7 @@
             {
               client_id = "immich";
               client_name = "Immich";
-              client_secret = "$pbkdf2-sha512$310000$wkn9pc1AFRimy.bTDtULlw$ywNpmfTvmh5JP07gwLNbjH4Qa8IU5tQojXxJN2BzTxKP1r9pcbbAiik0lEgtg0uHMOMWDNZAKLg7hrHoyiPaTw";
+              client_secret = "$pbkdf2-sha512$310000$RtkX1ydEXlYkD5pKQKH/uA$rc56HSPBAcANnk.zBztRK2UOehaR.oZZyWVJgEc/zy.Wzew.8MjZP6Og1Td6AucIG3zk4pLXgnfEhgwdyjLrdQ";
               authorization_policy = "one_factor";
               redirect_uris = [
                 "app.immich:///oauth-callback"
