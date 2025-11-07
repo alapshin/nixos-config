@@ -70,6 +70,8 @@ creation_rules:
           - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
           # alapshin-at-desktop
           - age1k2t56rsp2xvdsvjxraytyfufedxcl7z548tc9dzdhzqpq9yyfc9sz2h70e
+          # alapshin-at-macbook
+          - age14hh5cmhznwdpnyehtqlm2qzsl6m3kud2pn4rvy2jlp3yvqmj6e0qcrgh69
   - path_regex: hosts/niflheim/secrets.*
     key_groups:
       - age:
@@ -79,6 +81,8 @@ creation_rules:
           - age18cxypcgpy8ln3sch0j20thaps65w7nrtv6jvt3rrm5gysldq2vrqzgjf09
           # alapshin-at-desktop
           - age1k2t56rsp2xvdsvjxraytyfufedxcl7z548tc9dzdhzqpq9yyfc9sz2h70e
+          # alapshin-at-macbook
+          - age14hh5cmhznwdpnyehtqlm2qzsl6m3kud2pn4rvy2jlp3yvqmj6e0qcrgh69
   - path_regex: users/alapshin/secrets.*
     key_groups:
       - age:
