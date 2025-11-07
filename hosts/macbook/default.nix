@@ -120,6 +120,10 @@ in
         NSAutomaticQuoteSubstitutionEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
       };
+      "com.apple.desktopservices" = {
+        DSDontWriteUSBStores = true;
+        DSDontWriteNetworkStores = true;
+      };
     };
   };
 
