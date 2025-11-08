@@ -33,7 +33,6 @@
     ./ntfy.nix
     ./nextcloud.nix
     ./openssh.nix
-    # ./photoprism.nix
     ./postgres.nix
     ./paperless.nix
     ./prometheus.nix
