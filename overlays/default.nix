@@ -20,5 +20,7 @@
         autobean = pyfinal.callPackage ../packages/autobean { };
       })
     ];
+
+    booklore = inputs.nixpkgs-booklore.legacyPackages."${prev.system}".booklore;
   };
 }

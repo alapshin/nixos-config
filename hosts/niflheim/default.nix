@@ -15,6 +15,7 @@
     ./authelia.nix
     ./backup.nix
     ./bitmagnet.nix
+    ./booklore.nix
     ./caddy.nix
     ./calibre.nix
     ./changedetection.nix

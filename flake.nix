@@ -19,6 +19,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nixpkgs-pinned.url = "github:NixOS/nixpkgs/ee5dae584d759073a83cfe45195a1be807e77b74";
+    nixpkgs-booklore.url = "github:NixOS/nixpkgs/pull/425872/head";
     nixpkgs-nextcloud.url = "github:NixOS/nixpkgs/pull/384565/head";
 
     systems.url = "github:nix-systems/default";
@@ -276,6 +277,7 @@
             self.nixosModules.monica
             self.nixosModules.webhost
 
+            "${inputs.nixpkgs-booklore}/nixos/modules/services/web-apps/booklore.nix"
             "${inputs.nixpkgs-nextcloud}/nixos/modules/services/web-apps/nextcloud.nix"
           ];
         };
