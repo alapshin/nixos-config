@@ -1,5 +1,4 @@
 # Setup calibre-server and calibre-web
-
 {
   lib,
   pkgs,
@@ -10,12 +9,14 @@ let
   library = "/mnt/data/books";
   user = config.services.calibre-server.user;
   group = config.services.calibre-server.group;
-  webport = config.services.calibre-web.listen.port;
-  serverport = config.services.calibre-server.port;
+  port = config.services.calibre-web.listen.port;
   metadataFilePath = builtins.path {
     path = ./calibre/metadata.db;
     name = "calibre-server-metadata";
   };
+  cwaDataDir = "/var/lib/calibre-web-automated";
+  cwaConfigDir = "${cwaDataDir}/config";
+  cwaIngestDir = "${cwaDataDir}/ingest";
 in
 {
   sops = {
@@ -30,19 +31,19 @@ in
     };
   };
   services = {
-    calibre-web = {
-      enable = true;
-      user = user;
-      group = group;
-      listen.ip = "127.0.0.1";
-      options = {
-        calibreLibrary = library;
-        reverseProxyAuth = {
-          enable = true;
-          header = "Remote-User";
-        };
-      };
-    };
+    # calibre-web = {
+    #   enable = true;
+    #   user = user;
+    #   group = group;
+    #   listen.ip = "127.0.0.1";
+    #   options = {
+    #     calibreLibrary = library;
+    #     reverseProxyAuth = {
+    #       enable = true;
+    #       header = "Remote-User";
+    #     };
+    #   };
+    # };
 
     calibre-server = {
       enable = true;
@@ -62,11 +63,11 @@ in
     webhost.applications = {
       "calibre" = {
         auth = true;
-        port = webport;
+        port = port;
       };
-      "calibre-server" = {
+      "cwacomp" = {
         auth = false;
-        port = serverport;
+        port = port;
       };
     };
   };
@@ -95,7 +96,41 @@ in
             };
           };
         };
+        "20-calibre-web-automated" = {
+          "${cwaConfigDir}" = {
+            d = {
+              mode = "0775";
+              user = user;
+              group = "media";
+            };
+          };
+          "${cwaIngestDir}" = {
+            d = {
+              mode = "0775";
+              user = user;
+              group = "media";
+            };
+          };
+        };
       };
     };
+  };
+
+  virtualisation.oci-containers.containers."calibre-web-automated" = {
+    image = "crocodilestick/calibre-web-automated:V3.1.4";
+    ports = [
+      "127.0.0.1:${builtins.toString port}:8083/tcp"
+    ];
+    volumes = [
+      "${library}:/calibre-library:rw"
+      "${cwaConfigDir}:/config:rw"
+      "${cwaIngestDir}:/cwa-book-ingest:rw"
+    ];
+    environment = {
+      TZ = "UTC";
+      PUID = builtins.toString config.users.users."calibre-server".uid;
+      PGID = builtins.toString config.users.groups."calibre-server".gid;
+    };
+    log-driver = "journald";
   };
 }
