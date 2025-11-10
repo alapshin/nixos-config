@@ -2,8 +2,7 @@
 {
   android_sdk.accept_license = true;
   permittedInsecurePackages = [
-    # Used by electrum
-    "python3.13-ecdsa-0.19.1"
+    "jitsi-meet-1.0.8792"
   ];
   allowUnfreePredicate =
     pkg:
