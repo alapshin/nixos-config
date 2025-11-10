@@ -5,15 +5,14 @@
 
   androidComposition = prev.callPackage ./androidenv { };
 
-  # androidStudioPackages = prev.recurseIntoAttrs (prev.callPackage ./android-studio { });
   android-studio-stable-with-sdk = (
     prev.androidStudioPackages.stable.withSdk final.androidComposition.androidsdk
   );
 
   firefox-ui-fix = prev.callPackage ./firefox-ui-fix { };
-  firefox-addons = prev.recurseIntoAttrs (prev.callPackage ./firefox-addons { });
+  firefox-addons = prev.lib.recurseIntoAttrs (prev.callPackage ./firefox-addons { });
 
-  customHunspellDicts = prev.recurseIntoAttrs (prev.callPackages ./hunspell/dictionaries.nix { });
+  customHunspellDicts = prev.lib.recurseIntoAttrs (prev.callPackages ./hunspell/dictionaries.nix { });
 
   # See nixos/modules/services/x11/extra-layouts.nix
   # xkeyboard-config with customized Serbo-Croatian variant of US layout
