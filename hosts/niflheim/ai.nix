@@ -106,21 +106,23 @@ in
         SCARF_NO_ANALYTICS = "True";
         ANONYMIZED_TELEMETRY = "False";
         ENABLE_VERSION_UPDATE_CHECK = "False";
+        SHOW_ADMIN_DETAILS = "False";
+        ENABLE_EVALUATION_ARENA_MODELS = "False";
 
         ENABLE_SIGNUP = "False";
         ENABLE_LOGIN_FORM = "False";
         ENABLE_OAUTH_SIGNUP = "True";
         DEFAULT_USER_ROLE = "user";
         OAUTH_CLIENT_ID = "open-webui";
+        OAUTH_SCOPES = "openid email profile groups";
+        OAUTH_PROVIDER_NAME = "Authelia";
         OAUTH_MERGE_ACCOUNTS_BY_EMAIL = "True";
         OAUTH_ROLES_CLAIM = "groups";
+        OAUTH_ADMIN_ROLES = "open-webui-admin";
+        OAUTH_ALLOWED_ROLES = "open-webui-user,open-webui-admin";
         ENABLE_OAUTH_ROLE_MANAGEMENT = "True";
-        OPENID_PROVIDER_URL = "https://${config.services.webhost.authdomain}/.well-known/openid-configuration";
-
-        SHOW_ADMIN_DETAILS = "False";
-        ENABLE_EVALUATION_ARENA_MODELS = "False";
-
         WEBUI_URL = "https://owui.${config.services.webhost.basedomain}";
+        OPENID_PROVIDER_URL = "https://${config.services.webhost.authdomain}/.well-known/openid-configuration";
 
         DEFAULT_MODELS = "gpt-5-chat";
         OPENAI_API_BASE_URL = "http://localhost:${toString config.services.litellm.port}";
