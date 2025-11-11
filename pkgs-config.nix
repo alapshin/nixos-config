@@ -18,12 +18,12 @@
         "languagetool"
 
         # AI tools
-        "cursor"
         "claude-code"
         "gemini-cli"
-        # Jetbrains IDEs
+        # Jetbrains
         "idea"
         "pycharm"
+        "jetbrains-toolbox"
         # Android stuff
         "androidsdk"
         "android-sdk"

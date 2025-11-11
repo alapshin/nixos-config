@@ -39,16 +39,15 @@ in
       # YAML
       yamlfmt
 
-      # Development
+      # Android
       scrcpy
-      fastlane
-      google-cloud-sdk
+
+      # JetBrains
+      jetbrains-toolbox
     ]
     ++ pythonPackages
-    ++ (lib.lists.optionals (pkgs.stdenv.hostPlatform.isLinux && hostname != "altdesk") [
-      jetbrains.idea-ultimate
-    ])
     ++ (lib.lists.optionals (pkgs.stdenv.hostPlatform.isLinux && hostname == "desktop") [
+      jetbrains.idea-ultimate
       android-studio-stable-with-sdk
     ]);
 
