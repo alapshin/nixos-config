@@ -47,7 +47,6 @@ in
       "marta"
       "alt-tab"
       "pritunl"
-      "android-studio"
     ];
     masApps = {
       Xcode = 497799835;
