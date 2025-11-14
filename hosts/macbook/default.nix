@@ -46,6 +46,7 @@ in
       "doll"
       "marta"
       "alt-tab"
+      "steam"
       "pritunl"
     ];
     masApps = {
