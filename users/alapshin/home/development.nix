@@ -17,6 +17,7 @@ let
         pytest-mock
         requests
 
+        fava
         autobean
         beancount
       ]

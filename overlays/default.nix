@@ -17,6 +17,9 @@
     });
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
+        fava = pyprev.toPythonModule (prev.fava.override {
+          python3Packages = pyprev;
+        });
         autobean = pyfinal.callPackage ../packages/autobean { };
       })
     ];
