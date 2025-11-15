@@ -73,7 +73,7 @@ in
     };
 
     aider-chat = {
-      enable = true;
+      enable = false;
       settings = {
         # Git
         auto-commits = false;

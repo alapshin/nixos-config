@@ -101,7 +101,7 @@
       );
     };
 
-    tealdeer.enable = true;
+    tealdeer.enable = false;
     yazi.enable = true;
     yt-dlp.enable = true;
 
