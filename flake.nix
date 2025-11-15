@@ -57,7 +57,7 @@
     };
     mac-app-util.url = "github:hraban/mac-app-util";
 
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/pull/8164/head";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nvf.url = "github:notashelf/nvf";
