@@ -3,10 +3,19 @@
   # This one brings our custom packages from the 'packages' directory
   additions = final: prev: import ../packages { inherit final prev; };
 
-  # When applied, the  nixpkgs set from pull-request (declared in the flake inputs)
-  # will be accessible through 'pkgs.<pull-request-name>'
-  development = final: prev: {
-  };
+  pinned =
+    final: prev:
+    let
+      pinnedPkgs = import inputs.nixpkgs-pinned {
+        system = prev.system;
+        config = prev.config; # Inherit config from main nixpkgs
+      };
+    in
+    {
+      open-webui = pinnedPkgs.open-webui.overridePythonAttrs (oldAttrs: {
+        dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
+      });
+    };
 
   # https://nixos.wiki/wiki/Overlays
   # This one contains whatever you want to overlay
@@ -15,14 +24,13 @@
     fish = prev.fish.overrideAttrs (oldAttrs: {
       doCheck = false;
     });
-    open-webui = prev.open-webui.overridePythonAttrs (oldAttrs: rec {
-      dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
-    });
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
-        fava = pyprev.toPythonModule (prev.fava.override {
-          python3Packages = pyprev;
-        });
+        fava = pyprev.toPythonModule (
+          prev.fava.override {
+            python3Packages = pyprev;
+          }
+        );
         autobean = pyfinal.callPackage ../packages/autobean { };
       })
     ];
