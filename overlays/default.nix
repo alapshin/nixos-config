@@ -12,6 +12,9 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
+    fish = prev.fish.overrideAttrs (oldAttrs: {
+      doCheck = false;
+    });
     open-webui = prev.open-webui.overridePythonAttrs (oldAttrs: rec {
       dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
     });
