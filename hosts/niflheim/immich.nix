@@ -14,6 +14,10 @@
   services = {
     immich = {
       enable = true;
+      database = {
+        enableVectors = false;
+        enableVectorChord = true;
+      };
       machine-learning.enable = false;
       # settings = {
       #   oauth = {
