@@ -42,8 +42,6 @@
     ./servarr.nix
     ./wireguard.nix
 
-    ./pg-upgrade.nix
-
     ./networking.nix
     ./hardware-configuration.nix
   ];
