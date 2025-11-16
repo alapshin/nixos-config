@@ -10,6 +10,12 @@
       enable = true;
       package = pkgs.postgresql_18;
     };
+    postgresqlBackup = {
+      enable = true;
+      backupAll = true;
+      compression = "zstd";
+      compressionLevel = 9;
+    };
   };
 
   environment.systemPackages = [
