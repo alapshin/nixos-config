@@ -29,14 +29,9 @@ in
   };
 
   services = {
-    imaginary = {
-      enable = true;
-      settings.return-size = true;
-    };
-
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud31;
+      package = pkgs.nextcloud32;
       https = true;
       webserver = "caddy";
       hostName = nextcloudHostname;
@@ -71,26 +66,16 @@ in
 
       secretFile = config.sops.secrets."nextcloud/secrets.json".path;
 
-      extraApps =
-        with config.services.nextcloud.package.packages.apps;
-        {
-          inherit
-            bookmarks
-            calendar
-            contacts
-            deck
-            gpoddersync
-            onlyoffice
-            tasks
-            ;
-        }
-        // {
-          oidc_login = pkgs.fetchNextcloudApp {
-            license = "agpl3Plus";
-            url = "https://github.com/pulsejet/nextcloud-oidc-login/releases/download/v3.2.2/oidc_login.tar.gz";
-            sha256 = "sha256-RLYquOE83xquzv+s38bahOixQ+y4UI6OxP9HfO26faI=";
-          };
-        };
+      extraApps = with config.services.nextcloud.package.packages.apps; {
+        inherit
+          bookmarks
+          calendar
+          contacts
+          deck
+          gpoddersync
+          tasks
+          ;
+      };
       extraAppsEnable = true;
     };
 
