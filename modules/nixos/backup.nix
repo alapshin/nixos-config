@@ -1,3 +1,4 @@
+# Helper module for borgbackup setup
 {
   lib,
   pkgs,
@@ -13,10 +14,10 @@ let
     mkIf
     mkOption
     mkEnableOption
-    nameValuePair
     ;
 
   hostname = config.networking.hostName;
+  # Create a borgbackup job using defaults
   mkBorgJob =
     opts:
     {
@@ -33,17 +34,44 @@ let
         monthly = 1;
       };
 
-      startAt = "*-*-* 21:00:00";
+      startAt = "daily";
       persistentTimer = true;
 
       extraInitArgs = "--verbose";
       extraCreateArgs = "--verbose --stats";
+      extraPruneArgs = "--verbose --stats";
 
       environment = {
         BORG_RSH = "ssh -i ${cfg.sshKeyFile}";
       };
     }
     // opts;
+
+  # Returns the service name for a job (e.g., "borgbackup-job-myjob.service")
+  jobNameToServiceName = name: "borgbackup-job-${name}";
+
+  # Creates systemd service dependencies to run jobs sequentially.
+  # First job has no dependencies, each subsequent job depends on the previous one
+  # This is neccessary when jobs are using the same borg repository because borgbackup
+  # keeps exclusive lock on repository while creating or deleting archives.
+  # See https://borgbackup.readthedocs.io/en/stable/faq.html#can-i-backup-from-multiple-servers-into-a-single-repository
+  createServiceDependencies =
+    jobs:
+    let
+      jobNames = lib.attrNames jobs;
+      prevJobNames = [ null ] ++ lib.init jobNames;
+
+      mkServiceDep =
+        prev: current:
+        attrsets.nameValuePair (jobNameToServiceName current) {
+          serviceConfig = {
+            Type = "oneshot";
+          };
+          after = lib.lists.optional (prev != null) "${jobNameToServiceName prev}.service";
+        };
+    in
+    builtins.listToAttrs (lib.lists.zipListsWith mkServiceDep prevJobNames jobNames);
+
 in
 {
   options.services.backup = {
@@ -80,31 +108,25 @@ in
       '';
     };
 
-    borg = mkOption {
-      type = types.submodule {
-        options = {
-          jobs = mkOption {
-            type = types.attrsOf (
-              types.submodule {
-                options = {
-                  paths = mkOption {
-                    type = types.listOf types.path;
-                    default = [ ];
-                    description = "Paths to include in the backup.";
-                  };
-                };
-              }
-            );
+    jobs = mkOption {
+      type = types.attrsOf (
+        types.submodule {
+          options = {
+            paths = mkOption {
+              type = types.listOf types.path;
+              default = [ ];
+              description = "Paths to include in the backup.";
+            };
           };
-        };
-      };
+        }
+      );
     };
 
   };
 
   config = mkIf cfg.enable {
-    services.borgbackup = {
-      jobs = attrsets.mapAttrs (job: opts: mkBorgJob opts) cfg.borg.jobs;
-    };
+    # Configure services to run sequentially
+    systemd.services = createServiceDependencies cfg.jobs;
+    services.borgbackup.jobs = attrsets.mapAttrs (_name: mkBorgJob) cfg.jobs;
   };
 }

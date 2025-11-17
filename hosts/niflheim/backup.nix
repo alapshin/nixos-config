@@ -10,7 +10,7 @@
   services.backup = {
     enable = true;
 
-    borg.jobs = {
+    jobs = {
       books = {
         paths = [
           "/mnt/data/books/"

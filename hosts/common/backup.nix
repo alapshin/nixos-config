@@ -15,9 +15,9 @@
   };
 
   services.backup = {
+    port = 23;
     user = "u399502";
     host = "u399502.your-storagebox.de";
-    port = 23;
 
     sshKeyFile = config.sops.secrets."borg/borg_ed25519".path;
   };
