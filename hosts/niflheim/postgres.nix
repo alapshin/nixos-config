@@ -16,6 +16,9 @@
       compression = "zstd";
       compressionLevel = 9;
     };
+    backup.jobs.postgresql.paths = [
+      config.services.postgresqlBackup.location
+    ];
   };
 
   environment.systemPackages = [
