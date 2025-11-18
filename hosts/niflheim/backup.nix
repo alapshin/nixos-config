@@ -16,11 +16,6 @@
           "/mnt/data/books/"
         ];
       };
-      audiobooks = {
-        paths = [
-          "/mnt/data/audiobooks/"
-        ];
-      };
     };
 
     passphraseFile = config.sops.secrets."borg/passphrase".path;

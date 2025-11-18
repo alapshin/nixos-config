@@ -4,6 +4,9 @@
   config,
   ...
 }:
+let
+  audiobooksDir = "/mnt/data/audiobooks";
+in
 {
   sops = {
     secrets = {
@@ -15,6 +18,10 @@
     audiobookshelf = {
       enable = true;
     };
+
+    backup.jobs.audiobooks.paths = [
+      audiobooksDir
+    ];
 
     webhost.applications."audiobookshelf" = {
       auth = false;
@@ -48,7 +55,7 @@
     tmpfiles = {
       settings = {
         "10-audiobookshelf" = {
-          "/mnt/data/audiobooks" = {
+          audiobooksDir = {
             d = {
               mode = "0755";
               user = config.services.audiobookshelf.user;
