@@ -4,6 +4,9 @@
   config,
   ...
 }:
+let
+  photoDir = "/mnt/data/photos";
+in
 {
   sops = {
     secrets = {
@@ -27,6 +30,10 @@
       #   };
       # };
     };
+
+    backup.jobs.photos.paths = [
+      photoDir
+    ];
 
     webhost.applications."immich" = {
       auth = false;
@@ -57,7 +64,7 @@
 
   systemd.tmpfiles.settings = {
     "10-photos" = {
-      "/mnt/data/photos" = {
+      photoDir = {
         d = {
           mode = "0755";
           user = config.services.immich.user;
