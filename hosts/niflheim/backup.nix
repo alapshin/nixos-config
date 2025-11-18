@@ -9,15 +9,6 @@
 
   services.backup = {
     enable = true;
-
-    jobs = {
-      books = {
-        paths = [
-          "/mnt/data/books/"
-        ];
-      };
-    };
-
     passphraseFile = config.sops.secrets."borg/passphrase".path;
   };
 }

@@ -6,7 +6,7 @@
   ...
 }:
 let
-  library = "/mnt/data/books";
+  libraryDir = "/mnt/data/books";
   user = config.services.calibre-server.user;
   group = config.services.calibre-server.group;
   port = config.services.calibre-web.listen.port;
@@ -49,7 +49,7 @@ in
       enable = true;
       port = 8081;
       host = "127.0.0.1";
-      libraries = [ library ];
+      libraries = [ libraryDir ];
       auth = {
         enable = true;
         # Basic auth is used because server is behind Nginx.
@@ -59,6 +59,10 @@ in
         userDb = config.sops.secrets."calibre/users.sqlite".path;
       };
     };
+
+    backup.jobs.books.paths = [
+      libraryDir
+    ];
 
     webhost.applications = {
       "calibre" = {
@@ -77,7 +81,7 @@ in
       settings = {
         # Setup calibre library directory
         "10-calibre-server" = {
-          "/mnt/data/books" = {
+          libraryDir = {
             d = {
               mode = "0775";
               user = user;
@@ -85,7 +89,7 @@ in
             };
           };
           # Place empty metadata databest into library directory
-          "/mnt/data/books/metadata.db" = {
+          "${libraryDir}/metadata.db" = {
             Z = {
               mode = "0664";
               user = user;
@@ -122,7 +126,7 @@ in
       "127.0.0.1:${builtins.toString port}:8083/tcp"
     ];
     volumes = [
-      "${library}:/calibre-library:rw"
+      "${libraryDir}:/calibre-library:rw"
       "${cwaConfigDir}:/config:rw"
       "${cwaIngestDir}:/cwa-book-ingest:rw"
     ];
