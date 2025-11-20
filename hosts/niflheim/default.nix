@@ -49,9 +49,9 @@
   # Create media group
   users.groups.media = { };
 
-  environment.systemPackages = with pkgs; [
-    cuesplit
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   cuesplit
+  # ];
 
   users.users.root = {
     hashedPasswordFile = config.sops.secrets."linux/root".path;
