@@ -43,21 +43,21 @@ in
       settings = {
         model_list = [
           {
-            model_name = "gpt-5";
+            model_name = "gpt-5.1";
             litellm_params = {
-              model = "openrouter/openai/gpt-5";
+              model = "openrouter/openai/gpt-5.1";
             };
           }
           {
-            model_name = "gpt-5-codex";
+            model_name = "gpt-5.1-codex";
             litellm_params = {
-              model = "openrouter/openai/gpt-5-codex";
+              model = "openrouter/openai/gpt-5.1-codex";
             };
           }
           {
-            model_name = "gpt-5-chat";
+            model_name = "gpt-5.1-chat";
             litellm_params = {
-              model = "openrouter/openai/gpt-5-chat";
+              model = "openrouter/openai/gpt-5.1-chat";
             };
           }
           {
@@ -67,15 +67,15 @@ in
             };
           }
           {
-            model_name = "claude-sonnet-4";
-            litellm_params = {
-              model = "openrouter/anthropic/claude-sonnet-4";
-            };
-          }
-          {
             model_name = "claude-sonnet-4.5";
             litellm_params = {
               model = "openrouter/anthropic/claude-sonnet-4.5";
+            };
+          }
+          {
+            model_name = "claude-opus-4.1";
+            litellm_params = {
+              model = "openrouter/anthropic/claude-opus-4.1";
             };
           }
           {
@@ -88,6 +88,12 @@ in
             model_name = "gemini-2.5-flash-lite-preview";
             litellm_params = {
               model = "openrouter/google/gemini-2.5-flash-lite-preview-09-2025";
+            };
+          }
+          {
+            model_name = "gemini-3-pro-preview";
+            litellm_params = {
+              model = "openrouter/google/gemini-3-pro-preview";
             };
           }
         ];
