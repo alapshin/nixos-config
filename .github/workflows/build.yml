@@ -6,8 +6,8 @@ jobs:
   check:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: DeterminateSystems/nix-installer-action@v17
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/determinate-nix-action@v3
       - name: "Run nix flake checks"
         run: ci/shell.sh
         env:
