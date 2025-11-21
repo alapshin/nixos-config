@@ -6,10 +6,12 @@
 }:
 {
   home.packages = with pkgs; [
+    coreutils
     doggo
     duf
     dust
     fd
+    gnused
     glow
     sd
     trippy
