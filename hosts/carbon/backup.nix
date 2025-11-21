@@ -9,7 +9,7 @@
   services.backup = {
     enable = true;
 
-    borg.jobs = {
+    jobs = {
       home = {
         paths = [
           "/home/alapshin/books"
