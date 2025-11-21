@@ -7,8 +7,8 @@
     final: prev:
     let
       pinnedPkgs = import inputs.nixpkgs-pinned {
-        system = prev.system;
         config = prev.config; # Inherit config from main nixpkgs
+        system = prev.stdenv.hostPlatform.system;
       };
     in
     {
