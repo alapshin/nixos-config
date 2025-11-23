@@ -55,7 +55,6 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    mac-app-util.url = "github:hraban/mac-app-util";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -86,7 +85,6 @@
       nix-darwin,
       nix-homebrew,
       home-manager,
-      mac-app-util,
       plasma-manager,
       nvf,
       catppuccin,
@@ -129,7 +127,6 @@
             nvf.homeManagerModules.nvf
             sops-nix.homeManagerModules.sops
             catppuccin.homeModules.catppuccin
-            mac-app-util.homeManagerModules.default
             plasma-manager.homeModules.plasma-manager
           ];
           extraSpecialArgs = {
@@ -175,7 +172,6 @@
             ./configuration.nix
             inputs.determinate.darwinModules.default
             sops-nix.darwinModules.sops
-            mac-app-util.darwinModules.default
             nix-homebrew.darwinModules.nix-homebrew
             home-manager.darwinModules.home-manager homeConfig
           ];
