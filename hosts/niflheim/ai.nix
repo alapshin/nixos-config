@@ -73,9 +73,9 @@ in
             };
           }
           {
-            model_name = "claude-opus-4.1";
+            model_name = "claude-opus-4.5";
             litellm_params = {
-              model = "openrouter/anthropic/claude-opus-4.1";
+              model = "openrouter/anthropic/claude-opus-4.5";
             };
           }
           {
