@@ -45,6 +45,8 @@ in
 
       # JetBrains
       jetbrains-toolbox
+      # Google Cloud CLI
+      google-cloud-sdk
     ]
     ++ pythonPackages
     ++ (lib.lists.optionals (pkgs.stdenv.hostPlatform.isLinux && hostname == "desktop") [
