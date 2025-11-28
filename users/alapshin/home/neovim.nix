@@ -133,10 +133,9 @@ in
         };
         nix = {
           enable = true;
-          lsp.server = "nixd";
+          lsp.servers = [ "nixd" ];
           format = {
-            type = "nixfmt";
-            package = pkgs.nixfmt;
+            type = [ "nixfmt" ];
           };
         };
         python.enable = true;

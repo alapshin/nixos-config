@@ -59,7 +59,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nvf.url = "github:notashelf/nvf";
+    nvf.url = "github:notashelf/nvf/v0.8";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
     nvf.inputs.systems.follows = "systems";
     nvf.inputs.flake-parts.follows = "flake-parts";
@@ -130,7 +130,7 @@
             plasma-manager.homeModules.plasma-manager
           ];
           extraSpecialArgs = {
-            inherit dotfileDir;
+            inherit inputs dotfileDir;
           };
         };
       };
