@@ -30,6 +30,16 @@
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
         autobean = pyfinal.callPackage ../packages/autobean { };
+        mitmproxy-macos = pyprev.mitmproxy-macos.overridePythonAttrs (oldAttrs: {
+          src = prev.fetchPypi {
+            pname = "mitmproxy_macos";
+            version = "0.12.8";
+            format = "wheel";
+            dist = "py3";
+            python = "py3";
+            hash = "sha256-baAfEY4hEN3wOEicgE53gY71IX003JYFyyZaNJ7U8UA=";
+          };
+        });
       })
     ];
   };
