@@ -9,7 +9,7 @@
   "inbounds": [
     {
       "port": 1080,
-      "tag": "ss",
+      "tag": "shadowsocks-inbound",
       "protocol": "shadowsocks",
       "settings": {
         "network": "tcp,udp",
@@ -19,7 +19,7 @@
     },
     {
       "port": 8443,
-      "tag": "vless_tls",
+      "tag": "vless-inbound",
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -50,8 +50,10 @@
         "enabled": true,
         "destOverride": [
           "http",
-          "tls"
-        ]
+          "tls",
+          "quic"
+        ],
+        "routeOnly": true
       }
     }
   ],
