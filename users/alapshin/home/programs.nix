@@ -30,6 +30,8 @@
         };
         Security = {
           IconDownloadFallback = true;
+          LockDatabaseIdle = true;
+          LockDatabaseIdleSeconds = 900;
         };
         SSHAgent.Enabled = true;
         FdoSecrets.Enabled = true;
