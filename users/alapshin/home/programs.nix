@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   programs = {
     mpv = {
@@ -52,6 +57,12 @@
         obs-backgroundremoval
         obs-pipewire-audio-capture
       ];
+    };
+  };
+
+  home.file = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+    "Library/Application Support/KeePassXC/keepassxc.ini" = {
+      source = config.xdg.configFile."keepassxc/keepassxc.ini".source;
     };
   };
 
