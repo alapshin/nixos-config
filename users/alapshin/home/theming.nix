@@ -15,6 +15,7 @@
     delta.enable = true;
     fish.enable = true;
     gh-dash.enable = true;
+    ghostty.enable = true;
     lazygit.enable = true;
     obs.enable = true;
     starship.enable = true;

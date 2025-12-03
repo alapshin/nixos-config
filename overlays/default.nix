@@ -21,6 +21,12 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
+    ghostty-bin = prev.ghostty-bin.overrideAttrs (oldAttrs: {
+      src = prev.fetchurl {
+        url = "https://github.com/ghostty-org/ghostty/releases/download/tip/Ghostty.dmg";
+        hash = "sha256-s88lcFOei8BHKL2TE6tpI9AA//7dmcM1V+570P54AjI=";
+      };
+    });
     open-webui = prev.open-webui.overridePythonAttrs (oldAttrs: {
       dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
     });

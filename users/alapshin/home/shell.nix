@@ -81,6 +81,19 @@
     };
 
     gallery-dl.enable = true;
+
+
+    ghostty = {
+      enable = true;
+      package = if pkgs.stdenv.hostPlatform.isLinux then pkgs.ghostty else pkgs.ghostty-bin;
+      settings = {
+        auto-update = "off";
+        font-size = 12;
+        font-family = "JetBrainsMono Nerd Font Mono";
+      };
+    };
+
+
     jq.enable = true;
     navi.enable = true;
     nix-your-shell.enable = true;
