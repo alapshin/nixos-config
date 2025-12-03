@@ -42,12 +42,18 @@ in
     brews = [
     ];
     casks = [
-      "sol"
-      "doll"
-      "marta"
       "alt-tab"
-      "steam"
+      "doll"
+      "gimp"
+      "inkscape"
+      "kid3"
+      "marta"
+      "pinta"
       "pritunl"
+      "protonvpn"
+      "sol"
+      "shottr"
+      "steam"
     ];
     masApps = {
       Xcode = 497799835;
