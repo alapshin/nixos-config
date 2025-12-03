@@ -75,6 +75,7 @@
       beanprice
       exiftool
       file
+      flameshot
       ghostscript
       hadolint
       imagemagick
