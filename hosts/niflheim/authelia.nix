@@ -7,8 +7,6 @@
 }:
 let
   instance = "main";
-  dbName = "authelia-${instance}";
-  dbUser = "authelia-${instance}";
   ldapHost = config.services.lldap.settings.ldap_host;
   ldapPort = config.services.lldap.settings.ldap_port;
   ldapBaseDN = config.services.lldap.settings.ldap_base_dn;
@@ -16,7 +14,10 @@ let
   ldapUserOU = "ou=people";
   ldapUsernameAttr = "uid";
   ldapFullUser = "${ldapUsernameAttr}=${ldapUserDN},${ldapUserOU},${ldapBaseDN}";
+  databaseName = "authelia-${instance}";
+  databaseUser = "authelia-${instance}";
   autheliaPort = 8001;
+  autheliaUser = config.services.authelia.instances."${instance}".user;
   redisUnixSocketPath = config.services.redis.servers."authelia-${instance}".unixSocket;
 in
 {
@@ -52,10 +53,10 @@ in
     };
 
     postgresql = {
-      ensureDatabases = [ dbName ];
+      ensureDatabases = [ databaseName ];
       ensureUsers = [
         {
-          name = dbUser;
+          name = databaseUser;
           ensureDBOwnership = true;
         }
       ];
@@ -64,7 +65,7 @@ in
     redis.servers."authelia-${instance}" = {
       enable = true;
       port = 0;
-      user = config.users.users."authelia-${instance}".name;
+      user = autheliaUser;
       unixSocket = "/run/redis-authelia-${instance}/redis.sock";
     };
 
@@ -153,9 +154,9 @@ in
         storage = {
           postgres = {
             address = "unix:///run/postgresql";
-            database = dbName;
-            password = dbUser;
-            username = dbUser;
+            database = databaseName;
+            password = databaseUser;
+            username = databaseUser;
           };
         };
         notifier = {
