@@ -63,7 +63,10 @@ in
       enable = true;
       home = ".local/share/gradle";
       settings = {
-        "org.gradle.java.installations.paths" = "${pkgs.jdk8.home},${pkgs.jdk17.home},${pkgs.jdk21.home}";
+        "org.gradle.java.home" = config.programs.java.package.home;
+        "org.gradle.java.installations.auto-detect" = false;
+        "org.gradle.java.installations.auto-download" = false;
+        "org.gradle.java.installations.paths" = config.programs.java.package.home;
       };
     };
     uv = {
