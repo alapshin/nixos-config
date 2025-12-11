@@ -10,7 +10,7 @@
       enable = true;
     };
     joplin-desktop = {
-      enable = true;
+      enable = false;
       extraConfig = {
         "locale" = "en_GB";
         "dateFormat" = "YYYY-MM-DD";
