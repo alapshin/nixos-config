@@ -107,9 +107,6 @@
       noto-fonts-cjk-serif
       nerd-fonts.jetbrains-mono
       noto-fonts-color-emoji
-
-      # Needed for deploying remote hosts from darwin
-      nixos-rebuild-ng
     ]
     ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
       wl-clipboard
@@ -122,5 +119,7 @@
       skimpdf
       rectangle
       betterdisplay
+      # Needed for deploying remote hosts from darwin
+      nixos-rebuild-ng
     ];
 }

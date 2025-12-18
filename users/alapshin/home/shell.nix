@@ -131,7 +131,7 @@
       enable = true;
       dotDir = "${config.xdg.configHome}/zsh";
 
-      enableCompletion = true;
+      enableCompletion = !pkgs.stdenv.hostPlatform.isDarwin;
       syntaxHighlighting = {
         enable = true;
         highlighters = [
