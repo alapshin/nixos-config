@@ -43,21 +43,21 @@ in
       settings = {
         model_list = [
           {
-            model_name = "gpt-5.1";
+            model_name = "gpt-5.2";
             litellm_params = {
-              model = "openrouter/openai/gpt-5.1";
+              model = "openrouter/openai/gpt-5.2";
             };
           }
           {
-            model_name = "gpt-5.1-codex";
+            model_name = "gpt-5.2-chat";
             litellm_params = {
-              model = "openrouter/openai/gpt-5.1-codex";
+              model = "openrouter/openai/gpt-5.2-chat";
             };
           }
           {
-            model_name = "gpt-5.1-chat";
+            model_name = "gpt-5.2-codex";
             litellm_params = {
-              model = "openrouter/openai/gpt-5.1-chat";
+              model = "openrouter/openai/gpt-5.2-codex";
             };
           }
           {
@@ -79,15 +79,9 @@ in
             };
           }
           {
-            model_name = "gemini-2.5-flash-preview";
+            model_name = "gemini-3-flash-preview";
             litellm_params = {
-              model = "openrouter/google/gemini-2.5-flash-preview-09-2025";
-            };
-          }
-          {
-            model_name = "gemini-2.5-flash-lite-preview";
-            litellm_params = {
-              model = "openrouter/google/gemini-2.5-flash-lite-preview-09-2025";
+              model = "openrouter/google/gemini-3-flash-preview";
             };
           }
           {
