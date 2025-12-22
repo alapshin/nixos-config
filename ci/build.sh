@@ -47,7 +47,7 @@ function remote-switch {
 	# 	--hostname "${hostname}" \
 	# 	--build-host "${remote_host}" \
 	# 	--target-host "${remote_host}" "$PWD"
-	nixos-rebuild-ng switch \
+	nixos-rebuild switch \
 		--no-reexec \
 		--sudo \
 		--build-host "${remote_host}" \
