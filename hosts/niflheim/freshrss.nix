@@ -15,8 +15,8 @@ let
   official_extensions_src = pkgs.fetchFromGitHub {
     owner = "FreshRSS";
     repo = "Extensions";
-    rev = "0557f8fbcd88993dae0545e1da393baca059769b";
-    hash = "sha256-LvNFFXY+XRsx5Q89mUOnPybAKib3kZQ5gfQlesUV/jo=";
+    rev = "42c32bfd9af2d816933cf310e24d25888a8e167d";
+    hash = "sha256-El488QK3xWQM01GsuyBizud6VghXsRDqiOblnMfjVxE=";
   };
 in
 {
@@ -41,6 +41,7 @@ in
       enable = true;
       authType = "form";
       baseUrl = "https://${hostname}";
+      api.enable = true;
       database = {
         type = "pgsql";
         host = "/run/postgresql";
