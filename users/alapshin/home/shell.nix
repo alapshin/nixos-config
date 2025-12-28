@@ -87,6 +87,9 @@
       package = if pkgs.stdenv.hostPlatform.isLinux then pkgs.ghostty else pkgs.ghostty-bin;
       settings = {
         auto-update = "off";
+        # Enable newline via shift-enter
+        # See https://github.com/ghostty-org/ghostty/discussions/7780
+        keybind = "shift+enter=text:\n";
         font-size = 12;
         font-family = "JetBrainsMono Nerd Font Mono";
       };
