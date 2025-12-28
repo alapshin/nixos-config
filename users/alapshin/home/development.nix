@@ -91,6 +91,12 @@ in
     };
     claude-code = {
       enable = true;
+      settings = {
+        model = "haiku";
+        sandbox = {
+          enabled = true;
+        };
+      };
     };
     gemini-cli = {
       enable = true;
