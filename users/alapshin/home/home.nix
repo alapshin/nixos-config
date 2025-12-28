@@ -6,6 +6,10 @@
   dotfileDir,
   ...
 }:
+let
+  homeDirectory =
+    if pkgs.stdenv.hostPlatform.isLinux then "/home/${username}" else "/Users/${username}";
+in
 {
 
   imports = [
@@ -35,7 +39,7 @@
   };
 
   sops = {
-    age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
+    age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
     defaultSopsFile = ../secrets/secrets.yaml;
     secrets = {
       "openrouter_api_key" = {
@@ -48,10 +52,8 @@
   programs.home-manager.enable = true;
 
   home = {
-    inherit username;
     stateVersion = "24.11";
-    homeDirectory =
-      if pkgs.stdenv.hostPlatform.isLinux then "/home/${username}" else "/Users/${username}";
+    inherit username homeDirectory;
   };
 
   home.language = {

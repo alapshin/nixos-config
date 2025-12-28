@@ -82,7 +82,6 @@
 
     gallery-dl.enable = true;
 
-
     ghostty = {
       enable = true;
       package = if pkgs.stdenv.hostPlatform.isLinux then pkgs.ghostty else pkgs.ghostty-bin;
@@ -92,7 +91,6 @@
         font-family = "JetBrainsMono Nerd Font Mono";
       };
     };
-
 
     jq.enable = true;
     navi.enable = true;
