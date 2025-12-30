@@ -54,6 +54,7 @@ in
       "sol"
       "shottr"
       "steam"
+      "logi-options+"
     ];
     masApps = {
       Xcode = 497799835;
