@@ -11,7 +11,10 @@ in
 {
   nix.enable = false;
   programs.bash.enable = true;
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    useBabelfish = true;
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
