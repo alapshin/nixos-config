@@ -44,6 +44,8 @@ in
         "Cryptomining" = true;
         "Fingerprinting" = true;
         "EmailTracking" = true;
+        "SuspectedFingerprinting" = true;
+        "BaselineExceptions" = true;
       };
       "ExtensionUpdate" = false;
       "FirefoxHome" = {
