@@ -58,6 +58,7 @@ in
       "shottr"
       "steam"
       "logi-options+"
+      "ungoogled-chromium"
     ];
     masApps = {
       Xcode = 497799835;
