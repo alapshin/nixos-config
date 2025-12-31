@@ -35,6 +35,7 @@
     ./openssh.nix
     ./postgres.nix
     ./paperless.nix
+    ./pinepods.nix
     ./prometheus.nix
     ./transmission.nix
     ./scrutiny.nix
