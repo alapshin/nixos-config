@@ -50,7 +50,7 @@ in
       "gimp"
       "inkscape"
       "kid3"
-      "marta"
+      "bloom"
       "pinta"
       "pritunl"
       "protonvpn"
