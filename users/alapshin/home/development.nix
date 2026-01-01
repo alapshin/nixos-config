@@ -87,7 +87,7 @@ in
       };
     };
     codex = {
-      enable = true;
+      enable = false;
     };
     claude-code = {
       enable = true;
@@ -99,7 +99,7 @@ in
       };
     };
     gemini-cli = {
-      enable = true;
+      enable = false;
     };
   };
 }
