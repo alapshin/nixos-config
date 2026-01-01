@@ -57,6 +57,7 @@ in
       "sol"
       "shottr"
       "steam"
+      "linearmouse"
       "logi-options+"
       "ungoogled-chromium"
     ];
