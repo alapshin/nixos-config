@@ -44,4 +44,9 @@
       "xhci_pci"
     ];
   };
+
+  hardware = {
+    graphics.enable = true;
+    amdgpu.opencl.enable = true;
+  };
 }
