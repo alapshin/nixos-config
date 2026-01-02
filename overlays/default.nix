@@ -33,6 +33,20 @@
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
         autobean = pyfinal.callPackage ../packages/autobean { };
+        extract-msg = pyprev.extract-msg.overridePythonAttrs (oldAttrs: {
+          pythonRelaxDeps = [
+            "beautifulsoup4"
+          ];
+        });
+        duckdb-engine = pyprev.duckdb-engine.overridePythonAttrs (oldAttrs: {
+          doCheck = false;
+        });
+        langsmith = pyprev.langsmith.overridePythonAttrs (oldAttrs: {
+          doCheck = false;
+        });
+        langchain-community = pyprev.langchain-community.overridePythonAttrs (oldAttrs: {
+          doCheck = false;
+        });
       })
     ];
     vimPlugins = prev.vimPlugins // {
