@@ -1,8 +1,8 @@
 { pkgs, config, ... }:
 let
-  wg = "wg0";
-  wgPort = 51820;
-  wgRouteTable = 7777;
+  port = 51820;
+  interface = "wg0";
+  routeTable = 7777;
 in
 {
 
@@ -21,13 +21,20 @@ in
 
   networking = {
     firewall = {
-      allowedUDPPorts = [ wgPort ];
+      allowedUDPPorts = [ port ];
       checkReversePath = "loose";
-      interfaces."${wg}" = {
+      interfaces."${interface}" = {
         allowedTCPPorts = [ 53 ];
         allowedUDPPorts = [ 53 ];
       };
     };
+  };
+
+  services.vpn = {
+    enable = true;
+    interface = interface;
+    network = "20-wg0";
+    routeTable = routeTable;
   };
 
   systemd.network = {
@@ -35,12 +42,12 @@ in
     netdevs = {
       "20-wg0" = {
         netdevConfig = {
-          Name = wg;
+          Name = interface;
           Kind = "wireguard";
         };
         wireguardConfig = {
-          ListenPort = wgPort;
-          RouteTable = wgRouteTable;
+          ListenPort = port;
+          RouteTable = routeTable;
           PrivateKeyFile = config.sops.secrets."wireguard/private_key".path;
         };
         wireguardPeers = [
@@ -65,7 +72,7 @@ in
           " fd03:1337::228/64"
         ];
         matchConfig = {
-          Name = wg;
+          Name = interface;
         };
         networkConfig = {
           IPv6AcceptRA = false;
@@ -81,20 +88,7 @@ in
           {
             Priority = 2;
             User = config.users.users.bitmagnet.name;
-            Table = wgRouteTable;
-            Family = "both";
-          }
-          {
-            Priority = 1;
-            User = config.users.users.transmission.name;
-            Table = "main";
-            Family = "both";
-            SuppressPrefixLength = 0;
-          }
-          {
-            Priority = 2;
-            User = config.users.users.transmission.name;
-            Table = wgRouteTable;
+            Table = routeTable;
             Family = "both";
           }
         ];

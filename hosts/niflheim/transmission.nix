@@ -29,12 +29,12 @@
         rpc-host-whitelist-enabled = false;
       };
     };
+    vpn.applications."transmission" = {
+      user = config.services.transmission.user;
+    };
     webhost.applications."transmission" = {
       auth = true;
       port = config.services.transmission.settings.rpc-port;
     };
-  };
-  systemd.services.transmission.serviceConfig = {
-    RestrictNetworkInterfaces = "lo wg0";
   };
 }

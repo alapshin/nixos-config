@@ -269,6 +269,7 @@
             ./hosts/common
             ./hosts/server
             ./hosts/niflheim
+            self.nixosModules.vpn
             self.nixosModules.monica
             self.nixosModules.webhost
 
