@@ -51,6 +51,6 @@
     };
 
   environment.systemPackages = with pkgs; [
-    wezterm
+    bottom
   ];
 }
