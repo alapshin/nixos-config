@@ -92,7 +92,6 @@ in
     gid = 300;
   };
 
-
   systemd.tmpfiles.settings = {
     "20-pinepods" = {
       "/var/lib/pinepods/downloads" = {
