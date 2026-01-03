@@ -335,6 +335,26 @@ in
   users.users.sonarr.extraGroups = [ group ];
   users.users.readarr.extraGroups = [ group ];
 
+  systemd.network.networks = {
+    "20-wg0" = {
+      routingPolicyRules = [
+        {
+          Priority = 1;
+          User = "prowlarr";
+          Table = "main";
+          Family = "both";
+          SuppressPrefixLength = 0;
+        }
+        {
+          Priority = 2;
+          User = "prowlarr";
+          Table = 7777;
+          Family = "both";
+        }
+      ];
+    };
+  };
+
   systemd.services.postgresql-setup.postStart = ''
     psql -tAc 'ALTER DATABASE "lidarr-log" OWNER TO "lidarr";'
     psql -tAc 'ALTER DATABASE "lidarr-main" OWNER TO "lidarr";'
@@ -348,4 +368,8 @@ in
     psql -tAc 'ALTER DATABASE "prowlarr-log" OWNER TO "prowlarr";'
     psql -tAc 'ALTER DATABASE "prowlarr-main" OWNER TO "prowlarr";'
   '';
+
+  systemd.services.prowlarr.serviceConfig = {
+    RestrictNetworkInterfaces = "lo wg0";
+  };
 }
