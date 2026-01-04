@@ -18,7 +18,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    nixpkgs-pinned.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-pinned.url = "github:NixOS/nixpkgs/482c8c8a92f6a3b2d6202768b5aedbf20353d1ba";
     nixpkgs-nextcloud.url = "github:NixOS/nixpkgs/pull/384565/head";
 
     systems.url = "github:nix-systems/default";
