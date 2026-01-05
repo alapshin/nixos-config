@@ -46,19 +46,20 @@ in
     ];
     casks = [
       "alt-tab"
+      "bloom"
       "doll"
+      "figma"
       "gimp"
       "inkscape"
       "kid3"
-      "bloom"
+      "linearmouse"
+      "logi-options+"
       "pinta"
       "pritunl"
       "protonvpn"
-      "sol"
       "shottr"
+      "sol"
       "steam"
-      "linearmouse"
-      "logi-options+"
       "ungoogled-chromium"
     ];
     masApps = {
