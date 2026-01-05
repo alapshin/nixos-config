@@ -93,6 +93,11 @@ in
       enable = true;
       settings = {
         model = "haiku";
+        apiKeyHelper = "cat ~/.config/sops-nix/secrets/openrouter_api_key";
+        env = {
+          ANTHROPIC_API_KEY = "";
+          ANTHROPIC_BASE_URL = "https://openrouter.ai/api";
+        };
         sandbox = {
           enabled = true;
         };
