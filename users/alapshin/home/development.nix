@@ -106,5 +106,25 @@ in
     gemini-cli = {
       enable = false;
     };
+    opencode = {
+      enable = true;
+      enableMcpIntegration = true;
+      settings = {
+        autoupdate = false;
+        theme = "catppuccin";
+        model = "openrouter/anthropic/claude-sonnet-4.5";
+        small_model = "openrouter/anthropic/claude-haiku-4.5";
+        enabled_providers = [
+          "openrouter"
+        ];
+        provider = {
+          openrouter = {
+            options = {
+              apiKey = "{file:~/.config/sops-nix/secrets/openrouter_api_key}";
+            };
+          };
+        };
+      };
+    };
   };
 }
