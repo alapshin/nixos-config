@@ -13,8 +13,8 @@
     jobs = {
       home = {
         paths = [
-          "/home/alapshin/books/"
-          "/home/alapshin/Documents/"
+          "/home/alapshin/books"
+          "/home/alapshin/Documents"
         ];
       };
     };
