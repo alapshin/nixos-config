@@ -21,6 +21,17 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
+    mos = prev.mos.overrideAttrs (finalAttrs: oldAttrs: {
+      version = "4.0.0-beta-1201";
+      buildId = "123826";
+      src = prev.fetchurl {
+        url = "https://github.com/Caldis/Mos/releases/download/${finalAttrs.version}/Mos.Versions.${finalAttrs.version}-${finalAttrs.buildId}.zip";
+        hash = "sha256-wjjjrWHSCyFCqFeJEWXe15KOCwTiNZqG+5ydauHKUAo=";
+      };
+      nativeBuildInputs = [
+        prev.unzip
+      ];
+    });
     ghostty-bin = prev.ghostty-bin.overrideAttrs (oldAttrs: {
       src = prev.fetchurl {
         url = "https://github.com/ghostty-org/ghostty/releases/download/tip/Ghostty.dmg";

@@ -115,6 +115,7 @@
     ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isDarwin [
       iina
       keka
+      mos
       maccy
       skimpdf
       ice-bar

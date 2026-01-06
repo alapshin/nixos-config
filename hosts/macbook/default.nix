@@ -52,7 +52,6 @@ in
       "gimp"
       "inkscape"
       "kid3"
-      "linearmouse"
       "logi-options+"
       "pinta"
       "pritunl"

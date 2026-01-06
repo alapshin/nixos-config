@@ -41,12 +41,13 @@
         "system-image"
         "tools"
 
-        "pritunl-client"
-
-        # Darwin stuff
-        "zoom"
+        # Darwin utils
+        "mos"
         "keka"
         "betterdisplay"
+        # Used for work
+        "zoom"
+        "pritunl-client"
       ];
     in
     builtins.any (prefix: lib.strings.hasPrefix prefix name) prefixes;
