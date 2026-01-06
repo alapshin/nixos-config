@@ -6,8 +6,6 @@
 }:
 {
   programs = {
-    adb.enable = true;
-
     java = {
       enable = true;
       package = pkgs.jdk21;

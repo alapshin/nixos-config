@@ -43,6 +43,7 @@ in
 
       # Android
       scrcpy
+      android-tools
 
       # JetBrains
       jetbrains-toolbox
