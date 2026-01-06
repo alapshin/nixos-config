@@ -117,6 +117,7 @@
       keka
       maccy
       skimpdf
+      ice-bar
       rectangle
       betterdisplay
       # Needed for deploying remote hosts from darwin
