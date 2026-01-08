@@ -46,10 +46,7 @@
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
         autobean = pyfinal.callPackage ../packages/autobean { };
-        langchain-community = pyprev.langchain-community.overridePythonAttrs (oldAttrs: {
-          doCheck = false;
-        });
-      })
+     })
     ];
     vimPlugins = prev.vimPlugins // {
       nvim-treesitter = inputs.nixpkgs-pinned.legacyPackages."${prev.system}".vimPlugins.nvim-treesitter;
