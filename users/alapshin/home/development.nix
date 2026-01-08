@@ -145,7 +145,9 @@ in
             write: false
           description: Reviews code for quality and best practices
           ---
-          You are in code review mode. Focus on:
+          You are in code review mode.
+
+          Focus on:
 
             - Code quality
             - Best practices
@@ -154,6 +156,23 @@ in
             - Potential bugs and edge cases
 
           Provide constructive feedback without making direct changes.
+        '';
+        documentation-writer = ''
+          ---
+          mode: subagent
+          model: openrouter/anthropic/claude-sonnet-4.5
+          tools:
+            bash: false
+          description: Writes and maintains project documentation
+          ---
+          You are a technical writer. Create clear, comprehensive documentation.
+
+          Focus on:
+
+            - Proper structure
+            - Clear explanations
+            - Code and usage examples
+            - User-friendly but professional language
         '';
       };
     };
