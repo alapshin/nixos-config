@@ -283,7 +283,10 @@
             ./hosts/personal
             ./hosts/carbon
           ];
-          userModules = [ ./users/alapshin ];
+          userModules = [
+            ./users/alapshin
+            ./users/alapshin/home
+          ];
         };
 
         desktop = mkNixosConfiguration {
