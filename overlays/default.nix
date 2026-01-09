@@ -48,8 +48,5 @@
         autobean = pyfinal.callPackage ../packages/autobean { };
      })
     ];
-    vimPlugins = prev.vimPlugins // {
-      nvim-treesitter = inputs.nixpkgs-pinned.legacyPackages."${prev.system}".vimPlugins.nvim-treesitter;
-    };
   };
 }

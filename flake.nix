@@ -41,7 +41,6 @@
 
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     lanzaboote.url = "github:nix-community/lanzaboote?ref=v1.0.0";
-    lanzaboote.inputs.flake-parts.follows = "flake-parts";
 
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     nix-darwin.url = "github:nix-darwin/nix-darwin";
@@ -59,7 +58,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nvf.url = "github:notashelf/nvf?ref=v0.8";
+    nvf.url = "github:notashelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
     nvf.inputs.systems.follows = "systems";
     nvf.inputs.flake-parts.follows = "flake-parts";
@@ -173,7 +172,8 @@
             inputs.determinate.darwinModules.default
             sops-nix.darwinModules.sops
             nix-homebrew.darwinModules.nix-homebrew
-            home-manager.darwinModules.home-manager homeConfig
+            home-manager.darwinModules.home-manager
+            homeConfig
           ];
         in
         nix-darwin.lib.darwinSystem {
@@ -206,7 +206,8 @@
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             lanzaboote.nixosModules.lanzaboote
-            home-manager.nixosModules.home-manager homeConfig
+            home-manager.nixosModules.home-manager
+            homeConfig
           ];
         in
         nixpkgs.lib.nixosSystem {
