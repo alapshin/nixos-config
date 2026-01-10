@@ -386,7 +386,7 @@ in
         tiny-devicons-auto-colors = {
           enable = true;
           setupOpts = {
-            colors = mkLuaInline ''latte'';
+            colors = mkLuaInline "latte";
           };
         };
 

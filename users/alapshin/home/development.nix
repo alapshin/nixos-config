@@ -130,7 +130,10 @@ in
         };
         formatter = {
           rumdl = {
-            command = [ "rumdl" "$FILE" ];
+            command = [
+              "rumdl"
+              "$FILE"
+            ];
             extensions = [ ".md" ];
           };
         };
