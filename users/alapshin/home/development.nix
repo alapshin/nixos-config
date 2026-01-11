@@ -49,6 +49,8 @@ in
       jetbrains-toolbox
       # Google Cloud CLI
       google-cloud-sdk
+
+      sandbox-runtime
     ]
     ++ pythonPackages
     ++ (lib.lists.optionals (pkgs.stdenv.hostPlatform.isLinux && hostname == "desktop") [
