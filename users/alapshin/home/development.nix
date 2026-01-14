@@ -15,6 +15,7 @@ let
         pytest
         pytest-cov
         pytest-mock
+        ruff
         requests
 
         fava
