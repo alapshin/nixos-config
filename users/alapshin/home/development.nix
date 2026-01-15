@@ -128,7 +128,7 @@ in
       settings = {
         autoupdate = false;
         theme = "catppuccin";
-        model = "openrouter/anthropic/claude-sonnet-4.5";
+        model = "openrouter/anthropic/claude-haiku-4.5";
         small_model = "openrouter/anthropic/claude-haiku-4.5";
         enabled_providers = [
           "openrouter"
