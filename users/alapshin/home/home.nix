@@ -22,6 +22,7 @@ in
     ./gnupg.nix
     ./neovim.nix
     ./plasma.nix
+    ./podman.nix
     ./programs.nix
     ./ssh.nix
     ./services.nix
