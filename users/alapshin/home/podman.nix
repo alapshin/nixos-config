@@ -13,7 +13,7 @@
     #         image = "${opencodeContainerImage.name}";
     #   };
     # };
-    machines = {
+    machines = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
       "dev-machine" = {
         rootful = false;
         timezone = "UTC";
