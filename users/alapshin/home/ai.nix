@@ -57,10 +57,20 @@
         theme = "catppuccin";
         model = "openrouter/anthropic/claude-haiku-4.5";
         small_model = "openrouter/anthropic/claude-haiku-4.5";
+        plugin = [
+          "opencode-gemini-auth@1.3.7"
+          "@mohak34/opencode-notifier@0.1.13"
+        ];
         enabled_providers = [
+          "google"
           "openrouter"
         ];
         provider = {
+          google = {
+            options = {
+              projectId = "rich-phenomenon-443716-d6";
+            };
+          };
           openrouter = {
             options = {
               apiKey = "{file:~/.config/sops-nix/secrets/openrouter_api_key}";
@@ -108,48 +118,7 @@
           };
         };
       };
-      agents = {
-        code-reviewer = ''
-          ---
-          mode: subagent
-          model: openrouter/anthropic/claude-sonnet-4.5
-          temperature: 0.1
-          tools:
-            bash: false
-            edit: false
-            write: false
-          description: Reviews code for quality and best practices
-          ---
-          You are in code review mode.
-
-          Focus on:
-
-            - Code quality
-            - Best practices
-            - Security considerations
-            - Performance implications
-            - Potential bugs and edge cases
-
-          Provide constructive feedback without making direct changes.
-        '';
-        documentation-writer = ''
-          ---
-          mode: subagent
-          model: openrouter/anthropic/claude-sonnet-4.5
-          tools:
-            bash: false
-          description: Writes and maintains project documentation
-          ---
-          You are a technical writer. Create clear, comprehensive documentation.
-
-          Focus on:
-
-            - Proper structure
-            - Clear explanations
-            - Code and usage examples
-            - User-friendly but professional language
-        '';
-      };
+      agents = ./opencode/agent;
     };
   };
 }
