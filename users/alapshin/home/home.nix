@@ -13,6 +13,7 @@ in
 {
 
   imports = [
+    ./ai.nix
     ./anki.nix
     ./chromium.nix
     ./development.nix
