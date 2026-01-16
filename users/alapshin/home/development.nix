@@ -30,6 +30,7 @@ in
     with pkgs;
     [
       bun
+      just
       tokei
       # HTTP API
       hurl
