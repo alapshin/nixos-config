@@ -6,6 +6,17 @@
   ...
 }:
 {
+  sops = {
+    secrets = {
+      "opencode_api_key" = {
+        path = "%r/opencode_api_key";
+      };
+      "openrouter_api_key" = {
+        path = "%r/openrouter_api_key";
+      };
+    };
+  };
+
   programs = {
     mcp = {
       enable = true;
@@ -55,20 +66,206 @@
       settings = {
         autoupdate = false;
         theme = "catppuccin";
-        model = "openrouter/anthropic/claude-haiku-4.5";
-        small_model = "openrouter/anthropic/claude-haiku-4.5";
+        model = "google/antigravity-gemini-3-pro";
+        small_model = "google/antigravity-gemini-3-flash";
         plugin = [
-          "opencode-gemini-auth@1.3.7"
+          "opencode-antigravity-auth@1.3.0"
           "@mohak34/opencode-notifier@0.1.13"
         ];
         enabled_providers = [
           "google"
+          "opencode"
           "openrouter"
         ];
         provider = {
           google = {
+            models = {
+              "gemini-2.5-flash" = {
+                name = "Gemini 2.5 Flash (Gemini CLI)";
+                limit = {
+                  output = 65536;
+                  context = 1048576;
+                };
+                modalities = {
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
+                  output = [ "text" ];
+                };
+              };
+              "gemini-2.5-pro" = {
+                name = "Gemini 2.5 Pro (Gemini CLI)";
+                limit = {
+                  output = 65536;
+                  context = 1048576;
+                };
+                modalities = {
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
+                  output = [ "text" ];
+                };
+              };
+              "gemini-3-flash-preview" = {
+                name = "Gemini 3 Flash Preview (Gemini CLI)";
+                limit = {
+                  output = 65536;
+                  context = 1048576;
+                };
+                modalities = {
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
+                  output = [ "text" ];
+                };
+              };
+              "gemini-3-pro-preview" = {
+                name = "Gemini 3 Pro Preview (Gemini CLI)";
+                limit = {
+                  output = 65535;
+                  context = 1048576;
+                };
+                modalities = {
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
+                  output = [ "text" ];
+                };
+              };
+              "antigravity-gemini-3-pro" = {
+                name = "Gemini 3 Pro (Antigravity)";
+                limit = {
+                  output = 65535;
+                  context = 1048576;
+                };
+                modalities = {
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
+                  output = [ "text" ];
+                };
+                variants = {
+                  low = {
+                    thinkingLevel = "low";
+                  };
+                  high = {
+                    thinkingLevel = "high";
+                  };
+                };
+              };
+              "antigravity-gemini-3-flash" = {
+                name = "Gemini 3 Flash (Antigravity)";
+                limit = {
+                  output = 65536;
+                  context = 1048576;
+                };
+                modalities = {
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
+                  output = [ "text" ];
+                };
+                variants = {
+                  minimal = {
+                    thinkingLevel = "minimal";
+                  };
+                  low = {
+                    thinkingLevel = "low";
+                  };
+                  medium = {
+                    thinkingLevel = "medium";
+                  };
+                  high = {
+                    thinkingLevel = "high";
+                  };
+                };
+              };
+              "antigravity-claude-sonnet-4-5" = {
+                name = "Claude Sonnet 4.5 (Antigravity)";
+                limit = {
+                  output = 64000;
+                  context = 200000;
+                };
+                modalities = {
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
+                  output = [ "text" ];
+                };
+              };
+              "antigravity-claude-sonnet-4-5-thinking" = {
+                name = "Claude Sonnet 4.5 Thinking (Antigravity)";
+                limit = {
+                  output = 64000;
+                  context = 200000;
+                };
+                modalities = {
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
+                  output = [ "text" ];
+                };
+                variants = {
+                  low = {
+                    thinkingConfig = {
+                      thinkingBudget = 8192;
+                    };
+                  };
+                  max = {
+                    thinkingConfig = {
+                      thinkingBudget = 32768;
+                    };
+                  };
+                };
+              };
+              "antigravity-claude-opus-4-5-thinking" = {
+                name = "Claude Opus 4.5 Thinking (Antigravity)";
+                limit = {
+                  output = 64000;
+                  context = 200000;
+                };
+                modalities = {
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
+                  output = [ "text" ];
+                };
+                variants = {
+                  low = {
+                    thinkingConfig = {
+                      thinkingBudget = 8192;
+                    };
+                  };
+                  max = {
+                    thinkingConfig = {
+                      thinkingBudget = 32768;
+                    };
+                  };
+                };
+              };
+            };
+          };
+          opencode = {
             options = {
-              projectId = "rich-phenomenon-443716-d6";
+              apiKey = "{file:~/.config/sops-nix/secrets/opencode_api_key}";
             };
           };
           openrouter = {

@@ -43,11 +43,6 @@ in
   sops = {
     age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
     defaultSopsFile = ../secrets/secrets.yaml;
-    secrets = {
-      "openrouter_api_key" = {
-        path = "%r/openrouter_api_key";
-      };
-    };
   };
 
   programs.nh.enable = true;
