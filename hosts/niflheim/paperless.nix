@@ -81,6 +81,7 @@ in
               redirect_uris = [
                 "https://paperless.${config.services.webhost.basedomain}/accounts/oidc/authelia/login/callback/"
               ];
+              token_endpoint_auth_method = "client_secret_post";
             }
           ];
         };
