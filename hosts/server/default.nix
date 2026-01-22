@@ -52,5 +52,7 @@
 
   environment.systemPackages = with pkgs; [
     bottom
+    # Install ghostty terminfo
+    ghostty
   ];
 }
