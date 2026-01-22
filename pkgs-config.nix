@@ -45,6 +45,8 @@
         # Used for work
         "zoom"
         "pritunl-client"
+        # Self-hosted
+        "changedetection-io"
       ];
     in
     builtins.any (prefix: lib.strings.hasPrefix prefix name) prefixes;
