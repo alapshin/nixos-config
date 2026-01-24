@@ -5,11 +5,11 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "firefox-ui-fix";
-  version = "8.7.3";
+  version = "8.7.5";
 
   src = fetchzip {
     url = "https://github.com/black7375/Firefox-UI-Fix/releases/download/v${version}/Lepton.zip";
-    hash = "sha256-JHF0vlqMhuzIIwyhsALmglFaqmfkQiUh2BWAUSw6lJU=";
+    hash = "sha256-HA+JLODHOJuErbXnnG3sB6wxECmrr+XGSWxJHAB9tug=";
     stripRoot = false;
   };
 
