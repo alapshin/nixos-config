@@ -49,6 +49,7 @@ in
       "bloom"
       "doll"
       "figma"
+      "flowvision"
       "gimp"
       "inkscape"
       "kid3"
