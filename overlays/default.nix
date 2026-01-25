@@ -39,7 +39,7 @@
     ghostty-bin = prev.ghostty-bin.overrideAttrs (oldAttrs: {
       src = prev.fetchurl {
         url = "https://github.com/ghostty-org/ghostty/releases/download/tip/Ghostty.dmg";
-        hash = "sha256-0OYJlc7a5095u9UhXtIAqUja62rskyRClbB1eGI7PPc=";
+        hash = "sha256-icDXXraZaPIqhg2XXY9vlu2U6yA9KSM+KhOzOGgTS/4=";
       };
     });
     open-webui = prev.open-webui.overridePythonAttrs (oldAttrs: {
