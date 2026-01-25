@@ -7,7 +7,7 @@
 {
   programs = {
     mpv = {
-      enable = true;
+      enable = pkgs.stdenv.hostPlatform.isLinux;
     };
     joplin-desktop = {
       enable = false;
