@@ -66,8 +66,8 @@
       settings = {
         autoupdate = false;
         theme = "catppuccin";
-        model = "openrouter/z-ai/glm-4.7";
-        small_model = "openrouter/z-ai/glm-4.7";
+        model = "openrouter/moonshotai/kimi-k2.5";
+        small_model = "openrouter/moonshotai/kimi-k2.5";
         plugin = [
           "@mohak34/opencode-notifier@0.1.13"
         ];
