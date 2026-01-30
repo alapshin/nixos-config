@@ -13,8 +13,8 @@ let
   src = fetchFromGitHub {
     owner = "anomalyco";
     repo = "models.dev";
-    rev = "15b4b02e6ef75f79124d8036266683dfd666f4d4";
-    hash = "sha256-0EnFu7Fr/Gnpga2dD+uMnCz85KaHNfSx7I6U0YIwblA=";
+    rev = "8b2b4b40a1f10a27aa15a4de83a7cee6c2aa9b02";
+    hash = "sha256-FtdPmJU3g9KNBDrxbFQR0Tx0cCmlNS48JSD9AUiB+7s=";
   };
 
   node_modules = stdenvNoCC.mkDerivation {
