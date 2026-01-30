@@ -44,12 +44,12 @@
     });
     opencode = prev.opencode.overrideAttrs (
       oldAttrs: finalAttrs: {
-        version = "1.1.35";
+        version = "1.1.44";
         src = prev.fetchFromGitHub {
           owner = "anomalyco";
           repo = "opencode";
           tag = "v${finalAttrs.version}";
-          hash = "sha256-RTj64yrVLTFNpVc8MvPAJISOlBo/j2MnuL5jo4VtKWM=";
+          hash = "sha256-p4mZRJ+BQs790hjCOJ9iXzg3JoCa4lqOdCqDRkoEfWw=";
         };
       }
     );
