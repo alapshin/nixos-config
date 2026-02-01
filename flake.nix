@@ -33,7 +33,7 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    disko.url = "github:nix-community/disko?ref=v1.11.0";
+    disko.url = "github:nix-community/disko?ref=v1.13.0";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
