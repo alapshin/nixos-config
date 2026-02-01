@@ -3,7 +3,6 @@
   monica = prev.callPackage ./monica { };
   cuesplit = prev.callPackage ./cuesplit { };
   sandbox-runtime = prev.callPackage ./sandbox-runtime { };
-  models-dev = prev.callPackage ./models-dev { };
 
   androidComposition = prev.callPackage ./androidenv { };
 
