@@ -49,10 +49,10 @@ in
       [
         audacity
         calibre
-        gimp3
+        gimp
         inkscape
         kid3-qt
-        libreoffice-qt6-fresh
+        libreoffice-qt-fresh
         qbittorrent
         smplayer
         tor-browser

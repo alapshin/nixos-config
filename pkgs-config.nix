@@ -1,5 +1,7 @@
 { lib }:
 {
+  allowAliases = false;
+
   android_sdk.accept_license = true;
   permittedInsecurePackages = [
   ];

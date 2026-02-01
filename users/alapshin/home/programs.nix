@@ -43,7 +43,7 @@
       };
     };
     element-desktop = {
-      enable = true;
+      enable = false;
     };
 
     man.generateCaches = false;

@@ -57,8 +57,8 @@ in
     ]
     ++ pythonPackages
     ++ (lib.lists.optionals (pkgs.stdenv.hostPlatform.isLinux && hostname == "desktop") [
+      jetbrains.idea
       jetbrains.pycharm
-      jetbrains.idea-ultimate
       android-studio-stable-with-sdk
     ]);
 
