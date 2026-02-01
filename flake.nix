@@ -23,9 +23,6 @@
 
     systems.url = "github:nix-systems/default";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    flake-utils.url = "github:numtide/flake-utils";
-    flake-utils.inputs.systems.follows = "systems";
-
     nur.url = "github:nix-community/nur";
     nur.inputs.nixpkgs.follows = "nixpkgs";
     nur.inputs.flake-parts.follows = "flake-parts";
