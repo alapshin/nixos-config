@@ -69,8 +69,8 @@
         model = "openrouter/moonshotai/kimi-k2.5";
         small_model = "openrouter/moonshotai/kimi-k2.5";
         plugin = [
-          "@tarquinen/opencode-dcp@1.2.7"
-          "@mohak34/opencode-notifier@0.1.13"
+          "@tarquinen/opencode-dcp@1.2.8"
+          "@mohak34/opencode-notifier@0.1.15"
         ];
         enabled_providers = [
           "opencode"
