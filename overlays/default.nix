@@ -21,8 +21,6 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
-    firefox = inputs.nixpkgs-pinned.legacyPackages."${prev.system}".firefox;
-    thunderbird = inputs.nixpkgs-pinned.legacyPackages."${prev.system}".thunderbird;
     mos = prev.mos.overrideAttrs (
       finalAttrs: oldAttrs: {
         version = "4.0.0-beta-1201";
