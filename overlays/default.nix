@@ -42,17 +42,7 @@
         hash = "sha256-icDXXraZaPIqhg2XXY9vlu2U6yA9KSM+KhOzOGgTS/4=";
       };
     });
-    opencode = prev.opencode.overrideAttrs (
-      oldAttrs: finalAttrs: {
-        version = "1.1.44";
-        src = prev.fetchFromGitHub {
-          owner = "anomalyco";
-          repo = "opencode";
-          tag = "v${finalAttrs.version}";
-          hash = "sha256-p4mZRJ+BQs790hjCOJ9iXzg3JoCa4lqOdCqDRkoEfWw=";
-        };
-      }
-    );
+
     open-webui = prev.open-webui.overridePythonAttrs (oldAttrs: {
       dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
     });
