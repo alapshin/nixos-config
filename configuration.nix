@@ -13,9 +13,9 @@
   # Various nix utils
   environment.systemPackages = with pkgs; [
     manix
+    nixfmt
     nix-index
     nix-prefetch-git
     nix-prefetch-github
-    nixfmt-rfc-style
   ];
 }
