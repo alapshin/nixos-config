@@ -49,7 +49,7 @@ function remote-switch {
 	# 	--target-host "${remote_host}" "$PWD"
 	nixos-rebuild switch \
 		--no-reexec \
-		--sudo \
+		--use-substitutes \
 		--build-host "${remote_host}" \
 		--target-host "${remote_host}" \
 		--flake "$PWD#${hostname}"
