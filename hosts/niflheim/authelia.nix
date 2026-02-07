@@ -167,6 +167,17 @@ in
         default_2fa_method = "totp";
         identity_providers = {
           oidc = {
+            cors = {
+              allowed_origins_from_client_redirect_uris = true;
+              endpoints = [
+                "userinfo"
+                "authorization"
+                "token"
+                "revocation"
+                "introspection"
+              ];
+            };
+
             jwks = [
               {
                 key_id = "main";
