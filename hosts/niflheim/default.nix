@@ -30,6 +30,8 @@
     ./lldap.nix
     ./linkwarden.nix
     ./monica.nix
+    # ./netbird.nix
+    ./nginx.nix
     ./ntfy.nix
     ./nextcloud.nix
     ./openssh.nix
