@@ -57,7 +57,7 @@ in
         };
         server = {
           port = 8686;
-          host = "127.0.0.1";
+          bindaddress = "127.0.0.1";
         };
         postgres = {
           host = "/run/postgresql";
@@ -81,7 +81,7 @@ in
         };
         server = {
           port = 7878;
-          host = "127.0.0.1";
+          bindaddress = "127.0.0.1";
         };
         postgres = {
           host = "/run/postgresql";
@@ -105,7 +105,7 @@ in
         };
         server = {
           port = 8787;
-          host = "127.0.0.1";
+          bindaddress = "127.0.0.1";
         };
         postgres = {
           host = "/run/postgresql";
@@ -129,7 +129,7 @@ in
         };
         server = {
           port = 8989;
-          host = "127.0.0.1";
+          bindaddress = "127.0.0.1";
         };
         postgres = {
           host = "/run/postgresql";
@@ -152,7 +152,7 @@ in
         };
         server = {
           port = 9696;
-          host = "127.0.0.1";
+          bindaddress = "127.0.0.1";
         };
         postgres = {
           host = "/run/postgresql";
@@ -171,7 +171,7 @@ in
             api_key = {
               _secret = config.sops.secrets."recyclarr/radarr_api_key".path;
             };
-            base_url = "http://${radarrSettings.server.host}:${toString radarrSettings.server.port}";
+            base_url = "http://${radarrSettings.server.bindaddress}:${toString radarrSettings.server.port}";
             media_naming = {
               folder = "default";
               movie = {
@@ -209,7 +209,7 @@ in
             api_key = {
               _secret = config.sops.secrets."recyclarr/sonarr_api_key".path;
             };
-            base_url = "http://${sonarrSettings.server.host}:${toString sonarrSettings.server.port}";
+            base_url = "http://${sonarrSettings.server.bindaddress}:${toString sonarrSettings.server.port}";
             media_naming = {
               series = "default";
               season = "default";
