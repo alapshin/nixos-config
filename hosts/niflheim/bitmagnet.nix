@@ -20,6 +20,7 @@ in
         postgres.user = cfg.user;
         http_server = {
           port = "3333";
+          local_address = "127.0.0.1:3333";
         };
       };
     };
