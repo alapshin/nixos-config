@@ -21,6 +21,8 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
+    # Fix for catppuccin cursors package expecting xorg in callPackage scope
+    xorg = prev.xorg or prev.pkgs.xorg or prev;
     mos = prev.mos.overrideAttrs (
       finalAttrs: oldAttrs: {
         version = "4.0.0-beta-1201";
