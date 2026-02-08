@@ -17,7 +17,7 @@
 
   # See nixos/modules/services/x11/extra-layouts.nix
   # xkeyboard-config with customized Serbo-Croatian variant of US layout
-  xkbconfig_custom = prev.xorg.xkeyboardconfig.overrideAttrs (oldAttrs: {
+  xkeyboard-config-custom = prev.xkeyboard-config.overrideAttrs (oldAttrs: {
     patches = [ ./xkb/custom-us-hbs.patch ];
   });
 }
