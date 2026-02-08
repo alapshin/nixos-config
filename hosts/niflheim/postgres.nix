@@ -22,6 +22,7 @@
   };
 
   environment.systemPackages = [
+    pkgs.pg_collationfix
     (
       let
         cfg = config.services.postgresql;

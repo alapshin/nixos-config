@@ -2,6 +2,7 @@
 {
   monica = prev.callPackage ./monica { };
   cuesplit = prev.callPackage ./cuesplit { };
+  pg_collationfix = prev.callPackage ./pg-fix-collation { };
   sandbox-runtime = prev.callPackage ./sandbox-runtime { };
 
   androidComposition = prev.callPackage ./androidenv { };
