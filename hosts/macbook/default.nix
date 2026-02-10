@@ -54,6 +54,7 @@ in
       "inkscape"
       "kid3"
       "logi-options+"
+      "pearcleaner"
       "pinta"
       "pritunl"
       "protonvpn"
