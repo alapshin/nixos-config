@@ -61,6 +61,7 @@ in
       "sol"
       "steam"
       "ungoogled-chromium"
+      "zoom"
     ];
     masApps = {
       Xcode = 497799835;

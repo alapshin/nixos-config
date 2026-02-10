@@ -91,7 +91,6 @@
       telegram-desktop
       wget
       unzip
-      zoom-us
 
       # Media
       ffmpeg
