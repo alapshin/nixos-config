@@ -24,7 +24,7 @@
         ratio-limit = 3.0;
         ratio-limit-enabled = true;
 
-        rpc-whielist = "127.0.0.1";
+        rpc-whitelist = "127.0.0.1";
         rpc-whitelist-enabled = true;
         rpc-host-whitelist-enabled = false;
       };
