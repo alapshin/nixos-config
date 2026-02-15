@@ -12,10 +12,6 @@ in
         key = "wireguard/private_key";
         owner = config.users.users.systemd-network.name;
       };
-      "wireguard/preshared_key" = {
-        key = "wireguard/preshared_key";
-        owner = config.users.users.systemd-network.name;
-      };
     };
   };
 
@@ -32,8 +28,8 @@ in
 
   services.vpn = {
     enable = true;
-    interface = interface;
     network = "20-wg0";
+    interface = interface;
     routeTable = routeTable;
   };
 
@@ -47,7 +43,6 @@ in
         };
         wireguardConfig = {
           ListenPort = port;
-          RouteTable = routeTable;
           PrivateKeyFile = config.sops.secrets."wireguard/private_key".path;
         };
         wireguardPeers = [
@@ -55,7 +50,7 @@ in
             Endpoint = "wg010.njalla.no:51820";
             AllowedIPs = [ "0.0.0.0/0" ];
             PublicKey = "UGz2woATzV0P1fqXZ+wjCRoZdFDJ/Kdr1aYuw25u7D4=";
-            # PresharedKeyFile = config.sops.secrets."wireguard/preshared_key".path;
+            RouteTable = routeTable;
             PersistentKeepalive = 25;
           }
         ];
@@ -69,7 +64,7 @@ in
         ];
         address = [
           "10.13.37.228/24"
-          " fd03:1337::228/64"
+          "fd03:1337::228/64"
         ];
         matchConfig = {
           Name = interface;
@@ -77,21 +72,6 @@ in
         networkConfig = {
           IPv6AcceptRA = false;
         };
-        routingPolicyRules = [
-          {
-            Priority = 1;
-            User = config.users.users.bitmagnet.name;
-            Table = "main";
-            Family = "both";
-            SuppressPrefixLength = 0;
-          }
-          {
-            Priority = 2;
-            User = config.users.users.bitmagnet.name;
-            Table = routeTable;
-            Family = "both";
-          }
-        ];
       };
     };
   };
