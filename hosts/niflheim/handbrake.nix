@@ -7,9 +7,6 @@
 {
   sops = {
     secrets = {
-      "dockerhub/password" = {
-        owner = "makemkv";
-      };
     };
   };
 
@@ -25,6 +22,7 @@
     home = "/var/lib/makemkv";
     createHome = true;
     isSystemUser = true;
+    linger = true;
     useDefaultShell = true;
     autoSubUidGidRange = true;
   };
@@ -41,6 +39,7 @@
     home = "/var/lib/mkvtoolnix";
     createHome = true;
     isSystemUser = true;
+    linger = true;
     useDefaultShell = true;
     autoSubUidGidRange = true;
   };
@@ -81,7 +80,7 @@
   virtualisation.oci-containers = {
     containers = {
       makemkv = {
-        image = "docker.io/jlesage/makemkv:v25.02.3";
+        image = "docker.io/jlesage/makemkv:v26.01.2";
         ports = [ "127.0.0.1:5800:5800" ];
         volumes = [
           "/var/lib/makemkv:/config"
@@ -91,7 +90,7 @@
       };
 
       mkvtoolnix = {
-        image = "docker.io/jlesage/mkvtoolnix:v25.03.1";
+        image = "docker.io/jlesage/mkvtoolnix:v26.01.2";
         ports = [ "127.0.0.1:5801:5800" ];
         volumes = [
           "/mnt/data:/storage"

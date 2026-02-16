@@ -23,7 +23,7 @@
     # ./forgejo.nix
     ./freshrss.nix
     ./grafana.nix
-    # ./handbrake.nix
+    ./handbrake.nix
     ./immich.nix
     ./influxdb.nix
     ./jellyfin.nix
