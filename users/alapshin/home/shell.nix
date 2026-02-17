@@ -118,6 +118,7 @@
     };
 
     tealdeer.enable = false;
+    tirith.enable = true;
     yazi = {
       enable = true;
       shellWrapperName = "y";
