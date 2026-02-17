@@ -19,6 +19,9 @@ in
 {
   sops = {
     secrets = {
+      "grafana/secret_key" = {
+        owner = "grafana";
+      };
       "grafana/admin_username" = {
         owner = "grafana";
       };
@@ -44,6 +47,7 @@ in
           host = "/run/postgresql/";
         };
         security = {
+          secret_key = "$__file{${config.sops.secrets."grafana/secret_key".path}}";
           admin_user = "$__file{${config.sops.secrets."grafana/admin_username".path}}";
           admin_email = "superadmin@localhost";
           admin_password = "$__file{${config.sops.secrets."grafana/admin_password".path}}";
