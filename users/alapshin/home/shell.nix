@@ -118,7 +118,10 @@
     };
 
     tealdeer.enable = false;
-    yazi.enable = true;
+    yazi = {
+      enable = true;
+      shellWrapperName = "y";
+    };
     yt-dlp.enable = true;
 
     wezterm = {
