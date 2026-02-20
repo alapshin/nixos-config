@@ -17,6 +17,7 @@
       matchBlocks = {
         "*" = {
           addKeysToAgent = "yes";
+          serverAliveInterval = 60;
         };
         "github.com" = {
           user = "git";
