@@ -43,6 +43,7 @@ in
         };
         wireguardConfig = {
           ListenPort = port;
+          RouteTable = routeTable;
           PrivateKeyFile = config.sops.secrets."wireguard/private_key".path;
         };
         wireguardPeers = [
