@@ -97,6 +97,10 @@
           "/var/lib/mkvtoolnix:/config"
         ];
         podman.user = "mkvtoolnix";
+        environment = {
+          USER_ID = toString config.users.users.mkvtoolnix.uid;
+          GROUP_ID = toString config.users.groups.mkvtoolnix.gid;
+        };
       };
 
       # handbrake-server = {
