@@ -80,7 +80,7 @@
       };
     };
 
-    gallery-dl.enable = true;
+    gallery-dl.enable = false;
 
     ghostty = {
       enable = true;
@@ -123,7 +123,7 @@
       enable = true;
       shellWrapperName = "y";
     };
-    yt-dlp.enable = true;
+    yt-dlp.enable = false;
 
     wezterm = {
       enable = true;
