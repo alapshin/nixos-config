@@ -16,7 +16,7 @@
     ./backup.nix
     ./bitmagnet.nix
     ./caddy.nix
-    ./calibre.nix
+    # ./calibre.nix
     ./changedetection.nix
     ./dashboard.nix
     ./docling.nix

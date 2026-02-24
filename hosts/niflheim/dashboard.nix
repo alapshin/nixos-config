@@ -127,15 +127,15 @@ in
               app = "audiobookshelf";
               description = "Audiobook and podcast server";
             })
-            (mkService {
-              app = "calibre";
-              description = "Browse, read and download eBooks";
-              widget = {
-                type = "calibreweb";
-                username = "{{HOMEPAGE_FILE_CALIBREWEB_USERNAME}}";
-                password = "{{HOMEPAGE_FILE_CALIBREWEB_PASSWORD}}";
-              };
-            })
+            # (mkService {
+            #   app = "calibre";
+            #   description = "Browse, read and download eBooks";
+            #   widget = {
+            #     type = "calibreweb";
+            #     username = "{{HOMEPAGE_FILE_CALIBREWEB_USERNAME}}";
+            #     password = "{{HOMEPAGE_FILE_CALIBREWEB_PASSWORD}}";
+            #   };
+            # })
             (mkService {
               app = "jellyfin";
               description = "The Free Software Media System";
@@ -213,8 +213,8 @@ in
     environment = {
       # LOG_LEVEL = "debug";
       HOMEPAGE_FILE_AUDIOBOOKSHELF_API_KEY = "%d/audiobookshelf_api_key";
-      HOMEPAGE_FILE_CALIBREWEB_USERNAME = "%d/calibreweb_username";
-      HOMEPAGE_FILE_CALIBREWEB_PASSWORD = "%d/calibreweb_password";
+      # HOMEPAGE_FILE_CALIBREWEB_USERNAME = "%d/calibreweb_username";
+      # HOMEPAGE_FILE_CALIBREWEB_PASSWORD = "%d/calibreweb_password";
 
       HOMEPAGE_FILE_GRAFANA_USERNAME = "%d/grafana_username";
       HOMEPAGE_FILE_GRAFANA_PASSWORD = "%d/grafana_password";
@@ -236,8 +236,8 @@ in
     serviceConfig = {
       LoadCredential = [
         "audiobookshelf_api_key:${config.sops.secrets."audiobookshelf/api_key".path}"
-        "calibreweb_username:${config.sops.secrets."calibreweb/admin_username".path}"
-        "calibreweb_password:${config.sops.secrets."calibreweb/admin_password".path}"
+        # "calibreweb_username:${config.sops.secrets."calibreweb/admin_username".path}"
+        # "calibreweb_password:${config.sops.secrets."calibreweb/admin_password".path}"
 
         "grafana_username:${config.sops.secrets."grafana/admin_username".path}"
         "grafana_password:${config.sops.secrets."grafana/admin_password".path}"
