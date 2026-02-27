@@ -48,7 +48,6 @@ in
       "alt-tab"
       "bloom"
       "doll"
-      "figma"
       "flowvision"
       "gimp"
       "inkscape"
