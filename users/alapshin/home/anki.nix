@@ -16,9 +16,11 @@
     enable = false;
     style = "native";
     language = "en_US";
-    sync = {
-      autoSync = false;
-      autoSyncMediaMinutes = 0;
+    profiles."User 1" = {
+      sync = {
+        autoSync = false;
+        autoSyncMediaMinutes = 0;
+      };
     };
     addons = [
       pkgs.ankiAddons.review-heatmap
