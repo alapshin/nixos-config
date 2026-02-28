@@ -99,10 +99,12 @@ in
           ++ (with pkgs.nur.repos.rycee.firefox-addons; [
             clearurls
             metamask
+            karakeep
             linkwarden
             sponsorblock
             languagetool
             ublock-origin
+            single-file
             tree-style-tab
             keepassxc-browser
             temporary-containers

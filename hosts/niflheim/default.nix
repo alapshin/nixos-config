@@ -28,6 +28,7 @@
     ./influxdb.nix
     ./jellyfin.nix
     ./lldap.nix
+    ./karakeep.nix
     ./linkwarden.nix
     ./monica.nix
     # ./netbird.nix
