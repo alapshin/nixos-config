@@ -24,11 +24,11 @@
     xorg = prev.xorg or prev.pkgs.xorg or prev;
     mos = prev.mos.overrideAttrs (
       finalAttrs: oldAttrs: {
-        version = "4.0.0-beta-1201";
-        buildId = "123826";
+        version = "4.0.0";
+        buildId = "20260220.1";
         src = prev.fetchurl {
           url = "https://github.com/Caldis/Mos/releases/download/${finalAttrs.version}/Mos.Versions.${finalAttrs.version}-${finalAttrs.buildId}.zip";
-          hash = "sha256-wjjjrWHSCyFCqFeJEWXe15KOCwTiNZqG+5ydauHKUAo=";
+          hash = "sha256-xxe/joEVoNr2B+e956f4sHgWoXW5FsOo9hNK/IwYqcQ=";
         };
         nativeBuildInputs = [
           prev.unzip
