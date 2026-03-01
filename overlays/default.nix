@@ -45,6 +45,14 @@
     open-webui = prev.open-webui.overridePythonAttrs (oldAttrs: {
       dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
     });
+
+    changedetection-io = prev.changedetection-io.overridePythonAttrs (oldAttrs: {
+      propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [
+        final.python3Packages.flask-babel
+        final.python3Packages.diff-match-patch
+      ];
+    });
+
     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
       (pyfinal: pyprev: {
         autobean = pyfinal.callPackage ../packages/autobean { };
