@@ -3,17 +3,29 @@
   # This one brings our custom packages from the 'packages' directory
   additions = final: prev: import ../packages { inherit final prev; };
 
-  pinned =
+  # pinned =
+  #   final: prev:
+  #   let
+  #     pinnedPkgs = import inputs.nixpkgs-pinned {
+  #       config = prev.config; # Inherit config from main nixpkgs
+  #       system = prev.stdenv.hostPlatform.system;
+  #     };
+  #   in
+  #   {
+  #   };
+
+  # Use nixos-rebuild from staging-nixos branch
+  staging =
     final: prev:
     let
-      pinnedPkgs = import inputs.nixpkgs-pinned {
-        config = prev.config; # Inherit config from main nixpkgs
-        system = prev.stdenv.hostPlatform.system;
+      stagingPkgs = import inputs.nixpkgs-staging {
+        system = final.stdenv.hostPlatform.system;
+        config = prev.config;
       };
     in
     {
-      nixos-rebuild = pinnedPkgs.nixos-rebuild-ng;
-      nixos-rebuild-ng = pinnedPkgs.nixos-rebuild-ng;
+      nixos-rebuild = stagingPkgs.nixos-rebuild;
+      nixos-rebuild-ng = stagingPkgs.nixos-rebuild-ng or stagingPkgs.nixos-rebuild;
     };
 
   # https://nixos.wiki/wiki/Overlays
