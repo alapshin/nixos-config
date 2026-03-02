@@ -50,7 +50,7 @@
     ghostty-bin = prev.ghostty-bin.overrideAttrs ({
       src = prev.fetchurl {
         url = "https://github.com/ghostty-org/ghostty/releases/download/tip/Ghostty.dmg";
-        hash = "sha256-znIuGbWY48ajo+0QT8/pKYqwAEShmlZUwyo65eXf70Q=";
+        hash = "sha256-9QEUhP7G+6clJxw6zr4xBriwJamUzuZRUEhDrged6J0=";
       };
     });
 
