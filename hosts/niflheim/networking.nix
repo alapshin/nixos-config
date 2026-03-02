@@ -9,12 +9,6 @@
   networking = {
     hostName = "niflheim";
 
-    firewall = {
-      allowedTCPPorts = [
-        80
-        443
-      ];
-    };
   };
 
   systemd.network = {

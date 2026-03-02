@@ -45,6 +45,7 @@
     ./searx.nix
     ./servarr.nix
     ./wireguard.nix
+    ./xray-server.nix
 
     ./networking.nix
     ./hardware-configuration.nix
