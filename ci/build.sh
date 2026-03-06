@@ -55,7 +55,7 @@ function remote-switch {
 		--flake "$PWD#${hostname}"
 }
 
-function install-remote {
+function remote-install {
 	decrypt-build-secrets "hosts/${hostname}"
 
 	sshdir="hosts/${hostname}/secrets/build/openssh"
@@ -64,7 +64,19 @@ function install-remote {
 
 	luks_password_file="hosts/${hostname}/secrets/build/luks/key.txt"
 
+	# kexec into the NixOS installer first
 	nix run github:nix-community/nixos-anywhere -- \
+		--phases kexec \
+		--flake ".#${hostname}" \
+		"${remote_host}"
+
+	# Inject GOPROXY into the post-kexec installer's nix config
+	ssh "${remote_host}" -- \
+		'mkdir -p ~/.config/nix && printf "extra-experimental-features = configurable-impure-env\nimpure-env = GOPROXY=https://goproxy.cn,direct\n" >> ~/.config/nix/nix.conf'
+
+	# Run the remaining phases: disko, install, reboot
+	nix run github:nix-community/nixos-anywhere -- \
+		--phases disko,install,reboot \
 		--flake ".#${hostname}" \
 		--extra-files "${sshdir}" \
 		--disk-encryption-keys /tmp/disk.key "${luks_password_file}" \
@@ -74,11 +86,11 @@ function install-remote {
 function sops-update-keys {
 	readarray -t encrypted_files <<<"$(
 		grep \
+			--regexp '"sops":' \
 			--recursive \
 			--exclude-dir="ci" \
 			--exclude-dir=".git" \
-			--files-with-matches \
-			--regexp "unencrypted_suffix"
+			--files-with-matches
 	)"
 	for f in "${encrypted_files[@]}"; do
 		sops updatekeys --yes "${f}"
@@ -104,7 +116,7 @@ function decrypt-build-secrets {
 	# Find all build-time secrets under specified subdirectory
 	readarray -t encrypted_files <<<"$(
 		grep \
-			--regexp "unencrypted_suffix" \
+			--regexp '"sops":' \
 			--recursive \
 			--exclude-dir="ci" \
 			--exclude-dir=".git" \

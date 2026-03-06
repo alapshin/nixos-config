@@ -41,5 +41,6 @@
   # We rather want a build to be killed than our precious user sessions
   # as builds can be easily restarted.
   systemd.services.nix-daemon.environment.TMPDIR = "/var/tmp";
+  systemd.services.nix-daemon.environment.GOPROXY = "https://goproxy.cn,direct";
   systemd.services.nix-daemon.serviceConfig.OOMScoreAdjust = lib.mkDefault 250;
 }
