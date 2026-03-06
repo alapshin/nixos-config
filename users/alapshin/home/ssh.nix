@@ -31,6 +31,10 @@
           user = "root";
           hostname = "95.217.6.218";
         };
+        "midgard" = {
+          user = "root";
+          hostname = "212.193.3.155";
+        };
         "hel" = {
           user = "root";
           port = 2222;

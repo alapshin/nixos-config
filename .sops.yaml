@@ -11,6 +11,7 @@ keys:
     altdesk: &host_altdesk age1gwk0m9n4mrr7h572kkjxtkkl4p0t2mfc9f7ms0560s63x4pawgzq433tca
     desktop: &host_desktop age18y57gdahad7zhrrgj2m4dd7fcgwfn4gpmxe9mhcrue8suq8e8c3stzd0ge
     bifrost: &host_bifrost age1rs5rev3ks20s67052nshr5asqctvylrlytksjrfsns8e93t78dssr7wzg9
+    midgard: &host_midgard age19hscgq87tp4e283uxlqnjctxdl22d3ulx6d5k4k2xgkq87nqycmqs3l2y5
     niflheim: &host_niflheim age1rs5rev3ks20s67052nshr5asqctvylrlytksjrfsns8e93t78dssr7wzg9
   # User keys per machine
   users:
@@ -27,6 +28,7 @@ creation_rules:
           - *host_altdesk
           - *host_desktop
           - *host_bifrost
+          - *host_midgard
           - *host_niflheim
           - *user_alapshin_carbon
           - *user_alapshin_altdesk
@@ -61,6 +63,13 @@ creation_rules:
     key_groups:
       - age:
           - *host_bifrost
+          - *user_alapshin_carbon
+          - *user_alapshin_desktop
+          - *user_alapshin_macbook
+  - path_regex: hosts/midgard/secrets.*
+    key_groups:
+      - age:
+          - *host_midgard
           - *user_alapshin_carbon
           - *user_alapshin_desktop
           - *user_alapshin_macbook

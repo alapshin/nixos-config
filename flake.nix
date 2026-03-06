@@ -263,6 +263,14 @@
           ];
         };
 
+        midgard = mkNixosConfiguration {
+          hostModules = [
+            ./hosts/common
+            ./hosts/server
+            ./hosts/midgard
+          ];
+        };
+
         niflheim = mkNixosConfiguration {
           hostModules = [
             ./hosts/common

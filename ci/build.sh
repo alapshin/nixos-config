@@ -80,6 +80,7 @@ function remote-install {
 		--flake ".#${hostname}" \
 		--extra-files "${sshdir}" \
 		--disk-encryption-keys /tmp/disk.key "${luks_password_file}" \
+		--generate-hardware-config nixos-facter "hosts/${hostname}/facter.json" \
 		"${remote_host}"
 }
 

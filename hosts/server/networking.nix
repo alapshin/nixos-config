@@ -9,7 +9,7 @@
 
   networking = {
     # Use networkd instead of the pile of shell scripts
-    useDHCP = lib.mkDefault false;
+    useDHCP = lib.mkForce false;
     useNetworkd = lib.mkDefault true;
   };
 
