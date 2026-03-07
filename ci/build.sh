@@ -94,6 +94,7 @@ function sops-update-keys {
 			--files-with-matches
 	)"
 	for f in "${encrypted_files[@]}"; do
+		echo "Re-keying ${f}"
 		sops updatekeys --yes "${f}"
 	done
 }
