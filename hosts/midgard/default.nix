@@ -4,10 +4,17 @@
   config,
   ...
 }:
+
+let
+  publicIPv4 = "212.193.3.155";
+in
 {
+  _module.args = { inherit publicIPv4; };
+
   imports = [
     ./openssh.nix
     ./secrets.nix
+    ./caddy.nix
     ./xray-server.nix
 
     ./networking.nix

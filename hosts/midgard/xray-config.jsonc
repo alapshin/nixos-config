@@ -6,18 +6,6 @@
     "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
-        // Route tunnel clients requesting public IP:443 to local server.
-        // Scoped to inbounds so external direct connections are NOT affected - those are handled natively by REALITY's target fallback.
-        "type": "field",
-        "inboundTag": [
-          "vless-inbound",
-          "vless-inbound-alt"
-        ],
-        "ip": [ "@server_public_ip@" ],
-        "port": "443",
-        "outboundTag": "internal"
-      },
-      {
         // Block connections to private/LAN IP ranges to prevent SSRF abuse
         "type": "field",
         "ip": [
@@ -48,7 +36,7 @@
           "show": false,
           "target": "127.0.0.1:8444",
           "serverNames": [
-            "hello.bitgarage.dev"
+            "ip-212-193-3-155.my-advin.com"
           ],
           "privateKey": "@vless_private_key@",
           "shortIds": [
@@ -84,7 +72,7 @@
           "show": false,
           "target": "127.0.0.1:8444",
           "serverNames": [
-            "hello.bitgarage.dev"
+            "ip-212-193-3-155.my-advin.com"
           ],
           "privateKey": "@vless_private_key@",
           "shortIds": [
@@ -107,14 +95,6 @@
       "protocol": "freedom",
       "settings": {
         "domainStrategy": "UseIP"
-      }
-    },
-    {
-      // Redirects tunnel traffic destined for server's public IP to local web server
-      "tag": "internal",
-      "protocol": "freedom",
-      "settings": {
-        "redirect": "127.0.0.1:8442"
       }
     },
     {

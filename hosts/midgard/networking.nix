@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  publicIPv4,
   ...
 }:
 {
@@ -15,7 +16,7 @@
       matchConfig.Name = "eth0 en*";
       networkConfig.DHCP = "no";
       address = [
-        "212.193.3.155/24"
+        "${publicIPv4}/24"
         "2602:fb54:1800::5/128"
       ];
       routes = [
