@@ -54,5 +54,6 @@
     bottom
     # Install ghostty terminfo
     ghostty
+    shpool
   ];
 }

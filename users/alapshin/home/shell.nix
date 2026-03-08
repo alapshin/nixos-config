@@ -78,6 +78,15 @@
         gpd = "git push --dry-run";
         gpf = "git push --force-with-lease --force-if-includes";
       };
+      functions = {
+        sshpool = ''
+          if test (count $argv) -eq 2
+            ssh -t -o "RemoteCommand=shpool attach -f $argv[2]" "$argv[1]"
+          else
+            echo "usage: sshpool <remote-machine> <session-name>" >&2; return 1
+          end
+        '';
+      };
     };
 
     gallery-dl.enable = false;
@@ -163,6 +172,16 @@
           "systemd"
         ];
       };
+
+      initContent = ''
+        sshpool() {
+          if [ $# -eq 2 ]; then
+            ssh -t -o "RemoteCommand=shpool attach -f ''\${2}" "''\${1}"
+          else
+            echo "usage: sshpool <remote-machine> <session-name>" >&2; return 1
+          fi
+        }
+      '';
     };
   };
 
