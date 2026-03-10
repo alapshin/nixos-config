@@ -48,9 +48,10 @@
       }
     );
     ghostty-bin = prev.ghostty-bin.overrideAttrs ({
+      version = "1.3.0";
       src = prev.fetchurl {
-        url = "https://github.com/ghostty-org/ghostty/releases/download/tip/Ghostty.dmg";
-        hash = "sha256-9QEUhP7G+6clJxw6zr4xBriwJamUzuZRUEhDrged6J0=";
+        url = "https://release.files.ghostty.org/1.3.0/Ghostty.dmg";
+        hash = "sha256-U/6Y5wmCEYAIwDuf2/XfJlUip/22vfoY630NTNMdDMU=";
       };
     });
 
