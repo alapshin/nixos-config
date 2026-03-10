@@ -27,7 +27,6 @@
     };
     environmentFile = config.sops.templates."caddy.env".path;
     globalConfig = ''
-      https_port 8442
       default_bind 127.0.0.1
 
       # Disable HTTP/3 — ports are internal, must not be advertised via Alt-Svc
@@ -47,8 +46,8 @@
     '';
 
     # REALITY fallback front — binds exclusively on port 8444
-    # so it is never reachable via the app listener (port 8443).
-    # Xray forwards active probes here; real tunnel clients go to app vhosts on port 8443.
+    # so it is never reachable via the main app listener (port 443).
+    # Xray forwards active probes here; real tunnel clients go to app vhosts on port 443.
     virtualHosts."hello.bitgarage.dev:8444".extraConfig = ''
       respond 200 {
         close

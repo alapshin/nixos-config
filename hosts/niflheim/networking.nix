@@ -8,7 +8,12 @@
 {
   networking = {
     hostName = "niflheim";
-
+    hosts = {
+      "127.0.0.1" = [
+        config.services.webhost.authdomain
+        config.services.webhost.basedomain
+      ];
+    };
   };
 
   systemd.network = {

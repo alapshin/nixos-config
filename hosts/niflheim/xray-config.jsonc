@@ -6,8 +6,19 @@
     "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
-        // Route tunnel clients requesting public IP:443 to local server.
-        // Scoped to inbounds so external direct connections are NOT affected - those are handled natively by REALITY's target fallback.
+        // Route tunnel clients requesting *.bitgarage.dev domains to local web server.
+        // Scoped to inbounds so external direct connections are NOT affected.
+        "type": "field",
+        "inboundTag": [
+          "vless-inbound",
+          "vless-inbound-alt"
+        ],
+        "domain": [ "domain:bitgarage.dev" ],
+        "outboundTag": "internal"
+      },
+      {
+        // Route tunnel clients requesting server public ip and port 443 to local server.
+        // Scoped to inbounds so external direct connections are NOT affected.
         "type": "field",
         "inboundTag": [
           "vless-inbound",
@@ -29,6 +40,7 @@
   },
   "inbounds": [
     {
+      "listen": "@server_public_ip@",
       "port": 443,
       "tag": "vless-inbound",
       "protocol": "vless",
@@ -65,6 +77,7 @@
       }
     },
     {
+      "listen": "@server_public_ip@",
       "port": 8443,
       "tag": "vless-inbound-alt",
       "protocol": "vless",
@@ -114,7 +127,7 @@
       "tag": "internal",
       "protocol": "freedom",
       "settings": {
-        "redirect": "127.0.0.1:8442"
+        "redirect": "127.0.0.1:443"
       }
     },
     {
