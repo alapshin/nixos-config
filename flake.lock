@@ -530,22 +530,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-staging": {
-      "locked": {
-        "lastModified": 1773231238,
-        "narHash": "sha256-p/JHgtDMbNLieJvu07lVhVOR65FwsIzlOAuin2pNFE8=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "82db11803b5ef2f2a0d6d7fd1d64434c0c519232",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "staging-nixos",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1772479524,
@@ -689,7 +673,6 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-nextcloud": "nixpkgs-nextcloud",
         "nixpkgs-pinned": "nixpkgs-pinned",
-        "nixpkgs-staging": "nixpkgs-staging",
         "nur": "nur",
         "nvf": "nvf",
         "plasma-manager": "plasma-manager",
