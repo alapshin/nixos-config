@@ -45,6 +45,12 @@
       dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
     });
 
+    # Fix karakeep build - skip failing cache patch
+    karakeep = prev.karakeep.overrideAttrs (oldAttrs: {
+      # Remove the preInstall hook that applies the failing patch
+      preInstall = null;
+    });
+
     changedetection-io = prev.changedetection-io.overridePythonAttrs (oldAttrs: {
       propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [
         final.python3Packages.flask-babel
