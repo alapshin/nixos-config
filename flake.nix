@@ -20,7 +20,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nixpkgs-pinned.url = "github:NixOS/nixpkgs/2fc6539b481e1d2569f25f8799236694180c0993";
     nixpkgs-nextcloud.url = "github:NixOS/nixpkgs/pull/384565/head";
-    nixpkgs-staging.url = "github:NixOS/nixpkgs/staging-nixos";
 
     systems.url = "github:nix-systems/default";
     flake-parts.url = "github:hercules-ci/flake-parts";

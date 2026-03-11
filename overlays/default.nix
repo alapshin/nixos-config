@@ -14,20 +14,6 @@
   #   {
   #   };
 
-  # Use nixos-rebuild from staging-nixos branch
-  staging =
-    final: prev:
-    let
-      stagingPkgs = import inputs.nixpkgs-staging {
-        system = final.stdenv.hostPlatform.system;
-        config = prev.config;
-      };
-    in
-    {
-      nixos-rebuild = stagingPkgs.nixos-rebuild;
-      nixos-rebuild-ng = stagingPkgs.nixos-rebuild-ng or stagingPkgs.nixos-rebuild;
-    };
-
   # https://nixos.wiki/wiki/Overlays
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
