@@ -1,0 +1,411 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                  NIXOS CONFIGURATION STRUCTURE SUMMARY                          ║
+║                    As of March 13, 2026                                          ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+───────────────────────────────────────────────────────────────────────────────────
+1. DIRECTORY STRUCTURE OVERVIEW
+───────────────────────────────────────────────────────────────────────────────────
+
+/nixos-config/
+├── hosts/                          [All system configurations]
+│   ├── common/                     [Shared base for all Linux hosts]
+│   │   ├── default.nix             [Kernel, security, hardware]
+│   │   ├── nix.nix                 [Nix daemon config]
+│   │   ├── openssh.nix             [SSH hardening]
+│   │   ├── secrets.nix             [sops-nix setup]
+│   │   ├── backup.nix              [Borgbackup]
+│   │   ├── services.nix            [Core services]
+│   │   └── networking.nix          [Base networking]
+│   │
+│   ├── server/                     [Server-specific config]
+│   │   ├── default.nix             [Server policies]
+│   │   ├── nix.nix                 [Server Nix settings]
+│   │   ├── openssh.nix
+│   │   ├── networking.nix
+│   │   └── virtualization.nix
+│   │
+│   ├── personal/                   [Desktop/laptop config]
+│   │   ├── default.nix             [Localization, imports]
+│   │   ├── audio.nix               [PipeWire, ALSA]
+│   │   ├── boot.nix                [Boot config]
+│   │   ├── bluetooth.nix           [BT support]
+│   │   ├── graphical-desktop.nix   [KDE Plasma 6, Wayland]
+│   │   ├── networking.nix
+│   │   ├── nix.nix
+│   │   ├── programs.nix
+│   │   ├── services.nix
+│   │   ├── virtualization.nix
+│   │   └── xray-client.nix         [VPN client]
+│   │
+│   ├── bifrost/                    [VPS - VPN relay]
+│   ├── midgard/                    [VPS - Web server]
+│   ├── niflheim/                   [Home server - 40+ services]
+│   ├── desktop/                    [Main workstation - Gaming]
+│   ├── carbon/                     [Framework 13 laptop]
+│   ├── altdesk/                    [Secondary workstation]
+│   └── macbook/                    [macOS - Darwin config]
+│
+├── modules/                        [Flake-parts structure]
+│   ├── default.nix                 [Main entry point]
+│   ├── lib.nix                     [Extended lib functions]
+│   ├── pkgs.nix                    [Nixpkgs setup per-system]
+│   ├── overlays.nix                [Overlay imports]
+│   ├── formatter.nix               [treefmt config]
+│   ├── dev-shells.nix              [Dev environments]
+│   ├── exported-modules.nix        [Flake outputs]
+│   ├── _nixos-modules/             [Reusable NixOS modules]
+│   │   ├── services/backup/        [Borgbackup module]
+│   │   ├── services/networking/    [VPN abstraction]
+│   │   ├── services/web-apps/      [Monica CRM]
+│   │   └── services/web-server/    [Webhost abstraction]
+│   └── _home-modules/              [Reusable home-manager modules]
+│       └── secrets.nix
+│
+├── users/                          [User configurations]
+│   └── alapshin/                   [Primary user account]
+│       ├── default.nix             [NixOS user definition]
+│       ├── secrets/                [User secrets]
+│       └── home/                   [Home-manager modules - 24 files]
+│           ├── home.nix            [Central imports]
+│           ├── shell.nix           [Fish config]
+│           ├── development.nix     [Dev tools]
+│           ├── neovim.nix          [Editor]
+│           ├── git.nix             [Git config]
+│           ├── firefox.nix         [Browser]
+│           ├── chromium.nix
+│           ├── thunderbird.nix     [Email]
+│           ├── ssh.nix
+│           ├── gnupg.nix           [GPG]
+│           ├── plasma.nix          [KDE]
+│           ├── gaming.nix
+│           ├── podman.nix          [Containers]
+│           ├── syncthing.nix       [File sync]
+│           ├── texlive.nix         [LaTeX]
+│           ├── programs.nix        [Apps]
+│           ├── services.nix        [User services]
+│           ├── ai.nix              [AI tools]
+│           ├── anki.nix            [Flashcards]
+│           ├── theming.nix         [Catppuccin]
+│           └── variables.nix       [Env vars]
+│
+├── overlays/                       [Package overlays]
+│   └── default.nix                 [additions + modifications]
+│
+├── packages/                       [Custom packages - 13 items]
+│   ├── androidenv/
+│   ├── autobean/
+│   ├── cuesplit/
+│   ├── firefox-addons/
+│   ├── hunspell/                   [Custom dictionaries]
+│   ├── monica/
+│   ├── pg-fix-collation/
+│   ├── sandbox-runtime/
+│   └── xkb/                        [Custom keyboard layouts]
+│
+├── flake.nix                       [Entry point - 77 lines]
+├── configuration.nix               [Root settings - 21 lines]
+└── flake.lock                      [Lock file]
+
+
+───────────────────────────────────────────────────────────────────────────────────
+2. HOST TAXONOMY
+───────────────────────────────────────────────────────────────────────────────────
+
+SERVERS (5 Linux Hosts using server/ base):
+┌─────────────────┬──────────────────┬─────────────────────────────────┐
+│ Host            │ Role             │ Key Services                    │
+├─────────────────┼──────────────────┼─────────────────────────────────┤
+│ bifrost         │ VPN Relay        │ Xray (VPN server)               │
+│ midgard         │ Web Server       │ Caddy, Xray                     │
+│ niflheim        │ Home Server Hub  │ 40+ (jellyfin, nextcloud, etc)  │
+└─────────────────┴──────────────────┴─────────────────────────────────┘
+
+WORKSTATIONS (3 Linux Hosts using personal/ base):
+┌─────────────────┬──────────────────┬──────────────────────────────────┐
+│ desktop         │ Primary Dev      │ Plasma, Gaming (Steam), Full Dev │
+│ carbon          │ Portable Dev     │ Framework 13 Laptop, Minimal     │
+│ altdesk         │ Secondary        │ Basic Desktop, Moscow TZ         │
+└─────────────────┴──────────────────┴──────────────────────────────────┘
+
+MAC (1 Darwin Host):
+┌─────────────────┬──────────────────┬──────────────────────────────────┐
+│ macbook         │ macOS Dev        │ homebrew, Xcode, Game Apps       │
+└─────────────────┴──────────────────┴──────────────────────────────────┘
+
+
+───────────────────────────────────────────────────────────────────────────────────
+3. CONFIGURATION LAYERS
+───────────────────────────────────────────────────────────────────────────────────
+
+Layer 0: ROOT (All Outputs)
+└─ configuration.nix
+   ├─ State version
+   ├─ System tools (nixfmt, manix, nix-index)
+   └─ Git revision tracking
+
+Layer 1: CATEGORY BASE
+├─ hosts/common/          [All Linux hosts]
+│  ├─ Kernel (zen)
+│  ├─ Security (sudo, TPM2, PAM)
+│  ├─ SSH (hardened)
+│  ├─ Backup (Borgbackup)
+│  ├─ Nix settings
+│  └─ Base services
+│
+├─ hosts/server/          [VPS + home server]
+│  ├─ TCP BBR
+│  ├─ Immutable users
+│  ├─ Minimal documentation
+│  └─ Virtualization
+│
+└─ hosts/personal/        [Desktop + laptop]
+   ├─ Audio (PipeWire)
+   ├─ Graphics (GPU drivers, 32-bit)
+   ├─ Display (SDDM, Plasma 6, Wayland)
+   ├─ Input (touchpad, keyboard layouts)
+   ├─ Bluetooth
+   └─ Localization (multi-locale)
+
+Layer 2: HOST-SPECIFIC
+├─ bifrost/              [VPN relay + SSH]
+├─ midgard/              [Web proxy + VPN]
+├─ niflheim/             [Multi-service hub]
+├─ desktop/              [Gaming + dev]
+├─ carbon/               [Portable dev]
+├─ altdesk/              [Secondary desktop]
+└─ macbook/              [macOS]
+
+Layer 3: USER-LEVEL (home-manager)
+└─ users/alapshin/home/
+   ├─ Shell environment
+   ├─ Development tools
+   ├─ Editors & terminals
+   ├─ Browsers & comms
+   └─ Desktop applications
+
+
+───────────────────────────────────────────────────────────────────────────────────
+4. ASPECT CATEGORIES IDENTIFIED
+───────────────────────────────────────────────────────────────────────────────────
+
+CORE SYSTEM ASPECTS:
+├─ boot          [Boot loader, kernel, secure boot]
+├─ security      [Sudo, PAM, TPM2, permissions]
+├─ nix           [Daemon, GC, flakes, settings]
+├─ networking    [Firewall, DNS, interfaces]
+├─ secrets       [sops-nix integration]
+└─ ssh           [SSH server/client]
+
+DESKTOP ASPECTS (personal hosts only):
+├─ audio         [PipeWire, ALSA, RTKit]
+├─ graphics      [GPU drivers, hardware acceleration]
+├─ display       [Display manager, desktop environment]
+├─ input         [Keyboard, touchpad, mouse]
+├─ bluetooth     [Bluetooth device support]
+└─ localization  [Fonts, locale, timezones]
+
+SERVICE ASPECTS (configurable per host):
+├─ backup        [Borgbackup]
+├─ vpn           [Xray, WireGuard, NetBird]
+├─ web           [Caddy, Nginx, reverse proxy]
+├─ auth          [Authelia, LLDAP]
+├─ database      [PostgreSQL, InfluxDB]
+├─ media         [Jellyfin, Transmission, Immich, etc]
+├─ sync          [Nextcloud, Syncthing]
+├─ monitoring    [Prometheus, Grafana, Scrutiny]
+└─ ai-ml         [Open WebUI, Docling, Searx]
+
+APPLICATION ASPECTS:
+├─ gaming        [Steam, Proton, Gamescope]
+├─ development   [Compilers, runtimes, dev tools]
+├─ containers    [Podman/Docker]
+├─ documentation [LaTeX, texlive]
+└─ virtualization[libvirtd, KVM]
+
+USER ASPECTS (home-manager):
+├─ shell         [Fish, atuin, fzf, completion]
+├─ editor        [Neovim with Lua config]
+├─ git           [Git config, signing, SSH]
+├─ browsers      [Firefox, Chromium]
+├─ mail          [Thunderbird]
+├─ crypto        [GnuPG, SSH keys]
+├─ applications  [Media, office, utilities]
+└─ desktop       [Plasma configuration, KDE apps]
+
+
+───────────────────────────────────────────────────────────────────────────────────
+5. MODULES STATUS
+───────────────────────────────────────────────────────────────────────────────────
+
+✓ ALREADY MODULARIZED (in modules/_nixos-modules/):
+  ├─ backup        → services/backup/borgbackup.nix
+  ├─ vpn           → services/networking/vpn.nix
+  ├─ monica        → services/web-apps/monica5.nix
+  └─ webhost       → services/web-server/webhost.nix
+
+✓ HOME-MANAGER MODULES (24 modules, well-structured):
+  ├─ shell.nix (fish, tools)
+  ├─ development.nix (toolchains)
+  ├─ neovim.nix (editor)
+  ├─ git.nix (version control)
+  ├─ firefox.nix (browser)
+  ├─ programs.nix (apps)
+  └─ ... 18 more (all organized by concern)
+
+☐ CANDIDATES FOR EXTRACTION (currently in host configs):
+  ├─ audio            (personal/audio.nix)
+  ├─ boot             (personal/boot.nix, etc)
+  ├─ graphical-desktop(personal/graphical-desktop.nix)
+  ├─ virtualization   (personal/virtualization.nix, desktop/virtualization.nix)
+  ├─ gaming           (desktop/gaming.nix)
+  ├─ services         (scattered across hosts)
+  └─ programs         (scattered across hosts)
+
+
+───────────────────────────────────────────────────────────────────────────────────
+6. KEY STATISTICS
+───────────────────────────────────────────────────────────────────────────────────
+
+Physical Hosts                    7 (6 NixOS + 1 Darwin)
+NixOS-managed Hosts               6
+Server Hosts (using server/)      3
+Desktop Hosts (using personal/)   3
+Home-Manager Modules              24
+NixOS Modules                     4 (ready to use)
+Custom Packages                   13
+Overlays                          2 (additions, modifications)
+Total Nix Files                   150+
+Lines in flake.nix                77
+Lines in configuration.nix        21
+Lines in hosts/common/default.nix 77
+Lines in users/alapshin/home/     ~2000+
+Lines in modules/default.nix      22
+
+Services on niflheim (hub)        40+
+User groups (alapshin)            10 (wheel, audio, docker, etc)
+SSH key algorithms                5 (hardened)
+
+
+───────────────────────────────────────────────────────────────────────────────────
+7. INHERITANCE VISUALIZATION
+───────────────────────────────────────────────────────────────────────────────────
+
+root configuration.nix (stateVersion, tools)
+         │
+         ├─→ common/               (boot, security, ssh, nix, services)
+         │      │
+         │      ├─→ server/        (tcp-bbr, immutable users, virt)
+         │      │      │
+         │      │      ├─→ bifrost/    (+ openssh, xray, secrets, hw)
+         │      │      ├─→ midgard/    (+ caddy, xray, secrets, hw)
+         │      │      └─→ niflheim/   (+ 40+ services, hw)
+         │      │
+         │      └─→ personal/      (audio, boot, bt, graphical-desktop)
+         │             │
+         │             ├─→ desktop/    (+ gaming, services, hw)
+         │             ├─→ carbon/     (+ services, hw)
+         │             └─→ altdesk/    (+ hw)
+         │
+         └─→ macbook/              (darwin-specific, homebrew)
+
+users/alapshin/
+         │
+         ├─→ default.nix           (user account definition)
+         │
+         └─→ home/home.nix         (24 HM modules)
+
+
+───────────────────────────────────────────────────────────────────────────────────
+8. NIFLHEIM (HOME SERVER HUB) SERVICE BREAKDOWN
+───────────────────────────────────────────────────────────────────────────────────
+
+WEB/REVERSE PROXY:
+  ├─ caddy.nix           [Reverse proxy, TLS termination]
+  ├─ nginx.nix           [Alternative web server]
+  └─ authelia.nix        [Authentication gateway]
+
+MEDIA SERVICES:
+  ├─ jellyfin.nix        [Video streaming]
+  ├─ immich.nix          [Photo management]
+  ├─ audiobookshelf.nix  [Audiobook server]
+  ├─ calibre.nix         [Book manager] (disabled)
+  └─ transmission.nix    [Torrent client]
+
+DATA/SYNC:
+  ├─ nextcloud.nix       [File sync & collaboration]
+  ├─ syncthing.nix       [P2P file sync]
+  ├─ paperless.nix       [Document OCR]
+  ├─ linkwarden.nix      [Bookmark manager]
+  └─ changedetection.nix [Website change monitor]
+
+SOCIAL/PUBLISHING:
+  ├─ freshrss.nix        [RSS reader]
+  ├─ forgejo.nix         [Git server] (disabled)
+  ├── monica.nix         [CRM/contact manager]
+  ├─ pinepods.nix        [Podcast manager]
+  └─ karakeep.nix        [Karaoke system]
+
+AI/ML SERVICES:
+  ├─ ai.nix              [Open WebUI + LLM server]
+  ├─ docling.nix         [Document parsing]
+  ├─ searx.nix           [Meta search engine]
+  └─ handbrake.nix       [Video transcoding]
+
+INFRASTRUCTURE:
+  ├─ postgres.nix        [Database]
+  ├─ influxdb.nix        [Time-series DB]
+  ├─ lldap.nix           [LDAP directory]
+  ├─ prometheus.nix      [Metrics collection]
+  ├─ grafana.nix         [Monitoring dashboard]
+  ├─ scrutiny.nix        [Drive health monitoring]
+  ├─ wireguard.nix       [VPN]
+  ├─ netbird.nix         [VPN] (disabled)
+  └─ xray-server.nix     [Proxy server]
+
+ADMIN:
+  ├─ secrets.nix         [Secret management]
+  ├─ dashboard.nix       [Admin interface]
+  ├─ backup.nix          [Borgbackup]
+  ├─ networking.nix      [Network config]
+  └─ hardware-config     [Hardware setup]
+
+TOTAL: 44 files
+
+
+───────────────────────────────────────────────────────────────────────────────────
+9. READY FOR PHASE 2 EXTRACTION
+───────────────────────────────────────────────────────────────────────────────────
+
+The following should be extracted into modules/_nixos-modules/:
+
+PRIORITY 1 (Core):
+  1. audio           → services/audio/pipewire.nix
+  2. boot            → system/boot.nix
+  3. graphical-desktop → desktop/plasma.nix
+  4. virtualization   → system/virtualization.nix
+  5. gaming          → desktop/gaming.nix
+
+PRIORITY 2 (Services):
+  6. web-server      [Caddy/Nginx]
+  7. database        [PostgreSQL/InfluxDB]
+  8. monitoring      [Prometheus/Grafana]
+  9. media           [Jellyfin/Transmission]
+  10. ai-services    [Open WebUI/Docling]
+
+PRIORITY 3 (Development):
+  11. development-tools  [Compilers, runtimes]
+  12. containers         [Podman/Docker]
+  13. documentation      [LaTeX/texlive]
+
+This will:
+  ✓ Reduce host config duplication
+  ✓ Enable aspect composition
+  ✓ Allow enable/disable toggles
+  ✓ Create reusable building blocks
+  ✓ Support CLI aspect selection
+
+
+═════════════════════════════════════════════════════════════════════════════════════
+End of Summary. See CONFIGURATION_ANALYSIS.md for detailed documentation.
+═════════════════════════════════════════════════════════════════════════════════════
