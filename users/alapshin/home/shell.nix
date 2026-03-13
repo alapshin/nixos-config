@@ -11,8 +11,13 @@
     duf
     dust
     fd
+    findutils
+    gawk
+    gnugrep
     gnused
+    gnutar
     glow
+    patch
     sd
     trippy
   ];
