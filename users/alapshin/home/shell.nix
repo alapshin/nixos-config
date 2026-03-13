@@ -127,7 +127,7 @@
       enable = true;
       shellWrapperName = "y";
     };
-    yt-dlp.enable = false;
+    yt-dlp.enable = true;
 
     wezterm = {
       enable = true;
