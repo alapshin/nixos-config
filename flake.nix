@@ -323,32 +323,36 @@
         };
       };
 
-      darwinConfigurations = {
-        macbook = mkDarwinConfiguration {
-          hostModules = [
-            ./hosts/macbook
-          ];
-          userModules = [
-            ./users/alapshin/home
-          ];
-        };
-      };
+      darwinConfigurations =
+        lib.optionalAttrs (builtins ? currentSystem && builtins.currentSystem == "aarch64-darwin")
+          {
+            macbook = mkDarwinConfiguration {
+              hostModules = [
+                ./hosts/macbook
+              ];
+              userModules = [
+                ./users/alapshin/home
+              ];
+            };
+          };
 
       homeModules = import ./modules/home;
 
       homeConfigurations = {
-        "alapshin@macbook" = mkHomeConfiguration {
-          system = "aarch64-darwin";
-          hostname = "macbook";
-          username = "andrei.lapshin";
-          homeModules = [
-            ./users/alapshin/home/home.nix
-          ];
-        };
         "alapshin@desktop" = mkHomeConfiguration {
           system = "x86_64-linux";
           hostname = "desktop";
           username = "alapshin";
+          homeModules = [
+            ./users/alapshin/home/home.nix
+          ];
+        };
+      }
+      // lib.optionalAttrs (builtins ? currentSystem && builtins.currentSystem == "aarch64-darwin") {
+        "alapshin@macbook" = mkHomeConfiguration {
+          system = "aarch64-darwin";
+          hostname = "macbook";
+          username = "andrei.lapshin";
           homeModules = [
             ./users/alapshin/home/home.nix
           ];
