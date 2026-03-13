@@ -21,7 +21,7 @@ keys:
     alapshin_macbook: &user_alapshin_macbook age14hh5cmhznwdpnyehtqlm2qzsl6m3kud2pn4rvy2jlp3yvqmj6e0qcrgh69
 creation_rules:
   # Common secrets - accessible by all hosts and users
-  - path_regex: hosts/common/secrets.*
+  - path_regex: modules/hosts/common/secrets.*
     key_groups:
       - age:
           - *host_carbon
@@ -35,7 +35,7 @@ creation_rules:
           - *user_alapshin_desktop
           - *user_alapshin_macbook
   # Personal hosts secrets - accessible by all personal hosts
-  - path_regex: hosts/personal/secrets.*
+  - path_regex: modules/hosts/personal/secrets.*
     key_groups:
       - age:
           - *host_carbon
@@ -44,36 +44,36 @@ creation_rules:
           - *user_alapshin_carbon
           - *user_alapshin_altdesk
           - *user_alapshin_desktop
-  - path_regex: hosts/carbon/secrets.*
+  - path_regex: modules/hosts/carbon/secrets.*
     key_groups:
       - age:
           - *host_carbon
           - *user_alapshin_carbon
-  - path_regex: hosts/desktop/secrets.*
+  - path_regex: modules/hosts/desktop/secrets.*
     key_groups:
       - age:
           - *host_desktop
           - *user_alapshin_desktop
-  - path_regex: hosts/altdesk/secrets.*
+  - path_regex: modules/hosts/altdesk/secrets.*
     key_groups:
       - age:
           - *host_altdesk
           - *user_alapshin_altdesk
-  - path_regex: hosts/bifrost/secrets.*
+  - path_regex: modules/hosts/bifrost/secrets.*
     key_groups:
       - age:
           - *host_bifrost
           - *user_alapshin_carbon
           - *user_alapshin_desktop
           - *user_alapshin_macbook
-  - path_regex: hosts/midgard/secrets.*
+  - path_regex: modules/hosts/midgard/secrets.*
     key_groups:
       - age:
           - *host_midgard
           - *user_alapshin_carbon
           - *user_alapshin_desktop
           - *user_alapshin_macbook
-  - path_regex: hosts/niflheim/secrets.*
+  - path_regex: modules/hosts/niflheim/secrets.*
     key_groups:
       - age:
           - *host_niflheim
@@ -81,7 +81,7 @@ creation_rules:
           - *user_alapshin_desktop
           - *user_alapshin_macbook
   # user-specific secrets
-  - path_regex: users/alapshin/secrets.*
+  - path_regex: modules/users/alapshin/secrets.*
     key_groups:
       - age:
           - *user_alapshin_carbon
