@@ -1,0 +1,18 @@
+{ inputs, ... }:
+{
+  perSystem =
+    { pkgs, ... }:
+    {
+      formatter = inputs.treefmt-nix.lib.mkWrapper pkgs {
+        programs.shfmt = {
+          enable = true;
+          # Use .editorconfig config
+          indent_size = null;
+        };
+        programs.nixfmt.enable = true;
+        programs.stylua.enable = true;
+        programs.jsonfmt.enable = true;
+        programs.yamlfmt.enable = true;
+      };
+    };
+}

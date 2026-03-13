@@ -9,13 +9,8 @@ username=${3:-}
 remote_host=${3:-}
 
 function check {
-	decrypt-build-secrets "users/alapshin" &&
-		nix flake check
-}
-
-function build {
-	decrypt-build-secrets "users/alapshin"
-	nix build ".#nixosConfigurations.${hostname}.config.system.build.toplevel"
+	decrypt-build-secrets "modules/users/alapshin" &&
+		nix flake check --no-build
 }
 
 function update {
@@ -26,19 +21,42 @@ function clean-store {
 	nh clean all --keep 5
 }
 
-function os-switch {
-	decrypt-build-secrets "users/alapshin" &&
+# NixOS commands
+function nixos-build {
+	decrypt-build-secrets "modules/users/alapshin" &&
+		nh os build --hostname "${hostname}" "$PWD"
+}
+
+function nixos-switch {
+	decrypt-build-secrets "modules/users/alapshin" &&
 		nh os switch --hostname "${hostname}" "$PWD"
 }
 
-function home-switch {
-	decrypt-build-secrets "users/${username}" &&
-		nh home switch --configuration "${username}@${hostname}" "$PWD"
+# Darwin commands
+function darwin-build {
+	decrypt-build-secrets "modules/users/alapshin" &&
+		nh darwin build --hostname "${hostname}" "$PWD"
 }
 
 function darwin-switch {
-	decrypt-build-secrets "users/alapshin" &&
+	decrypt-build-secrets "modules/users/alapshin" &&
 		nh darwin switch --hostname "${hostname}" "$PWD"
+}
+
+# Home-manager commands
+function home-build {
+	decrypt-build-secrets "modules/users/${username}" &&
+		nh home build --configuration "${username}@${hostname}" "$PWD"
+}
+
+function home-switch {
+	decrypt-build-secrets "modules/users/${username}" &&
+		nh home switch --configuration "${username}@${hostname}" "$PWD"
+}
+
+# Keep for backward compatibility
+function build {
+	nixos-build
 }
 
 function remote-switch {
