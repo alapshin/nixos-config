@@ -18,6 +18,13 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   modifications = final: prev: {
+    karakeep = prev.karakeep.overrideAttrs (oldAttrs: {
+      # Upstream patch targets wrong line number for next.js 15.3.8 (line 412, not 409).
+      # Use a fixed version of the patch until nixpkgs updates it.
+      preInstall = ''
+        patch -p1 -i ${../pkgs/by-name/ka/karakeep/patches/cache-from-env-not-nix-store.patch}
+      '';
+    });
     mos = prev.mos.overrideAttrs (
       finalAttrs: oldAttrs: {
         version = "4.0.0";
@@ -34,12 +41,6 @@
 
     open-webui = prev.open-webui.overridePythonAttrs (oldAttrs: {
       dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
-    });
-
-    # Fix karakeep build - skip failing cache patch
-    karakeep = prev.karakeep.overrideAttrs (oldAttrs: {
-      # Remove the preInstall hook that applies the failing patch
-      preInstall = null;
     });
 
     changedetection-io = prev.changedetection-io.overridePythonAttrs (oldAttrs: {
