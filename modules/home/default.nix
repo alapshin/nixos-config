@@ -1,3 +1,0 @@
-{
-  secrets = import ./secrets.nix;
-}

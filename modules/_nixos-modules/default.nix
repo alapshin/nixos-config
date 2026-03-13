@@ -1,4 +1,10 @@
 {
+  # Core system aspects
+  audio = import ./audio.nix;
+  boot = import ./boot.nix;
+  bluetooth = import ./bluetooth.nix;
+
+  # Services modules (existing)
   backup = import ./services/backup/borgbackup.nix;
   vpn = import ./services/networking/vpn.nix;
   monica = import ./services/web-apps/monica5.nix;
