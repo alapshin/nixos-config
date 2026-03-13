@@ -33,13 +33,6 @@
         ];
       }
     );
-    ghostty-bin = prev.ghostty-bin.overrideAttrs ({
-      version = "1.3.0";
-      src = prev.fetchurl {
-        url = "https://release.files.ghostty.org/1.3.0/Ghostty.dmg";
-        hash = "sha256-U/6Y5wmCEYAIwDuf2/XfJlUip/22vfoY630NTNMdDMU=";
-      };
-    });
 
     open-webui = prev.open-webui.overridePythonAttrs (oldAttrs: {
       dependencies = oldAttrs.dependencies ++ oldAttrs.optional-dependencies.postgres;
