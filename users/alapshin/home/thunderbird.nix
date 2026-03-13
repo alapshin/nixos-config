@@ -6,7 +6,6 @@
   ...
 }:
 let
-  cfg = config.programs.thunderbird;
   hostname = osConfig.networking.hostName;
 in
 {
@@ -27,7 +26,7 @@ in
         flavor = "gmail.com";
         address = config.secrets.contents.email.gmail;
         realName = "Andrei Lapshin";
-        thunderbird.enable = cfg.enable;
+        thunderbird.enable = lib.mkDefault true;
       };
       "Fastmail" = {
         enable = hostname != "altdesk";
@@ -35,7 +34,7 @@ in
         address = config.secrets.contents.email.fastmail;
         primary = true;
         realName = "Andrei Lapshin";
-        thunderbird.enable = cfg.enable;
+        thunderbird.enable = lib.mkDefault true;
       };
     };
     calendar.accounts = {
@@ -50,7 +49,7 @@ in
             config.sops.secrets."nextcloud_caldav".path
           ];
         };
-        thunderbird.enable = cfg.enable;
+        thunderbird.enable = lib.mkDefault true;
       };
     };
     contact.accounts = {
@@ -64,7 +63,7 @@ in
             config.sops.secrets."nextcloud_carddav".path
           ];
         };
-        thunderbird.enable = cfg.enable;
+        thunderbird.enable = lib.mkDefault true;
       };
     };
   };
